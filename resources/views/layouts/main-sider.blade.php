@@ -29,7 +29,7 @@
                 class="side-nav-link">
                 <i class="uil-store"></i>
                 <span> {{ trans('main_trans.sales') }} </span>
-                <span class="menu-arrow"></span>
+                <span class="badge bg-success">4</span>
             </a>
             <div class="collapse" id="sidebarEcommerce">
                 <ul class="side-nav-second-level">

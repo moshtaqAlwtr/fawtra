@@ -3,7 +3,7 @@
 <nav class="admin-header navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
         <!-- Sidebar Toggle Button -->
-        <button class="navbar-toggler" type="button">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
 
@@ -13,56 +13,56 @@
             <button class="btn btn-search" type="button">Search</button>
         </div>
 
-        <ul class="navbar-nav ml-auto d-flex align-items-center">
-            <!-- Language Selection -->
-              <!-- اختيار اللغة -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-globe"></i> Language
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">
-                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                        <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                            {{ $properties['native'] }}
-                        </a>
-                    @endforeach
-                </div>
-            </li>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ml-auto d-flex align-items-center">
+                <!-- Language Selection -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-globe"></i> Language
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        @endforeach
+                    </div>
+                </li>
 
-            <!-- Notifications -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-bell"></i>
-                    <span class="badge badge-danger">5</span>
-                </a>
-            </li>
+                <!-- Notifications -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge badge-danger">5</span>
+                    </a>
+                </li>
 
-            <!-- Settings & More -->
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-th"></i></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-cog"></i></a>
-            </li>
+                <!-- Settings & More -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-th"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-cog"></i></a>
+                </li>
 
-            <!-- User Profile -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="{{ asset('assets/image/profile-avatar.jpg') }}" alt="avatar" class="rounded-circle" width="30">
-                    <span class="ml-2">Dominic Keller</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profile</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Messages</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                </div>
-            </li>
-        </ul>
+                <!-- User Profile -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="{{ asset('assets/image/profile-avatar.jpg') }}" alt="avatar" class="rounded-circle" width="30">
+                        <span class="ml-2">Dominic Keller</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Messages</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
     </div>
 </nav>
-
-
 
 {{--
 
