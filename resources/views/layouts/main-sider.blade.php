@@ -95,10 +95,10 @@
             <div class="collapse" id="sidebarCrm">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href=>{{ trans('main_trans.Content_management') }}</a>
+                        <a href="" >{{ trans('main_trans.Content_management') }}</a>
                     </li>
                     <li>
-                        <a href=>{{ trans('main_trans.Settings') }}</a>
+                        <a href=""  >{{ trans('main_trans.Settings') }}</a>
                     </li>
 
 
@@ -119,10 +119,10 @@
                         <a href="">{{ trans('main_trans.Manage_reservations') }}</a>
                     </li>
                     <li>
-                        <a href=>{{ trans('main_trans.Add_reservation') }}</a>
+                        <a href="">{{ trans('main_trans.Add_reservation') }}</a>
                     </li>
                     <li>
-                        <a href=>{{ trans('main_trans.Booking_Settings') }}</a>
+                        <a href="">{{ trans('main_trans.Booking_Settings') }}</a>
                     </li>
 
                 </ul>
@@ -140,10 +140,10 @@
             <div class="collapse" id="sidebarEmail">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href=> {{ trans('main_trans.Installment_agreements') }}</a>
+                        <a href=""> {{ trans('main_trans.Installment_agreements') }}</a>
                     </li>
                     <li>
-                        <a href=>{{ trans('main_trans.Installments') }} </a>
+                        <a href="">{{ trans('main_trans.Installments') }} </a>
                     </li>
                 </ul>
             </div>
@@ -159,13 +159,13 @@
             <div class="collapse" id="sidebarProjects">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href=>{{ trans('main_trans.Commission_rules') }}</a>
+                        <a href="">{{ trans('main_trans.Commission_rules') }}</a>
                     </li>
                     <li>
-                        <a href=>{{ trans('main_trans.Sales_commissions') }}</a>
+                        <a href="">{{ trans('main_trans.Sales_commissions') }}</a>
                     </li>
                     <li>
-                        <a href=>{{ trans('main_trans.Sales_periods') }} <span
+                        <a href="">{{ trans('main_trans.Sales_periods') }} <span
                                 class="badge rounded-pill bg-light text-dark font-10 float-end"></span></a>
                     </li>
 
@@ -183,19 +183,19 @@
             <div class="collapse" id="sidebarTasks">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href=>{{ trans('main_trans.Units') }}</a>
+                        <a href="">{{ trans('main_trans.Units') }}</a>
                     </li>
                     <li>
-                        <a href=>{{ trans('main_trans.Seizure_orders') }}</a>
+                        <a href="">{{ trans('main_trans.Seizure_orders') }}</a>
                     </li>
                     <li>
-                        <a href=>{{ trans('main_trans.Pricing_rules') }}</a>
+                        <a href="">{{ trans('main_trans.Pricing_rules') }}</a>
                     </li>
                     <li>
-                        <a href=>{{ trans('main_trans.Seasonal_prices') }}</a>
+                        <a href="">{{ trans('main_trans.Seasonal_prices') }}</a>
                     </li>
                     <li>
-                        <a href=>{{ trans('main_trans.Settings') }}</a>
+                        <a href="">{{ trans('main_trans.Settings') }}</a>
                     </li>
                 </ul>
             </div>
@@ -206,26 +206,20 @@
             <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks"
                 class="side-nav-link">
                 <i class="uil-clipboard-alt"></i>
-                <span> {{ trans('main_trans.Units_and_Rentals_Management') }} </span>
+                <span> {{ trans('main_trans.Supply_orders') }} </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarTasks">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href=>{{ trans('main_trans.Units') }}</a>
+                        <a href="">{{ trans('main_trans.Supply_orders') }}</a>
                     </li>
                     <li>
-                        <a href=>{{ trans('main_trans.Seizure_orders') }}</a>
+                        <a href="">{{ trans('main_trans.Add_a_job_order') }}</a>
                     </li>
                     <li>
-                        <a href=>{{ trans('main_trans.Pricing_rules') }}</a>
-                    </li>
-                    <li>
-                        <a href=>{{ trans('main_trans.Seasonal_prices') }}</a>
-                    </li>
-                    <li>
-                        <a href=>{{ trans('main_trans.Settings') }}</a>
-                    </li>
+                        <a href="">{{ trans('main_trans.Supply_Orders_Settings') }}</a>
+                    </li>   
                 </ul>
             </div>
 
@@ -239,13 +233,13 @@
             <a data-bs-toggle="collapse" href="#sidebarLayouts" aria-expanded="false" aria-controls="sidebarLayouts"
                 class="side-nav-link">
                 <i class="uil-window"></i>
-                <span> Layouts </span>
+                <span> {{ trans('main_trans.Business_cycles') }} </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarLayouts">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="layouts-horizontal.html">Horizontal</a>
+                        <a href="">{{ trans('main_trans.Settings') }}</a>
                     </li>
                     <li>
                         <a href="layouts-detached.html">Detached</a>
@@ -263,83 +257,30 @@
             <a data-bs-toggle="collapse" href="#sidebarBaseUI" aria-expanded="false" aria-controls="sidebarBaseUI"
                 class="side-nav-link">
                 <i class="uil-box"></i>
-                <span> Base UI </span>
+                <span> {{ trans('main_trans.Customers') }}  </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarBaseUI">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="ui-accordions.html">Accordions</a>
+                        <a href="">{{trans('main_trans.Customer_management')}}</a>
                     </li>
                     <li>
-                        <a href="ui-alerts.html">Alerts</a>
+                        <a href="">{{ trans('main_trans.Add_a_new_customer') }}</a>
                     </li>
                     <li>
-                        <a href="ui-avatars.html">Avatars</a>
+                        <a href="">{{ trans('main_trans.Appointments')}}</a>
                     </li>
                     <li>
-                        <a href="ui-badges.html">Badges</a>
+                        <a href="">{{ trans('main_trans.Contact_list')}}</a>
                     </li>
                     <li>
-                        <a href="ui-breadcrumb.html">Breadcrumb</a>
+                        <a href="">{{ trans('main_trans.Customer_relationship_management') }}</a>
                     </li>
                     <li>
-                        <a href="ui-buttons.html">Buttons</a>
+                        <a href="">{{ trans('main_trans.Client_settings') }}</a>
                     </li>
-                    <li>
-                        <a href="ui-cards.html">Cards</a>
-                    </li>
-                    <li>
-                        <a href="ui-carousel.html">Carousel</a>
-                    </li>
-                    <li>
-                        <a href="ui-dropdowns.html">Dropdowns</a>
-                    </li>
-                    <li>
-                        <a href="ui-embed-video.html">Embed Video</a>
-                    </li>
-                    <li>
-                        <a href="ui-grid.html">Grid</a>
-                    </li>
-                    <li>
-                        <a href="ui-list-group.html">List Group</a>
-                    </li>
-                    <li>
-                        <a href="ui-modals.html">Modals</a>
-                    </li>
-                    <li>
-                        <a href="ui-notifications.html">Notifications</a>
-                    </li>
-                    <li>
-                        <a href="ui-offcanvas.html">Offcanvas</a>
-                    </li>
-                    <li>
-                        <a href="ui-placeholders.html">Placeholders</a>
-                    </li>
-                    <li>
-                        <a href="ui-pagination.html">Pagination</a>
-                    </li>
-                    <li>
-                        <a href="ui-popovers.html">Popovers</a>
-                    </li>
-                    <li>
-                        <a href="ui-progress.html">Progress</a>
-                    </li>
-                    <li>
-                        <a href="ui-ribbons.html">Ribbons</a>
-                    </li>
-                    <li>
-                        <a href="ui-spinners.html">Spinners</a>
-                    </li>
-                    <li>
-                        <a href="ui-tabs.html">Tabs</a>
-                    </li>
-                    <li>
-                        <a href="ui-tooltips.html">Tooltips</a>
-                    </li>
-                    <li>
-                        <a href="ui-typography.html">Typography</a>
-                    </li>
+             
                 </ul>
             </div>
         </li>
@@ -348,13 +289,13 @@
             <a data-bs-toggle="collapse" href="#sidebarExtendedUI" aria-expanded="false"
                 aria-controls="sidebarExtendedUI" class="side-nav-link">
                 <i class="uil-package"></i>
-                <span> Extended UI </span>
+                <span> {{ trans('main_trans.Points_and_credits')}}  </span
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarExtendedUI">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="extended-dragula.html">Dragula</a>
+                        <a href="">{{ trans('main_trans.Managing_balance_transfers') }}</a>
                     </li>
                     <li>
                         <a href="extended-range-slider.html">Range Slider</a>
