@@ -1,0 +1,25 @@
+/* .breadcrumb li { 
+  float: right; 
+    
+    position:relative;
+}
+.breadcrumb li a{
+        padding:15px 55px 10px 5px;
+  float: right;
+}
+.breadcrumb li:first-child a
+{
+     padding:15px 30px 10px 5px;
+}
+ .breadcrumb  .m
+ {
+     right:auto;
+     left:-30px;
+     margin-left:0px;
+     margin-right:auto;
+ }
+.header .breadcrumb > .active
+ {
+          padding-right:40px;
+          padding: 15px 40px 10px 3px;
+ } */

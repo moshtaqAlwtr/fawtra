@@ -1,0 +1,170 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    direction: rtl;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+.box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: calc(46% - 5px);
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+}
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.filter-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.filter-box select {
+    padding: 5px;
+}
+.attendance-summary, .salary-summary, .rules-summary {
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+.circle {
+    width: 80px;
+    height: 80px;
+    border: 5px solid #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    position: relative;
+    margin: 0 auto;
+    flex-direction: column;
+}
+.circle span {
+    font-size: 14px;
+    margin-top: 5px;
+}
+.circle-1 { border-color: #4caf50; }
+.circle-2 { border-color: #f44336; }
+.circle-3 { border-color: #9c27b0; }
+.circle-4 { border-color: #ff9800; }
+.salary-summary-box, .contract-summary-box {
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
+}
+.salary-summary-box p, .contract-summary-box p {
+    margin: 5px 0;
+}
+.rules-summary div {
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
+}
+.pending-requests {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 16px;
+    color: #888;
+}
+.link {
+    color: #007bff;
+    text-decoration: none;
+}
+.btn-add {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    align-self: flex-end;
+}
+
+ .main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+.content-box {
+    width: 100%;
+    max-width: 900px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.top-bar {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.filter-section, .tab-section, .invoice-card, .sort-section {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.invoice-card {
+    padding: 20px;
+    margin-bottom: 10px;
+}
+.badge-status {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+.flatpickr-footer {
+    text-align: center;
+    padding: 10px;
+}
+.btn-clear, .btn-today {
+    border: none;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 4px;
+}
+.btn-clear { background-color: #dc3545; margin-right: 10px; }
+.btn-today { background-color: #0d6efd; }
+.badge-status.paid { background-color: #28a745; color: #fff; }
+.badge-status.pending { background-color: #ffc107; color: #212529; }
+.badge-status.unpaid { background-color: #dc3545; color: #fff; }
+.pagination-custom {
+    justify-content: center;
+}
+.dropdown-menu {
+    min-width: 150px;
+}
+.page-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
