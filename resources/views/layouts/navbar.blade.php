@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 <nav class="admin-header navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
         <!-- Sidebar Toggle Button -->
@@ -13,13 +15,17 @@
 
         <ul class="navbar-nav ml-auto d-flex align-items-center">
             <!-- Language Selection -->
-            <li class="nav-item dropdown">
+              <!-- اختيار اللغة -->
+              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-globe"></i> Language
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">
-                    <a class="dropdown-item" href="#">English</a>
-                    <a class="dropdown-item" href="#">Arabic</a>
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                            {{ $properties['native'] }}
+                        </a>
+                    @endforeach
                 </div>
             </li>
 
@@ -31,15 +37,18 @@
                 </a>
             </li>
 
-            <!-- Settings Button -->
+            <!-- Settings & More -->
             <li class="nav-item">
-                <a class="nav-link" href="#" id="settingsButton"><i class="fas fa-cog"></i></a>
+                <a class="nav-link" href="#"><i class="fas fa-th"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-cog"></i></a>
             </li>
 
             <!-- User Profile -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="profile-avatar.jpg" alt="avatar" class="rounded-circle" width="30">
+                    <img src="{{ asset('assets/image/profile-avatar.jpg') }}" alt="avatar" class="rounded-circle" width="30">
                     <span class="ml-2">Dominic Keller</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
@@ -53,8 +62,8 @@
     </div>
 </nav>
 
-<!-- Right Sidebar Content -->
-<div class="rightbar-content" id="rightSidebar">
+<div class="rightbar-content h-100" data-simplebar>
+
     <div class="p-3">
         <div class="alert alert-warning" role="alert">
             <strong>Customize </strong> the overall color scheme, sidebar menu, etc.
@@ -74,26 +83,63 @@
             <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
         </div>
 
-        <!-- Additional settings here -->
+
+        <!-- Width -->
+        <h5 class="mt-4">Width</h5>
+        <hr class="mt-1" />
+        <div class="form-check form-switch mb-1">
+            <input class="form-check-input" type="checkbox" name="width" value="fluid" id="fluid-check" checked>
+            <label class="form-check-label" for="fluid-check">Fluid</label>
+        </div>
+
+        <div class="form-check form-switch mb-1">
+            <input class="form-check-input" type="checkbox" name="width" value="boxed" id="boxed-check">
+            <label class="form-check-label" for="boxed-check">Boxed</label>
+        </div>
+
+
+        <!-- Left Sidebar-->
+        <h5 class="mt-4">Left Sidebar</h5>
+        <hr class="mt-1" />
+        <div class="form-check form-switch mb-1">
+            <input class="form-check-input" type="checkbox" name="theme" value="default" id="default-check">
+            <label class="form-check-label" for="default-check">Default</label>
+        </div>
+
+        <div class="form-check form-switch mb-1">
+            <input class="form-check-input" type="checkbox" name="theme" value="light" id="light-check" checked>
+            <label class="form-check-label" for="light-check">Light</label>
+        </div>
+
+        <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" name="theme" value="dark" id="dark-check">
+            <label class="form-check-label" for="dark-check">Dark</label>
+        </div>
+
+        <div class="form-check form-switch mb-1">
+            <input class="form-check-input" type="checkbox" name="compact" value="fixed" id="fixed-check" checked>
+            <label class="form-check-label" for="fixed-check">Fixed</label>
+        </div>
+
+        <div class="form-check form-switch mb-1">
+            <input class="form-check-input" type="checkbox" name="compact" value="condensed" id="condensed-check">
+            <label class="form-check-label" for="condensed-check">Condensed</label>
+        </div>
+
+        <div class="form-check form-switch mb-1">
+            <input class="form-check-input" type="checkbox" name="compact" value="scrollable" id="scrollable-check">
+            <label class="form-check-label" for="scrollable-check">Scrollable</label>
+        </div>
 
         <div class="d-grid mt-4">
             <button class="btn btn-primary" id="resetBtn">Reset to Default</button>
+
+            <a href="https://themes.getbootstrap.com/product/hyper-responsive-admin-dashboard-template/"
+                class="btn btn-danger mt-3" target="_blank"><i class="mdi mdi-basket me-1"></i> Purchase Now</a>
         </div>
-    </div>
+    </div> <!-- end padding-->
+
 </div>
-
-<!-- JavaScript -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const settingsButton = document.getElementById("settingsButton");
-        const rightbarContent = document.getElementById("rightSidebar");
-
-        // Toggle sidebar visibility
-        settingsButton.addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent default link action
-            rightbarContent.classList.toggle("show-rightbar"); // Toggle sidebar display
-        });
-    });
 
 {{--
 
