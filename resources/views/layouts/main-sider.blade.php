@@ -17,7 +17,7 @@
                     <li>
                         <a href="{{ route('human_resources') }}">{{ trans('main_trans.Human_Resources') }}</a>
                     <li>
-                        <a href="">salas</a>
+                        <a href=""> {{ trans('main_trans.sales') }}</a>
                     </li>
 
                 </ul>
@@ -25,13 +25,30 @@
         </li>
 
             <ul class="side-nav-second-level">
-        <li class="side-nav-title side-nav-item">sales</li>
+        <li class="side-nav-title side-nav-item">{{ trans('main_trans.sales') }}</li>
 
         <li>
             <a href="{{ route('invoice-management') }}">{{ trans('main_trans.invoice_management') }}</a>
 
 
         </li>
+        
+        <li>
+            <a href="">{{ trans('main_trans.creaat_invoice') }}</a>
+
+
+        </li>
+        <li>
+            <a href="">{{ trans('main_trans.Quotation_Management') }}</a>
+
+
+        </li>
+        <li>
+            <a href="">{{ trans('main_trans.Create_quote') }}</a>
+
+
+        </li>
+        
 
 
         <li class="side-nav-item">
