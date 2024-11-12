@@ -100,45 +100,23 @@
                     <li>
                         <a href=>{{ trans('main_trans.Settings') }}</a>
                     </li>
-                  
-                  
-                </ul>
-            </div>
-        </li>
-        
-        <li class="side-nav-item">
-            <a data-bs-toggle="collapse" href="#sidebarCrm" aria-expanded="false" aria-controls="sidebarCrm"
-                class="side-nav-link">
-                <i class="uil uil-tachometer-fast"></i>
-                <span class="badge bg-danger text-white float-end">New</span>
-                <span>{{ trans('main_trans.Online_store') }}</span>
-            </a>
-            <div class="collapse" id="sidebarCrm">
-                <ul class="side-nav-second-level">
-                    <li>
-                        <a href=>{{ trans('main_trans.Content_management') }}</a>
-                    </li>
-                    <li>
-                        <a href=>{{ trans('main_trans.Settings') }}</a>
-                    </li>
-                  
-                  
+
+
                 </ul>
             </div>
         </li>
 
+{{-- الحجوزات --}}
         <li class="side-nav-item">
-            <a data-bs-toggle="collapse" href="#reservations" aria-expanded="false" aria-controls="reservations"
-                class="side-nav-link">
+            <a data-bs-toggle="collapse" href="#reservations" aria-expanded="false" aria-controls="reservations" class="side-nav-link">
                 <i class="uil-store"></i>
-                  <span class="menu-arrow"></span>
+                <span class="menu-arrow"></span>
                 <span> {{ trans('main_trans.Reservations') }} </span>
-              
             </a>
-            <div class="collapse" id="">
+            <div class="collapse" id="reservations">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href=>"{{trans('main_trans.Manage_reservations') }}" </a>
+                        <a href="">{{ trans('main_trans.Manage_reservations') }}</a>
                     </li>
                     <li>
                         <a href="apps-ecommerce-products-details.html">Products Details</a>
@@ -164,6 +142,7 @@
                 </ul>
             </div>
         </li>
+
 
         <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail"
