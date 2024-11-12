@@ -1,7 +1,7 @@
 <div class="h-100" id="leftside-menu-container" data-simplebar>
 
     <!--- Sidemenu -->
-    <ul class="side-nav">
+      <ul class="side-nav">
 
         <li class="side-nav-title side-nav-item">Navigation</li>
 
@@ -106,7 +106,7 @@
             </div>
         </li>
 
-{{-- الحجوزات --}}
+        {{-- الحجوزات --}}
         <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#reservations" aria-expanded="false" aria-controls="reservations" class="side-nav-link">
                 <i class="uil-store"></i>
@@ -124,7 +124,7 @@
                     <li>
                         <a href=>{{ trans('main_trans.Booking_Settings') }}</a>
                     </li>
-                   
+
                 </ul>
             </div>
         </li>
@@ -168,7 +168,7 @@
                         <a href=>{{ trans('main_trans.Sales_periods') }} <span
                                 class="badge rounded-pill bg-light text-dark font-10 float-end"></span></a>
                     </li>
-                   
+
                 </ul>
             </div>
         </li>
@@ -199,114 +199,41 @@
                     </li>
                 </ul>
             </div>
-      
-            <div class="collapse" id="sidebarPages">
+
+
+        </li>
+        <li class="side-nav-item">
+            <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks"
+                class="side-nav-link">
+                <i class="uil-clipboard-alt"></i>
+                <span> {{ trans('main_trans.Units_and_Rentals_Management') }} </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarTasks">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="pages-profile.html">Profile</a>
+                        <a href=>{{ trans('main_trans.Units') }}</a>
                     </li>
                     <li>
-                        <a href="pages-profile-2.html">Profile 2</a>
+                        <a href=>{{ trans('main_trans.Seizure_orders') }}</a>
                     </li>
                     <li>
-                        <a href="pages-invoice.html">Invoice</a>
+                        <a href=>{{ trans('main_trans.Pricing_rules') }}</a>
                     </li>
                     <li>
-                        <a href="pages-faq.html">FAQ</a>
+                        <a href=>{{ trans('main_trans.Seasonal_prices') }}</a>
                     </li>
                     <li>
-                        <a href="pages-pricing.html">Pricing</a>
-                    </li>
-                    <li>
-                        <a href="pages-maintenance.html">Maintenance</a>
-                    </li>
-                    <li class="side-nav-item">
-                        <a data-bs-toggle="collapse" href="#sidebarPagesAuth" aria-expanded="false"
-                            aria-controls="sidebarPagesAuth">
-                            <span> محمد </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <div class="collapse" id="sidebarPagesAuth">
-                            <ul class="side-nav-third-level">
-                                <li>
-                                    <a href="pages-login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="pages-login-2.html">Login 2</a>
-                                </li>
-                                <li>
-                                    <a href="pages-register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="pages-register-2.html">Register 2</a>
-                                </li>
-                                <li>
-                                    <a href="pages-logout.html">Logout</a>
-                                </li>
-                                <li>
-                                    <a href="pages-logout-2.html">Logout 2</a>
-                                </li>
-                                <li>
-                                    <a href="pages-recoverpw.html">Recover Password</a>
-                                </li>
-                                <li>
-                                    <a href="pages-recoverpw-2.html">Recover Password 2</a>
-                                </li>
-                                <li>
-                                    <a href="pages-lock-screen.html">Lock Screen</a>
-                                </li>
-                                <li>
-                                    <a href="pages-lock-screen-2.html">Lock Screen 2</a>
-                                </li>
-                                <li>
-                                    <a href="pages-confirm-mail.html">Confirm Mail</a>
-                                </li>
-                                <li>
-                                    <a href="pages-confirm-mail-2.html">Confirm Mail 2</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="side-nav-item">
-                        <a data-bs-toggle="collapse" href="#sidebarPagesError" aria-expanded="false"
-                            aria-controls="sidebarPagesError">
-                            <span> Error </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <div class="collapse" id="sidebarPagesError">
-                            <ul class="side-nav-third-level">
-                                <li>
-                                    <a href="pages-404.html">Error 404</a>
-                                </li>
-                                <li>
-                                    <a href="pages-404-alt.html">Error 404-alt</a>
-                                </li>
-                                <li>
-                                    <a href="pages-500.html">Error 500</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="pages-starter.html">Starter Page</a>
-                    </li>
-                    <li>
-                        <a href="pages-preloader.html">With Preloader</a>
-                    </li>
-                    <li>
-                        <a href="pages-timeline.html">Timeline</a>
+                        <a href=>{{ trans('main_trans.Settings') }}</a>
                     </li>
                 </ul>
             </div>
+
+
         </li>
 
-        <li class="side-nav-item">
-            <a href="landing.html" target="_blank" class="side-nav-link">
-                <i class="uil-globe"></i>
-                <span class="badge bg-secondary text-light float-end">New</span>
-                <span> Landing </span>
-            </a>
-        </li>
+
+
 
         <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#sidebarLayouts" aria-expanded="false" aria-controls="sidebarLayouts"
@@ -679,6 +606,7 @@
             </div>
         </li>
     </ul>
+</div>
 
     <!-- Help Box -->
     <div class="help-box text-white text-center">
