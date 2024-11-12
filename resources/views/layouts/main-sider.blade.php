@@ -89,7 +89,7 @@
             <a data-bs-toggle="collapse" href="#sidebarCrm" aria-expanded="false" aria-controls="sidebarCrm"
                 class="side-nav-link">
                 <i class="uil uil-tachometer-fast"></i>
-                <span class="badge bg-danger text-white float-end">New</span>
+                <span class="badge bg-danger text-white float-end"></span>
                 <span>{{ trans('main_trans.Online_store') }}</span>
             </a>
             <div class="collapse" id="sidebarCrm">
@@ -119,26 +119,12 @@
                         <a href="">{{ trans('main_trans.Manage_reservations') }}</a>
                     </li>
                     <li>
-                        <a href="apps-ecommerce-products-details.html">Products Details</a>
+                        <a href=>{{ trans('main_trans.Add_reservation') }}</a>
                     </li>
                     <li>
-                        <a href="apps-ecommerce-orders.html">Orders</a>
+                        <a href=>{{ trans('main_trans.Booking_Settings') }}</a>
                     </li>
-                    <li>
-                        <a href="apps-ecommerce-orders-details.html">Order Details</a>
-                    </li>
-                    <li>
-                        <a href="apps-ecommerce-customers.html">Customers</a>
-                    </li>
-                    <li>
-                        <a href="apps-ecommerce-shopping-cart.html">Shopping Cart</a>
-                    </li>
-                    <li>
-                        <a href="apps-ecommerce-checkout.html">Checkout</a>
-                    </li>
-                    <li>
-                        <a href="apps-ecommerce-sellers.html">Sellers</a>
-                    </li>
+                   
                 </ul>
             </div>
         </li>
@@ -148,16 +134,16 @@
             <a data-bs-toggle="collapse" href="#sidebarEmail" aria-expanded="false" aria-controls="sidebarEmail"
                 class="side-nav-link">
                 <i class="uil-envelope"></i>
-                <span> Email </span>
+                <span> {{ trans('main_trans.Installment_Management') }} </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarEmail">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="apps-email-inbox.html">Inbox</a>
+                        <a href=> {{ trans('main_trans.Installment_agreements') }}</a>
                     </li>
                     <li>
-                        <a href="apps-email-read.html">Read Email</a>
+                        <a href=>{{ trans('main_trans.Installments') }} </a>
                     </li>
                 </ul>
             </div>
@@ -167,73 +153,53 @@
             <a data-bs-toggle="collapse" href="#sidebarProjects" aria-expanded="false" aria-controls="sidebarProjects"
                 class="side-nav-link">
                 <i class="uil-briefcase"></i>
-                <span> Projects </span>
+                <span> {{ trans('main_trans.Targeted_sales_and_commissions') }} </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarProjects">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="apps-projects-list.html">List</a>
+                        <a href=>{{ trans('main_trans.Commission_rules') }}</a>
                     </li>
                     <li>
-                        <a href="apps-projects-details.html">Details</a>
+                        <a href=>{{ trans('main_trans.Sales_commissions') }}</a>
                     </li>
                     <li>
-                        <a href="apps-projects-gantt.html">Gantt <span
-                                class="badge rounded-pill bg-light text-dark font-10 float-end">New</span></a>
+                        <a href=>{{ trans('main_trans.Sales_periods') }} <span
+                                class="badge rounded-pill bg-light text-dark font-10 float-end"></span></a>
                     </li>
-                    <li>
-                        <a href="apps-projects-add.html">Create Project</a>
-                    </li>
+                   
                 </ul>
             </div>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="apps-social-feed.html" class="side-nav-link">
-                <i class="uil-rss"></i>
-                <span> Social Feed </span>
-            </a>
         </li>
 
         <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#sidebarTasks" aria-expanded="false" aria-controls="sidebarTasks"
                 class="side-nav-link">
                 <i class="uil-clipboard-alt"></i>
-                <span> Tasks </span>
+                <span> {{ trans('main_trans.Units_and_Rentals_Management') }} </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarTasks">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="apps-tasks.html">List</a>
+                        <a href=>{{ trans('main_trans.Units') }}</a>
                     </li>
                     <li>
-                        <a href="apps-tasks-details.html">Details</a>
+                        <a href=>{{ trans('main_trans.Seizure_orders') }}</a>
                     </li>
                     <li>
-                        <a href="apps-kanban.html">Kanban Board</a>
+                        <a href=>{{ trans('main_trans.Pricing_rules') }}</a>
+                    </li>
+                    <li>
+                        <a href=>{{ trans('main_trans.Seasonal_prices') }}</a>
+                    </li>
+                    <li>
+                        <a href=>{{ trans('main_trans.Settings') }}</a>
                     </li>
                 </ul>
             </div>
-        </li>
-
-        <li class="side-nav-item">
-            <a href="apps-file-manager.html" class="side-nav-link">
-                <i class="uil-folder-plus"></i>
-                <span> File Manager </span>
-            </a>
-        </li>
-
-        <li class="side-nav-title side-nav-item">Custom</li>
-
-        <li class="side-nav-item">
-            <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages"
-                class="side-nav-link">
-                <i class="uil-copy-alt"></i>
-                <span> Pages </span>
-                <span class="menu-arrow"></span>
-            </a>
+      
             <div class="collapse" id="sidebarPages">
                 <ul class="side-nav-second-level">
                     <li>
@@ -257,7 +223,7 @@
                     <li class="side-nav-item">
                         <a data-bs-toggle="collapse" href="#sidebarPagesAuth" aria-expanded="false"
                             aria-controls="sidebarPagesAuth">
-                            <span> Authentication </span>
+                            <span> محمد </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <div class="collapse" id="sidebarPagesAuth">
