@@ -9,8 +9,13 @@ return [
 'creaat_invoice'=>'انشاء فاتورة',
 'Quotation_Management'=>'ادارة عروض الأسعار',
 'Create_quote'=>'   أنشاء عرض سعر',
+'Credit_notes'=>'أشعارات دائنة',
+'Periodic_invoices'=>'الفواتير الدورية',
+'Customer_payments'=>'مدفوعات للعملاء',
+'Sales_Settings'=>'اعدادات المبيعات',
 'products'=>'المنتجات',
 'sales_commissions'=>'المبيعات والعمولات',
+'Returned_invoices'=>'الفواتير المرتجعة',
 
 'employees'=>'الموظفين',
 "customers"=>"العملاء",

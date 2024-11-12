@@ -48,6 +48,31 @@
 
 
         </li>
+        <li>
+            <a href="">{{ trans('main_trans.Credit_notes') }}</a>
+
+
+        </li>
+        <li>
+            <a href="">{{ trans('main_trans.Returned_invoices') }}</a>
+
+
+        </li>
+        <li>
+            <a href="">{{ trans('main_trans.Periodic_invoices') }}</a>
+
+
+        </li>
+        <li>
+            <a href="">{{ trans('main_trans.Customer_payments') }}</a>
+
+
+        </li>
+        <li>
+            <a href="">{{ trans('main_trans.Sales_Settings') }}</a>
+
+
+        </li>
         
 
 
