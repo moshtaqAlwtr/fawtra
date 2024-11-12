@@ -168,3 +168,86 @@ h2 {
     gap: 10px;
 }
 
+.navbar {
+    background: linear-gradient(180deg, #ffffff, #f0f0f0) !important; /* تدرج لوني من الأبيض إلى الرمادي الفاتح */
+    padding: 1rem;
+    border-bottom: 2px solid #e0e0e0; /* إضافة حدود سفلية */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-box .form-control {
+    background-color: #f9f9f9; /* لون خلفية حقل البحث */
+    color: #333333;
+    border: none;
+    padding-right: 35px;
+}
+
+.navbar-nav .nav-link {
+    color: #333333 !important; /* لون النص */
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff !important; /* لون عند التمرير */
+}
+
+.search-box .form-control {
+    background-color: #f1f1f1; /* لون خلفية حقل البحث */
+    color: #333333;
+    border: none;
+    padding-right: 35px;
+}
+
+.search-box .btn-search {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #333333;
+}
+
+.navbar-nav .nav-link {
+    color: #333333 !important; /* لون النص */
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff !important; /* لون عند التمرير */
+}
+
+.navbar-nav .dropdown-menu {
+    background-color: #f9f9f9; /* خلفية القوائم المنسدلة */
+    border: 1px solid #e0e0e0; /* حدود خفيفة للقائمة */
+}
+
+.dropdown-menu .dropdown-item {
+    color: #333333;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #007bff; /* لون عند التمرير */
+    color: #ffffff;
+}
+
+.badge-danger {
+    background-color: #ff4d4d;
+    font-size: 10px;
+}
+
+/* تدرجات للأيقونات */
+.navbar-nav .nav-link i {
+    background: linear-gradient(45deg, #007bff, #00d4ff);
+
+    -webkit-text-fill-color: transparent;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover i {
+    background: linear-gradient(45deg, #00d4ff, #007bff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
