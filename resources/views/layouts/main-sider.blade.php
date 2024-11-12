@@ -24,15 +24,51 @@
             </div>
         </li>
 
-            <ul class="side-nav-second-level">
-        <li class="side-nav-title side-nav-item">{{ trans('main_trans.sales') }}</li>
+        <li class="side-nav-item">
+            <a data-bs-toggle="collapse" href="#sidebarEcommerce" aria-expanded="false" aria-controls="sidebarEcommerce"
+                class="side-nav-link">
+                <i class="uil-store"></i>
+                <span> {{ trans('main_trans.sales') }} </span>
+                <span class="menu-arrow"></span>
+            </a>
+            <div class="collapse" id="sidebarEcommerce">
+                <ul class="side-nav-second-level">
+                    <li>
+                         <a href="{{ route('invoice-management') }}">{{ trans('main_trans.invoice_management') }}</a>
+
+                    </li>
+                    <li>
+                        <a href="">{{ trans('main_trans.creaat_invoice') }}</a>
+                    </li>
+                    <li>
+                        <a href="">{{ trans('main_trans.Create_quote') }}</a>
+                    </li>
+                    <li>
+                        <a href="apps-ecommerce-orders-details.html">Order Details</a>
+                    </li>
+                    <li>
+                        <a href="apps-ecommerce-customers.html">Customers</a>
+                    </li>
+                    <li>
+                        <a href="apps-ecommerce-shopping-cart.html">Shopping Cart</a>
+                    </li>
+                    <li>
+                        <a href="apps-ecommerce-checkout.html">Checkout</a>
+                    </li>
+                    <li>
+                        <a href="apps-ecommerce-sellers.html">Sellers</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="side-nav-title side-nav-item"></li>
 
         <li>
             <a href="{{ route('invoice-management') }}">{{ trans('main_trans.invoice_management') }}</a>
 
 
         </li>
-        
+
         <li>
             <a href="">{{ trans('main_trans.creaat_invoice') }}</a>
 
@@ -48,7 +84,7 @@
 
 
         </li>
-        
+
 
 
         <li class="side-nav-item">
@@ -57,7 +93,7 @@
                 <span> Chat </span>
             </a>
         </li>
-
+            </ul>
         <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#sidebarCrm" aria-expanded="false" aria-controls="sidebarCrm"
                 class="side-nav-link">
