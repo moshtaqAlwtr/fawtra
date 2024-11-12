@@ -41,87 +41,50 @@
                         <a href="">{{ trans('main_trans.creaat_invoice') }}</a>
                     </li>
                     <li>
+                       <a href="">{{ trans('main_trans.Quotation_Management') }}</a>
+                    </li>
+                    <li>
                         <a href="">{{ trans('main_trans.Create_quote') }}</a>
                     </li>
                     <li>
-                        <a href="apps-ecommerce-orders-details.html">Order Details</a>
+                        <a href="">{{ trans('main_trans.Credit_notes') }}</a>
+
                     </li>
                     <li>
-                        <a href="apps-ecommerce-customers.html">Customers</a>
+
+            <a href="">{{ trans('main_trans.Returned_invoices') }}</a>
+
                     </li>
                     <li>
-                        <a href="apps-ecommerce-shopping-cart.html">Shopping Cart</a>
+                        <a href="">{{ trans('main_trans.Periodic_invoices') }}</a>
                     </li>
                     <li>
-                        <a href="apps-ecommerce-checkout.html">Checkout</a>
+                        <a href="">{{ trans('main_trans.Returned_invoices') }}</a>
+
+
                     </li>
                     <li>
-                        <a href="apps-ecommerce-sellers.html">Sellers</a>
+                        <a href="">{{ trans('main_trans.Periodic_invoices') }}</a>
+
+
                     </li>
+                    <li>
+                        <a href="">{{ trans('main_trans.Customer_payments') }}</a>
+
+
+                    </li>
+                    <li>
+                        <a href="">{{ trans('main_trans.Sales_Settings') }}</a>
+
+
+                    </li>
+
                 </ul>
             </div>
         </li>
-        <li class="side-nav-title side-nav-item"></li>
-
-        <li>
-            <a href="{{ route('invoice-management') }}">{{ trans('main_trans.invoice_management') }}</a>
-
-
-        </li>
-
-        <li>
-            <a href="">{{ trans('main_trans.creaat_invoice') }}</a>
-
-
-        </li>
-        <li>
-            <a href="">{{ trans('main_trans.Quotation_Management') }}</a>
-
-
-        </li>
-        <li>
-            <a href="">{{ trans('main_trans.Create_quote') }}</a>
-
-
-        </li>
-
-        <li>
-            <a href="">{{ trans('main_trans.Credit_notes') }}</a>
-
-
-        </li>
-        <li>
-            <a href="">{{ trans('main_trans.Returned_invoices') }}</a>
-
-
-        </li>
-        <li>
-            <a href="">{{ trans('main_trans.Periodic_invoices') }}</a>
-
-
-        </li>
-        <li>
-            <a href="">{{ trans('main_trans.Customer_payments') }}</a>
-
-
-        </li>
-        <li>
-            <a href="">{{ trans('main_trans.Sales_Settings') }}</a>
-
-
-        </li>
-        
 
 
 
-
-        <li class="side-nav-item">
-            <a href="apps-chat.html" class="side-nav-link">
-                <i class="uil-comments-alt"></i>
-                <span> Chat </span>
-            </a>
-        </li>
-            </ul>
         <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#sidebarCrm" aria-expanded="false" aria-controls="sidebarCrm"
                 class="side-nav-link">
