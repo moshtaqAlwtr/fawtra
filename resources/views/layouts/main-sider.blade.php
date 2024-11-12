@@ -241,17 +241,10 @@
                     <li>
                         <a href="">{{ trans('main_trans.Settings') }}</a>
                     </li>
-                    <li>
-                        <a href="layouts-detached.html">Detached</a>
-                    </li>
-                    <li>
-                        <a href="layouts-full.html">Full</a>
-                    </li>
+                   
                 </ul>
             </div>
-        </li>
-
-        <li class="side-nav-title side-nav-item mt-1">Components</li>
+        
 
         <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#sidebarBaseUI" aria-expanded="false" aria-controls="sidebarBaseUI"
@@ -289,7 +282,7 @@
             <a data-bs-toggle="collapse" href="#sidebarExtendedUI" aria-expanded="false"
                 aria-controls="sidebarExtendedUI" class="side-nav-link">
                 <i class="uil-package"></i>
-                <span> {{ trans('main_trans.Points_and_credits')}}  </span
+                <span> {{ trans('main_trans.Points_and_credits')}}  </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarExtendedUI">
@@ -316,12 +309,7 @@
             </div>
         </li>
 
-        <li class="side-nav-item">
-            <a href="widgets.html" class="side-nav-link">
-                <i class="uil-layer-group"></i>
-                <span> Widgets </span>
-            </a>
-        </li>
+      
 
         <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#sidebarIcons" aria-expanded="false" aria-controls="sidebarIcons"
