@@ -50,6 +50,17 @@ return [
 'Client_settings'=>'اعدادات العميل',
 'Points_and_credits'=>'النقاط والأرصدة',
 'Managing_balance_transfers'=>'ادارة شحن الأرصدة',
+'Managing_consumption_balances'=>'ادارة استهلاك الأرصدة',
+'Package_management'=>'أدارة الباقات',
+'Settings'=>'الأعدادات',
+'Loyalty_points'=>'نقاط الولاء',
+'Customer_loyalty_rules'=>'قواعد ولاء للعملاء',
+'settings'=>'الأعدادات',
+'Memberships'=>'العضويات',
+'Membership_management'=>'أدارة العضويات',
+'Subscription_management'=>'أدارة الاشتراكات',
+'settings'=>'الأعدادات',
+
 
 
 'employees'=>'الموظفين',

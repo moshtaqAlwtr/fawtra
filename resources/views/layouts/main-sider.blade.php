@@ -291,19 +291,13 @@
                         <a href="">{{ trans('main_trans.Managing_balance_transfers') }}</a>
                     </li>
                     <li>
-                        <a href="extended-range-slider.html">Range Slider</a>
+                        <a href="">{{ trans('main_trans.Managing_consumption_balances') }} </a>
                     </li>
                     <li>
-                        <a href="extended-ratings.html">Ratings</a>
+                        <a href="">{{ trans('main_trans.Package_management') }}</a>
                     </li>
                     <li>
-                        <a href="extended-scrollbar.html">Scrollbar</a>
-                    </li>
-                    <li>
-                        <a href="extended-scrollspy.html">Scrollspy</a>
-                    </li>
-                    <li>
-                        <a href="extended-treeview.html">Treeview</a>
+                        <a href="">{{ trans('main_trans.Settings') }}</a>
                     </li>
                 </ul>
             </div>
@@ -315,19 +309,16 @@
             <a data-bs-toggle="collapse" href="#sidebarIcons" aria-expanded="false" aria-controls="sidebarIcons"
                 class="side-nav-link">
                 <i class="uil-streering"></i>
-                <span> Icons </span>
+                <span> {{ trans('main_trans.Loyalty_points') }} </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarIcons">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="icons-dripicons.html">Dripicons</a>
+                        <a href="">{{ trans('main_trans.Customer_loyalty_rules') }}</a>
                     </li>
                     <li>
-                        <a href="icons-mdi.html">Material Design</a>
-                    </li>
-                    <li>
-                        <a href="icons-unicons.html">Unicons</a>
+                        <a href="">{{ trans('main_trans.Settings') }}</a>
                     </li>
                 </ul>
             </div>
@@ -337,29 +328,22 @@
             <a data-bs-toggle="collapse" href="#sidebarForms" aria-expanded="false" aria-controls="sidebarForms"
                 class="side-nav-link">
                 <i class="uil-document-layout-center"></i>
-                <span> Forms </span>
+                <span> {{ trans('main_trans.Memberships') }} </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarForms">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="form-elements.html">Basic Elements</a>
+                        <a href="">{{ trans('main_trans.Membership_management') }}</a>
                     </li>
                     <li>
-                        <a href="form-advanced.html">Form Advanced</a>
+                        <a href="">{{ trans('main_trans.Subscription_management') }}</a>
                     </li>
                     <li>
-                        <a href="form-validation.html">Validation</a>
+                        <a href="">{{ trans('main_trans.Settings') }}</a>
                     </li>
                     <li>
-                        <a href="form-wizard.html">Wizard</a>
-                    </li>
-                    <li>
-                        <a href="form-fileuploads.html">File Uploads</a>
-                    </li>
-                    <li>
-                        <a href="form-editors.html">Editors</a>
-                    </li>
+                  
                 </ul>
             </div>
         </li>

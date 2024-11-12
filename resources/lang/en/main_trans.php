@@ -48,5 +48,16 @@ return [
 'Client_settings'=>'Client settings',
 'Points_and_credits'=>'Points and credits',
 'Managing_balance_transfers'=>'Managing balance transfers',
+'Managing_consumption_balances'=>'Managing consumption balances',
+'Package_management'=>'Package management',
+'Settings'=>'Settings',
+'Loyalty_points'=>'Loyalty points',
+'Customer_loyalty_rules'=>'Customer loyalty rules',
+'settings'=>'Settings',
+'Memberships'=>'Memberships',
+'Membership_management'=>'Membership management',
+'Subscription_management'=>'Subscription management',
+'Settings'=>'Settings',
+
 
 ];
