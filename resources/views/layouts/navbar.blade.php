@@ -1,125 +1,135 @@
-        <!--=================================
- header start-->
- <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
- <nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-    <!-- logo -->
-    <div class="text-left navbar-brand-wrapper">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('assets/image/logo-dark.png') }}" alt=""></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('assets/image/logo-icon-dark.png') }}" alt=""></a>
+<nav class="admin-header navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <!-- شعار الشركة -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="{{ asset('assets/image/logo-dark.png') }}" alt="" class="brand-logo">
+            <img src="{{ asset('assets/image/logo-icon-dark.png') }}" alt="" class="brand-logo-mini ml-2">
+        </a>
 
-    </div>
-    <!-- Top bar left -->
-    <ul class="nav navbar-nav mr-auto">
-        <li class="nav-item">
-            <a id="button-toggle" class="button-toggle-nav inline-block ml-20 pull-left"
-                href="javascript:void(0);"><i class="zmdi zmdi-menu ti-align-right"></i></a>
-        </li>
-        <li class="nav-item">
-            <div class="search">
-                <a class="search-btn not_click" href="javascript:void(0);"></a>
-                <div class="search-box not-click">
-                    <input type="text" class="not-click form-control" placeholder="Search" value=""
-                        name="search">
-                    <button class="search-button" type="submit"> <i class="fa fa-search not-click"></i></button>
-                </div>
-            </div>
-        </li>
-    </ul>
-    <!-- top bar right -->
-    <ul class="nav navbar-nav ml-auto">
+        <!-- شريط البحث وزر توسيع الشريط -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <ul>
-            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                <li>
-                    <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                        {{ $properties['native'] }}
-                    </a>
-                </li>
-            @endforeach
-        </ul>
-        <li class="nav-item fullscreen">
-            <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
-        </li>
-        <li class="nav-item dropdown ">
-            <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                aria-expanded="false">
-                <i class="ti-bell"></i>
-                <span class="badge badge-danger notification-status"> </span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-big dropdown-notifications">
-                <div class="dropdown-header notifications">
-                    <strong>Notifications</strong>
-                    <span class="badge badge-pill badge-warning">05</span>
-                </div>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">New registered user <small
-                        class="float-right text-muted time">Just now</small> </a>
-                <a href="#" class="dropdown-item">New invoice received <small
-                        class="float-right text-muted time">22 mins</small> </a>
-                <a href="#" class="dropdown-item">Server error report<small
-                        class="float-right text-muted time">7 hrs</small> </a>
-                <a href="#" class="dropdown-item">Database report<small class="float-right text-muted time">1
-                        days</small> </a>
-                <a href="#" class="dropdown-item">Order confirmation<small class="float-right text-muted time">2
-                        days</small> </a>
-            </div>
-        </li>
-        <li class="nav-item dropdown ">
-            <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                aria-expanded="true"> <i class=" ti-view-grid"></i> </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-big">
-                <div class="dropdown-header">
-                    <strong>Quick Links</strong>
-                </div>
-                <div class="dropdown-divider"></div>
-                <div class="nav-grid">
-                    <a href="#" class="nav-grid-item"><i class="ti-files text-primary"></i>
-                        <h5>New Task</h5>
-                    </a>
-                    <a href="#" class="nav-grid-item"><i class="ti-check-box text-success"></i>
-                        <h5>Assign Task</h5>
-                    </a>
-                </div>
-                <div class="nav-grid">
-                    <a href="#" class="nav-grid-item"><i class="ti-pencil-alt text-warning"></i>
-                        <h5>Add Orders</h5>
-                    </a>
-                    <a href="#" class="nav-grid-item"><i class="ti-truck text-danger "></i>
-                        <h5>New Orders</h5>
-                    </a>
-                </div>
-            </div>
-        </li>
-        <li class="nav-item dropdown mr-30">
-            <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
-                aria-haspopup="true" aria-expanded="false">
-                <img src="{{ asset('assets/image/profile-avatar.jpg') }}" alt="avatar">
-
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-header">
-                    <div class="media">
-                        <div class="media-body">
-                            <h5 class="mt-0 mb-0">Michael Bean</h5>
-                            <span>michael-bean@mail.com</span>
-                        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <!-- البحث -->
+                <li class="nav-item">
+                    <div class="search-box">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <button class="btn btn-search" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
                     </div>
-                </div>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
-                <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a>
-                <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>Profile</a>
-                <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span
-                        class="badge badge-info">6</span> </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                <a class="dropdown-item" href="#"><i class="text-danger ti-unlock"></i>Logout</a>
-            </div>
-        </li>
-    </ul>
+                </li>
+
+                <!-- اختيار اللغة -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-globe"></i> Language
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        @endforeach
+                    </div>
+                </li>
+
+                <!-- إشعارات -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge badge-danger">5</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-notifications">
+                        <a class="dropdown-item" href="#">New registered user</a>
+                        <a class="dropdown-item" href="#">New invoice received</a>
+                        <a class="dropdown-item" href="#">Server error report</a>
+                        <a class="dropdown-item" href="#">Database report</a>
+                        <a class="dropdown-item" href="#">Order confirmation</a>
+                    </div>
+                </li>
+
+                <!-- الملف الشخصي -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                        <img src="{{ asset('assets/image/profile-avatar.jpg') }}" alt="avatar" class="rounded-circle" width="30">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Messages</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
-<!--=================================
-header End-->
+</nav>
+<style>
+.navbar {
+    background-color: #333333 !important; /* الخلفية السوداء */
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand img {
+    max-height: 40px; /* حجم شعار العلامة */
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box .form-control {
+    background-color: #333;
+    color: #ffffff;
+    border: none;
+    padding-right: 35px;
+}
+
+.search-box .btn-search {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #ffffff;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff !important; /* لون النص */
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff !important; /* لون عند التمرير */
+}
+
+.navbar-nav .dropdown-menu {
+    background-color: #333333; /* خلفية القوائم المنسدلة */
+    border: none;
+}
+
+.dropdown-menu .dropdown-item {
+    color: #ffffff;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #007bff; /* لون عند التمرير */
+    color: #ffffff;
+}
+
+.badge-danger {
+    background-color: #ff4d4d;
+    font-size: 10px;
+}
+</style>
