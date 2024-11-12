@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حساب الأستاذ مع تقويم مدمج</title>
+    <!-- روابط Bootstrap و Flatpickr -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .header {
+            background: linear-gradient(to right, #007bff, #00c6ff);
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary,
+        .btn-success {
+            border: none;
+            color: #fff;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 6px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #28a745, #218838);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(to right, #218838, #28a745);
+        }
+
+        .btn-success {
+            background: linear-gradient(to right, #007bff, #0056b3);
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(to right, #0056b3, #007bff);
+        }
+
+        .table th,
+        .table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .card {
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .gradient-bar {
+            height: 4px;
+            background: linear-gradient(to right, #007bff, #00c6ff);
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        select,
+        input {
+            border-radius: 6px;
+        }
+
+        .card-header {
+            background: linear-gradient(to right, #007bff, #00c6ff);
+            color: #fff;
+            border-radius: 8px 8px 0 0;
+            padding: 15px;
+            font-size: 18px;
+        }
+
+        .flatpickr-calendar {
+            direction: rtl;
+        }
+
+        .flatpickr-current-month {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .flatpickr-monthDropdown-months,
+        .flatpickr-day {
+            text-align: center;
+        }
+
+        .flatpickr-calendar .flatpickr-footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px;
+            border-top: 1px solid #ddd;
+        }
+
+        .btn-today,
+        .btn-clear {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .btn-today {
+            background-color: #007bff;
+        }
+
+        .btn-clear {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- الشريط العلوي -->
+    <div class="container mt-4">
+        <div class="header">
+            <h1 class="h4">حساب الأستاذ</h1>
+        </div>
+        <div class="gradient-bar"></div>
+
+        <!-- الفلاتر والأزرار -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <form class="row g-3">
+                    <div class="col-md-3">
+                        <label for="dateFrom" class="form-label">التاريخ من:</label>
+                        <!-- إدراج التقويم "التاريخ من" -->
+                        <input type="text" id="dateFrom" class="form-control" placeholder="اختر تاريخ" readonly>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="dateTo" class="form-label">التاريخ إلى:</label>
+                        <!-- إدراج التقويم "التاريخ إلى" -->
+                        <input type="text" id="dateTo" class="form-control" placeholder="اختر تاريخ" readonly>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="accountType" class="form-label">نوع الحساب:</label>
+                        <select id="accountType" class="form-select">
+                            <option selected>حساب رئيسي</option>
+                            <option>حساب فرعي</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="mainAccount" class="form-label">حساب رئيسي:</label>
+                        <select id="mainAccount" class="form-select">
+                            <option selected>الكل</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="addedBy" class="form-label">أضيفت بواسطة:</label>
+                        <select id="addedBy" class="form-select">
+                            <option selected>الكل</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="branch" class="form-label">فرع القيود:</label>
+                        <select id="branch" class="form-select">
+                            <option selected>إختر فرع</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="showAllAccounts" class="form-label">عرض جميع الحسابات:</label>
+                        <select id="showAllAccounts" class="form-select">
+                            <option selected>عرض جميع الحسابات</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-end justify-content-between">
+                        <button type="button" class="btn btn-primary">عرض التقرير</button>
+                        <!-- زر الطباعة وقائمة التصدير -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success">طباعة</button>
+                            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                خيارات التصدير
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf text-danger me-2"></i>تصدير كملف PDF</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-file-excel text-success me-2"></i>تصدير كملف Excel</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-file-csv text-primary me-2"></i>تصدير كملف CSV</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- جدول البيانات -->
+        <div class="card">
+            <div class="card-header">
+                حساب الأستاذ
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>رقم</th>
+                            <th>رقم القيد</th>
+                            <th>رقم معّرف للتحويل</th>
+                            <th>التاريخ</th>
+                            <th>موظف</th>
+                            <th>الوصف</th>
+                            <th colspan="2">العملية</th>
+                            <th colspan="2">الرصيد</th>
+                        </tr>
+                        <tr>
+                            <th colspan="6"></th>
+                            <th>مدين (SAR)</th>
+                            <th>دائن (SAR)</th>
+                            <th>مدين (SAR)</th>
+                            <th>دائن (SAR)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>47349</td>
+                            <td>54148</td>
+                            <td>09/10/2024</td>
+                            <td>محمد المشتري</td>
+                            <td>فاتورة #08610</td>
+                            <td>0.00</td>
+                            <td>216.00</td>
+                            <td>0.00</td>
+                            <td>216.00</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>47350</td>
+                            <td>54149</td>
+                            <td>09/11/2024</td>
+                            <td>أحمد البائع</td>
+                            <td>دفعة #019913</td>
+                            <td>0.00</td>
+                            <td>300.00</td>
+                            <td>0.00</td>
+                            <td>300.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- مكتبات JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // تهيئة Flatpickr لحقلين "التاريخ من" و "التاريخ إلى"
+        const dateFrom = flatpickr("#dateFrom", {
+            locale: "ar",
+            dateFormat: "Y-m-d",
+            static: true,
+            onReady: addCalendarButtons
+        });
+
+        const dateTo = flatpickr("#dateTo", {
+            locale: "ar",
+            dateFormat: "Y-m-d",
+            static: true,
+            onReady: addCalendarButtons
+        });
+
+        function addCalendarButtons(selectedDates, dateStr, instance) {
+            const calendarContainer = instance.calendarContainer;
+            if (!calendarContainer) return;
+
+            const footer = document.createElement('div');
+            footer.className = 'flatpickr-footer';
+
+            const todayButton = document.createElement('button');
+            todayButton.type = 'button';
+            todayButton.className = 'btn-today';
+            todayButton.textContent = 'اليوم';
+            todayButton.addEventListener('click', () => {
+                instance.setDate(new Date());
+            });
+
+            const clearButton = document.createElement('button');
+            clearButton.type = 'button';
+            clearButton.className = 'btn-clear';
+            clearButton.textContent = 'مسح';
+            clearButton.addEventListener('click', () => {
+                instance.clear();
+            });
+
+            footer.appendChild(todayButton);
+            footer.appendChild(clearButton);
+            calendarContainer.appendChild(footer);
+        }
+    </script>
+</body>
+
+</html>

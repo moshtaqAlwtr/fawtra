@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المنتجات</title>
+    <link rel="icon" href="k.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            direction: rtl;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header button {
+            background-color: #0056b3;
+            border: none;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .header button:hover {
+            background-color: #004494;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .controls button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .controls .import-button {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .controls .groups-button {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .controls .new-product-button {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .search-fields {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .search-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-field input, .search-field select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .results {
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            background-color: #fff;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="buttons">
+            <button onclick="window.location.href='#';">الذهاب للموقع</button>
+            <button onclick="window.location.href='#';">المساعدة</button>
+        </div>
+        <h1>المنتجات</h1>
+    </div>
+
+    <div class="controls">
+        <button class="import-button">استيراد</button>
+        <button class="groups-button">مجموعات البنود</button>
+        <button class="new-product-button" onclick="window.location.href='new-product.html';">منتج جديد</button>
+    </div>
+
+    <div class="search-fields">
+        <div class="search-field">
+            <label for="keyword-search">البحث بكلمة مفتاحية</label>
+            <input type="text" id="keyword-search" placeholder="أدخل الكلمة المفتاحية">
+        </div>
+        <div class="search-field">
+            <label for="category-search">التصنيف</label>
+            <input type="text" id="category-search" placeholder="بحث عن التصنيفات">
+        </div>
+        <div class="search-field">
+            <label for="brand-search">الماركة</label>
+            <input type="text" id="brand-search" placeholder="بحث باسم الماركة">
+        </div>
+        <div class="search-field">
+            <label for="status-search">الحالة</label>
+            <select id="status-search">
+                <option value="">اختر الحالة</option>
+                <option value="active">نشط</option>
+                <option value="inactive">غير نشط</option>
+                <option value="suspended">موقوف</option>
+            </select>
+        </div>
+        <div class="search-field">
+            <label for="tracking-type">نوع التتبع</label>
+            <select id="tracking-type">
+                <option value="serial">رقم التسلسل</option>
+                <option value="batch">رقم الشحنة</option>
+                <option value="expiry">تاريخ الانتهاء</option>
+                <option value="batch-expiry">رقم الشحنة وتاريخ الانتهاء</option>
+                <option value="quantity">البحث بالكمية فقط</option>
+            </select>
+        </div>
+        <div class="search-field">
+            <label for="barcode-search">باركود</label>
+            <input type="text" id="barcode-search" placeholder="أدخل الباركود">
+        </div>
+    </div>
+
+    <div class="results">
+        <h2>نتائج البحث</h2>
+        <!-- سيتم عرض نتائج البحث هنا -->
+    </div>
+
+</body>
+</html>

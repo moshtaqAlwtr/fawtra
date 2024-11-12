@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صفحة التقرير</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #d8e9f3, #b3c6d6);
+      font-family: 'Tajawal', sans-serif;
+    }
+    .container {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 40px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    .header-text {
+      font-size: 1.8rem;
+      color: #4a4a4a;
+      font-weight: bold;
+    }
+    .form-label {
+      font-weight: bold;
+      color: #4a4a4a;
+    }
+    .form-select, .form-control {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+    .btn-report {
+      background: linear-gradient(45deg, #28a745, #218838);
+      color: white;
+      border: none;
+      margin-top: 30px;
+    }
+    .btn-report:hover {
+      background: linear-gradient(45deg, #218838, #1e7e34);
+    }
+    .alert-box {
+      background-color: #fffbcc;
+      color: #333;
+      padding: 15px;
+      border: 1px solid #ffeb3b;
+      border-radius: 4px;
+      margin-top: 30px;
+      text-align: center;
+    }
+    .footer-btn {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      background-color: #007bff;
+      color: white;
+      font-size: 0.8rem;
+      border-radius: 50%;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container text-center">
+    <div class="header-text mb-4">الأرباح اليومية لمبيعات المنتج</div>
+    <form>
+      <div class="row">
+        <div class="col-md-3">
+          <label class="form-label">منشئ الفاتورة:</label>
+          <select class="form-select">
+            <option>الكل</option>
+            <!-- Add options here -->
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">العميل:</label>
+          <select class="form-select">
+            <option>الكل</option>
+            <!-- Add options here -->
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">تصنيف العميل:</label>
+          <select class="form-select">
+            <option>الكل</option>
+            <!-- Add options here -->
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label class="form-label">المنتجات:</label>
+          <select class="form-select">
+            <option>الكل</option>
+            <!-- Add options here -->
+          </select>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-3">
+          <label class="form-label">فرع:</label>
+          <select class="form-select">
+            <option>None selected</option>
+            <!-- Add options here -->
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">الفترة من / إلى:</label>
+          <div class="d-flex">
+            <input type="date" class="form-control me-2" value="2024-10-08">
+            <input type="date" class="form-control" value="2024-11-08">
+          </div>
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+          <button type="button" class="btn btn-report w-100">عرض التقرير</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="alert-box mt-4">
+      لا توجد نتيجة تطابق هذه الاختيارات<br>قم بتغيير فلتر البحث وحاول مجددا
+    </div>
+  </div>
+
+  <button class="footer-btn" onclick="showHelp()">لديك سؤال <i class="fas fa-question-circle"></i></button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function showHelp() {
+      alert("يمكنك التواصل معنا لطرح أسئلتك.");
+    }
+
+    $(document).ready(function(){
+      $(".btn-report").click(function(){
+        // Add code for report generation or validation here.
+        alert("تم الضغط على زر عرض التقرير!");
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+/*  messages */
+
+input.error-message,
+select.error-message,
+textarea.error-message {
+    margin-left: 0;
+}
+
+td.error-message,
+td.error-message input,
+td.error-message textarea {
+    background: #ffe8e9;
+    color: #FF0000;
+    font-size: 11px;
+}
+
+.Notemessage,
+.Errormessage,
+.Sucmessage {
+    border-width: 1px;
+    font-size: 14px;
+    margin: 15px 0;
+    padding: 15px 15px 15px 50px;
+}
+
+.Errormessage .btn {
+    border: 3px solid #fff !important;
+}
+
+.Sucmessage p {
+    color: #fff;
+}
+
+.Notemessage a:not(.btn),
+.Errormessage a:not(.btn) {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.Notemessage {
+    background: url("images/info.png") no-repeat scroll 15px 10px #f0ad4e;
+    color: #fff;
+}
+
+.Errormessage {
+    background: url("images/danger.png") no-repeat scroll 15px 10px #f26262;
+    color: #fff;
+}
+
+.Errormessage h4 {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700
+}
+
+.Errormessage p {
+    font-size: 15px;
+    color: #fff;
+}
+
+.Errormessage#CustomErrorMessage {
+    display: flex;
+    align-items: center;
+}
+
+.Errormessage#CustomErrorMessage ul {
+    list-style: none;
+}
+
+.Sucmessage {
+    background: url("images/yes.png") no-repeat scroll 15px 10px #28a745;
+    color: #fff;
+}
+
+.hint {
+    color: #777;
+    padding: 3px 0 3px 0;
+    font-size: 11px;
+}
+
+.no-results {
+    background: #FFF8B4;
+    color: #000;
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #FFCC4F;
+    font-weight: 700;
+    margin: 15px auto;
+    width: 80%;
+}
+
+.no-results h4 {
+    font-size: 14px;
+    font-weight: 700
+}
+
+.no-results p {
+    padding-bottom: 0
+}
+
+.no-results a {
+    color: #ff0000;
+    text-decoration: underline
+}
+
+/*confirm actions*/
+
+.confirm-action {
+    text-align: center;
+}
+
+.confirm-action button {
+    margin-left: 10px;
+}
+
+.config-msg {
+    background: #fff;
+    border-top: 7px solid #dbe7f3;
+    padding: 15px 20px;
+    margin: 20px 0
+}
+
+.config-msg h2 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.config-msg .delete-items {
+    list-style: none;
+    margin-top: 7px;
+}
+
+.config-msg .delete-items span.one-item {
+    display: inline;
+    float: left;
+    background: #fff;
+    border: 1px solid #dbe7f3;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 5px 7px;
+    margin: 0 5px 5px 0
+}
+
+.config-msg .delete-items span.seprated-item {
+    display: inline;
+    float: left;
+    font-size: 14px;
+    padding: 5px 7px;
+}
+
+/*snippet messages*/
+
+.snippet-content {
+    background: url("images/note-q.png") no-repeat scroll 15px center #fff;
+    border: 3px solid #34a0d5;
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 15px;
+    min-height: 90px;
+    padding: 15px 20px 10px 87px;
+    position: relative;
+}
+
+.snippet-content a.close {
+    background: none repeat scroll 0 0 #34a0d5;
+    color: #fff;
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    height: 25px;
+    line-height: 25px;
+    opacity: 1;
+    position: absolute;
+    right: -3px;
+    text-align: center;
+    top: -3px;
+    width: 25px;
+}
+
+.snippet-content h3 {
+    margin-bottom: 8px;
+}
+
+.snippet-content ol,
+.snippet-content ul {
+    list-style: decimal;
+    margin: 7px 0 0 0;
+    padding-left: 25px;
+}
+
+.snippet-content ul {
+    list-style-type: disc;
+}
+
+.snippet-content ol a,
+.snippet-content ul a,
+.snippet-content p a {
+    text-decoration: underline;
+    color: #189de2;
+}
+
+.snippet-content li {
+    position: relative;
+    margin-bottom: 4px;
+}
+
+.snippet-content li span.number {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: url(images/numbers.gif) no-repeat;
+    height: 22px;
+    width: 21px;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+.snippet-content li h4 {
+    font-size: 13px;
+    font-weight: 100;
+    padding-bottom: 0
+}
+
+.snippet-content li h4 a {
+    font-weight: 700;
+    text-decoration: underline
+}
+
+.snippet-content li p {
+    color: #787878;
+    padding-top: 8px;
+}
+
+.dashboard-right .snippet-content {
+    padding: 25px 44px;
+    background-position: 15px 20px;
+}
+
+.listing-table .NotemessageFixed {
+    margin: 20px 0
+}

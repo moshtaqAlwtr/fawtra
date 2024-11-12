@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة قالب مدفوعات الموردين</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f7;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+        .top-bar {
+            background-color: #2980b9;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .save-btn, .cancel-btn {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .save-btn {
+            background-color: #27ae60;
+            color: #fff;
+        }
+        .cancel-btn {
+            background-color: #e74c3c;
+            color: #fff;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div>
+            <a href="#">محمد المشتبي - الفرع الرئيسي</a>
+            <a href="#">🔔 18</a>
+            <a href="#">المساعدة</a>
+            <a href="#">الذهاب إلى الموقع</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>إضافة قالب مدفوعات الموردين</h2>
+        <div class="form-group">
+            <label for="template-name">اسم القالب:</label>
+            <input type="text" id="template-name" name="template-name">
+        </div>
+        <div class="form-group">
+            <label for="template-content">محتوى القالب:</label>
+            <textarea id="template-content" name="template-content" rows="10"></textarea>
+        </div>
+        <button class="save-btn">حفظ</button>
+        <button class="cancel-btn" onclick="location.href='supplier_payment_templates.html'">إلغاء</button>
+    </div>
+</body>
+</html>

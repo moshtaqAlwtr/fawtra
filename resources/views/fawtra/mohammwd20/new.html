@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برنامج محاسبي</title>
+    <link rel="icon" href="k.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            display: flex;
+            flex-direction: row-reverse; /* القائمة على اليمين */
+            height: 100vh; /* لإعطاء الجسم كامل ارتفاع الشاشة */
+            overflow: hidden; /* لإخفاء أي تمرير خارج النوافذ */
+        }
+
+        /* الشريط العلوي */
+        .header {
+            background-color: #344353;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* القائمة الجانبية */
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            height: calc(100vh - 50px); /* تأخذ طول الشاشة بالكامل */
+            position: fixed;
+            right: 0;
+            top: 50px; /* أسفل الشريط العلوي */
+            overflow-y: auto; /* تمكين التمرير العمودي */
+            color: #fff;
+            border-left: 1px solid #444;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            border-bottom: 1px solid #444;
+        }
+
+        .sidebar li > a {
+            display: block;
+            padding: 15px 20px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar li > a:hover {
+            background-color: #495057;
+        }
+
+        .sidebar ul ul {
+            display: none;
+            padding-left: 15px;
+            background-color: #3c3f44;
+            transition: max-height 0.3s ease;
+        }
+
+        /* القوائم الفرعية */
+        .sidebar ul li.active > ul {
+            display: block;
+            max-height: 500px;
+            overflow: hidden;
+        }
+
+        .sidebar ul li a i {
+            margin-right: 10px;
+        }
+
+        /* محتوى الصفحة */
+        .content {
+            margin-right: 260px;
+            padding: 20px;
+            margin-top: 70px;
+            overflow-y: auto; /* التمرير إذا تجاوز المحتوى الطول */
+            width: calc(100% - 260px);
+            height: calc(100vh - 70px); /* لتملأ الشاشة بالكامل مع إمكانية التمرير */
+        }
+
+        .content h1 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 10px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* تحسين العرض التفاعلي للقوائم على الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100px;
+            }
+
+            .content {
+                margin-right: 110px;
+                width: calc(100% - 110px);
+            }
+
+            .sidebar li > a {
+                font-size: 12px;
+                padding: 10px;
+            }
+        }
+
+        /* القوائم المتحركة */
+        .sidebar ul ul {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .sidebar ul li.active > ul {
+            max-height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="header">
+        البرنامج المحاسبي الأول
+    </div>
+
+    <!-- القائمة الجانبية مع تمرير عمودي -->
+    <div class="sidebar">
+        <ul>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-tachometer-alt"></i> لوحة التحكم</a>
+               <ul>   
+                <li><a href="main_overview.html"><i class="fas fa-receipt"></i> المبيعات </a></li>
+                <li><a href="hr-dashboard.htm"><i class="fas fa-plus-circle"></i> الموارد البشرية </a></li>
+            </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-shopping-cart"></i> المبيعات</a>
+                <ul>
+                    <li><a href="invoice-management.html"><i class="fas fa-receipt"></i> إدارة الفواتير</a></li>
+                    <li><a href="sales%20invoice.html"><i class="fas fa-plus-circle"></i> إنشاء فاتورة</a></li>
+                    <li><a href="quotation-management.html"><i class="fas fa-tags"></i> إدارة عروض الأسعار</a></li>
+                    <li><a href="quotation.html"><i class="fas fa-plus-circle"></i> إنشاء عرض سعر</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-cash-register"></i> نقاط البيع</a>
+                <ul>
+                    <li><a href="start-sale.html"><i class="fas fa-play"></i> بدء البيع</a></li>
+                    <li><a href="sessions.html"><i class="fas fa-layer-group"></i> الجلسات</a></li>
+                    <li><a href="pos-report.html"><i class="fas fa-chart-bar"></i> تقرير نقاط البيع</a></li>
+                    <li><a href="pos-settings.html"><i class="fas fa-cog"></i> إعدادات نقاط البيع</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-store"></i> المتجر الإلكتروني</a>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-tools"></i> إدارة المحتوى</a></li>
+                    <li><a href="store-settings.html"><i class="fas fa-wrench"></i> الإعدادات</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-calendar-alt"></i> الحجوزات</a>
+                <ul>
+                    <li><a href="reservation-management.html"><i class="fas fa-calendar-check"></i> إدارة الحجوزات</a></li>
+                    <li><a href="add-reservation.html"><i class="fas fa-plus-square"></i> أضف حجز</a></li>
+                    <li><a href="reservation-settings.html"><i class="fas fa-sliders-h"></i> إعدادات الحجز</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-coins"></i> إدارة الأقساط</a>
+                <ul>
+                    <li><a href="installment-agreements.html"><i class="fas fa-hand-holding-usd"></i> اتفاقيات التقسيط</a></li>
+                    <li><a href="installments.html"><i class="fas fa-coins"></i> الأقساط</a></li>
+                    <li><a href="#"><i class="fas fa-exclamation-circle"></i> المتأخرات</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-bullseye"></i> المبيعات المستهدفة والعمولات</a>
+                <ul>
+                    <li><a href="commission-rules.html"><i class="fas fa-percentage"></i> قواعد العمولة</a></li>
+                    <li><a href="sales-commissions.html"><i class="fas fa-percentage"></i> عمولات المبيعات</a></li>
+                    <li><a href="sales-periods.html"><i class="fas fa-clock"></i> فترات المبيعات</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-users"></i> العملاء</a>
+                <ul>
+                    <li><a href="customer-management.html"><i class="fas fa-users-cog"></i> إدارة العملاء</a></li>
+                    <li><a href="add_customer.html"><i class="fas fa-plus-circle"></i> أضف عميل جديد</a></li>
+                    <li><a href="schedule_appointment.html"><i class="fas fa-plus-circle"></i> المواعيد</a></li>
+                    <li><a href="customer-contacts.html"><i class="fas fa-address-book"></i> قائمة الاتصال</a></li>
+                    <li><a href="crm-management.html"><i class="fas fa-handshake"></i> إدارة علاقات العملاء</a></li>
+                    <li><a href="settings-clients.html"><i class="fas fa-plus-circle"></i> أعدادات العميل </a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-money-bill-wave"></i> النقاط والأرصدة</a>
+                <ul>
+                    <li><a href="manage-credit-recharge.html"><i class="fas fa-money-check"></i> إدارة شحن الأرصدة</a></li>
+                    <li><a href="manage-credit-consumption.html"><i class="fas fa-hand-holding-usd"></i> إدارة استهلاك الأرصدة</a></li>
+                    <li><a href="manage_packages.html"><i class="fas fa-box"></i> إدارة الباقات</a></li>
+                    <li><a href="credit_type_settings.htm"><i class="fas fa-cogs"></i> الإعدادات</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-user-shield"></i> وكلاء التأمين</a>
+                <ul>
+                    <li><a href="insurance_agents.html"><i class="fas fa-user-shield"></i> إدارة وكلاء التأمين</a></li>
+                    <li><a href="add_insurance_agent.html"><i class="fas fa-plus-circle"></i> أضف شركة تأمين</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-boxes"></i> المخزون</a>
+                <ul>
+                    <li><a href="products.htm"><i class="fas fa-plus-circle"></i> أدارة المنتجات</a></li>
+                    <li><a href="store_permissions.html"><i class="fas fa-clipboard-list"></i> إدارة الأذونات المخزنية</a></li>
+                    <li><a href="product_tracking.html"><i class="fas fa-barcode"></i> تتبع المنتجات</a></li>
+                    <li><a href="price_lists.html"><i class="fas fa-list"></i> قوائم الأسعار</a></li>
+                    <li><a href="warehouses.html"><i class="fas fa-plus-circle"></i> المستودعات</a></li>
+                    <li><a href="inventory-list.html"><i class="fas fa-plus-circle"></i> أدارة الجرد</a></li>
+                    <li><a href="inventory-settings.html"><i class="fas fa-plus-circle"></i> أعدادات االمخزون</a></li>
+                    <li><a href="stock-management-options.html"><i class="fas fa-plus-circle"></i> أعدادات المنتجات</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-shopping-cart"></i> المشتريات</a>
+                <ul>
+                    <li><a href="purchase-orders.html"><i class="fas fa-undo"></i> فواتير الشراء</a></li>
+                    <li><a href="purchase-return-list.html"><i class="fas fa-undo"></i> مرتجعات المشتريات</a></li>
+                    <li><a href="debit-notices.html"><i class="fas fa-sticky-note"></i> إشعارات مدينة</a></li>
+                    <li><a href="suppliers-list.html"><i class="fas fa-user-tie"></i> إدارة الموردين</a></li>
+                    <li><a href="supplier-payments-tracking.html"><i class="fas fa-money-check-alt"></i> مدفوعات الموردين</a></li>
+                    <li><a href="purchase_invoice_config.html"><i class="fas fa-file-alt"></i> إعدادات فواتير الشراء</a></li>
+                    <li><a href="suppliers_settings.html"><i class="fas fa-cogs"></i> إعدادات الموردين</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-file-invoice-dollar"></i> المالية</a>
+                <ul>
+                    <li><a href="expenses_actions_page.html"><i class="fas fa-file-invoice-dollar"></i> المصروفات</a></li>
+                    <li><a href="actions_page.html"><i class="fas fa-file-signature"></i> سندات القبض</a></li>
+                    <li><a href="treasuries_bank_accounts.html"><i class="fas fa-university"></i> خزائن وحسابات بنكية</a></li>
+                    <li><a href="financial_settings.html"><i class="fas fa-cogs"></i> إعدادات المالية</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-book"></i> الحسابات العامة</a>
+                <ul>
+                    <li><a href="journal_entries.html"><i class="fas fa-book"></i> القيود اليومية</a></li>
+                    <li><a href="add_entry.html"><i class="fas fa-plus-square"></i> أضف قيد</a></li>
+                    <li><a href="chart_of_accounts.html"><i class="fas fa-book-open"></i> دليل الحسابات</a></li>
+                    <li><a href="cost_centers.html"><i class="fas fa-project-diagram"></i> مراكز التكلفة</a></li>
+                    <li><a href="assets.html"><i class="fas fa-clipboard-list"></i> الأصول</a></li>
+                    <li><a href="general_accounts_settings.html"><i class="fas fa-cog"></i> إعدادات الحسابات العامة</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-money-check"></i> دورة الشيكات</a>
+                <ul>
+                    <li><a href="paid_checks.html"><i class="fas fa-money-check"></i> الشيكات المدفوعة</a></li>
+                    <li><a href="received_checks.html"><i class="fas fa-money-check-alt"></i> الشيكات المستلمة</a></li>
+                    <li><a href="check_cycle_settings.html"><i class="fas fa-cog"></i> إعدادات دورة الشيكات</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-box"></i> الطلبات</a>
+                <ul>
+                    <li><a href="orders_management.html"><i class="fas fa-box"></i> إدارة الطلبات</a></li>
+                    <li><a href="order_settings.html"><i class="fas fa-cogs"></i> الإعدادات</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-user-tie"></i> الموظفين</a>
+                <ul>
+                    <li><a href="employee_management.html"><i class="fas fa-user-tie"></i> إدارة الموظفين</a></li>
+                    <li><a href="manage_roles.html"><i class="fas fa-user-shield"></i> إدارة أدوار الموظفين</a></li>
+                    <li><a href="manage_shifts.html"><i class="fas fa-business-time"></i> إدارة الورديات</a></li>
+                    <li><a href="employee_settings.html"><i class="fas fa-cogs"></i> الإعدادات</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-sitemap"></i> الهيكل التنظيمي</a>
+                <ul>
+                    <li><a href="job_titles.html"><i class="fas fa-sitemap"></i> إدارة المسميات الوظيفية</a></li>
+                    <li><a href="departments_management.html"><i class="fas fa-users-cog"></i> إدارة الأقسام</a></li>
+                    <li><a href="job_levels.html"><i class="fas fa-level-up-alt"></i> إدارة المستويات الوظيفية</a></li>
+                    <li><a href="job_types_settings.html"><i class="fas fa-th-large"></i> إدارة أنواع الوظائف</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-calendar-check"></i> سجلات الحضور</a>
+                <ul>
+                    <li><a href="attendance_records.html"><i class="fas fa-calendar-alt"></i> سجلات الحضور</a></li>
+                    <li><a href="attendance_days.html"><i class="fas fa-calendar-alt"></i> أيام الحضور</a></li>
+                    <li><a href="attendance_registers.html"><i class="fas fa-clipboard-list"></i> دفاتر الحضور</a></li>
+                    <li><a href="leave_permissions.html"><i class="fas fa-plane-departure"></i> أذونات أجازة</a></li>
+                    <li><a href="leave_requests.html"><i class="fas fa-file-alt"></i> طلبات الأجازة</a></li>
+                    <li><a href="manage_shifts.html"><i class="fas fa-business-time"></i> إدارة الورديات</a></li>
+                    <li><a href="attendance_settings.html"><i class="fas fa-sliders-h"></i> الإعدادات</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-money-check"></i> المرتبات</a>
+                <ul>
+                    <li><a href="contracts.html"><i class="fas fa-file-contract"></i> العقود</a></li>
+                    <li><a href="payroll_track.html"><i class="fas fa-money-bill-wave"></i> مسير الرواتب</a></li>
+                    <li><a href="payroll_vouchers.html"><i class="fas fa-receipt"></i> قسائم الرواتب</a></li>
+                    <li><a href="loans.html"><i class="fas fa-hand-holding-usd"></i> السلف</a></li>
+                    <li><a href="salary_items.html"><i class="fas fa-file-alt"></i> بنود الرواتب</a></li>
+                    <li><a href="salary_templates.html"><i class="fas fa-file-invoice"></i> قوالب الرواتب</a></li>
+                    <li><a href="salary_settings.html"><i class="fas fa-cogs"></i> الإعدادات</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-chart-pie"></i> التقارير</a>
+                <ul>
+                    <li><a href="reports.html "><i class="fas fa-chart-line"></i> تقارير المبيعات</a></li>
+                    <li><a href="purchase-reports.html"><i class="fas fa-chart-bar"></i> تقارير المشتريات</a></li>
+                    <li><a href="financial-reports-summary.html"><i class="fas fa-file-invoice"></i> تقارير الحسابات العامة</a></li>
+                    <li><a href="check-reports.html"><i class="fas fa-money-check"></i> تقارير الشيكات</a></li>
+                    <li><a href="points-balances-reports.html"><i class="fas fa-wallet"></i> تقارير النقاط والأرصدة</a></li>
+                    <li><a href="employee-reports.html"><i class="fas fa-users"></i> تقارير الموظفين</a></li>
+                    <li><a href="supply-orders-reports.html"><i class="fas fa-clipboard-list"></i> تقرير أوامر التوريد</a></li>
+                    <li><a href="client-reports.html"><i class="fas fa-handshake"></i> تقارير العملاء</a></li>
+                    <li><a href="inventory-reports.html"><i class="fas fa-clipboard-list"></i> تقارير المخزون</a></li>
+                    <li><a href="account-activity-log.html"><i class="fas fa-clipboard-list"></i> سجل نشاطات الحساب</a></li>
+
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-code-branch"></i> الفروع</a>
+                <ul>
+                    <li><a href="branches.html"><i class="fas fa-code-branch"></i> إدارة الفروع</a></li>
+                    <li><a href="add-branch.html"><i class="fas fa-plus-circle"></i> أضف فرع</a></li>
+                    <li><a href="branch-settings.html"><i class="fas fa-cog"></i> إعدادات الفروع</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-print"></i> القوالب</a>
+                <ul>
+                    <li><a href="printing-templates.html"><i class="fas fa-print"></i> قوالب الطباعة</a></li>
+                    <li><a href="invoice_templates.html"><i class="fas fa-receipt"></i> قوالب الفواتير الجاهزة</a></li>
+                    <li><a href="email_template.html"><i class="fas fa-envelope"></i> قوالب البريد الإلكتروني</a></li>
+                    <li><a href="terms_conditions.html"><i class="fas fa-file-contract"></i> الشروط والأحكام</a></li>
+                    <li><a href="documents.html"><i class="fas fa-folder-open"></i> إدارة الملفات والمستندات</a></li>
+                    <li><a href="automated_sending_rules.html"><i class="fas fa-sync-alt"></i> قواعد الإرسال الآلي</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0);" onclick="toggleMenu(event)"><i class="fas fa-cogs"></i> الإعدادات</a>
+                <ul>
+                    <li><a href="account_information.html"><i class="fas fa-info-circle"></i> معلومات الحساب</a></li>
+                    <li><a href="account-settings.htm"><i class="fas fa-sliders-h"></i> إعدادات الحساب</a></li>
+                    <li><a href="smtp_settings.html"><i class="fas fa-at"></i> إعدادات SMTP</a></li>
+                    <li><a href="payment_methods.html"><i class="fas fa-wallet"></i> طرق الدفع</a></li>
+                    <li><a href="serial_number_settings.html"><i class="fas fa-list-ol"></i> إعدادات الترقيم التسلسلي</a></li>
+                    <li><a href="tax_settings.html"><i class="fas fa-percentage"></i> إعدادات الضرائب</a></li>
+                    <li><a href="manage_apps.html"><i class="fas fa-cogs"></i> إدارة التطبيقات</a></li>
+                    <li><a href="system_logo_color_settings.html"><i class="fas fa-paint-brush"></i> شعار وألوان النظام</a></li>
+                    <li><a href="api_management.html"><i class="fas fa-code"></i> API</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="content">
+        <h1>محتوى الصفحة الرئيسية</h1>
+        <!DOCTYPE html>
+        <html lang="ar">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>نظام إدارة</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    direction: rtl;
+                    background-color: #f4f6f9;
+                    margin: 0;
+                    padding: 0;
+                }
+        
+                /* الرأس */
+                header {
+                    background-color: white;
+                    padding: 10px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    height: 60px;
+                }
+        
+                header .right-icons, header .left-icons {
+                    display: flex;
+                    align-items: center;
+                }
+        
+                header .right-icons img, header .left-icons img {
+                    margin-left: 10px;
+                }
+        
+                /* الشريط الجانبي */
+                .sidebar {
+                    width: 60px;
+                    background-color: #2c3e50;
+                    height: 100vh;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    padding-top: 20px;
+                }
+        
+                .sidebar ul {
+                    list-style: none;
+                    padding: 0;
+                }
+        
+                .sidebar ul li {
+                    margin: 20px 0;
+                    text-align: center;
+                }
+        
+                .sidebar ul li img {
+                    width: 24px;
+                    height: 24px;
+                    color: white;
+                }
+        
+                /* الرئيسية */
+                .main-content {
+                    margin-right: 70px;
+                    padding: 20px;
+                }
+        
+                .dashboard-grid {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 20px;
+                }
+        
+                .card {
+                    padding: 20px;
+                    color: white;
+                    border-radius: 8px;
+                    text-align: center;
+                    height: 150px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 16px;
+                }
+        
+                /* الألوان المستخدمة */
+                .card-red { background-color: #e74c3c; }
+                .card-purple { background-color: #8e44ad; }
+                .card-blue { background-color: #3498db; }
+                .card-green { background-color: #2ecc71; }
+                .card-yellow { background-color: #f39c12; }
+                .card-gray { background-color: #7f8c8d; }
+                .card-light-blue { background-color: #16a085; }
+        
+                .table-card {
+                    background-color: white;
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    margin-top: 20px;
+                }
+        
+                .table-card table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 10px;
+                }
+        
+                .table-card table th, .table-card table td {
+                    padding: 10px;
+                    text-align: center;
+                    border-bottom: 1px solid #ddd;
+                }
+        
+                .table-card table th {
+                    background-color: #f4f6f9;
+                }
+        
+                .btn {
+                    background-color: #3498db;
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+        
+                .latest-updates, .chat {
+                    margin-top: 20px;
+                }
+            </style>
+        </head>
+        <body>
+        
+            <header>
+                <div class="right-icons">
+                    <img src="profile.png" alt="admin" width="30" height="30">
+                </div>
+                <div class="left-icons">
+                    <img src="settings.png" alt="settings" width="30" height="30">
+                </div>
+            </header>
+        
+            <!-- الشريط الجانبي -->
+            <div class="sidebar">
+                <ul>
+                    <li><img src="icon1.png" alt="icon"></li>
+                    <li><img src="icon2.png" alt="icon"></li>
+                    <li><img src="icon3.png" alt="icon"></li>
+                </ul>
+            </div>
+        
+            <!-- المحتوى الرئيسي -->
+            <div class="main-content">
+                <div class="dashboard-grid">
+                    <div class="card card-red">المخزون</div>
+                    <div class="card card-purple">الخزينة</div>
+                    <div class="card card-blue">الفواتير</div>
+                    <div class="card card-green">تعريفات أساسية</div>
+                    <div class="card card-yellow">المبيعات</div>
+                    <div class="card card-gray">المصروفات</div>
+                    <div class="card card-light-blue">الاشتراكات الشهرية</div>
+                </div>
+        
+                <div class="table-card">
+                    <h3>آخر فواتير البيع</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>رقم الفاتورة</th>
+                                <th>التاريخ</th>
+                                <th>العميل</th>
+                                <th>القيمة</th>
+                                <th>المستخدم</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>36</td>
+                                <td>8/9/2021</td>
+                                <td>نقدي</td>
+                                <td>100.00</td>
+                                <td>admin</td>
+                            </tr>
+                            <tr>
+                                <td>35</td>
+                                <td>8/8/2021</td>
+                                <td>نقدي</td>
+                                <td>120.00</td>
+                                <td>admin</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn">عرض كل فواتير البيع</button>
+                </div>
+            </div>
+        
+        </body>
+        </html>
+        
+
+    <!-- JavaScript لتفاعل القوائم -->
+    <script>
+        function toggleMenu(event) {
+            event.preventDefault();
+            const parentLi = event.target.closest('li');
+            parentLi.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>

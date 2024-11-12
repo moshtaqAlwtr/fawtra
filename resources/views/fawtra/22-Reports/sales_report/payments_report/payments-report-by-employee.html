@@ -1,0 +1,309 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير حسب العميل مفصل للفواتير</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Design/css/data.css">
+
+    <style>
+        body {
+            background-color: #f4f7fc;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            border: none;
+        }
+
+        .table thead {
+            background: linear-gradient(45deg, #42a5f5, #1e88e5);
+            color: #fff;
+        }
+
+        .table tbody tr {
+            transition: background-color 0.3s;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f0f0f5;
+        }
+
+        .btn-export {
+            background: linear-gradient(45deg, #ff5722, #e64a19);
+            color: #fff;
+        }
+
+        .btn-print {
+            background: linear-gradient(45deg, #4caf50, #388e3c);
+            color: #fff;
+        }
+
+        #charts-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        #charts .chart-wrapper {
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #charts canvas {
+            width: 100% !important;
+            height: 300px !important;
+        }
+        .chart-container {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    .chart-card {
+      background-color: #f0f8ff; /* لون خلفية خفيف للبطاقة */
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">المدفوعات حسب الموظف</h5>
+                <form class="row g-3">
+                    <div class="col-md-3">
+                        <label for="customerCategory" class="form-label">منشأ الفاتورة:</label>
+                        <select id="customerCategory" class="form-select">
+                            <option>الكل</option>
+                            <!-- خيارات إضافية هنا -->
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="customer" class="form-label">تم التحصيل بواسطة </label>
+                        <select id="customer" class="form-select">
+                            <option>الكل</option>
+                            <!-- خيارات إضافية هنا -->
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="branch" class="form-label"> وسيلة  الدفع</label>
+                        <select id="branch" class="form-select">
+                            <option>None selected</option>
+                            <!-- خيارات إضافية هنا -->
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="status" class="form-label">العميل:</label>
+                        <select id="status" class="form-select">
+                            <option>الكل</option>
+                            <!-- خيارات إضافية هنا -->
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="status" class="form-label">تصنيف العميل:</label>
+                        <select id="status" class="form-select">
+                            <option>الكل</option>
+                            <!-- خيارات إضافية هنا -->
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="fromDate" class="form-label">الفترة من:</label>
+                        <input type="date" id="deliveryEndDate" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="toDate" class="form-label">إلى:</label>
+                        <input type="date" id="deliveryEndDate" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="orderOrigin" class="form-label">فرع:</label>
+                        <select id="orderOrigin" class="form-select">
+                            <option>None selected</option>
+                            <!-- خيارات إضافية هنا -->
+                        </select>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button type="button" class="btn btn-primary w-100" onclick="showCharts()">عرض التقرير</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+       
+        <div class="d-flex justify-content-between mb-3">
+            <div>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="exportOptions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        خيارات التصدير <i class="fas fa-cloud-download-alt"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="exportOptions">
+                        <a class="dropdown-item" href="#" onclick="exportData('csv')">تصدير إلى CSV</a>
+                        <a class="dropdown-item" href="#" onclick="exportData('excel')">تصدير إلى Excel</a>
+                        <a class="dropdown-item" href="#" onclick="exportData('pdf')">تصدير إلى PDF</a>
+                        <a class="dropdown-item" href="#" onclick="exportData('pdfNoGraph')">Export to PDF no graph</a>
+                    </div>
+                </div>
+              
+            </div>
+
+            <div>
+                <button class="btn btn-print ms-2"><i class="fa-solid fa-print"></i> طباعة</button>
+            </div>
+
+            <div>
+                <button class="btn btn-outline-secondary"><i class="fa-solid fa-search"></i> التفاصيل</button>
+                <button class="btn btn-outline-secondary ms-2"><i class="fa-solid fa-user"></i> العميل</button>
+                <button class="btn btn-outline-secondary ms-2"><i class="fa-solid fa-clipboard"></i> الملخص</button>
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <h5 class="text-center">المدفوعات حسب العميل (SAR)</h5>
+            <div class="chart-container">
+              <canvas id="barChart" height="120"></canvas>
+            </div>
+          </div>
+
+        <div class="card mt-4">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">تقرير حسب العميل مفصل للفواتير من 08/10/2024 إلى 08/11/2024</h6>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>رقم</th>
+                            <th>التاريخ</th>
+                            <th>موظف</th>
+                            <th>مدفوعة (SAR)</th>
+                            <th>غير مدفوعة (SAR)</th>
+                            <th>مرجع (SAR)</th>
+                            <th>الإجمالي (SAR)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>08798</td>
+                            <td>05/11/2024</td>
+                            <td>محمد الدريسسي</td>
+                            <td>0.00</td>
+                            <td>270.00</td>
+                            <td>0.00</td>
+                            <td>270.00</td>
+                        </tr>
+                        <tr class="table-info">
+                            <td colspan="7">المجموع</td>
+                        </tr>
+                        <tr>
+                            <td>00773</td>
+                            <td>26/10/2024</td>
+                            <td>محمد المنصور مدير</td>
+                            <td>216.00</td>
+                            <td>0.00</td>
+                            <td>-216.00</td>
+                            <td>0.00</td>
+                        </tr>
+                        <tr class="table-info">
+                            <td colspan="7">المجموع</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="../js/date.js" ></script>
+    
+        <script>
+    const ctx = document.getElementById('barChart').getContext('2d');
+
+    // إنشاء تدرج لوني للعمود
+    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(0, 150, 255, 0.8)');
+    gradient.addColorStop(1, 'rgba(0, 255, 255, 0.4)');
+
+    // بيانات العينة (يمكنك تغييرها لتتناسب مع بياناتك)
+    const data = {
+      labels: ['عميل 1', 'عميل 2', 'عميل 3', 'عميل 4', 'عميل 5', 'عميل 6', 'عميل 7', 'عميل 8', 'عميل 9', 'عميل 10', 'عميل 11', 'عميل 12'],
+      datasets: [{
+        label: 'المجموع',
+        data: [200, 300, 100, 400, 500, -100, 250, 150, 600, 350, 250, 500],
+        backgroundColor: gradient,
+        borderColor: 'rgba(0, 123, 255, 1)',
+        borderWidth: 1
+      }]
+    };
+
+    const options = {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          suggestedMax: 900,
+          suggestedMin: -300,
+          grid: {
+            color: 'rgba(200, 200, 200, 0.2)'
+          }
+        },
+        x: {
+          ticks: {
+            autoSkip: false,
+            maxRotation: 90,
+            minRotation: 90
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          display: true,
+          labels: {
+            boxWidth: 20,
+            boxHeight: 15,
+            color: 'rgba(0, 123, 255, 1)'
+          }
+        }
+      }
+    };
+
+    const barChart = new Chart(ctx, {
+      type: 'bar',
+      data: data,
+      options: options
+    });
+  </script>
+</body>
+
+</html>

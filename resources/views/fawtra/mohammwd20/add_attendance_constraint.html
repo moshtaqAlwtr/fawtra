@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة قيد الحضور</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+        }
+        .top-bar button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container {
+            padding: 20px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .checkbox-group input {
+            width: auto;
+        }
+        .map {
+            width: 100%;
+            height: 200px;
+            background-color: #ccc;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .save-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .cancel-btn {
+            background-color: #dc3545;
+            color: white;
+            margin-right: 10px;
+        }
+        .button-group {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <button class="go-to-site">الذهاب إلى الموقع</button>
+        <button class="help">المساعدة</button>
+    </div>
+
+    <div class="container">
+        <form action="save_attendance_constraint.php" method="post">
+            <!-- معلومات قيد الحضور -->
+            <h2>معلومات قيد الحضور</h2>
+            <div class="form-group">
+                <label for="name">الاسم *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="status">الحالة *</label>
+                <select id="status" name="status" required>
+                    <option value="نشط">نشط</option>
+                    <option value="غير نشط">غير نشط</option>
+                </select>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="ip-verification" name="ip_verification">
+                <label for="ip-verification">مطابقة الـ IP</label>
+            </div>
+
+            <div class="form-group">
+                <label for="network-protocol">بروتوكولات التعريف الشبكي المسموح بها *</label>
+                <textarea id="network-protocol" name="network_protocol" required></textarea>
+            </div>
+
+            <!-- مطابقة موقع الحضور -->
+            <h2>مطابقة موقع الحضور</h2>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="location-verification" name="location_verification">
+                <label for="location-verification">مطابقة موقع الحضور</label>
+            </div>
+
+            <div class="form-group">
+                <label for="location-range">نطاق التوقيع *</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" id="location-range" name="location_range" value="1" required>
+                    <select>
+                        <option value="كيلومترات">كيلومترات</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="location">المكان *</label>
+                <div class="map" id="map">إظهار الخريطة</div>
+            </div>
+
+            <!-- مطابقة صور الموظفين -->
+            <h2>مطابقة صور الموظفين</h2>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="employee-image-verification" name="employee_image_verification">
+                <label for="employee-image-verification">مطابقة صور الموظفين</label>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="save-btn">حفظ</button>
+                <button type="button" class="cancel-btn" onclick="window.location.href='attendance_constraints.html'">إلغاء</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

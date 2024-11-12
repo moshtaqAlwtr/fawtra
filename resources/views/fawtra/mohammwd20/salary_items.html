@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بنود الراتب</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f8f9fa;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar .btn {
+            background-color: white;
+            color: #007bff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .content {
+            padding: 20px;
+        }
+        .btn-green {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        .status-active {
+            color: green;
+        }
+        .status-inactive {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <h2>بنود الراتب</h2>
+        <button class="btn btn-green" onclick="window.location.href='add_salary_item.html'">إضافة بند الراتب</button>
+    </div>
+
+    <div class="content">
+        <label>البحث بواسطة اسم بند الراتب</label>
+        <input type="text" placeholder="البحث بواسطة اسم بند الراتب">
+        
+        <div>
+            <label>كل الأنواع</label>
+            <select>
+                <option>كل الأنواع</option>
+                <option>نوع 1</option>
+                <option>نوع 2</option>
+            </select>
+
+            <label>جميع الحالات</label>
+            <select>
+                <option>جميع الحالات</option>
+                <option>نشط</option>
+                <option>غير نشط</option>
+            </select>
+
+            <button>بحث</button>
+            <button>إلغاء الفلتر</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>الاسم</th>
+                    <th>النوع</th>
+                    <th>الحالة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Basic #1</td>
+                    <td>مستحق</td>
+                    <td class="status-active">نشط</td>
+                </tr>
+                <!-- أضف المزيد من العناصر هنا -->
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

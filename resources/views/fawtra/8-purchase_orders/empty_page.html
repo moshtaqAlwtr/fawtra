@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أمر توريد</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { 
+            direction: rtl; 
+            background-color: #f8f9fa; 
+            font-family: 'Tahoma', sans-serif;
+        }
+
+        .header-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .form-section {
+            border: 1px solid #dee2e6;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-section h6 {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 8px;
+            text-align: center;
+        }
+        
+        .custom-file-upload {
+            border: 1px dashed #007bff;
+            padding: 20px;
+            text-align: center;
+            color: #007bff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+        
+        .custom-file-upload:hover {
+            background-color: #e9ecef;
+            color: #0056b3;
+            border-color: #0056b3;
+        }
+        
+        .image-preview {
+            margin-top: 15px;
+            max-width: 100%;
+            max-height: 200px;
+            display: none;
+            border: 1px solid #dee2e6;
+            padding: 5px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .flatpickr-footer {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .btn-clear, .btn-today {
+            border: none;
+            padding: 5px 10px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #fff;
+            border-radius: 4px;
+        }
+        
+        .btn-clear { background-color: #dc3545; margin-right: 10px; }
+        .btn-today { background-color: #0d6efd; }
+        
+        .footer-info {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 30px;
+        }
+        .modal-header .btn-close {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            background-color: #dc3545;
+            border-radius: 50%;
+            opacity: 1;
+            padding: 8px;
+            color: #fff;
+            font-size: 12px;
+        }
+        .modal-header .btn-close:hover {
+            background-color: #c82333;
+            color: #fff;
+        }
+        .modal-header h5 {
+            margin: 0 auto; /* محاذاة العنوان في الوسط */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container my-4">
+    <!-- أزرار الحفظ والإلغاء -->
+    <div class="header-buttons">
+        <button class="btn btn-success"><i class="fas fa-save me-2"></i> حفظ</button>
+        <button class="btn btn-outline-secondary">حفظ كمسودة</button>
+    </div>
+
+    <!-- قسم أمر التوريد -->
+    <div class="form-section">
+        <h6>أمر التوريد</h6>
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label">رقم الأمر</label>
+                <input type="text" class="form-control" value="1">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">المسمى</label>
+                <input type="text" class="form-control" placeholder="أدخل المسمى">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">تاريخ البدء</label>
+                <input type="text" id="startDate" class="form-control" placeholder="اختر تاريخ البدء">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">تاريخ الانتهاء</label>
+                <input type="text" id="endDate" class="form-control" placeholder="اختر تاريخ الانتهاء">
+            </div>
+            <div class="col-12">
+                <label class="form-label">الوصف</label>
+                <textarea class="form-control" rows="3" placeholder="أدخل الوصف"></textarea>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">العميل</label>
+                <select class="form-select">
+                    <option>اختر العميل</option>
+                </select>
+                <button class="btn btn-outline-success mt-2 w-100">جديد</button>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">الوصف</label>
+                <select class="form-select">
+                    <option>وسم الوصف</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">الميزانية</label>
+                <input type="text" class="form-control" placeholder="0.00">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">العملة</label>
+                <input type="text" class="form-control" placeholder="SAR" value="SAR">
+            </div>
+            <div class="col-md-12">
+                <input type="checkbox" class="form-check-input" id="assignEmployee">
+                <label class="form-check-label" for="assignEmployee">تعيين موظف</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- قسم إعدادات الحقول المخصصة -->
+    <div class="form-section">
+       <!-- رابط "إعدادات الحقول المخصصة" -->
+<div class="d-flex align-items-center">
+    <a href="#" class="text-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#customFieldsModal" style="text-decoration: none; margin-bottom: 20px;">
+        <i class="fas fa-cog text-muted me-2"></i> إعدادات الحقول المخصصة
+    </a>
+</div>
+
+<!-- نافذة المودال -->
+<div class="modal fade" id="customFieldsModal" tabindex="-1" aria-labelledby="customFieldsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="customFieldsModalLabel">إعدادات الحقول المخصصة</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info text-center" role="alert">
+                    سيتم توجيهك إلى صفحة إعداد الحقول المخصصة
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+                <button type="button" class="btn btn-danger">عدم الحفظ</button>
+                <button type="button" class="btn btn-success">حفظ</button>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">بيانات المنتجات</label>
+                <textarea class="form-control" rows="4" placeholder="أدخل بيانات المنتجات"></textarea>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">عنوان الشحن</label>
+                <textarea class="form-control" rows="4" placeholder="أدخل عنوان الشحن"></textarea>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">رقم التتبع</label>
+                <input type="text" class="form-control" placeholder="أدخل رقم التتبع">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">رفع مستندات</label>
+                <div class="custom-file-upload" onclick="document.getElementById('fileUploadInput').click();">
+                    <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                    <p>أسقط الملف هنا أو اختر من جهازك</p>
+                    <input type="file" id="fileUploadInput" onchange="previewImage(event)" style="display: none;">
+                </div>
+                <img id="imagePreview" class="image-preview">
+            </div>
+        </div>
+    </div>
+
+    <!-- ملاحظة في الأسفل -->
+    <div class="footer-info">
+        <p>لديك سؤال؟ تواصل معنا للحصول على الدعم.</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    // إعداد flatpickr لحقلين التاريخ
+    function initializeFlatpickr(selector) {
+        flatpickr(selector, {
+            locale: "ar",
+            dateFormat: "d/m/Y",
+            onOpen: function(selectedDates, dateStr, instance) {
+                const calendarContainer = instance.calendarContainer;
+                if (!calendarContainer.querySelector(".flatpickr-footer")) {
+                    const footer = document.createElement("div");
+                    footer.classList.add("flatpickr-footer");
+                    const btnToday = document.createElement("button");
+                    btnToday.classList.add("btn-today");
+                    btnToday.textContent = "اليوم";
+                    btnToday.onclick = function() { instance.setDate(new Date()); };
+                    const btnClear = document.createElement("button");
+                    btnClear.classList.add("btn-clear");
+                    btnClear.textContent = "مسح";
+                    btnClear.onclick = function() { instance.clear(); instance.close(); };
+                    footer.appendChild(btnClear);
+                    footer.appendChild(btnToday);
+                    calendarContainer.appendChild(footer);
+                }
+            }
+        });
+    }
+    initializeFlatpickr("#startDate");
+    initializeFlatpickr("#endDate");
+
+    // عرض صورة عند اختيار ملف
+    function previewImage(event) {
+        const input = event.target;
+        const reader = new FileReader();
+        reader.onload = function() {
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = reader.result;
+            imagePreview.style.display = 'block';
+        };
+        if (input.files && input.files[0]) {
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+</body>
+</html>

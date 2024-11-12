@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير المدفوعات حسب العميل</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* الشريط العلوي */
+        .top-bar {
+            background-color: #004085;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .top-bar button {
+            background-color: #f8f9fa;
+            color: #004085;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .top-bar button:hover {
+            background-color: #e9ecef;
+        }
+
+        header {
+            background-color: #004085;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .report-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .report-section h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #004085;
+            text-align: center;
+        }
+
+        .filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .filters label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+            color: #004085;
+        }
+
+        .filters select, .filters input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .filters input[type="date"] {
+            padding: 8px;
+        }
+
+        .btn-report {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto;
+            width: 200px;
+        }
+
+        .btn-report:hover {
+            background-color: #218838;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .action-buttons .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-right: 15px;
+            font-size: 16px;
+        }
+
+        .btn-export {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-export:hover {
+            background-color: #0069d9;
+        }
+
+        .btn-print {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-print:hover {
+            background-color: #5a6268;
+        }
+
+        .report-output {
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .report-output h3 {
+            font-size: 20px;
+            color: #004085;
+            text-align: center;
+        }
+
+        .report-output table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .report-output table th, .report-output table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .report-output table th {
+            background-color: #e9ecef;
+            color: #004085;
+        }
+
+        .summary, .details {
+            margin-top: 20px;
+        }
+
+        .summary p {
+            font-size: 16px;
+            color: #004085;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي مع الأزرار -->
+    <div class="top-bar">
+        <div>
+            <button>محمد العتيبي</button>
+        </div>
+        <div class="buttons">
+            <button>الذهاب إلى الموقع</button>
+            <button>المساعدة</button>
+        </div>
+    </div>
+
+    <header>
+        تقرير المدفوعات حسب العميل
+    </header>
+    
+    <div class="container">
+        <div class="report-section">
+            <h2>الفلاتر</h2>
+            <div class="filters">
+                <div>
+                    <label for="date-range">الفترة من / إلى:</label>
+                    <input type="date" id="date-range-start">
+                    <input type="date" id="date-range-end">
+                </div>
+                <div>
+                    <label for="client">العميل:</label>
+                    <select id="client">
+                        <option>الكل</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="state">الحالة:</label>
+                    <select id="state">
+                        <option>الكل</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="branch">الفرع:</label>
+                    <select id="branch">
+                        <option>None selected</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-report">عرض التقرير</button>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-export"><i class="fas fa-file-export"></i> خيارات التصدير</button>
+            <button class="btn btn-print"><i class="fas fa-print"></i> طباعة</button>
+        </div>
+
+        <div class="report-output">
+            <h3>تقرير المدفوعات حسب العميل</h3>
+            <div class="summary">
+                <p>مؤسسة أعمال خاصة للتجارة</p>
+                <p>من 01/01/2024 إلى 31/12/2024</p>
+            </div>
+            <div class="details">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>الفاتورة</th>
+                            <th>العميل</th>
+                            <th>المبلغ الإجمالي</th>
+                            <th>الحالة</th>
+                            <th>التاريخ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>98765</td>
+                            <td>شركة ABC</td>
+                            <td>5000 SAR</td>
+                            <td>مدفوعة</td>
+                            <td>05/05/2024</td>
+                        </tr>
+                        <!-- المزيد من البيانات يمكن إضافتها هنا -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

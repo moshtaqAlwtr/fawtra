@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة التطبيقات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .top-bar button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .top-bar .external-apps-btn {
+            background-color: #007bff;
+            margin-left: 10px;
+        }
+
+        .container {
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: calc(50% - 20px);
+            box-sizing: border-box;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .toggle label {
+            font-size: 16px;
+        }
+
+        .toggle .status {
+            background-color: #28a745;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-block;
+            width: 100px;
+            text-align: center;
+        }
+
+        .status.disabled {
+            background-color: #dc3545;
+        }
+
+        .icon {
+            margin-right: 10px;
+        }
+
+        .toggle-content {
+            display: none;
+        }
+
+        .toggle-content.active {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- شريط الأزرار العلوي -->
+    <div class="top-bar">
+        <button class="external-apps-btn">إدارة التطبيقات الخارجية</button>
+        <button>حفظ</button>
+    </div>
+
+    <div class="container">
+        <!-- إدارة المبيعات -->
+        <div class="section">
+            <h3>إدارة المبيعات</h3>
+            <div class="toggle">
+                <label><i class="fas fa-shopping-cart icon"></i>المبيعات</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم المبيعات</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-cash-register icon"></i>نقاط البيع</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم نقاط البيع</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-percentage icon"></i>المبيعات المستهدفة و العمولات</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم المبيعات المستهدفة والعمولات</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-wallet icon"></i>إدارة الأقساط</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم إدارة الأقساط</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-tags icon"></i>العروض</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم العروض</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-shield-alt icon"></i>التأمينات</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم التأمينات</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-file-invoice icon"></i>الفاتورة الإلكترونية السعودية</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم الفاتورة الإلكترونية السعودية</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-gift icon"></i>نقاط ولاء العملاء</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم نقاط ولاء العملاء</p>
+            </div>
+        </div>
+
+        <!-- إدارة علاقات العملاء -->
+        <div class="section">
+            <h3>إدارة علاقات العملاء</h3>
+            <div class="toggle">
+                <label><i class="fas fa-users icon"></i>العملاء</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم العملاء</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-user-check icon"></i>متابعة العميل</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم متابعة العميل</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-star icon"></i>النقاط و الأرصدة</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم النقاط والأرصدة</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-id-card icon"></i>العضوية</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم العضوية</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-calendar-alt icon"></i>حضور العملاء</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم حضور العملاء</p>
+            </div>
+        </div>
+
+        <!-- إدارة المخزون والمشتريات -->
+        <div class="section">
+            <h3>إدارة المخزون والمشتريات</h3>
+            <div class="toggle">
+                <label><i class="fas fa-warehouse icon"></i>إدارة المخزون</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم إدارة المخزون</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-truck-loading icon"></i>دورة المشتريات</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم دورة المشتريات</p>
+            </div>
+        </div>
+
+        <!-- إدارة الحسابات -->
+        <div class="section">
+            <h3>إدارة الحسابات</h3>
+            <div class="toggle">
+                <label><i class="fas fa-money-bill-alt icon"></i>المالية</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم المالية</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-book icon"></i>الحسابات العامة & القيود اليومية</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم الحسابات العامة & القيود اليومية</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-money-check icon"></i>دورة الشيكات</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم دورة الشيكات</p>
+            </div>
+        </div>
+
+        <!-- إدارة الموارد البشرية -->
+        <div class="section">
+            <h3>إدارة الموارد البشرية</h3>
+            <div class="toggle">
+                <label><i class="fas fa-user-tie icon"></i>الموظفين</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم الموظفين</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-sitemap icon"></i>الهيكل التنظيمي</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم الهيكل التنظيمي</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-calendar-alt icon"></i>حضور الموظفين</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم حضور الموظفين</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-money-check-alt icon"></i>المرتبات</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم المرتبات</p>
+            </div>
+        </div>
+
+        <!-- العامة -->
+        <div class="section">
+            <h3>العامة</h3>
+            <div class="toggle">
+                <label><i class="fas fa-sms icon"></i>SMS</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم SMS</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-store icon"></i>المتجر الإلكتروني</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم المتجر الإلكتروني</p>
+            </div>
+
+            <div class="toggle">
+                <label><i class="fas fa-code-branch icon"></i>الفروع</label>
+                <span class="status" onclick="toggleSection(this)">تم التفعيل</span>
+            </div>
+            <div class="toggle-content">
+                <p>تفاصيل قسم الفروع</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleSection(element) {
+            var content = element.parentElement.nextElementSibling;
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                element.classList.add('disabled');
+                element.innerText = 'تعطيل';
+            } else {
+                content.classList.add('active');
+                element.classList.remove('disabled');
+                element.innerText = 'تم التفعيل';
+            }
+        }
+    </script>
+
+</body>
+</html>

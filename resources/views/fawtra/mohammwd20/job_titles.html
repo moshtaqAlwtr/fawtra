@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المسميات الوظيفية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+            background-color: #f4f4f9;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .container {
+            padding: 20px;
+        }
+        h2 {
+            color: #007bff;
+        }
+        .add-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: inline-block;
+        }
+        .message {
+            text-align: center;
+            margin-top: 50px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <div>المسميات الوظيفية</div>
+        <div class="buttons">
+            <button onclick="window.location.href='help.html';">المساعدة</button>
+            <button onclick="window.location.href='site.html';">الذهاب إلى الموقع</button>
+        </div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="container">
+        <button class="add-btn" onclick="window.location.href='add_job_title.html';">أضف المسمى الوظيفي</button>
+        <div class="message">لا يوجد المسميات الوظيفية أضيفت حتى الآن</div>
+    </div>
+
+</body>
+</html>

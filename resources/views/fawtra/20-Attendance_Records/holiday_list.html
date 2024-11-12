@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قوائم العطلات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+        }
+        .top-bar button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container {
+            padding: 20px;
+        }
+        .add-holiday-list {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .search-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .search-filter input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            flex-grow: 1;
+        }
+        .search-btn, .reset-filter {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .holiday-lists-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .holiday-lists-table th, .holiday-lists-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .holiday-lists-table th {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <button class="go-to-site">الذهاب إلى الموقع</button>
+        <button class="help">المساعدة</button>
+    </div>
+
+    <div class="container">
+        <button class="add-holiday-list" onclick="window.location.href='add_holiday_list.html'">أضف قائمة العطلات</button>
+        
+        <!-- Search and Filter Section -->
+        <div class="search-filter">
+            <input type="text" placeholder="بحث بواسطة اسم القائمة أو المعرف" />
+            <button class="search-btn">بحث</button>
+            <button class="reset-filter">إلغاء الفلتر</button>
+        </div>
+
+        <!-- Holiday Lists Table -->
+        <table class="holiday-lists-table">
+            <thead>
+                <tr>
+                    <th>الاسم</th>
+                    <th>إجمالي الأيام</th>
+                    <th>ترتيب بواسطة</th>
+                    <th>...</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Add rows dynamically using backend or JavaScript -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

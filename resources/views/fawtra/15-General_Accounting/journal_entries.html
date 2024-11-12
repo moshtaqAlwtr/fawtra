@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>القيود اليومية</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        body {
+            background-color: #f7faff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        /* شريط أزرق متدرج */
+        .top-bar {
+            background: linear-gradient(135deg, #007bff, #00c4ff);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #007bff, #00c4ff);
+            color: white;
+            border: none;
+            transition: background 0.3s;
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #0056b3, #0096d6);
+        }
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        /* ألوان الأيقونات في القائمة المنسدلة */
+        .dropdown-item .fa-eye { color: #007bff; }
+        .dropdown-item .fa-edit { color: #ffc107; }
+        .dropdown-item .fa-trash { color: #dc3545; }
+        .dropdown-item .fa-file-alt { color: #17a2b8; }
+
+        /* تخصيص أزرار اليوم ومسح في Flatpickr */
+        .flatpickr-calendar .flatpickr-clear {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .flatpickr-calendar .flatpickr-today {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .flatpickr-calendar .flatpickr-weekday {
+            color: #6c757d;
+        }
+
+        /* إخفاء البحث المتقدم افتراضياً */
+        .advanced-search {
+            display: none;
+        }
+    </style>
+</head>
+<body dir="rtl">
+
+    <!-- شريط أزرق متدرج -->
+    <div class="top-bar">
+        <h2>إعدادات القيود اليومية</h2>
+    </div>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between mb-3">
+            <a href="add_entry.html" class="btn btn-gradient px-4 py-2">
+                <i class="fas fa-plus-circle"></i> إضافة قيد
+            </a>
+            <a href="modifications_log.html" class="btn btn-outline-primary">
+                سجل التعديلات
+            </a>
+        </div>
+
+        <!-- قسم البحث -->
+        <div class="card p-3 mb-4">
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label for="account" class="form-label">الحساب</label>
+                        <select id="account" class="form-select">
+                            <option>أي حساب</option>
+                            <option>الحساب 1</option>
+                            <option>الحساب 2</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="description" class="form-label">الوصف</label>
+                        <input type="text" id="description" class="form-control" placeholder="أدخل وصف">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="dateRange" class="form-label">التاريخ</label>
+                        <div class="d-flex date-range">
+                            <input type="text" id="fromDate" class="form-control" placeholder="من">
+                            <span class="mx-2">إلى</span>
+                            <input type="text" id="toDate" class="form-control" placeholder="إلى">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="source" class="form-label">المصدر</label>
+                        <select id="source" class="form-select">
+                            <option>أي</option>
+                            <option>مصدر 1</option>
+                            <option>مصدر 2</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label for="entryNumber" class="form-label">رقم القيد</label>
+                        <input type="text" id="entryNumber" class="form-control" placeholder="أدخل الرقم">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="entryStatus" class="form-label">حالة القيد</label>
+                        <select id="entryStatus" class="form-select">
+                            <option>الكل</option>
+                            <option>حالة 1</option>
+                            <option>حالة 2</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- البحث المتقدم -->
+                <div class="advanced-search mt-3 p-3 border rounded">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="minAmount" class="form-label">المبلغ أكبر من</label>
+                            <input type="number" id="minAmount" class="form-control" placeholder="أدخل المبلغ">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="maxAmount" class="form-label">المبلغ أقل من</label>
+                            <input type="number" id="maxAmount" class="form-control" placeholder="أدخل المبلغ">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="creationDateRange" class="form-label">تاريخ الإنشاء</label>
+                            <div class="d-flex date-range">
+                                <input type="text" id="creationFromDate" class="form-control" placeholder="من">
+                                <span class="mx-2">إلى</span>
+                                <input type="text" id="creationToDate" class="form-control" placeholder="إلى">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="addedBy" class="form-label">أضيفت بواسطة</label>
+                            <input type="text" id="addedBy" class="form-control" placeholder="اسم المستخدم">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- أزرار البحث -->
+                <div class="d-flex justify-content-start mt-3">
+                    <button type="button" class="btn btn-primary me-2" onclick="toggleAdvancedSearch()">بحث متقدم</button>
+                    <button type="submit" class="btn btn-success me-2">بحث</button>
+                    <button type="reset" class="btn btn-outline-danger">إلغاء</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- جدول النتائج -->
+        <div class="card p-3">
+            <table class="table table-bordered table-hover">
+                <thead class="table-primary">
+                    <tr>
+                        <th>القيد</th>
+                        <th>الحساب</th>
+                        <th>العميل</th>
+                        <th>المبلغ</th>
+                        <th>إجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>قيد يومي #1</td>
+                        <td>الحساب الرئيسي</td>
+                        <td>عميل 1</td>
+                        <td>200.00 ر.س</td>
+                        <td class="text-center">
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-eye text-primary"></i> عرض</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-edit text-warning"></i> تعديل</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-trash text-danger"></i> حذف</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-file-alt text-info"></i> عرض المصدر</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- يمكن إضافة المزيد من الصفوف هنا -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        function toggleAdvancedSearch() {
+            const advSearch = document.querySelector('.advanced-search');
+            advSearch.style.display = advSearch.style.display === 'none' || advSearch.style.display === '' ? 'block' : 'none';
+        }
+
+        // إعداد Flatpickr للتواريخ مع زري "اليوم" و"مسح"
+        flatpickr("#fromDate, #toDate, #creationFromDate, #creationToDate", {
+            locale: "ar",
+            dateFormat: "Y-m-d",
+            onReady: (selectedDates, dateStr, instance) => {
+                const footerButtons = document.createElement("div");
+                footerButtons.className = "d-flex justify-content-center mt-2";
+                footerButtons.innerHTML = `
+                    <button type="button" class="flatpickr-today" onclick="instance.setDate(new Date()); instance.close()">اليوم</button>
+                    <button type="button" class="flatpickr-clear" onclick="instance.clear(); instance.close()">مسح</button>
+                `;
+                instance.calendarContainer.appendChild(footerButtons);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات الحساب وبيانات العمل</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-bar button {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .top-bar button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .container {
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-start;
+        }
+
+        .split-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: #007bff;
+        }
+
+        .save-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .save-btn:hover {
+            background-color: #218838;
+        }
+
+        .file-input {
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط الأدوات العلوي -->
+    <div class="top-bar">
+        <span>إعدادات الحساب وبيانات العمل</span>
+        <div>
+            <button>الذهاب إلى الموقع</button>
+            <button class="save-btn">حفظ</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- أزرار تغيير البريد وكلمة المرور -->
+        <div class="button-group">
+            <button>تغيير البريد الإلكتروني</button>
+            <button>تغيير كلمة المرور</button>
+            <button class="save-btn">حفظ</button>
+        </div>
+
+        <!-- تقسيم الصفحة إلى قسمين -->
+        <div class="split-container">
+            <!-- القسم الأول: بيانات العمل -->
+            <div class="form-section">
+                <h3>بيانات العمل</h3>
+                <div class="form-group">
+                    <label>الاسم التجاري</label>
+                    <input type="text" value="مؤسسة أعمال خاصة للتجارة">
+                </div>
+                <div class="form-group">
+                    <label>الاسم الأول</label>
+                    <input type="text" value="محمد">
+                </div>
+                <div class="form-group">
+                    <label>الاسم الأخير</label>
+                    <input type="text" value="العتيبي">
+                </div>
+                <div class="form-group">
+                    <label>جوال</label>
+                    <input type="text" value="0509992803">
+                </div>
+                <div class="form-group">
+                    <label>الهاتف</label>
+                    <input type="text" value="0">
+                </div>
+                <div class="form-group">
+                    <label>عنوان الشارع 1</label>
+                    <input type="text" value="الرياض">
+                </div>
+                <div class="form-group">
+                    <label>عنوان الشارع 2</label>
+                    <input type="text" value="المدينة">
+                </div>
+                <div class="form-group">
+                    <label>المنطقة</label>
+                    <input type="text" value="الرياض">
+                </div>
+                <div class="form-group">
+                    <label>الرمز البريدي</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label>البلد</label>
+                    <input type="text" value="المملكة العربية السعودية (SA)">
+                </div>
+                <div class="form-group">
+                    <label>الرقم الضريبي (اختياري)</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label>سجل تجاري (اختياري)</label>
+                    <input type="text">
+                </div>
+            </div>
+
+            <!-- القسم الثاني: إعدادات الحساب -->
+            <div class="form-section">
+                <h3>إعدادات الحساب</h3>
+                <div class="form-group">
+                    <label>العملة</label>
+                    <input type="text" value="SAR ريال سعودي" readonly>
+                </div>
+                <div class="form-group">
+                    <label>المنطقة الزمنية</label>
+                    <input type="text" value="(UTC+03:00) Riyadh" readonly>
+                </div>
+                <div class="form-group">
+                    <label>تنسيقات العملات السالبة</label>
+                    <input type="text" value="-19.66 ر.س" readonly>
+                </div>
+                <div class="form-group">
+                    <label>صيغة الوقت</label>
+                    <input type="text" value="dd/mm/yyyy (30/09/2024)" readonly>
+                </div>
+                <div class="form-group">
+                    <label>اللغة</label>
+                    <input type="text" value="العربية (AR)" readonly>
+                </div>
+                <div class="form-group">
+                    <label>أنت تبيع</label>
+                    <input type="text" value="المنتجات فقط" readonly>
+                </div>
+                <div class="form-group">
+                    <label>طريقة الطباعة</label>
+                    <input type="text" value="متصفح" readonly>
+                </div>
+                <div class="form-group">
+                    <label>الشعار</label>
+                    <input type="file" class="file-input">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

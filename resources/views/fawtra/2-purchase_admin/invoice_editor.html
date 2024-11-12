@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محرر تصميم الفواتير</title>
+    <style>
+        /* CSS */
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar {
+            width: 20%;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .editor {
+            width: 40%;
+            padding: 20px;
+        }
+
+        .preview {
+            width: 40%;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        h2, h3 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- القائمة اليمنى -->
+    <div class="sidebar">
+        <h3>القوالب</h3>
+        <button class="template-btn" onclick="selectTemplate('template1')">قالب 1</button>
+        <button class="template-btn" onclick="selectTemplate('template2')">قالب 2</button>
+    </div>
+
+    <!-- القسم الأوسط -->
+    <div class="editor">
+        <h2>محرر الفاتورة</h2>
+        <div>
+            <label for="invoice-title">عنوان الفاتورة:</label>
+            <input type="text" id="invoice-title" oninput="updateInvoice('title')" placeholder="أدخل عنوان الفاتورة">
+        </div>
+        <div>
+            <label for="invoice-body">محتوى الفاتورة:</label>
+            <textarea id="invoice-body" oninput="updateInvoice('body')" placeholder="أدخل محتوى الفاتورة"></textarea>
+        </div>
+    </div>
+
+    <!-- القائمة اليسرى -->
+    <div class="preview">
+        <h2>معاينة الفاتورة</h2>
+        <div id="invoice-preview">
+            <h3 id="preview-title">عنوان الفاتورة</h3>
+            <p id="preview-body">محتوى الفاتورة هنا...</p>
+        </div>
+        <button onclick="downloadPDF()">تنزيل كـ PDF</button>
+    </div>
+
+    <script>
+        // JavaScript
+        function selectTemplate(template) {
+            if (template === 'template1') {
+                document.getElementById('preview-title').innerText = 'فاتورة رقم 1';
+                document.getElementById('preview-body').innerText = 'تفاصيل الفاتورة هنا...';
+            } else if (template === 'template2') {
+                document.getElementById('preview-title').innerText = 'فاتورة رقم 2';
+                document.getElementById('preview-body').innerText = 'محتوى الفاتورة المختلفة هنا...';
+            }
+        }
+
+        function updateInvoice(field) {
+            const title = document.getElementById('invoice-title').value;
+            const body = document.getElementById('invoice-body').value;
+
+            if (field === 'title') {
+                document.getElementById('preview-title').innerText = title;
+            } else if (field === 'body') {
+                document.getElementById('preview-body').innerText = body;
+            }
+        }
+
+        function downloadPDF() {
+            alert("سيتم تنزيل الفاتورة كملف PDF في المستقبل!");
+        }
+    </script>
+</body>
+</html>

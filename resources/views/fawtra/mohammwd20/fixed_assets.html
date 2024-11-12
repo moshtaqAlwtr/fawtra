@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأصول الثابتة</title>
+    <style>
+        body {
+            direction: rtl;
+            font-family: Arial, sans-serif;
+        }
+        .top-bar {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .container {
+            display: flex;
+            margin: 20px;
+        }
+        .sidebar {
+            width: 25%;
+            border-left: 1px solid #ddd;
+            padding: 10px;
+        }
+        .content {
+            width: 75%;
+            padding: 10px;
+        }
+        .account-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .account-table th, .account-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        .add-account-button {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <button onclick="location.href='chart_of_accounts.html'">العودة لدليل الحسابات</button>
+    <button onclick="location.href='#'">مساعدة</button>
+</div>
+
+<div class="container">
+    <div class="sidebar">
+        <h3>شجرة الحسابات</h3>
+        <ul>
+            <li><a href="fixed_assets.html">الأصول الثابتة</a></li>
+            <li><a href="current_assets.html">الأصول المتداولة</a></li>
+            <li><a href="liabilities.html">الخصوم</a></li>
+            <li><a href="expenses.html">المصروفات</a></li>
+            <li><a href="revenues.html">الإيرادات</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h3>الأصول الثابتة</h3>
+        <button class="add-account-button" onclick="alert('إضافة حساب جديد')">أضف حساب</button>
+        <table class="account-table">
+            <thead>
+                <tr>
+                    <th>رقم الحساب</th>
+                    <th>اسم الحساب</th>
+                    <th>النوع</th>
+                    <th>الرصيد</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>11</td>
+                    <td>معدات</td>
+                    <td>مدين</td>
+                    <td>24,257</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>مباني</td>
+                    <td>مدين</td>
+                    <td>500,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

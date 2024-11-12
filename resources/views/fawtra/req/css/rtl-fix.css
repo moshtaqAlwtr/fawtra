@@ -1,0 +1,87 @@
+.user-log,
+#shrink-sidebar,
+.user-box,
+.delete-button,
+.cancel-btn,
+.navbar-right,
+.right,
+.top-actions,
+.totals,
+.invoice-total,
+.Paging,
+.ms-sel-ctn .ms-sel-item .ms-close-btn,
+.bootstrap-select.btn-group.dropdown-menu-right,
+.bootstrap-select.btn-group[class*="col-"].dropdown-menu-right,
+.row-fluid .bootstrap-select.btn-group[class*="col-"].dropdown-menu-right,
+.pull-left,
+.fc-rtl .fc-popover .fc-header .fc-title,
+.fc-ltr .fc-popover .fc-header .fc-close,
+.fc-toolbar .fc-left {
+    float: left
+}
+
+.sortable-arrows a,
+.main-nav ul li li,
+.crumbs span,
+.crumbs a,
+.drop-4-col li,
+.user-log>ul>li,
+.count_notif,
+.product-img,
+.left,
+.day-view-week-nav>li,
+.day-view-entry .task,
+.day-view-entry .ndash,
+.day-view-entry .external-link img,
+.meta-details,
+.meta-details li,
+.pages-head h1,
+.filter-results h3,
+.template-list li,
+.filter-tags li,
+.action li,
+.paging ul li,
+#ProductTags .ms-sel-item,
+#ProductTags .ms-sel-ctn input,
+.paging ul li.current,
+.bulk-actions,
+.bs-actionsbox,
+.steper ul li,
+.steper ul li span,
+.config-msg .delete-items span.one-item,
+.config-msg .delete-items span.seprated-item,
+.hover-caption>.btn,
+.pull-right,
+.product-img,
+.product-img .overly,
+.selector-box span,
+#ProductTags .ms-sel-ctn input,
+.checkbox input,
+.checkbox label,
+.tabs-buttons ul li,
+.tabs-buttons ul li,
+.sub-item,
+.sub-item-sub,
+.filter-actions,
+.fc .fc-button-group>*,
+.fc-ltr .fc-popover .fc-header .fc-title,
+.fc-rtl .fc-popover .fc-header .fc-close,
+.fc .fc-toolbar>*>* {
+    float: right
+}
+
+.chosen-container-multi .chosen-choices li {
+    float: right
+}
+
+@media (max-width: 1024px) {
+    .btn-md.btn-addon i {
+        float: right
+    }
+}
+
+@media only screen and (max-device-width :480px) {
+    .results-counter {
+        float: right !important
+    }
+}

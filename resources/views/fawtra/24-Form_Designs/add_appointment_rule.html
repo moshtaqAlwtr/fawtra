@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة قاعدة المواعيد الجديدة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f7;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+        .top-bar {
+            background-color: #2980b9;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group .template-link {
+            color: #2980b9;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .actions button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .save-btn {
+            background-color: #27ae60;
+            color: #fff;
+            margin-right: 10px;
+        }
+        .cancel-btn {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div>
+            <a href="#">محمد المشتبي - الفرع الرئيسي</a>
+            <a href="#">🔔 18</a>
+            <a href="#">المساعدة</a>
+            <a href="#">الذهاب إلى الموقع</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>أضف قاعدة الإرسال الآلي للمواعيد</h2>
+
+        <!-- النموذج -->
+        <div class="form-group">
+            <label for="ruleName">الاسم</label>
+            <input type="text" id="ruleName" placeholder="أدخل الاسم">
+        </div>
+
+        <div class="form-group">
+            <label for="appointmentType">نوع الموعد</label>
+            <select id="appointmentType">
+                <option value="all">الكل</option>
+                <option value="type1">نوع 1</option>
+                <option value="type2">نوع 2</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="degree">الدرجة</label>
+            <select id="degree">
+                <option value="all">الكل</option>
+                <option value="high">عالٍ</option>
+                <option value="low">منخفض</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="sendTime">وقت الإرسال</label>
+            <input type="text" id="sendTime" placeholder="أدخل وقت الإرسال">
+        </div>
+
+        <div class="form-group">
+            <label for="messageChannel">طريقة الإرسال</label>
+            <select id="messageChannel">
+                <option value="sms">SMS</option>
+                <option value="email">Email</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="template">قالب الرسالة</label>
+            <select id="template">
+                <option value="template1">قالب 1</option>
+                <option value="template2">قالب 2</option>
+            </select>
+            <span class="template-link" onclick="addNewTemplate()">قالب جديد</span>
+        </div>
+
+        <div class="form-group">
+            <label for="priority">الأولوية</label>
+            <select id="priority">
+                <option value="high">عالٍ</option>
+                <option value="medium">متوسط</option>
+                <option value="low">منخفض</option>
+            </select>
+        </div>
+
+        <!-- أزرار الحفظ والإلغاء -->
+        <div class="actions">
+            <button class="save-btn">حفظ</button>
+            <button class="cancel-btn" onclick="location.href='auto_sending_rules.html'">إلغاء</button>
+        </div>
+    </div>
+
+    <script>
+        // دالة لإضافة قالب جديد
+        function addNewTemplate() {
+            alert("سيتم توجيهك إلى صفحة إضافة قالب جديد.");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محددات الحضور</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+        }
+        .top-bar button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        .add-constraint {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .no-constraints {
+            color: #555;
+            margin-top: 40px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <button class="go-to-site">الذهاب إلى الموقع</button>
+        <button class="help">المساعدة</button>
+    </div>
+
+    <div class="container">
+        <button class="add-constraint" onclick="window.location.href='add_attendance_constraint.html'">أضف قيد الحضور</button>
+        
+        <div class="no-constraints">
+            لا يوجد محددات الحضور أضيفت حتى الآن
+        </div>
+    </div>
+</body>
+</html>

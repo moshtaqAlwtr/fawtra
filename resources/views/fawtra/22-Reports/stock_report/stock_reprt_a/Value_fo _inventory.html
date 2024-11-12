@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قيمة المخزون التقديرية</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #f0f4f8, #d8e3e8);
+            font-family: 'Tajawal', sans-serif;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #0d47a1;
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+        .btn-primary {
+            background-color: #43a047;
+            border: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .btn-primary:hover {
+            background-color: #2e7d32;
+        }
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e88e5;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .report-section {
+            display: none;
+            margin-top: 20px;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="title">قيمة المخزون التقديرية</div>
+    <form onsubmit="event.preventDefault(); showReport();">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="supplier">المورد</label>
+                <select id="supplier" class="form-control">
+                    <option>اختر مورد</option>
+                    <option>مورد 1</option>
+                    <option>مورد 2</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="brand">الماركة</label>
+                <select id="brand" class="form-control">
+                    <option>جميع الماركات</option>
+                    <option>ماركة 1</option>
+                    <option>ماركة 2</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="sortBy">ترتيب حسب</label>
+                <select id="sortBy" class="form-control">
+                    <option>اسم المنتج</option>
+                    <option>السعر</option>
+                    <option>التاريخ</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="store">المستودع</label>
+                <select id="store" class="form-control">
+                    <option>الكل</option>
+                    <option>المستودع الرئيسي</option>
+                    <option>مستودع فرعي</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="category">التصنيف</label>
+                <select id="category" class="form-control">
+                    <option>الكل</option>
+                    <option>تصنيف 1</option>
+                    <option>تصنيف 2</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="dateRange">الفترة من / إلى</label>
+                <input type="date" class="form-control" id="dateRange">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="period">الفترة من / إلى:</label>
+                <select id="period" class="form-control">
+                    <option>اختر</option>
+                    <option>يوم</option>
+                    <option>أسبوع</option>
+                    <option>شهر</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="calculation">Calculate Using</label>
+                <select id="calculation" class="form-control">
+                    <option>من فضلك اختر</option>
+                    <option>طريقة 1</option>
+                    <option>طريقة 2</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="hideZeroBalance">
+                    <label class="form-check-label" for="hideZeroBalance" style="margin-right: 20px;">إخفاء الرصيد الصفري</label>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">اعرض الورقة</button>
+    </form>
+
+    <!-- Report Section -->
+    <div class="report-section" id="reportSection">
+        <div class="d-flex justify-content-between mb-2">
+            <div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        خيارات التصدير
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">تصدير إلى CSV</a>
+                        <a class="dropdown-item" href="#">تصدير إلى Excel</a>
+                        <a class="dropdown-item" href="#">تصدير إلى PDF</a>
+                    </div>
+                </div>
+                <button class="btn btn-secondary ml-2" onclick="window.print();">
+                    <span>طباعة</span>
+                </button>
+            </div>
+        </div>
+
+        <h4 class="title">مؤسسة أعمال خاصة للتجارة</h4>
+        <p>الرياض، الرياض</p>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>كود</th>
+                    <th>الاسم</th>
+                    <th>الكمية</th>
+                    <th>سعر البيع الحالي</th>
+                    <th>متوسط سعر الشراء</th>
+                    <th>إجمالي سعر البيع المتوقع</th>
+                    <th>إجمالي سعر الشراء</th>
+                    <th>الارباح المتوقعة </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0056</td>
+                    <td>عطر 30 مل 30ml</td>
+                    <td>17,115</td>
+                    <td>15.00</td>
+                    <td>6.00</td>
+                    <td>256,725.00</td>
+                    <td>102,692.63</td>
+                    <td>1,172.26</td>
+                </tr>
+                <tr>
+                    <td>3961</td>
+                    <td>عطر 50 ملي</td>
+                    <td>718</td>
+                    <td>18.00</td>
+                    <td>19.35</td>
+                    <td>12,924.00</td>
+                    <td>13,896.00</td>
+                    <td>1,172.26</td>
+                </tr>
+                <tr>
+                    <td>27</td>
+                    <td>عطر احساس 104</td>
+                    <td>2</td>
+                    <td>18.00</td>
+                    <td>586.13</td>
+                    <td>36.00</td>
+                    <td>1,172.26</td>
+                    <td>1,172.26</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function showReport() {
+        document.getElementById('reportSection').style.display = 'block';
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!-- ملف HTML: items-groups.html -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجموعة البنود</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f7fa; }
+        .container { margin: 20px; text-align: center; }
+        .top-bar { background-color: #3388cc; padding: 15px; color: #fff; }
+        .add-btn { margin: 20px; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .add-btn:hover { background-color: #45a049; }
+        .message { margin-top: 50px; color: #777; }
+        .links { margin-top: 20px; }
+        .links a { margin: 0 10px; color: #4CAF50; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h1>مجموعة البنود</h1>
+    </div>
+
+    <div class="container">
+        <button class="add-btn" onclick="window.location.href='add-new-item.html';">أضف مجموعة البنود</button>
+        <div class="message">
+            <img src="no-records-icon.png" alt="لا توجد سجلات" style="width: 100px;">
+            <p>لم يتم إضافة أي سجلات بعد</p>
+        </div>
+        <div class="links">
+            <a href="#">الانتقال إلى الصفحة السابقة</a> |
+            <a href="add-now-item-.html">أضف مجموعة البنود</a>
+        </div>
+    </div>
+</body>
+</html>

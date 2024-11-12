@@ -1,0 +1,25 @@
+// included elements
+html.dark-active,
+html.dark-active .header .dropdown-menu {
+  filter: contrast(90%) invert(90%) hue-rotate(180deg) !important;
+  -ms-filter: contrast(90%) invert(90%) hue-rotate(180deg) !important;
+  -webkit-filter: contrast(90%) invert(90%) hue-rotate(180deg) !important;
+}
+
+// excluded elements
+html.dark-active img,
+html.dark-active video,
+html.dark-active canvas,
+html.dark-active embed[type='application/x-shockwave-flash'],
+html.dark-active object[type='application/x-shockwave-flash'],
+html.dark-active *[style*='url('],
+html.dark-active .header {
+  filter: invert(100%) hue-rotate(-180deg) !important;
+  -ms-filter: invert(100%) hue-rotate(-180deg) !important;
+  -webkit-filter: invert(100%) hue-rotate(-180deg) !important;
+}
+html.dark-active .dark-exclude {
+  filter: invert(100%) brightness(160%) grayscale(100%) !important;
+  -ms-filter: invert(100%) brightness(160%) grayscale(100%) !important;
+  -webkit-filter: invert(100%) brightness(160%) grayscale(100%) !important;
+}

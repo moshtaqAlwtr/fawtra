@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير البحث</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #f0f4f8, #d8e3e8);
+            font-family: 'Tajawal', sans-serif;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+            max-width: 900px;
+        }
+        .btn-primary {
+            background-color: #0d47a1;
+            border: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .btn-primary:hover {
+            background-color: #0b3a89;
+        }
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e88e5;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .alert-message {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="title">تقرير البحث</div>
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="dateFrom">التاريخ من</label>
+                <input type="date" class="form-control" id="dateFrom" value="2024-10-10">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="dateTo">التاريخ إلى</label>
+                <input type="date" class="form-control" id="dateTo" value="2024-11-10">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="supplier">المصدر</label>
+                <select id="supplier" class="form-control">
+                    <option>الكل</option>
+                    <option>مورد 1</option>
+                    <option>مورد 2</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="product">المنتجات</label>
+                <select id="product" class="form-control">
+                    <option>الكل</option>
+                    <option>منتج 1</option>
+                    <option>منتج 2</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="sortBy">ترتيب حسب</label>
+                <select id="sortBy" class="form-control">
+                    <option>الكل</option>
+                    <option>اسم المنتج</option>
+                    <option>السعر</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="category">التصنيف</label>
+                <select id="category" class="form-control">
+                    <option>جميع التصنيفات</option>
+                    <option>تصنيف 1</option>
+                    <option>تصنيف 2</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="brand">الماركة</label>
+                <select id="brand" class="form-control">
+                    <option>الكل</option>
+                    <option>ماركة 1</option>
+                    <option>ماركة 2</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="currency">العملة</label>
+                <select id="currency" class="form-control">
+                    <option>الجميع إلى (SAR)</option>
+                    <option>USD</option>
+                    <option>EUR</option>
+                </select>
+            </div>
+        </div>
+        
+        <button type="button" class="btn btn-primary" onclick="showAlert()">عرض التقرير</button>
+        <button type="reset" class="btn btn-link">إلغاء الفلتر</button>
+    </form>
+
+    <!-- Alert Message -->
+    <div class="alert-message" id="alertMessage" style="display: none;">
+        لا توجد بيانات تتوافق معطيات البحث
+    </div>
+</div>
+
+<script>
+    function showAlert() {
+        document.getElementById('alertMessage').style.display = 'block';
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

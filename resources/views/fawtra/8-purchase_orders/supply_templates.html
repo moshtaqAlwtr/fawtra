@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات أوامر التوريد - القوالب</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+        .top-bar {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .top-bar h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .button {
+            background-color: green;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .button.cancel {
+            background-color: #dc3545;
+        }
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+        .template-editor {
+            flex: 3;
+            padding: 15px;
+            background-color: white;
+            margin-left: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .placeholder-list {
+            flex: 1;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .placeholder-item {
+            margin: 5px 0;
+            padding: 5px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .editor-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .editor-toolbar select, .editor-toolbar button {
+            padding: 5px;
+            margin-right: 5px;
+        }
+        .editor {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <h1>إعدادات أوامر التوريد - القوالب</h1>
+        <div>
+            <button class="button">حفظ</button>
+            <button class="button cancel">إلغاء</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- قائمة الكلمات المستبدلة -->
+        <div class="placeholder-list">
+            <h3>الكلمات المستبدلة</h3>
+            <div class="placeholder-item">%work_order_number%</div>
+            <div class="placeholder-item">%work_order_title%</div>
+            <div class="placeholder-item">%work_order_type_name%</div>
+            <div class="placeholder-item">%business_name%</div>
+            <div class="placeholder-item">%address1%</div>
+            <div class="placeholder-item">%address2%</div>
+            <div class="placeholder-item">%telephone%</div>
+            <div class="placeholder-item">%client_business_name%</div>
+            <div class="placeholder-item">%client_full_address%</div>
+            <div class="placeholder-item">%client_phone%</div>
+            <div class="placeholder-item">%client_email%</div>
+            <!-- Add more placeholders as needed -->
+        </div>
+
+        <!-- محرر القالب -->
+        <div class="template-editor">
+            <div class="editor-toolbar">
+                <button class="button">إعادة ضبط القالب</button>
+                <select>
+                    <option>9pt</option>
+                    <option>10pt</option>
+                    <option>12pt</option>
+                </select>
+                <button class="button">B</button>
+                <button class="button">I</button>
+                <button class="button">U</button>
+            </div>
+            <textarea class="editor">
+{%work_order_number%}# {%work_order_type_name%}
+{%work_order_title%}
+{%client_business_name%}
+{%client_full_address%}
+{%client_phone%}
+{%client_email%}
+            </textarea>
+        </div>
+    </div>
+
+</body>
+</html>

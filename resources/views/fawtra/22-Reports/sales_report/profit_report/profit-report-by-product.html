@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة أرباح مبيعات الأصناف</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            font-family: 'Tajawal', sans-serif;
+            direction: rtl;
+        }
+        .gradient-bg {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+        }
+        .card {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        .export-options, .results, .no-results {
+            margin-top: 20px;
+        }
+        .btn-gradient {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            border: none;
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(to right, #ff6a4f, #fd996b);
+        }
+        label {
+            font-weight: bold;
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+        .btn {
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header gradient-bg d-flex justify-content-between align-items-center">
+                <h4 class="mb-0">أرباح مبيعات الأصناف</h4>
+                <div>
+                    <button class="btn btn-light"><i class="fas fa-print"></i> طباعة</button>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            خيارات التصدير
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">تصدير إلى CSV</a>
+                            <a class="dropdown-item" href="#">تصدير إلى Excel</a>
+                            <a class="dropdown-item" href="#">تصدير إلى PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="dateRange">الفترة من</label>
+                            <input type="date" class="form-control" id="dateRange">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="dateTo">إلى</label>
+                            <input type="date" class="form-control" id="dateTo">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="brand">الماركة</label>
+                            <select id="brand" class="form-control">
+                                <option selected>جميع الماركات</option>
+                                <option>ماركة 1</option>
+                                <option>ماركة 2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="branch">فرع</label>
+                            <select id="branch" class="form-control">
+                                <option selected>جميع الفروع</option>
+                                <option>فرع 1</option>
+                                <option>فرع 2</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="group">مجموعة البنود</label>
+                            <select id="group" class="form-control">
+                                <option selected>اختر مجموعة البنود</option>
+                                <option>مجموعة 1</option>
+                                <option>مجموعة 2</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="category">التصنيف</label>
+                            <select id="category" class="form-control">
+                                <option selected>جميع التصنيفات</option>
+                                <option>تصنيف 1</option>
+                                <option>تصنيف 2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-start mt-3">
+                        <button type="button" class="btn btn-gradient">بحث</button>
+                        <button type="button" class="btn btn-secondary ml-3">إلغاء الفلتر</button>
+                    </div>
+                </form>
+                <div class="results mt-4">
+                    <h5>النتائج</h5>
+                    <div class="card p-3">
+                        <p>مؤسسة أعمال خاصة للتجارة</p>
+                        <p>الرياض، الرياض</p>
+                    </div>
+                </div>
+                <div class="no-results alert alert-warning mt-4">
+                    لا توجد نتيجة تطابق هذه الاختيارات<br>قم بتغيير فلتر البحث وحاول مجددًا
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-info mt-4">لديك سؤال؟</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات الفاتورة الإلكترونية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            padding: 0;
+            margin: 0;
+        }
+        .top-bar {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar button {
+            padding: 10px 15px;
+            background-color: white;
+            color: #007bff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .top-bar button:hover {
+            background-color: #f1f1f1;
+        }
+        .form-section {
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        select, input[type="text"], input[type="checkbox"] {
+            margin-top: 5px;
+            padding: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+        button.save-btn {
+            background-color: #20df07;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header class="top-bar">
+    <button>الذهاب للموقع</button>
+    <button>المساعدة</button>
+</header>
+
+<div class="form-section">
+    <label>رقم الفاتورة التالية</label>
+    <input type="text">
+
+    <label>تفعيل إمكانية تغيير رقم الفاتورة</label>
+    <input type="checkbox">
+
+    <label>طريقة الفوترة</label>
+    <select name="center" id="cnt">
+        <option value="print">طباعة</option>
+        <option value="email">إرسال عبر البريد</option>
+        <option value="both">كلاهما</option>
+    </select>
+
+    <label>حساب الحد الأدنى لسعر البيع</label>
+    <select name="center" id="cnt">
+        <option value="with_tax">بالضريبة</option>
+        <option value="without_tax">بدون ضريبة</option>
+    </select>
+
+    <label>خيارات الخصم</label>
+    <select name="discount_options" id="discount_options">
+        <option value="both">كلاهما</option>
+        <option value="total_discount">إجمالي الخصومات</option>
+        <option value="item_discount">الخصم على مستوى البند</option>
+    </select>
+
+    <label>الأصفار في العلامات العشرية</label>
+    <select name="decimal_options" id="decimal_options">
+        <option value="auto">ألي</option>
+        <option value="show">إظهار</option>
+        <option value="hide">إخفاء</option>
+    </select>
+
+    <label>عرض سعر البيع الأخير والحد الأدنى للسعر</label>
+    <select name="sales_price_options" id="sales_price_options">
+        <option value="none">لا شيء</option>
+        <option value="last_sale_price">عرض سعر البيع الأخير</option>
+        <option value="customer_last_sale_price">عرض آخر سعر بيع لكل عميل</option>
+    </select>
+
+    <label>تعديل عروض السعر</label>
+    <input type="checkbox">
+
+    <label>إعطاء الفواتير حالات يدوية</label>
+    <input type="checkbox">
+
+    <label>إعطاء عروض الأسعار حالات يدوية</label>
+    <input type="checkbox">
+
+    <label>تعطيل خيارات الشحن</label>
+    <input type="checkbox">
+
+    <label>تفعيل الحد الأدنى للخصم</label>
+    <input type="checkbox">
+
+    <label>تفعيل تسوية المبيعات</label>
+    <input type="checkbox">
+
+    <label>جعل الفواتير مدفوعة بالفعل إلكترونيا</label>
+    <input type="checkbox">
+
+    <label>تفعيل معاينة الفاتورة قبل الحفظ</label>
+    <input type="checkbox">
+
+    <label>دفع الفاتورة تلقائياً في حالة وجود رصيد للعميل</label>
+    <input type="checkbox">
+
+    <label>اختيار قائمة الأسعار في الفواتير</label>
+    <input type="checkbox">
+
+    <label>إرسال المعاملات عبر التواصل الاجتماعي</label>
+    <input type="checkbox">
+
+    <label>إيقاف الإدخال الحر للمنتجات من الفاتورة</label>
+    <input type="checkbox">
+
+    <label>إظهار ربح الفاتورة</label>
+    <input type="checkbox">
+
+    <label>توقف عن البيع للمنتجات المنتهية</label>
+    <input type="checkbox">
+
+    <label>وصف مخصص للقيود اليومية</label>
+    <input type="checkbox">
+
+    <label>عدم البيع بسعر أقل من التكلفة</label>
+    <input type="checkbox">
+
+    <label>تطبيق العروض على عروض الأسعار</label>
+    <input type="checkbox">
+
+    <label>تفعيل أوامر البيع</label>
+    <input type="checkbox">
+
+    <label>إيقاف الإدخال الحر للمنتجات من الفاتورة</label>
+    <input type="checkbox">
+
+    <label>إعطاء أوامر البيع حالات يدوية</label>
+    <input type="checkbox">
+
+    <label>تفعيل الإشعار المدين</label>
+    <input type="checkbox">
+
+    <label>إبعاد الأصناف من معاملات البيع</label>
+    <input type="text">
+</div>
+
+<h3><button class="save-btn">حفظ</button></h3>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+No Content: https://moshtaqkaid6.daftra.com/js/cal-js/..\..\src\js\jquery.plugin.js

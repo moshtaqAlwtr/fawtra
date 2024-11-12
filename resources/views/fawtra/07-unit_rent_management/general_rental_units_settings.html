@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإعدادات العامة</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <style>
+        .gradient-bg {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+        }
+        .btn-custom {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: #fff;
+            border: none;
+        }
+        .btn-custom:hover {
+            background: linear-gradient(to right, #2a5298, #1e3c72);
+            color: #fff;
+        }
+        .settings-container {
+            background: linear-gradient(to right, #f0f7ff, #dceffe);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    
+        input[type='checkbox']:checked {
+            background-color: #007bff;
+        }
+        input[type='checkbox']:checked + span {
+            left: 25px;
+        }
+    
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 25px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 21px;
+            width: 21px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+        }
+        input:checked + .slider {
+            background-color: #007bff;
+        }
+        input:checked + .slider:before {
+            transform: translateX(25px);
+        }
+        .slider.round {
+            border-radius: 25px;
+        }
+        .slider.round:before {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <div class="container">
+        <!-- الشريط العلوي -->
+        <div class="gradient-bg text-white p-3 mb-4 d-flex justify-content-between align-items-center">
+            <h3 class="m-0 text-center w-100">الإعدادات العامة</h3>
+        </div>
+
+        <!-- الإعدادات العامة -->
+        <div class="settings-container">
+            <div class="row mb-3 align-items-center">
+                <div class="col-md-6 toggle-switch">
+                    <span class="mr-2">إنشاء فواتير مسودة لأمر الحجز</span>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="col-md-6 toggle-switch">
+                    <span class="mr-2">عرض بنود الفاتورة لكل يوم</span>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-6 toggle-switch">
+                    <span class="mr-2">تمكين حجز العميل</span>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <label for="additional-fields" class="mr-2">حقول إضافية في أمر الحجز لواجهة المتجر</label>
+                    <select id="additional-fields" class="form-control">
+                        <option>اختر الحقول الإضافية لأمر الحجز</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- أزرار الحفظ والإلغاء -->
+        <div class="text-right mt-3">
+            <button class="btn btn-custom ml-2"><i class="fas fa-save"></i> حفظ</button>
+            <button class="btn btn-secondary"><i class="fas fa-times"></i> إلغاء</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" crossorigin="anonymous"></script>
+    
+</body>
+</html>

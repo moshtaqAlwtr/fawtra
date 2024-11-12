@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قواعد الإرسال الآلي</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <header style="background-color: #007bff; padding: 10px;">
+        <button style="color: white;">الذهاب إلى الموقع</button>
+        <button style="color: white;">مساعدة</button>
+    </header>
+
+    <!-- عنوان الصفحة -->
+    <h1 style="text-align: center;">قواعد الإرسال الآلي</h1>
+
+    <!-- زر إضافة قاعدة جديدة -->
+    <div style="text-align: right; padding: 10px;">
+        <button style="background-color: green; color: white; padding: 10px;">إضافة قاعدة جديدة</button>
+    </div>
+
+    <!-- جدول القواعد الحالية -->
+    <table border="1" style="width: 100%; text-align: center; margin-top: 20px;">
+        <thead>
+            <tr style="background-color: #007bff; color: white;">
+                <th>اسم القاعدة</th>
+                <th>نوع الإرسال</th>
+                <th>وقت الإرسال</th>
+                <th>الحالة</th>
+                <th>خيارات</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>قاعدة 1</td>
+                <td>إيميل</td>
+                <td>يومياً الساعة 8 صباحاً</td>
+                <td>نشط</td>
+                <td>
+                    <button style="background-color: yellow;">تعديل</button>
+                    <button style="background-color: red; color: white;">حذف</button>
+                </td>
+            </tr>
+            <tr>
+                <td>قاعدة 2</td>
+                <td>رسالة نصية</td>
+                <td>أسبوعياً الساعة 10 مساءً</td>
+                <td>غير نشط</td>
+                <td>
+                    <button style="background-color: yellow;">تعديل</button>
+                    <button style="background-color: red; color: white;">حذف</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

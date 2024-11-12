@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ايرادات اسبوعيا </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e6eff7;
+            font-family: 'Tajawal', sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* حاوية الفلتر */
+        .filter-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 1000px;
+        }
+
+        .filter-header {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .btn-custom {
+            background-color: #6c757d;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .btn-custom:hover {
+            background-color: #5a6268;
+        }
+
+        .no-data {
+            background-color: #fff3cd;
+            color: #856404;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="filter-container">
+            <div class="filter-header">بحث وتصفية</div>
+            <form class="row g-3">
+                <!-- تاريخ البدء (من) -->
+                <div class="col-lg-3 col-md-6">
+                    <label for="startDate" class="form-label">تاريخ البدء (من)</label>
+                    <input type="date" id="startDate" class="form-control" value="2024-10-10">
+                </div>
+
+                <!-- تاريخ الانتهاء (إلى) -->
+                <div class="col-lg-3 col-md-6">
+                    <label for="endDate" class="form-label">تاريخ الانتهاء (إلى)</label>
+                    <input type="date" id="endDate" class="form-control" value="2024-11-10">
+                </div>
+
+                <!-- الفرع -->
+                <div class="col-lg-3 col-md-6">
+                    <label for="branch" class="form-label">فرع</label>
+                    <select id="branch" class="form-select">
+                        <option>الكل</option>
+                        <option>فرع 1</option>
+                        <option>فرع 2</option>
+                    </select>
+                </div>
+
+                <!-- تجميع حسب -->
+                <div class="col-lg-3 col-md-6">
+                    <label for="groupBy" class="form-label">تجميع حسب</label>
+                    <select id="groupBy" class="form-select">
+                        <option>نوع الوحدة</option>
+                        <option>الفئة</option>
+                        <option>الموقع</option>
+                    </select>
+                </div>
+
+                <!-- العملة -->
+                <div class="col-lg-3 col-md-6">
+                    <label for="currency" class="form-label">العملة</label>
+                    <select id="currency" class="form-select">
+                        <option>الجميع إلى (SAR)</option>
+                        <option>USD</option>
+                        <option>EUR</option>
+                    </select>
+                </div>
+
+                <!-- الأزرار -->
+                <div class="col-12 d-flex justify-content-start mt-3">
+                    <button type="submit" class="btn btn-primary me-3">
+                        عرض التقرير
+                    </button>
+                    <button type="reset" class="btn btn-custom">
+                        إلغاء الفلتر
+                    </button>
+                </div>
+            </form>
+
+            <!-- رسالة عدم وجود بيانات -->
+            <div class="no-data">
+                لا توجد بيانات توافق معطيات البحث
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

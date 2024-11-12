@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة مورد</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Design/css/data.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            padding: 20px 0;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 850px;
+            padding: 40px 30px;
+            margin-top: 20px;
+            animation: fadeIn 1s ease;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #007bff;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #495057;
+            transition: color 0.3s;
+        }
+
+        .form-control, .form-select {
+            border-radius: 12px;
+            border: none;
+            padding: 12px 20px;
+            background-color: #f8f9fa;
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+            background-color: #fff;
+        }
+
+        .form-control::placeholder {
+            color: #adb5bd;
+            font-style: italic;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group .form-label {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background-color: white;
+            padding: 0 5px;
+            font-size: 0.85rem;
+            color: #007bff;
+        }
+
+        .save-btn, .cancel-btn {
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .save-btn {
+            background: linear-gradient(135deg, #34d058, #28a745);
+            color: white;
+            border: none;
+        }
+
+        .save-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #28a745, #34d058);
+        }
+
+        .cancel-btn {
+            background: linear-gradient(135deg, #f85032, #e73827);
+            color: white;
+            border: none;
+        }
+
+        .cancel-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #e73827, #f85032);
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* Animation for container */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>إضافة مورد</h2>
+    <form>
+        <!-- بيانات المورد -->
+        <div class="row mb-4">
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="supplier-number" placeholder=" ">
+                <label for="supplier-number" class="form-label">رقم المورد</label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="supplier-name" placeholder=" " required>
+                <label for="supplier-name" class="form-label">الاسم التجاري</label>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="first-name" placeholder=" ">
+                <label for="first-name" class="form-label">الاسم الأول</label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="last-name" placeholder=" ">
+                <label for="last-name" class="form-label">الاسم الأخير</label>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6 form-group">
+                <input type="tel" class="form-control" id="phone" placeholder=" ">
+                <label for="phone" class="form-label">الهاتف</label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input type="tel" class="form-control" id="mobile" placeholder=" ">
+                <label for="mobile" class="form-label">جوال</label>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6 form-group">
+                <input type="email" class="form-control" id="email" placeholder=" ">
+                <label for="email" class="form-label">البريد الإلكتروني</label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="address1" placeholder=" ">
+                <label for="address1" class="form-label">عنوان الشارع 1</label>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="address2" placeholder=" ">
+                <label for="address2" class="form-label">عنوان الشارع 2</label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="city" placeholder=" ">
+                <label for="city" class="form-label">المدينة</label>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="region" placeholder=" ">
+                <label for="region" class="form-label">المنطقة</label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="postal-code" placeholder=" ">
+                <label for="postal-code" class="form-label">الرمز البريدي</label>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6 form-group">
+                <select class="form-select" id="country">
+                    <option>المملكة العربية السعودية</option>
+                </select>
+                <label for="country" class="form-label">البلد</label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="tax-number" placeholder=" ">
+                <label for="tax-number" class="form-label">الرقم الضريبي</label>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="commercial-reg" placeholder=" ">
+                <label for="commercial-reg" class="form-label">سجل تجاري</label>
+            </div>
+            <div class="col-md-6 form-group">
+                <select class="form-select" id="currency">
+                    <option>ريال سعودي</option>
+                </select>
+                <label for="currency" class="form-label">العملة</label>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6 form-group">
+                <input type="text" class="form-control" id="opening-balance-date" placeholder=" ">
+                <label for="opening-balance-date" class="form-label">الرصيد الافتتاحي</label>
+            </div>
+            <div class="col-md-6 form-group">
+                <input type="date" class="form-control" id="deliveryStartDate" placeholder=" ">
+                <label for="opening-balance-date" class="form-label">Opening Balance Date</label>
+            </div>
+            <div class="col-md-6 form-group">
+                <textarea class="form-control" id="notes" rows="3" placeholder="أدخل الملاحظات"></textarea>
+                <label for="notes" class="form-label">الملاحظات</label>
+            </div>
+        </div>
+
+        <div class="tab-content" id="documentTabsContent">
+            <div class="tab-pane fade show active" id="new-document" role="tabpanel" aria-labelledby="new-document-tab">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="upload-area p-4 border border-dashed text-center">
+                            <i class="fas fa-cloud-upload-alt fa-2x text-primary mb-2"></i>
+                            <p>أسقط الملف هنا أو اختر من جهازك</p>
+                            <input type="file" class="form-control-file" style="display: none;" id="fileUploadInput">
+                            <button class="btn btn-primary" onclick="document.getElementById('fileUploadInput').click();">اختر ملف</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="uploaded-documents" role="tabpanel" aria-labelledby="uploaded-documents-tab">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <!-- الحقل الرئيسي -->
+<div class="form-group">
+    <label for="documentSelect">المستند</label>
+    <div class="d-flex align-items-center">
+        <!-- القائمة المنسدلة لاختيار المستند -->
+        <select class="form-control w-50" id="documentSelect">
+            <option>Select Document</option>
+            <option>Document 1</option>
+            <option>Document 2</option>
+        </select>
+        
+        <!-- زر "أرفق" -->
+        <button class="btn btn-success me-2" style="margin-left: 10px;">
+            أرفق
+        </button>
+
+        <!-- زر "بحث متقدم" لفتح المودال -->
+        <button class="btn btn-success me-2" data-toggle="modal" data-target="#advancedSearchModal" style="margin-left: 10px;">
+            <i class="fas fa-search"></i> بحث متقدم
+        </button>
+    </div>
+</div>
+
+<!-- المودال الخاص بالبحث المتقدم -->
+<div class="modal fade" id="advancedSearchModal" tabindex="-1" aria-labelledby="advancedSearchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="advancedSearchModalLabel">البحث المتقدم</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- محتوى البحث المتقدم -->
+                <div class="alert alert-warning" role="alert">
+                    <strong>No Documents found:</strong> click here to clear search
+                </div>
+                <!-- يمكنك إضافة حقول البحث المتقدم هنا -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+
+<!-- تضمين مكتبة Font Awesome و Bootstrap JS -->
+
+                    </div>
+                </div>
+                
+        
+            </div>
+        </div>
+    </div>
+    <div id="formContainer">
+        <div class="form-section" id="contactForm" style="display: none; background: linear-gradient(135deg, #f3e7e9, #e3eeff); border-radius: 8px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); position: relative;">
+            <button type="button" class="btn btn-danger btn-sm icon-button" onclick="this.parentElement.remove()" style="position: absolute; top: 10px; left: 10px;">
+                <i class="fas fa-times"></i>
+            </button>
+            <h6 style="font-weight: bold; color: #6a11cb;">قائمة الاتصال</h6>
+          
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label" style="color: #2575fc;">الاسم الأول</label>
+                    <input type="text" class="form-control" style="border-radius: 8px; border: 1px solid #b0c4de;">
+                </div>
+                <div class="col">
+                    <label class="form-label" style="color: #2575fc;">الاسم الأخير</label>
+                    <input type="text" class="form-control" style="border-radius: 8px; border: 1px solid #b0c4de;">
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label" style="color: #2575fc;">البريد الإلكتروني</label>
+                <input type="email" class="form-control" style="border-radius: 8px; border: 1px solid #b0c4de;">
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label" style="color: #2575fc;">الهاتف</label>
+                    <input type="text" class="form-control" style="border-radius: 8px; border: 1px solid #b0c4de;">
+                </div>
+                <div class="col">
+                    <label class="form-label" style="color: #2575fc;">جوال</label>
+                    <input type="text" class="form-control" style="border-radius: 8px; border: 1px solid #b0c4de;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- زر إضافة لنسخ الفورم -->
+       
+        
+
+        <!-- الأزرار -->
+        <div class="form-actions">
+            <button class="btn btn-primary" onclick="addForm()" type="button" style="background: linear-gradient(135deg, #6a11cb, #2575fc); color: white; border: none; border-radius: 8px; padding: 10px 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <i class="fas fa-plus-circle" style="color: white;"></i> اضافة جهات الاتصال 
+            </button>
+            <button type="button" class="cancel-btn">إلغاء</button>
+            <button type="submit" class="save-btn">حفظ</button>
+        </div>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+<script src="../js/date.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+        function addForm() {
+        // نسخ النموذج الأساسي
+        var originalForm = document.getElementById("contactForm");
+        var newForm = originalForm.cloneNode(true);
+        
+        // إزالة id من النموذج الجديد لمنع تكرار المعرفات
+        newForm.id = '';
+        
+        // عرض النموذج الجديد
+        newForm.style.display = "block";
+        
+        // إضافة النموذج الجديد إلى الوعاء
+        document.getElementById("formContainer").appendChild(newForm);
+    }
+</script>
+</body>
+</html>

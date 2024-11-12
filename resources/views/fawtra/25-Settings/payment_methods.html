@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طرق الدفع</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .payment-method {
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .top-bar {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .top-bar button {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .top-bar button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .add-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .add-btn:hover {
+            background-color: #218838;
+        }
+
+        .payment-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .payment-method img {
+            width: 50px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .bottom-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: absolute;
+            bottom: 10px;
+            width: 90%;
+            left: 5%;
+        }
+
+        .favorite {
+            color: #f0ad4e;
+            cursor: pointer;
+        }
+
+        .settings {
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .save-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .save-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container my-4">
+        <div class="top-bar">
+            <span>طرق الدفع</span>
+            <button class="save-btn"><i class="fas fa-save"></i> حفظ</button>
+        </div>
+
+        <button class="add-btn" onclick="window.location.href='add_custom_payment.html';">
+            <i class="fas fa-plus"></i> إضافة وسيلة دفع مخصصة
+        </button>
+
+        <div class="row g-4">
+            <!-- 11 بطاقة دفع مع بيانات فريدة لكل بطاقة -->
+            <div class="col-md-3">
+                <div class="payment-method" data-title="تحويل بنكي" data-image="https://cdn-icons-png.flaticon.com/512/410/410126.png">
+                    <img src="https://cdn-icons-png.flaticon.com/512/410/410126.png" alt="تحويل بنكي">
+                    <span>تحويل بنكي</span>
+                    <div class="bottom-controls">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="bank-transfer" checked>
+                        </div>
+                        <i class="far fa-star favorite"></i>
+                        <i class="fas fa-cog settings" data-bs-toggle="offcanvas" data-bs-target="#settingsOffcanvas" onclick="openSettings(this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="payment-method" data-title="نقدي" data-image="https://cdn-icons-png.flaticon.com/512/1792/1792912.png">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1792/1792912.png" alt="نقدي">
+                    <span>نقدي</span>
+                    <div class="bottom-controls">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="cash" checked>
+                        </div>
+                        <i class="far fa-star favorite"></i>
+                        <i class="fas fa-cog settings" data-bs-toggle="offcanvas" data-bs-target="#settingsOffcanvas" onclick="openSettings(this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="payment-method" data-title="PayPal" data-image="https://cdn-icons-png.flaticon.com/512/174/174861.png">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174861.png" alt="PayPal">
+                    <span>PayPal</span>
+                    <div class="bottom-controls">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="paypal">
+                        </div>
+                        <i class="far fa-star favorite"></i>
+                        <i class="fas fa-cog settings" data-bs-toggle="offcanvas" data-bs-target="#settingsOffcanvas" onclick="openSettings(this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="payment-method" data-title="شيك" data-image="https://cdn-icons-png.flaticon.com/512/2632/2632151.png">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2632/2632151.png" alt="شيك">
+                    <span>شيك</span>
+                    <div class="bottom-controls">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="cheque">
+                        </div>
+                        <i class="far fa-star favorite"></i>
+                        <i class="fas fa-cog settings" data-bs-toggle="offcanvas" data-bs-target="#settingsOffcanvas" onclick="openSettings(this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="payment-method" data-title="بطاقة ائتمان" data-image="https://cdn-icons-png.flaticon.com/512/633/633611.png">
+                    <img src="https://cdn-icons-png.flaticon.com/512/633/633611.png" alt="بطاقة ائتمان">
+                    <span>بطاقة ائتمان</span>
+                    <div class="bottom-controls">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="credit-card">
+                        </div>
+                        <i class="far fa-star favorite"></i>
+                        <i class="fas fa-cog settings" data-bs-toggle="offcanvas" data-bs-target="#settingsOffcanvas" onclick="openSettings(this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="payment-method" data-title="PayFort" data-image="https://cdn-icons-png.flaticon.com/512/2767/2767074.png">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2767/2767074.png" alt="PayFort">
+                    <span>PayFort</span>
+                    <div class="bottom-controls">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="payfort">
+                        </div>
+                        <i class="far fa-star favorite"></i>
+                        <i class="fas fa-cog settings" data-bs-toggle="offcanvas" data-bs-target="#settingsOffcanvas" onclick="openSettings(this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="payment-method" data-title="PayTabs" data-image="https://cdn-icons-png.flaticon.com/512/1364/1364994.png">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1364/1364994.png" alt="PayTabs">
+                    <span>PayTabs</span>
+                    <div class="bottom-controls">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="paytabs">
+                        </div>
+                        <i class="far fa-star favorite"></i>
+                        <i class="fas fa-cog settings" data-bs-toggle="offcanvas" data-bs-target="#settingsOffcanvas" onclick="openSettings(this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="payment-method" data-title="Stripe" data-image="https://cdn-icons-png.flaticon.com/512/8232/8232161.png">
+                    <img src="https://cdn-icons-png.flaticon.com/512/8232/8232161.png" alt="Stripe">
+                    <span>Stripe</span>
+                    <div class="bottom-controls">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="stripe">
+                        </div>
+                        <i class="far fa-star favorite"></i>
+                        <i class="fas fa-cog settings" data-bs-toggle="offcanvas" data-bs-target="#settingsOffcanvas" onclick="openSettings(this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="payment-method" data-title="Tap" data-image="https://cdn-icons-png.flaticon.com/512/2750/2750657.png">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2750/2750657.png" alt="Tap">
+                    <span>Tap</span>
+                    <div class="bottom-controls">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="tap">
+                        </div>
+                        <i class="far fa-star favorite"></i>
+                        <i class="fas fa-cog settings" data-bs-toggle="offcanvas" data-bs-target="#settingsOffcanvas" onclick="openSettings(this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="payment-method" data-title="Tamara Pay" data-image="https://cdn-icons-png.flaticon.com/512/7430/7430943.png">
+                    <img src="https://cdn-icons-png.flaticon.com/512/7430/7430943.png" alt="Tamara Pay">
+                    <span>Tamara Pay</span>
+                    <div class="bottom-controls">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="tamara-pay">
+                        </div>
+                        <i class="far fa-star favorite"></i>
+                        <i class="fas fa-cog settings" data-bs-toggle="offcanvas" data-bs-target="#settingsOffcanvas" onclick="openSettings(this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="payment-method" data-title="Tabby" data-image="https://cdn-icons-png.flaticon.com/512/8254/8254984.png">
+                    <img src="https://cdn-icons-png.flaticon.com/512/8254/8254984.png" alt="Tabby">
+                    <span>Tabby</span>
+                    <div class="bottom-controls">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="tabby">
+                        </div>
+                        <i class="far fa-star favorite"></i>
+                        <i class="fas fa-cog settings" data-bs-toggle="offcanvas" data-bs-target="#settingsOffcanvas" onclick="openSettings(this)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة الإعدادات الجانبية -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="settingsOffcanvas" aria-labelledby="settingsOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="settingsOffcanvasLabel">إعدادات طريقة الدفع</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="text-center mb-3">
+                <img id="payment-image" src="" alt="Payment" style="width: 80px;">
+            </div>
+            <form>
+                <div class="mb-3">
+                    <label for="username" class="form-label">اسم المستخدم</label>
+                    <input type="text" class="form-control" id="username" placeholder="أدخل اسم المستخدم">
+                </div>
+                <div class="mb-3">
+                    <label for="currency" class="form-label">العملة الافتراضية</label>
+                    <select class="form-select" id="currency">
+                        <option selected>اختر العملة</option>
+                        <option value="USD">USD</option>
+                        <option value="SAR">SAR</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">مصاريف الدفع</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentFees" id="feesAdd" checked>
+                        <label class="form-check-label" for="feesAdd">
+                            إضافة
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="paymentFees" id="feesAccount">
+                        <label class="form-check-label" for="feesAccount">
+                            حساب
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="offcanvas-footer text-center">
+            <button type="button" class="btn btn-success">حفظ</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openSettings(element) {
+            const paymentMethod = element.closest('.payment-method');
+            const title = paymentMethod.getAttribute('data-title');
+            const image = paymentMethod.getAttribute('data-image');
+
+            document.getElementById('settingsOffcanvasLabel').innerText = `إعدادات ${title}`;
+            document.getElementById('payment-image').src = image;
+        }
+    </script>
+</body>
+</html>

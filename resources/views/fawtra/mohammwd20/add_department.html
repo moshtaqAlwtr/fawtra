@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة قسم جديد</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            text-align: left;
+        }
+
+        .navbar .btn {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .container {
+            margin: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn.green {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <button class="btn" onclick="location.href='main.html';">الذهاب إلى الموقع</button>
+        <button class="btn" onclick="location.href='help.html';">المساعدة</button>
+    </div>
+
+    <div class="container">
+        <h2>إضافة قسم جديد</h2>
+        <form action="submit_department.html" method="POST">
+            <div class="form-group">
+                <label for="name">اسم القسم:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="status">الحالة:</label>
+                <select id="status" name="status" required>
+                    <option value="active">نشط</option>
+                    <option value="inactive">غير نشط</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="description">الوصف:</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="manager">المديرون المختارون:</label>
+                <select id="manager" name="manager">
+                    <option value="">اختر موظف</option>
+                    <!-- قائمة الموظفين -->
+                </select>
+            </div>
+            <button type="submit" class="btn green">حفظ</button>
+            <button type="button" class="btn" onclick="location.href='departments_management.html';">إلغاء</button>
+        </form>
+    </div>
+</body>
+</html>

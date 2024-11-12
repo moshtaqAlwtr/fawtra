@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الأقسام الوظيفية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            text-align: left;
+        }
+
+        .navbar .btn {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .container {
+            margin: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .btn.green {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn.edit {
+            background-color: #ffc107;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <button class="btn" onclick="location.href='main.html';">الذهاب إلى الموقع</button>
+        <button class="btn" onclick="location.href='help.html';">المساعدة</button>
+    </div>
+    
+    <div class="container">
+        <h2>الأقسام</h2>
+        <button class="btn green" onclick="location.href='add_department.html';">أضف قسم +</button>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>اسم القسم</th>
+                    <th>الحالة</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>قسم التسويق</td>
+                    <td>نشط</td>
+                    <td><button class="btn edit">تعديل</button></td>
+                </tr>
+                <tr>
+                    <td>قسم المبيعات</td>
+                    <td>نشط</td>
+                    <td><button class="btn edit">تعديل</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات الموردين</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .box {
+            background-color: white;
+            width: 250px;
+            height: 200px;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .box:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .box i {
+            font-size: 48px;
+            color: #5a5a5a;
+        }
+
+        .box p {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .flex-boxes {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="flex-boxes">
+            <a href="related_templates.html">
+                <div class="box">
+                    <div>
+                        <i class="fas fa-tools"></i>
+                        <p>النماذج ذات الصلة</p>
+                    </div>
+                </div>
+            </a>
+            <a href="additional_fields.html">
+                <div class="box">
+                    <div>
+                        <i class="fas fa-credit-card"></i>
+                        <p>حقول إضافية</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- إضافة Font Awesome لاستخدام الأيقونات -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

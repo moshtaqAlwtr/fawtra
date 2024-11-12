@@ -1,0 +1,174 @@
+@import "../variables";
+@import "../mixins";
+
+.btn.s2020 {
+  transition: all 0.2s ease-in-out;
+  &.btn-secondary {
+    color: #212529;
+    background-color: #dbe7f3;
+    border-color: #dbe7f3;
+    &:hover {
+      color: #212529;
+      background-color: #bfd4ea;
+      border-color: #b5cee6;
+    }
+  }
+  &.btn-success {
+    background-image: none;
+    color: #fff;
+    background-color: #13b272;
+    border-color: #13b272;
+    &:hover {
+      color: #fff;
+      background-color: #0f8f5c;
+      border-color: #0e8454;
+    }
+  }
+  &.btn-icn.responsive {
+    span {
+      @include media-max($sm) {
+        display: none;
+      }
+    }
+    i:not(.caret) {
+      @include media-max($sm) {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+    @include media-max($sm) {
+      padding: 0;
+      border: 0;
+    }
+  }
+}
+
+// New s2020 Buttons like laravel
+
+.btn-shadow {
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.16);
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: 3px 7px 8px 2px rgba(0, 0, 0, 0.16);
+  }
+  &:focus,
+  &:active {
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.16) !important;
+  }
+}
+
+.btn-hover-translate {
+  transform: translateY(0px);
+  &:hover,
+  &:focus,
+  &:active {
+    transform: translateY(-2px);
+  }
+}
+
+.btn-hover-ripple {
+  position: relative;
+  overflow: hidden;
+  .btn-content {
+    z-index: 2;
+    position: relative;
+    transition: color 0.2s ease-in-out;
+  }
+  .btn-ripple {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.17);
+    transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    .btn-ripple {
+      width: 225%;
+      height: 562.5px;
+    }
+  }
+}
+
+.btn-s2020.btn-icon-s2020 {
+  position: relative;
+  @include ltr() {
+    padding-right: $btn-padding-x;
+    padding-left: $btn-icon-padding-x;
+  }
+  @include rtl() {
+    padding-left: $btn-padding-x;
+    padding-right: $btn-icon-padding-x;
+  }
+  i:not(.caret) {
+    position: absolute;
+    top: -1px;
+    //background: rgba(0,0,0,.1);
+    background: rgba(0, 33, 125, 0.1);
+    //width: 38px;
+    //height: 38px;
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    vertical-align: middle;
+    //line-height: 38px;
+    line-height: 35px;
+    font-size: 20px;
+    // border-radius: $border-radius 0 0 $border-radius;
+    @include ltr() {
+      left: -1px;
+    }
+    @include rtl() {
+      right: -1px;
+    }
+    &.mdi-export{
+      text-indent: 2px;
+    }
+  }
+  &.responsive-s2020 {
+    span {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+    i:not(.caret) {
+      @include media-breakpoint-down(sm) {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      padding: 0;
+      border: 0;
+    }
+  }
+  &.btn-sm-s2020 {
+    @include ltr() {
+      padding-right: $btn-padding-x - 0.25rem;
+      padding-left: $btn-icon-padding-x - 1rem;
+    }
+    @include rtl() {
+      padding-left: $btn-padding-x - 0.25rem;
+      padding-right: $btn-icon-padding-x - 1rem;
+    }
+    i:not(.caret) {
+      width: 28px;
+      height: 100%;
+      line-height: 29px;
+      top: 0;
+      &.fa {
+        font-size: 13px;
+      }
+    }
+  }
+}

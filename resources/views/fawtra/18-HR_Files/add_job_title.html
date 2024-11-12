@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة المسمى الوظيفي</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+            background-color: #f4f4f9;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .save-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .cancel-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <div>إضافة المسمى الوظيفي</div>
+        <div class="buttons">
+            <button onclick="window.location.href='help.html';">المساعدة</button>
+            <button onclick="window.location.href='site.html';">الذهاب إلى الموقع</button>
+        </div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="container">
+        <h2>المسمى الوظيفي</h2>
+        <div class="form-group">
+            <label for="name">الاسم <span style="color:red;">*</span></label>
+            <input type="text" id="name" placeholder="أدخل اسم المسمى الوظيفي">
+        </div>
+        <div class="form-group">
+            <label for="status">الحالة <span style="color:red;">*</span></label>
+            <select id="status">
+                <option value="نشط">نشط</option>
+                <option value="غير نشط">غير نشط</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="description">الوصف</label>
+            <textarea id="description" rows="4" placeholder="أدخل وصف المسمى الوظيفي"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="department">القسم</label>
+            <select id="department">
+                <option value="القسم 1">القسم 1</option>
+                <option value="القسم 2">القسم 2</option>
+            </select>
+        </div>
+        <div class="buttons">
+            <button class="save-btn">حفظ</button>
+            <button class="cancel-btn" onclick="window.location.href='job_titles.html';">إلغاء</button>
+        </div>
+    </div>
+
+</body>
+</html>

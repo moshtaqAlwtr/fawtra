@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة خيار الشحن</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            direction: rtl;
+            background-color: #e9eef3;
+        }
+        .navbar {
+            background-color: #0078d7;
+            color: white;
+            padding: 10px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+        .header {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+        }
+        .content {
+            padding: 20px;
+        }
+        .form-section {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-section h5 {
+            margin-bottom: 20px;
+        }
+        .form-section button {
+            margin-top: 20px;
+        }
+        .btn-cancel {
+            background-color: #6c757d;
+            color: white;
+        }
+        .btn-save {
+            background-color: #28a745;
+            color: white;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-control {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="navbar d-flex justify-content-between">
+        <div>
+            <button class="btn btn-outline-light">الذهاب إلى الموقع</button>
+            <button class="btn btn-outline-light">المساعدة</button>
+        </div>
+        <div>محمد العنزي - Main Branch</div>
+    </div>
+
+    <!-- عنوان الصفحة -->
+    <div class="header d-flex justify-content-between align-items-center">
+        <div>
+            <h5>إضافة خيار الشحن</h5>
+        </div>
+        <div>
+            <button class="btn btn-save">حفظ</button>
+            <button class="btn btn-cancel">إلغاء</button>
+        </div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <div class="form-section">
+            <h5>أضف تفاصيل خيار الشحن</h5>
+            <form>
+                <div class="form-group">
+                    <label for="shippingName">الاسم <span style="color: red;">*</span></label>
+                    <input type="text" class="form-control" id="shippingName" placeholder="أدخل اسم خيار الشحن">
+                </div>
+                <div class="form-group">
+                    <label for="status">الحالة <span style="color: red;">*</span></label>
+                    <select id="status" class="form-control">
+                        <option value="نشط">نشط</option>
+                        <option value="غير نشط">غير نشط</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fees">الرسوم <span style="color: red;">*</span></label>
+                    <input type="number" class="form-control" id="fees" placeholder="أدخل الرسوم">
+                </div>
+                <div class="form-group">
+                    <label for="taxes">الضرائب</label>
+                    <select id="taxes" class="form-control">
+                        <option value="">اختر الضرائب</option>
+                        <!-- يمكن إضافة المزيد من الخيارات هنا -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="account">الحساب</label>
+                    <select id="account" class="form-control">
+                        <option value="">الحساب الافتراضي</option>
+                        <!-- يمكن إضافة المزيد من الحسابات هنا -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="displayOrder">ترتيب العرض</label>
+                    <input type="number" class="form-control" id="displayOrder" placeholder="أدخل ترتيب العرض">
+                </div>
+                <div class="form-group">
+                    <label for="description">الوصف</label>
+                    <textarea id="description" class="form-control" rows="3" placeholder="أدخل الوصف"></textarea>
+                </div>
+                <button class="btn btn-save">حفظ</button>
+                <button type="button" class="btn btn-cancel">إلغاء</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../Design/css/data.css">
+ 
+
+    <style>
+        body {
+            background-color: #e0e7ed;
+        }
+        .card {
+            background-color: #fff;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .gradient-btn {
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: white;
+        }
+        .gradient-btn:hover {
+            background: linear-gradient(90deg, #0072ff, #00c6ff);
+        }
+        .form-label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body dir="rtl">
+
+<div class="container my-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-inline-flex gap-2">
+            <button class="btn btn-success gradient-btn d-flex align-items-center">
+                <i class="fas fa-save me-1"></i> حفظ
+            </button>
+            <button class="btn btn-secondary d-flex align-items-center">
+                <i class="fas fa-times me-1"></i> إلغاء
+            </button>
+        </div>
+        
+        <button class="btn btn-light"><i class="fas fa-times-circle me-1"></i> </button>
+    </div>
+
+    <div class="card p-4">
+        <form>
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label for="client" class="form-label">العميل</label>
+                    <select id="client" class="form-select">
+                        <option>اختر عميل</option>
+                        <option>عميل 1</option>
+                        <option>عميل 2</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" id="deliveryStartDate" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="time" class="form-label">الوقت</label>
+                    <input type="time" id="time" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="duration" class="form-label">مدة</label>
+                    <input type="text" id="duration" class="form-control" placeholder="00:00">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="actions" class="form-label">الإجراءات</label>
+                <select id="actions" class="form-select">
+                    <option>-</option>
+                    <option>إجراء 1</option>
+                    <option>إجراء 2</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="notes" class="form-label">الملاحظات</label>
+                <textarea id="notes" class="form-control" rows="4"></textarea>
+            </div>
+
+            <div class="form-check mb-2">
+                <input type="checkbox" id="shareWithClient" class="form-check-input">
+                <label for="shareWithClient" class="form-check-label">مشاركة مع العميل</label>
+            </div>
+            <div class="form-check mb-2">
+                <input type="checkbox" id="recurring" class="form-check-input">
+                <label for="recurring" class="form-check-label">متكرر</label>
+            </div>
+            <div class="form-check mb-2">
+                <input type="checkbox" id="assignToEmployees" class="form-check-input">
+                <label for="assignToEmployees" class="form-check-label">تعيين إلى موظفين</label>
+            </div>
+        </form>
+    </div>
+
+    <div class="fixed-bottom m-3">
+        <button class="btn btn-info gradient-btn d-flex align-items-center">
+            <i class="fas fa-question-circle me-2"></i> لديك سؤال؟
+        </button>
+    </div>
+</div>
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="../js/date.js"></script>
+<script>
+    // تطبيق CKEditor على عنصر textarea
+    CKEDITOR.replace('notes', {
+        language: 'ar',  // تعيين اللغة إلى العربية
+        toolbar: [
+            { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike'] },
+            { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'] },
+            { name: 'links', items: ['Link', 'Unlink'] },
+            { name: 'styles', items: ['Font', 'FontSize', 'TextColor', 'BGColor'] },
+            { name: 'insert', items: ['HorizontalRule'] }
+        ],
+        height: 200  // ارتفاع الصندوق
+    });
+</script>
+</body>
+</html>

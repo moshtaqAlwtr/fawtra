@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات الفروع</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f1f6fb;
+            font-family: 'Tajawal', sans-serif
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .btn-save {
+            background-color: #28a745;
+            color: white;
+            border-radius: 10px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        .btn-save:hover {
+            background-color: #218838;
+        }
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .form-check-label {
+            font-size: 1rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header Section -->
+    <div class="header">
+        <button class="btn btn-save"><i class="fas fa-save"></i> حفظ</button>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-container">
+        <h5 class="mb-4">إعدادات الفروع</h5>
+        <form>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="mainBranch" class="form-label">الفرع الرئيسي</label>
+                    <select class="form-select" id="mainBranch">
+                        <option selected>Main Branch</option>
+                        <!-- Add more options if needed -->
+                    </select>
+                </div>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="costCenters">
+                <label class="form-check-label" for="costCenters">مشاركة مراكز التكلفة بين الفروع</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="shareClients">
+                <label class="form-check-label" for="shareClients">مشاركة العملاء بين الفروع</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="shareProducts">
+                <label class="form-check-label" for="shareProducts">مشاركة المنتجات بين الفروع</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="shareSuppliers">
+                <label class="form-check-label" for="shareSuppliers">مشاركة الموردين بين الفروع</label>
+            </div>
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="customizeAccounts">
+                <label class="form-check-label" for="customizeAccounts">تخصيص الحسابات في شجرة الحسابات لكل فرع</label>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

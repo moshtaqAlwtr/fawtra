@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل الحسابات</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: #007bff;
+            color: white;
+        }
+        .navbar .navbar-brand {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 auto;
+        }
+        .accounts-list {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .accounts-list ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .accounts-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+            position: relative;
+        }
+        .accounts-list li a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .accounts-list li a:hover {
+            text-decoration: underline;
+        }
+        .btn-add-account {
+            margin-top: 15px;
+            width: 100%;
+        }
+        .modal-header {
+            background-color: #007bff;
+            color: white;
+        }
+        .dropdown {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط أزرق في الأعلى -->
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand mx-auto" href="#">دليل الحسابات</a>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-3">
+                <div class="accounts-list">
+                    <ul id="accounts-list">
+                        <li>
+                            <a href="#" data-category="الأصول">#1 - الأصول</a>
+                            <button class="btn btn-sm btn-primary btn-add-account" data-toggle="modal" data-target="#addAccountModal" data-parent-id="assets-list">إضافة حساب</button>
+                            <ul class="sub-account" id="assets-list"></ul>
+                        </li>
+                        <li>
+                            <a href="#" data-category="الخصوم">#2 - الخصوم</a>
+                            <button class="btn btn-sm btn-primary btn-add-account" data-toggle="modal" data-target="#addAccountModal" data-parent-id="liabilities-list">إضافة حساب</button>
+                            <ul class="sub-account" id="liabilities-list"></ul>
+                        </li>
+                        <li>
+                            <a href="#" data-category="المصروفات">#3 - المصروفات</a>
+                            <button class="btn btn-sm btn-primary btn-add-account" data-toggle="modal" data-target="#addAccountModal" data-parent-id="expenses-list">إضافة حساب</button>
+                            <ul class="sub-account" id="expenses-list"></ul>
+                        </li>
+                        <li>
+                            <a href="#" data-category="الإيرادات">#4 - الإيرادات</a>
+                            <button class="btn btn-sm btn-primary btn-add-account" data-toggle="modal" data-target="#addAccountModal" data-parent-id="revenues-list">إضافة حساب</button>
+                            <ul class="sub-account" id="revenues-list"></ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="card">
+                    <div class="card-header">
+                        تفاصيل الحساب
+                    </div>
+                    <div class="card-body" id="account-details">
+                        <p>يرجى اختيار حساب من القائمة على اليمين لعرض التفاصيل.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal لإضافة حساب -->
+    <div class="modal fade" id="addAccountModal" tabindex="-1" role="dialog" aria-labelledby="addAccountModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addAccountModalLabel">أضف حساب</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="addAccountForm">
+                        <div class="form-group">
+                            <label for="accountCode">الكود</label>
+                            <input type="text" class="form-control" id="accountCode" value="13">
+                        </div>
+                        <div class="form-group">
+                            <label for="accountType">نوع الحساب</label>
+                            <select class="form-control" id="accountType">
+                                <option>حساب رئيسي</option>
+                                <option>حساب فرعي</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mainAccount">حساب رئيسي</label>
+                            <select class="form-control" id="mainAccount">
+                                <option value="assets">الأصول</option>
+                                <option value="liabilities">الخصوم</option>
+                                <option value="expenses">المصروفات</option>
+                                <option value="revenues">الإيرادات</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="accountName">الاسم</label>
+                            <input type="text" class="form-control" id="accountName">
+                        </div>
+                        <div class="form-group">
+                            <label>النوع</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="accountTypeOptions" id="debit" value="debit" checked>
+                                <label class="form-check-label" for="debit">مدين</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="accountTypeOptions" id="credit" value="credit">
+                                <label class="form-check-label" for="credit">دائن</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
+                    <button type="button" class="btn btn-success" id="saveAccountBtn">حفظ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let parentId = '';
+
+            $('.btn-add-account').click(function() {
+                parentId = $(this).data('parent-id');
+            });
+
+            $('#saveAccountBtn').click(function() {
+                const accountCode = $('#accountCode').val();
+                const accountName = $('#accountName').val();
+                const mainAccount = parentId ? parentId : $('#mainAccount').val();
+                let listId;
+
+                // تحديد القائمة المناسبة
+                switch (mainAccount) {
+                    case 'assets':
+                        listId = '#assets-list';
+                        break;
+                    case 'liabilities':
+                        listId = '#liabilities-list';
+                        break;
+                    case 'expenses':
+                        listId = '#expenses-list';
+                        break;
+                    case 'revenues':
+                        listId = '#revenues-list';
+                        break;
+                    default:
+                        listId = `#${mainAccount}`;
+                        break;
+                }
+
+                // تحديد الرقم الجديد للحساب بناءً على عدد العناصر الحالية في القسم
+                const newAccountNumber = $(listId + ' li').length + 1;
+                const newAccountCode = `${accountCode}.${newAccountNumber}`;
+
+                // إضافة الحساب الجديد إلى القائمة المناسبة في الجانب الأيمن
+                $(listId).append(`<li><a href="#" class="account-item" data-code="${newAccountCode}" data-name="${accountName}">${newAccountCode} - ${accountName}</a>
+                    <ul class="sub-account" id="${newAccountCode}-list"></ul>
+                </li>`);
+
+                // إضافة الحساب الجديد إلى الوسط مع ثلاث نقاط للتعديل وإضافة حساب فرعي
+                $('#account-details').append(`
+                    <div class="card mb-2">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>${newAccountCode} - ${accountName}</strong>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    ...
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item edit-account" href="#" data-code="${newAccountCode}" data-name="${accountName}">تعديل</a>
+                                    <a class="dropdown-item add-sub-account" href="#" data-parent-id="${newAccountCode}-list">إضافة حساب فرعي</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                // إغلاق المودال
+                $('#addAccountModal').modal('hide');
+            });
+
+            // تعديل الحساب عند النقر على زر التعديل
+            $(document).on('click', '.edit-account', function() {
+                const accountCode = $(this).data('code');
+                const accountName = $(this).data('name');
+
+                // تعبئة النموذج بقيم الحساب الحالية
+                $('#accountCode').val(accountCode);
+                $('#accountName').val(accountName);
+
+                // فتح المودال للتعديل
+                $('#addAccountModal').modal('show');
+            });
+
+            // إضافة حساب فرعي عند النقر على زر إضافة حساب فرعي
+            $(document).on('click', '.add-sub-account', function() {
+                parentId = $(this).data('parent-id');
+                $('#accountCode').val('');
+                $('#accountName').val('');
+                $('#addAccountModal').modal('show');
+            });
+        });
+    </script>
+</body>
+</html>

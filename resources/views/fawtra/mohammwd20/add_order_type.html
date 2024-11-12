@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة نوع الطلب</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eaeaea;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .buttons .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            margin-left: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn.green {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .form-container {
+            padding: 20px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #eaeaea;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"], select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .toggle-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .toggle-row input {
+            width: 20px;
+            height: 20px;
+        }
+
+        .sub-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>إضافة نوع الطلب</h2>
+            <div class="buttons">
+                <button class="btn green">حفظ</button>
+                <button class="btn">إلغاء</button>
+            </div>
+        </div>
+        
+        <div class="form-container">
+            <form action="" method="post">
+                <div class="row">
+                    <label for="name">الاسم *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="row">
+                    <label for="status">الحالة</label>
+                    <select id="status" name="status">
+                        <option value="active">نشط</option>
+                        <option value="inactive">غير نشط</option>
+                    </select>
+                </div>
+
+                <div class="row toggle-row">
+                    <label for="allow-approval">السماح بالموافقة أو رفض طلباتي</label>
+                    <input type="checkbox" id="allow-approval" name="allow_approval">
+                </div>
+
+                <div class="row">
+                    <label for="permissions">الصلاحيات</label>
+                    <div class="sub-row">
+                        <label>أضف طلب جديد</label>
+                        <select id="add-new" name="add_new">
+                            <option value="all">الكل</option>
+                            <option value="limited">محدود</option>
+                        </select>
+                    </div>
+                    
+                    <div class="sub-row">
+                        <label>موافقة / رفض الطلبات</label>
+                        <select id="approve-reject" name="approve_reject">
+                            <option value="all">الكل</option>
+                            <option value="limited">محدود</option>
+                        </select>
+                    </div>
+
+                    <div class="sub-row">
+                        <label>عرض الطلبات</label>
+                        <select id="view-requests" name="view_requests">
+                            <option value="all">الكل</option>
+                            <option value="limited">محدود</option>
+                        </select>
+                    </div>
+
+                    <div class="sub-row">
+                        <label>إدارة الطلبات للآخرين</label>
+                        <select id="manage-others" name="manage_others">
+                            <option value="all">الكل</option>
+                            <option value="limited">محدود</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

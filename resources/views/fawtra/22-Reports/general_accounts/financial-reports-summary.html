@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>تقارير الحسابات العامة</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap');
+
+        body {
+            background-color: #f8f9fa;
+            direction: rtl;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(90deg, #007bff, #6610f2);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .icon-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: -60px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .list-group-item {
+            border: none;
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .list-group-item .btn {
+            min-width: 80px;
+        }
+
+        .btn-primary {
+            background: #6610f2;
+            border: none;
+        }
+
+        .btn-outline-secondary {
+            border: 1px solid #6c757d;
+            color: #6c757d;
+        }
+
+        .btn-outline-secondary:hover {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+
+        .ms-2 {
+            margin-left: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="card gradient-bg mb-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <h4>تقارير الحسابات العامة</h4>
+                <button class="btn btn-outline-light">الذهاب إلى الموقع <i class="fas fa-external-link-alt"></i></button>
+            </div>
+        </div>
+
+        <!-- السطر الأول -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card p-4 mb-4">
+                    <h5>تقارير الحسابات العامة</h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-primary"><i class="fas fa-chart-bar text-white"></i></span> تقرير الضرائب</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='tax_report.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-secondary"><i class="fas fa-file-alt text-white"></i></span> إقرار ضريبي</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='vat_report.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-success"><i class="fas fa-money-check-alt text-white"></i></span> قائمة الدخل</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='income_statement.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-info"><i class="fas fa-balance-scale text-white"></i></span> الميزانية العمومية</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='balance_sheet.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-danger"><i class="fas fa-chart-line text-white"></i></span> الربح والخسارة</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='profit_loss_cash.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-secondary"><i class="fas fa-exchange-alt text-white"></i></span> الحركات المالية</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='financial_movements.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-dark"><i class="fas fa-water text-white"></i></span> تقرير التدفقات النقدية</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='cash_flow_report.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-info"><i class="fas fa-coins text-white"></i></span> الأصول</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='assets_report.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card p-4 mb-4">
+                    <h5>تقارير القيود اليومية</h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-success"><i class="fas fa-book text-white"></i></span> تقرير ميزان مراجعة مجاميع وأرصدة</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm"onclick="window.location.href='trial_balance_summary.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-warning"><i class="fas fa-book-open text-white"></i></span> تقرير حساب مراجعة</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm"onclick="window.location.href='account_review_report.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-primary"><i class="fas fa-balance-scale text-white"></i></span> تقرير ميزان مراجعة أرصدة</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='trial_balance_report.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-info"><i class="fas fa-book text-white"></i></span> حساب الأستاذ</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='general_ledger.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-primary"><i class="fas fa-project-diagram text-white"></i></span> مراكز التكلفة</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='cost_center.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-secondary"><i class="fas fa-book-medical text-white"></i></span> تقرير القيود</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='journal_entries_report.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-dark"><i class="fas fa-list-alt text-white"></i></span> دليل الحسابات العامة</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='general_chart_of_accounts.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- السطر الثاني -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card p-4 mb-4">
+                    <h5>تقارير المصروفات المقسمة</h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-primary"><i class="fas fa-tags text-white"></i></span> المصروفات حسب التصنيف</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by_category.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-warning"><i class="fas fa-store text-white"></i></span> المصروفات حسب البائع</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by_vendor.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-success"><i class="fas fa-user-tie text-white"></i></span> المصروفات حسب الموظف</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by_employee.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-info"><i class="fas fa-user text-white"></i></span> المصروفات حسب العميل</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by_customer.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-4 mb-4">
+                    <h5>تقارير المصروفات حسب المدة الزمنية</h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-danger"><i class="fas fa-calendar-day text-white"></i></span> المصروفات اليومية</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by_day.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-secondary"><i class="fas fa-calendar-week text-white"></i></span> المصروفات الأسبوعية</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by_week.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-primary"><i class="fas fa-calendar-alt text-white"></i></span> المصروفات الشهرية</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by_month.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-info"><i class="fas fa-calendar-year text-white"></i></span> المصروفات السنوية</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by_year.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- السطر الثالث -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card p-4 mb-4">
+                    <h5>تقارير سندات القبض المقسمة</h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-primary"><i class="fas fa-tags text-white"></i></span> سندات القبض حسب التصنيف</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by1_category.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-warning"><i class="fas fa-store text-white"></i></span> سندات القبض حسب البائع</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by_seller.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-success"><i class="fas fa-user-tie text-white"></i></span> سندات القبض حسب الموظف</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by1_employee.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-info"><i class="fas fa-user text-white"></i></span> سندات القبض حسب العميل</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by1_customer.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-4 mb-4">
+                    <h5>تقارير سندات القبض حسب المدة الزمنية</h5>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-danger"><i class="fas fa-calendar-day text-white"></i></span> سندات القبض اليومية</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by1_day.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-secondary"><i class="fas fa-calendar-week text-white"></i></span> سندات القبض الأسبوعية</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by1_week.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-primary"><i class="fas fa-calendar-alt text-white"></i></span> سندات القبض الشهرية</div>
+                                    <div>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by1_month.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center"><span class="icon-circle bg-info"><i class="fas fa-calendar-year text-white"></i></span> سندات القبض السنوية</div>
+                                    <div>
+                                        <button class="btn btn-outline-secondary btn-sm me-2">تفاصيل <i class="fas fa-info-circle"></i></button>
+                                        <button class="btn btn-primary btn-sm" onclick="window.location.href='expenses_by1_year.html'">عرض <i class="fas fa-eye"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

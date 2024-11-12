@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رصيد الإجازات</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f2f2f2;
+        }
+        .navbar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .results-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <span>رصيد الإجازات</span>
+        <div>
+            <button onclick="window.location.href='#'">الذهاب إلى الموقع</button>
+            <button onclick="window.location.href='#'">المساعدة</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-container">
+            <label for="employeeSearch">ابحث عن اسم الموظف:</label>
+            <input type="text" id="employeeSearch" placeholder="أدخل اسم الموظف هنا..." oninput="searchEmployee()">
+        </div>
+
+        <div class="results-container" id="resultsContainer">
+            <!-- سيتم عرض نتائج البحث هنا -->
+            <p>لم يتم العثور على نتائج بعد.</p>
+        </div>
+    </div>
+
+    <script>
+        function searchEmployee() {
+            var input = document.getElementById('employeeSearch').value.toLowerCase();
+            var resultsContainer = document.getElementById('resultsContainer');
+
+            if (input === '') {
+                resultsContainer.innerHTML = '<p>لم يتم العثور على نتائج بعد.</p>';
+            } else {
+                // هنا يمكن إضافة المنطق لعرض نتائج البحث الفعلية
+                // على سبيل المثال البحث في قائمة الموظفين وعرض النتائج
+                resultsContainer.innerHTML = '<p>نتائج البحث عن: ' + input + '</p>';
+            }
+        }
+    </script>
+
+</body>
+</html>

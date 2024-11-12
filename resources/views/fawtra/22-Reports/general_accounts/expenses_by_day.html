@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تقرير المصروفات اليومية</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #f4f4f9, #e0eafc);
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+        header {
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .card {
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            color: #2980b9;
+            margin-bottom: 15px;
+        }
+        .form-control, .btn {
+            border-radius: 10px;
+        }
+        .btn-custom {
+            background-color: #3498db;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #2980b9;
+        }
+        .btn-danger-custom {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .btn-danger-custom:hover {
+            background-color: #c0392b;
+        }
+        .table thead th {
+            background-color: #3498db;
+            color: white;
+            border-top: none;
+        }
+        .table tbody tr {
+            transition: background-color 0.3s;
+        }
+        .table tbody tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>تقرير المصروفات اليومية</h1>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">تصفية البيانات</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="startDate">التاريخ من:</label>
+                        <input type="date" id="startDate" name="startDate" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="endDate">التاريخ إلى:</label>
+                        <input type="date" id="endDate" name="endDate" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="branch">الفرع:</label>
+                        <select id="branch" name="branch" class="form-control">
+                            <option value="all">الكل</option>
+                            <option value="main">الفرع الرئيسي</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="account">الحساب الفرعي:</label>
+                        <select id="account" name="account" class="form-control">
+                            <option value="all">الكل</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="cash">الخزينة:</label>
+                        <select id="cash" name="cash" class="form-control">
+                            <option value="all">الكل</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="classification">التصنيف:</label>
+                        <select id="classification" name="classification" class="form-control">
+                            <option value="all">الكل</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="currency">العملة:</label>
+                        <select id="currency" name="currency" class="form-control">
+                            <option value="all">الكل</option>
+                            <option value="SAR">SAR</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="sort">ترتيب حسب:</label>
+                        <select id="sort" name="sort" class="form-control">
+                            <option value="date">التاريخ</option>
+                            <option value="amount">القيمة</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="seller">البائع:</label>
+                        <select id="seller" name="seller" class="form-control">
+                            <option value="all">الكل</option>
+                            <!-- يمكنك إضافة المزيد من البائعين هنا -->
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <button class="btn btn-custom btn-block">عرض التقرير</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-danger-custom btn-block">إلغاء الفلتر</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-body">
+                <h2 class="card-title">نتائج التقرير</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>الوصف</th>
+                            <th>القيمة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>لا توجد بيانات توافق معطيات البحث</td>
+                            <td>0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

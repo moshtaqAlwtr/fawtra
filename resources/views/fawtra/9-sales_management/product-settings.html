@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات الحقول الاختيارية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+        .top-bar {
+            background-color: #007BFF; /* الشريط العلوي الأزرق */
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+        }
+        .top-bar button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        .container {
+            display: flex;
+        }
+        .fields-list {
+            width: 250px;
+            background-color: #E3F2FD; /* الخلفية الزرقاء للقائمة */
+            padding: 10px;
+            overflow-y: auto;
+            border-left: 1px solid #ddd;
+        }
+        .fields-list button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 5px;
+            background-color: #1976D2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: right;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .product-area {
+            flex: 1;
+            padding: 20px;
+        }
+        .product-area .field-item {
+            margin-bottom: 15px;
+        }
+        .product-area .field-item label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .product-area .field-item input, 
+        .product-area .field-item textarea,
+        .product-area .field-item select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .save-button {
+            background-color: #28a745; /* اللون الأخضر */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <button>الذهاب للموقع</button>
+    <button>المساعدة</button>
+</div>
+
+<div class="container">
+    <div class="product-area" id="product-area">
+        <h3>الحقول المضافة</h3>
+        <p>اختر حقلاً من القائمة لإضافته هنا.</p>
+    </div>
+
+    <div class="fields-list">
+        <button onclick="addField('single-line')">نص سطر واحد 📝</button>
+        <button onclick="addField('multi-line')">نص سطور متعددة 📋</button>
+        <button onclick="addField('number')">رقم 🔢</button>
+        <button onclick="addField('decimal')">رقم عشري 💲</button>
+        <button onclick="addField('email')">البريد الإلكتروني 📧</button>
+        <button onclick="addField('date')">تاريخ 📅</button>
+        <button onclick="addField('time')">وقت ⏰</button>
+        <button onclick="addField('datetime')">تاريخ ووقت 🕒</button>
+        <button onclick="addField('dropdown')">قائمة منسدلة 🔽</button>
+        <button onclick="addField('multiselect')">قائمة متعددة الخيارات ✅</button>
+        <button onclick="addField('radio')">خيار وحيد 🔘</button>
+        <button onclick="addField('checkbox')">مربع اختيار ☑️</button>
+        <button onclick="addField('location')">الموقع 📍</button>
+        <button onclick="addField('currency')">العملة 💵</button>
+        <button onclick="addField('file')">رفع ملف 📁</button>
+        <button onclick="addField('image')">رفع صورة 🖼️</button>
+        <button onclick="addField('rating')">تقييم ⭐</button>
+        <button onclick="addField('separator')">فاصل ➖</button>
+        <button onclick="addField('separator-text')">كتابة فاصلة ✏️</button>
+    </div>
+</div>
+
+<button class="save-button">حفظ</button>
+
+<script>
+    function addField(type) {
+        const container = document.getElementById('product-area');
+        let field = document.createElement('div');
+        field.classList.add('field-item');
+
+        switch (type) {
+            case 'single-line':
+                field.innerHTML = `<label>نص سطر واحد</label><input type="text" placeholder="أدخل النص هنا">`;
+                break;
+            case 'multi-line':
+                field.innerHTML = `<label>نص سطور متعددة</label><textarea rows="4" placeholder="أدخل النص هنا"></textarea>`;
+                break;
+            case 'number':
+                field.innerHTML = `<label>رقم</label><input type="number" placeholder="أدخل رقماً">`;
+                break;
+            case 'decimal':
+                field.innerHTML = `<label>رقم عشري</label><input type="number" step="0.01" placeholder="أدخل رقماً عشرياً">`;
+                break;
+            case 'email':
+                field.innerHTML = `<label>البريد الإلكتروني</label><input type="email" placeholder="أدخل البريد الإلكتروني">`;
+                break;
+            case 'date':
+                field.innerHTML = `<label>تاريخ</label><input type="date">`;
+                break;
+            case 'time':
+                field.innerHTML = `<label>وقت</label><input type="time">`;
+                break;
+            case 'datetime':
+                field.innerHTML = `<label>تاريخ ووقت</label><input type="datetime-local">`;
+                break;
+            case 'dropdown':
+                field.innerHTML = `<label>قائمة منسدلة</label><select><option>اختر خياراً</option></select>`;
+                break;
+            case 'multiselect':
+                field.innerHTML = `<label>قائمة متعددة الخيارات</label><select multiple><option>خيار 1</option></select>`;
+                break;
+            case 'radio':
+                field.innerHTML = `<label>خيار وحيد</label><input type="radio"> خيار`;
+                break;
+            case 'checkbox':
+                field.innerHTML = `<label>مربع اختيار</label><input type="checkbox"> اختيار`;
+                break;
+            case 'location':
+                field.innerHTML = `<label>الموقع</label><input type="text" placeholder="أدخل الموقع">`;
+                break;
+            case 'currency':
+                field.innerHTML = `<label>العملة</label><input type="text" placeholder="أدخل العملة">`;
+                break;
+            case 'file':
+                field.innerHTML = `<label>رفع ملف</label><input type="file">`;
+                break;
+            case 'image':
+                field.innerHTML = `<label>رفع صورة</label><input type="file" accept="image/*">`;
+                break;
+            case 'rating':
+                field.innerHTML = `<label>تقييم</label><input type="number" min="1" max="5" step="1">`;
+                break;
+            case 'separator':
+                field.innerHTML = `<hr>`;
+                break;
+            case 'separator-text':
+                field.innerHTML = `<label>كتابة فاصلة</label><input type="text" placeholder="أدخل النص الفاصل">`;
+                break;
+        }
+
+        container.appendChild(field);
+    }
+</script>
+
+</body>
+</html>

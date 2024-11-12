@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء باركود جديد</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .top-button {
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .cancel-button, .preview-button, .print-button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .cancel-button {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .preview-button {
+            background-color: #ff9800;
+            color: #fff;
+        }
+
+        .print-button {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        .preview-section {
+            margin-top: 30px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <button class="top-button">العودة للموقع</button>
+        <button class="top-button">مساعدة</button>
+    </div>
+
+    <div class="container">
+        <h1>إنشاء باركود جديد</h1>
+        <form id="barcode-form">
+            <div class="form-group">
+                <label for="product-name">اسم المنتج:</label>
+                <input type="text" id="product-name" placeholder="أدخل اسم المنتج">
+            </div>
+            <div class="form-group">
+                <label for="product-sku">رمز المنتج (SKU):</label>
+                <input type="text" id="product-sku" placeholder="أدخل رمز المنتج">
+            </div>
+            <div class="form-group">
+                <label for="barcode-type">نوع الباركود:</label>
+                <select id="barcode-type">
+                    <option value="qr">QR</option>
+                    <option value="ean">EAN</option>
+                    <option value="upc">UPC</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="barcode-size">مقاسات الباركود (طول × عرض):</label>
+                <input type="text" id="barcode-size" placeholder="مثال: 40x20">
+            </div>
+            <div class="form-group">
+                <label for="copies">عدد النسخ للطباعة:</label>
+                <input type="number" id="copies" min="1" value="1">
+            </div>
+
+            <h2>إعدادات الطباعة</h2>
+            <div class="form-group">
+                <label for="printer">الطابعة:</label>
+                <select id="printer">
+                    <option value="printer1">طابعة 1</option>
+                    <option value="printer2">طابعة 2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="margins">إعدادات الهوامش:</label>
+                <input type="text" id="margins" placeholder="علوي، سفلي، يمين، يسار">
+            </div>
+
+            <div class="buttons">
+                <button type="button" class="cancel-button">إلغاء</button>
+                <button type="button" class="preview-button">معاينة</button>
+                <button type="submit" class="print-button">طباعة</button>
+            </div>
+        </form>
+
+        <div class="preview-section">
+            <h2>معاينة الباركود</h2>
+            <div id="barcode-preview">هنا تظهر معاينة الباركود</div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('barcode-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // منطق إنشاء و طباعة الباركود
+            alert('تم إنشاء الباركود بنجاح وسيتم طباعته الآن.');
+        });
+    </script>
+</body>
+</html>

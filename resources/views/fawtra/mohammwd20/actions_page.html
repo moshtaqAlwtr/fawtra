@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سندات القبض</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .header button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .content {
+            padding: 20px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .stat {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 10px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        form input, form select, form button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        form button[type="reset"] {
+            background-color: #dc3545;
+        }
+        .results {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button onclick="window.location.href='index.html'">الذهاب إلى الموقع</button>
+        <button>المساعدة</button>
+        <button class="btn btn-success" onclick="window.location.href='add_receipt.html'">سند قبض</button>
+    </div>
+
+    <div class="content">
+        <h1>سندات القبض</h1>
+        <div class="stats">
+            <div class="stat">
+                <h2>آخر 7 أيام</h2>
+                <p>0.00 ر.س</p>
+            </div>
+            <div class="stat">
+                <h2>آخر 30 يوم</h2>
+                <p>0.00 ر.س</p>
+            </div>
+            <div class="stat">
+                <h2>آخر 365 يوم</h2>
+                <p>0.00 ر.س</p>
+            </div>
+        </div>
+
+        <form class="filter-form">
+            <label for="code">الكود:</label>
+            <input type="text" id="code" name="code" placeholder="أدخل الكود">
+
+            <label for="date">التاريخ:</label>
+            <input type="date" id="date" name="date">
+
+            <label for="category">التصنيف:</label>
+            <select id="category" name="category">
+                <option value="">أي تصنيف</option>
+                <option value="main">Main</option>
+            </select>
+
+            <label for="status">الحالة:</label>
+            <select id="status" name="status">
+                <option value="">الكل</option>
+                <option value="approved">موافق</option>
+                <option value="rejected">مرفوض</option>
+            </select>
+
+            <button type="submit">بحث</button>
+            <button type="reset">إلغاء الفلتر</button>
+        </form>
+
+        <div class="results">
+            <h2>النتائج</h2>
+            <!-- عرض النتائج هنا -->
+        </div>
+    </div>
+</body>
+</html>

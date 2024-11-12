@@ -1,0 +1,1066 @@
+@charset "UTF-8";
+body .head-bar {
+    color: #7a80b1 !important;
+    background: #f6f9fc;
+    border: none;
+    border-bottom: 1px solid rgba(206, 212, 218, .45)
+}
+
+body .edit_custom_details {
+    color: #4e5381 !important;
+    margin-right: 0;
+    margin-left: 0
+}
+
+body .edit_custom_details:hover {
+    color: #8186b5 !important;
+    text-decoration: underline
+}
+
+body label {
+    color: #75799d;
+    font-weight: 700 !important;
+    font-size: 14px
+}
+
+body .form-control,
+body select {
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 14px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+
+body .form-control::placeholder,
+body select::placeholder {
+    color: #8186b5
+}
+
+body .form-control.ms-ctn-focus,
+body .form-control:active,
+body .form-control:focus,
+body select.ms-ctn-focus,
+body select:active,
+body select:focus {
+    border-color: #80bdff;
+    box-shadow: rgba(0, 123, 255, .25) 0 0 0 3.2px
+}
+
+body .select2-container .select2-selection--single {
+    height: 34px
+}
+
+body .ms-ctn .ms-sel-item {
+    color: #485563;
+    border: 1px solid #aac6e3;
+    border-radius: 4px;
+    background: #dbe7f3
+}
+
+body.ltr .ms-ctn .ms-sel-item {
+    padding-right: 0
+}
+
+body .ms-sel-ctn .ms-sel-item .ms-close-btn {
+    color: #75799d;
+    background: 0 0;
+    line-height: .4;
+    font-size: 12px;
+    width: unset;
+    height: unset;
+    margin-top: 2px;
+    margin-left: 4px;
+    margin-right: 4px
+}
+
+body .ms-sel-ctn .ms-sel-item .ms-close-btn::before {
+    content: "×";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%
+}
+
+body .ms-sel-ctn .ms-sel-item .ms-close-btn:hover::before {
+    background: #8186b5;
+    color: #fff
+}
+
+body .ms-ctn .ms-trigger {
+    width: 30px
+}
+
+body .ms-ctn .ms-trigger:hover {
+    width: 30px;
+    border-radius: 0;
+    background-color: #dbe7f3
+}
+
+body.ltr .ms-ctn .ms-trigger:hover {
+    right: 0
+}
+
+body.ltr .ms-ctn .ms-trigger .ms-trigger-ico {
+    margin-left: 10px
+}
+
+body.rtl .ms-ctn .ms-trigger:hover {
+    left: 0
+}
+
+body.rtl .ms-ctn .ms-trigger .ms-trigger-ico {
+    margin-right: 10px
+}
+
+.multiselect.dropdown-toggle.btn.btn-default {
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 14px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+
+.multiselect.dropdown-toggle.btn.btn-default:focus {
+    border-color: #80bdff;
+    box-shadow: rgba(0, 123, 255, .25) 0 0 0 3.2px
+}
+
+.ltr .multiselect.dropdown-toggle.btn.btn-default .caret {
+    margin-left: 5px
+}
+
+.rtl .multiselect.dropdown-toggle.btn.btn-default .caret {
+    margin-right: 5px
+}
+
+.dropdown-menu.multiselect-container {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden
+}
+
+.dropdown-menu.multiselect-container .multiselect-item.filter .input-group {
+    border: 1px solid #ced4da;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+
+.dropdown-menu.multiselect-container .multiselect-item.filter .input-group .input-group-addon {
+    border: 0;
+    background: 0 0
+}
+
+.dropdown-menu.multiselect-container .multiselect-item.filter .input-group .multiselect-search {
+    border: 0
+}
+
+.dropdown-menu.multiselect-container .multiselect-item.filter .input-group .multiselect-search:active,
+.dropdown-menu.multiselect-container .multiselect-item.filter .input-group .multiselect-search:focus {
+    box-shadow: none;
+    border: 0
+}
+
+.dropdown-menu.multiselect-container .multiselect-item.filter .input-group .multiselect-clear-filter.btn.btn-default {
+    background: 0 0;
+    border: 0
+}
+
+.dropdown-menu.multiselect-container .multiselect-item.filter .input-group .multiselect-clear-filter.btn.btn-default:hover {
+    color: #fc5f7d !important
+}
+
+.note-editor.note-frame {
+    border-color: #ced4da
+}
+
+.note-editor.note-frame .note-statusbar,
+.note-editor.note-frame .panel-heading {
+    background: #f8f9fa
+}
+
+.note-editor.note-frame .btn-default {
+    background-color: #fff;
+    border-color: #ccc
+}
+
+body .invoice-doc-uploader {
+    border-color: rgba(206, 212, 218, .75)
+}
+
+body .ajax-upload-dragdrop {
+    font-weight: 500;
+    border-color: transparent;
+    color: rgba(73, 80, 87, .45)
+}
+
+body .ajax-upload-dragdrop b {
+    font-weight: 500
+}
+
+body .ajax-upload-dragdrop .ajax-file-upload {
+    background-color: #00b0ef
+}
+
+body .ajax-upload-dragdrop .ajax-file-upload:focus,
+body .ajax-upload-dragdrop .ajax-file-upload:hover {
+    background-color: #008abc
+}
+
+.nav:not(.user-nav) .open>a,
+.nav:not(.user-nav)>li>a {
+    color: #7a80b1
+}
+
+.nav:not(.user-nav) .open>a,
+.nav:not(.user-nav) .open>a:focus,
+.nav:not(.user-nav) .open>a:hover,
+.nav:not(.user-nav)>li>a:focus,
+.nav:not(.user-nav)>li>a:hover {
+    color: #4e5381;
+    background: #fff;
+    border-bottom-color: #fff
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    color: #4e5381
+}
+
+.side-nav {
+    background: #f6f9fc
+}
+
+.side-nav .nav-pills>li.active>a::after,
+.side-nav .nav-pills>li.active>a:before {
+    display: none
+}
+
+.table {
+    border: 1px solid #e9ecef;
+    border-collapse: collapse;
+    border-spacing: 0;
+    height: 1px
+}
+
+.table .table-header,
+.table>thead>tr {
+    border-bottom: 1px solid #e9ecef
+}
+
+.table .table-footer,
+.table>tfoot>tr {
+    border-top: 1px solid #e9ecef
+}
+
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+    padding: 8px 12px;
+    line-height: 1;
+    border: 0
+}
+
+.table>tbody>tr.active>td,
+.table>tbody>tr.active>th,
+.table>tbody>tr>td.active,
+.table>tbody>tr>th.active,
+.table>tfoot>tr.active>td,
+.table>tfoot>tr.active>th,
+.table>tfoot>tr>td.active,
+.table>tfoot>tr>th.active,
+.table>thead>tr.active>td,
+.table>thead>tr.active>th,
+.table>thead>tr>td.active,
+.table>thead>tr>th.active {
+    background-color: #f6f9fc;
+    color: #75799d
+}
+
+.table>tbody>tr {
+    border-bottom: 1px solid #e9ecef
+}
+
+.table>tbody>tr>td {
+    border: 0;
+    border-right: 1px solid #e9ecef
+}
+
+.table>tbody>tr>td:not(.td_editable) {
+    padding: 10px
+}
+
+.table>tbody>tr>td.td_editable {
+    padding: 0;
+    background-color: #fff9db;
+    height: 100%
+}
+
+.table>tbody>tr>td.td_editable:hover {
+    background-color: #fff5c5
+}
+
+.table>tbody>tr>td.td_editable>div>span>input[type=number],
+.table>tbody>tr>td.td_editable>div>span>input[type=text],
+.table>tbody>tr>td.td_editable>div>span>select,
+.table>tbody>tr>td.td_editable>div>span>textarea.editable-area:not(.resizable),
+.table>tbody>tr>td.td_editable>div>span>textarea:not(.resizable),
+.table>tbody>tr>td.td_editable>input[type=number],
+.table>tbody>tr>td.td_editable>input[type=text],
+.table>tbody>tr>td.td_editable>select,
+.table>tbody>tr>td.td_editable>textarea:not(.resizable) {
+    height: 100% !important
+}
+
+.table>tbody>tr>td.td_editable>div>span>input[type=number],
+.table>tbody>tr>td.td_editable>div>span>input[type=text],
+.table>tbody>tr>td.td_editable>div>span>select,
+.table>tbody>tr>td.td_editable>div>span>textarea,
+.table>tbody>tr>td.td_editable>div>span>textarea.editable-area,
+.table>tbody>tr>td.td_editable>input[type=number],
+.table>tbody>tr>td.td_editable>input[type=text],
+.table>tbody>tr>td.td_editable>select,
+.table>tbody>tr>td.td_editable>textarea {
+    min-height: 100%;
+    margin: 0 !important;
+    display: block;
+    background-color: transparent;
+    border: 0;
+    padding: 6px 12px;
+    min-width: 55px
+}
+
+.table>tbody>tr>td.td_editable>div>span>input[type=number]::placeholder,
+.table>tbody>tr>td.td_editable>div>span>input[type=text]::placeholder,
+.table>tbody>tr>td.td_editable>div>span>select::placeholder,
+.table>tbody>tr>td.td_editable>div>span>textarea.editable-area::placeholder,
+.table>tbody>tr>td.td_editable>div>span>textarea::placeholder,
+.table>tbody>tr>td.td_editable>input[type=number]::placeholder,
+.table>tbody>tr>td.td_editable>input[type=text]::placeholder,
+.table>tbody>tr>td.td_editable>select::placeholder,
+.table>tbody>tr>td.td_editable>textarea::placeholder {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 40px
+}
+
+.table>tbody>tr>td.td_editable>div>span>input[type=number]:active,
+.table>tbody>tr>td.td_editable>div>span>input[type=number]:focus,
+.table>tbody>tr>td.td_editable>div>span>input[type=number]:hover,
+.table>tbody>tr>td.td_editable>div>span>input[type=text]:active,
+.table>tbody>tr>td.td_editable>div>span>input[type=text]:focus,
+.table>tbody>tr>td.td_editable>div>span>input[type=text]:hover,
+.table>tbody>tr>td.td_editable>div>span>select:active,
+.table>tbody>tr>td.td_editable>div>span>select:focus,
+.table>tbody>tr>td.td_editable>div>span>select:hover,
+.table>tbody>tr>td.td_editable>div>span>textarea.editable-area:active,
+.table>tbody>tr>td.td_editable>div>span>textarea.editable-area:focus,
+.table>tbody>tr>td.td_editable>div>span>textarea.editable-area:hover,
+.table>tbody>tr>td.td_editable>div>span>textarea:active,
+.table>tbody>tr>td.td_editable>div>span>textarea:focus,
+.table>tbody>tr>td.td_editable>div>span>textarea:hover,
+.table>tbody>tr>td.td_editable>input[type=number]:active,
+.table>tbody>tr>td.td_editable>input[type=number]:focus,
+.table>tbody>tr>td.td_editable>input[type=number]:hover,
+.table>tbody>tr>td.td_editable>input[type=text]:active,
+.table>tbody>tr>td.td_editable>input[type=text]:focus,
+.table>tbody>tr>td.td_editable>input[type=text]:hover,
+.table>tbody>tr>td.td_editable>select:active,
+.table>tbody>tr>td.td_editable>select:focus,
+.table>tbody>tr>td.td_editable>select:hover,
+.table>tbody>tr>td.td_editable>textarea:active,
+.table>tbody>tr>td.td_editable>textarea:focus,
+.table>tbody>tr>td.td_editable>textarea:hover {
+    box-shadow: 0 0 0 1px #00b0ef inset;
+    outline: 0
+}
+
+.table>tbody>tr>td.td_editable>div>span>input[type=number]:active::placeholder,
+.table>tbody>tr>td.td_editable>div>span>input[type=number]:focus::placeholder,
+.table>tbody>tr>td.td_editable>div>span>input[type=text]:active::placeholder,
+.table>tbody>tr>td.td_editable>div>span>input[type=text]:focus::placeholder,
+.table>tbody>tr>td.td_editable>div>span>select:active::placeholder,
+.table>tbody>tr>td.td_editable>div>span>select:focus::placeholder,
+.table>tbody>tr>td.td_editable>div>span>textarea.editable-area:active::placeholder,
+.table>tbody>tr>td.td_editable>div>span>textarea.editable-area:focus::placeholder,
+.table>tbody>tr>td.td_editable>div>span>textarea:active::placeholder,
+.table>tbody>tr>td.td_editable>div>span>textarea:focus::placeholder,
+.table>tbody>tr>td.td_editable>input[type=number]:active::placeholder,
+.table>tbody>tr>td.td_editable>input[type=number]:focus::placeholder,
+.table>tbody>tr>td.td_editable>input[type=text]:active::placeholder,
+.table>tbody>tr>td.td_editable>input[type=text]:focus::placeholder,
+.table>tbody>tr>td.td_editable>select:active::placeholder,
+.table>tbody>tr>td.td_editable>select:focus::placeholder,
+.table>tbody>tr>td.td_editable>textarea:active::placeholder,
+.table>tbody>tr>td.td_editable>textarea:focus::placeholder {
+    font-size: 0
+}
+
+.table>tbody>tr>td.td_editable>div>span>input[type=number][readonly=readonly],
+.table>tbody>tr>td.td_editable>div>span>input[type=text][readonly=readonly],
+.table>tbody>tr>td.td_editable>div>span>select[readonly=readonly],
+.table>tbody>tr>td.td_editable>div>span>textarea.editable-area[readonly=readonly],
+.table>tbody>tr>td.td_editable>div>span>textarea[readonly=readonly],
+.table>tbody>tr>td.td_editable>input[type=number][readonly=readonly],
+.table>tbody>tr>td.td_editable>input[type=text][readonly=readonly],
+.table>tbody>tr>td.td_editable>select[readonly=readonly],
+.table>tbody>tr>td.td_editable>textarea[readonly=readonly] {
+    margin: 0 !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+    background-color: #f6f9fc
+}
+
+.table>tbody>tr>td.td_editable>div>span>select.item-discount-type,
+.table>tbody>tr>td.td_editable>div>span>select.unit-factor-id {
+    min-width: 40px;
+    width: 40px;
+    padding: 0;
+    text-align: center
+}
+
+.table>tbody>tr>td.td_editable>textarea.item-description {
+    min-width: 100px
+}
+
+.table>tbody>tr>td.td_editable>select.item-store {
+    min-width: 100px
+}
+
+.table>tbody>tr>td.td_editable>div>span {
+    padding-right: 0;
+    padding-left: 0;
+    border-color: #e9ecef !important;
+    border-width: 1px !important
+}
+
+.table>tbody>tr>td.td_editable .col-input-m-0,
+.table>tbody>tr>td.td_editable .form-group,
+.table>tbody>tr>td.td_editable .input-group-flex,
+.table>tbody>tr>td.td_editable .item-name,
+.table>tbody>tr>td.td_editable .item-wrap {
+    height: 100%;
+    position: relative
+}
+
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=number],
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=text],
+.table>tbody>tr>td.td_editable .col-input-m-0 select,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea.editable-area,
+.table>tbody>tr>td.td_editable .form-group input[type=number],
+.table>tbody>tr>td.td_editable .form-group input[type=text],
+.table>tbody>tr>td.td_editable .form-group select,
+.table>tbody>tr>td.td_editable .form-group textarea,
+.table>tbody>tr>td.td_editable .form-group textarea.editable-area,
+.table>tbody>tr>td.td_editable .input-group-flex input[type=number],
+.table>tbody>tr>td.td_editable .input-group-flex input[type=text],
+.table>tbody>tr>td.td_editable .input-group-flex select,
+.table>tbody>tr>td.td_editable .input-group-flex textarea,
+.table>tbody>tr>td.td_editable .input-group-flex textarea.editable-area,
+.table>tbody>tr>td.td_editable .item-name input[type=number],
+.table>tbody>tr>td.td_editable .item-name input[type=text],
+.table>tbody>tr>td.td_editable .item-name select,
+.table>tbody>tr>td.td_editable .item-name textarea,
+.table>tbody>tr>td.td_editable .item-name textarea.editable-area,
+.table>tbody>tr>td.td_editable .item-wrap input[type=number],
+.table>tbody>tr>td.td_editable .item-wrap input[type=text],
+.table>tbody>tr>td.td_editable .item-wrap select,
+.table>tbody>tr>td.td_editable .item-wrap textarea,
+.table>tbody>tr>td.td_editable .item-wrap textarea.editable-area {
+    height: 100%;
+    margin: 0;
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    padding: 6px 12px
+}
+
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=number]::placeholder,
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=text]::placeholder,
+.table>tbody>tr>td.td_editable .col-input-m-0 select::placeholder,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea.editable-area::placeholder,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea::placeholder,
+.table>tbody>tr>td.td_editable .form-group input[type=number]::placeholder,
+.table>tbody>tr>td.td_editable .form-group input[type=text]::placeholder,
+.table>tbody>tr>td.td_editable .form-group select::placeholder,
+.table>tbody>tr>td.td_editable .form-group textarea.editable-area::placeholder,
+.table>tbody>tr>td.td_editable .form-group textarea::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex input[type=number]::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex input[type=text]::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex select::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex textarea.editable-area::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex textarea::placeholder,
+.table>tbody>tr>td.td_editable .item-name input[type=number]::placeholder,
+.table>tbody>tr>td.td_editable .item-name input[type=text]::placeholder,
+.table>tbody>tr>td.td_editable .item-name select::placeholder,
+.table>tbody>tr>td.td_editable .item-name textarea.editable-area::placeholder,
+.table>tbody>tr>td.td_editable .item-name textarea::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap input[type=number]::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap input[type=text]::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap select::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap textarea.editable-area::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap textarea::placeholder {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 40px
+}
+
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=number]:active,
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=number]:focus,
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=number]:hover,
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=text]:active,
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=text]:focus,
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=text]:hover,
+.table>tbody>tr>td.td_editable .col-input-m-0 select:active,
+.table>tbody>tr>td.td_editable .col-input-m-0 select:focus,
+.table>tbody>tr>td.td_editable .col-input-m-0 select:hover,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea.editable-area:active,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea.editable-area:focus,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea.editable-area:hover,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea:active,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea:focus,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea:hover,
+.table>tbody>tr>td.td_editable .form-group input[type=number]:active,
+.table>tbody>tr>td.td_editable .form-group input[type=number]:focus,
+.table>tbody>tr>td.td_editable .form-group input[type=number]:hover,
+.table>tbody>tr>td.td_editable .form-group input[type=text]:active,
+.table>tbody>tr>td.td_editable .form-group input[type=text]:focus,
+.table>tbody>tr>td.td_editable .form-group input[type=text]:hover,
+.table>tbody>tr>td.td_editable .form-group select:active,
+.table>tbody>tr>td.td_editable .form-group select:focus,
+.table>tbody>tr>td.td_editable .form-group select:hover,
+.table>tbody>tr>td.td_editable .form-group textarea.editable-area:active,
+.table>tbody>tr>td.td_editable .form-group textarea.editable-area:focus,
+.table>tbody>tr>td.td_editable .form-group textarea.editable-area:hover,
+.table>tbody>tr>td.td_editable .form-group textarea:active,
+.table>tbody>tr>td.td_editable .form-group textarea:focus,
+.table>tbody>tr>td.td_editable .form-group textarea:hover,
+.table>tbody>tr>td.td_editable .input-group-flex input[type=number]:active,
+.table>tbody>tr>td.td_editable .input-group-flex input[type=number]:focus,
+.table>tbody>tr>td.td_editable .input-group-flex input[type=number]:hover,
+.table>tbody>tr>td.td_editable .input-group-flex input[type=text]:active,
+.table>tbody>tr>td.td_editable .input-group-flex input[type=text]:focus,
+.table>tbody>tr>td.td_editable .input-group-flex input[type=text]:hover,
+.table>tbody>tr>td.td_editable .input-group-flex select:active,
+.table>tbody>tr>td.td_editable .input-group-flex select:focus,
+.table>tbody>tr>td.td_editable .input-group-flex select:hover,
+.table>tbody>tr>td.td_editable .input-group-flex textarea.editable-area:active,
+.table>tbody>tr>td.td_editable .input-group-flex textarea.editable-area:focus,
+.table>tbody>tr>td.td_editable .input-group-flex textarea.editable-area:hover,
+.table>tbody>tr>td.td_editable .input-group-flex textarea:active,
+.table>tbody>tr>td.td_editable .input-group-flex textarea:focus,
+.table>tbody>tr>td.td_editable .input-group-flex textarea:hover,
+.table>tbody>tr>td.td_editable .item-name input[type=number]:active,
+.table>tbody>tr>td.td_editable .item-name input[type=number]:focus,
+.table>tbody>tr>td.td_editable .item-name input[type=number]:hover,
+.table>tbody>tr>td.td_editable .item-name input[type=text]:active,
+.table>tbody>tr>td.td_editable .item-name input[type=text]:focus,
+.table>tbody>tr>td.td_editable .item-name input[type=text]:hover,
+.table>tbody>tr>td.td_editable .item-name select:active,
+.table>tbody>tr>td.td_editable .item-name select:focus,
+.table>tbody>tr>td.td_editable .item-name select:hover,
+.table>tbody>tr>td.td_editable .item-name textarea.editable-area:active,
+.table>tbody>tr>td.td_editable .item-name textarea.editable-area:focus,
+.table>tbody>tr>td.td_editable .item-name textarea.editable-area:hover,
+.table>tbody>tr>td.td_editable .item-name textarea:active,
+.table>tbody>tr>td.td_editable .item-name textarea:focus,
+.table>tbody>tr>td.td_editable .item-name textarea:hover,
+.table>tbody>tr>td.td_editable .item-wrap input[type=number]:active,
+.table>tbody>tr>td.td_editable .item-wrap input[type=number]:focus,
+.table>tbody>tr>td.td_editable .item-wrap input[type=number]:hover,
+.table>tbody>tr>td.td_editable .item-wrap input[type=text]:active,
+.table>tbody>tr>td.td_editable .item-wrap input[type=text]:focus,
+.table>tbody>tr>td.td_editable .item-wrap input[type=text]:hover,
+.table>tbody>tr>td.td_editable .item-wrap select:active,
+.table>tbody>tr>td.td_editable .item-wrap select:focus,
+.table>tbody>tr>td.td_editable .item-wrap select:hover,
+.table>tbody>tr>td.td_editable .item-wrap textarea.editable-area:active,
+.table>tbody>tr>td.td_editable .item-wrap textarea.editable-area:focus,
+.table>tbody>tr>td.td_editable .item-wrap textarea.editable-area:hover,
+.table>tbody>tr>td.td_editable .item-wrap textarea:active,
+.table>tbody>tr>td.td_editable .item-wrap textarea:focus,
+.table>tbody>tr>td.td_editable .item-wrap textarea:hover {
+    box-shadow: 0 0 0 1px #00b0ef;
+    outline: 0
+}
+
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=number]:active::placeholder,
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=number]:focus::placeholder,
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=text]:active::placeholder,
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=text]:focus::placeholder,
+.table>tbody>tr>td.td_editable .col-input-m-0 select:active::placeholder,
+.table>tbody>tr>td.td_editable .col-input-m-0 select:focus::placeholder,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea.editable-area:active::placeholder,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea.editable-area:focus::placeholder,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea:active::placeholder,
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea:focus::placeholder,
+.table>tbody>tr>td.td_editable .form-group input[type=number]:active::placeholder,
+.table>tbody>tr>td.td_editable .form-group input[type=number]:focus::placeholder,
+.table>tbody>tr>td.td_editable .form-group input[type=text]:active::placeholder,
+.table>tbody>tr>td.td_editable .form-group input[type=text]:focus::placeholder,
+.table>tbody>tr>td.td_editable .form-group select:active::placeholder,
+.table>tbody>tr>td.td_editable .form-group select:focus::placeholder,
+.table>tbody>tr>td.td_editable .form-group textarea.editable-area:active::placeholder,
+.table>tbody>tr>td.td_editable .form-group textarea.editable-area:focus::placeholder,
+.table>tbody>tr>td.td_editable .form-group textarea:active::placeholder,
+.table>tbody>tr>td.td_editable .form-group textarea:focus::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex input[type=number]:active::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex input[type=number]:focus::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex input[type=text]:active::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex input[type=text]:focus::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex select:active::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex select:focus::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex textarea.editable-area:active::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex textarea.editable-area:focus::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex textarea:active::placeholder,
+.table>tbody>tr>td.td_editable .input-group-flex textarea:focus::placeholder,
+.table>tbody>tr>td.td_editable .item-name input[type=number]:active::placeholder,
+.table>tbody>tr>td.td_editable .item-name input[type=number]:focus::placeholder,
+.table>tbody>tr>td.td_editable .item-name input[type=text]:active::placeholder,
+.table>tbody>tr>td.td_editable .item-name input[type=text]:focus::placeholder,
+.table>tbody>tr>td.td_editable .item-name select:active::placeholder,
+.table>tbody>tr>td.td_editable .item-name select:focus::placeholder,
+.table>tbody>tr>td.td_editable .item-name textarea.editable-area:active::placeholder,
+.table>tbody>tr>td.td_editable .item-name textarea.editable-area:focus::placeholder,
+.table>tbody>tr>td.td_editable .item-name textarea:active::placeholder,
+.table>tbody>tr>td.td_editable .item-name textarea:focus::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap input[type=number]:active::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap input[type=number]:focus::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap input[type=text]:active::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap input[type=text]:focus::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap select:active::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap select:focus::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap textarea.editable-area:active::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap textarea.editable-area:focus::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap textarea:active::placeholder,
+.table>tbody>tr>td.td_editable .item-wrap textarea:focus::placeholder {
+    font-size: 0
+}
+
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=number][readonly=readonly],
+.table>tbody>tr>td.td_editable .col-input-m-0 input[type=text][readonly=readonly],
+.table>tbody>tr>td.td_editable .col-input-m-0 select[readonly=readonly],
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea.editable-area[readonly=readonly],
+.table>tbody>tr>td.td_editable .col-input-m-0 textarea[readonly=readonly],
+.table>tbody>tr>td.td_editable .form-group input[type=number][readonly=readonly],
+.table>tbody>tr>td.td_editable .form-group input[type=text][readonly=readonly],
+.table>tbody>tr>td.td_editable .form-group select[readonly=readonly],
+.table>tbody>tr>td.td_editable .form-group textarea.editable-area[readonly=readonly],
+.table>tbody>tr>td.td_editable .form-group textarea[readonly=readonly],
+.table>tbody>tr>td.td_editable .input-group-flex input[type=number][readonly=readonly],
+.table>tbody>tr>td.td_editable .input-group-flex input[type=text][readonly=readonly],
+.table>tbody>tr>td.td_editable .input-group-flex select[readonly=readonly],
+.table>tbody>tr>td.td_editable .input-group-flex textarea.editable-area[readonly=readonly],
+.table>tbody>tr>td.td_editable .input-group-flex textarea[readonly=readonly],
+.table>tbody>tr>td.td_editable .item-name input[type=number][readonly=readonly],
+.table>tbody>tr>td.td_editable .item-name input[type=text][readonly=readonly],
+.table>tbody>tr>td.td_editable .item-name select[readonly=readonly],
+.table>tbody>tr>td.td_editable .item-name textarea.editable-area[readonly=readonly],
+.table>tbody>tr>td.td_editable .item-name textarea[readonly=readonly],
+.table>tbody>tr>td.td_editable .item-wrap input[type=number][readonly=readonly],
+.table>tbody>tr>td.td_editable .item-wrap input[type=text][readonly=readonly],
+.table>tbody>tr>td.td_editable .item-wrap select[readonly=readonly],
+.table>tbody>tr>td.td_editable .item-wrap textarea.editable-area[readonly=readonly],
+.table>tbody>tr>td.td_editable .item-wrap textarea[readonly=readonly] {
+    margin: 0 !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+    background-color: #f6f9fc !important
+}
+
+.table>tbody>tr>td.td_editable .col-input-m-0 .bootstrap-select,
+.table>tbody>tr>td.td_editable .form-group .bootstrap-select,
+.table>tbody>tr>td.td_editable .input-group-flex .bootstrap-select,
+.table>tbody>tr>td.td_editable .item-name .bootstrap-select,
+.table>tbody>tr>td.td_editable .item-wrap .bootstrap-select {
+    height: 100%;
+    margin: 0;
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    padding: 0
+}
+
+.table>tbody>tr>td.td_editable .col-input-m-0 .bootstrap-select .btn.dropdown-toggle.selectpicker,
+.table>tbody>tr>td.td_editable .form-group .bootstrap-select .btn.dropdown-toggle.selectpicker,
+.table>tbody>tr>td.td_editable .input-group-flex .bootstrap-select .btn.dropdown-toggle.selectpicker,
+.table>tbody>tr>td.td_editable .item-name .bootstrap-select .btn.dropdown-toggle.selectpicker,
+.table>tbody>tr>td.td_editable .item-wrap .bootstrap-select .btn.dropdown-toggle.selectpicker {
+    height: 100%;
+    margin: 0;
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    padding: 6px 12px
+}
+
+.table>tbody>tr>td.td_editable .col-input-m-0 .bootstrap-select .btn.dropdown-toggle.selectpicker:active,
+.table>tbody>tr>td.td_editable .col-input-m-0 .bootstrap-select .btn.dropdown-toggle.selectpicker:focus,
+.table>tbody>tr>td.td_editable .col-input-m-0 .bootstrap-select .btn.dropdown-toggle.selectpicker:hover,
+.table>tbody>tr>td.td_editable .form-group .bootstrap-select .btn.dropdown-toggle.selectpicker:active,
+.table>tbody>tr>td.td_editable .form-group .bootstrap-select .btn.dropdown-toggle.selectpicker:focus,
+.table>tbody>tr>td.td_editable .form-group .bootstrap-select .btn.dropdown-toggle.selectpicker:hover,
+.table>tbody>tr>td.td_editable .input-group-flex .bootstrap-select .btn.dropdown-toggle.selectpicker:active,
+.table>tbody>tr>td.td_editable .input-group-flex .bootstrap-select .btn.dropdown-toggle.selectpicker:focus,
+.table>tbody>tr>td.td_editable .input-group-flex .bootstrap-select .btn.dropdown-toggle.selectpicker:hover,
+.table>tbody>tr>td.td_editable .item-name .bootstrap-select .btn.dropdown-toggle.selectpicker:active,
+.table>tbody>tr>td.td_editable .item-name .bootstrap-select .btn.dropdown-toggle.selectpicker:focus,
+.table>tbody>tr>td.td_editable .item-name .bootstrap-select .btn.dropdown-toggle.selectpicker:hover,
+.table>tbody>tr>td.td_editable .item-wrap .bootstrap-select .btn.dropdown-toggle.selectpicker:active,
+.table>tbody>tr>td.td_editable .item-wrap .bootstrap-select .btn.dropdown-toggle.selectpicker:focus,
+.table>tbody>tr>td.td_editable .item-wrap .bootstrap-select .btn.dropdown-toggle.selectpicker:hover {
+    box-shadow: 0 0 0 1px #00b0ef;
+    outline: 0
+}
+
+.table>tbody>tr>td.td_editable.select-item .item-name .item-wrap {
+    min-height: 52px;
+    height: auto
+}
+
+.table>tbody>tr>td.td_editable.select-item .item-name .item-wrap textarea {
+    border: 1px solid #ced4da;
+    background: #fff5c5;
+    min-height: 52px
+}
+
+.table>tbody>tr>td.td_editable.select-item .item-name .item-wrap a.select-arrow-bg {
+    height: 100% !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1 !important;
+    background-color: #fff5c5;
+    color: #8186b5;
+    border: 1px solid #ced4da
+}
+
+.table>tbody>tr>td.td_editable.select-item .item-name .item-wrap a.select-arrow-bg:focus,
+.table>tbody>tr>td.td_editable.select-item .item-name .item-wrap a.select-arrow-bg:hover {
+    box-shadow: 0 0 0 1px #00b0ef;
+    outline: 0
+}
+
+.ltr .table>tbody>tr>td.td_editable.select-item .item-name .item-wrap a.select-arrow-bg {
+    right: 0
+}
+
+.rtl .table>tbody>tr>td.td_editable.select-item .item-name .item-wrap a.select-arrow-bg {
+    left: 0
+}
+
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput .form-control.ms-ctn,
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput>input,
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput>select {
+    margin: 0 !important;
+    background: #fff;
+    border: 1px solid #afafaf;
+    min-height: 36px
+}
+
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput .form-control.ms-ctn:focus,
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput .form-control.ms-ctn:hover,
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput>input:focus,
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput>input:hover,
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput>select:focus,
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput>select:hover {
+    border-color: #00b0ef;
+    box-shadow: none !important
+}
+
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput .form-control.ms-ctn .ms-helper {
+    color: #fc5f7d;
+    font-size: 9px;
+    font-weight: 500
+}
+
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput .form-control.ms-ctn input[type=text] {
+    padding: 0;
+    min-height: 22px
+}
+
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput .form-control.ms-ctn input[type=text]:focus,
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput .form-control.ms-ctn input[type=text]:hover {
+    box-shadow: none
+}
+
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput .form-control.ms-ctn.ms-ctn-focus {
+    border-color: #00b0ef;
+    box-shadow: none !important
+}
+
+.table>tbody>tr>td.td_editable.select-item .item-name .trackingInput>select {
+    font-size: 12px;
+    min-width: 240px
+}
+
+.table>tbody>tr>td.move-table {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: #f8f9fa !important
+}
+
+.table>tbody>tr>td.delete-product-cell {
+    background-color: #f8f9fa;
+    width: 45px;
+    min-height: 52px;
+    padding: 0
+}
+
+.table>tbody>tr>td.delete-product-cell .btn-s2020 {
+    width: 45px;
+    min-height: 52px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.table>tbody>tr>td.delete-product-cell .btn-s2020.text-danger-s2020:hover {
+    border-color: #fc5f7d
+}
+
+.table>tbody>tr>td.delete-product-cell .btn-s2020.text-dark-s2020:hover {
+    border-color: #495057
+}
+
+.table>tbody>tr>td.item-subtotal,
+.table>tbody>tr>td.item-total {
+    background-color: #f8f9fa !important
+}
+
+.table>tbody>tr>td.item-subtotal span,
+.table>tbody>tr>td.item-total span {
+    padding-right: 0;
+    padding-left: 0
+}
+
+.table>tbody>tr>td:not(.td_editable) {
+    background-color: #f8f9fa !important
+}
+
+.table>tbody>tr>td:not(.td_editable) span {
+    padding-right: 0;
+    padding-left: 0
+}
+
+.table.table-totals-s2020 {
+    background: 0 0;
+    border: 0
+}
+
+.table.table-totals-s2020 tr.notEditable {
+    background: 0 0 !important;
+    border: 0
+}
+
+.table.table-totals-s2020 tr td:not(.td_editable) {
+    background: #f8f9fa
+}
+
+.table.table-totals-s2020 tr td.new-row-cell {
+    padding: 0;
+    border: 0;
+    background: 0 0 !important
+}
+
+.table.table-totals-s2020 tr td strong {
+    color: #75799d
+}
+
+.table .table-tr-totals-s2020.notEditable {
+    background: 0 0 !important;
+    border: 0 !important
+}
+
+.table .table-tr-totals-s2020 td.bg-transparent {
+    background: 0 0 !important
+}
+
+.table .table-tr-totals-s2020 td:not(.bg-transparent) {
+    background: #f8f9fa !important
+}
+
+.table .table-tr-totals-s2020 td.new-row-cell {
+    padding: 0 !important;
+    border: 0 !important;
+    background: 0 0 !important
+}
+
+.table .table-tr-totals-s2020 td strong {
+    color: #75799d !important
+}
+
+.table.bg-transparent {
+    background: 0 0 !important
+}
+
+.products-list {
+    border: 0;
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, .1)
+}
+
+.products-list .products-list-ul {
+    overflow: auto;
+    max-height: 200px
+}
+
+.products-list .products-list-ul li {
+    padding: 0 10px;
+    color: #3a3e63
+}
+
+.products-list .products-list-ul li.active,
+.products-list .products-list-ul li:hover {
+    background-color: #00b0ef
+}
+
+.products-list .products-list-ul li.active *,
+.products-list .products-list-ul li:hover * {
+    color: #fff
+}
+
+.products-list .products-list-ul li a {
+    padding: 5px 10px 15px 10px !important;
+    position: relative;
+    top: 5px
+}
+
+.products-list .products-list-ul li a .view-click:hover {
+    color: #3a3e63
+}
+
+.checkbox-container-s2020 {
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    white-space: nowrap;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da
+}
+
+.checkbox-container-s2020 .clip-check {
+    margin: 0;
+    width: 100%
+}
+
+.checkbox-container-s2020 .clip-check label {
+    display: block;
+    margin: 0
+}
+
+.checkbox-container-s2020 .clip-check input[type=checkbox]:checked+label::before {
+    border: 0;
+    background-color: #007bff
+}
+
+.dropdown-menu:not(.multiselect-container) {
+    min-width: 160px;
+    padding: 0 0;
+    margin: 0 0;
+    font-size: 13px;
+    background-color: #fff;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, .1)
+}
+
+.dropdown-menu:not(.multiselect-container) .ms-res-item,
+.dropdown-menu:not(.multiselect-container)>li>a {
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .04);
+    color: #3a3e63;
+    padding: 3px 12px;
+    transition: all .2s ease-in-out;
+    min-height: 40px;
+    line-height: 40px;
+    font-weight: 400
+}
+
+.dropdown-menu:not(.multiselect-container) .ms-res-item:focus,
+.dropdown-menu:not(.multiselect-container) .ms-res-item:hover,
+.dropdown-menu:not(.multiselect-container)>li>a:focus,
+.dropdown-menu:not(.multiselect-container)>li>a:hover {
+    background: #ced4da
+}
+
+.dropdown-menu:not(.multiselect-container)>.active>a,
+.dropdown-menu:not(.multiselect-container)>.active>a:focus,
+.dropdown-menu:not(.multiselect-container)>.active>a:hover {
+    background: #00b0ef;
+    color: #fff
+}
+
+.page-snippets .snippet-content {
+    border: 2px solid #bfd4ea;
+    box-shadow: 0 0 3px 0 #bfd4ea;
+    padding: 20px;
+    border-radius: 3px;
+    background: #f6f9fc;
+    position: relative;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 21px
+}
+
+.page-snippets .snippet-content::before {
+    content: "";
+    display: none
+}
+
+.page-snippets .snippet-content p {
+    color: #3a3e63;
+    padding-bottom: 0;
+    position: relative
+}
+
+.page-snippets .snippet-content p:not(:last-child) {
+    padding-bottom: 10px
+}
+
+.page-snippets .snippet-content a.close {
+    background: 0 0;
+    box-shadow: 0 0 1px 1px transparent;
+    font-size: 10px;
+    font-weight: 800;
+    text-shadow: none;
+    height: 20px;
+    line-height: 22px;
+    top: 3px;
+    width: 20px;
+    color: #75799d;
+    border-radius: 50px;
+    transition: all .2s ease-in-out
+}
+
+.ltr .page-snippets .snippet-content a.close {
+    right: 3px
+}
+
+.rtl .page-snippets .snippet-content a.close {
+    left: 3px
+}
+
+.page-snippets .snippet-content a.close:focus,
+.page-snippets .snippet-content a.close:hover {
+    background: #dbe7f3;
+    box-shadow: 0 0 1px 1px #bfd4ea
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات المخزون</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="branch">محمد العتيبي - Main Branch</div>
+        <div class="menu">
+            <button>الذهاب إلى الموقع</button>
+            <button>المساعدة</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2>إدارة قوالب الطباعة</h2>
+        <div class="box" onclick="window.location.href='inventory_templates.html';">
+            <div class="icon">
+                <img src="icons/warehouse.png" alt="الأذونات المخزنية">
+            </div>
+            <div class="box-text">
+                الأذونات المخزنية
+            </div>
+        </div>
+    </div>
+
+    <!-- Style -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+        .top-bar {
+            background-color: #0177bc;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .branch {
+            font-size: 18px;
+        }
+        .menu button {
+            background-color: #0056a3;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .box {
+            width: 200px;
+            height: 150px;
+            background-color: white;
+            margin: 20px auto;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .box:hover {
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+        }
+        .icon {
+            margin-top: 20px;
+        }
+        .icon img {
+            width: 50px;
+            height: 50px;
+        }
+        .box-text {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</body>
+</html>

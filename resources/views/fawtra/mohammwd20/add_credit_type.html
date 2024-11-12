@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة نوع الرصيد</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .header {
+            background-color: #007bff;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+        }
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .green-btn, .gray-btn {
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .green-btn {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        .gray-btn {
+            background-color: #6c757d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>إضافة نوع الرصيد</h1>
+        </div>
+        <div class="content">
+            <form action="submit_credit_type.php" method="POST">
+                <label for="name">اسم الرصيد:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="unit">الوحدة:</label>
+                <input type="text" id="unit" name="unit">
+
+                <label for="status">الحالة:</label>
+                <select id="status" name="status">
+                    <option value="active">نشط</option>
+                    <option value="inactive">غير نشط</option>
+                </select>
+
+                <label for="description">الوصف:</label>
+                <textarea id="description" name="description"></textarea>
+
+                <button type="submit" class="green-btn">حفظ</button>
+                <button type="button" class="gray-btn" onclick="window.location.href='credit_type_results.html'">إلغاء</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عمولات المبيعات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .search-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-container input, .search-container select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f4f6f9;
+        }
+
+        .table td {
+            background-color: #fff;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .pagination span {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        عمولات المبيعات
+    </div>
+
+    <div class="content">
+        <!-- البحث والتصفية -->
+        <div class="search-container">
+            <select>
+                <option value="all">نوع العمولة</option>
+                <option value="percentage">بالنسبة المئوية</option>
+                <option value="fixed">مبلغ ثابت</option>
+            </select>
+
+            <input type="text" placeholder="بحث بواسطة موظف">
+
+            <select>
+                <option value="all">قواعد العمولة</option>
+                <option value="rule1">قاعدة 1</option>
+                <option value="rule2">قاعدة 2</option>
+            </select>
+
+            <input type="date" placeholder="تاريخ العملية التجارية من">
+            <input type="date" placeholder="تاريخ العملية التجارية إلى">
+
+            <button>بحث</button>
+            <button>إلغاء الفلتر</button>
+        </div>
+
+        <!-- الجدول -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>العملية</th>
+                    <th>الموظف</th>
+                    <th>المعرف</th>
+                    <th>كمية المبيعات</th>
+                    <th>مبلغ المبيعات</th>
+                    <th>عمولة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>فاتورة #07926 - 13/07/2024</td>
+                    <td>محمد الادريبي</td>
+                    <td>2923</td>
+                    <td>15 عنصر</td>
+                    <td>270.00 ر.س</td>
+                    <td>8.10 ر.س</td>
+                </tr>
+                <tr>
+                    <td>فاتورة #08331 - 31/08/2024</td>
+                    <td>محمد الادريبي</td>
+                    <td>2922</td>
+                    <td>15 عنصر</td>
+                    <td>270.00 ر.س</td>
+                    <td>8.10 ر.س</td>
+                </tr>
+                <!-- المزيد من السجلات -->
+            </tbody>
+        </table>
+
+        <!-- التصفح بين الصفحات -->
+        <div class="pagination">
+            <span>صفحة 1 من 144 - 20 من 2869</span>
+            <div>
+                <button>السابق</button>
+                <button>التالي</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

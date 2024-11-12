@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة معرض الصور</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- استدعاء Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            direction: rtl;
+            background-color: #f0f4f8;
+        }
+        .navbar {
+            background-color: #0078d7;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: white;
+            margin-left: 15px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .gallery-box {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .gallery-images img {
+            width: 150px;
+            height: auto;
+            margin: 10px;
+        }
+        .edit-button {
+            margin: 10px;
+            color: white;
+            background-color: #0078d7;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .edit-button:hover {
+            background-color: #005bb5;
+        }
+        .gallery-info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="navbar">
+        <div>محمد العنزي - Main Branch</div>
+        <div>
+            <a href="#">الذهاب إلى الموقع</a>
+            <a href="#">المساعدة</a>
+        </div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <h4>إدارة معرض الصور</h4>
+
+        <div class="gallery-box">
+            <button class="edit-button">
+                <i class="fas fa-edit"></i> تعديل
+            </button>
+
+            <div class="gallery-info">
+                <h5>التفاصيل</h5>
+                <p>المعرف: main_gallery</p>
+            </div>
+
+            <div class="gallery-images">
+                <h5>المرفقات</h5>
+                <img src="shop-now.jpg" alt="Image 1">
+                <img src="summer-sale.jpg" alt="Image 2">                
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

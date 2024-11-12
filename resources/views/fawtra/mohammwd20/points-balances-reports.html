@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقارير النقاط والأرصدة</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .top-bar {
+            background-color: #004085;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar button {
+            background-color: #f8f9fa;
+            color: #004085;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .top-bar button:hover {
+            background-color: #e9ecef;
+        }
+
+        header {
+            background-color: #004085;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .reports-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .report-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .report-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .report-box h3 {
+            font-size: 20px;
+            color: #004085;
+        }
+
+        .link-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .link-item i {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .link-item .link-text {
+            text-align: right;
+            padding-right: 10px;
+            font-size: 16px;
+        }
+
+        .link-item .action {
+            font-size: 14px;
+            color: #007bff;
+            display: flex;
+            align-items: center;
+        }
+
+        .link-item .action i {
+            margin-left: 5px;
+        }
+
+        .link-item .action:hover {
+            text-decoration: underline;
+        }
+
+        .emoji-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <button>محمد العتيبي</button>
+        <div class="buttons">
+            <button>الذهاب إلى الموقع</button>
+            <button>المساعدة</button>
+        </div>
+    </div>
+
+    <header>
+        تقارير النقاط والأرصدة
+    </header>
+
+    <!-- المربعات -->
+    <div class="container">
+        <div class="reports-grid">
+            <!-- استهلاك الأرصدة -->
+            <div class="report-box">
+                <h3 class="emoji-title">📊 استهلاك الأرصدة</h3>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">عرض استهلاك الأرصدة</span>
+                    <a class="action" href="balance-consumption-search.html"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+            </div>
+
+            <!-- شحن الأرصدة -->
+            <div class="report-box">
+                <h3 class="emoji-title">💳 شحن الأرصدة</h3>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">عرض شحن الأرصدة</span>
+                    <a class="action" href="balance-recharge-search.html"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

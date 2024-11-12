@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الطلبات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            background-color: #f4f4f4;
+        }
+        /* الشريط الأزرق العلوي */
+        .navbar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .navbar .user-info {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .user-info img {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+        .navbar .user-info span {
+            font-size: 14px;
+        }
+        /* المحتوى */
+        .content {
+            padding: 20px;
+        }
+        .box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .empty-message {
+            color: #666;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط الأزرق في الأعلى -->
+    <div class="navbar">
+        <h1>إدارة الطلبات</h1>
+        <div class="user-info">
+            <span>محمد العتيبي</span>
+            <img src="https://img.icons8.com/ios-filled/50/ffffff/user-male-circle.png" alt="User">
+        </div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <div class="box">
+            <p class="empty-message">لم يتم إضافة أنواع طلبات بعد</p>
+        </div>
+    </div>
+
+</body>
+</html>

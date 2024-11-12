@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحقول الإضافية للوحدات</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .top-bar {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .top-bar button, .top-bar select {
+            margin-left: 10px;
+        }
+        .drop-area {
+            min-height: 300px;
+            border: 2px dashed #007bff;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 1.2rem;
+        }
+        .list-group-custom {
+            background-color: #007bff;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .list-group-custom .list-group-item {
+            background-color: #0056b3;
+            color: #ffffff;
+            margin-bottom: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const items = document.querySelectorAll('.list-group-item');
+            const dropArea = document.querySelector('.drop-area');
+
+            items.forEach(item => {
+                item.setAttribute('draggable', 'true');
+                item.addEventListener('dragstart', function(e) {
+                    e.dataTransfer.setData('text/plain', e.target.innerText);
+                });
+            });
+
+            dropArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                dropArea.style.backgroundColor = '#e3f2fd';
+            });
+
+            dropArea.addEventListener('dragleave', function(e) {
+                dropArea.style.backgroundColor = '#ffffff';
+            });
+
+            dropArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                dropArea.style.backgroundColor = '#ffffff';
+                const data = e.dataTransfer.getData('text/plain');
+                const newItem = document.createElement('div');
+                newItem.classList.add('dropped-item', 'p-2', 'mt-2', 'border');
+                newItem.innerText = data;
+                dropArea.appendChild(newItem);
+            });
+        });
+    </script>
+</head>
+<body dir="rtl">
+    <div class="container-fluid">
+        <!-- الشريط العلوي -->
+        
+            <div class="row top-bar p-3">
+            <div class="col">
+                <h3 class="text-white text-center">الحقول الإضافية للوحدات</h3>
+            </div>
+        </div>
+        </div>
+        </div>
+
+        <!-- تخطيط الصفحة -->
+        <div class="row mt-4">
+            <!-- القسم الأيمن -->
+            <div class="col-md-3">
+                <div class="list-group list-group-custom">
+                    <button class="list-group-item list-group-item-action">حقل سطر واحد</button>
+                    <button class="list-group-item list-group-item-action">حقل متعدد الأسطر</button>
+                    <button class="list-group-item list-group-item-action">حقل URL</button>
+                    <button class="list-group-item list-group-item-action">حقل البريد الإلكتروني</button>
+                    <button class="list-group-item list-group-item-action">رقم الهاتف</button>
+                    <button class="list-group-item list-group-item-action">الحقول الزمنية والتاريخية</button>
+                    <button class="list-group-item list-group-item-action">العملة</button>
+                    <button class="list-group-item list-group-item-action">الرقم</button>
+                    <button class="list-group-item list-group-item-action">التبديل</button>
+                    <button class="list-group-item list-group-item-action">تحديد الموقع على الخريطة</button>
+                    <button class="list-group-item list-group-item-action">تحميل الملفات والصور</button>
+                    <button class="list-group-item list-group-item-action">نماذج فرعية متعددة</button>
+                    <button class="list-group-item list-group-item-action">فاصل</button>
+                    <button class="list-group-item list-group-item-action">قائمة منسدلة</button>
+                    <button class="list-group-item list-group-item-action">قائمة متعددة منسدلة</button>
+                    <button class="list-group-item list-group-item-action">قائمة منسدلة ديناميكية</button>
+                    <button class="list-group-item list-group-item-action">قائمة ديناميكية متعددة منسدلة</button>
+                </div>
+            </div>
+
+            <!-- القسم الأوسط -->
+            <div class="col-md-6">
+                <div class="drop-area">
+                    <p>أسقط هنا</p>
+                </div>
+            </div>
+
+            <!-- القسم الأيسر -->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">تفاصيل إضافية أو ملخص</h5>
+                        <p class="card-text">يمكن استخدام هذه المساحة لتقديم تفاصيل إضافية أو ملخص.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <div class="row mt-4 text-center">
+            <div class="col">
+                <button class="btn btn-success">حفظ</button>
+                <button class="btn btn-secondary">إلغاء</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</body>
+</html>

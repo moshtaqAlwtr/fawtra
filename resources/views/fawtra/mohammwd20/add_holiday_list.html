@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة قائمة العطلات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+        }
+        .top-bar button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container {
+            padding: 20px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .save-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .cancel-btn {
+            background-color: #dc3545;
+            color: white;
+            margin-right: 10px;
+        }
+        .holiday-list-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .holiday-list-table th, .holiday-list-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .holiday-list-table th {
+            background-color: #f1f1f1;
+        }
+        .add-row-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border: none;
+        }
+        .remove-row-btn {
+            color: #dc3545;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <button class="go-to-site">الذهاب إلى الموقع</button>
+        <button class="help">المساعدة</button>
+    </div>
+
+    <div class="container">
+        <form action="save_holiday_list.php" method="post">
+            <div class="form-group">
+                <label for="holiday-list-name">الاسم *</label>
+                <input type="text" id="holiday-list-name" name="holiday_list_name" required>
+            </div>
+
+            <!-- Holidays Section -->
+            <div class="form-group">
+                <label for="holidays">إختر العطلات:</label>
+                <table class="holiday-list-table">
+                    <thead>
+                        <tr>
+                            <th>الرقم المسلسل</th>
+                            <th>التاريخ</th>
+                            <th>إزالة</th>
+                        </tr>
+                    </thead>
+                    <tbody id="holiday-list-body">
+                        <tr>
+                            <td>1</td>
+                            <td><input type="date" name="holiday_dates[]"></td>
+                            <td><span class="remove-row-btn" onclick="removeRow(this)">إزالة</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="add-row-btn" onclick="addRow()">إضافة</button>
+            </div>
+
+            <button type="submit" class="save-btn">حفظ</button>
+            <button type="button" class="cancel-btn" onclick="window.location.href='holiday_lists.html'">إلغاء</button>
+        </form>
+    </div>
+
+    <script>
+        function addRow() {
+            const tableBody = document.getElementById('holiday-list-body');
+            const rowCount = tableBody.rows.length + 1;
+            const newRow = `
+                <tr>
+                    <td>${rowCount}</td>
+                    <td><input type="date" name="holiday_dates[]"></td>
+                    <td><span class="remove-row-btn" onclick="removeRow(this)">إزالة</span></td>
+                </tr>
+            `;
+            tableBody.insertAdjacentHTML('beforeend', newRow);
+        }
+
+        function removeRow(element) {
+            const row = element.parentNode.parentNode;
+            row.remove();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيانات العميل</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { 
+            direction: rtl; 
+            background: linear-gradient(to right, #f7fafc, #edf2f7); /* خلفية هادئة تتدرج من الأبيض المائل للرمادي */
+            font-family: Arial, sans-serif;
+            color: #4a4a4a; /* لون داكن للنصوص */
+        }
+        .form-section { 
+            border: 1px solid #e2e8f0; /* حدود خفيفة */
+            padding: 20px; 
+            background: linear-gradient(to right, #ffffff, #f7fafc); /* خلفية فاتحة وهادئة */
+            border-radius: 8px; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* ظل خفيف */
+        }
+        .form-section h6 { 
+            font-weight: bold; 
+            color: #2d3748; 
+            margin-bottom: 20px; 
+            font-size: 1.2rem;
+        }
+        .header-buttons { 
+            display: flex; 
+            justify-content: flex-end; 
+            gap: 10px; 
+            margin-bottom: 20px; 
+        }
+        .btn-custom {
+            background: linear-gradient(135deg, #90cdf4, #63b3ed); /* تدرج هادئ بين الأزرق الفاتح والرمادي المزرق */
+            color: white;
+            border: none;
+        }
+        .btn-custom:hover {
+            background: linear-gradient(135deg, #63b3ed, #90cdf4); 
+        }
+        .footer-info { 
+            text-align: center; 
+            font-size: 0.85rem; 
+            color: #718096; 
+            margin-top: 20px; 
+        }
+        .map-container { 
+            border: 1px solid #e2e8f0; 
+            height: 400px; 
+            background-color: #edf2f7; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin-top: 10px; 
+            border-radius: 8px;
+            color: #718096;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #4a5568;
+        }
+        .input-group-text {
+            background: #90cdf4; /* لون هادئ للإدخالات */
+            color: white;
+            border: none;
+        }
+        .form-control, .form-select {
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+        }
+        .icon-section i {
+            color: #63b3ed;
+            font-size: 1.5rem;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container my-4">
+    <!-- أزرار الحفظ والإلغاء -->
+    <div class="header-buttons">
+        <button class="btn btn-custom"><i class="fas fa-save"></i> حفظ</button>
+        <button class="btn btn-secondary"><i class="fas fa-times-circle"></i> إلغاء</button>
+    </div>
+
+    <div class="row">
+        <!-- بيانات العميل في الجهة اليمنى -->
+        <div class="col-md-6 form-section">
+            <h6>بيانات العميل</h6>
+            
+            <!-- السطر الأول: الاسم التجاري -->
+            <div class="mb-3">
+                <label class="form-label">الاسم التجاري</label>
+                <input type="text" class="form-control">
+            </div>
+        
+            <!-- السطر الثاني: الاسم الأول والاسم الأخير -->
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">الاسم الأول</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">الاسم الأخير</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        
+            <!-- السطر الثالث: الهاتف والجوال -->
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">الهاتف</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">الجوال</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        
+            <!-- السطر الرابع: عنوان الشارع 1 وعنوان الشارع 2 -->
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">عنوان الشارع 1</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">عنوان الشارع 2</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        
+            <!-- السطر الخامس: المدينة والمنطقة والرمز البريدي -->
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">المدينة</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">المنطقة</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">الرمز البريدي</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        
+            <!-- السطر السادس: البلد -->
+            <div class="mb-3">
+                <label class="form-label">البلد</label>
+                <select class="form-select">
+                    <option>المملكة العربية السعودية (SA)</option>
+                    <!-- إضافة بلدان أخرى هنا -->
+                </select>
+            </div>
+        
+            <!-- السطر السابع: الرقم الضريبي والسجل التجاري -->
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">الرقم الضريبي</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">السجل التجاري</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        
+            <!-- السطر الثامن: الحد الائتماني والمدة الائتمانية -->
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">الحد الائتماني</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">المدة الائتمانية</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-text">أيام</span>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- زر إضافة عنوان ثانوي -->
+           
+        
+            <!-- مربع الخريطة -->
+            <div class="map-container">
+                <i class="fas fa-map-marker-alt"></i> الخريطة هنا
+            </div>
+            <div class="row mb-3 align-items-center">
+                <div class="col-12">
+                    <div class="form-check form-switch d-flex align-items-center justify-content-between">
+                        <div>
+                            <input class="form-check-input" type="checkbox" id="secondaryAddressToggle">
+                            <label class="form-check-label" for="secondaryAddressToggle" style="font-size: 0.9rem; color: #4a5568;">
+                                إضافة عنوان ثانوي
+                            </label>
+                        </div>
+                        
+                    </div>
+                   
+                    
+                    
+                </div>
+            </div>
+
+    <!-- الفورم المخفي -->
+<div id="formContainer"></div>
+
+<!-- الفورم الأصلي المخفي -->
+<div class="form-section" id="contactForm" style="display: none; background: linear-gradient(135deg, #f3e7e9, #e3eeff); border-radius: 8px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); position: relative;">
+    <button type="button" class="btn btn-danger btn-sm icon-button" onclick="this.parentElement.remove()" style="position: absolute; top: 10px; left: 10px;">
+        <i class="fas fa-times"></i>
+    </button>
+    <h6 style="font-weight: bold; color: #6a11cb;">قائمة الاتصال</h6>
+  
+    <div class="row mb-3">
+        <div class="col">
+            <label class="form-label" style="color: #2575fc;">الاسم الأول</label>
+            <input type="text" class="form-control" style="border-radius: 8px; border: 1px solid #b0c4de;">
+        </div>
+        <div class="col">
+            <label class="form-label" style="color: #2575fc;">الاسم الأخير</label>
+            <input type="text" class="form-control" style="border-radius: 8px; border: 1px solid #b0c4de;">
+        </div>
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label" style="color: #2575fc;">البريد الإلكتروني</label>
+        <input type="email" class="form-control" style="border-radius: 8px; border: 1px solid #b0c4de;">
+    </div>
+    
+    <div class="row mb-3">
+        <div class="col">
+            <label class="form-label" style="color: #2575fc;">الهاتف</label>
+            <input type="text" class="form-control" style="border-radius: 8px; border: 1px solid #b0c4de;">
+        </div>
+        <div class="col">
+            <label class="form-label" style="color: #2575fc;">جوال</label>
+            <input type="text" class="form-control" style="border-radius: 8px; border: 1px solid #b0c4de;">
+        </div>
+    </div>
+</div>
+
+<!-- زر إضافة لنسخ الفورم -->
+<button class="btn btn-primary" onclick="addForm()" type="button" style="background: linear-gradient(135deg, #6a11cb, #2575fc); color: white; border: none; border-radius: 8px; padding: 10px 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+    <i class="fas fa-plus-circle" style="color: white;"></i> إضافة
+</button>
+
+
+        </div>
+        
+
+        <!-- بيانات الحساب في الجهة اليسرى -->
+        <div class="col-md-6 form-section">
+            <h6>بيانات الحساب</h6>
+
+            <!-- السطر الأول: الكود وطريقة الطباعة -->
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">الكود</label>
+                    <input type="text" class="form-control" value="1174">
+                </div>
+                <div class="col">
+                    <label class="form-label">طريقة الطباعة</label>
+                    <select class="form-select">
+                        <option>بطاقة</option>
+                        <option>نقدًا</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- السطر الثاني: الرصيد الافتتاحي وتاريخ الرصيد الافتتاحي -->
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">الرصيد الافتتاحي</label>
+                    <input type="text" class="form-control" placeholder="SAR">
+                </div>
+                <div class="col">
+                    <label class="form-label">تاريخ الرصيد الافتتاحي</label>
+                    <input type="date" class="form-control" value="2024-10-28">
+                </div>
+            </div>
+
+            <!-- السطر الثالث: العملة -->
+            <div class="mb-3">
+                <label class="form-label">العملة</label>
+                <select class="form-select">
+                    <option>اختر العملة</option>
+                    <!-- إضافة عملات أخرى هنا -->
+                </select>
+            </div>
+
+            <!-- السطر الرابع: البريد الإلكتروني -->
+            <div class="mb-3">
+                <label class="form-label">البريد الإلكتروني</label>
+                <input type="email" class="form-control">
+            </div>
+
+            <!-- السطر الخامس: التصنيف -->
+            <div class="mb-3">
+                <label class="form-label">التصنيف</label>
+                <select class="form-select">
+                    <option>اختر التصنيف</option>
+                    <!-- إضافة خيارات أخرى هنا -->
+                </select>
+            </div>
+
+            <!-- السطر السادس: الملاحظات -->
+            <div class="mb-3">
+                <label class="form-label">الملاحظات</label>
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+
+       <!-- السطر السابع: المرفقات -->
+       <div class="mb-3">
+        <label class="form-label">المرفقات</label>
+        <div class="upload-area text-center p-4" style="border: 2px dashed #d3d3d3; border-radius: 8px; background-color: #f9f9f9;">
+            <i class="fas fa-cloud-upload-alt" style="font-size: 2rem; color: #007bff;"></i>
+            <p class="mt-2">أسقط الملف هنا أو اختر من جهازك</p>
+            <button type="button" class="btn btn-primary" onclick="document.getElementById('fileInput').click()">اختر ملف</button>
+            <input type="file" id="fileInput" class="d-none">
+        </div>
+    </div>
+    
+
+            
+
+            <!-- السطر الأخير: لغة العرض -->
+            <div class="mb-3">
+                <label class="form-label">لغة العرض</label>
+                <select class="form-select">
+                    <option>اختر اللغة</option>
+                    <!-- إضافة لغات أخرى هنا -->
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- ملاحظة في الأسفل -->
+    <div class="footer-info">
+        <p>لديك سؤال؟ اتصل بنا للمساعدة!</p>
+    </div>
+</div>
+<script>
+    function initMap() {
+        const mapOptions = {
+            center: { lat: 24.7136, lng: 46.6753 }, // الموقع الافتراضي (مثل الرياض)
+            zoom: 10
+        };
+        const map = new google.maps.Map(document.querySelector(".map-container"), mapOptions);
+    }
+    
+
+    function addForm() {
+        // نسخ النموذج الأساسي
+        var originalForm = document.getElementById("contactForm");
+        var newForm = originalForm.cloneNode(true);
+        
+        // إزالة id من النموذج الجديد لمنع تكرار المعرفات
+        newForm.id = '';
+        
+        // عرض النموذج الجديد
+        newForm.style.display = "block";
+        
+        // إضافة النموذج الجديد إلى الوعاء
+        document.getElementById("formContainer").appendChild(newForm);
+    }
+
+
+
+    
+</script>
+<script>
+
+</script>
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

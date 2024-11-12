@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الموظفين</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar a {
+            text-decoration: none;
+        }
+        .top-bar button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        .content {
+            padding: 20px;
+        }
+        .search-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .search-filter input, .search-filter select {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .results-table th, .results-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: right;
+        }
+        .results-table th {
+            background-color: #f4f4f4;
+        }
+        .status-active {
+            color: green;
+        }
+        .status-inactive {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <h1>الموظفين</h1>
+        <a href="add_employee.html">
+            <button>إضافة جديدة</button>
+        </a>
+    </div>
+
+    <div class="content">
+        <form id="search-form">
+            <div class="search-filter">
+                <input type="text" placeholder="البحث بواسطة اسم الموظف أو الرقم التعريفي...">
+                <select>
+                    <option value="">إختر الحالة</option>
+                    <option value="نشط">نشط</option>
+                    <option value="غير نشط">غير نشط</option>
+                </select>
+                <select>
+                    <option value="">إختر النوع</option>
+                    <option value="مدير">مدير</option>
+                    <option value="موظف">موظف</option>
+                </select>
+                <button type="button" onclick="searchEmployees()">بحث</button>
+                <button type="button" onclick="resetForm()">إعادة تعيين</button>
+            </div>
+        </form>
+
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>الاسم</th>
+                    <th>الدور الوظيفي</th>
+                    <th>المسمى الوظيفي</th>
+                    <th>قسم</th>
+                    <th>فرع</th>
+                    <th>الحالة</th>
+                    <th>ترتيب</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>محمد المنصوب</td>
+                    <td>مدير</td>
+                    <td>مدير</td>
+                    <td>-</td>
+                    <td>Main Branch</td>
+                    <td class="status-active">نشط</td>
+                    <td>#6</td>
+                </tr>
+                <tr>
+                    <td>محمد الإدريسي</td>
+                    <td>موظف</td>
+                    <td>موظف</td>
+                    <td>-</td>
+                    <td>Main Branch</td>
+                    <td class="status-active">نشط</td>
+                    <td>#5</td>
+                </tr>
+                <tr>
+                    <td>رشيد الرياض</td>
+                    <td>موظف</td>
+                    <td>موظف</td>
+                    <td>-</td>
+                    <td>Main Branch</td>
+                    <td class="status-inactive">غير نشط</td>
+                    <td>#4</td>
+                </tr>
+                <tr>
+                    <td>عثمان العولقي</td>
+                    <td>موظف</td>
+                    <td>موظف</td>
+                    <td>-</td>
+                    <td>Main Branch</td>
+                    <td class="status-active">نشط</td>
+                    <td>#3</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function resetForm() {
+            document.getElementById("search-form").reset();
+        }
+
+        function searchEmployees() {
+            alert("تم تنفيذ عملية البحث بنجاح!");
+            // هنا يمكنك إضافة كود البحث حسب الحاجة
+        }
+    </script>
+
+</body>
+</html>

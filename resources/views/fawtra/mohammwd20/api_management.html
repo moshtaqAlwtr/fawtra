@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات API</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 20px;
+        }
+
+        .top-bar {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .api-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            height: 100px;
+        }
+
+        .api-actions {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .api-actions button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .api-actions button.test-api {
+            background-color: #007bff;
+        }
+
+        .api-actions button.delete-api {
+            background-color: #dc3545;
+        }
+
+        .api-list {
+            margin-top: 30px;
+        }
+
+        .api-list h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .api-item {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .api-item span {
+            font-size: 16px;
+        }
+
+        .api-item .api-options button {
+            background-color: #ffc107;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .api-item .api-options button.delete {
+            background-color: #dc3545;
+        }
+
+        .alert {
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .alert.error {
+            background-color: #dc3545;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        إعدادات API
+    </div>
+
+    <div class="container">
+        <div class="api-form">
+            <h3>إضافة مفتاح API جديد</h3>
+            <div class="form-group">
+                <label>اسم الـ API</label>
+                <input type="text" id="apiName" placeholder="أدخل اسم الـ API">
+            </div>
+            <div class="form-group">
+                <label>رابط الـ API</label>
+                <input type="text" id="apiUrl" placeholder="أدخل رابط الـ API">
+            </div>
+            <div class="form-group">
+                <label>مفتاح الـ API</label>
+                <input type="text" id="apiKey" placeholder="أدخل مفتاح الـ API">
+            </div>
+            <div class="api-actions">
+                <button id="saveApiBtn">حفظ</button>
+                <button class="test-api">اختبار الاتصال بـ API</button>
+            </div>
+            <div class="alert" id="alertMessage">تم حفظ الـ API بنجاح</div>
+            <div class="alert error" id="errorMessage">فشل في الاتصال بالـ API</div>
+        </div>
+
+        <div class="api-list">
+            <h3>قائمة APIات</h3>
+            <div id="apiItemsContainer">
+                <!-- سيتم عرض APIات المحفوظة هنا -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // حفظ API جديد
+        document.getElementById('saveApiBtn').addEventListener('click', function() {
+            const apiName = document.getElementById('apiName').value;
+            const apiUrl = document.getElementById('apiUrl').value;
+            const apiKey = document.getElementById('apiKey').value;
+
+            if (apiName && apiUrl && apiKey) {
+                const apiContainer = document.getElementById('apiItemsContainer');
+                const newApiItem = `
+                    <div class="api-item">
+                        <span>${apiName}</span>
+                        <div class="api-options">
+                            <button class="edit">تعديل</button>
+                            <button class="delete">حذف</button>
+                        </div>
+                    </div>
+                `;
+                apiContainer.innerHTML += newApiItem;
+
+                // إظهار رسالة نجاح
+                const alertMessage = document.getElementById('alertMessage');
+                alertMessage.style.display = 'block';
+
+                // إخفاء الرسالة بعد ثوانٍ
+                setTimeout(() => alertMessage.style.display = 'none', 3000);
+            }
+        });
+
+        // اختبار الاتصال بـ API
+        document.querySelector('.test-api').addEventListener('click', function() {
+            const apiUrl = document.getElementById('apiUrl').value;
+            fetch(apiUrl)
+                .then(response => {
+                    if (response.ok) {
+                        alert('تم الاتصال بنجاح!');
+                    } else {
+                        throw new Error('فشل الاتصال');
+                    }
+                })
+                .catch(() => {
+                    // إظهار رسالة خطأ
+                    const errorMessage = document.getElementById('errorMessage');
+                    errorMessage.style.display = 'block';
+
+                    // إخفاء الرسالة بعد ثوانٍ
+                    setTimeout(() => errorMessage.style.display = 'none', 3000);
+                });
+        });
+
+        // حذف API
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('delete')) {
+                e.target.closest('.api-item').remove();
+            }
+        });
+    </script>
+
+</body>
+</html>

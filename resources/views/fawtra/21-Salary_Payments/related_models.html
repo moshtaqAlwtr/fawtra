@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النماذج ذات صلة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .top-bar {
+            background-color: #0177bc;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .add-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .content {
+            background-color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <div class="branch">محمد العتيبي - Main Branch</div>
+        <div class="menu">
+            <button>الذهاب إلى الموقع</button>
+            <button>المساعدة</button>
+        </div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="container">
+        <div class="header">
+            <h1>النماذج ذات صلة</h1>
+            <button class="add-button" onclick="window.location.href='add_model.html'">أضف نموذج مخصص</button>
+        </div>
+        
+        <!-- منطقة البحث -->
+        <div class="search-box">
+            <select>
+                <option>جميع الحالات</option>
+            </select>
+            <select>
+                <option>جميع الحالات</option>
+            </select>
+            <input type="text" placeholder="ابحث بواسطة اسم النموذج المخصص أو المعرف">
+            <button>بحث</button>
+            <button>إلغاء الفلتر</button>
+        </div>
+
+        <!-- نتائج البحث -->
+        <div class="content">
+            <p>لا يوجد نتائج بحث، حاول تغيير معايير البحث</p>
+        </div>
+    </div>
+</body>
+</html>

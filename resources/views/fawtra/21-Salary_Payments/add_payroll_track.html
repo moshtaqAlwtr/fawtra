@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة مسير الرواتب</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Flatpickr CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            background: linear-gradient(135deg, #f3f4f6, #e2e8f0);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .top-bar {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            padding: 15px 0;
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            padding: 30px;
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group input, .form-group select {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.2s;
+            border: none;
+        }
+        .btn-green {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-green:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+        .btn-red {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-red:hover {
+            background-color: #c82333;
+            transform: scale(1.05);
+        }
+        .flatpickr-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .flatpickr-buttons button {
+            padding: 5px 15px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .flatpickr-buttons .today-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        .flatpickr-buttons .today-btn:hover {
+            background-color: #0056b3;
+        }
+        .flatpickr-buttons .clear-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+        .flatpickr-buttons .clear-btn:hover {
+            background-color: #c82333;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط العنوان -->
+    <div class="top-bar">
+        إضافة مسير الرواتب
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content mt-4">
+        <h3 class="mb-4">معلومات مسير الرواتب</h3>
+        <form>
+            <div class="row g-3">
+                <div class="col-md-6 form-group">
+                    <label for="register-date">تاريخ التسجيل <span class="text-danger">*</span></label>
+                    <input type="text" id="register-date" name="register-date" class="form-control flatpickr">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="end-date">تاريخ الانتهاء <span class="text-danger">*</span></label>
+                    <input type="text" id="end-date" name="end-date" class="form-control flatpickr">
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label for="name">الاسم <span class="text-danger">*</span></label>
+                    <input type="text" id="name" name="name" class="form-control">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="rules">إختيار القواعد</label>
+                    <select id="rules" name="rules" class="form-control">
+                        <option value="all">كل القواعد</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label for="branch">فرع</label>
+                    <select id="branch" name="branch" class="form-control">
+                        <option value="all">كل الفروع</option>
+                        <option value="branch1">فرع 1</option>
+                        <option value="branch2">فرع 2</option>
+                    </select>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="department">قسم</label>
+                    <select id="department" name="department" class="form-control">
+                        <option value="all">كل الأقسام</option>
+                        <option value="dept1">قسم 1</option>
+                        <option value="dept2">قسم 2</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label for="job-title">المسمى الوظيفي</label>
+                    <select id="job-title" name="job-title" class="form-control">
+                        <option value="all">كل المسميات الوظيفية</option>
+                        <option value="title1">مسمى وظيفي 1</option>
+                        <option value="title2">مسمى وظيفي 2</option>
+                    </select>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="shift">ورديّة</label>
+                    <select id="shift" name="shift" class="form-control">
+                        <option value="all">كل الورديات</option>
+                        <option value="shift1">ورديّة 1</option>
+                        <option value="shift2">ورديّة 2</option>
+                    </select>
+                </div>
+
+                <div class="col-md-12 form-group">
+                    <label for="excluded-employees">الموظفين المستبعدين</label>
+                    <select id="excluded-employees" name="excluded-employees" class="form-control">
+                        <option value="none">اختر موظف</option>
+                        <option value="emp1">موظف 1</option>
+                        <option value="emp2">موظف 2</option>
+                    </select>
+                </div>
+
+                <div class="col-md-12 form-check mb-3">
+                    <input type="checkbox" id="attendance-check" name="attendance-check" class="form-check-input" checked>
+                    <label for="attendance-check" class="form-check-label">التحقق من الحضور</label>
+                </div>
+
+                <!-- أزرار الحفظ والإلغاء -->
+                <div class="action-buttons">
+                    <button type="submit" class="btn btn-green"><i class="fas fa-save"></i> حفظ</button>
+                    <button type="button" class="btn btn-red"><i class="fas fa-times"></i> إلغاء</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        // إعداد Flatpickr
+        flatpickr(".flatpickr", {
+            locale: "ar", // تعيين اللغة إلى العربية
+            dateFormat: "Y-m-d",
+            onReady: function(selectedDates, dateStr, instance) {
+                // إضافة الأزرار "اليوم" و "مسح"
+                let buttonsContainer = document.createElement('div');
+                buttonsContainer.className = 'flatpickr-buttons';
+
+                // زر "اليوم"
+                let todayButton = document.createElement('button');
+                todayButton.textContent = "اليوم";
+                todayButton.className = 'today-btn';
+                todayButton.type = 'button'; // لمنع إرسال النموذج عند النقر
+                todayButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    instance.setDate(new Date());
+                });
+
+                // زر "مسح"
+                let clearButton = document.createElement('button');
+                clearButton.textContent = "مسح";
+                clearButton.className = 'clear-btn';
+                clearButton.type = 'button'; // لمنع إرسال النموذج عند النقر
+                clearButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    instance.clear();
+                });
+
+                // إضافة الأزرار إلى التقويم
+                buttonsContainer.appendChild(todayButton);
+                buttonsContainer.appendChild(clearButton);
+                instance.calendarContainer.appendChild(buttonsContainer);
+            }
+        });
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

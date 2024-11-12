@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدفوعات العملاء</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            direction: rtl;
+            background-color: #e9eef3;
+        }
+        .navbar {
+            background-color: #0078d7;
+            color: white;
+            padding: 10px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+        .header {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+        }
+        .content {
+            padding: 20px;
+        }
+        .btn-actions {
+            background-color: #28a745;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .advanced-search {
+            display: none;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+        }
+        .toggle-advanced-search {
+            color: #007bff;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .results {
+            margin-top: 20px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .results table {
+            width: 100%;
+            text-align: center;
+        }
+        .results table th, .results table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="navbar d-flex justify-content-between">
+        <div>
+            <button class="btn btn-outline-light">الذهاب إلى الموقع</button>
+            <button class="btn btn-outline-light">المساعدة</button>
+        </div>
+        <div>محمد العنزي - Main Branch</div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-actions dropdown-toggle" type="button" id="actionsMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                الإجراءات
+            </button>
+            <div class="dropdown-menu" aria-labelledby="actionsMenu">
+                <a class="dropdown-item" href="#">الصفحة الحالية</a>
+                <a class="dropdown-item" href="#">كل الصفحات</a>
+            </div>
+        </div>
+
+        <!-- البحث -->
+        <div class="form-section">
+            <h5>بحث</h5>
+            <form class="form-inline">
+                <div class="form-group mb-2">
+                    <label for="invoiceNumber" class="sr-only">رقم الفاتورة</label>
+                    <input type="text" class="form-control" id="invoiceNumber" placeholder="رقم الفاتورة">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="clientName" class="sr-only">اسم العميل</label>
+                    <input type="text" class="form-control" id="clientName" placeholder="اسم العميل">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">بحث</button>
+                <button type="button" class="btn btn-secondary mb-2 mx-2">إلغاء الفلتر</button>
+                <button type="button" class="btn btn-info mb-2 toggle-advanced-search">بحث متقدم</button>
+            </form>
+
+            <!-- البحث المتقدم -->
+            <div class="advanced-search" id="advancedSearch">
+                <h6>بحث متقدم</h6>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="paymentMethod">وسيلة الدفع</label>
+                            <select id="paymentMethod" class="form-control">
+                                <option value="">أي طرق دفع</option>
+                                <!-- إضافة خيارات أخرى -->
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="paymentDate">التاريخ</label>
+                            <input type="date" class="form-control" id="paymentDate">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="idNumber">الرقم التعريفي</label>
+                            <input type="text" class="form-control" id="idNumber">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="amountGreater">المبلغ أكبر من</label>
+                            <input type="number" class="form-control" id="amountGreater">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="amountLess">المبلغ أقل من</label>
+                            <input type="number" class="form-control" id="amountLess">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="status">الحالة</label>
+                            <select id="status" class="form-control">
+                                <option value="">أي حالة</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="creationDateFrom">تاريخ الإنشاء من</label>
+                            <input type="date" class="form-control" id="creationDateFrom">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="creationDateTo">تاريخ الإنشاء إلى</label>
+                            <input type="date" class="form-control" id="creationDateTo">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="posShift">Pos Shift</label>
+                            <input type="text" class="form-control" id="posShift">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="invoiceCreator">منشئ الفاتورة</label>
+                            <select id="invoiceCreator" class="form-control">
+                                <option value="">أي موظف</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="collectedBy">تم التحصيل بواسطة</label>
+                            <input type="text" class="form-control" id="collectedBy">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- نتائج البحث -->
+            <div class="results" id="results">
+                <h5>نتائج البحث</h5>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>رقم الفاتورة</th>
+                            <th>اسم العميل</th>
+                            <th>تاريخ الدفع</th>
+                            <th>المبلغ</th>
+                            <th>الحالة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>12345</td>
+                            <td>أحمد محمد</td>
+                            <td>2024-10-01</td>
+                            <td>500 ريال</td>
+                            <td>مدفوع</td>
+                        </tr>
+                        <!-- المزيد من النتائج يمكن إضافتها هنا -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Toggle advanced search
+        $('.toggle-advanced-search').click(function() {
+            $('#advancedSearch').slideToggle();
+        });
+    </script>
+
+</body>
+</html>

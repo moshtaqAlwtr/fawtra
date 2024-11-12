@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض الصور الرئيسي</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            background-color: #e9eef5;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        .gallery-container {
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .card-header {
+            background-color: #4a90e2;
+            color: #fff;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            padding: 15px;
+        }
+        .edit-btn {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            font-size: 0.9em;
+        }
+        .edit-btn:hover {
+            background-color: #218838;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        .details-section {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .attachment-thumbnail {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            margin-right: 15px;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 1.5em;
+        }
+        .attachment-label {
+            text-align: center;
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #495057;
+        }
+        .attachment-container {
+            display: flex;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container gallery-container">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>معرض الصور الرئيسي</span>
+                <button class="btn btn-sm edit-btn" onclick="window.location.href = 'gallery-management-edit.html';">
+                    <i class="bi bi-pencil"></i> تعديل
+                </button>
+            </div>
+            <div class="card-body">
+                <!-- Details Section -->
+                <div class="mb-4">
+                    <h6 class="section-title">التفاصيل</h6>
+                    <div class="details-section">
+                        <div class="mb-2">
+                            <strong>معلومات الوسائط:</strong>
+                        </div>
+                        <div class="text-muted">المعرف: <span>main_gallery</span></div>
+                    </div>
+                </div>
+                
+                <!-- Attachments Section -->
+                <div class="mb-4">
+                    <h6 class="section-title">المرفقات</h6>
+                    <div class="attachment-container">
+                        <div class="text-center">
+                            <div class="attachment-thumbnail">
+                                <i class="bi bi-file-earmark-image"></i>
+                            </div>
+                            <div class="attachment-label">Shop-now.jpg</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="attachment-thumbnail">
+                                <i class="bi bi-file-earmark-image"></i>
+                            </div>
+                            <div class="attachment-label">Summer-sale.jpg</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات ورديات نقاط البيع</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            direction: rtl;
+            background-color: #f0f4f8;
+        }
+        /* الشريط العلوي */
+        .navbar {
+            background-color: #0078d7;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar h4 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        
+        /* كونتينر رئيسي لكل المحتوى */
+        .main-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        /* تنسيق الأزرار وجعلها متساوية */
+        .action-buttons .btn {
+            width: 150px; /* جعل الأزرار بنفس العرض */
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .btn-new-shift {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        /* تنسيق الترقيم */
+        .pagination {
+            margin: 0;
+        }
+        
+        .results {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .results table {
+            width: 100%;
+            margin-top: 15px;
+        }
+        .results table th, .results table td {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .dropdown-toggle::after {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي مع عنوان الصفحة -->
+    <div class="navbar">
+        <h4>إعدادات ورديات نقاط البيع</h4>
+    </div>
+
+    <!-- كونتينر رئيسي لكل المحتوى -->
+    <div class="container main-container">
+        <!-- كونتينر للأزرار وترقيم الصفحات -->
+        <div class="d-flex justify-content-start gap-3 mb-3 action-buttons">
+            <!-- زر وردية جديدة -->
+            <a href="add-pos-shift.html" class="btn btn-new-shift">وردية جديدة</a>
+            
+            <!-- زر الإجراءات كقائمة منسدلة -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="actionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    الإجراءات
+                </button>
+                <div class="dropdown-menu" aria-labelledby="actionDropdown">
+                    <a class="dropdown-item" href="#">حذف</a>
+                </div>
+            </div>
+
+            <!-- ترقيم الصفحات -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination pagination-sm mb-0">
+                    <li class="page-item"><a class="page-link" href="#">السابق</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">التالي</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- نموذج البحث -->
+        <form class="search-form mb-3">
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="shiftName">الاسم</label>
+                    <input type="text" class="form-control" id="shiftName" placeholder="أدخل اسم الوردية">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="shiftCategory">التصنيف الرئيسي</label>
+                    <select class="form-control" id="shiftCategory">
+                        <option>الكل</option>
+                        <option>تصنيف 1</option>
+                        <option>تصنيف 2</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-search mt-2">بحث</button>
+            <button type="reset" class="btn btn-secondary btn-clear mt-2">إلغاء الفلتر</button>
+        </form>
+
+        <!-- نتائج البحث -->
+        <div class="results">
+            <h5>نتائج البحث</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>الاسم</th>
+                        <th>التصنيف الرئيسي</th>
+                        <th>الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Main POS Shift</td>
+                        <td>المستودع الرئيسي</td>
+                        <td>
+                            <!-- القائمة المنسدلة داخل الجدول -->
+                            <div class="dropdown">
+                                <button class="btn btn-link dropdown-toggle" type="button" id="tableDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="tableDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-edit" style="color: blue; margin-right: 5px;"></i> تعديل
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-trash-alt" style="color: red; margin-right: 5px;"></i> حذف
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </td>
+                    </tr>
+                    <!-- المزيد من النتائج هنا -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+</html>

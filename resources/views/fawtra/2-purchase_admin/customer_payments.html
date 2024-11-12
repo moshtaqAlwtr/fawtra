@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدفوعات العملاء</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="../Design/css/data.css">
+    <style>
+        body {
+            direction: rtl;
+            background-color: #f1f5f9;
+        }
+        .navbar {
+            background-color: #0078d7;
+            color: white;
+            padding: 10px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+        .header {
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+        }
+        .btn-actions {
+            background-color: #28a745;
+            color: white;
+            margin-bottom: 20px;
+            border-radius: 50px;
+            padding: 10px 20px;
+        }
+        .advanced-search {
+            display: none;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .toggle-advanced-search {
+            color: #007bff;
+            cursor: pointer;
+        }
+        .results {
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .results table {
+            width: 100%;
+            text-align: center;
+        }
+        .results table th, .results table td {
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        .actions-btn {
+            color: #0078d7;
+            background-color: #f1f5f9;
+            border-radius: 50px;
+        }
+        .form-section {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<!-- الشريط العلوي -->
+<nav class="navbar d-flex justify-content-between align-items-center">
+    <div>
+        <button class="btn btn-outline-light">الذهاب إلى الموقع</button>
+        <button class="btn btn-outline-light">المساعدة</button>
+    </div>
+    <div>محمد العنزي - Main Branch</div>
+</nav>
+
+<!-- المحتوى -->
+<div class="container content mt-4">
+    <div class="header d-flex justify-content-between align-items-center">
+        <h4 class="mb-0">مدفوعات العملاء</h4>
+        
+        <div class="d-flex align-items-center">
+            <!-- الإجراءات -->
+            <div class="dropdown mr-3">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="actionsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    الإجراءات
+                </button>
+                <div class="dropdown-menu" aria-labelledby="actionsDropdown" dir="rtl">
+                    <a class="dropdown-item" href="#"><i class="fas fa-trash-alt text-danger"></i> حذف</a>
+                    <a class="dropdown-item" href="#"><i class="fas fa-file-pdf text-danger"></i> طباعة PDF</a>
+                </div>
+            </div>
+    
+            <!-- الترقيم -->
+            <nav aria-label="pagination">
+                <ul class="pagination mb-0">
+                    <li class="page-item disabled"><a class="page-link" href="#">السابق</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">التالي</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    
+
+    <div class="d-flex justify-content-between mt-4">
+        
+        <div class="dropdown-menu text-right" aria-labelledby="actionsMenu">
+            <a class="dropdown-item" href="#">الصفحة الحالية</a>
+            <a class="dropdown-item" href="#">كل الصفحات</a>
+        </div>
+    </div>
+
+    <!-- البحث -->
+    <div class="form-section mt-4">
+        <h5 class="mb-4">بحث</h5>
+
+        <form class="form-row align-items-center">
+            <div class="form-group col-md-4 mb-2">
+                <input type="text" class="form-control" id="invoiceNumber" placeholder="رقم الفاتورة">
+            </div>
+            <div class="form-group col-md-4 mb-2">
+                <input type="text" class="form-control" id="invoiceNumber" placeholder=".payment No">
+            </div>
+            
+            <div class="form-group col-md-4 d-flex">
+                
+                <select class="form-control">
+                    <option> اي عميل</option>
+                </select>
+            </div>
+        </form>
+
+        <!-- زر بحث متقدم -->
+        
+        <!-- البحث المتقدم -->
+        <div class="collapse" id="advancedSearchForm">
+            <form>
+                <div class="filter-section mt-3">
+                    <!-- First Row -->
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>وسيلة الدفع</label>
+                            <select class="form-control">
+                                <option>أي طرق دفع</option>
+                                <option>نقدي</option>
+                                <option>شيك</option>
+                                <option>تحويل بنكي</option>
+                                <option>بيتابس</option>
+                                <option>الدفع عند الاستلام</option>
+                                <option>رصيد العميل الاعتمادي</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group col-md-4">
+                            <label>التاريخ</label>
+                            <select class="form-control">
+                                <option value="custom">تخصيص</option>
+                                <option value="last_month">الشهر الأخير</option>
+                                <option value="last_year">السنة الماضية</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group col-md-4">
+                            <label>التسليم من وإلى</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="deliveryStartDate" placeholder="من">
+                                <input type="text" class="form-control" id="deliveryEndDate" placeholder="إلى">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Second Row -->
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>رقم التعريفي</label>
+                            <input type="text" class="form-control" placeholder="رقم التعريفي">
+                        </div>
+                        
+                        <div class="form-group col-md-4">
+                            <label>المبلغ أكبر من</label>
+                            <input type="text" class="form-control" placeholder="المبلغ أكبر من">
+                        </div>
+                        
+                        <div class="form-group col-md-4">
+                            <label>المبلغ أقل من</label>
+                            <input type="text" class="form-control" placeholder="المبلغ أقل من">
+                        </div>
+                    </div>
+                    
+                    <!-- Third Row -->
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>الحالة</label>
+                            <select class="form-control">
+                                <option>أي حالة</option>
+                                <option>غير مكتمل</option>
+                                <option>مكتمل</option>
+                                <option>تحت المراجعة</option>
+                                <option>فاشلة</option>
+                                <option>مدفوع بزيادة</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group col-md-4">
+                            <label>تاريخ الإنشاء</label>
+                            <select class="form-control">
+                                <option value="custom">تخصيص</option>
+                                <option value="last_month">الشهر الأخير</option>
+                                <option value="last_year">السنة الماضية</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>التسليم من وإلى</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="deliveryStartDate" placeholder="من">
+                                <input type="text" class="form-control" id="deliveryEndDate" placeholder="إلى">
+                            </div>
+                        </div>
+                        
+                       
+                    </div>
+                    
+                    <!-- Fourth Row -->
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label>Pos Shift</label>
+                            <input type="text" class="form-control" placeholder="Pos Shift">
+                        </div>
+                        
+                        <div class="form-group col-md-3">
+                            <label>منشئ الفاتورة</label>
+                            <select class="form-control">
+                                <option>أي مندوب</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group col-md-3">
+                            <label>تم التحصيل بواسطة</label>
+                            <select class="form-control">
+                                <option>أي موظف</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group col-md-3">
+                            <label>أضيفت بواسطة</label>
+                            <select class="form-control">
+                                <option>أي موظف</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+        
+        
+    
+        <!-- Action Buttons Always Visible -->
+        <div class="d-flex mb-3 mt-3">
+            <button class="btn btn-primary ml-2 mr-2">بحث</button>
+            <button class="btn btn-secondary ml-2 mr-2">إلغاء الفلاتر</button>
+            <button class="btn btn-outline-secondary ml-2 mr-2" data-toggle="collapse" data-target="#advancedSearchForm" aria-expanded="false" aria-controls="advancedSearchForm">
+                <i class="bi bi-sliders"></i> بحث متقدم
+            </button>
+        </div>
+    </div>
+
+    <!-- نتائج البحث -->
+    <div class="row">
+        <!-- Repeat this card for each item -->
+        <div class="col-12 mb-3">
+            <div class="card">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <h6 class="mb-1">لمسات الاحتراف للتموين الغذائي</h6>
+                            <small class="text-muted">الرياض</small><br>
+                            <small class="text-muted">رقم الضريبي: 311196745400003</small>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="mb-1 fw-bold">216.00 ر.س</p>
+                        <small class="text-muted">#0053</small>
+                    </div>
+                    <!-- Dropdown button -->
+                    <div class="dropdown">
+                        <button class="btn btn-secondary" type="button" id="actionsDropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="actionsDropdown2" dir="rtl">
+                            <a class="dropdown-item" href="#"><i class="fas fa-eye text-primary"></i> عرض</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-edit text-warning"></i> تعديل</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-paper-plane text-info"></i> إرسال إلى العميل</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-file-pdf text-danger"></i> PDF</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-image text-success"></i> الصورة</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-copy text-secondary"></i> نسخ</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-trash-alt text-danger"></i> حذف</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center bg-light">
+                    <small>بواسطة: محمد الادريسي</small>
+                    <small>18:25:31 24/02/2024</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<script src="../js/date.js" ></script>
+<script>
+    // Toggle advanced search
+    $('.toggle-advanced-search').click(function() {
+        $('#advancedSearch').slideToggle();
+    });
+</script>
+
+</body>
+</html>

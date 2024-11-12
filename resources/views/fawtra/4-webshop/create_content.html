@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معلومات المحتوى</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-5">
+
+        <!-- Header with Save and Cancel Buttons -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="m-0">معلومات المحتوى</h4>
+            <div>
+                <button class="btn btn-success mx-1">
+                    <i class="bi bi-save"></i> حفظ
+                </button>
+                <button class="btn btn-secondary mx-1">إلغاء</button>
+                <button class="btn btn-outline-secondary mx-1"><i class="bi bi-x-lg"></i></button>
+            </div>
+        </div>
+
+        <!-- Form Card -->
+        <div class="card">
+            <div class="card-header text-center">
+                معلومات المحتوى
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="name" class="form-label">الاسم <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="name" placeholder="أدخل الاسم">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="identifier" class="form-label">المعرف <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="identifier" placeholder="أدخل المعرف">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Icons CDN for Icons Used -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

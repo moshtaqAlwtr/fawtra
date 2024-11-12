@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأذون المخزنية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .button-section {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .button-section button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .button-section button:hover {
+            background-color: #218838;
+        }
+        .search-section {
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .search-section input, .search-section select {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .results-section {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        .status-tag {
+            background-color: yellow;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>الأذون المخزنية</h1>
+    </div>
+
+    <div class="button-section">
+        <button onclick="window.location.href='add_manual.html'">إضافة يدوي</button>
+        <button onclick="window.location.href='manual_withdraw.html'">إضافة صرف يدوي</button>
+        <button onclick="window.location.href='manual_transfer.html'">إضافة تحويل يدوي</button>
+    </div>
+
+    <div class="search-section">
+        <div>
+            <label for="source">مصدر الإذن</label>
+            <select id="source">
+                <option>الكل</option>
+                <option>مصدر 1</option>
+                <option>مصدر 2</option>
+            </select>
+        </div>
+        <div>
+            <label for="store-number">رقم الإذن المخزني</label>
+            <input type="text" id="store-number">
+        </div>
+        <div>
+            <label for="warehouse">المستودع</label>
+            <select id="warehouse">
+                <option>الكل</option>
+                <option>مستودع 1</option>
+                <option>مستودع 2</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="results-section">
+        <table>
+            <thead>
+                <tr>
+                    <th>التفاصيل</th>
+                    <th>رقم الإذن</th>
+                    <th>المستودع</th>
+                    <th>حالة الإذن</th>
+                    <th>التاريخ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>تموينات صدف للمواد الغذائية</td>
+                    <td>#9864</td>
+                    <td>Main Branch</td>
+                    <td><span class="status-tag">تحت التسليم</span></td>
+                    <td>02/10/2024 16:10</td>
+                </tr>
+                <tr>
+                    <td>تموينات عارف سعيد المنهالي</td>
+                    <td>#9863</td>
+                    <td>Main Branch</td>
+                    <td><span class="status-tag">تحت التسليم</span></td>
+                    <td>02/10/2024 14:06</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

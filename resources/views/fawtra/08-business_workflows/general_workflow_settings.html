@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإعدادات العامة لدورة العمل</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f0f4f7;
+            direction: rtl;
+        }
+        .top-bar {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .gradient-container {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+        }
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .toggle-switch label {
+            margin-bottom: 0;
+        }
+        .form-check-input {
+            width: 40px;
+            height: 20px;
+            background-color: #d3d3d3;
+            border-radius: 10px;
+            position: relative;
+            appearance: none;
+            outline: none;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        .form-check-input:checked {
+            background-color: #28a745;
+        }
+        .form-check-input::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: #fff;
+            top: 1px;
+            left: 1px;
+            transition: transform 0.3s ease;
+        }
+        .form-check-input:checked::before {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- الإعدادات العامة -->
+        <div class="gradient-container mb-4">
+            <h4 class="text-center">الإعدادات العامة لدورة العمل</h4>
+        </div>
+
+        <!-- زر التحكم -->
+        <div class="toggle-switch">
+            <label for="work-cycle-toggle">إرسال دورات العمل عبر وسائل التواصل الاجتماعي</label>
+            <input type="checkbox" class="form-check-input" id="work-cycle-toggle">
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

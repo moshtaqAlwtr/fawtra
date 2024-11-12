@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خيارات الشحن</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            direction: rtl;
+            background-color: #e9eef3;
+        }
+        .navbar {
+            background-color: #0078d7;
+            color: white;
+            padding: 10px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+        .header {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+        }
+        .header button {
+            margin-right: 10px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .message-box {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="navbar d-flex justify-content-between">
+        <div>
+            <button class="btn btn-outline-light">الذهاب إلى الموقع</button>
+            <button class="btn btn-outline-light">المساعدة</button>
+        </div>
+        <div>محمد العنزي - Main Branch</div>
+    </div>
+
+    <!-- عنوان الصفحة -->
+    <div class="header d-flex justify-content-between align-items-center">
+        <div>
+            <h5>خيارات الشحن</h5>
+        </div>
+        <div>
+                    <!-- الزر في الصفحة الأولى (shipping-options.html) -->
+<button class="btn btn-success" onclick="window.location.href='add-shipping-option.html';">أضف خيار الشحن +</button>
+<button class="btn btn-secondary"><i class="fas fa-cog"></i></button>
+        </div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <div class="message-box">
+            <p>لا يوجد خيارات الشحن أضيفت حتى الآن</p>
+        </div>
+    </div>
+
+</body>
+</html>

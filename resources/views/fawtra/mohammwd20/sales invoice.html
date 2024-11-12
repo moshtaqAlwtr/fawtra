@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فاتورة مبيعات</title>
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .invoice-container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .options {
+            width: 30%;
+        }
+        .options h3 {
+            margin: 10px 0;
+        }
+        .options select, .options input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .details {
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+        }
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+        .detail-item label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .detail-item input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+        }
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+        .total-row td {
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+        .add-item {
+            margin: 10px 0;
+            text-align: left;
+        }
+        .add-item button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .add-item button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="invoice-container">
+    <div class="invoice-header">
+        <div class="options">
+            <h3>الطريقة</h3>
+            <select id="action-method">
+                <option value="print">طباعة</option>
+                <option value="send">إرسال عبر البريد</option>
+            </select>
+            <h3>العميل</h3>
+            <input type="text" placeholder="ابحث عن العميل">
+        </div>
+        <div class="details">
+            <div class="detail-item">
+                <label for="invoice-number">رقم الفاتورة</label>
+                <input type="text" id="invoice-number" value="001" disabled>
+            </div>
+            <div class="detail-item">
+                <label for="invoice-date">تاريخ الفاتورة</label>
+                <input type="date" id="invoice-date" value="2024-09-25">
+            </div>
+            <div class="detail-item">
+                <label for="sales-representative">مسؤول المبيعات</label>
+                <input type="text" id="sales-representative" placeholder="ابحث عن اسم المندوب">
+            </div>
+            <div class="detail-item">
+                <label for="issue-date">تاريخ الإصدار</label>
+                <input type="date" id="issue-date" value="2024-09-25">
+            </div>
+            <div class="detail-item">
+                <label for="payment-terms">شروط الدفع</label>
+                <input type="text" id="payment-terms" placeholder="أدخل شروط الدفع">
+            </div>
+        </div>
+    </div>
+
+    <table id="invoice-table">
+        <thead>
+            <tr>
+                <th>البند</th>
+                <th>الوصف</th>
+                <th>سعر الوحدة</th>
+                <th>الكمية</th>
+                <th>الخصم</th>
+                <th>الضريبة 1</th>
+                <th>الضريبة 2</th>
+                <th>المجموع</th>
+                <th>الإجمالي</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><input type="text" placeholder="الوصف"></td>
+                <td><input type="number" placeholder="سعر الوحدة" value="0" oninput="calculateTotal(this)"></td>
+                <td><input type="number" placeholder="الكمية" value="1" oninput="calculateTotal(this)"></td>
+                <td><input type="number" placeholder="الخصم" value="0" oninput="calculateTotal(this)"></td>
+                <td><input type="number" placeholder="الضريبة 1" value="0" oninput="calculateTotal(this)"></td>
+                <td><input type="number" placeholder="الضريبة 2" value="0" oninput="calculateTotal(this)"></td>
+                <td><span class="total">0.00</span></td>
+                <td><span class="grand-total">0.00</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="add-item">
+        <button onclick="addItem()">إضافة بند</button>
+    </div>
+
+    <div class="footer">
+        <p>شكراً لتعاملكم معنا!</p>
+        <p>شركتنا - جميع الحقوق محفوظة © 2024</p>
+    </div>
+</div>
+
+<script>
+    function addItem() {
+        const table = document.getElementById('invoice-table').getElementsByTagName('tbody')[0];
+        const rowCount = table.rows.length;
+        const row = table.insertRow(rowCount);
+
+        row.innerHTML = `
+            <td>${rowCount + 1}</td>
+            <td><input type="text" placeholder="الوصف"></td>
+            <td><input type="number" placeholder="سعر الوحدة" value="0" oninput="calculateTotal(this)"></td>
+            <td><input type="number" placeholder="الكمية" value="1" oninput="calculateTotal(this)"></td>
+            <td><input type="number" placeholder="الخصم" value="0" oninput="calculateTotal(this)"></td>
+            <td><input type="number" placeholder="الضريبة 1" value="0" oninput="calculateTotal(this)"></td>
+            <td><input type="number" placeholder="الضريبة 2" value="0" oninput="calculateTotal(this)"></td>
+            <td><span class="total">0.00</span></td>
+            <td><span class="grand-total">0.00</span></td>
+        `;
+    }
+
+    function calculateTotal(input) {
+        const row = input.parentElement.parentElement;
+        const unitPrice = parseFloat(row.cells[2].getElementsByTagName('input')[0].value) || 0;
+        const quantity = parseFloat(row.cells[3].getElementsByTagName('input')[0].value) || 0;
+        const discount = parseFloat(row.cells[4].getElementsByTagName('input')[0].value) || 0;
+        const tax1 = parseFloat(row.cells[5].getElementsByTagName('input')[0].value) || 0;
+        const tax2 = parseFloat(row.cells[6].getElementsByTagName('input')[0].value) || 0;
+
+        const total = (unitPrice * quantity) - discount;
+        const totalWithTax = total + (total * tax1 / 100) + (total * tax2 / 100);
+
+        row.cells[7].getElementsByClassName('total')[0].textContent = total.toFixed(2);
+        row.cells[8].getElementsByClassName('grand-total')[0].textContent = totalWithTax.toFixed(2);
+    }
+</script>
+
+</body>
+</html>

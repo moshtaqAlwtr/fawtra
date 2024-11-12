@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قوالب مسير الرواتب</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .top-bar {
+            background-color: #0177bc;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar div {
+            display: flex;
+            align-items: center;
+        }
+        .container {
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .pdf-box {
+            background-color: white;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .pdf-box:hover {
+            transform: scale(1.05);
+        }
+        .pdf-box img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+        .pdf-box p {
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <div>محمد العتيبي - Main Branch</div>
+        <div>
+            <button onclick="window.location.href='#';">الذهاب إلى الموقع</button>
+            <button onclick="window.location.href='#';">المساعدة</button>
+        </div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="container">
+        <div class="pdf-box" onclick="window.open('template1.pdf');">
+            <img src="pdf_icon.png" alt="PDF Icon">
+            <p>قالب PDF 1</p>
+        </div>
+        <div class="pdf-box" onclick="window.open('template2.pdf');">
+            <img src="pdf_icon.png" alt="PDF Icon">
+            <p>قالب PDF 2</p>
+        </div>
+        <div class="pdf-box" onclick="window.open('template3.pdf');">
+            <img src="pdf_icon.png" alt="PDF Icon">
+            <p>قوالب 3</p>
+        </div>
+        <div class="pdf-box" onclick="window.open('template4.pdf');">
+            <img src="pdf_icon.png" alt="PDF Icon">
+            <p>قالب PDF 4</p>
+        </div>
+        <div class="pdf-box" onclick="window.open('template5.pdf');">
+            <img src="pdf_icon.png" alt="PDF Icon">
+            <p>قالب PDF 5</p>
+        </div>
+        <div class="pdf-box" onclick="window.open('template6.pdf');">
+            <img src="pdf_icon.png" alt="PDF Icon">
+            <p>قالب PDF 6</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة وسيلة دفع مخصصة</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .custom-payment-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .custom-payment-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .icon-placeholder {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .icon-placeholder img {
+            width: 60px;
+            height: auto;
+        }
+
+        .form-control, .form-select {
+            border-radius: 5px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .radio-group label {
+            font-weight: normal;
+        }
+
+        .save-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .save-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="custom-payment-form">
+        <div class="icon-placeholder">
+            <img src="https://img.icons8.com/ios-filled/50/007bff/wallet.png" alt="Payment Icon">
+        </div>
+        <h2>إضافة وسيلة دفع مخصصة</h2>
+
+        <div class="form-group mb-3">
+            <label for="payment-name" class="form-label">الاسم</label>
+            <input type="text" id="payment-name" class="form-control" placeholder="أدخل اسم وسيلة الدفع">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="payment-instructions" class="form-label">التعليمات</label>
+            <textarea id="payment-instructions" rows="4" class="form-control" placeholder="أدخل تعليمات الدفع"></textarea>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label">التفعيل للعملاء على الإنترنت</label>
+            <div class="radio-group">
+                <div class="form-check">
+                    <input type="radio" id="enabled" name="activation" value="enabled" class="form-check-input">
+                    <label for="enabled" class="form-check-label">تم تفعيله</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" id="disabled" name="activation" value="disabled" class="form-check-input">
+                    <label for="disabled" class="form-check-label">تم تعطيله</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="default-vault" class="form-label">الخزينة الافتراضية</label>
+            <select id="default-vault" class="form-select">
+                <option value="">لا شيء</option>
+                <option value="vault1">الخزينة 1</option>
+                <option value="vault2">الخزينة 2</option>
+            </select>
+        </div>
+
+        <button class="save-btn btn btn-primary w-100">حفظ</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
