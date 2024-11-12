@@ -16,6 +16,11 @@ return [
 'products'=>'المنتجات',
 'sales_commissions'=>'المبيعات والعمولات',
 'Returned_invoices'=>'الفواتير المرتجعة',
+'Online_store'=>'المتجر الإلكتروني',
+'Content_management'=>'أدارة المحتوى',
+'Settings'=>'الأعدادات',
+'Reservations'=>'الحجوزات',
+'Manage_reservations'=>'ادارة الحجوزات',
 
 'employees'=>'الموظفين',
 "customers"=>"العملاء",

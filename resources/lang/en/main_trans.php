@@ -14,4 +14,9 @@ return [
 'Periodic_invoices'=>'Periodic invoices',
 'Customer_payments'=>'Customer payments',
 'Sales_Settings'=>'Sales Settings',
+'online_store'=>'online store',
+'Content_management'=>'Content management',
+'Settings'=>'Settings',
+'Reservations'=>'Reservations',
+'Manage_reservations'=>'Manage reservations',
 ];
