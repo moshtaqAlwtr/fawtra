@@ -58,6 +58,8 @@ return [
 'Membership_management'=>'Membership management',
 'Subscription_management'=>'Subscription management',
 'Settings'=>'Settings',
+'Customer_attendance'=>'Customer attendance',
+'Customer_attendance_records'=>'Customer attendance records',
 
 
 ];

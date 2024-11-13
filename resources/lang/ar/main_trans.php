@@ -60,6 +60,8 @@ return [
 'Membership_management'=>'أدارة العضويات',
 'Subscription_management'=>'أدارة الاشتراكات',
 'settings'=>'الأعدادات',
+'Customer_attendance'=>'حضور العملاء',
+'Customer_attendance_records'=>'سجلات حضور العملاء',
 
 
 

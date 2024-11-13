@@ -352,7 +352,7 @@
             <a data-bs-toggle="collapse" href="#sidebarCharts" aria-expanded="false" aria-controls="sidebarCharts"
                 class="side-nav-link">
                 <i class="uil-chart"></i>
-                <span> Charts </span>
+                <span> {{ trans('main_trans.Customer_attendance') }} </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarCharts">
@@ -360,7 +360,7 @@
                     <li class="side-nav-item">
                         <a data-bs-toggle="collapse" href="#sidebarApexCharts" aria-expanded="false"
                             aria-controls="sidebarApexCharts">
-                            <span> Apex Charts </span>
+                            <span> {{ trans('main_trans.Customer_attendance_records') }}  </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <div class="collapse" id="sidebarApexCharts">
