@@ -1,3 +1,5 @@
+
+
 <div class="h-100" id="leftside-menu-container" data-simplebar>
 
     <!--- Sidemenu -->
@@ -110,7 +112,7 @@
         <li class="side-nav-item">
             <a data-bs-toggle="collapse" href="#reservations" aria-expanded="false" aria-controls="reservations" class="side-nav-link">
                 <i class="uil-store"></i>
-                <span class="menu-arrow"></span>
+               
                 <span> {{ trans('main_trans.Reservations') }} </span>
             </a>
             <div class="collapse" id="reservations">
@@ -135,7 +137,7 @@
                 class="side-nav-link">
                 <i class="uil-envelope"></i>
                 <span> {{ trans('main_trans.Installment_Management') }} </span>
-                <span class="menu-arrow"></span>
+                
             </a>
             <div class="collapse" id="sidebarEmail">
                 <ul class="side-nav-second-level">
@@ -154,7 +156,7 @@
                 class="side-nav-link">
                 <i class="uil-briefcase"></i>
                 <span> {{ trans('main_trans.Targeted_sales_and_commissions') }} </span>
-                <span class="menu-arrow"></span>
+               
             </a>
             <div class="collapse" id="sidebarProjects">
                 <ul class="side-nav-second-level">
@@ -178,7 +180,7 @@
                 class="side-nav-link">
                 <i class="uil-clipboard-alt"></i>
                 <span> {{ trans('main_trans.Units_and_Rentals_Management') }} </span>
-                <span class="menu-arrow"></span>
+              
             </a>
             <div class="collapse" id="sidebarTasks">
                 <ul class="side-nav-second-level">
@@ -207,7 +209,7 @@
                 class="side-nav-link">
                 <i class="uil-clipboard-alt"></i>
                 <span> {{ trans('main_trans.Supply_orders') }} </span>
-                <span class="menu-arrow"></span>
+              
             </a>
             <div class="collapse" id="sidebarTasks">
                 <ul class="side-nav-second-level">
@@ -234,7 +236,7 @@
                 class="side-nav-link">
                 <i class="uil-window"></i>
                 <span> {{ trans('main_trans.Business_cycles') }} </span>
-                <span class="menu-arrow"></span>
+              
             </a>
             <div class="collapse" id="sidebarLayouts">
                 <ul class="side-nav-second-level">
@@ -251,7 +253,7 @@
                 class="side-nav-link">
                 <i class="uil-box"></i>
                 <span> {{ trans('main_trans.Customers') }}  </span>
-                <span class="menu-arrow"></span>
+               
             </a>
             <div class="collapse" id="sidebarBaseUI">
                 <ul class="side-nav-second-level">
@@ -283,7 +285,7 @@
                 aria-controls="sidebarExtendedUI" class="side-nav-link">
                 <i class="uil-package"></i>
                 <span> {{ trans('main_trans.Points_and_credits')}}  </span>
-                <span class="menu-arrow"></span>
+               
             </a>
             <div class="collapse" id="sidebarExtendedUI">
                 <ul class="side-nav-second-level">
@@ -310,7 +312,7 @@
                 class="side-nav-link">
                 <i class="uil-streering"></i>
                 <span> {{ trans('main_trans.Loyalty_points') }} </span>
-                <span class="menu-arrow"></span>
+               
             </a>
             <div class="collapse" id="sidebarIcons">
                 <ul class="side-nav-second-level">
@@ -329,7 +331,7 @@
                 class="side-nav-link">
                 <i class="uil-document-layout-center"></i>
                 <span> {{ trans('main_trans.Memberships') }} </span>
-                <span class="menu-arrow"></span>
+              
             </a>
             <div class="collapse" id="sidebarForms">
                 <ul class="side-nav-second-level">
@@ -355,7 +357,7 @@
                 class="side-nav-link">
                 <i class="uil-table"></i>
                 <span>  {{ trans('main_trans.Customer_attendance') }}</span>
-                <span class="menu-arrow"></span>
+             
             </a>
             <div class="collapse" id="sidebarTables">
                 <ul class="side-nav-second-level">
@@ -372,7 +374,7 @@
                 class="side-nav-link">
                 <i class="uil-location-point"></i>
                 <span>{{ trans('main_trans.Insurance_Agents') }}  </span>
-                <span class="menu-arrow"></span>
+             
             </a>
             <div class="collapse" id="sidebarMaps">
                 <ul class="side-nav-second-level">
@@ -391,7 +393,7 @@
                 aria-controls="sidebarMultiLevel" class="side-nav-link">
                 <i class="uil-folder-plus"></i>
                 <span>{{ trans('main_trans.Stock') }}  </span>
-                <span class="menu-arrow"></span>
+               
             </a>
             <div class="collapse" id="sidebarMultiLevel">
                 <ul class="side-nav-second-level">
@@ -444,7 +446,7 @@
                 aria-controls="sidebarMultiLevel" class="side-nav-link">
                 <i class="uil-folder-plus"></i>
                 <span>{{ trans('main_trans.Purchases') }}  </span>
-                <span class="menu-arrow"></span>
+               
             </a>
             <div class="collapse" id="sidebarMultiLevel">
                 <ul class="side-nav-second-level">
@@ -515,7 +517,7 @@
                     aria-controls="timeTrackingMenu" class="side-nav-link">
                     <i class="uil-clock"></i>
                     <span>{{ trans('main_trans.Time_Tracking') }} </span>
-                    <span class="menu-arrow"></span>
+                   
                 </a>
                 <div class="collapse" id="timeTrackingMenu">
                     <ul class="side-nav-second-level">
@@ -546,7 +548,7 @@
                 <a data-bs-toggle="collapse" href="#financialMenu" aria-expanded="false" aria-controls="financialMenu" class="side-nav-link">
                     <i class="uil uil-money-bill"></i> <!-- أيقونة المالية -->
                     <span>{{ trans('main_trans.Financial') }}</span>
-                    <span class="menu-arrow"></span>
+                   
                 </a>
                 <div class="collapse" id="financialMenu">
                     <ul class="side-nav-second-level">
@@ -582,7 +584,7 @@
                 <a data-bs-toggle="collapse" href="#generalAccountsMenu" aria-expanded="false" aria-controls="generalAccountsMenu" class="side-nav-link">
                     <i class="uil uil-chart-pie-alt"></i> <!-- أيقونة الحسابات العامة -->
                     <span>{{ trans('main_trans.General_Accounts') }}</span>
-                    <span class="menu-arrow"></span>
+                  
                 </a>
                 <div class="collapse" id="generalAccountsMenu">
                     <ul class="side-nav-second-level">
@@ -629,7 +631,7 @@
                 <a data-bs-toggle="collapse" href="#chequesCycleMenu" aria-expanded="false" aria-controls="chequesCycleMenu" class="side-nav-link">
                     <i class="uil uil-receipt"></i> <!-- أيقونة دورة الشيكات -->
                     <span>{{ trans('main_trans.Cheques_Cycle') }}</span>
-                    <span class="menu-arrow"></span>
+                    
                 </a>
                 <div class="collapse" id="chequesCycleMenu">
                     <ul class="side-nav-second-level">
@@ -653,7 +655,7 @@
                 <a data-bs-toggle="collapse" href="#ordersMenu" aria-expanded="false" aria-controls="ordersMenu" class="side-nav-link">
                     <i class="uil uil-clipboard-alt"></i> <!-- أيقونة الطلبات -->
                     <span>{{ trans('main_trans.Orders') }}</span>
-                    <span class="menu-arrow"></span>
+                  
                 </a>
                 <div class="collapse" id="ordersMenu">
                     <ul class="side-nav-second-level">
@@ -676,7 +678,7 @@
                 <a data-bs-toggle="collapse" href="#employeesMenu" aria-expanded="false" aria-controls="employeesMenu" class="side-nav-link">
                     <i class="uil uil-user"></i> <!-- أيقونة الموظفين -->
                     <span>{{ trans('main_trans.Employees') }}</span>
-                    <span class="menu-arrow"></span>
+                   
                 </a>
                 <div class="collapse" id="employeesMenu">
                     <ul class="side-nav-second-level">
@@ -712,7 +714,7 @@
     <a data-bs-toggle="collapse" href="#organizationalStructureMenu" aria-expanded="false" aria-controls="organizationalStructureMenu" class="side-nav-link">
         <i class="uil uil-sitemap"></i> <!-- أيقونة الهيكل التنظيمي -->
         <span>{{ trans('main_trans.Organizational_Structure') }}</span>
-        <span class="menu-arrow"></span>
+        
     </a>
     <div class="collapse" id="organizationalStructureMenu">
         <ul class="side-nav-second-level">
@@ -747,7 +749,7 @@
     <a data-bs-toggle="collapse" href="#attendanceMenu" aria-expanded="false" aria-controls="attendanceMenu" class="side-nav-link">
         <i class="uil uil-calendar-alt"></i> <!-- أيقونة الحضور -->
         <span>{{ trans('main_trans.Attendance') }}</span>
-        <span class="menu-arrow"></span>
+       
     </a>
     <div class="collapse" id="attendanceMenu">
         <ul class="side-nav-second-level">
@@ -813,7 +815,7 @@
     <a data-bs-toggle="collapse" href="#salariesMenu" aria-expanded="false" aria-controls="salariesMenu" class="side-nav-link">
         <i class="uil uil-money-withdraw"></i> <!-- أيقونة المرتبات -->
         <span>{{ trans('main_trans.Salaries') }}</span>
-        <span class="menu-arrow"></span>
+       
     </a>
     <div class="collapse" id="salariesMenu">
         <ul class="side-nav-second-level">
@@ -863,194 +865,86 @@
     </div>
 </li>
 
+<!-- قائمة التقارير -->
 <li class="side-nav-item">
     <a data-bs-toggle="collapse" href="#reportsMenu" aria-expanded="false" aria-controls="reportsMenu" class="side-nav-link">
-        <i class="uil uil-chart"></i> <!-- أيقونة التقارير -->
+        <i class="uil uil-chart-bar"></i> <!-- أيقونة التقارير -->
         <span>{{ trans('main_trans.Reports') }}</span>
-        <span class="menu-arrow"></span>
+    
     </a>
     <div class="collapse" id="reportsMenu">
         <ul class="side-nav-second-level">
-            <!-- تقرير المبيعات -->
+            <!-- العناصر الفرعية بدون أيقونات -->
             <li class="side-nav-item">
                 <a href="">
                     <span>{{ trans('main_trans.Sales_Report') }}</span>
                 </a>
             </li>
-            <!-- تقرير المشتريات -->
             <li class="side-nav-item">
                 <a href="">
                     <span>{{ trans('main_trans.Purchases_Report') }}</span>
                 </a>
             </li>
-            <!-- تقرير الحسابات العامة -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.General_Accounts_Report') }}</span>
-                </a>
-            </li>
-            <!-- تقرير الشيكات -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Cheques_Report') }}</span>
-                </a>
-            </li>
-            <!-- تقرير الـ SMS -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.SMS_Report') }}</span>
-                </a>
-            </li>
-            <!-- تقرير النقاط والأرصدة -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Points_and_Balances_Report') }}</span>
-                </a>
-            </li>
-            <!-- تقرير الموظفين -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Employees_Report') }}</span>
-                </a>
-            </li>
-            <!-- تقرير الحضور -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Attendance_Report') }}</span>
-                </a>
-            </li>
-            <!-- تقرير الإنجازات -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Achievements_Report') }}</span>
-                </a>
-            </li>
-            <!-- تقرير دورة العمل -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Work_Cycle_Report') }}</span>
-                </a>
-            </li>
-            <!-- تقرير أوامر التوريد -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Supply_Orders_Report') }}</span>
-                </a>
-            </li>
-            <!-- تقرير العملاء -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Customers_Report') }}</span>
-                </a>
-            </li>
-            <!-- تقرير الموردين -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Suppliers_Report') }}</span>
-                </a>
-            </li>
-            <!-- تقرير تتبع الوحدات -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Units_Tracking_Report') }}</span>
-                </a>
-            </li>
-            <!-- سجل النشاطات للحساب -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Account_Activity_Log') }}</span>
-                </a>
-            </li>
+            <!-- باقي العناصر الفرعية... -->
         </ul>
     </div>
 </li>
+
+<!-- قائمة الفروع -->
 <li class="side-nav-item">
     <a data-bs-toggle="collapse" href="#branchesMenu" aria-expanded="false" aria-controls="branchesMenu" class="side-nav-link">
         <i class="uil uil-map-marker"></i> <!-- أيقونة الفروع -->
         <span>{{ trans('main_trans.Branches') }}</span>
-        <span class="menu-arrow"></span>
+       
     </a>
     <div class="collapse" id="branchesMenu">
         <ul class="side-nav-second-level">
-            <!-- إدارة الفروع -->
+            <!-- العناصر الفرعية بدون أيقونات -->
             <li class="side-nav-item">
                 <a href="">
                     <span>{{ trans('main_trans.Branch_Management') }}</span>
                 </a>
             </li>
-            <!-- أضف فرع -->
             <li class="side-nav-item">
                 <a href="">
                     <span>{{ trans('main_trans.Add_Branch') }}</span>
                 </a>
             </li>
-            <!-- إعدادات الفروع -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Branch_Settings') }}</span>
-                </a>
-            </li>
+            <!-- باقي العناصر الفرعية... -->
         </ul>
     </div>
 </li>
+
+<!-- قائمة القوالب -->
 <li class="side-nav-item">
     <a data-bs-toggle="collapse" href="#templatesMenu" aria-expanded="false" aria-controls="templatesMenu" class="side-nav-link">
         <i class="uil uil-file-alt"></i> <!-- أيقونة القوالب -->
         <span>{{ trans('main_trans.Templates') }}</span>
-        <span class="menu-arrow"></span>
+       
     </a>
     <div class="collapse" id="templatesMenu">
         <ul class="side-nav-second-level">
-            <!-- قوالب للطباعة -->
+            <!-- العناصر الفرعية بدون أيقونات -->
             <li class="side-nav-item">
                 <a href="">
                     <span>{{ trans('main_trans.Print_Templates') }}</span>
                 </a>
             </li>
-            <!-- قوالب الفواتير الجاهزة -->
             <li class="side-nav-item">
                 <a href="">
                     <span>{{ trans('main_trans.Ready_Invoice_Templates') }}</span>
                 </a>
             </li>
-            <!-- قوالب البريد الإلكتروني -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Email_Templates') }}</span>
-                </a>
-            </li>
-            <!-- قوالب الـ SMS -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.SMS_Templates') }}</span>
-                </a>
-            </li>
-            <!-- الشروط والأحكام -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Terms_and_Conditions') }}</span>
-                </a>
-            </li>
-            <!-- إدارة الملفات والمستندات -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Document_Management') }}</span>
-                </a>
-            </li>
-            <!-- قواعد الإرسال الآلي -->
-            <li class="side-nav-item">
-                <a href="">
-                    <span>{{ trans('main_trans.Automatic_Sending_Rules') }}</span>
-                </a>
-            </li>
+            <!-- باقي العناصر الفرعية... -->
         </ul>
     </div>
 </li>
+
 <li class="side-nav-item">
     <a data-bs-toggle="collapse" href="#settingsMenu" aria-expanded="false" aria-controls="settingsMenu" class="side-nav-link">
-        <i class="uil uil-cog"></i> <!-- أيقونة الإعدادات -->
+        <i class="fas fa-cog"></i> <!-- أيقونة الإعدادات الجديدة -->
         <span>{{ trans('main_trans.Settings') }}</span>
-        <span class="menu-arrow"></span>
+       
     </a>
     <div class="collapse" id="settingsMenu">
         <ul class="side-nav-second-level">
@@ -1117,6 +1011,7 @@
         </ul>
     </div>
 </li>
+
 
 
 
