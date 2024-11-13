@@ -17,7 +17,7 @@
                 <i class="fas fa-user-circle me-2 text-primary" style="font-size: 2em;"></i> <!-- تكبير الأيقونة -->
                 {{ Auth::check() ? Auth::user()->name : 'Guest' }}
             </span>
-            <small class="d-block text-secondary">{{ Auth::check() ? Auth::user()->email : 'Guest' }}</small>
+
         </div>
 
         <div class="collapse navbar-collapse" id="navbarContent">
