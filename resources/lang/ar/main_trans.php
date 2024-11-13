@@ -74,16 +74,17 @@ return [
 'Purchase_Invoices'=>'فواتير الشراء',
 'Purchase_Returns'=>'مرتجعات المشتريات',
 'Creditor_notices'=>'اشعارات الدائنة',
+'products_management'=>'ادارة المنتجات',
 'Supplier_Management'=>'أدارة الموردين',
 'Supplier_Payments' => 'مدفوعات الموردين',
 'Purchase_Invoices_Settings' => 'إعدادات فواتير الشراء',
 'Supplier_Settings' => 'إعدادات الموردين',
-   
+
 'Time_Tracking' => 'تتبع الوقت',
 'Create_Invoice' => 'إنشاء فاتورة',
 'Time_Tracking_Settings' => 'إعدادات تتبع الوقت',
 
-  
+
     'Financial' => 'المالية',
     'Expenses' => 'المصروفات',
     'Receipts' => 'سندات القبض',
