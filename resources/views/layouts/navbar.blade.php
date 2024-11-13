@@ -12,7 +12,12 @@
             <input type="text" class="form-control" placeholder="Search...">
             <button class="btn btn-search" type="button">Search</button>
         </div>
-
+        <div class="d-flex flex-column">
+            <span class="fw-bold text-primary">
+                {{ Auth::check() ? Auth::user()->name : 'Guest' }}
+            </span>
+            <small class="text-muted">Welcome Back!</small>
+        </div>
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ml-auto d-flex align-items-center">
                 <!-- Language Selection -->
@@ -56,9 +61,19 @@
                         <a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profile</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Messages</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
+                        <!-- زر تسجيل الخروج -->
+                        <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+
+                        <!-- نموذج تسجيل الخروج -->
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </div>
                 </li>
+
             </ul>
         </div>
 
