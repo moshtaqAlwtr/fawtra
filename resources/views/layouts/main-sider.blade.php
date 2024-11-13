@@ -809,6 +809,314 @@
     </div>
 </li>
 
+<li class="side-nav-item">
+    <a data-bs-toggle="collapse" href="#salariesMenu" aria-expanded="false" aria-controls="salariesMenu" class="side-nav-link">
+        <i class="uil uil-money-withdraw"></i> <!-- أيقونة المرتبات -->
+        <span>{{ trans('main_trans.Salaries') }}</span>
+        <span class="menu-arrow"></span>
+    </a>
+    <div class="collapse" id="salariesMenu">
+        <ul class="side-nav-second-level">
+            <!-- العقود -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Contracts') }}</span>
+                </a>
+            </li>
+            <!-- مسير الرواتب -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Payroll') }}</span>
+                </a>
+            </li>
+            <!-- قسائم الرواتب -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Salary_Slips') }}</span>
+                </a>
+            </li>
+            <!-- السلف -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Advances') }}</span>
+                </a>
+            </li>
+            <!-- بنود الراتب -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Salary_Items') }}</span>
+                </a>
+            </li>
+            <!-- قوالب الراتب -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Salary_Templates') }}</span>
+                </a>
+            </li>
+            <!-- الإعدادات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Settings') }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+
+<li class="side-nav-item">
+    <a data-bs-toggle="collapse" href="#reportsMenu" aria-expanded="false" aria-controls="reportsMenu" class="side-nav-link">
+        <i class="uil uil-chart"></i> <!-- أيقونة التقارير -->
+        <span>{{ trans('main_trans.Reports') }}</span>
+        <span class="menu-arrow"></span>
+    </a>
+    <div class="collapse" id="reportsMenu">
+        <ul class="side-nav-second-level">
+            <!-- تقرير المبيعات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Sales_Report') }}</span>
+                </a>
+            </li>
+            <!-- تقرير المشتريات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Purchases_Report') }}</span>
+                </a>
+            </li>
+            <!-- تقرير الحسابات العامة -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.General_Accounts_Report') }}</span>
+                </a>
+            </li>
+            <!-- تقرير الشيكات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Cheques_Report') }}</span>
+                </a>
+            </li>
+            <!-- تقرير الـ SMS -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.SMS_Report') }}</span>
+                </a>
+            </li>
+            <!-- تقرير النقاط والأرصدة -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Points_and_Balances_Report') }}</span>
+                </a>
+            </li>
+            <!-- تقرير الموظفين -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Employees_Report') }}</span>
+                </a>
+            </li>
+            <!-- تقرير الحضور -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Attendance_Report') }}</span>
+                </a>
+            </li>
+            <!-- تقرير الإنجازات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Achievements_Report') }}</span>
+                </a>
+            </li>
+            <!-- تقرير دورة العمل -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Work_Cycle_Report') }}</span>
+                </a>
+            </li>
+            <!-- تقرير أوامر التوريد -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Supply_Orders_Report') }}</span>
+                </a>
+            </li>
+            <!-- تقرير العملاء -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Customers_Report') }}</span>
+                </a>
+            </li>
+            <!-- تقرير الموردين -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Suppliers_Report') }}</span>
+                </a>
+            </li>
+            <!-- تقرير تتبع الوحدات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Units_Tracking_Report') }}</span>
+                </a>
+            </li>
+            <!-- سجل النشاطات للحساب -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Account_Activity_Log') }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="side-nav-item">
+    <a data-bs-toggle="collapse" href="#branchesMenu" aria-expanded="false" aria-controls="branchesMenu" class="side-nav-link">
+        <i class="uil uil-map-marker"></i> <!-- أيقونة الفروع -->
+        <span>{{ trans('main_trans.Branches') }}</span>
+        <span class="menu-arrow"></span>
+    </a>
+    <div class="collapse" id="branchesMenu">
+        <ul class="side-nav-second-level">
+            <!-- إدارة الفروع -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Branch_Management') }}</span>
+                </a>
+            </li>
+            <!-- أضف فرع -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Add_Branch') }}</span>
+                </a>
+            </li>
+            <!-- إعدادات الفروع -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Branch_Settings') }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="side-nav-item">
+    <a data-bs-toggle="collapse" href="#templatesMenu" aria-expanded="false" aria-controls="templatesMenu" class="side-nav-link">
+        <i class="uil uil-file-alt"></i> <!-- أيقونة القوالب -->
+        <span>{{ trans('main_trans.Templates') }}</span>
+        <span class="menu-arrow"></span>
+    </a>
+    <div class="collapse" id="templatesMenu">
+        <ul class="side-nav-second-level">
+            <!-- قوالب للطباعة -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Print_Templates') }}</span>
+                </a>
+            </li>
+            <!-- قوالب الفواتير الجاهزة -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Ready_Invoice_Templates') }}</span>
+                </a>
+            </li>
+            <!-- قوالب البريد الإلكتروني -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Email_Templates') }}</span>
+                </a>
+            </li>
+            <!-- قوالب الـ SMS -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.SMS_Templates') }}</span>
+                </a>
+            </li>
+            <!-- الشروط والأحكام -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Terms_and_Conditions') }}</span>
+                </a>
+            </li>
+            <!-- إدارة الملفات والمستندات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Document_Management') }}</span>
+                </a>
+            </li>
+            <!-- قواعد الإرسال الآلي -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Automatic_Sending_Rules') }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="side-nav-item">
+    <a data-bs-toggle="collapse" href="#settingsMenu" aria-expanded="false" aria-controls="settingsMenu" class="side-nav-link">
+        <i class="uil uil-cog"></i> <!-- أيقونة الإعدادات -->
+        <span>{{ trans('main_trans.Settings') }}</span>
+        <span class="menu-arrow"></span>
+    </a>
+    <div class="collapse" id="settingsMenu">
+        <ul class="side-nav-second-level">
+            <!-- معلومات الحساب -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Account_Information') }}</span>
+                </a>
+            </li>
+            <!-- إعدادات الحساب -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Account_Settings') }}</span>
+                </a>
+            </li>
+            <!-- إعدادات الـ SMTP -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.SMTP_Settings') }}</span>
+                </a>
+            </li>
+            <!-- طرق الدفع -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Payment_Methods') }}</span>
+                </a>
+            </li>
+            <!-- إعدادات الـ SMS -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.SMS_Settings') }}</span>
+                </a>
+            </li>
+            <!-- إعدادات الترقيم المتسلسل -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Sequential_Numbering_Settings') }}</span>
+                </a>
+            </li>
+            <!-- إعدادات الضرائب -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Tax_Settings') }}</span>
+                </a>
+            </li>
+            <!-- إدارة التطبيقات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Applications_Management') }}</span>
+                </a>
+            </li>
+            <!-- شعار وألوان النظام -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.System_Logo_and_Colors') }}</span>
+                </a>
+            </li>
+            <!-- API -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.API') }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
 
 
 
