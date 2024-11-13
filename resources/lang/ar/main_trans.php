@@ -62,6 +62,9 @@ return [
 'settings'=>'الأعدادات',
 'Customer_attendance'=>'حضور العملاء',
 'Customer_attendance_records'=>'سجلات حضور العملاء',
+'Insurance_Agents'=> 'وكلاء التأمبن ',
+'Insurance_Agents_Management'=> 'أدارة وكلاء التأمين',
+'Add_Insurance_Company'=> 'أضف شركة تأمين',
 
 
 

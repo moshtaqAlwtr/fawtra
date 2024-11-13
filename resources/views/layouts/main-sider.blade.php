@@ -352,7 +352,7 @@
             <a data-bs-toggle="collapse" href="#sidebarCharts" aria-expanded="false" aria-controls="sidebarCharts"
                 class="side-nav-link">
                 <i class="uil-chart"></i>
-                <span> {{ trans('main_trans.Customer_attendance') }} </span>
+                <span> m </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarCharts">
@@ -360,13 +360,13 @@
                     <li class="side-nav-item">
                         <a data-bs-toggle="collapse" href="#sidebarApexCharts" aria-expanded="false"
                             aria-controls="sidebarApexCharts">
-                            <span> {{ trans('main_trans.Customer_attendance_records') }}  </span>
+                            <span>  mk  </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <div class="collapse" id="sidebarApexCharts">
                             <ul class="side-nav-third-level">
                                 <li>
-                                    <a href="charts-apex-area.html">Area</a>
+                                    <a href=""> nn </a>
                                 </li>
                                 <li>
                                     <a href="charts-apex-bar.html">Bar</a>
@@ -424,17 +424,15 @@
             <a data-bs-toggle="collapse" href="#sidebarTables" aria-expanded="false" aria-controls="sidebarTables"
                 class="side-nav-link">
                 <i class="uil-table"></i>
-                <span> Tables </span>
+                <span>  {{ trans('main_trans.Customer_attendance') }}</span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarTables">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="tables-basic.html">Basic Tables</a>
+                        <a href="">{{ trans('main_trans.Customer_attendance_records') }} </a>
                     </li>
-                    <li>
-                        <a href="tables-datatable.html">Data Tables</a>
-                    </li>
+                
                 </ul>
             </div>
         </li>
@@ -443,16 +441,16 @@
             <a data-bs-toggle="collapse" href="#sidebarMaps" aria-expanded="false" aria-controls="sidebarMaps"
                 class="side-nav-link">
                 <i class="uil-location-point"></i>
-                <span> Maps </span>
+                <span>{{ trans('main_trans.Insurance_Agents') }}  </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarMaps">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="maps-google.html">Google Maps</a>
+                        <a href="">{{ trans('main_trans.Insurance_Agents_Management') }}  </a>
                     </li>
                     <li>
-                        <a href="maps-vector.html">Vector Maps</a>
+                        <a href=""> {{ trans('main_trans.Add_Insurance_Company') }} </a>
                     </li>
                 </ul>
             </div>
