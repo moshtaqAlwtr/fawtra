@@ -443,57 +443,376 @@
             <a data-bs-toggle="collapse" href="#sidebarMultiLevel" aria-expanded="false"
                 aria-controls="sidebarMultiLevel" class="side-nav-link">
                 <i class="uil-folder-plus"></i>
-                <span>{{ trans('main_trans.Stock') }}  </span>
+                <span>{{ trans('main_trans.Purchases') }}  </span>
                 <span class="menu-arrow"></span>
             </a>
             <div class="collapse" id="sidebarMultiLevel">
                 <ul class="side-nav-second-level">
                     <li class="side-nav-item">
                         <a href="">
-                            <span> {{ trans('main_trans.products_management') }} </span>
+                            <span> {{ trans('main_trans.Purchase_Orders') }} </span>
                         </a>
                     </li>
                     <li class="side-nav-item">
                         <a href="">
-                            <span> {{ trans('main_trans.Store_permissions_management') }} </span>
+                            <span> {{ trans('main_trans.Quotation_Requests') }} </span>
                         </a>
                     </li>
                     <li class="side-nav-item">
                         <a href="">
-                            <span> {{ trans('main_trans.product_tracking') }} </span>
+                            <span> {{ trans('main_trans.Purchase_Quotations') }} </span>
                         </a>
                     </li>
                     <li class="side-nav-item">
                         <a href="">
-                            <span> {{ trans('main_trans.price_lists') }} </span>
+                            <span> {{ trans('main_trans.Purchase_Orders') }} </span>
                         </a>
                     </li>
                     <li class="side-nav-item">
                         <a href="">
-                            <span> {{ trans('main_trans.warehouses') }} </span>
+                            <span> {{ trans('main_trans.Purchase_Invoices') }} </span>
                         </a>
                     </li>
                     <li class="side-nav-item">
                         <a href="">
-                            <span> {{ trans('main_trans.inventory_Management') }} </span>
+                            <span> {{ trans('main_trans.Purchase_Returns') }} </span>
                         </a>
                     </li>
                     <li class="side-nav-item">
                         <a href="">
-                            <span> {{ trans('main_trans.products_Settings') }} </span>
+                            <span> {{ trans('main_trans.Creditor_notices') }} </span>
                         </a>
                     </li>
                     <li class="side-nav-item">
                         <a href="">
-                            <span> {{ trans('main_trans.inventory_settings') }} </span>
+                            <span> {{ trans('main_trans.Supplier_Management') }} </span>
                         </a>
                     </li>
+                    <!-- مدفوعات الموردين -->
+<li class="side-nav-item">
+    <a href="">
+        <span> {{ trans('main_trans.Supplier_Payments') }} </span>
+    </a>
+</li>
+
+<!-- إعدادات فواتير الشراء -->
+<li class="side-nav-item">
+    <a href="">
+        <span> {{ trans('main_trans.Purchase_Invoices_Settings') }} </span>
+    </a>
+</li>
+
+<!-- إعدادات الموردين -->
+<li class="side-nav-item">
+    <a href="">
+        <span> {{ trans('main_trans.Supplier_Settings') }} </span>
+    </a>
+</li>
                 </ul>
             </div>
 
         </li>
     </ul>
 </div>
+<!-- قائمة تتبع الوقت -->
+<li class="side-nav-item">
+    <a data-bs-toggle="collapse" href="#timeTrackingMenu" aria-expanded="false"
+        aria-controls="timeTrackingMenu" class="side-nav-link">
+        <i class="uil-clock"></i>
+        <span>{{ trans('main_trans.Time_Tracking') }} </span>
+        <span class="menu-arrow"></span>
+    </a>
+    <div class="collapse" id="timeTrackingMenu">
+        <ul class="side-nav-second-level">
+            <!-- تتبع الوقت -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Time_Tracking') }}</span>
+                </a>
+            </li>
+
+            <!-- إنشاء فاتورة -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Create_Invoice') }}</span>
+                </a>
+            </li>
+
+            <!-- إعدادات تتبع الوقت -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Time_Tracking_Settings') }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="side-nav-item">
+    <a data-bs-toggle="collapse" href="#financialMenu" aria-expanded="false" aria-controls="financialMenu" class="side-nav-link">
+        <i class="uil uil-money-bill"></i> <!-- أيقونة المالية -->
+        <span>{{ trans('main_trans.Financial') }}</span>
+        <span class="menu-arrow"></span>
+    </a>
+    <div class="collapse" id="financialMenu">
+        <ul class="side-nav-second-level">
+            <!-- المصروفات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Expenses') }}</span>
+                </a>
+            </li>
+            <!-- سندات القبض -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Receipts') }}</span>
+                </a>
+            </li>
+            <!-- خزائن وحسابات بنكية -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Cash_and_Bank_Accounts') }}</span>
+                </a>
+            </li>
+            <!-- إعدادات المالية -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Financial_Settings') }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="side-nav-item">
+    <a data-bs-toggle="collapse" href="#generalAccountsMenu" aria-expanded="false" aria-controls="generalAccountsMenu" class="side-nav-link">
+        <i class="uil uil-chart-pie-alt"></i> <!-- أيقونة الحسابات العامة -->
+        <span>{{ trans('main_trans.General_Accounts') }}</span>
+        <span class="menu-arrow"></span>
+    </a>
+    <div class="collapse" id="generalAccountsMenu">
+        <ul class="side-nav-second-level">
+            <!-- القيود اليومية -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Journal_Entries') }}</span>
+                </a>
+            </li>
+            <!-- أضف قيد -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Add_Entry') }}</span>
+                </a>
+            </li>
+            <!-- دليل الحسابات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Chart_of_Accounts') }}</span>
+                </a>
+            </li>
+            <!-- مراكز التكلفة -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Cost_Centers') }}</span>
+                </a>
+            </li>
+            <!-- الأصول -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Assets') }}</span>
+                </a>
+            </li>
+            <!-- إعدادات الحسابات العامة -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.General_Accounts_Settings') }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="side-nav-item">
+    <a data-bs-toggle="collapse" href="#chequesCycleMenu" aria-expanded="false" aria-controls="chequesCycleMenu" class="side-nav-link">
+        <i class="uil uil-receipt"></i> <!-- أيقونة دورة الشيكات -->
+        <span>{{ trans('main_trans.Cheques_Cycle') }}</span>
+        <span class="menu-arrow"></span>
+    </a>
+    <div class="collapse" id="chequesCycleMenu">
+        <ul class="side-nav-second-level">
+            <!-- الشيكات المدفوعة -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Paid_Cheques') }}</span>
+                </a>
+            </li>
+            <!-- الشيكات المستلمة -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Received_Cheques') }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="side-nav-item">
+    <a data-bs-toggle="collapse" href="#ordersMenu" aria-expanded="false" aria-controls="ordersMenu" class="side-nav-link">
+        <i class="uil uil-clipboard-alt"></i> <!-- أيقونة الطلبات -->
+        <span>{{ trans('main_trans.Orders') }}</span>
+        <span class="menu-arrow"></span>
+    </a>
+    <div class="collapse" id="ordersMenu">
+        <ul class="side-nav-second-level">
+            <!-- إدارة الطلبات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Order_Management') }}</span>
+                </a>
+            </li>
+            <!-- الإعدادات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Settings') }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="side-nav-item">
+    <a data-bs-toggle="collapse" href="#employeesMenu" aria-expanded="false" aria-controls="employeesMenu" class="side-nav-link">
+        <i class="uil uil-user"></i> <!-- أيقونة الموظفين -->
+        <span>{{ trans('main_trans.Employees') }}</span>
+        <span class="menu-arrow"></span>
+    </a>
+    <div class="collapse" id="employeesMenu">
+        <ul class="side-nav-second-level">
+            <!-- إدارة الموظفين -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Employee_Management') }}</span>
+                </a>
+            </li>
+            <!-- إدارة أدوار الموظفين -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Employee_Roles_Management') }}</span>
+                </a>
+            </li>
+            <!-- إدارة الورديات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Shift_Management') }}</span>
+                </a>
+            </li>
+            <!-- الإعدادات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Settings') }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="side-nav-item">
+    <a data-bs-toggle="collapse" href="#organizationalStructureMenu" aria-expanded="false" aria-controls="organizationalStructureMenu" class="side-nav-link">
+        <i class="uil uil-sitemap"></i> <!-- أيقونة الهيكل التنظيمي -->
+        <span>{{ trans('main_trans.Organizational_Structure') }}</span>
+        <span class="menu-arrow"></span>
+    </a>
+    <div class="collapse" id="organizationalStructureMenu">
+        <ul class="side-nav-second-level">
+            <!-- إدارة المسميات الوظيفية -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Job_Titles_Management') }}</span>
+                </a>
+            </li>
+            <!-- إدارة الأقسام -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Departments_Management') }}</span>
+                </a>
+            </li>
+            <!-- إدارة المستويات الوظيفية -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Job_Levels_Management') }}</span>
+                </a>
+            </li>
+            <!-- إدارة أنواع الوظائف -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Job_Types_Management') }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+<li class="side-nav-item">
+    <a data-bs-toggle="collapse" href="#attendanceMenu" aria-expanded="false" aria-controls="attendanceMenu" class="side-nav-link">
+        <i class="uil uil-calendar-alt"></i> <!-- أيقونة الحضور -->
+        <span>{{ trans('main_trans.Attendance') }}</span>
+        <span class="menu-arrow"></span>
+    </a>
+    <div class="collapse" id="attendanceMenu">
+        <ul class="side-nav-second-level">
+            <!-- سجلات الحضور -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Attendance_Records') }}</span>
+                </a>
+            </li>
+            <!-- أيام الحضور -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Attendance_Days') }}</span>
+                </a>
+            </li>
+            <!-- دفاتر الحضور -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Attendance_Books') }}</span>
+                </a>
+            </li>
+            <!-- أذونات إجازة -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Leave_Permissions') }}</span>
+                </a>
+            </li>
+            <!-- طلبات الإجازة -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Leave_Requests') }}</span>
+                </a>
+            </li>
+            <!-- إدارة الورديات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Shift_Management') }}</span>
+                </a>
+            </li>
+            <!-- ورديات مخصصة -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Custom_Shifts') }}</span>
+                </a>
+            </li>
+            <!-- سجل جلسات الحضور -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Attendance_Sessions_Log') }}</span>
+                </a>
+            </li>
+            <!-- الإعدادات -->
+            <li class="side-nav-item">
+                <a href="">
+                    <span>{{ trans('main_trans.Settings') }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+
+<!-- التأكد من أن هذا الـ ID ليس متكررًا في أي مكان آخر -->
+
 
     <!-- Help Box -->
     <div class="help-box text-white text-center">
