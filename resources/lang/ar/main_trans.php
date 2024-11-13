@@ -65,8 +65,18 @@ return [
 'Insurance_Agents'=> 'وكلاء التأمبن ',
 'Insurance_Agents_Management'=> 'أدارة وكلاء التأمين',
 'Add_Insurance_Company'=> 'أضف شركة تأمين',
+'Stock'=>'ادارة المخزون',
 
+'products_management' => 'إدارة المنتجات',
+'Store_permissions_management' => 'إدارة صلاحيات المتجر',
+'product_tracking' => 'تتبع المنتجات',
+'price_lists' => 'قوائم الأسعار',
+'warehouses' => 'المستودعات',
 
+'inventory_Management' => 'إدارة الجرد',
+'products_Settings' => 'إعدادات المنتجات',
+'inventory_settings' => 'إعدادات المخزون',
+'Purchase_management' => ' ادارة المشتريات',
 
 'employees'=>'الموظفين',
 "customers"=>"العملاء",

@@ -63,6 +63,22 @@ return [
 'Insurance_Agents'=> 'Insurance Agents',
 'Insurance_Agents_Management'=> 'Insurance Agents Management',
 'Add_Insurance_Company'=> 'Add Insurance Company',
+'Stock'=>'Stock_management',
+'products_management'=>'Products Management',
+'Store_permissions_management'=>'Store permissions management',
+'product_tracking'=>'Product tracking',
+'price_lists'=>'Price lists',
+'warehouses'=>'Warehouses',
+'stock_settings'=>'Stock settings',
+'products_Settings'=>'Products Settings',
+
+'inventory_Management'=>'Inventory Management',
+'products_Settings'=>'Products Settings',
+'inventory_settings' => 'Inventory settings',
+'Purchase_management' => ' Purchase management',
+
+'purchase_settings' => 'Purchase settings',
+
 
 
 ];
