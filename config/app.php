@@ -96,7 +96,8 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ar', // Or any default you prefer, other than English
+
 
     /*
     |--------------------------------------------------------------------------

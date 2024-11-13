@@ -29,11 +29,17 @@
     @yield('css')
 
     <!-- CSS بناءً على اللغة -->
-    @if (App::getLocale() == 'ar')
-        <link href="{{ asset('assets/css/rtl.css') }}" rel="stylesheet">
-    @else
-        <link href="{{ asset('assets/css/ltr.css') }}" rel="stylesheet">
-    @endif
+ <!-- CSS بناءً على اللغة -->
+@if (App::getLocale() == 'ar')
+<link href="{{ asset('assets/css/rtl.css') }}" rel="stylesheet">
+@elseif (App::getLocale() == 'en')
+<link href="{{ asset('assets/css/ltr.css') }}" rel="stylesheet">
+@elseif (App::getLocale() == 'ur')
+<link href="{{ asset('assets/css/ltr.css') }}" rel="stylesheet">
+@else
+<link href="{{ asset('assets/css/ltr.css') }}" rel="stylesheet">
+@endif
+
 </head>
 
 <body class="loading" dir="{{ App::getLocale() == 'ar' ? 'rtl' : 'ltr' }}" data-layout-color="light" data-leftbar-theme="dark" data-layout-mode="fluid" data-rightbar-onstart="true">
