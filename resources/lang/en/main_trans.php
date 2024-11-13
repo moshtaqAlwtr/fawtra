@@ -60,6 +60,9 @@ return [
 'Settings'=>'Settings',
 'Customer_attendance'=>'Customer attendance',
 'Customer_attendance_records'=>'Customer attendance records',
+'Insurance_Agents'=> 'Insurance Agents',
+'Insurance_Agents_Management'=> 'Insurance Agents Management',
+'Add_Insurance_Company'=> 'Add Insurance Company',
 
 
 ];
