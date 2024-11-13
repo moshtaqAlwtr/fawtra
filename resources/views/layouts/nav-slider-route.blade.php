@@ -105,9 +105,11 @@
     <!-- ملفات JavaScript الخاصة -->
     <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    <script src="{{ asset('assets/js/scriptt.js') }}"></script>
     <script src="{{ asset('assets/js/vendor/chart.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/demo.dashboard-projects.js') }}"></script>
     <script src="{{ asset('js/date.js') }}"></script>
+
 
 </body>
 </html>
