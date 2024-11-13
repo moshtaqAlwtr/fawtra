@@ -22,10 +22,11 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">
                         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                            <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                {{ $properties['native'] }}
-                            </a>
-                        @endforeach
+    <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+        {{ $properties['native'] }} ({{ $localeCode }})
+    </a>
+@endforeach
+
                     </div>
                 </li>
 

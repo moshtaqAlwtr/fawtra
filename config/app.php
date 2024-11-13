@@ -96,7 +96,8 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ar', // Or any default you prefer, other than English
+
 
     /*
     |--------------------------------------------------------------------------
@@ -156,6 +157,7 @@ return [
     */
 
     'providers' => ServiceProvider::defaultProviders()->merge([
+
         /*
          * Package Service Providers...
          */
@@ -163,11 +165,13 @@ return [
         /*
          * Application Service Providers...
          */
+        Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
     ])->toArray(),
 
     /*
