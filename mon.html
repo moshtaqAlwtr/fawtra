@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تجربة</title>
+    <style> 
+        body {
+            direction: rtl; /* يضمن عرض الصفحة بالكامل من اليمين لليسار */
+            text-align: right;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 15%; /* تغطية العرض بالكامل */
+            height: 20px;
+            padding: 20px;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .btn-add {
+            background-color: #28a745;
+            color: white;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .no-requests {
+            text-align: right;
+        }
+        .list {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            list-style-type: none; /* إزالة النقاط من القائمة */
+        }
+        .list li {
+            color: #f6fafa;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nested {
+            display: none; /* يبدأ مخفياً */
+            list-style-type: none; /* إزالة النقاط */
+            padding-right: 15px;
+        }
+        .list-item {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function toggleDropdown(listId) {
+            const nestedList = document.getElementById(listId);
+            nestedList.style.display = nestedList.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</head>
+<body>
+    <div class="header">برنامج تجربة</div>
+    <div class="container">
+        <ul class="list">
+            <li class="list-item" onclick="toggleDropdown('nestedList1')"><i class="fas fa-plus"></i> المبيعات</li>
+            <ul id="nestedList1" class="nested">
+                <li><i class="fas fa-plus"></i> المشتريات</li>
+                <li><i class="fas fa-plus"></i> المخازن</li>
+                <li><i class="fas fa-plus"></i> الموظفين</li>
+                <li><i class="fas fa-plus"></i> العروض</li>
+            </ul>
+        </ul>
+    </div>
+    <div class="container">
+        <ul class="list">
+            <li class="list-item" onclick="toggleDropdown('nestedList2')"><i class="fas fa-plus"></i> المتجر الألكتروني</li>
+            <ul id="nestedList2" class="nested">
+                <li><i class="fas fa-plus"></i> أعدادات المحتوى</li>
+                <li><i class="fas fa-plus"></i> الأعدادات</li>
+            </ul>
+        </ul>
+    </div>
+    <div class="container">
+        <ul class="list">
+            <li class="list-item" onclick="toggleDropdown('nestedList3')"><i class="fas fa-plus"></i> الطلبات </li>
+            <ul id="nestedList3" class="nested">
+                <li><i class="fas fa-plus"></i>  اضف طلب</li>
+                <li><i class="fas fa-plus"></i> طلبات المستلمة</li>
+            </ul>
+        </ul>
+    </div>
+</body>
+</html>
