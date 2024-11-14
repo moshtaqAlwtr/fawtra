@@ -3,7 +3,9 @@
 <x-guest-layout>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px;">
-            <h3 class="text-center mb-4">{{ __('Register') }}</h3>
+            <!-- إزالة الشعار وإضافة عنوان التسجيل -->
+            <h3 class="text-center mb-4">{{ __('Create an Account') }}</h3>
+
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
@@ -40,9 +42,10 @@
                     <a class="text-decoration-none small" href="{{ route('login') }}">
                         {{ __('Already registered?') }}
                     </a>
-                    <x-primary-button class="btn btn-primary">
-                        {{ __('Register') }}
-                    </x-primary-button>
+                    <!-- زر إنشاء حساب -->
+                    <button type="submit" class="btn btn-primary">
+                        {{ __('Create Account') }}
+                    </button>
                 </div>
             </form>
         </div>

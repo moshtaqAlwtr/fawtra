@@ -1,7 +1,6 @@
 <x-guest-layout>
     <!-- Session Status -->
 
-
     <form method="POST" action="{{ route('login') }}" style="width: 100%">
         @csrf
 
@@ -44,9 +43,24 @@
                 {{ __('Don\'t have an account? Register') }}
             </a>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
+            <!-- زر تسجيل الدخول بتدرج ألوان -->
+
         </div>
+        <button type="submit" class="ms-3 px-4 py-2 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 gradient-button">
+            {{ __('Log in') }}
+        </button>
     </form>
+
+    <!-- إضافة أسلوب CSS لتدرج الألوان -->
+    <style>
+        .gradient-button {
+            background: linear-gradient(90deg, #4e54c8, #8f94fb); /* تدرج الألوان من الأزرق إلى البنفسجي */
+            transition: background 0.3s ease, transform 0.2s ease; /* تأثير الانتقال عند تمرير الفأرة */
+        }
+
+        .gradient-button:hover {
+            background: linear-gradient(90deg, #8f94fb, #4e54c8); /* تدرج عكسي عند تمرير الفأرة */
+            transform: scale(1.05); /* تكبير بسيط عند التمرير */
+        }
+    </style>
 </x-guest-layout>
