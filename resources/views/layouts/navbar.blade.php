@@ -12,12 +12,14 @@
             <input type="text" class="form-control" placeholder="Search...">
             <button class="btn btn-search" type="button">Search</button>
         </div>
-        <div class="d-flex flex-column">
-            <span class="fw-bold text-primary">
+        <div class="d-flex flex-column align-items-start">
+            <span class="d-flex align-items-center fw-bold text-dark fs-5"> <!-- زيادة حجم الخط -->
+                <i class="fas fa-user-circle me-2 text-primary" style="font-size: 2em;"></i> <!-- تكبير الأيقونة -->
                 {{ Auth::check() ? Auth::user()->name : 'Guest' }}
             </span>
-            <small class="text-muted">Welcome Back!</small>
+
         </div>
+
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ml-auto d-flex align-items-center">
                 <!-- Language Selection -->
