@@ -3,97 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تجربة</title>
-    <style> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>واجهة متكاملة</title>
+    <style>
         body {
-            direction: rtl; /* يضمن عرض الصفحة بالكامل من اليمين لليسار */
-            text-align: right;
+            direction: rtl;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
-        .container {
-            width: 15%; /* تغطية العرض بالكامل */
-            height: 20px;
-            padding: 20px;
-        }
+        /* شريط الهيدر */
         .header {
             background-color: #007bff;
             color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .btn-add {
-            background-color: #28a745;
-            color: white;
-            margin-bottom: 15px;
+            padding: 10px 20px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            justify-content: space-between;
+            position: relative;
         }
-        .no-requests {
+        .header .title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .header .icons-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .icon {
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        .icon:hover {
+            color: #d9d9d9;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 30px;
+            right: 0;
+            background-color: white;
+            color: black;
+            min-width: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            z-index: 1;
             text-align: right;
         }
-        .list {
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .icon:hover .dropdown-content {
+            display: block;
+        }
+
+        /* القائمة الجانبية */
+        .sidebar {
+            width: 250px;
             background-color: #007bff;
             color: white;
-            padding: 15px;
-            margin-bottom: 15px;
-            list-style-type: none; /* إزالة النقاط من القائمة */
+            height: 100vh;
+            padding-top: 20px;
+            position: fixed;
+            right: 0;
+            top: 50px;
+            overflow-y: auto;
         }
-        .list li {
-            color: #f6fafa;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
+        .sidebar .menu-item {
+            padding: 15px 20px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color 0.3s;
+            position: relative;
+        }
+        .sidebar .menu-item:hover {
+            background-color: #0056b3;
+        }
+        .sidebar .menu-item i {
+            margin-left: 10px;
         }
         .nested {
-            display: none; /* يبدأ مخفياً */
-            list-style-type: none; /* إزالة النقاط */
-            padding-right: 15px;
+            display: none;
+            background-color: #0056b3;
+            margin: 0;
         }
-        .list-item {
-            cursor: pointer;
+        .menu-item:hover > .nested {
+            display: block;
+        }
+        .nested .menu-item {
+            padding: 10px 30px;
+            background-color: #0056b3;
+            border-bottom: 1px solid #004080;
+        }
+        .nested a {
+            display: block;
+            padding: 8px 40px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .nested a:hover {
+            background-color: #003f7f;
+        }
+
+        /* لضبط محتوى الصفحة الرئيسي */
+        .content {
+            margin-right: 270px;
+            padding: 20px;
+            flex: 1;
+        }
+
+        /* تصميم البطاقة الفاخرة */
+        .card {
+            background: linear-gradient(135deg, #ffffff, #e6e6e6);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 20px 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+        .card .card-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .card .card-content {
+            font-size: 16px;
+            color: #555;
         }
     </style>
-    <script>
-        function toggleDropdown(listId) {
-            const nestedList = document.getElementById(listId);
-            nestedList.style.display = nestedList.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
 </head>
 <body>
-    <div class="header">برنامج تجربة</div>
-    <div class="container">
-        <ul class="list">
-            <li class="list-item" onclick="toggleDropdown('nestedList1')"><i class="fas fa-plus"></i> المبيعات</li>
-            <ul id="nestedList1" class="nested">
-                <li><i class="fas fa-plus"></i> المشتريات</li>
-                <li><i class="fas fa-plus"></i> المخازن</li>
-                <li><i class="fas fa-plus"></i> الموظفين</li>
-                <li><i class="fas fa-plus"></i> العروض</li>
-            </ul>
-        </ul>
+    <!-- شريط الهيدر -->
+    <div class="header">
+        <div class="title">برنامج تجربة</div>
+        <div class="icons-container">
+            <!-- أيقونة اللغة -->
+            <div class="icon">
+                <i class="fas fa-globe"></i>
+                <div class="dropdown-content">
+                    <a href="#">العربية</a>
+                    <a href="#">English</a>
+                    <a href="#">اردو</a>
+                </div>
+            </div>
+            <!-- أيقونة الإشعارات -->
+            <div class="icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <!-- أيقونة المستخدم -->
+            <div class="icon">
+                <i class="fas fa-user-circle"></i>
+                <div class="dropdown-content">
+                    <a href="#">الملف الشخصي</a>
+                    <a href="#">تسجيل الخروج</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="container">
-        <ul class="list">
-            <li class="list-item" onclick="toggleDropdown('nestedList2')"><i class="fas fa-plus"></i> المتجر الألكتروني</li>
-            <ul id="nestedList2" class="nested">
-                <li><i class="fas fa-plus"></i> أعدادات المحتوى</li>
-                <li><i class="fas fa-plus"></i> الأعدادات</li>
-            </ul>
-        </ul>
+
+    <!-- القائمة الجانبية -->
+    <div class="sidebar">
+        <div class="menu-item">
+            <i class="fas fa-tachometer-alt"></i> لوحة التحكم
+            <div class="nested">
+                <div class="menu-item">
+                    <i class="fas fa-shopping-cart"></i> المبيعات
+                </div>
+                <div class="menu-item">
+                    <i class="fas fa-users"></i> الموارد البشرية
+                </div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <i class="fas fa-shopping-cart"></i> المبيعات
+            <div class="nested">
+                <a href="#"><i class="fas fa-file-invoice"></i> إدارة الفواتير</a>
+                <a href="#"><i class="fas fa-plus-circle"></i> أضف فاتورة مبيعات</a>
+                <a href="#"><i class="fas fa-bell"></i> إشعارات دائنة</a>
+            </div>
+        </div>
     </div>
-    <div class="container">
-        <ul class="list">
-            <li class="list-item" onclick="toggleDropdown('nestedList3')"><i class="fas fa-plus"></i> الطلبات </li>
-            <ul id="nestedList3" class="nested">
-                <li><i class="fas fa-plus"></i>  اضف طلب</li>
-                <li><i class="fas fa-plus"></i> طلبات المستلمة</li>
-            </ul>
-        </ul>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="content">
+        <div class="card">
+            <div class="card-title">لوحة التحكم</div>
+            <div class="card-content">
+                مرحبًا بك في لوحة التحكم الخاصة ببرنامجنا الفاخر. يمكنك الاطلاع على التقارير والتحليلات وإدارة بياناتك بسهولة.
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">تقارير المبيعات</div>
+            <div class="card-content">
+                استعرض تقارير المبيعات لتحسين الأداء وزيادة الإنتاجية من خلال أدوات متقدمة وسهلة الاستخدام.
+            </div>
+        </div>
     </div>
 </body>
 </html>

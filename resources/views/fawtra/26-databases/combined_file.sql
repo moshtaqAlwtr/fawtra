@@ -375,3 +375,63 @@ CREATE TABLE IF NOT EXISTS ledger_transactions (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (ledger_id) REFERENCES general_ledger(ledger_id)
 );
+
+-- جدول تتبع الوقت (Time Tracking)
+CREATE TABLE IF NOT EXISTS time_tracking (
+  time_tracking_id INT PRIMARY KEY AUTO_INCREMENT,
+  representative_id INT, -- معرف المندوب
+  start_time DATETIME,
+  end_time DATETIME,
+  task_description VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (representative_id) REFERENCES employees(employee_id)
+);
+
+-- جدول دورة الشيكات (Cheques Cycle)
+CREATE TABLE IF NOT EXISTS cheques_cycle (
+  cheque_cycle_id INT PRIMARY KEY AUTO_INCREMENT,
+  cheque_number VARCHAR(50),
+  issue_date DATE,
+  due_date DATE,
+  amount DECIMAL(10, 2),
+  status ENUM('Issued', 'Cleared', 'Bounced', 'Pending'),
+  client_id INT, -- معرف العميل
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (client_id) REFERENCES clients(client_id)
+);
+
+-- جدول الدردشة (Chat)
+CREATE TABLE IF NOT EXISTS chat (
+  chat_id INT PRIMARY KEY AUTO_INCREMENT,
+  sender_id INT, -- معرف المرسل
+  receiver_id INT, -- معرف المستقبل
+  message_content TEXT,
+  sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  is_read BOOLEAN DEFAULT FALSE,
+  FOREIGN KEY (sender_id) REFERENCES users(id),
+  FOREIGN KEY (receiver_id) REFERENCES users(id)
+);
+
+-- جدول مواقع العملاء (Customer Locations)
+CREATE TABLE IF NOT EXISTS customer_locations (
+  location_id INT PRIMARY KEY AUTO_INCREMENT,
+  client_id INT, -- معرف العميل
+  latitude DECIMAL(10, 8),
+  longitude DECIMAL(11, 8),
+  address VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (client_id) REFERENCES clients(client_id)
+);
+
+-- جدول الحضور والانصراف للمناديب (Attendance)
+CREATE TABLE IF NOT EXISTS attendance (
+  attendance_id INT PRIMARY KEY AUTO_INCREMENT,
+  representative_id INT, -- معرف المندوب
+  check_in_time DATETIME,
+  check_out_time DATETIME,
+  location_check_in VARCHAR(255),
+  location_check_out VARCHAR(255),
+  date DATE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (representative_id) REFERENCES employees(employee_id)
+);
