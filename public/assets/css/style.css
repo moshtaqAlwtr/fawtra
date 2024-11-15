@@ -326,3 +326,67 @@ h2 {
     border-radius: 12px;
     padding: 0.2em 0.5em;
 }
+
+
+.form-section {
+    border: 1px solid #e2e8f0; /* حدود خفيفة */
+    padding: 20px;
+    background: linear-gradient(to right, #ffffff, #f7fafc); /* خلفية فاتحة وهادئة */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* ظل خفيف */
+}
+.form-section h6 {
+    font-weight: bold;
+    color: #2d3748;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+.header-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.btn-custom {
+    background: linear-gradient(135deg, #90cdf4, #63b3ed); /* تدرج هادئ بين الأزرق الفاتح والرمادي المزرق */
+    color: white;
+    border: none;
+}
+.btn-custom:hover {
+    background: linear-gradient(135deg, #63b3ed, #90cdf4);
+}
+.footer-info {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: 20px;
+}
+.map-container {
+    border: 1px solid #e2e8f0;
+    height: 400px;
+    background-color: #edf2f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    border-radius: 8px;
+    color: #718096;
+}
+.form-label {
+    font-weight: bold;
+    color: #4a5568;
+}
+.input-group-text {
+    background: #90cdf4; /* لون هادئ للإدخالات */
+    color: white;
+    border: none;
+}
+.form-control, .form-select {
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+}
+.icon-section i {
+    color: #63b3ed;
+    font-size: 1.5rem;
+    margin-left: 5px;
+}
