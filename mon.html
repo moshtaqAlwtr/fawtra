@@ -6,174 +6,50 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- مكتبة Chart.js -->
     <title>برنامج فوترة</title>
-    <style>
-        body {
-            direction: rtl;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-        .header {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            z-index: 1000; /* تأكد من ظهور الهيدر فوق القائمة الجانبية */
-        }
-        .header .program-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-        }
-        .header .icons-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .icon {
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        .icon:hover {
-            color: #d9d9d9;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #007bff;
-            color: white;
-            height: 100vh;
-            padding-top: 60px; /* توفير مساحة للهيدر */
-            position: fixed;
-            right: 0;
-            top: 0;
-            overflow-y: auto;
-        }
-        .sidebar .menu-item {
-            padding: 15px 20px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: background-color 0.3s;
-            position: relative;
-        }
-        .sidebar .menu-item:hover {
-            background-color: #0056b3;
-        }
-        .sidebar .menu-item i {
-            margin-left: 10px;
-        }
-        .nested {
-            display: none;
-            background-color: #0056b3;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-        .menu-item:hover .nested {
-            display: block;
-            padding-left: 20px;
-        }
-        .nested a {
-            display: block;
-            padding: 10px 20px;
-            color: white;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        .nested a:hover {
-            background-color: #004080;
-        }
-        .content {
-            margin-right: 270px;
-            padding: 20px;
-            flex: 1;
-        }
-        .box-container {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        .box {
-            background: #f8f9fa;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            width: calc(25% - 20px);
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .box-title {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #007bff;
-        }
-        .box-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-        }
-        .chart-container {
-            margin-top: 20px;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <link rel="stylesheet" href="mon.css">
 </head>
 <body>
     <!-- شريط الهيدر -->
     <div class="header">
-        <div class="program-title">فوترة</div> <!-- "فوترة" هنا -->
+        <div class="program-title">فوترة</div>
         <div class="icons-container">
+            <!-- أيقونات اللغة -->
             <div class="icon">
                 <i class="fas fa-globe"></i>
+                <div class="dropdown-menu">
+                    <ul>
+                        <li><a href="#">العربية</a></li>
+                        <li><a href="#">English</a></li>
+                        <li><a href="#">اردو</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="icon">
                 <i class="fas fa-bell"></i>
             </div>
+            <!-- أيقونة المستخدم -->
             <div class="icon">
                 <i class="fas fa-user-circle"></i>
+                <div class="dropdown-menu">
+                    <ul>
+                        <li><a href="#">الملف الشخصي</a></li>
+                        <li><a href="#">الرسائل</a></li>
+                        <li><a href="#">الإعدادات</a></li>
+                        <li><a href="#">تسجيل الخروج</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- القائمة الجانبية -->
-    <div class="sidebar">
-        <!-- قائمة لوحة التحكم -->
+     <div class="sidebar">
+        <!-- لوحة التحكم -->
         <div class="menu-item">
-            <i class="fas fa-tachometer-alt"></i> لوحة التحكم
+            <i class="fas fa-home"></i> لوحة التحكم
             <ul class="nested">
                 <li><a href="#"><i class="fas fa-chart-line"></i> التقارير</a></li>
                 <li><a href="#"><i class="fas fa-cogs"></i> الإعدادات</a></li>
-            </ul>
-        </div>
-    
-        <!-- خط فاصل -->
-        <hr style="border: 0; height: 1px; background-color: #ffffff; margin: 10px 0;">
-    
-        <!-- قائمة المبيعات -->
-        <div class="menu-item">
-            <i class="fas fa-shopping-cart"></i> المبيعات
-            <ul class="nested">
-                <li><a href="#"><i class="fas fa-file-invoice"></i> إدارة الفواتير</a></li>
-                <li><a href="#"><i class="fas fa-plus-circle"></i> إنشاء فاتورة</a></li>
-                <li><a href="#"><i class="fas fa-tags"></i> إدارة عروض الأسعار</a></li>
-                <li><a href="#"><i class="fas fa-plus-square"></i> إنشاء عرض سعر</a></li>
-                <li><a href="#"><i class="fas fa-bell"></i> إشعارات دائنة</a></li>
-                <li><a href="#"><i class="fas fa-file-alt"></i> الفواتير المرجعة</a></li>
-                <li><a href="#"><i class="fas fa-sync-alt"></i> الفواتير الدورية</a></li>
-                <li><a href="#"><i class="fas fa-money-bill-wave"></i> مدفوعات العملاء</a></li>
-                <li><a href="#"><i class="fas fa-cogs"></i> إعدادات المبيعات</a></li>
             </ul>
         </div>
     
@@ -190,71 +66,34 @@
             </ul>
         </div>
     
-        <!-- قسم المتجر الإلكتروني -->
+        <!-- قسم المبيعات -->
         <div class="menu-item">
-            <i class="fas fa-store"></i> المتجر الإلكتروني
+            <i class="fas fa-shopping-cart"></i> المبيعات
             <ul class="nested">
-                <li><a href="#"><i class="fas fa-th"></i> إدارة المحتوى</a></li>
-                <li><a href="#"><i class="fas fa-cogs"></i> الإعدادات</a></li>
+                <li><a href="#"><i class="fas fa-file-invoice"></i> إدارة الفواتير</a></li>
+                <li><a href="#"><i class="fas fa-plus-circle"></i> إنشاء فاتورة</a></li>
+                <li><a href="#"><i class="fas fa-tags"></i> إدارة عروض الأسعار</a></li>
+                <li><a href="#"><i class="fas fa-plus-square"></i> إنشاء عرض سعر</a></li>
+                <li><a href="#"><i class="fas fa-bell"></i> إشعارات دائنة</a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> الفواتير المرجعة</a></li>
+                <li><a href="#"><i class="fas fa-sync-alt"></i> الفواتير الدورية</a></li>
+                <li><a href="#"><i class="fas fa-money-bill-wave"></i> مدفوعات العملاء</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> إعدادات المبيعات</a></li>
             </ul>
         </div>
     
-        <!-- قسم الحجوزات -->
+        <!-- قسم المخزون -->
         <div class="menu-item">
-            <i class="fas fa-calendar-check"></i> الحجوزات
+            <i class="fas fa-boxes"></i> المخزون
             <ul class="nested">
-                <li><a href="#"><i class="fas fa-calendar"></i> إدارة الحجوزات</a></li>
-                <li><a href="#"><i class="fas fa-plus-circle"></i> أضف حجز</a></li>
-                <li><a href="#"><i class="fas fa-cogs"></i> إدارة إعدادات الحجز</a></li>
-            </ul>
-        </div>
-    
-        <!-- قسم إدارة الأقساط -->
-        <div class="menu-item">
-            <i class="fas fa-money-check-alt"></i> إدارة الأقساط
-            <ul class="nested">
-                <li><a href="#"><i class="fas fa-handshake"></i> اتفاقيات التقسيط</a></li>
-                <li><a href="#"><i class="fas fa-coins"></i> الأقساط</a></li>
-            </ul>
-        </div>
-    
-        <!-- قسم المبيعات المستهدفة والعمولات -->
-        <div class="menu-item">
-            <i class="fas fa-bullseye"></i> المبيعات المستهدفة والعمولات
-            <ul class="nested">
-                <li><a href="#"><i class="fas fa-percentage"></i> قواعد العمولة</a></li>
-                <li><a href="#"><i class="fas fa-chart-line"></i> عمولة المبيعات</a></li>
-                <li><a href="#"><i class="fas fa-calendar-alt"></i> فترات المبيعات</a></li>
-            </ul>
-        </div>
-    
-        <!-- قسم إدارة الإيجارات والوحدات -->
-        <div class="menu-item">
-            <i class="fas fa-building"></i> إدارة الإيجارات والوحدات
-            <ul class="nested">
-                <li><a href="#"><i class="fas fa-home"></i> الوحدات</a></li>
-                <li><a href="#"><i class="fas fa-file-contract"></i> أوامر الحجز</a></li>
-                <li><a href="#"><i class="fas fa-balance-scale"></i> قواعد التسعير للإيجارات</a></li>
-                <li><a href="#"><i class="fas fa-calendar"></i> الأسعار الموسمية</a></li>
-                <li><a href="#"><i class="fas fa-cogs"></i> الإعدادات</a></li>
-            </ul>
-        </div>
-    
-        <!-- قسم أوامر التوريد -->
-        <div class="menu-item">
-            <i class="fas fa-clipboard-list"></i> أوامر التوريد
-            <ul class="nested">
-                <li><a href="#"><i class="fas fa-list"></i> أوامر التوريد</a></li>
-                <li><a href="#"><i class="fas fa-plus-circle"></i> أضف أمر شغل</a></li>
-                <li><a href="#"><i class="fas fa-cogs"></i> إعدادات أوامر التوريد</a></li>
-            </ul>
-        </div>
-    
-        <!-- قسم دورات العمل -->
-        <div class="menu-item">
-            <i class="fas fa-clipboard"></i> دورات العمل
-            <ul class="nested">
-                <li><a href="#"><i class="fas fa-cogs"></i> الإعدادات</a></li>
+                <li><a href="#"><i class="fas fa-box"></i> إدارة المنتجات</a></li>
+                <li><a href="#"><i class="fas fa-clipboard-list"></i> إدارة الأذون المخزنية</a></li>
+                <li><a href="#"><i class="fas fa-search"></i> تتبع المنتجات</a></li>
+                <li><a href="#"><i class="fas fa-tags"></i> قوائم الأسعار</a></li>
+                <li><a href="#"><i class="fas fa-warehouse"></i> المستودعات</a></li>
+                <li><a href="#"><i class="fas fa-archive"></i> إدارة الجرد</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> إعدادات المخزون</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> إعدادات المنتجات</a></li>
             </ul>
         </div>
     
@@ -293,25 +132,157 @@
             </ul>
         </div>
     
-        <!-- قسم المخزون -->
+        <!-- قسم العضويات -->
         <div class="menu-item">
-            <i class="fas fa-boxes"></i> المخزون
+            <i class="fas fa-calendar-alt"></i> العضويات
             <ul class="nested">
-                <li><a href="#"><i class="fas fa-box"></i> إدارة المنتجات</a></li>
-                <li><a href="#"><i class="fas fa-clipboard-list"></i> إدارة الأذون المخزنية</a></li>
-                <li><a href="#"><i class="fas fa-search"></i> تتبع المنتجات</a></li>
-                <li><a href="#"><i class="fas fa-tags"></i> قوائم الأسعار</a></li>
-                <li><a href="#"><i class="fas fa-warehouse"></i> المستودعات</a></li>
-                <li><a href="#"><i class="fas fa-archive"></i> إدارة الجرد</a></li>
-                <li><a href="#"><i class="fas fa-cogs"></i> إعدادات المخزون</a></li>
-                <li><a href="#"><i class="fas fa-cog"></i> إعدادات المنتجات</a></li>
+                <li><a href="#"><i class="fas fa-id-card"></i> إدارة العضويات</a></li>
+                <li><a href="#"><i class="fas fa-address-card"></i> إدارة الاشتراكات</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> الإعدادات</a></li>
             </ul>
         </div>
+    
+        <!-- قسم النقاط والأرصدة -->
+        <div class="menu-item">
+            <i class="fas fa-layer-group"></i> النقاط والأرصدة
+            <ul class="nested">
+                <li><a href="#"><i class="fas fa-arrow-circle-up"></i> إدارة شحن الأرصدة</a></li>
+                <li><a href="#"><i class="fas fa-arrow-circle-down"></i> إدارة استهلاك الأرصدة</a></li>
+                <li><a href="#"><i class="fas fa-th-list"></i> إدارة الباقات</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> الإعدادات</a></li>
+            </ul>
+        </div>
+    
+        <!-- قسم المتجر الإلكتروني -->
+        <div class="menu-item">
+            <i class="fas fa-store"></i> المتجر الإلكتروني
+            <ul class="nested">
+                <li><a href="#"><i class="fas fa-th"></i> إدارة المحتوى</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> الإعدادات</a></li>
+            </ul>
+        </div>
+    
+        <!-- قسم الحجوزات -->
+        <div class="menu-item">
+            <i class="fas fa-calendar-check"></i> الحجوزات
+            <ul class="nested">
+                <li><a href="#"><i class="fas fa-calendar"></i> إدارة الحجوزات</a></li>
+                <li><a href="#"><i class="fas fa-plus-circle"></i> أضف حجز</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> إدارة إعدادات الحجز</a></li>
+            </ul>
+        </div>
+    
+        <!-- قسم أوامر التوريد -->
+        <div class="menu-item">
+            <i class="fas fa-clipboard-list"></i> أوامر التوريد
+            <ul class="nested">
+                <li><a href="#"><i class="fas fa-list"></i> أوامر التوريد</a></li>
+                <li><a href="#"><i class="fas fa-plus-circle"></i> أضف أمر شغل</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> إعدادات أوامر التوريد</a></li>
+            </ul>
+        </div>
+    
+        <!-- قسم دورات العمل -->
+        <div class="menu-item">
+            <i class="fas fa-clipboard"></i> دورات العمل
+            <ul class="nested">
+                <li><a href="#"><i class="fas fa-cogs"></i> الإعدادات</a></li>
+            </ul>
+        </div>
+    
+        <!-- قسم دورة الشيكات -->
+        <div class="menu-item">
+            <i class="fas fa-receipt"></i> دورة الشيكات
+            <ul class="nested">
+                <li><a href="#"><i class="fas fa-hand-holding-usd"></i> الشيكات المدفوعة</a></li>
+                <li><a href="#"><i class="fas fa-hand-holding"></i> الشيكات المستلمة</a></li>
+            </ul>
+        </div>
+    
+        <!-- قسم حضور العملاء -->
+        <div class="menu-item">
+            <i class="fas fa-calendar"></i> حضور العملاء
+            <ul class="nested">
+                <li><a href="#"><i class="fas fa-calendar-check"></i> سجلات حضور العملاء</a></li>
+            </ul>
+        </div>
+    
+        <!-- قسم التقارير -->
+        <div class="menu-item">
+            <i class="fas fa-chart-bar"></i> التقارير
+            <ul class="nested">
+                <li><a href="#"><i class="fas fa-file-invoice-dollar"></i> تقارير المبيعات</a></li>
+                <li><a href="#"><i class="fas fa-truck"></i> تقارير المشتريات</a></li>
+                <li><a href="#"><i class="fas fa-wallet"></i> تقارير الحسابات العامة</a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> تقارير الشيكات</a></li>
+                <li><a href="#"><i class="fas fa-sms"></i> تقارير الـ SMS</a></li>
+                <li><a href="#"><i class="fas fa-coins"></i> تقارير النقاط والأرصدة</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> تقارير الموظفين</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> تقارير العضويات</a></li>
+                <li><a href="#"><i class="fas fa-house-user"></i> تقارير الإيجارات</a></li>
+                <li><a href="#"><i class="fas fa-clipboard"></i> تقارير دورة العمل</a></li>
+                <li><a href="#"><i class="fas fa-clipboard-list"></i> تقارير أوامر التوريد</a></li>
+                <li><a href="#"><i class="fas fa-calendar"></i> تقارير العملاء</a></li>
+                <li><a href="#"><i class="fas fa-warehouse"></i> تقارير المخزون</a></li>
+                <li><a href="#"><i class="fas fa-tags"></i> تقارير تتبع المنتجات</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> سجل النشاطات للحساب</a></li>
+            </ul>
+        </div>
+    
+        <!-- قسم الهيكل التنظيمي -->
+        <div class="menu-item">
+            <i class="fas fa-sitemap"></i> الهيكل التنظيمي
+            <ul class="nested">
+                <li><a href="#"><i class="fas fa-id-card-alt"></i> إدارة المسميات الوظيفية</a></li>
+                <li><a href="#"><i class="fas fa-building"></i> إدارة الأقسام</a></li>
+                <li><a href="#"><i class="fas fa-project-diagram"></i> إدارة المستويات الوظيفية</a></li>
+                <li><a href="#"><i class="fas fa-briefcase"></i> إدارة أنواع الوظائف</a></li>
+            </ul>
+        </div>
+    
+        <!-- قسم الإعدادات -->
+        <div class="menu-item">
+            <i class="fas fa-cogs"></i> الإعدادات
+            <ul class="nested">
+                <li><a href="#"><i class="fas fa-info-circle"></i> معلومات الحساب</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> إعدادات الـ SMTP</a></li>
+                <li><a href="#"><i class="fas fa-credit-card"></i> طرق الدفع</a></li>
+                <li><a href="#"><i class="fas fa-sms"></i> إعدادات الـ SMS</a></li>
+                <li><a href="#"><i class="fas fa-hashtag"></i> إعدادات الترقيم المتسلسل</a></li>
+                <li><a href="#"><i class="fas fa-percentage"></i> إعدادات الضرائب</a></li>
+                <li><a href="#"><i class="fas fa-mobile-alt"></i> إدارة التطبيقات</a></li>
+                <li><a href="#"><i class="fas fa-paint-brush"></i> شعار وألوان النظام</a></li>
+                <li><a href="#"><i class="fas fa-code"></i> API</a></li>
+            </ul>
+        </div>
+    
+        <!-- قسم القوالب -->
+        <div class="menu-item">
+            <i class="fas fa-file-alt"></i> القوالب
+            <ul class="nested">
+                <li><a href="#"><i class="fas fa-print"></i> قوالب للطباعة</a></li>
+                <li><a href="#"><i class="fas fa-file-invoice"></i> قوالب الفواتير الجاهزة</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> قوالب البريد الإلكتروني</a></li>
+                <li><a href="#"><i class="fas fa-sms"></i> قوالب الـ SMS</a></li>
+                <li><a href="#"><i class="fas fa-file-contract"></i> الشروط والأحكام</a></li>
+                <li><a href="#"><i class="fas fa-folder"></i> إدارة الملفات والمستندات</a></li>
+                <li><a href="#"><i class="fas fa-bolt"></i> قواعد الإرسال الآلي</a></li>
+            </ul>
+        </div>
+    
+        <!-- قسم الفروع -->
+        <div class="menu-item">
+            <i class="fas fa-map-marker-alt"></i> الفروع
+            <ul class="nested">
+                <li><a href="#"><i class="fas fa-building"></i> إدارة الفروع</a></li>
+                <li><a href="#"><i class="fas fa-plus-circle"></i> أضف فرع</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> إعدادات الفروع</a></li>
+            </ul>
+        </div>
+    </div> 
+
+        <!-- باقي الأقسام كما في الكود الأصلي ... -->
     </div>
-    
-    
-    
-    
 
     <!-- المحتوى الرئيسي -->
     <div class="content">
@@ -333,14 +304,13 @@
                 <div class="box-title">مدفوعات العملاء</div>
                 <div class="box-value">70,000 ريال</div>
             </div>
-            <!-- المربعات الجديدة -->
             <div class="box">
                 <div class="box-title">الأرباح الصافية</div>
-                <div class="box-value">50,000 ريال</div> <!-- قيمة افتراضية، يمكن حسابها ديناميكيًا -->
+                <div class="box-value">50,000 ريال</div>
             </div>
             <div class="box">
                 <div class="box-title">عدد العملاء</div>
-                <div class="box-value">200 عميل</div> <!-- قيمة افتراضية -->
+                <div class="box-value">200 عميل</div>
             </div>
         </div>
 
@@ -350,41 +320,59 @@
         </div>
     </div>
 
-    <script>
-        // رسم بياني خطي باستخدام Chart.js
-        const ctx = document.getElementById('salesLineChart').getContext('2d');
-        const salesLineChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو'],
-                datasets: [{
-                    label: 'المبيعات',
-                    data: [15000, 20000, 30000, 25000, 35000],
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 2,
-                    fill: true,
-                    tension: 0.4 // يجعل الخط منحنيًا قليلاً
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top'
-                    },
-                    tooltip: {
-                        enabled: true
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
+    <script src="mon.js"></script>
+
+    <!-- إضافة تنسيق للأيقونات والقوائم المنسدلة -->
+    <style>
+        .icons-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            position: relative;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        .icon .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            list-style: none;
+            padding: 10px;
+            z-index: 100;
+        }
+
+        .icon:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .dropdown-menu li:hover {
+            background: #f2f2f2;
+        }
+    </style>
 </body>
 </html>

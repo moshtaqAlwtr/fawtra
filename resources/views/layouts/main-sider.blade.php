@@ -260,7 +260,7 @@
                         <a href="">{{trans('main_trans.Customer_management')}}</a>
                     </li>
                     <li>
-                        <a href="">{{ trans('main_trans.Add_a_new_customer') }}</a>
+                        <a href="{{ route('add_customer') }}">{{ trans('main_trans.Add_a_new_customer') }}</a>
                     </li>
                     <li>
                         <a href="">{{ trans('main_trans.Appointments')}}</a>
