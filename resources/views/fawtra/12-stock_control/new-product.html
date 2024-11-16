@@ -1,75 +1,48 @@
 <!DOCTYPE html>
 <html lang="ar">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منتج جديد</title>
-    <link rel="icon" href="k.jpg">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Tahoma', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f6f9;
+            background: linear-gradient(to right, #f0f4f7, #c9d6df);
             direction: rtl;
+            text-align: right;
         }
 
         .header {
-            background-color: #007bff;
+            background: linear-gradient(135deg, #007bff, #0056b3);
             color: #fff;
             padding: 15px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-        }
-
-        .header .buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .header button {
-            background-color: #0056b3;
-            border: none;
-            color: #fff;
-            padding: 10px 15px;
             border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .header button:hover {
-            background-color: #004494;
+            margin: 20px;
         }
 
         .controls {
             display: flex;
             justify-content: flex-end;
             gap: 10px;
-            padding: 20px;
+            padding: 15px;
+            margin-right: 20px;
         }
 
-        .controls button {
-            padding: 10px 20px;
-            border: none;
+        .controls .btn {
             border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .controls .cancel-button {
-            background-color: #dc3545;
-            color: #fff;
-        }
-
-        .controls .save-button {
-            background-color: #28a745;
-            color: #fff;
         }
 
         .form-container {
             display: flex;
             gap: 20px;
-            padding: 0 20px;
+            padding: 20px;
         }
 
         .form-section {
@@ -80,49 +53,65 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
-
         .form-group label {
-            display: block;
-            margin-bottom: 5px;
             font-weight: bold;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
-            width: 100%;
-            padding: 8px;
+            border-radius: 4px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            transition: border-color 0.3s ease;
         }
 
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 10px;
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
 
-        .more-options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .upload-button {
-            padding: 8px 12px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
+        .upload-container {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
             cursor: pointer;
+            transition: border-color 0.3s ease;
+            color: #666;
+            margin-bottom: 15px;
         }
 
-        .upload-button:hover {
-            background-color: #0056b3;
+        .upload-container:hover {
+            border-color: #007bff;
+        }
+
+        .upload-container input[type="file"] {
+            display: none;
+        }
+
+        .upload-icon {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 8px;
+        }
+
+        .upload-container span {
+            display: block;
+            color: #007bff;
+            text-decoration: underline;
+        }
+
+        .bottom-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            direction: rtl;
+            text-align: right;
         }
     </style>
 </head>
@@ -130,134 +119,190 @@
 <body>
 
     <div class="header">
-        <div class="buttons">
-            <button onclick="window.location.href='#';">الذهاب للموقع</button>
-            <button onclick="window.location.href='#';">المساعدة</button>
-        </div>
         <h1>منتج جديد</h1>
     </div>
 
     <div class="controls">
-        <button class="cancel-button">إلغاء</button>
-        <button class="save-button">حفظ</button>
+        <button class="btn btn-danger">إلغاء</button>
+        <button class="btn btn-success">حفظ</button>
     </div>
 
-    <div class="form-container">
-        <!-- الجزء الأيمن -->
+    <div class="container form-container">
+        <!-- تفاصيل البند (الجزء الأيمن) -->
         <div class="form-section">
-            <div class="form-group">
-                <label for="product-name">الاسم</label>
-                <input type="text" id="product-name" placeholder="أدخل اسم المنتج">
-            </div>
-            <div class="form-group">
-                <label for="serial-number">الرقم التسلسلي</label>
-                <input type="text" id="serial-number" placeholder="أدخل الرقم التسلسلي">
-            </div>
-            <div class="form-group">
-                <label for="description">الوصف</label>
-                <textarea id="description" rows="3" placeholder="اكتب الوصف هنا..."></textarea>
-            </div>
-            <div class="form-group">
-                <label for="image-upload">رفع الصور</label>
-                <input type="file" id="image-upload" class="upload-button">
-            </div>
-            <div class="form-group">
-                <label for="category">التصنيف</label>
-                <select id="category">
-                    <option value="product">منتج</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="brand">الماركة</label>
-                <select id="brand">
-                    <option value="brand1">اسم الماركة</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="supplier">المورد</label>
-                <select id="supplier">
-                    <option value="supplier1">اسم المورد</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="barcode">الباركود</label>
-                <input type="text" id="barcode" placeholder="أدخل الباركود">
-            </div>
-            <div class="checkbox-container">
-                <input type="checkbox" id="available-online">
-                <label for="available-online">متاح أون لاين</label>
-            </div>
-            <div class="checkbox-container">
-                <input type="checkbox" id="featured-product">
-                <label for="featured-product">منتج مميز</label>
-            </div>
-            <div class="form-group">
-                <label>إدارة المخزون</label>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="track-inventory">
-                    <label for="track-inventory">تتبع المخزون</label>
+            <h3>تفاصيل البند</h3>
+            <!-- السطر الأول -->
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="product-name">الاسم <span class="text-danger">*</span></label>
+                    <input type="text" id="product-name" class="form-control" placeholder="أدخل اسم المنتج">
                 </div>
-                <input type="text" placeholder="نوع التتبع">
-                <input type="number" placeholder="نبهني عند وصول الكمية لأقل من">
-            </div>
-            <div class="more-options">
-                <label for="notes">خيارات أكثر</label>
-                <textarea id="notes" rows="3" placeholder="ملاحظات داخلية"></textarea>
-                <div class="form-group">
-                    <label for="tags">وسوم</label>
-                    <input type="text" id="tags" placeholder="أدخل الوسم">
+                <div class="col-md-6 form-group">
+                    <label for="sku">الرقم التسلسلي SKU</label>
+                    <input type="text" id="sku" class="form-control" placeholder="أدخل الرقم التسلسلي">
                 </div>
-                <div class="form-group">
-                    <label for="status">الحالة</label>
-                    <select id="status">
-                        <option value="active">نشط</option>
-                        <option value="inactive">غير نشط</option>
-                        <option value="suspended">موقوف</option>
+            </div>
+            <!-- السطر الثاني -->
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="description">الوصف</label>
+                    <textarea id="description" rows="3" class="form-control" placeholder="اكتب الوصف هنا..."></textarea>
+                </div>
+            </div>
+            <!-- السطر الثالث - رفع الصور -->
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="image-upload" class="form-label">الصور</label>
+                    <div class="upload-container" onclick="document.getElementById('image-upload').click();">
+                        <div class="upload-icon">&#x1F4C2;</div> <!-- رمز مخصص (يمكن تغييره) -->
+                        <div>أضف الملف هنا أو <span>اختر من جهازك</span></div>
+                        <input type="file" id="image-upload" accept="image/*">
+                    </div>
+                </div>
+            </div>
+            <!-- السطر الرابع -->
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="category">التصنيف</label>
+                    <select id="category" class="form-control">
+                        <option value="product">منتج</option>
+                    </select>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="brand">الماركة</label>
+                    <select id="brand" class="form-control">
+                        <option value="brand1">اسم الماركة</option>
                     </select>
                 </div>
             </div>
+            <!-- السطر الخامس -->
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="sales-account">Sales Account</label>
+                    <input type="text" id="sales-account" class="form-control" placeholder="أدخل حساب المبيعات">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="sales-cost-account">Sales Cost Account</label>
+                    <input type="text" id="sales-cost-account" class="form-control" placeholder="أدخل حساب تكلفة المبيعات">
+                </div>
+            </div>
+            <!-- السطر السادس -->
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="supplier">المورد</label>
+                    <select id="supplier" class="form-control">
+                        <option value="supplier1">اسم المورد</option>
+                    </select>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="barcode">باركود</label>
+                    <input type="text" id="barcode" class="form-control" placeholder="أدخل الباركود">
+                </div>
+            </div>
+            <!-- السطر السابع -->
+            <div class="row">
+                <div class="col-md-12 form-group form-check">
+                    <input type="checkbox" id="available-online" class="form-check-input">
+                    <label for="available-online" class="form-check-label">منتج أون لاين</label>
+                </div>
+            </div>
+            <!-- السطر الثامن -->
+            <div class="row">
+                <div class="col-md-12 form-group form-check">
+                    <input type="checkbox" id="featured-product" class="form-check-input">
+                    <label for="featured-product" class="form-check-label">منتج مميز</label>
+                </div>
+            </div>
         </div>
 
-        <!-- الجزء الأيسر -->
+        <!-- تفاصيل التسعير (الجزء الأيسر) -->
         <div class="form-section">
             <h3>تفاصيل التسعير</h3>
-            <div class="form-group">
-                <label for="purchase-price">سعر الشراء</label>
-                <input type="number" id="purchase-price" placeholder="أدخل سعر الشراء">
+            <!-- الحقول الخاصة بتفاصيل التسعير -->
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="purchase-price">سعر الشراء</label>
+                    <input type="number" id="purchase-price" class="form-control" placeholder="أدخل سعر الشراء">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="sale-price">سعر البيع</label>
+                    <input type="number" id="sale-price" class="form-control" placeholder="أدخل سعر البيع">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="sale-price">سعر البيع</label>
-                <input type="number" id="sale-price" placeholder="أدخل سعر البيع">
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="tax1">الضريبة الأولى</label>
+                    <input type="number" id="tax1" class="form-control" placeholder="أدخل الضريبة الأولى">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="tax2">الضريبة الثانية</label>
+                    <input type="number" id="tax2" class="form-control" placeholder="أدخل الضريبة الثانية">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="tax1">الضريبة الأولى</label>
-                <input type="number" id="tax1" placeholder="أدخل الضريبة الأولى">
+            <div class="row">
+                <div class="col-md-4 form-group">
+                    <label for="min-sale-price">أقل سعر بيع</label>
+                    <input type="number" id="min-sale-price" class="form-control" placeholder="أدخل أقل سعر بيع">
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="discount">الخصم</label>
+                    <input type="number" id="discount" class="form-control" placeholder="أدخل قيمة الخصم">
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="discount-type">نوع الخصم</label>
+                    <select id="discount-type" class="form-control">
+                        <option value="percentage">نسبة مئوية</option>
+                        <option value="currency">بالريال</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="tax2">الضريبة الثانية</label>
-                <input type="number" id="tax2" placeholder="أدخل الضريبة الثانية">
-            </div>
-            <div class="form-group">
-                <label for="min-sale-price">أقل سعر بيع</label>
-                <input type="number" id="min-sale-price" placeholder="أدخل أقل سعر بيع">
-            </div>
-            <div class="form-group">
-                <label for="discount">الخصم</label>
-                <input type="number" id="discount" placeholder="أدخل قيمة الخصم">
-            </div>
-            <div class="form-group">
-                <label for="discount-type">نوع الخصم</label>
-                <select id="discount-type">
-                    <option value="percentage">نسبة مئوية</option>
-                    <option value="currency">بالريال</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="profit-margin">هامش الربح (نسبة مئوية)</label>
-                <input type="number" id="profit-margin" placeholder="أدخل هامش الربح">
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label for="profit-margin">هامش الربح (نسبة مئوية)</label>
+                    <input type="number" id="profit-margin" class="form-control" placeholder="أدخل هامش الربح">
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- مستطيل إدارة المخزون -->
+    <div class="container bottom-section">
+        <h3>إدارة المخزون</h3>
+        <!-- محتوى إدارة المخزون -->
+        <div class="form-group">
+            <input type="checkbox" id="track-inventory" class="form-check-input">
+            <label for="track-inventory" class="form-check-label">تتبع المخزون</label>
+        </div>
+        <input type="text" class="form-control mt-2" placeholder="نوع التتبع">
+        <input type="number" class="form-control mt-2" placeholder="نبهني عند وصول الكمية لأقل من">
+    </div>
+
+    <!-- مستطيل خيارات أكثر -->
+    <div class="container bottom-section">
+        <h3>خيارات أكثر</h3>
+        <!-- محتوى خيارات أكثر -->
+        <div class="form-group">
+            <label for="notes">ملاحظات داخلية</label>
+            <textarea id="notes" rows="3" class="form-control" placeholder="اكتب ملاحظات هنا..."></textarea>
+        </div>
+        <div class="form-group">
+            <label for="tags">وسوم</label>
+            <input type="text" id="tags" class="form-control" placeholder="أدخل الوسم">
+        </div>
+        <div class="form-group">
+            <label for="status">الحالة</label>
+            <select id="status" class="form-control">
+                <option value="active">نشط</option>
+                <option value="inactive">غير نشط</option>
+                <option value="suspended">موقوف</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
