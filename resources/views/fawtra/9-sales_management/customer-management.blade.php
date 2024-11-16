@@ -1,150 +1,15 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>واجهة إدارة العملاء</title>
+    <!-- Bootstrap CSS و Font Awesome و Flatpickr -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
-    <link rel="stylesheet" href="../Design/css/data.css">
-    <style>
-
-        /* تصميم الأزرار بألوان متدرجة أنيقة */
-        .btn-gradient {
-            background: linear-gradient(to right, #64b5f6, #42a5f5);
-            color: #fff;
-            border: none;
-            padding: 0.5em 1.5em;
-            transition: background 0.3s, transform 0.2s;
-            font-weight: bold;
-        }
-        .btn-gradient:hover {
-            background: linear-gradient(to right, #42a5f5, #64b5f6);
-            transform: scale(1.05);
-        }
-
-        /* تصميم بطاقة الجدول */
-        .table-card {
-            background-color: #f5f5f5;
-            border-radius: 8px;
-            padding: 1.5em;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2em;
-        }
-
-        /* تصميم الشارات */
-        .badge-status {
-            padding: 0.4em 1.2em;
-            font-size: 0.9em;
-            border-radius: 15px;
-            color: #fff;
-            font-weight: bold;
-        }
-        .status-active {
-            background-color: #43a047; /* أخضر */
-        }
-        .status-inactive {
-            background-color: #e53935; /* أحمر */
-        }
-
-        /* تنسيقات شريط الأدوات */
-        .toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.7em 1em;
-            background-color: #e3f2fd;
-            border-radius: 8px;
-            margin-bottom: 1.5em;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
-        }
-        .toolbar h5 {
-            margin: 0;
-            color: #1e88e5;
-        }
-        .toolbar .toolbar-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .toolbar .toolbar-actions .action {
-            color: #1e88e5;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-        .toolbar .toolbar-actions .action:hover {
-            color: #1565c0;
-        }
-
-        /* تنسيقات عامة */
-        body {
-            text-align: right;
-            font-family: 'Arial', sans-serif;
-            background-color: #fafafa;
-        }
-
-        /* تصميم حقول الإدخال */
-        .form-control {
-            border-radius: 4px;
-            border: 1px solid #ddd;
-            padding: 0.6em 1em;
-            transition: box-shadow 0.3s;
-        }
-        .form-control:focus {
-            box-shadow: 0 0 8px rgba(66, 165, 245, 0.5);
-            border-color: #42a5f5;
-        }
-
-        /* تنسيق زر البحث */
-        .btn-gradient {
-            background: linear-gradient(to right, #42a5f5, #64b5f6);
-            color: #fff;
-            border: none;
-            transition: background 0.3s;
-        }
-        .btn-gradient:hover {
-            background: linear-gradient(to right, #64b5f6, #42a5f5);
-        }
-
-        /* إخفاء العناصر المتقدمة */
-        .hidden {
-            display: none !important;
-        }
-        .dropdown-menu {
-    position: absolute;
-    top: 100%; /* لتظهر تحت الزر */
-    left: 0;
-    z-index: 1050;
-}
-
-        .dropdown-item i {
-            margin-left: 8px;
-        }
-        .dropdown-item .fa-eye {
-            color: #4CAF50; /* لون أخضر للعرض */
-        }
-        .dropdown-item .fa-pencil-alt {
-            color: #2196F3; /* لون أزرق للتعديل */
-        }
-        .dropdown-item .fa-copy {
-            color: #00BCD4; /* لون سماوي للنسخ */
-        }
-        .dropdown-item .fa-trash {
-            color: #f44336; /* لون أحمر للحذف */
-        }
-        .dropdown-item .fa-sign-in-alt {
-            color: #FF9800; /* لون برتقالي للدخول */
-        }
-        .dropdown-item .fa-calculator {
-            color: #3F51B5; /* لون أزرق داكن لكشف الحساب */
-        }
-    </style>
-</head>
-<body class="bg-light text-right">
+    <link href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" rel="stylesheet">
+    <!-- ملفات CSS الخاصة -->
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/icons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Design/css/data.css') }}">
     <div class="container my-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <button class="btn btn-gradient" onclick="window.location.href='add_customer.html'">+ أضف العميل</button>
@@ -252,7 +117,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                      
+
                         <th>الإجراء</th>
                         <th>ترتيب</th>
                         <th>الحالة</th>
@@ -262,7 +127,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                       
+
                         <td style="position: relative;">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-outline-primary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -277,7 +142,7 @@
                                     <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
                                 </ul>
                             </div>
-                            
+
                         </td>
                         <td>#101</td>
                         <td><span class="badge badge-status status-inactive">موقوف</span></td>
@@ -285,7 +150,7 @@
                         <td>kj@yahyjoyo.com</td>
                     </tr>
                     <tr>
-                       
+
                         <td style="position: relative;">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-outline-primary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -300,7 +165,7 @@
                                     <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
                                 </ul>
                             </div>
-                            
+
                         </td>
                         <td>#101</td>
                         <td><span class="badge badge-status status-inactive">موقوف</span></td>
@@ -308,7 +173,7 @@
                         <td>kj@yahyjoyo.com</td>
                     </tr>
                     <tr>
-                       
+
                         <td style="position: relative;">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-outline-primary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -323,7 +188,7 @@
                                     <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
                                 </ul>
                             </div>
-                            
+
                         </td>
                         <td>#101</td>
                         <td><span class="badge badge-status status-inactive">موقوف</span></td>
@@ -335,40 +200,13 @@
             </table>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
-    
-    <script src="../js/date.js" ></script>
-    <script>
-        function toggleForm() {
-            const advancedFields = document.getElementById("advancedFields");
-            const toggleButton = document.getElementById("toggleButton");
+    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    <script src="{{ asset('assets/js/scriptt.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/chart.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/demo.dashboard-projects.js') }}"></script>
+    <script src="{{ asset('Design/js/date.js') }}"></script>
 
-            advancedFields.classList.toggle("hidden");
 
-            if (advancedFields.classList.contains("hidden")) {
-                toggleButton.textContent = "متقدم";
-            } else {
-                toggleButton.textContent = "بحث بسيط";
-            }
-        }
-        function toggleVisibility() {
-            const fieldSection = document.getElementById("fieldSection");
-            const toggleVisibilityButton = document.getElementById("toggleVisibilityButton");
-
-            fieldSection.classList.toggle("hidden");
-
-            if (fieldSection.classList.contains("hidden")) {
-                toggleVisibilityButton.innerHTML = '<i class="fas fa-eye"></i> عرض';
-            } else {
-                toggleVisibilityButton.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء';
-            }
-        }
-        
-    </script>
-</body>
-</html>

@@ -32,6 +32,7 @@ return new class extends Migration
             $table->decimal('credit_limit', 10, 2)->nullable();
 
             $table->integer('credit_period')->nullable();
+
             $table->enum('printing_method', ['طباعة', 'cash'])->nullable();
 
             $table->decimal('opening_balance', 10, 2)->nullable();
@@ -58,4 +59,9 @@ return new class extends Migration
     {
         Schema::dropIfExists('clients');
     }
+    public function invoices()
+{
+    return $this->hasMany(Invoice::class, 'client_id', 'client_id');
+}
+
 };

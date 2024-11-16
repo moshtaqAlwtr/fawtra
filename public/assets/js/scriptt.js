@@ -32,3 +32,30 @@ function addForm() {
     // إضافة النموذج الجديد إلى الوعاء
     document.getElementById("formContainer").appendChild(newForm);
 }
+
+
+function toggleForm() {
+    const advancedFields = document.getElementById("advancedFields");
+    const toggleButton = document.getElementById("toggleButton");
+
+    advancedFields.classList.toggle("hidden");
+
+    if (advancedFields.classList.contains("hidden")) {
+        toggleButton.textContent = "متقدم";
+    } else {
+        toggleButton.textContent = "بحث بسيط";
+    }
+}
+function toggleVisibility() {
+    const fieldSection = document.getElementById("fieldSection");
+    const toggleVisibilityButton = document.getElementById("toggleVisibilityButton");
+
+    fieldSection.classList.toggle("hidden");
+
+    if (fieldSection.classList.contains("hidden")) {
+        toggleVisibilityButton.innerHTML = '<i class="fas fa-eye"></i> عرض';
+    } else {
+        toggleVisibilityButton.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء';
+    }
+}
+

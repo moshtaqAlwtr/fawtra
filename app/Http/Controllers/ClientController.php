@@ -21,6 +21,11 @@ class ClientController extends Controller
      */
     public function storeClient(Request $request)
     {
+        $allowedMethods = ['طباعة', 'cash'];
+        if (!in_array($request->printing_method, $allowedMethods)) {
+            return back()->withErrors(['printing_method' => 'طريقة الطباعة غير صحيحة.']);
+        }
+
         // التحقق من صحة البيانات القادمة من الطلب
         $validatedData = $request->validate([
             'trade_name' => 'required|string|max:255',
@@ -39,7 +44,8 @@ class ClientController extends Controller
             'credit_limit' => 'nullable|numeric',
             'credit_period' => 'nullable|integer',
             'account_code' => 'required|string|max:50',
-            'printing_method' => 'nullable|in:cash,card',
+
+         'printing_method' => 'required|in:طباعة,cash',
             'opening_balance' => 'nullable|numeric',
             'opening_balance_date' => 'nullable|date',
             'currency' => 'nullable|string|max:10',

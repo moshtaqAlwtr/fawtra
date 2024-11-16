@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ClientController; // استيراد ClientController
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\InvoiceController;
+
+ // استيراد ClientController
 
 // تفعيل مسارات المصادقة بدون التحقق من البريد الإلكتروني
 Auth::routes(['verify' => false]);
@@ -38,6 +41,20 @@ Route::group(
         Route::get('/add_customer', function () {
             return view('layouts.nav-slider-route', ['page' => 'add_customer']);
         })->name('add_customer');
+
+        Route::get('/customer-management', function () {
+            return view('layouts.nav-slider-route', ['page' => 'customer-management']);
+        })->name('customer-management');
+        Route::get('/salas_invoice', function () {
+            return view('layouts.nav-slider-route', ['page' => 'salas_invoice']);
+        })->name('cussalas_invoice');
+
+        // مسار عرض صفحة الفواتير
+        Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
+
+        // مسار تخزين بيانات الفاتورة
+
+Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
 
         // مسار تخزين بيانات العميل الجديد
         Route::post('/clients/store', [ClientController::class, 'storeClient'])->name('storeClient');

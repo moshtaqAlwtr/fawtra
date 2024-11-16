@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Invoice
- * 
+ *
  * @property int $invoice_id
  * @property int $client_id
  * @property string $invoice_number
@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $currency
  * @property string|null $payment_status
  * @property Carbon|null $created_at
- * 
+ *
  * @property Client $client
  * @property Collection|ClientPayment[] $client_payments
  * @property Collection|InvoiceItem[] $invoice_items
@@ -59,10 +59,12 @@ class Invoice extends Model
 		'payment_status'
 	];
 
-	public function client()
-	{
-		return $this->belongsTo(Client::class);
-	}
+
+    public function client()
+{
+    return $this->belongsTo(Client::class, 'client_id', 'client_id');
+}
+
 
 	public function client_payments()
 	{

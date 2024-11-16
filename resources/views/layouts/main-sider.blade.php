@@ -1,3 +1,4 @@
+
 <div class="h-100" id="leftside-menu-container" data-simplebar>
 
     <!--- Sidemenu -->
@@ -39,7 +40,7 @@
 
                     </li>
                     <li>
-                        <a href="">{{ trans('main_trans.creaat_invoice') }}</a>
+                        <a href="{{route('sales_invoice')}}">{{ trans('main_trans.creaat_invoice') }}</a>
                     </li>
                     <li>
                        <a href="">{{ trans('main_trans.Quotation_Management') }}</a>
@@ -257,7 +258,7 @@
             <div class="collapse" id="sidebarBaseUI">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="">{{trans('main_trans.Customer_management')}}</a>
+                        <a href="{{ route('customer-management') }}">{{trans('main_trans.Customer_management')}}</a>
                     </li>
                     <li>
                         <a href="{{ route('add_customer') }}">{{ trans('main_trans.Add_a_new_customer') }}</a>

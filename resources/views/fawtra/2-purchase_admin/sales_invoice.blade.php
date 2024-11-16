@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -12,17 +12,20 @@
         <!-- تضمين أيقونات Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="{{ asset('Design/css/data.css') }}">
+
             <!-- تضمين مكتبة Font Awesome لأيقونة البحث -->
-          
-                
-    <link rel="stylesheet" href="../Design/css/data.css">
+
+
+
     <style>
         body {
-            font-family: 'Tahoma', sans-serif;
+            font-family: 'Tajawal', sans-serif;
             direction: rtl;
             background-color: #f8f9fa;
             padding: 20px;
-            text-align: right; 
+            text-align: right;
         }
         .invoice-container {
             max-width: 1200px;
@@ -45,7 +48,7 @@
             color: #555;
         }
         .editor-toolbar {
-            
+
             background-color: #f8f9fa;
             padding: 5px;
             border: 1px solid #ced4da;
@@ -61,7 +64,7 @@
             border-radius: 5px;
             margin-top: 10px;
         }
-    
+
         th {
             background-color: #007bff;
             color: white;
@@ -100,140 +103,151 @@
 </head>
 <body>
 
-<div class="invoice-container">
-    <div class="invoice-header">
-        <h2>فاتورة مبيعات</h2>
-    </div>
-    
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
-                <h5 class="mb-4 text-primary"><i class="bi bi-person"></i> معلومات العميل والطريقة</h5>
-                <div class="form-group row mb-3">
-                    <label class="col-sm-4 col-form-label">الطريقة</label>
-                    <div class="col-sm-8">
-                        <select class="form-control">
-                            <option selected>الطباعة</option>
-                            <option>ارسل عبر البريد</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row mb-3">
-                    <label class="col-sm-4 col-form-label">العميل <span class="text-danger">*</span></label>
-                    <div class="col-sm-8">
-                        <div class="input-group">
-                            <select class="form-control">
-                                <option selected>(اختر عميل)</option>
-                                <option>عميل 1</option>
-                                <option>عميل 2</option>
+    <form action="{{ route('invoices.store') }}" method="POST">
+        @csrf
+        <div class="container mt-5">
+            <div class="row">
+                <!-- القسم الأيسر: معلومات العميل والطريقة -->
+                <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
+                    <h5 class="mb-4 text-primary"><i class="bi bi-person"></i> معلومات العميل والطريقة</h5>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">الطريقة</label>
+                        <div class="col-sm-8">
+                            <select name="payment_method" class="form-control">
+                                <option value="print" selected>الطباعة</option>
+                                <option value="email">ارسل عبر البريد</option>
                             </select>
-                            <button class="btn btn-primary"><i class="bi bi-plus-circle"></i> جديد</button>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">العميل <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            <select name="client_id" class="form-control" required>
+                                <option value="" selected>(اختر عميل)</option>
+                                @foreach ($clients as $client)
+                                    <option value="{{ $client->client_id }}">{{ $client->trade_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
+
+                <!-- القسم الأيمن: معلومات الفاتورة -->
+                <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
+                    <h5 class="mb-4 text-primary"><i class="bi bi-receipt"></i> معلومات الفاتورة</h5>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">رقم الفاتورة</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="invoice_number" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">تاريخ الفاتورة</label>
+                        <div class="col-sm-8">
+                            <input type="date" name="invoice_date" id="diliveryStartDate" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">مسؤول مبيعات</label>
+                        <div class="col-sm-8">
+                            <select name="sales_manager" class="form-control">
+                                <option value="none" selected>لا شيء</option>
+                                <option value="manager1">مسؤول 1</option>
+                                <option value="manager2">مسؤول 2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">تاريخ الإصدار</label>
+                        <div class="col-sm-8">
+                            <input type="date" name="issue_date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">شروط الدفع</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="payment_terms" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">الإجمالي</label>
+                        <div class="col-sm-8">
+                            <input type="number" name="total" class="form-control" step="0.01" required>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">الإجمالي الكلي</label>
+                        <div class="col-sm-8">
+                            <input type="number" name="grand_total" class="form-control" step="0.01" required>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">حالة الدفع <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            <select name="payment_status" class="form-control" required>
+                                <option value="Paid">مدفوعة</option>
+                                <option value="Unpaid">غير مدفوعة</option>
+                                <option value="Partially Paid">مدفوعة جزئياً</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success">حفظ</button>
+                </div>
             </div>
-            <!-- القسم الأيسر: معلومات الفاتورة -->
-         
-<div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
-    <h5 class="mb-4 text-primary"><i class="bi bi-receipt"></i> معلومات الفاتورة</h5>
-    <!-- الحقول الأساسية -->
-    <div class="form-group row mb-3">
-        <label class="col-sm-4 col-form-label">رقم الفاتورة</label>
-        <div class="col-sm-8">
-            <input type="text" class="form-control" value="08755" readonly>
-        </div>
-    </div>
-    <div class="form-group row mb-3">
-        <label class="col-sm-4 col-form-label">تاريخ الفاتورة</label>
-        <div class="col-sm-8">
-            <input type="text" id="deliveryStartDate" class="form-control" placeholder="" style="width: 100%;">
-        </div>
-    </div>
-    <div class="form-group row mb-3">
-        <label class="col-sm-4 col-form-label">مسؤول مبيعات</label>
-        <div class="col-sm-8">
-            <select class="form-control">
-                <option selected>لا شيء</option>
-                <option>مسؤول 1</option>
-                <option>مسؤول 2</option>
-            </select>
-        </div>
-    </div>
-    <div class="form-group row mb-3">
-        <label class="col-sm-4 col-form-label">تاريخ الإصدار</label>
-        <div class="col-sm-8">
-            <input type="text" id="deliveryStartDate" class="form-control" placeholder="" style="width: 100%;">
-        </div>
-    </div>
-    <div class="form-group row mb-3">
-        <label class="col-sm-4 col-form-label">شروط الدفع</label>
-        <div class="col-sm-8 d-flex">
-            <input type="text" class="form-control" placeholder="">
-            <span class="input-group-text ms-2">أيام</span>
-        </div>
-    </div>
-    
-    <!-- المنطقة التي سيتم فيها إضافة الحقول الجديدة -->
-    <div id="additional-fields-container"></div>
-    
-    <!-- زر الإضافة في الأسفل -->
-    <div class="d-flex justify-content-end mt-3">
-        <button class="btn btn-primary" onclick="addAdditionalFields()"><i class="bi bi-plus-circle"></i> إضافة</button>
-    </div>
-</div>
-            
-            <!-- تضمين أيقونات Bootstrap -->
- 
-    
-            <!-- القسم الأيمن: الطريقة والعميل -->
-          
-        </div>
-    </div>
-    
 
-    
-    
-    <!-- جدول الفاتورة -->
-    <table class="table table-bordered mt-4">
-        <thead>
-            <tr>
-                <th>البند</th>
-                <th>الوصف</th>
-                <th>سعر الوحدة</th>
-                <th>الكمية</th>
-                <th>الخصم</th>
-                <th>الضريبة 1</th>
-                <th>الضريبة 2</th>
-                <th>المجموع</th>
-            </tr>
-        </thead>
-        <tbody id="invoice-body">
-            <tr>
-                <td>1</td>
-                <td><input type="text" class="form-control" placeholder="الوصف"></td>
-                <td><input type="number" class="form-control" placeholder="سعر الوحدة" value="0" oninput="calculateTotal(this)"></td>
-                <td><input type="number" class="form-control" placeholder="الكمية" value="1" oninput="calculateTotal(this)"></td>
-                <td><input type="number" class="form-control" placeholder="الخصم" value="0" oninput="calculateTotal(this)"></td>
-                <td><input type="number" class="form-control" placeholder="الضريبة 1" value="0" oninput="calculateTotal(this)"></td>
-                <td><input type="number" class="form-control" placeholder="الضريبة 2" value="0" oninput="calculateTotal(this)"></td>
-                <td><span class="total">0.00</span></td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="7" class="text-right"><strong>الإجمالي الكلي:</strong></td>
-                <td><span id="grand-total">0.00</span></td>
-            </tr>
-        </tfoot>
-    </table>
+            </div>
+            <!-- زر الحفظ -->
 
+
+    </form>
+<!-- جدول الفواتير -->
+<table class="table table-bordered mt-4">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>اسم العميل</th>
+            <th>رقم الفاتورة</th>
+            <th>تاريخ الفاتورة</th>
+            <th>الإجمالي</th>
+            <th>الإجمالي الكلي</th>
+            <th>حالة الدفع</th>
+            <th>إجراءات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($invoices as $invoice)
+            <tr>
+                <td>{{ $invoice->invoice_id }}</td>
+                <td>{{ $invoice->client ? $invoice->client->trade_name : 'العميل غير موجود' }}</td>
+
+                <td>{{ $invoice->invoice_number }}</td>
+                <td>{{ $invoice->invoice_date }}</td>
+                <td>{{ $invoice->total }}</td>
+                <td>{{ $invoice->grand_total }}</td>
+                <td>{{ $invoice->payment_status }}</td>
+                <td>
+                    <a href="#" class="btn btn-primary btn-sm">عرض</a>
+                    <a href="#" class="btn btn-warning btn-sm">تعديل</a>
+                    <form action="#" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">حذف</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
     <!-- زر إضافة بند جديد -->
     <div class="add-item">
         <button onclick="addItem()">إضافة بند</button>
     </div>
 
 
-    
+
     <!-- Tab Content -->
    <!-- شريط التبويبات -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -253,7 +267,7 @@
 
 <!-- محتوى التبويبات -->
 <div class="tab-content" id="myTabContent">
-    
+
     <!-- تبويب الخصم والتسوية -->
     <div class="tab-pane fade show active" id="discount" role="tabpanel" aria-labelledby="discount-tab">
         <div class="form-group row mt-3">
@@ -270,7 +284,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- تبويب الإيداع -->
     <div class="tab-pane fade" id="deposet" role="tabpanel" aria-labelledby="deposet-tab">
         <div class="form-group row mt-3 align-items-center">
@@ -287,16 +301,16 @@
             </div>
         </div>
     </div>
-    
+
     <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
         <div class="form-group row mt-3 d-flex align-items-center">
-            
+
             <!-- بيانات الشحن -->
             <label class="col-form-label me-2">بيانات الشحن</label>
             <div class="flex-grow-1 me-3">
                 <input type="text" class="form-control" placeholder="أدخل قيمة">
             </div>
-        
+
             <!-- المستودع والقائمة المنسدلة -->
             <label for="warehouseSelect" class="col-form-label me-2 mb-0">المستودع</label>
             <div class="flex-grow-1 me-3">
@@ -305,7 +319,7 @@
                     <option>مستودع 1</option>
                 </select>
             </div>
-        
+
             <!-- مربع الاختيار وتسمية اختيار المستودع لكل بند -->
             <div class="form-check d-flex align-items-center">
                 <input type="checkbox" class="form-check-input me-2" id="mandatoryCheck">
@@ -313,8 +327,8 @@
             </div>
         </div>
     </div>
-    
-    
+
+
     <!-- تبويب إرفاق المستندات -->
     <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
         <!-- تبويبات فرعية داخل إرفاق المستندات -->
@@ -354,7 +368,7 @@
             <option>Document 1</option>
             <option>Document 2</option>
         </select>
-        
+
         <!-- زر "أرفق" -->
         <button class="btn btn-success me-2" style="margin-left: 10px;">
             أرفق
@@ -394,9 +408,9 @@
 <!-- تضمين مكتبة Font Awesome و Bootstrap JS -->
 
                     </div>
-                
-                
-        
+
+
+
             </div>
         </div>
     </div>
@@ -413,7 +427,7 @@
         </div>
 
     </div>
-    
+
 <div class="mb-3">
         <label for="notes" class="form-label">الملاحظات</label>
         <textarea id="notes" class="form-control" rows="4"></textarea>
@@ -425,7 +439,7 @@
             <label for="paidCheckbox" class="form-check-label" style="margin-right: 40px;">مدفوع بالفعل</label>
         </div>
         <!-- التسمية -->
-        
+
     </div>
 
 
@@ -504,23 +518,29 @@
         </div>
     </div>
 
-    <div class="footer">
-        <p>شكراً لتعاملكم معنا!</p>
-        <p>شركتنا - جميع الحقوق محفوظة © 2024</p>
-    </div>
-</div>
-</div>
+
+    <!-- عرض رسائل الأخطاء -->
+    @if ($errors->any())
+        <div class="alert alert-danger mt-3">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="../js/date.js"></script>
+<script src=" {{asset('assets/js/date.js')}}"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- 
+
 <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
@@ -571,7 +591,7 @@
         });
         document.getElementById('grand-total').textContent = grandTotal.toFixed(2);
     }
-    
+
 </script>
 
 <script>

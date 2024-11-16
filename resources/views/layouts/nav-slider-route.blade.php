@@ -7,7 +7,14 @@
 
     <!-- Title -->
     <title>@yield("title")</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+        <!-- تضمين أيقونات Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+            <!-- تضمين مكتبة Font Awesome لأيقونة البحث -->
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}" type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +32,7 @@
     <!-- ملفات CSS الخاصة -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/icons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('Design/css/data.css') }}">
     @yield('css')
 
@@ -90,6 +97,12 @@
                         @case('add_customer')
                             @include('fawtra.9-sales_management.add_customer')
                         @break
+                        @case('customer-management')
+                        @include('fawtra.9-sales_management.customer-management')
+                    @break
+                    @case('sales_invoice')
+                    @include('fawtra.2-purchase_admin.sales_invoice', ['clients' => $clients])
+                @break
 
                         @default
                     @endswitch
@@ -108,6 +121,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
 
 
     <!-- ملفات JavaScript الخاصة -->
@@ -116,7 +143,8 @@
     <script src="{{ asset('assets/js/scriptt.js') }}"></script>
     <script src="{{ asset('assets/js/vendor/chart.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/demo.dashboard-projects.js') }}"></script>
-    <script src="{{ asset('js/date.js') }}"></script>
+    <script src="{{ asset('Design/js/date.js') }}"></script>
+    <script src="{{ asset('assets/js/date.js') }}"></script>
 
 
 </body>
