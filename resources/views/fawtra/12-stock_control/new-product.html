@@ -280,22 +280,27 @@
     <!-- مستطيل خيارات أكثر -->
     <div class="container bottom-section">
         <h3>خيارات أكثر</h3>
-        <!-- محتوى خيارات أكثر -->
-        <div class="form-group">
-            <label for="notes">ملاحظات داخلية</label>
-            <textarea id="notes" rows="3" class="form-control" placeholder="اكتب ملاحظات هنا..."></textarea>
+        <!-- ملاحظات داخلية ووسوم في سطر واحد -->
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="notes">ملاحظات داخلية</label>
+                <textarea id="notes" rows="3" class="form-control" placeholder="اكتب ملاحظات هنا..."></textarea>
+            </div>
+            <div class="col-md-6 form-group">
+                <label for="tags">وسوم</label>
+                <input type="text" id="tags" class="form-control" placeholder="أدخل الوسم">
+            </div>
         </div>
-        <div class="form-group">
-            <label for="tags">وسوم</label>
-            <input type="text" id="tags" class="form-control" placeholder="أدخل الوسم">
-        </div>
-        <div class="form-group">
-            <label for="status">الحالة</label>
-            <select id="status" class="form-control">
-                <option value="active">نشط</option>
-                <option value="inactive">غير نشط</option>
-                <option value="suspended">موقوف</option>
-            </select>
+        <!-- الحالة في سطر منفصل -->
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="status">الحالة</label>
+                <select id="status" class="form-control">
+                    <option value="active">نشط</option>
+                    <option value="inactive">غير نشط</option>
+                    <option value="suspended">موقوف</option>
+                </select>
+            </div>
         </div>
     </div>
 
