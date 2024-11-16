@@ -49,6 +49,11 @@ Route::group(
             return view('layouts.nav-slider-route', ['page' => 'salas_invoice']);
         })->name('cussalas_invoice');
 
+        Route::get('/quotation', function () {
+            return view('layouts.nav-slider-route', ['page' => 'quotation']);
+        })->name('quotation');
+
+
         // مسار عرض صفحة الفواتير
         Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
 
@@ -60,6 +65,7 @@ Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('i
         Route::post('/clients/store', [ClientController::class, 'storeClient'])->name('storeClient');
     }
 );
+
 
 // مسارات الملف الشخصي
 Route::middleware(['auth'])->group(function () {

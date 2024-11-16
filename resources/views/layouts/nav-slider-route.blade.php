@@ -103,6 +103,9 @@
                     @case('sales_invoice')
                     @include('fawtra.2-purchase_admin.sales_invoice', ['clients' => $clients])
                 @break
+                @case('quotation')
+                        @include('fawtra.2-purchase_admin.quotation')
+                    @break
 
                         @default
                     @endswitch

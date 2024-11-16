@@ -46,7 +46,7 @@
                        <a href="">{{ trans('main_trans.Quotation_Management') }}</a>
                     </li>
                     <li>
-                        <a href="">{{ trans('main_trans.Create_quote') }}</a>
+                        <a href="{{route('quotation')}}">{{ trans('main_trans.Create_quote') }}</a>
                     </li>
                     <li>
                         <a href="">{{ trans('main_trans.Credit_notes') }}</a>

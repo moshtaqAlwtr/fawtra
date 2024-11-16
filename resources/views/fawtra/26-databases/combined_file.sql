@@ -435,3 +435,25 @@ CREATE TABLE IF NOT EXISTS attendance (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (representative_id) REFERENCES employees(employee_id)
 );
+-- جدول عروض الاسعار (Quotes)  
+CREATE TABLE IF NOT EXISTS quotes (
+  quote_id INT AUTO_INCREMENT PRIMARY KEY,
+  client_id INT, -- إذا كان لديك جدول للعملاء، يمكنك استخدام معرف العميل
+  quote_date DATE NOT NULL,
+  total_amount DECIMAL(10, 2),
+  status ENUM('مبدئي', 'مقبول', 'مرفوض') DEFAULT 'مبدئي',
+  created_by INT NOT NULL, -- معرف الموظف الذي أنشأ عرض السعر
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (created_by) REFERENCES employees(employee_id) -- الربط مع جدول الموظفين
+);
+--  الاسعار تفاصيل المنتجات في عرض 
+CREATE TABLE IF NOT EXISTS quote_items (
+  quote_item_id INT AUTO_INCREMENT PRIMARY KEY,
+  quote_id INT NOT NULL, -- الربط مع جدول عروض الأسعار
+  product_id INT NOT NULL, -- الربط مع جدول المنتجات
+  quantity INT NOT NULL,
+  unit_price DECIMAL(10, 2) NOT NULL,
+  total_price DECIMAL(10, 2) NOT NULL,
+  FOREIGN KEY (quote_id) REFERENCES quotes(quote_id) ON DELETE CASCADE,
+  FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
+);
