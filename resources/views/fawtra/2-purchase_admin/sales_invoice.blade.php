@@ -12,16 +12,13 @@
         <!-- تضمين أيقونات Bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="{{ asset('Design/css/data.css') }}">
-
             <!-- تضمين مكتبة Font Awesome لأيقونة البحث -->
 
 
-
+    <link rel="stylesheet" href="../Design/css/data.css">
     <style>
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Tahoma', sans-serif;
             direction: rtl;
             background-color: #f8f9fa;
             padding: 20px;
@@ -103,18 +100,19 @@
 </head>
 <body>
 
+<div class="invoice-container">
     <form action="{{ route('invoices.store') }}" method="POST">
         @csrf
         <div class="container mt-5">
             <div class="row">
-                <!-- القسم الأيسر: معلومات العميل والطريقة -->
+                <!-- معلومات العميل والطريقة -->
                 <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
                     <h5 class="mb-4 text-primary"><i class="bi bi-person"></i> معلومات العميل والطريقة</h5>
                     <div class="form-group row mb-3">
                         <label class="col-sm-4 col-form-label">الطريقة</label>
                         <div class="col-sm-8">
                             <select name="payment_method" class="form-control">
-                                <option value="print" selected>الطباعة</option>
+                                <option value="print">الطباعة</option>
                                 <option value="email">ارسل عبر البريد</option>
                             </select>
                         </div>
@@ -132,7 +130,7 @@
                     </div>
                 </div>
 
-                <!-- القسم الأيمن: معلومات الفاتورة -->
+                <!-- معلومات الفاتورة -->
                 <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
                     <h5 class="mb-4 text-primary"><i class="bi bi-receipt"></i> معلومات الفاتورة</h5>
                     <div class="form-group row mb-3">
@@ -144,7 +142,7 @@
                     <div class="form-group row mb-3">
                         <label class="col-sm-4 col-form-label">تاريخ الفاتورة</label>
                         <div class="col-sm-8">
-                            <input type="date" name="invoice_date" id="diliveryStartDate" class="form-control">
+                            <input type="date" name="invoice_date" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row mb-3">
@@ -192,60 +190,63 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="text-center">
-                    <button type="submit" class="btn btn-success">حفظ</button>
-                </div>
             </div>
 
-            </div>
             <!-- زر الحفظ -->
-
-
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">حفظ</button>
+            </div>
+        </div>
     </form>
-<!-- جدول الفواتير -->
-<table class="table table-bordered mt-4">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>اسم العميل</th>
-            <th>رقم الفاتورة</th>
-            <th>تاريخ الفاتورة</th>
-            <th>الإجمالي</th>
-            <th>الإجمالي الكلي</th>
-            <th>حالة الدفع</th>
-            <th>إجراءات</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($invoices as $invoice)
+
+    <!-- عرض الجدول -->
+    <table class="table table-bordered mt-4">
+        <thead>
             <tr>
-                <td>{{ $invoice->invoice_id }}</td>
-                <td>{{ $invoice->client ? $invoice->client->trade_name : 'العميل غير موجود' }}</td>
-
-                <td>{{ $invoice->invoice_number }}</td>
-                <td>{{ $invoice->invoice_date }}</td>
-                <td>{{ $invoice->total }}</td>
-                <td>{{ $invoice->grand_total }}</td>
-                <td>{{ $invoice->payment_status }}</td>
-                <td>
-                    <a href="#" class="btn btn-primary btn-sm">عرض</a>
-                    <a href="#" class="btn btn-warning btn-sm">تعديل</a>
-                    <form action="#" method="POST" style="display: inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">حذف</button>
-                    </form>
-                </td>
+                <th>#</th>
+                <th>اسم العميل</th>
+                <th>رقم الفاتورة</th>
+                <th>تاريخ الفاتورة</th>
+                <th>الإجمالي</th>
+                <th>الإجمالي الكلي</th>
+                <th>حالة الدفع</th>
+                <th>إجراءات</th>
             </tr>
-        @endforeach
-    </tbody>
-</table>
-    <!-- زر إضافة بند جديد -->
-    <div class="add-item">
-        <button onclick="addItem()">إضافة بند</button>
-    </div>
+        </thead>
+        <tbody>
+            @foreach ($invoices as $invoice)
+                <tr>
+                    <td>{{ $invoice->invoice_id }}</td>
+                    <td>{{ $invoice->client ? $invoice->client->trade_name : 'العميل غير موجود' }}</td>
+                    <td>{{ $invoice->invoice_number }}</td>
+                    <td>{{ $invoice->invoice_date }}</td>
+                    <td>{{ $invoice->total }}</td>
+                    <td>{{ $invoice->grand_total }}</td>
+                    <td>{{ $invoice->payment_status }}</td>
+                    <td>
+                        <a href="#" class="btn btn-primary btn-sm">عرض</a>
+                        <a href="#" class="btn btn-warning btn-sm">تعديل</a>
+                        <form action="#" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">حذف</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 
+    <!-- عرض الأخطاء -->
+    @if ($errors->any())
+        <div class="alert alert-danger mt-3">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
 
     <!-- Tab Content -->
@@ -518,24 +519,18 @@
         </div>
     </div>
 
-
-    <!-- عرض رسائل الأخطاء -->
-    @if ($errors->any())
-        <div class="alert alert-danger mt-3">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
+    <div class="footer">
+        <p>شكراً لتعاملكم معنا!</p>
+        <p>شركتنا - جميع الحقوق محفوظة © 2024</p>
+    </div>
+</div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src=" {{asset('assets/js/date.js')}}"></script>
+<script src="../js/date.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
 

@@ -435,7 +435,7 @@ CREATE TABLE IF NOT EXISTS attendance (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (representative_id) REFERENCES employees(employee_id)
 );
--- جدول عروض الاسعار (Quotes)  
+-- جدول عروض الاسعار (Quotes)
 CREATE TABLE IF NOT EXISTS quotes (
   quote_id INT AUTO_INCREMENT PRIMARY KEY,
   client_id INT, -- إذا كان لديك جدول للعملاء، يمكنك استخدام معرف العميل
@@ -446,7 +446,7 @@ CREATE TABLE IF NOT EXISTS quotes (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (created_by) REFERENCES employees(employee_id) -- الربط مع جدول الموظفين
 );
---  الاسعار تفاصيل المنتجات في عرض 
+--  الاسعار تفاصيل المنتجات في عرض
 CREATE TABLE IF NOT EXISTS quote_items (
   quote_item_id INT AUTO_INCREMENT PRIMARY KEY,
   quote_id INT NOT NULL, -- الربط مع جدول عروض الأسعار
