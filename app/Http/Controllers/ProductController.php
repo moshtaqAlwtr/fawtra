@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('layouts.nav-slider-route', ['page' => 'products', 'products' => $products]);
+        return view('layouts.nav-slider-route', ['page' => 'new_product', 'new_product' => $products]);
     }
 
     /**
@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('layouts.nav-slider-route', ['page' => 'new-product']);
+        return view('layouts.nav-slider-route', ['page' => 'new_product']);
     }
 
     /**
@@ -63,7 +63,7 @@ class ProductController extends Controller
         Product::create($validatedData);
 
         // إعادة التوجيه إلى صفحة المنتجات مع رسالة نجاح
-        return redirect()->route('products.index')->with('success', 'تمت إضافة المنتج بنجاح!');
+        return redirect()->route('new_product.index')->with('success', 'تمت إضافة المنتج بنجاح!');
     }
 
     /**

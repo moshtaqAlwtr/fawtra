@@ -109,7 +109,8 @@
                     @case('products')
                     @include('fawtra.12-stock_control.products')
                 @break
-                    @case('new-product')
+
+                    @case('new_product')
                     @include('fawtra.12-stock_control.new-product')
 
                     @break
