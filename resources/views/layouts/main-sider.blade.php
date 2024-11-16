@@ -398,9 +398,10 @@
             <div class="collapse" id="sidebarMultiLevel">
                 <ul class="side-nav-second-level">
                     <li class="side-nav-item">
-                        <a href="">
+                        <a href=" {{ route('products.index') }}">
                             <span> {{ trans('main_trans.products_management') }} </span>
                         </a>
+
                     </li>
                     <li class="side-nav-item">
                         <a href="">
