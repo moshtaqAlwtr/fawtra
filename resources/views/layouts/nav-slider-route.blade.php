@@ -106,6 +106,13 @@
                 @case('quotation')
                         @include('fawtra.2-purchase_admin.quotation')
                     @break
+                    @case('products')
+                    @include('fawtra.12-stock_control.products')
+                @break
+                    @case('new-product')
+                    @include('fawtra.12-stock_control.new-product')
+
+                    @break
 
                         @default
                     @endswitch

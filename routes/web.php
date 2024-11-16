@@ -6,8 +6,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\InvoiceController;
-
- // استيراد ClientController
+use App\Http\Controllers\ProductController;
 
 // تفعيل مسارات المصادقة بدون التحقق من البريد الإلكتروني
 Auth::routes(['verify' => false]);
@@ -24,10 +23,12 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        // صفحة welcome بعد تسجيل الدخول
         Route::get('/welcome', function () {
             return view('welcome');
         })->middleware(['auth'])->name('welcome');
+
+        // تعريف المورد products
+        Route::resource('products', ProductController::class);
 
         Route::get('/human-resources', function () {
             return view('layouts.nav-slider-route', ['page' => 'human_resources']);
@@ -37,7 +38,6 @@ Route::group(
             return view('layouts.nav-slider-route', ['page' => 'invoice-management']);
         })->name('invoice-management');
 
-        // مسار عرض صفحة إضافة عميل جديد
         Route::get('/add_customer', function () {
             return view('layouts.nav-slider-route', ['page' => 'add_customer']);
         })->name('add_customer');
@@ -45,6 +45,7 @@ Route::group(
         Route::get('/customer-management', function () {
             return view('layouts.nav-slider-route', ['page' => 'customer-management']);
         })->name('customer-management');
+
         Route::get('/salas_invoice', function () {
             return view('layouts.nav-slider-route', ['page' => 'salas_invoice']);
         })->name('cussalas_invoice');
@@ -53,19 +54,19 @@ Route::group(
             return view('layouts.nav-slider-route', ['page' => 'quotation']);
         })->name('quotation');
 
+        Route::get('/new-product', function () {
+            return view('layouts.nav-slider-route', ['page' => 'new-product']);
+        })->name('new-product');
 
-        // مسار عرض صفحة الفواتير
+
         Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
-
-        // مسار تخزين بيانات الفاتورة
-
-Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
-
-        // مسار تخزين بيانات العميل الجديد
+        Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
         Route::post('/clients/store', [ClientController::class, 'storeClient'])->name('storeClient');
+        Route::get('/new-product', [ProductController::class, 'create'])->name('products.create');
+Route::post('/new-product', [ProductController::class, 'store'])->name('products.store');
+
     }
 );
-
 
 // مسارات الملف الشخصي
 Route::middleware(['auth'])->group(function () {
