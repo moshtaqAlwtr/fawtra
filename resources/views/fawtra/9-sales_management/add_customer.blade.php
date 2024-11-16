@@ -137,6 +137,11 @@
                             </select>
                         </div>
                     </div>
+                    @if ($errors->has('printing_method'))
+                    <div class="text-danger">
+                        {{ $errors->first('printing_method') }}
+                    </div>
+                @endif
 
                     <!-- الرصيد الافتتاحي وتاريخ الرصيد الافتتاحي -->
                     <div class="row mb-3">
@@ -200,7 +205,7 @@
             </div>
         </form>
     </div>
-    
+
 <script>
     function initMap() {
         // تحديد إحداثيات الموقع (يمكنك تغييره إلى إحداثياتك)

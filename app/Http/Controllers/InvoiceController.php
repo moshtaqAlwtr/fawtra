@@ -23,7 +23,7 @@ class InvoiceController extends Controller
 
     public function store(Request $request)
     {
-        // التحقق من صحة البيانات
+
         $validatedData = $request->validate([
             'client_id' => 'required|exists:clients,client_id',
             'invoice_number' => 'required|string|max:100',
