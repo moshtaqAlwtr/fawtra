@@ -38,8 +38,7 @@ class Product extends Model
         'discount_type',
         'profit_margin',
     ];
-
-    // إذا لم يكن هناك updated_at
+        // إذا لم يكن هناك updated_at
     const UPDATED_AT = null;
 
     // تحويل البيانات

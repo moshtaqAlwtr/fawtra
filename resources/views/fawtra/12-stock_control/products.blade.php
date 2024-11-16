@@ -80,6 +80,15 @@
     <div class="header">
         <h1>منتج جديد</h1>
     </div>
+    @if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
     <div class="form-container">
         <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
@@ -166,14 +175,12 @@
 
             <div class="form-section">
                 <h3>خيارات إضافية</h3>
-                <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" id="available_online" name="available_online">
-                    <label class="form-check-label" for="available_online">متاح أون لاين</label>
-                </div>
-                <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" id="featured_product" name="featured_product">
-                    <label class="form-check-label" for="featured_product">منتج مميز</label>
-                </div>
+                <input type="hidden" name="available_online" value="0">
+                <input class="form-check-input" type="checkbox" id="available_online" name="available_online" value="1">
+
+               <input type="hidden" name="available_online" value="0">
+<input class="form-check-input" type="checkbox" id="available_online" name="available_online" value="1">
+
                 <div class="form-group mb-3">
                     <label for="notes">ملاحظات</label>
                     <textarea id="notes" name="notes" class="form-control" rows="3" placeholder="أدخل الملاحظات"></textarea>

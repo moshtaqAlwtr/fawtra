@@ -58,16 +58,16 @@ Route::group(
             return view('layouts.nav-slider-route', ['page' => 'products']);
         })->name('products');
 
-        Route::get('/new_product', function () {
-            return view('layouts.nav-slider-route', ['page' => 'new_product']);
-        })->name('new_product');
+        Route::get('/mang_products', function () {
+            return view('layouts.nav-slider-route', ['page' => 'mang_products']);
+        })->name('mang_products');
 
 
         Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
         Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
         Route::post('/clients/store', [ClientController::class, 'storeClient'])->name('storeClient');
-        Route::get('/new_product', [ProductController::class, 'create'])->name('new_product.index');
-Route::post('/new_product', [ProductController::class, 'store'])->name('products.store');
+        Route::get('/products', [ProductController::class, 'create'])->name('products.index');
+Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 
     }
 );

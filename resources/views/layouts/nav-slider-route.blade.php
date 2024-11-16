@@ -110,8 +110,8 @@
                     @include('fawtra.12-stock_control.products')
                 @break
 
-                    @case('new_product')
-                    @include('fawtra.12-stock_control.new-product')
+                    @case('mang_products')
+                    @include('fawtra.12-stock_control.mang_products')
 
                     @break
 

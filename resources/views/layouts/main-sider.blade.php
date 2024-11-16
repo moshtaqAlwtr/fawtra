@@ -399,7 +399,7 @@
                 <ul class="side-nav-second-level">
 
                     <li class="side-nav-item">
-                        <a href=" {{ route('products') }}">
+                        <a href=" {{ route('mang_products') }}">
                             <span> {{ trans('main_trans.products_management') }} </span>
                         </a>
                     </li>
