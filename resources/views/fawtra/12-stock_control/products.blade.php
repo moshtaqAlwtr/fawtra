@@ -1,8 +1,7 @@
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منتج جديد</title>
+    <title>{{ __('products.product_details') }}</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -13,8 +12,6 @@
             direction: rtl;
             text-align: right;
         }
-
-
     </style>
 </head>
 
@@ -28,130 +25,130 @@
             @endforeach
         </ul>
     </div>
-@endif
+    @endif
 
     <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="controls">
-            <button class="btn btn-danger">إلغاء</button>
-            <button class="btn btn-success">حفظ</button>
+            <button class="btn btn-danger">{{ __('products.cancel') }}</button>
+            <button class="btn btn-success">{{ __('products.save') }}</button>
         </div>
 
         <div class="container form-container">
 
             <!-- تفاصيل البند -->
             <div class="form-section">
-                <h3>تفاصيل البند</h3>
+                <h3>{{ __('products.product_details') }}</h3>
 
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label for="product_name">اسم المنتج <span class="text-danger">*</span></label>
-                        <input type="text" id="product_name" name="product_name" class="form-control" placeholder="أدخل اسم المنتج" required>
+                        <label for="product_name">{{ __('products.product_name') }} <span class="text-danger">*</span></label>
+                        <input type="text" id="product_name" name="product_name" class="form-control" placeholder="{{ __('products.product_name') }}" required>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="serial_number">الرقم التسلسلي SKU</label>
-                        <input type="text" id="serial_number" name="serial_number" class="form-control" placeholder="أدخل الرقم التسلسلي">
+                        <label for="serial_number">{{ __('products.serial_number') }}</label>
+                        <input type="text" id="serial_number" name="serial_number" class="form-control" placeholder="{{ __('products.serial_number') }}">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12 form-group">
-                        <label for="description">الوصف</label>
-                        <textarea id="description" name="description" class="form-control" rows="3" placeholder="اكتب الوصف هنا..."></textarea>
+                        <label for="description">{{ __('products.description') }}</label>
+                        <textarea id="description" name="description" class="form-control" rows="3" placeholder="{{ __('products.description') }}"></textarea>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label for="category">التصنيف</label>
+                        <label for="category">{{ __('products.category') }}</label>
                         <select id="category" name="category" class="form-control">
-                            <option value="category1">تصنيف 1</option>
-                            <option value="category2">تصنيف 2</option>
+                            <option value="category1">{{ __('products.category') }} 1</option>
+                            <option value="category2">{{ __('products.category') }} 2</option>
                         </select>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="brand">الماركة</label>
+                        <label for="brand">{{ __('products.brand') }}</label>
                         <select id="brand" name="brand" class="form-control">
-                            <option value="brand1">ماركة 1</option>
-                            <option value="brand2">ماركة 2</option>
+                            <option value="brand1">{{ __('products.brand') }} 1</option>
+                            <option value="brand2">{{ __('products.brand') }} 2</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label for="supplier">المورد</label>
+                        <label for="supplier">{{ __('products.supplier') }}</label>
                         <select id="supplier" name="supplier" class="form-control">
-                            <option value="supplier1">مورد 1</option>
-                            <option value="supplier2">مورد 2</option>
+                            <option value="supplier1">{{ __('products.supplier') }} 1</option>
+                            <option value="supplier2">{{ __('products.supplier') }} 2</option>
                         </select>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="barcode">باركود</label>
-                        <input type="text" id="barcode" name="barcode" class="form-control" placeholder="أدخل الباركود">
+                        <label for="barcode">{{ __('products.barcode') }}</label>
+                        <input type="text" id="barcode" name="barcode" class="form-control" placeholder="{{ __('products.barcode') }}">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <input type="checkbox" id="available_online" name="available_online" class="form-check-input">
-                        <label for="available_online" class="form-check-label">متاح أونلاين</label>
+                        <label for="available_online" class="form-check-label">{{ __('products.available_online') }}</label>
                     </div>
                     <div class="col-md-6 form-group">
                         <input type="checkbox" id="featured_product" name="featured_product" class="form-check-input">
-                        <label for="featured_product" class="form-check-label">منتج مميز</label>
+                        <label for="featured_product" class="form-check-label">{{ __('products.featured_product') }}</label>
                     </div>
                 </div>
             </div>
 
             <!-- تفاصيل التسعير -->
             <div class="form-section">
-                <h3>تفاصيل التسعير</h3>
+                <h3>{{ __('products.pricing_details') }}</h3>
 
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label for="purchase_price">سعر الشراء</label>
-                        <input type="number" id="purchase_price" name="purchase_price" class="form-control" placeholder="أدخل سعر الشراء">
+                        <label for="purchase_price">{{ __('products.purchase_price') }}</label>
+                        <input type="number" id="purchase_price" name="purchase_price" class="form-control" placeholder="{{ __('products.purchase_price') }}">
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="sale_price">سعر البيع</label>
-                        <input type="number" id="sale_price" name="sale_price" class="form-control" placeholder="أدخل سعر البيع">
+                        <label for="sale_price">{{ __('products.sale_price') }}</label>
+                        <input type="number" id="sale_price" name="sale_price" class="form-control" placeholder="{{ __('products.sale_price') }}">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label for="tax1">الضريبة الأولى</label>
-                        <input type="number" id="tax1" name="tax1" class="form-control" placeholder="أدخل الضريبة الأولى">
+                        <label for="tax1">{{ __('products.tax1') }}</label>
+                        <input type="number" id="tax1" name="tax1" class="form-control" placeholder="{{ __('products.tax1') }}">
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="tax2">الضريبة الثانية</label>
-                        <input type="number" id="tax2" name="tax2" class="form-control" placeholder="أدخل الضريبة الثانية">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        <label for="min_sale_price">أقل سعر بيع</label>
-                        <input type="number" id="min_sale_price" name="min_sale_price" class="form-control" placeholder="أدخل أقل سعر بيع">
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label for="discount">الخصم</label>
-                        <input type="number" id="discount" name="discount" class="form-control" placeholder="أدخل قيمة الخصم">
+                        <label for="tax2">{{ __('products.tax2') }}</label>
+                        <input type="number" id="tax2" name="tax2" class="form-control" placeholder="{{ __('products.tax2') }}">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label for="discount_type">نوع الخصم</label>
+                        <label for="min_sale_price">{{ __('products.min_sale_price') }}</label>
+                        <input type="number" id="min_sale_price" name="min_sale_price" class="form-control" placeholder="{{ __('products.min_sale_price') }}">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="discount">{{ __('products.discount') }}</label>
+                        <input type="number" id="discount" name="discount" class="form-control" placeholder="{{ __('products.discount') }}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="discount_type">{{ __('products.discount_type') }}</label>
                         <select id="discount_type" name="discount_type" class="form-control">
-                            <option value="percentage">نسبة مئوية</option>
-                            <option value="currency">بالعملة</option>
+                            <option value="percentage">{{ __('products.percentage') }}</option>
+                            <option value="currency">{{ __('products.currency') }}</option>
                         </select>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="profit_margin">هامش الربح</label>
-                        <input type="number" id="profit_margin" name="profit_margin" class="form-control" placeholder="أدخل هامش الربح">
+                        <label for="profit_margin">{{ __('products.profit_margin') }}</label>
+                        <input type="number" id="profit_margin" name="profit_margin" class="form-control" placeholder="{{ __('products.profit_margin') }}">
                     </div>
                 </div>
             </div>
@@ -159,42 +156,40 @@
 
         <!-- إدارة المخزون -->
         <div class="container bottom-section">
-            <h3>إدارة المخزون</h3>
+            <h3>{{ __('products.inventory_management') }}</h3>
 
             <div class="form-group">
                 <input type="checkbox" id="track_inventory" name="track_inventory" class="form-check-input">
-                <label for="track_inventory" class="form-check-label">تتبع المخزون</label>
+                <label for="track_inventory" class="form-check-label">{{ __('products.track_inventory') }}</label>
             </div>
             <div class="form-group">
-                <input type="number" id="low_stock_alert" name="low_stock_alert" class="form-control" placeholder="نبهني عند وصول الكمية لأقل من">
+                <input type="number" id="low_stock_alert" name="low_stock_alert" class="form-control" placeholder="{{ __('products.low_stock_alert') }}">
             </div>
         </div>
 
         <!-- خيارات إضافية -->
         <div class="container bottom-section">
-            <h3>خيارات إضافية</h3>
+            <h3>{{ __('products.additional_options') }}</h3>
             <div class="row">
                 <div class="col-md-6 form-group">
-                    <label for="notes">ملاحظات</label>
-                    <textarea id="notes" name="notes" rows="3" class="form-control" placeholder="أضف ملاحظات"></textarea>
+                    <label for="notes">{{ __('products.notes') }}</label>
+                    <textarea id="notes" name="notes" rows="3" class="form-control" placeholder="{{ __('products.notes') }}"></textarea>
                 </div>
                 <div class="col-md-6 form-group">
-                    <label for="tags">وسوم</label>
-                    <input type="text" id="tags" name="tags" class="form-control" placeholder="أدخل الوسوم">
+                    <label for="tags">{{ __('products.tags') }}</label>
+                    <input type="text" id="tags" name="tags" class="form-control" placeholder="{{ __('products.tags') }}">
                 </div>
             </div>
             <div class="form-group">
-                <label for="status">الحالة</label>
+                <label for="status">{{ __('products.status') }}</label>
                 <select id="status" name="status" class="form-control">
-                    <option value="active">نشط</option>
-                    <option value="inactive">غير نشط</option>
-                    <option value="suspended">موقوف</option>
+                    <option value="active">{{ __('products.active') }}</option>
+                    <option value="inactive">{{ __('products.inactive') }}</option>
+                    <option value="suspended">{{ __('products.suspended') }}</option>
                 </select>
             </div>
         </div>
     </form>
-      </div>
-
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
