@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فاتورة مبيعات</title>
+    <title>فاتورة مبيعات</title> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -15,7 +15,7 @@
             <!-- تضمين مكتبة Font Awesome لأيقونة البحث -->
 
 
-    <link rel="stylesheet" href="../Design/css/data.css">
+  
     <style>
         body {
             font-family: 'Tahoma', sans-serif;
@@ -115,21 +115,21 @@
             <div class="row">
                 <!-- معلومات العميل والطريقة -->
                 <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
-                    <h5 class="mb-4 text-primary"><i class="bi bi-person"></i> معلومات العميل والطريقة</h5>
+                    <h5 class="mb-4 text-primary"><i class="bi bi-person"></i> {{ __('sales_invoice.client_info') }}</h5>
                     <div class="form-group row mb-3">
-                        <label class="col-sm-4 col-form-label">الطريقة</label>
+                        <label class="col-sm-4 col-form-label">{{ __('sales_invoice.method') }}</label> 
                         <div class="col-sm-8">
                             <select name="payment_method" class="form-control">
-                                <option value="print">الطباعة</option>
-                                <option value="email">ارسل عبر البريد</option>
+                                <option value="print">{{ __('sales_invoice.print') }}</option> 
+                                <option value="email">{{ __('sales_invoice.email') }}</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row mb-3">
-                        <label class="col-sm-4 col-form-label">العميل <span class="text-danger">*</span></label>
+                        <label class="col-sm-4 col-form-label">{{ __('sales_invoice.client') }} <span class="text-danger">*</span></label>
                         <div class="col-sm-8">
                             <select name="client_id" class="form-control" required>
-                                <option value="" selected>(اختر عميل)</option>
+                                <option value="" selected>{{ __('sales_invoice.select_client') }}</option>
                                 @foreach ($clients as $client)
                                     <option value="{{ $client->client_id }}">{{ $client->trade_name }}</option>
                                 @endforeach
@@ -140,390 +140,102 @@
 
                 <!-- معلومات الفاتورة -->
                 <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
-                    <h5 class="mb-4 text-primary"><i class="bi bi-receipt"></i> معلومات الفاتورة</h5>
+                    <h5 class="mb-4 text-primary"><i class="bi bi-receipt"></i> {{ __('sales_invoice.invoice_info') }}</h5>
                     <div class="form-group row mb-3">
-    <label class="col-sm-4 col-form-label">رقم الفاتورة</label>
-    <div class="col-sm-8">
-        <input type="text" name="invoice_id" class="form-control" value="{{ $nextInvoiceId ?? '' }}" readonly>
-    </div>
-</div>
-                  
+                        <label class="col-sm-4 col-form-label">{{ __('sales_invoice.invoice_id') }}</label> 
+                        <div class="col-sm-8">
+                            <input type="text" name="invoice_id" class="form-control" value="{{ $nextInvoiceId ?? '' }}" readonly>
+                        </div>
+                    </div>
                     <div class="form-group row mb-3">
-                        <label class="col-sm-4 col-form-label">تاريخ الفاتورة</label>
+                        <label class="col-sm-4 col-form-label">{{ __('sales_invoice.invoice_date') }}</label>
                         <div class="col-sm-8">
                             <input type="date" name="invoice_date" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row mb-3">
-                        <label class="col-sm-4 col-form-label">مسؤول مبيعات</label>
+                        <label class="col-sm-4 col-form-label">{{ __('sales_invoice.sales_manager') }}</label>
                         <div class="col-sm-8">
                             <select name="sales_manager" class="form-control">
-                                <option value="none" selected>لا شيء</option>
-                                <option value="manager1">مسؤول 1</option>
-                                <option value="manager2">مسؤول 2</option>
+                                <option value="none" selected>{{ __('sales_invoice.none') }}</option>
+                                <option value="manager1">{{ __('sales_invoice.manager1') }}</option>
+                                <option value="manager2">{{ __('sales_invoice.manager2') }}</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row mb-3">
-                        <label class="col-sm-4 col-form-label">تاريخ الإصدار</label>
+                        <label class="col-sm-4 col-form-label">{{ __('sales_invoice.issue_date') }}</label>
                         <div class="col-sm-8">
                             <input type="date" name="issue_date" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row mb-3">
-                        <label class="col-sm-4 col-form-label">شروط الدفع</label>
+                        <label class="col-sm-4 col-form-label">{{ __('sales_invoice.payment_terms') }}</label>
                         <div class="col-sm-8">
                             <input type="text" name="payment_terms" class="form-control">
                         </div>
                     </div>
-                  
+                </div>
+
             </div>
 
             <!-- زر الحفظ -->
             <div class="text-center">
-                <button type="submit" class="btn btn-success">حفظ</button>
+                <button type="submit" class="btn btn-success">{{ __('sales_invoice.save') }}</button>
             </div>
         </div>
     </form>
 
     <!-- عرض الجدول -->
     <table class="table table-bordered mt-4">
-    <thead>
-        <tr>
-            <th>البند</th>
-            <th>الوصف</th>
-            <th>سعر الوحدة</th>
-            <th>الكمية</th>
-            <th>الخصم</th>
-            <th>الضريبة 1</th>
-            <th>الضريبة 2</th>
-            <th>المجموع</th>
-        </tr>
-    </thead>
-    <tbody id="invoice-body">
-        <tr>
-            <td>1</td>
-            <td><input type="text" class="form-control" placeholder="الوصف"></td>
-            <td><input type="number" class="form-control" placeholder="سعر الوحدة" value="0" oninput="calculateTotal(this)"></td>
-            <td><input type="number" class="form-control" placeholder="الكمية" value="1" oninput="calculateTotal(this)"></td>
-            <td>
-                <div class="input-group">
-                    <input type="number" class="form-control" placeholder="الخصم" value="0" oninput="calculateTotal(this)">
-                    <div class="input-group-append">
-                        <select class="custom-select">
-                            <option value="%">%</option>
-                            <option value="$">$</option>
-                        </select>
+        <thead>
+            <tr>
+                <th>{{ __('sales_invoice.item') }}</th>
+                <th>{{ __('sales_invoice.description') }}</th>
+                <th>{{ __('sales_invoice.unit_price') }}</th>
+                <th>{{ __('sales_invoice.quantity') }}</th>
+                <th>{{ __('sales_invoice.discount') }}</th>
+                <th>{{ __('sales_invoice.tax1') }}</th>
+                <th>{{ __('sales_invoice.tax2') }}</th>
+                <th>{{ __('sales_invoice.total') }}</th>
+            </tr>
+        </thead>
+        <tbody id="invoice-body">
+            <tr>
+                <td>1</td>
+                <td><input type="text" class="form-control" placeholder="{{ __('sales_invoice.description') }}"></td>
+                <td><input type="number" class="form-control" placeholder="{{ __('sales_invoice.unit_price') }}" value="0" oninput="calculateTotal(this)"></td>
+                <td><input type="number" class="form-control" placeholder="{{ __('sales_invoice.quantity') }}" value="1" oninput="calculateTotal(this)"></td>
+                <td>
+                    <div class="input-group">
+                        <input type="number" class="form-control" placeholder="{{ __('sales_invoice.discount') }}" value="0" oninput="calculateTotal(this)">
+                        <div class="input-group-append">
+                            <select class="custom-select">
+                                <option value="%">%</option>
+                                <option value="$">$</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-            </td>
-            <td><input type="number" class="form-control" placeholder="الضريبة 1" value="0" oninput="calculateTotal(this)"></td>
-            <td><input type="number" class="form-control" placeholder="الضريبة 2" value="0" oninput="calculateTotal(this)"></td>
-            <td><span class="total">0.00</span></td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="7" class="text-right"><strong>الإجمالي الكلي:</strong></td>
-            <td><span id="grand-total">0.00</span></td>
-        </tr>
-    </tfoot>
-</table>
-
+                </td>
+                <td><input type="number" class="form-control" placeholder="{{ __('sales_invoice.tax1') }}" value="0" oninput="calculateTotal(this)"></td>
+                <td><input type="number" class="form-control" placeholder="{{ __('sales_invoice.tax2') }}" value="0" oninput="calculateTotal(this)"></td>
+                <td><span class="total">0.00</span></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="7" class="text-right"><strong>{{ __('sales_invoice.total') }}:</strong></td>
+                <td><span id="grand-total">0.00</span></td>
+            </tr>
+        </tfoot>
+    </table>
 
     <!-- زر إضافة بند جديد -->
     <div class="add-item">
-        <button onclick="addItem()">إضافة بند</button>
-    </div>
-
-    <!-- عرض الأخطاء -->
-    @if ($errors->any())
-        <div class="alert alert-danger mt-3">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-
-    <!-- Tab Content -->
-   <!-- شريط التبويبات -->
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" id="discount-tab" data-toggle="tab" href="#discount" role="tab" aria-controls="discount" aria-selected="true">الخصم والتسوية</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="deposet-tab" data-toggle="tab" href="#deposet" role="tab" aria-controls="deposet" aria-selected="false">إيداع</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="shipping-tab" data-toggle="tab" href="#shipping" role="tab" aria-controls="shipping" aria-selected="false">بيانات الشحن</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="documents-tab" data-toggle="tab" href="#documents" role="tab" aria-controls="documents" aria-selected="false">إرفاق المستندات</a>
-    </li>
-</ul>
-
-<!-- محتوى التبويبات -->
-<div class="tab-content" id="myTabContent">
-
-    <!-- تبويب الخصم والتسوية -->
-    <div class="tab-pane fade show active" id="discount" role="tabpanel" aria-labelledby="discount-tab">
-        <div class="form-group row mt-3">
-            <label class="col-sm-2 col-form-label">الخصم</label>
-            <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="0.00">
-            </div>
-            <label class="col-sm-2 col-form-label">التسوية</label>
-            <div class="col-sm-3">
-                <select class="form-control">
-                    <option>نسبة مئوية (%)</option>
-                    <option>قيمة ثابتة</option>
-                </select>
-            </div>
-        </div>
-    </div>
-
-    <!-- تبويب الإيداع -->
-    <div class="tab-pane fade" id="deposet" role="tabpanel" aria-labelledby="deposet-tab">
-        <div class="form-group row mt-3 align-items-center">
-            <label class="col-sm-2 col-form-label">القيمة المقدمة</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" placeholder="0">
-            </div>
-            <label class="col-sm-2 col-form-label">مدفوع بالفعل</label>
-            <div class="col-sm-4">
-                <select class="form-control">
-                    <option>المبلغ</option>
-                    <option>النسبة المئوية (%)</option>
-                </select>
-            </div>
-        </div>
-    </div>
-
-    <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
-        <div class="form-group row mt-3 d-flex align-items-center">
-
-            <!-- بيانات الشحن -->
-            <label class="col-form-label me-2">بيانات الشحن</label>
-            <div class="flex-grow-1 me-3">
-                <input type="text" class="form-control" placeholder="أدخل قيمة">
-            </div>
-
-            <!-- المستودع والقائمة المنسدلة -->
-            <label for="warehouseSelect" class="col-form-label me-2 mb-0">المستودع</label>
-            <div class="flex-grow-1 me-3">
-                <select class="form-control" id="warehouseSelect">
-                    <option>المستودع الرئيسي</option>
-                    <option>مستودع 1</option>
-                </select>
-            </div>
-
-            <!-- مربع الاختيار وتسمية اختيار المستودع لكل بند -->
-            <div class="form-check d-flex align-items-center">
-                <input type="checkbox" class="form-check-input me-2" id="mandatoryCheck">
-                <label class="form-check-label mb-0" for="mandatoryCheck" style="margin-right: 20px;">اختيار المستودع لكل بند</label>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- تبويب إرفاق المستندات -->
-    <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
-        <!-- تبويبات فرعية داخل إرفاق المستندات -->
-        <ul class="nav nav-tabs mt-3" id="documentTabs" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="new-document-tab" data-toggle="tab" href="#new-document" role="tab" aria-controls="new-document" aria-selected="true">مستند جديد</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="uploaded-documents-tab" data-toggle="tab" href="#uploaded-documents" role="tab" aria-controls="uploaded-documents" aria-selected="false">الملفات التي تم رفعها مسبقًا</a>
-            </li>
-        </ul>
-
-        <!-- محتوى التبويبات الفرعية داخل تبويب إرفاق المستندات -->
-        <div class="tab-content" id="documentTabsContent">
-            <div class="tab-pane fade show active" id="new-document" role="tabpanel" aria-labelledby="new-document-tab">
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <div class="upload-area p-4 border border-dashed text-center">
-                            <i class="fas fa-cloud-upload-alt fa-2x text-primary mb-2"></i>
-                            <p>أسقط الملف هنا أو اختر من جهازك</p>
-                            <input type="file" class="form-control-file" style="display: none;" id="fileUploadInput">
-                            <button class="btn btn-primary" onclick="document.getElementById('fileUploadInput').click();">اختر ملف</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="uploaded-documents" role="tabpanel" aria-labelledby="uploaded-documents-tab">
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <!-- الحقل الرئيسي -->
-<div class="form-group">
-    <label for="documentSelect">المستند</label>
-    <div class="d-flex align-items-center">
-        <!-- القائمة المنسدلة لاختيار المستند -->
-        <select class="form-control w-50" id="documentSelect">
-            <option>Select Document</option>
-            <option>Document 1</option>
-            <option>Document 2</option>
-        </select>
-
-        <!-- زر "أرفق" -->
-        <button class="btn btn-success me-2" style="margin-left: 10px;">
-            أرفق
-        </button>
-
-        <!-- زر "بحث متقدم" لفتح المودال -->
-        <button class="btn btn-success me-2" data-toggle="modal" data-target="#advancedSearchModal" style="margin-left: 10px;">
-            <i class="fas fa-search"></i> بحث متقدم
-        </button>
+        <button onclick="addItem()">{{ trans('sales_invoice.add_item') }}</button>
     </div>
 </div>
 
-<!-- المودال الخاص بالبحث المتقدم -->
-<div class="modal fade" id="advancedSearchModal" tabindex="-1" aria-labelledby="advancedSearchModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="advancedSearchModalLabel">البحث المتقدم</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- محتوى البحث المتقدم -->
-                <div class="alert alert-warning" role="alert">
-                    <strong>No Documents found:</strong> click here to clear search
-                </div>
-                <!-- يمكنك إضافة حقول البحث المتقدم هنا -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- تضمين مكتبة Font Awesome و Bootstrap JS -->
-
-                    </div>
-
-
-
-            </div>
-        </div>
-    </div>
-</div>
-
-        <!-- Attach Documents Tab -->
-        <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
-            <div class="form-group row mt-3">
-                <label class="col-sm-2 col-form-label">مستند جديد</label>
-                <div class="col-sm-10">
-                    <input type="file" class="form-control-file">
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-<div class="mb-3">
-        <label for="notes" class="form-label">الملاحظات</label>
-        <textarea id="notes" class="form-control" rows="4"></textarea>
-    </div>
-    <div class="gifts-section d-flex align-items-center">
-        <!-- مربع الاختيار بحجم صغير -->
-        <div class="form-check me-2">
-            <input type="checkbox" class="form-check-input" id="paidCheckbox" style="width: 1.5em; height: 1.5em; ">
-            <label for="paidCheckbox" class="form-check-label" style="margin-right: 40px;">مدفوع بالفعل</label>
-        </div>
-        <!-- التسمية -->
-
-    </div>
-
-
-
-<div class="gifts-section p-3 border rounded">
-    <div class="d-flex justify-content-between align-items-center">
-        <!-- العنوان الرئيسي -->
-        <h5 class="mb-0">هدايا مجانية</h5>
-
-        <!-- رابط إعدادات الحقول المخصصة مع أيقونة الترس بجانبه لفتح المودال -->
-        <div class="d-flex align-items-center">
-            <a href="#" class="text-primary d-flex align-items-center" data-toggle="modal" data-target="#customFieldsModal" style="text-decoration: none;">
-                <i class="fas fa-cog text-muted me-1"></i>
-                إعدادات الحقول المخصصة
-            </a>
-        </div>
-    </div>
-
-    <!-- حقل الوقت -->
-    <div class="mt-3">
-        <label for="timeInput">الوقت:</label>
-        <input type="time" id="timeInput" class="form-control w-25">
-    </div>
-</div>
-
-<!-- نافذة المودال -->
-<div class="modal fade" id="customFieldsModal" tabindex="-1" aria-labelledby="customFieldsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="customFieldsModalLabel">إعدادات الحقول المخصصة</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- المحتوى داخل المودال -->
-                <div class="alert alert-info">
-                    You will be redirected to edit the custom fields page
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
-                <button type="button" class="btn btn-danger">عدم الحفظ</button>
-                <button type="button" class="btn btn-success">حفظ</button>
-            </div>
-        </div>
-    </div>
-</div>
-    <!-- إعدادات الحقول المخصصة -->
-    <div class="custom-field-settings">
-        <h6>إعدادات الحقول المخصصة</h6>
-        <p>هنا يمكنك تعديل الحقول المخصصة وإعداداتها.</p>
-    </div>
-
-    <!-- الأزرار الأساسية -->
-    <div class="button-group">
-        <!-- زر المعاينة -->
-        <div class="btn-group">
-            <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">معاينة</button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#" onclick="previewBrowser()">معاينة على المتصفح</a>
-                <a class="dropdown-item" href="#" onclick="previewPDF()">معاينة كـ PDF</a>
-            </div>
-        </div>
-
-        <!-- زر حفظ كمسودة -->
-        <button class="btn btn-warning" onclick="saveAsDraft()">حفظ كمسودة</button>
-
-        <!-- زر حفظ دون طباعة -->
-        <div class="btn-group">
-            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">حفظ دون طباعة</button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#" onclick="saveAndPrint()">حفظ وطباعة</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>شكراً لتعاملكم معنا!</p>
-        <p>شركتنا - جميع الحقوق محفوظة © 2024</p>
-    </div>
-</div>
-</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -539,7 +251,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 
-
+<script src="{{ asset('assets/js/date.js') }}"></script>c
 
 </body>
 <script>
