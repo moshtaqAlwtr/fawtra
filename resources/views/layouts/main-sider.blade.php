@@ -43,7 +43,7 @@
                         <a href="{{route('sales_invoice')}}">{{ trans('main_trans.creaat_invoice') }}</a>
                     </li>
                     <li>
-                       <a href="">{{ trans('main_trans.Quotation_Management') }}</a>
+                       <a href="{{route('quotation-management')}}">{{ trans('main_trans.Quotation_Management') }}</a>
                     </li>
                     <li>
                         <a href="{{route('quotation')}}">{{ trans('main_trans.Create_quote') }}</a>

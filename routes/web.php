@@ -61,6 +61,11 @@ Route::group(
         Route::get('/mang_products', function () {
             return view('layouts.nav-slider-route', ['page' => 'mang_products']);
         })->name('mang_products');
+        Route::get('/quotation-management', function () {
+            return view('layouts.nav-slider-route', ['page' => 'quotation-management']);
+        })->name('quotation-management');
+
+
 
 
         Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');

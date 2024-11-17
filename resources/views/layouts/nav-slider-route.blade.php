@@ -114,7 +114,10 @@
                     @include('fawtra.12-stock_control.mang_products')
 
                     @break
+                    @case('quotation-management')
+                    @include('fawtra.2-purchase_admin.quotation-management')
 
+                    @break
                         @default
                     @endswitch
                 @endif

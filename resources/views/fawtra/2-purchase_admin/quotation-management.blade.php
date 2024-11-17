@@ -64,7 +64,7 @@
 
 <div class="container">
     <!-- عنوان الصفحة وزر إضافة -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
+
         <h2>إدارة عروض الأسعار</h2>
         <div class="d-flex align-items-center">
             <a href="quotation.html" class="btn btn-success ml-2"><i class="fas fa-plus-circle"></i> إضافة عرض سعر جديد</a>
