@@ -14,7 +14,7 @@ class Product extends Model
         'product_name',
         'description',
         'category',
-        'price',
+
         'stock_quantity',
         'reorder_level',
         'serial_number',
@@ -43,7 +43,7 @@ class Product extends Model
 
     // تحويل البيانات
     protected $casts = [
-        'price' => 'float',
+
         'stock_quantity' => 'int',
         'reorder_level' => 'int',
         'available_online' => 'boolean',

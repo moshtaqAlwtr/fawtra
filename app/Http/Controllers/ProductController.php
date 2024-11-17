@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
+
+
 
 class ProductController extends Controller
 {
@@ -29,12 +32,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->merge([
+            'available_online' => $request->has('available_online'),
+            'featured_product' => $request->has('featured_product'),
+            'track_inventory' => $request->has('track_inventory'),
+        ]);
         // التحقق من صحة البيانات المدخلة
         $validatedData = $request->validate([
             'product_name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'category' => 'nullable|string|max:255',
-            'price' => 'required|numeric|min:0',
+
             'stock_quantity' => 'nullable|integer|min:0',
             'reorder_level' => 'nullable|integer|min:0',
             'serial_number' => 'nullable|string|max:255',

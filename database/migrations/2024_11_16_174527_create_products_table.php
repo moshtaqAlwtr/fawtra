@@ -13,7 +13,7 @@ class CreateProductsTable extends Migration
             $table->string('product_name', 255); // الاسم
             $table->text('description')->nullable(); // الوصف
             $table->string('category', 100)->nullable(); // التصنيف
-            $table->decimal('price', 10, 2); // السعر
+
             $table->integer('stock_quantity')->default(0); // الكمية
             $table->integer('reorder_level')->default(0); // مستوى إعادة الطلب
             $table->string('serial_number', 255)->nullable(); // الرقم التسلسلي
