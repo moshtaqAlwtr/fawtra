@@ -142,11 +142,12 @@
                 <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
                     <h5 class="mb-4 text-primary"><i class="bi bi-receipt"></i> معلومات الفاتورة</h5>
                     <div class="form-group row mb-3">
-                        <label class="col-sm-4 col-form-label">رقم الفاتورة</label>
-                        <div class="col-sm-8">
-                            <input type="text" name="invoice_number" class="form-control" required>
-                        </div>
-                    </div>
+    <label class="col-sm-4 col-form-label">رقم الفاتورة</label>
+    <div class="col-sm-8">
+        <input type="text" name="invoice_id" class="form-control" value="{{ $nextInvoiceId ?? '' }}" readonly>
+    </div>
+</div>
+                  
                     <div class="form-group row mb-3">
                         <label class="col-sm-4 col-form-label">تاريخ الفاتورة</label>
                         <div class="col-sm-8">
