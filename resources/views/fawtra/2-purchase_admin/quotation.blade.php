@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -16,7 +16,7 @@
             direction: rtl;
             background-color: #f8f9fa;
             padding: 20px;
-            text-align: right; 
+            text-align: right;
         }
         .invoice-container {
             max-width: 1200px;
@@ -39,7 +39,7 @@
             color: #555;
         }
         .editor-toolbar {
-            
+
             background-color: #f8f9fa;
             padding: 5px;
             border: 1px solid #ced4da;
@@ -55,7 +55,7 @@
             border-radius: 5px;
             margin-top: 10px;
         }
-    
+
         th {
             background-color: #007bff;
             color: white;
@@ -113,84 +113,107 @@
             </div>
         </div>
     </div>
+    @if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
-                <h5 class="mb-4 text-primary"><i class="bi bi-person"></i> معلومات العميل والطريقة</h5>
-                <div class="form-group row mb-3">
-                    <label class="col-sm-4 col-form-label">الطريقة</label>
-                    <div class="col-sm-8">
-                        <select class="form-control">
-                            <option selected>الطباعة</option>
-                            <option>ارسل عبر البريد</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row mb-3">
-                    <label class="col-sm-4 col-form-label">العميل <span class="text-danger">*</span></label>
-                    <div class="col-sm-8">
-                        <div class="input-group">
-                            <select class="form-control">
-                                <option selected>(اختر عميل)</option>
-                                <option>عميل 1</option>
-                                <option>عميل 2</option>
+        <form method="POST" action="{{ route('quotes.store') }}">
+            @csrf <!-- الحماية من CSRF -->
+            <div class="row">
+                <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
+                    <h5 class="mb-4 text-primary"><i class="bi bi-person"></i> معلومات العميل والطريقة</h5>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">الطريقة</label>
+                        <div class="col-sm-8">
+                            <select name="method" class="form-control">
+                                <option value="print" selected>الطباعة</option>
+                                <option value="email">ارسل عبر البريد</option>
                             </select>
-                            <button class="btn btn-primary"><i class="bi bi-plus-circle"></i> جديد</button>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">العميل <span class="text-danger">*</span></label>
+                        <div class="col-sm-8">
+                            <select name="client_id" class="form-control" required>
+                                <option value="" selected>(اختر عميل)</option>
+                                @foreach ($clients as $client)
+                                    <option value="{{ $client->client_id }}">{{ $client->trade_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
+                <!-- القسم الأيسر: معلومات الفاتورة -->
+                <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
+                    <h5 class="mb-4 text-primary"><i class="bi bi-receipt"></i> معلومات الفاتورة</h5>
+                    <!-- الحقول الأساسية -->
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">رقم عرض السعر</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="quote_number" class="form-control" value="{{ $nextQuoteId ?? '' }}" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <label class="col-sm-4 col-form-label">تاريخ عرض السعر</label>
+                        <div class="col-sm-8">
+                            <input type="date" name="quote_date" id="deliveryStartDate" class="form-control" style="width: 100%;">
+                        </div>
+                    </div>
+
+                    {{-- <div class="form-group">
+        <label for="created_by">مسؤول المبيعات</label>
+        <select name="created_by" id="created_by" class="form-control" required>
+            <option value="">اختر مسؤول المبيعات</option>
+            @foreach ($employees as $employee)
+                <option value="{{ $employee->employee_id }}">{{ $employee->name }}</option>
+            @endforeach
+        </select>
+    </div> --}}
+    <div class="form-group">
+        <label for="status">حالة العرض</label>
+        <select name="status" id="status" class="form-control" required>
+            <option value="">اختر الحالة</option>
+            <option value="مبدئي">مبدئي</option>
+            <option value="مقبول">مقبول</option>
+            <option value="مرفوض">مرفوض</option>
+        </select>
+    </div>
+
+                    <!-- المنطقة التي سيتم فيها إضافة الحقول الجديدة -->
+                    <div id="additional-fields-container"></div>
+                    <!-- زر الإضافة في الأسفل -->
+                    <div class="d-flex justify-content-end mt-3">
+                        <button type="button" class="btn btn-primary" onclick="addAdditionalFields()"><i class="bi bi-plus-circle"></i> إضافة</button>
+                    </div>
+                    <div class="d-flex justify-content-end mt-3">
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check-circle"></i> حفظ</button>
+                    </div>
+                </div>
             </div>
-            <!-- القسم الأيسر: معلومات الفاتورة -->
-         
-<div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
-    <h5 class="mb-4 text-primary"><i class="bi bi-receipt"></i> معلومات الفاتورة</h5>
-    <!-- الحقول الأساسية -->
-    <div class="form-group row mb-3">
-        <label class="col-sm-4 col-form-label">رقم عرض السعر</label>
-        <div class="col-sm-8">
-            <input type="text" class="form-control" value="08755" readonly>
-        </div>
+        </form>
+
     </div>
-    <div class="form-group row mb-3">
-        <label class="col-sm-4 col-form-label">تاريخ عرض السعر</label>
-        <div class="col-sm-8">
-            <input type="text" id="deliveryStartDate" class="form-control" placeholder="" style="width: 100%;">
-        </div>
-    </div>
-    <div class="form-group row mb-3">
-        <label class="col-sm-4 col-form-label">مسؤول مبيعات</label>
-        <div class="col-sm-8">
-            <select class="form-control">
-                <option selected>لا شيء</option>
-              
-            </select>
+
+
+            <!-- تضمين أيقونات Bootstrap -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+
+            <!-- القسم الأيمن: الطريقة والعميل -->
+
         </div>
     </div>
 
-    
-    
-    <!-- المنطقة التي سيتم فيها إضافة الحقول الجديدة -->
-    <div id="additional-fields-container"></div>
-    
-    <!-- زر الإضافة في الأسفل -->
-    <div class="d-flex justify-content-end mt-3">
-        <button class="btn btn-primary" onclick="addAdditionalFields()"><i class="bi bi-plus-circle"></i> إضافة</button>
-    </div>
-</div>
-            
-            <!-- تضمين أيقونات Bootstrap -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-            
-    
-            <!-- القسم الأيمن: الطريقة والعميل -->
-          
-        </div>
-    </div>
-    
     <!-- تضمين أيقونات Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    
-    
+
+
     <!-- جدول الفاتورة -->
     <table class="table table-bordered mt-4">
         <thead>
@@ -245,7 +268,7 @@
             <a class="nav-link" id="documents-tab" data-toggle="tab" href="#documents" role="tab" aria-controls="documents" aria-selected="false">إرفاق المستندات</a>
         </li>
     </ul>
-    
+
     <!-- Tab Content -->
     <div class="tab-content" id="myTabContent">
         <!-- Discount and Settlement Tab -->
@@ -281,7 +304,7 @@
                 </div>
             </div>
         </div>
-        
+
 
   <!-- Shipping Details Tab -->
   <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
@@ -290,7 +313,7 @@
             <label for="shippingCost">مصاريف الشحن</label>
             <input type="text" class="form-control" id="shippingCost" placeholder="أدخل قيمة">
         </div>
-        
+
         <div class="form-group col-md-4">
             <label for="shippingInfo">بيانات الشحن</label>
             <select class="form-control" id="shippingInfo">
@@ -322,7 +345,7 @@
         </div>
 
     </div>
-    
+
 
     <h5>الملاحظات/الشروط</h5>
     <div class="editor-toolbar d-flex align-items-center">
@@ -348,7 +371,7 @@
     <div class="editor-content mt-2" contenteditable="true">
         <!-- يمكن للمستخدم الكتابة هنا -->
     </div>
-    
+
 
 
     <!-- إعدادات الحقول المخصصة -->
@@ -437,7 +460,7 @@
         });
         document.getElementById('grand-total').textContent = grandTotal.toFixed(2);
     }
-    
+
 </script>
 
 <script>

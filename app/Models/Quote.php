@@ -1,82 +1,34 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Models;
 
-use App\Models\Quote;
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class QuoteController extends Controller
+class Quote extends Model
 {
-    /**
-     * عرض قائمة بعروض الأسعار.
-     */
-    public function index()
+    use HasFactory;
+
+    // تحديد المفتاح الأساسي إذا كان غير افتراضي
+    protected $primaryKey = 'quote_id';
+
+    // الحقول القابلة للتعبئة
+    protected $fillable = [
+        'client_id',
+        'quote_date',
+        'total_amount',
+        'status',
+        'created_by',
+    ];
+
+    // العلاقات
+    public function client()
     {
-        // جلب جميع عروض الأسعار
-        $quotes = Quote::all();
-        return response()->json($quotes);
+        return $this->belongsTo(Client::class, 'client_id');
     }
 
-    /**
-     * تخزين عرض سعر جديد في قاعدة البيانات.
-     */
-    public function store(Request $request)
+    public function createdBy()
     {
-        // التحقق من صحة البيانات القادمة من الطلب
-        $validatedData = $request->validate([
-            'client_id' => 'nullable|exists:clients,client_id',
-            'quote_date' => 'required|date',
-            'total_amount' => 'nullable|numeric',
-            'status' => 'required|in:مبدئي,مقبول,مرفوض',
-            'created_by' => 'required|exists:employees,employee_id',
-        ]);
-
-        // إنشاء عرض السعر
-        $quote = Quote::create($validatedData);
-
-        return response()->json($quote, 201);
-    }
-
-    /**
-     * عرض تفاصيل عرض سعر معين.
-     */
-    public function show($id)
-    {
-        // جلب عرض السعر المحدد
-        $quote = Quote::findOrFail($id);
-        return response()->json($quote);
-    }
-
-    /**
-     * تحديث عرض السعر في قاعدة البيانات.
-     */
-    public function update(Request $request, $id)
-    {
-        // جلب عرض السعر المطلوب تحديثه
-        $quote = Quote::findOrFail($id);
-
-        // التحقق من صحة البيانات
-        $validatedData = $request->validate([
-            'client_id' => 'nullable|exists:clients,client_id',
-            'quote_date' => 'required|date',
-            'total_amount' => 'nullable|numeric',
-            'status' => 'required|in:مبدئي,مقبول,مرفوض',
-            'created_by' => 'required|exists:employees,employee_id',
-        ]);
-
-        // تحديث البيانات
-        $quote->update($validatedData);
-
-        return response()->json($quote);
-    }
-
-    /**
-     * حذف عرض سعر من قاعدة البيانات.
-     */
-    public function destroy($id)
-    {
-        // حذف عرض السعر
-        Quote::destroy($id);
-        return response()->json(null, 204);
+        return $this->belongsTo(Employee::class, 'created_by', 'employee_id');
     }
 }
