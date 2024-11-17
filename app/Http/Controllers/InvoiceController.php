@@ -31,10 +31,6 @@ class InvoiceController extends Controller
             'sales_manager' => 'nullable|string|max:100',
             'issue_date' => 'nullable|date',
             'payment_terms' => 'nullable|string|max:255',
-            'total' => 'nullable|numeric|min:0',
-            'grand_total' => 'nullable|numeric|min:0',
-            'currency' => 'nullable|string|max:50',
-            'payment_status' => 'required|in:Paid,Unpaid,Partially Paid',
         ]);
 
         // تخزين البيانات

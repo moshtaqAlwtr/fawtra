@@ -99,7 +99,15 @@
     </style>
 </head>
 <body>
-
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="invoice-container">
     <form action="{{ route('invoices.store') }}" method="POST">
         @csrf
@@ -167,29 +175,7 @@
                             <input type="text" name="payment_terms" class="form-control">
                         </div>
                     </div>
-                    <div class="form-group row mb-3">
-                        <label class="col-sm-4 col-form-label">الإجمالي</label>
-                        <div class="col-sm-8">
-                            <input type="number" name="total" class="form-control" step="0.01" required>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-3">
-                        <label class="col-sm-4 col-form-label">الإجمالي الكلي</label>
-                        <div class="col-sm-8">
-                            <input type="number" name="grand_total" class="form-control" step="0.01" required>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-3">
-                        <label class="col-sm-4 col-form-label">حالة الدفع <span class="text-danger">*</span></label>
-                        <div class="col-sm-8">
-                            <select name="payment_status" class="form-control" required>
-                                <option value="Paid">مدفوعة</option>
-                                <option value="Unpaid">غير مدفوعة</option>
-                                <option value="Partially Paid">مدفوعة جزئياً</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                  
             </div>
 
             <!-- زر الحفظ -->
@@ -201,41 +187,53 @@
 
     <!-- عرض الجدول -->
     <table class="table table-bordered mt-4">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>اسم العميل</th>
-                <th>رقم الفاتورة</th>
-                <th>تاريخ الفاتورة</th>
-                <th>الإجمالي</th>
-                <th>الإجمالي الكلي</th>
-                <th>حالة الدفع</th>
-                <th>إجراءات</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($invoices as $invoice)
-                <tr>
-                    <td>{{ $invoice->invoice_id }}</td>
-                    <td>{{ $invoice->client ? $invoice->client->trade_name : 'العميل غير موجود' }}</td>
-                    <td>{{ $invoice->invoice_number }}</td>
-                    <td>{{ $invoice->invoice_date }}</td>
-                    <td>{{ $invoice->total }}</td>
-                    <td>{{ $invoice->grand_total }}</td>
-                    <td>{{ $invoice->payment_status }}</td>
-                    <td>
-                        <a href="#" class="btn btn-primary btn-sm">عرض</a>
-                        <a href="#" class="btn btn-warning btn-sm">تعديل</a>
-                        <form action="#" method="POST" style="display: inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">حذف</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <thead>
+        <tr>
+            <th>البند</th>
+            <th>الوصف</th>
+            <th>سعر الوحدة</th>
+            <th>الكمية</th>
+            <th>الخصم</th>
+            <th>الضريبة 1</th>
+            <th>الضريبة 2</th>
+            <th>المجموع</th>
+        </tr>
+    </thead>
+    <tbody id="invoice-body">
+        <tr>
+            <td>1</td>
+            <td><input type="text" class="form-control" placeholder="الوصف"></td>
+            <td><input type="number" class="form-control" placeholder="سعر الوحدة" value="0" oninput="calculateTotal(this)"></td>
+            <td><input type="number" class="form-control" placeholder="الكمية" value="1" oninput="calculateTotal(this)"></td>
+            <td>
+                <div class="input-group">
+                    <input type="number" class="form-control" placeholder="الخصم" value="0" oninput="calculateTotal(this)">
+                    <div class="input-group-append">
+                        <select class="custom-select">
+                            <option value="%">%</option>
+                            <option value="$">$</option>
+                        </select>
+                    </div>
+                </div>
+            </td>
+            <td><input type="number" class="form-control" placeholder="الضريبة 1" value="0" oninput="calculateTotal(this)"></td>
+            <td><input type="number" class="form-control" placeholder="الضريبة 2" value="0" oninput="calculateTotal(this)"></td>
+            <td><span class="total">0.00</span></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="7" class="text-right"><strong>الإجمالي الكلي:</strong></td>
+            <td><span id="grand-total">0.00</span></td>
+        </tr>
+    </tfoot>
+</table>
+
+
+    <!-- زر إضافة بند جديد -->
+    <div class="add-item">
+        <button onclick="addItem()">إضافة بند</button>
+    </div>
 
     <!-- عرض الأخطاء -->
     @if ($errors->any())

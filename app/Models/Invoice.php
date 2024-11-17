@@ -52,11 +52,7 @@ class Invoice extends Model
 		'invoice_date',
 		'sales_manager',
 		'issue_date',
-		'payment_terms',
-		'total',
-		'grand_total',
-		'currency',
-		'payment_status'
+		'payment_terms'
 	];
 
 

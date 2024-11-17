@@ -20,11 +20,7 @@ class CreateInvoicesTable extends Migration
             $table->date('invoice_date')->nullable();
             $table->string('sales_manager', 100)->nullable();
             $table->date('issue_date')->nullable();
-            $table->string('payment_terms', 255)->nullable();
-            $table->decimal('total', 10, 2)->nullable();
-            $table->decimal('grand_total', 10, 2)->nullable();
-            $table->string('currency', 50)->default('ريال سعودي');
-            $table->enum('payment_status', ['Paid', 'Unpaid', 'Partially Paid'])->default('Unpaid');
+   
             $table->timestamps();
 
             // العلاقة مع جدول clients
