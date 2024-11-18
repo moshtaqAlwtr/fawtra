@@ -197,7 +197,10 @@
                         <button type="button" class="btn btn-primary" onclick="addAdditionalFields()"><i class="bi bi-plus-circle"></i> إضافة</button>
                     </div>
                     <div class="d-flex justify-content-end mt-3">
+
                         <button type="submit" class="btn btn-success"><i class="bi bi-check-circle"></i> حفظ</button>
+
+
                     </div>
                 </div>
             </div>
