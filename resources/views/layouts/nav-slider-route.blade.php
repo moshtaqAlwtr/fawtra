@@ -143,7 +143,9 @@
                     @case('add_employee')
                     @include('fawtra.18-HR_Files.add_employee')
                     @break
-
+                    @case('appointments')
+                    @include('fawtra.9-sales_management.appointments')
+                    @break
                         @default
 
                     @endswitch
@@ -161,17 +163,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <select class="language-selector">
-        <option value="/change-language/ar" {{ App::getLocale() == 'ar' ? 'selected' : '' }}>العربية</option>
-        <option value="/change-language/en" {{ App::getLocale() == 'en' ? 'selected' : '' }}>English</option>
-        <option value="/change-language/ur" {{ App::getLocale() == 'ur' ? 'selected' : '' }}>اردو</option>
-    </select>
-
-    <script>
-        document.querySelector('.language-selector').addEventListener('change', function () {
-            window.location.href = this.value;
-        });
-    </script>
+   
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
