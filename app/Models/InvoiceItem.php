@@ -68,8 +68,5 @@ class InvoiceItem extends Model
     {
         return $this->belongsTo(Invoice::class, 'invoice_id', 'invoice_id');
     }
-    public function items()
-{
-    return $this->hasMany(InvoiceItem::class);
-}
+
 }

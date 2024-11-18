@@ -618,3 +618,36 @@ z-index: 1050;
     direction: rtl;
     text-align: right;
 }
+.action-buttons .btn {
+    margin: 0 5px;
+}
+.container {
+    max-width: 900px;
+    margin-top: 20px;
+}
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.form-section {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.form-control {
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.btn-outline-secondary {
+    background-color: #e9ecef;
+    color: #212529;
+}
+.results {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

@@ -10,52 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="../Design/css/data.css">
     <style>
-        body {
-            font-family: 'Tahoma', sans-serif;
-            background-color: #f4f6f9;
-            direction: rtl;
-        }
-        .header-bar {
-            background-color: #007bff;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            border-radius: 8px 8px 0 0;
-        }
-        .action-buttons .btn {
-            margin: 0 5px;
-        }
-        .container {
-            max-width: 900px;
-            margin-top: 20px;
-        }
-        .card {
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        .form-section {
-            background-color: #fff;
-            border: 1px solid #dee2e6;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        .form-control {
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-        .btn-outline-secondary {
-            background-color: #e9ecef;
-            color: #212529;
-        }
-        .results {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+
 </head>
 <body>
 
