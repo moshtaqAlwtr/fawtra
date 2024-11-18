@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
+
 
 <head>
     <meta charset="UTF-8">
@@ -40,10 +41,6 @@
  <!-- CSS بناءً على اللغة -->
 @if (App::getLocale() == 'ar')
 <link href="{{ asset('assets/css/rtl.css') }}" rel="stylesheet">
-@elseif (App::getLocale() == 'en')
-<link href="{{ asset('assets/css/ltr.css') }}" rel="stylesheet">
-@elseif (App::getLocale() == 'ur')
-<link href="{{ asset('assets/css/ltr.css') }}" rel="stylesheet">
 @else
 <link href="{{ asset('assets/css/ltr.css') }}" rel="stylesheet">
 @endif
@@ -102,46 +99,49 @@
                         @case('add_customer')
                             @include('fawtra.9-sales_management.add_customer')
                         @break
+
                         @case('customer-management')
                         @include('fawtra.9-sales_management.customer-management')
                     @break
+
                     @case('sales_invoice')
                     @include('fawtra.2-purchase_admin.sales_invoice', ['clients' => $clients])
                 @break
+
                 @case('quotation')
                         @include('fawtra.2-purchase_admin.quotation')
                     @break
+
                     @case('products')
                     @include('fawtra.12-stock_control.products')
                 @break
 
                     @case('mang_products')
                     @include('fawtra.12-stock_control.mang_products')
-
                     @break
+
                     @case('quotation-management')
                     @include('fawtra.2-purchase_admin.quotation-management')
-
                     @break
+
                     @case('debit-notices')
                     @include('fawtra.2-purchase_admin.debit-notices')
-
                     @break
-<<<<<<< HEAD
+
                     @case('credit-note')
                     @include('fawtra.2-purchase_admin.credit-note')
-                 
-=======
+                    @break
+
                     @case('employee_management')
                     @include('fawtra.18-HR_Files.employee_management')
-
                     @break
+
                     @case('add_employee')
                     @include('fawtra.18-HR_Files.add_employee')
-
                     @break
+
                         @default
->>>>>>> e89c69032689ea9e82e15cc08eb509026d6bb329
+
                     @endswitch
                 @endif
             </div>
@@ -157,6 +157,17 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <select class="language-selector">
+        <option value="/change-language/ar" {{ App::getLocale() == 'ar' ? 'selected' : '' }}>العربية</option>
+        <option value="/change-language/en" {{ App::getLocale() == 'en' ? 'selected' : '' }}>English</option>
+        <option value="/change-language/ur" {{ App::getLocale() == 'ur' ? 'selected' : '' }}>اردو</option>
+    </select>
+
+    <script>
+        document.querySelector('.language-selector').addEventListener('change', function () {
+            window.location.href = this.value;
+        });
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

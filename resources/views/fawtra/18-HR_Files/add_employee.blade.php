@@ -176,8 +176,15 @@
                 </div>
             @endif
 
-                <form action="{{ route('employees.store') }}" method="POST" enctype="multipart/form-data" class="needs-validation p-4 rounded shadow-lg bg-white" style="max-width: 900px; margin: auto;">
-                    @csrf
+            <form action="{{ route('employees.store') }}" method="POST" enctype="multipart/form-data" class="needs-validation">
+
+                @csrf
+                   <!-- عرض رسالة النجاح -->
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
                     <h3 class="text-center mb-4 text-primary">معلومات الموظف</h3>
 
                     <!-- الاسم الأول والاسم الأوسط واللقب -->
@@ -597,37 +604,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#employee-form').on('submit', function (e) {
-            e.preventDefault(); // منع إعادة تحميل الصفحة
-            let formData = $(this).serialize(); // جمع البيانات من النموذج
 
-            $.ajax({
-                url: "{{ route('employees.store') }}", // رابط دالة الإضافة
-                type: "POST",
-                data: formData,
-                success: function (response) {
-                    // عرض رسالة النجاح
-                    $('#response-message')
-                        .removeClass('d-none alert-danger')
-                        .addClass('alert-success')
-                        .text(response.message);
-
-                    // إعادة تعيين النموذج
-                    $('#employee-form')[0].reset();
-                },
-                error: function () {
-                    // عرض رسالة الخطأ
-                    $('#response-message')
-                        .removeClass('d-none alert-success')
-                        .addClass('alert-danger')
-                        .text('حدث خطأ أثناء الإضافة. حاول مرة أخرى.');
-                }
-            });
-        });
-    });
-</script>
-</body>
+        </body>
 </html>

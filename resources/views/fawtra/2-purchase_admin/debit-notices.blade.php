@@ -76,6 +76,11 @@
     <i class="fas fa-plus-circle"></i> انشاء إشعار دائنة
 </button>
 
+@if ($errors->has('issue_date'))
+    <div class="text-danger">
+        {{ $errors->first('issue_date') }}
+    </div>
+@endif
 
 
     <!-- القائمة المنسدلة للإجراءات -->
