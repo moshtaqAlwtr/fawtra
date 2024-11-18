@@ -8,7 +8,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuoteController;
-
+use App\Http\Controllers\CreditNotificationController; // إضافة الاستيراد الجديد
 
 // تفعيل مسارات المصادقة بدون التحقق من البريد الإلكتروني
 Auth::routes(['verify' => false]);
@@ -63,29 +63,31 @@ Route::group(
         Route::get('/mang_products', function () {
             return view('layouts.nav-slider-route', ['page' => 'mang_products']);
         })->name('mang_products');
+
         Route::get('/quotation-management', function () {
             return view('layouts.nav-slider-route', ['page' => 'quotation-management']);
         })->name('quotation-management');
+
         Route::get('/debit-notices', function () {
             return view('layouts.nav-slider-route', ['page' => 'debit-notices']);
         })->name('debit-notices');
+        
+        Route::get('/credit-note', function () {
+            return view('layouts.nav-slider-route', ['page' => 'credit-note']);
+        })->name('credit-note');
 
 
-
-
-
+        // إضافة المسارات لإنشاء إشعارات دائنة
+        Route::get('/create-credit-notification', [CreditNotificationController::class, 'create'])->name('create-credit-notification');
+        Route::post('/store-credit-notification', [CreditNotificationController::class, 'store'])->name('store-credit-notification');
 
         Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
-
         Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
         Route::post('/clients/store', [ClientController::class, 'storeClient'])->name('storeClient');
         Route::get('/products', [ProductController::class, 'create'])->name('products.index');
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-Route::get('/quotation', [QuoteController::class, 'index'])->name('quotation');
-
-Route::post('/quotes', [QuoteController::class, 'store'])->name('quotes.store');
-
-
+        Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+        Route::get('/quotation', [QuoteController::class, 'index'])->name('quotation');
+        Route::post('/quotes', [QuoteController::class, 'store'])->name('quotes.store');
     }
 );
 

@@ -127,7 +127,9 @@
                     @include('fawtra.2-purchase_admin.debit-notices')
 
                     @break
-                        @default
+                    @case('credit-note')
+                    @include('fawtra.2-purchase_admin.credit-note')
+                 
                     @endswitch
                 @endif
             </div>

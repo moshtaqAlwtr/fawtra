@@ -72,9 +72,11 @@
 
 <div class="d-flex justify-content-between align-items-center mt-3">
     <!-- زر إنشاء إشعار دائنة -->
-    <button class="btn btn-success" onclick="location.href='credit-note.html'">
-        <i class="fas fa-plus-circle"></i> انشاء إشعار دائنة
-    </button>
+    <button class="btn btn-success" onclick="window.location.href='{{ route('credit-note') }}'">
+    <i class="fas fa-plus-circle"></i> انشاء إشعار دائنة
+</button>
+
+
 
     <!-- القائمة المنسدلة للإجراءات -->
     <div class="action-buttons d-flex align-items-center">

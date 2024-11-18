@@ -11,25 +11,25 @@ class CreditNotificationController extends Controller
     public function index()
     {
         $notifications = CreditNotification::all();
-        return view('notifications.index', compact('notifications')); // تأكد من وجود هذا العرض إذا كنت تستخدم Blade
+        return view('notifications.index', compact('notifications'));
     }
 
     // إنشاء إشعار جديد
     public function create()
     {
-        return view('notifications.create'); // تأكد من وجود هذا العرض إذا كنت تستخدم Blade
+        return view('notifications.create');
     }
 
     // حفظ الإشعار الجديد
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'client_name' => 'required|string|max:255',
-            'city' => 'nullable|string|max:255',
-            'tax_number' => 'nullable|string|max:50',
-            'amount' => 'required|numeric',
-            'notification_number' => 'nullable|string|max:50',
-            'created_by' => 'required|string|max:255',
+            'notification_number' => 'nullable|string|max:255',
+            'notification_date' => 'nullable|date',
+            'sales_responsible' => 'nullable|string|max:255',
+            'issue_date' => 'nullable|date',
+            'client' => 'nullable|string|max:255',
+            'method' => 'nullable|string|max:255',
         ]);
 
         CreditNotification::create($validatedData);
@@ -55,12 +55,12 @@ class CreditNotificationController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'client_name' => 'required|string|max:255',
-            'city' => 'nullable|string|max:255',
-            'tax_number' => 'nullable|string|max:50',
-            'amount' => 'required|numeric',
-            'notification_number' => 'nullable|string|max:50',
-            'created_by' => 'required|string|max:255',
+            'notification_number' => 'nullable|string|max:255',
+            'notification_date' => 'nullable|date',
+            'sales_responsible' => 'nullable|string|max:255',
+            'issue_date' => 'nullable|date',
+            'client' => 'nullable|string|max:255',
+            'method' => 'nullable|string|max:255',
         ]);
 
         $notification = CreditNotification::findOrFail($id);

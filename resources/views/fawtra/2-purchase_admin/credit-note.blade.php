@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فاتورة مبيعات</title>
+    <title>انشاء اشعارات دائنة</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -93,12 +93,28 @@
     </style>
 </head>
 <body>
+  <!-- عرض رسالة الأخطاء إن وجدت -->
+  @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
+    <!-- عرض رسالة النجاح إن وجدت -->
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 <div class="invoice-container">
     <div class="invoice-header">
         <h2>اضافة اشعارات دائنة </h2>
     </div>
-    <div class="container mt-3">
+
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -113,7 +129,7 @@
             </div>
         </div>
     </div>
-    <div class="container mt-5">
+    
         <div class="row">
             <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
                 <h5 class="mb-4 text-primary"><i class="bi bi-person"></i> معلومات العميل والطريقة</h5>
@@ -422,10 +438,15 @@
     
 
     <!-- الأزرار الأساسية -->
+    <form action="{{ route('store-credit-notification') }}" method="POST">
+    @csrf <!-- حماية النموذج بـ CSRF token -->
+    
+    <!-- هنا يمكن وضع الحقول والنماذج -->
+
     <div class="button-group">
         <!-- زر المعاينة -->
         <div class="btn-group">
-            <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">معاينة</button>
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">معاينة</button>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="#" onclick="previewBrowser()">معاينة على المتصفح</a>
                 <a class="dropdown-item" href="#" onclick="previewPDF()">معاينة كـ PDF</a>
@@ -433,16 +454,19 @@
         </div>
 
         <!-- زر حفظ كمسودة -->
-        <button class="btn btn-warning" onclick="saveAsDraft()">حفظ كمسودة</button>
+        <button type="submit" class="btn btn-warning">حفظ كمسودة</button>
 
         <!-- زر حفظ دون طباعة -->
         <div class="btn-group">
-            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">حفظ دون طباعة</button>
+            <button type="submit" class="btn btn-success dropdown-toggle" data-toggle="dropdown">حفظ دون طباعة</button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#" onclick="saveAndPrint()">حفظ وطباعة</a>
+            <button type="submit" class="btn btn-success">حفظ</button>
+
             </div>
         </div>
     </div>
+</form>
+
 
     <div class="footer">
         <p>شكراً لتعاملكم معنا!</p>
