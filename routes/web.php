@@ -7,6 +7,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\QuoteController;
+
 
 // تفعيل مسارات المصادقة بدون التحقق من البريد الإلكتروني
 Auth::routes(['verify' => false]);
@@ -74,10 +76,15 @@ Route::group(
 
 
         Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
+
         Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
         Route::post('/clients/store', [ClientController::class, 'storeClient'])->name('storeClient');
         Route::get('/products', [ProductController::class, 'create'])->name('products.index');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+Route::get('/quotation', [QuoteController::class, 'index'])->name('quotation');
+
+Route::post('/quotes', [QuoteController::class, 'store'])->name('quotes.store');
+
 
     }
 );

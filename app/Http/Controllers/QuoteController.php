@@ -3,38 +3,48 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quote;
+use App\Models\Client;
 use Illuminate\Http\Request;
 
 class QuoteController extends Controller
 {
+    /**
+     * عرض جميع عروض الأسعار مع بيانات العملاء.
+     */
     public function index()
     {
-        $quotes = Quote::with('quoteItems')->get();
-        return response()->json($quotes);
+        $clients = Client::all();
+        // $employees = Employee::all(); // جلب جميع العملاء
+        $quotes = Quote::with('client')->get(); // جلب جميع عروض الأسعار مع علاقاتها بالعملاء
+
+        // احصل على رقم عرض السعر التالي
+        $nextQuoteId = Quote::max('quote_id') + 1;
+
+        return view('layouts.nav-slider-route', [
+            'page' => 'quotation',
+            'clients' => $clients,
+            'quotes' => $quotes,
+            'nextQuoteId' => $nextQuoteId
+        ]);
     }
 
+    /**
+     * تخزين عرض سعر جديد.
+     */
     public function store(Request $request)
     {
-        $quote = Quote::create($request->all());
-        return response()->json($quote, 201);
-    }
+        $validatedData = $request->validate([
+            'client_id' => 'required|exists:clients,client_id',
+            'quote_date' => 'required|date',
+            'total_amount' => 'nullable|numeric',
+            'status' => 'required|in:مبدئي,مقبول,مرفوض',
+            'created_by' => 'required|exists:employees,employee_id',
+        ]);
 
-    public function show($id)
-    {
-        $quote = Quote::with('quoteItems')->findOrFail($id);
-        return response()->json($quote);
-    }
+        // تخزين البيانات
+        Quote::create($validatedData);
 
-    public function update(Request $request, $id)
-    {
-        $quote = Quote::findOrFail($id);
-        $quote->update($request->all());
-        return response()->json($quote);
-    }
-
-    public function destroy($id)
-    {
-        Quote::destroy($id);
-        return response()->json(null, 204);
+        // إعادة توجيه مع رسالة نجاح
+        return redirect()->route('quotation')->with('success', 'تم إنشاء عرض السعر بنجاح!');
     }
 }

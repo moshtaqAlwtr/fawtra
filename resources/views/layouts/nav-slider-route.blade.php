@@ -166,7 +166,7 @@
     <script src="{{ asset('assets/js/scriptt.js') }}"></script>
     <script src="{{ asset('assets/js/vendor/chart.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/demo.dashboard-projects.js') }}"></script>
-    <script src="{{ asset('Design/js/date.js') }}"></script>
+
     <script src="{{ asset('assets/js/date.js') }}"></script>
 
 
