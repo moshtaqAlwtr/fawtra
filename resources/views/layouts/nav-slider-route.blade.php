@@ -127,9 +127,21 @@
                     @include('fawtra.2-purchase_admin.debit-notices')
 
                     @break
+<<<<<<< HEAD
                     @case('credit-note')
                     @include('fawtra.2-purchase_admin.credit-note')
                  
+=======
+                    @case('employee_management')
+                    @include('fawtra.18-HR_Files.employee_management')
+
+                    @break
+                    @case('add_employee')
+                    @include('fawtra.18-HR_Files.add_employee')
+
+                    @break
+                        @default
+>>>>>>> e89c69032689ea9e82e15cc08eb509026d6bb329
                     @endswitch
                 @endif
             </div>

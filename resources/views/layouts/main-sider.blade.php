@@ -686,7 +686,7 @@
                     <ul class="side-nav-second-level">
                         <!-- إدارة الموظفين -->
                         <li class="side-nav-item">
-                            <a href="">
+                            <a href=" {{ route('employee_management') }}">
                                 <span>{{ trans('main_trans.Employee_Management') }}</span>
                             </a>
                         </li>

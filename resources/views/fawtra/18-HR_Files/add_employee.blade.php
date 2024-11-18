@@ -36,19 +36,19 @@
         margin: 0;
         font-weight: 600;
     }
-    
+
                             .gradient-background {
                                 background: linear-gradient(45deg, #e0f7fa, #ddd);
                                 padding: 10px;
                                 border-radius: 8px;
                                 color: white;
                             }
-                        
+
                             .form-check-label {
                                 font-weight: bold;
                                 margin-right: 10px;
                             }
-                        
+
                             .form-check-input {
                                 accent-color: white;
                                 transform: scale(1.2);
@@ -160,107 +160,148 @@
     }
 </style>
 <body>
-    <div class="container mt-5">
+
         <div class="card shadow-lg">
             <div class="gradient-bg">
                 <h3>معلومات عامة</h3>
             </div>
             <div class="card-body">
-             
-                
-                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-                <form class="container mt-4 p-4 border rounded bg-light">
+                <form action="{{ route('employees.store') }}" method="POST" enctype="multipart/form-data" class="needs-validation p-4 rounded shadow-lg bg-white" style="max-width: 900px; margin: auto;">
+                    @csrf
+                    <h3 class="text-center mb-4 text-primary">معلومات الموظف</h3>
+
+                    <!-- الاسم الأول والاسم الأوسط واللقب -->
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="firstName">الاسم الأول <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="firstName" required>
+                            <label for="first_name">الاسم الأول <span class="text-danger">*</span></label>
+                            <input type="text" name="first_name" class="form-control" id="first_name" placeholder="أدخل الاسم الأول" required>
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="lastName">اللقب</label>
-                            <input type="text" class="form-control" id="lastName">
+                            <label for="middle_name">الاسم الأوسط</label>
+                            <input type="text" name="middle_name" class="form-control" id="middle_name" placeholder="أدخل الاسم الأوسط">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="middleName">الاسم الأوسط</label>
-                            <input type="text" class="form-control" id="middleName">
+                            <label for="last_name">اللقب</label>
+                            <input type="text" name="last_name" class="form-control" id="last_name" placeholder="أدخل اللقب">
                         </div>
                     </div>
+
+                    <!-- رقم الهوية والجنسية والجنس -->
                     <div class="form-row">
-                        <div class="form-group col-md-8">
+                        <div class="form-group col-md-4">
+                            <label for="id_number">رقم الهوية</label>
+                            <input type="text" name="id_number" class="form-control" id="id_number" placeholder="أدخل رقم الهوية">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="nationality">الجنسية</label>
+                            <input type="text" name="nationality" class="form-control" id="nationality" placeholder="أدخل الجنسية">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="gender">الجنس</label>
+                            <select name="gender" class="form-control" id="gender">
+                                <option selected disabled>اختر الجنس</option>
+                                <option value="Male">ذكر</option>
+                                <option value="Female">أنثى</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- تاريخ التعيين والراتب -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="hire_date">تاريخ التعيين <span class="text-danger">*</span></label>
+                            <input type="date" name="hire_date" class="form-control" id="hire_date" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="salary">الراتب</label>
+                            <input type="number" name="salary" step="0.01" class="form-control" id="salary" placeholder="أدخل الراتب">
+                        </div>
+                    </div>
+
+                    <!-- البريد الإلكتروني ورقم الهاتف -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="example@email.com">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="text" name="phone" class="form-control" id="phone" placeholder="أدخل رقم الهاتف">
+                        </div>
+                    </div>
+
+                    <!-- العنوان والملاحظات -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="address">العنوان</label>
+                            <input type="text" name="address" class="form-control" id="address" placeholder="أدخل العنوان">
+                        </div>
+                        <div class="form-group col-md-6">
                             <label for="notes">الملاحظات</label>
-                            <textarea class="form-control" id="notes" rows="4"></textarea>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="employeePhoto">صورة الموظف</label>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="employeePhoto">
-                                <label class="custom-file-label" for="employeePhoto">أسقط الصورة هنا أو اختر صورة من جهازك</label>
-                            </div>
+                            <textarea name="notes" class="form-control" id="notes" rows="4" placeholder="أدخل ملاحظات"></textarea>
                         </div>
                     </div>
+
+                    <!-- صورة الموظف -->
+                    <div class="form-group">
+                        <label for="employee_photo">صورة الموظف</label>
+                        <div class="custom-file">
+                            <input type="file" name="employee_photo" class="custom-file-input" id="employee_photo">
+                            <label class="custom-file-label" for="employee_photo">اختر صورة الموظف</label>
+                        </div>
+                    </div>
+
+                    <!-- الحالة ونوع الموظف -->
                     <div class="form-row">
-                        
-                    <div class="form-group col-md-4">
-                        <label for="email">البريد الإلكتروني</label>
-                        <input type="email" class="form-control" id="email">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="employeeType">نوع الموظف</label>
-                        <select class="form-control" id="employeeType">
-                            <option>مستخدم</option>
-                        </select>
-                    </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="status">الحالة <span class="text-danger">*</span></label>
-                            <select class="form-control" id="status">
-                                <option>نشط</option>
-                            </select>
-                        </div>
-                     
-                
-                        
-                        <div class="form-group col-md-12 gradient-background d-flex justify-content-start align-items-center">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="allowAccess">
-                                <label class="form-check-label" for="allowAccess">السماح بالدخول الى النظام</label>
-                            </div>
-                            <div class="form-check form-check-inline ml-4">
-                                <input class="form-check-input" type="checkbox" id="sendData">
-                                <label class="form-check-label" for="sendData">ارسال بيانات الدخول الى بريد الموظف</label>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="language">لغة العرض <span class="text-danger">*</span></label>
-                            <select class="form-control" id="language">
-                                <option>العربية</option>
+                            <select name="status" class="form-control" id="status" required>
+                                <option selected disabled>اختر الحالة</option>
+                                <option value="Active">نشط</option>
+                                <option value="Inactive">غير نشط</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="role">الدور الوظيفي <span class="text-danger">*</span></label>
-                            <select class="form-control" id="role">
-                                <option>إختر الدور الوظيفي</option>
-                            </select>
+                            <label for="employee_type">نوع الموظف</label>
+                            <input type="text" name="employee_type" class="form-control" id="employee_type" placeholder="أدخل نوع الموظف">
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="branches">الفروع المسموح الدخول بها <span class="text-danger">*</span></label>
-                            <select class="form-control" id="branches">
-                                <option>إختر الفروع المسموح الدخول بها</option>
-                            </select>
+
+                    <!-- الإعدادات -->
+                    <div class="form-row align-items-center">
+                        <div class="form-check form-check-inline">
+                            <input name="allow_access" class="form-check-input" type="checkbox" id="allow_access">
+                            <label class="form-check-label" for="allow_access">السماح بالدخول الى النظام</label>
+                        </div>
+                        <div class="form-check form-check-inline ml-4">
+                            <input name="send_data" class="form-check-input" type="checkbox" id="send_data">
+                            <label class="form-check-label" for="send_data">إرسال بيانات الدخول عبر البريد الإلكتروني</label>
                         </div>
                     </div>
-                
+
+                    <!-- زر الإرسال -->
+                    <button type="submit" class="btn btn-primary btn-block mt-4">حفظ البيانات</button>
                 </form>
-                
-                
+
+                <div id="response-message" class="alert mt-3 d-none"></div>
+
+
             </div>
         </div>
-        <div class="card">
-            <div class="card-header">معلومات شخصية</div>
+        <div class="card shadow-lg rounded mt-4">
+            <div class="card-header bg-primary text-white font-weight-bold">
+                معلومات شخصية
+            </div>
             <div class="card-body">
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -270,7 +311,9 @@
                     <div class="form-group col-md-6">
                         <label for="type">النوع</label>
                         <select class="form-control" id="type">
-                            <option>اختر النوع</option>
+                            <option selected disabled>اختر النوع</option>
+                            <option>ذكر</option>
+                            <option>أنثى</option>
                         </select>
                     </div>
                 </div>
@@ -278,18 +321,26 @@
                     <div class="form-group col-md-6">
                         <label for="nationalityStatus">حالة المواطنة</label>
                         <select class="form-control" id="nationalityStatus">
-                            <option>من فضلك اختر</option>
+                            <option selected disabled>من فضلك اختر</option>
+                            <option>مواطن</option>
+                            <option>مقيم</option>
+                            <option>زائر</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="country">البلد <span class="text-danger">*</span></label>
                         <select class="form-control" id="country">
                             <option>المملكة العربية السعودية</option>
+                            <option>الإمارات العربية المتحدة</option>
+                            <option>مصر</option>
+                            <option>الأردن</option>
                         </select>
                     </div>
                 </div>
+                <button type="submit" class="btn btn-primary btn-block mt-3">حفظ البيانات</button>
             </div>
         </div>
+
 
         <!-- قسم معلومات تواصل -->
         <div class="card">
@@ -309,7 +360,7 @@
                     <label for="personalEmail">البريد الإلكتروني الشخصي</label>
                     <input type="email" class="form-control" id="personalEmail">
                 </div>
-                
+
             </div>
         </div>
 
@@ -431,14 +482,14 @@
                         </select>
                     </div>
                 </div>
-                
 
-                
+
+
             </div>
         </div>
         <div class="card shadow-lg">
-          
-       
+
+
                 <div class="card-header text-center bg-primary text-white">
                     الخيارات المالية
                 </div>
@@ -455,7 +506,7 @@
                                 <label class="form-check-label" for="customDate">تاريخ مالي مخصص</label>
                             </div>
                         </div>
-    
+
                         <!-- حقل الشهر واليوم -->
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -479,7 +530,7 @@
                                 </select>
                             </div>
                         </div>
-    
+
                         <!-- معلومات الحضور -->
                         <div class="section-header mt-4 mb-3">
                             <h5>معلومات الحضور</h5>
@@ -515,9 +566,9 @@
                                     <!-- إضافة الخيارات الأخرى -->
                                 </select>
                             </div>
-                    
-    
-                  
+
+
+
                     </form>
                 </div>
             </div>
@@ -541,8 +592,42 @@
                 document.getElementById("day").removeAttribute("disabled");
             }
         });
+
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#employee-form').on('submit', function (e) {
+            e.preventDefault(); // منع إعادة تحميل الصفحة
+            let formData = $(this).serialize(); // جمع البيانات من النموذج
+
+            $.ajax({
+                url: "{{ route('employees.store') }}", // رابط دالة الإضافة
+                type: "POST",
+                data: formData,
+                success: function (response) {
+                    // عرض رسالة النجاح
+                    $('#response-message')
+                        .removeClass('d-none alert-danger')
+                        .addClass('alert-success')
+                        .text(response.message);
+
+                    // إعادة تعيين النموذج
+                    $('#employee-form')[0].reset();
+                },
+                error: function () {
+                    // عرض رسالة الخطأ
+                    $('#response-message')
+                        .removeClass('d-none alert-success')
+                        .addClass('alert-danger')
+                        .text('حدث خطأ أثناء الإضافة. حاول مرة أخرى.');
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
