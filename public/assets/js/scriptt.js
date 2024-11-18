@@ -122,3 +122,25 @@ function addAdditionalFields() {
 function removeField(button) {
     button.parentElement.remove();
 }
+
+$(document).ready(function () {
+    $('#advanced-search-toggle').click(function() {
+        $('.advanced-search').slideToggle(300);
+    });
+    
+    $('.datepicker').datepicker({
+        format: "dd/mm/yyyy",
+        language: "ar",
+        todayHighlight: true,
+        autoclose: true
+    });
+});
+
+
+document.getElementById('exportBtn').addEventListener('click', function () {
+// Create a temporary link element
+const link = document.createElement('a');
+link.href = 'path/to/your/file.pdf'; // Replace with the path to your file
+link.download = 'filtered_results.pdf'; // Specify the download file name
+link.click();
+});

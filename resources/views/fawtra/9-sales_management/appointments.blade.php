@@ -1,117 +1,6 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة المواعيد</title>
-    <!-- مكتبة Bootstrap من unpkg -->
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <!-- مكتبة Font Awesome للأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Bootstrap Datepicker CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-    <style>
-        /* تنسيقات عامة */
-        .top-bar {
-            background: linear-gradient(45deg, #007bff, #0056b3);
-            padding: 10px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .filter-section {
-            margin-top: 20px;
-            padding: 15px;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        .advanced-search {
-            display: none;
-            margin-top: 15px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background: linear-gradient(135deg, #ffffff, #f1f1f1);
-        }
-        .btn-green {
-            background-color: #28a745;
-            color: white;
-        }
-        .table-section {
-            margin-top: 20px;
-        }
-        /* تحسين مظهر الجدول */
-        .table th, .table td {
-            text-align: center;
-            vertical-align: middle;
-        }
-        .table th {
-            background: linear-gradient(45deg, #007bff, #0056b3);
-            color: white;
-        }
-        .appointment-card {
-            background: linear-gradient(135deg, #fff5f5, #ffe6e6);
-            border: 1px solid #dc3545;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .appointment-details {
-            flex: 1;
-        }
-        .export-btn {
-            background: linear-gradient(90deg, #00c6ff, #0072ff); /* Example gradient */
-            border: none;
-        }
-    
-        .export-btn:hover {
-            background: linear-gradient(90deg, #0072ff, #00c6ff); /* Reverse gradient on hover */
-        }
-        .appointment-status {
-            color: #28a745;
-            font-weight: bold;
-            background-color: #d4edda;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        .appointment-actions {
-            margin-left: 10px;
-        }
-        .appointment-actions .btn {
-            background-color: transparent;
-            color: #000;
-        }
-        .appointment-meta {
-            color: #6c757d;
-        }
-        .card-icon {
-            color: #007bff;
-            margin-right: 5px;
-        }
-        .export-section {
-            background-color: #ddd;
-            color: black;
-            padding: 10px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            margin-top: 15px;
-            font-size: 14px;
-            justify-content: left;
-        }
-        .export-section i {
-            margin-left: 5px;
-        }
-    </style>
-</head>
-<body dir="rtl">
 
-<div class="container">
+
+
     <!-- الشريط العلوي -->
     <div class="top-bar">
         <div>
@@ -125,7 +14,8 @@
 
     <!-- زر إضافة موعد جديد -->
     <div class="mt-4">
-        <button class="btn btn-green mb-3" onclick="window.location.href='schedule_appointment.html'"><i class="fas fa-calendar-plus"></i> موعد جديد</button>
+    <button class="btn btn-green mb-3" onclick="window.location.href=''"><i class="fas fa-calendar-plus"></i> موعد جديد</button>
+
     </div>
 
     <!-- قسم البحث -->
@@ -236,38 +126,3 @@
     
     
 </div>
-
-<!-- مكتبة jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Bootstrap Datepicker JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-
-<!-- تهيئة التقويم وأزرار البحث المتقدم -->
-<script>
-    $(document).ready(function () {
-        $('#advanced-search-toggle').click(function() {
-            $('.advanced-search').slideToggle(300);
-        });
-        
-        $('.datepicker').datepicker({
-            format: "dd/mm/yyyy",
-            language: "ar",
-            todayHighlight: true,
-            autoclose: true
-        });
-    });
-
-</script>
-<script>
-    document.getElementById('exportBtn').addEventListener('click', function () {
-    // Create a temporary link element
-    const link = document.createElement('a');
-    link.href = 'path/to/your/file.pdf'; // Replace with the path to your file
-    link.download = 'filtered_results.pdf'; // Specify the download file name
-    link.click();
-});
-</script>
-</body>
-</html>

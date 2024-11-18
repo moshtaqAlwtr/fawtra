@@ -82,7 +82,10 @@ Route::group(
         Route::get('/credit-note', function () {
             return view('layouts.nav-slider-route', ['page' => 'credit-note']);
         })->name('credit-note');
-
+        // مسار صفحة المواعيد
+        Route::get('/appointments', function () {
+            return view('layouts.nav-slider-route', ['page' => 'appointments']);
+        })->name('appointments');
 
         // إضافة المسارات لإنشاء إشعارات دائنة
         Route::get('/create-credit-notification', [CreditNotificationController::class, 'create'])->name('create-credit-notification');
