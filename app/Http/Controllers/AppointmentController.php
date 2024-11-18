@@ -1,28 +1,85 @@
 <?php
-// في ملف App\Http\Controllers\AppointmentController.php
+
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
+    // عرض جميع المواعيد
     public function index()
     {
-        // عرض صفحة المواعيد
-        return view('schedule_appointment'); // تأكد من أن اسم الملف في مجلد `views` هو schedule_appointment.blade.php
+        $appointments = Appointment::all();
+        return view('appointments.index', compact('appointments'));
     }
 
+    // عرض نموذج إنشاء موعد جديد
     public function create()
     {
-        // عرض نموذج إضافة موعد
-        return view('create_appointment'); // تأكد من وجود صفحة أو ملف لهذه الإضافة في المجلد `views`
+        return view('appointments.create');
     }
 
+    // تخزين موعد جديد
     public function store(Request $request)
     {
-        // منطق حفظ الموعد في قاعدة البيانات (يمكنك تعديله حسب احتياجاتك)
-        // مثال:
-        // Appointment::create($request->all());
-        return redirect()->route('schedule.appointment')->with('success', 'تمت إضافة الموعد بنجاح');
+        $validatedData = $request->validate([
+            'client' => 'required|string|max:255',
+            'date' => 'required|date',
+            'time' => 'required',
+            'duration' => 'nullable|string',
+            'actions' => 'nullable|string',
+            'notes' => 'nullable|string',
+            'repeat' => 'nullable|boolean',
+            'share_with_client' => 'nullable|boolean',
+            'assign_to_employees' => 'nullable|boolean'
+        ]);
+
+        Appointment::create($validatedData);
+
+        return redirect()->route('schedule.appointment')->with('success', 'تم إضافة الموعد بنجاح.');
+    }
+
+    // عرض تفاصيل موعد معين
+    public function show($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        return view('appointments.show', compact('appointment'));
+    }
+
+    // عرض نموذج تعديل موعد
+    public function edit($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        return view('appointments.edit', compact('appointment'));
+    }
+
+    // تحديث موعد
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'client' => 'required|string|max:255',
+            'date' => 'required|date',
+            'time' => 'required',
+            'duration' => 'nullable|string',
+            'actions' => 'nullable|string',
+            'notes' => 'nullable|string',
+            'repeat' => 'nullable|boolean',
+            'share_with_client' => 'nullable|boolean',
+            'assign_to_employees' => 'nullable|boolean'
+        ]);
+
+        $appointment = Appointment::findOrFail($id);
+        $appointment->update($validatedData);
+
+        return redirect()->route('schedule.appointment')->with('success', 'تم تحديث الموعد بنجاح.');
+    }
+
+    // حذف موعد
+    public function destroy($id)
+    {
+        Appointment::destroy($id);
+
+        return redirect()->route('schedule.appointment')->with('success', 'تم حذف الموعد بنجاح.');
     }
 }
