@@ -19,7 +19,7 @@ class CreateInvoicesTable extends Migration
             $table->date('invoice_date')->nullable();
             $table->string('sales_manager', 100)->nullable();
             $table->date('issue_date')->nullable();
-   
+
             $table->timestamps();
 
             // العلاقة مع جدول clients

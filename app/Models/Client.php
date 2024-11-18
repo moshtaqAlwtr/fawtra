@@ -36,4 +36,8 @@ class Client extends Model
         'attachments',
       //  'display_language'
     ];
+    public function creditNotifications()
+    {
+        return $this->hasMany(CreditNotification::class, 'client_id');
+    }
 }

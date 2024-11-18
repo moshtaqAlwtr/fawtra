@@ -1,6 +1,4 @@
-<!DOCTYPE html> 
-<html lang="ar" dir="rtl">
-<head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,89 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../Design/css/data.css">
-    <style>
-        body {
-            font-family: 'Tahoma', sans-serif;
-            direction: rtl;
-            background-color: #f8f9fa;
-            padding: 20px;
-            text-align: right; 
-        }
-        .invoice-container {
-            max-width: 1200px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .invoice-header {
-            border-bottom: 2px solid #007bff;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            text-align: right;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #555;
-        }
-        .editor-toolbar {
-            
-            background-color: #f8f9fa;
-            padding: 5px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-        .editor-toolbar .btn {
-            padding: 5px 10px;
-        }
-        .editor-content {
-            border: 1px solid #ced4da;
-            padding: 10px;
-            min-height: 100px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-    
-        th {
-            background-color: #007bff;
-            color: white;
-            text-align: right;
-        }
-        td {
-            text-align: right;
-        }
-        .button-group {
-            margin: 20px 0;
-            text-align: center;
-        }
-        .add-item {
-            margin: 10px 0;
-            text-align: right;
-        }
-        .add-item button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .add-item button:hover {
-            background-color: #0056b3;
-        }
-        .gifts-section {
-            background: #f1f1f1;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
+
   <!-- عرض رسالة الأخطاء إن وجدت -->
   @if ($errors->any())
         <div class="alert alert-danger">
@@ -129,90 +45,106 @@
             </div>
         </div>
     </div>
-    
+    <div class = "alert alert-success">
+    <form action="{{ route('store-credit-notification') }}" method="POST" class="needs-validation">
+        @csrf <!-- حماية من CSRF -->
         <div class="row">
             <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
                 <h5 class="mb-4 text-primary"><i class="bi bi-person"></i> معلومات العميل والطريقة</h5>
                 <div class="form-group row mb-3">
                     <label class="col-sm-4 col-form-label">الطريقة</label>
                     <div class="col-sm-8">
-                        <select class="form-control">
-                            <option selected>الطباعة</option>
-                            <option>ارسل عبر البريد</option>
+                        <select name="method" class="form-control">
+                            <option value="print" selected>الطباعة</option>
+                            <option value="email">ارسل عبر البريد</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group row mb-3">
                     <label class="col-sm-4 col-form-label">العميل <span class="text-danger">*</span></label>
                     <div class="col-sm-8">
-                        <div class="input-group">
-                            <select class="form-control">
-                                <option selected>(اختر عميل)</option>
-                                <option>عميل 1</option>
-                                <option>عميل 2</option>
-                            </select>
-                            <button class="btn btn-primary"><i class="bi bi-plus-circle"></i> جديد</button>
-                        </div>
+                        <select name="client_id" class="form-control" required>
+                        <option value="" selected>(اختر عميل)</option>
+                        @foreach ($clients as $client)
+                            <option value="{{ $client->id }}">{{ $client->trade_name }}</option>
+                        @endforeach
+                    </select>
+                        @if ($errors->has('client_id'))
+                            <div class="text-danger">
+                                {{ $errors->first('client_id') }}
+                            </div>
+                        @endif
                     </div>
                 </div>
+
             </div>
             <!-- القسم الأيسر: معلومات الفاتورة -->
-         
-<div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
-    <h5 class="mb-4 text-primary"><i class="bi bi-receipt"></i> معلومات الفاتورة</h5>
-    <!-- الحقول الأساسية -->
-    <div class="form-group row mb-3">
-        <label class="col-sm-4 col-form-label">رقم اشعار دائن </label>
-        <div class="col-sm-8">
-            <input type="text" class="form-control" value="08755" readonly>
+            <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
+                <h5 class="mb-4 text-primary"><i class="bi bi-receipt"></i> معلومات الفاتورة</h5>
+                <div class="form-group row mb-3">
+                    <label class="col-sm-4 col-form-label">رقم اشعار دائن</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="notification_number" class="form-control" value="08755" readonly>
+                    </div>
+                </div>
+                <div class="form-group row mb-3">
+                    <label class="col-sm-4 col-form-label">مسؤول المبيعات</label>
+                    <div class="col-sm-8">
+                        <select name="employee_id" class="form-control" required>
+                            <option value="" selected>(اختر موظف)</option>
+                            @foreach ($employees as $employee)
+                                <option value="{{ $employee->id }}">{{ $employee->first_name }} {{ $employee->last_name }}</option>
+                            @endforeach
+                        </select>
+                             @if ($errors->has('employee_id'))
+                            <div class="text-danger">
+                                {{ $errors->first('employee_id') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            <div class="form-group row mb-3">
+                <label for="notification_date" class="col-sm-4 col-form-label">تاريخ الإشعار</label>
+                <div class="col-sm-8">
+                    <input type="date" name="notification_date" id="notification_date" class="form-control" required>
+                    @if ($errors->has('notification_date'))
+                        <div class="text-danger">
+                            {{ $errors->first('notification_date') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label for="issue_date" class="col-sm-4 col-form-label">تاريخ الإصدار</label>
+                <div class="col-sm-8">
+                    <input type="date" name="issue_date" id="issue_date" class="form-control" required>
+                    @if ($errors->has('issue_date'))
+                        <div class="text-danger">
+                            {{ $errors->first('issue_date') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+
+                <div class="d-flex justify-content-end mt-3">
+                    <button type="submit" class="btn btn-success"><i class="bi bi-check-circle"></i> حفظ</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="form-group row mb-3">
-        <label class="col-sm-4 col-form-label">تاريخ اشعار دائن</label>
-        <div class="col-sm-8">
-            <input type="text" id="deliveryStartDate" class="form-control" placeholder="" style="width: 100%;">
-        </div>
-    </div>
-    <div class="form-group row mb-3">
-        <label class="col-sm-4 col-form-label">مسؤول مبيعات</label>
-        <div class="col-sm-8">
-            <select class="form-control">
-                <option selected>لا شيء</option>
-                <option>مسؤول 1</option>
-                <option>مسؤول 2</option>
-            </select>
-        </div>
-    </div>
-    <div class="form-group row mb-3">
-        <label class="col-sm-4 col-form-label">تاريخ الإصدار</label>
-        <div class="col-sm-8">
-            <input type="text" id="deliveryStartDate" class="form-control" placeholder="" style="width: 100%;">
-        </div>
-    </div>
-    
-    
-    <!-- المنطقة التي سيتم فيها إضافة الحقول الجديدة -->
-    <div id="additional-fields-container"></div>
-    
-    <!-- زر الإضافة في الأسفل -->
-    <div class="d-flex justify-content-end mt-3">
-        <button class="btn btn-primary" onclick="addAdditionalFields()"><i class="bi bi-plus-circle"></i> إضافة</button>
-    </div>
-</div>
-            
+    </form>
+
+
             <!-- تضمين أيقونات Bootstrap -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-            
-    
+
+
             <!-- القسم الأيمن: الطريقة والعميل -->
-          
+
         </div>
     </div>
-    
+
     <!-- تضمين أيقونات Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    
-    
+
     <!-- جدول الفاتورة -->
     <table class="table table-bordered mt-4">
         <thead>
@@ -258,7 +190,7 @@
     <li class="nav-item">
         <a class="nav-link active" id="discount-tab" data-toggle="tab" href="#discount" role="tab" aria-controls="discount" aria-selected="true">الخصم والتسوية</a>
     </li>
-   
+
     <li class="nav-item">
         <a class="nav-link" id="shipping-tab" data-toggle="tab" href="#shipping" role="tab" aria-controls="shipping" aria-selected="false">بيانات الشحن</a>
     </li>
@@ -269,7 +201,7 @@
 
 <!-- محتوى التبويبات -->
 <div class="tab-content" id="myTabContent">
-    
+
     <!-- تبويب الخصم والتسوية -->
     <div class="tab-pane fade show active" id="discount" role="tabpanel" aria-labelledby="discount-tab">
         <div class="form-group row mt-3">
@@ -286,19 +218,19 @@
             </div>
         </div>
     </div>
-    
+
     <!-- تبويب الإيداع -->
-    
+
     <!-- تبويب بيانات الشحن -->
     <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
         <div class="form-group row mt-3 d-flex align-items-center">
-            
+
             <!-- بيانات الشحن -->
             <label class="col-form-label me-2">بيانات الشحن</label>
             <div class="flex-grow-1 me-3">
                 <input type="text" class="form-control" placeholder="أدخل قيمة">
             </div>
-        
+
             <!-- المستودع والقائمة المنسدلة -->
             <label for="warehouseSelect" class="col-form-label me-2 mb-0">المستودع</label>
             <div class="flex-grow-1 me-3">
@@ -307,7 +239,7 @@
                     <option>مستودع 1</option>
                 </select>
             </div>
-        
+
             <!-- مربع الاختيار وتسمية اختيار المستودع لكل بند -->
             <div class="form-check d-flex align-items-center">
                 <input type="checkbox" class="form-check-input me-2" id="mandatoryCheck">
@@ -315,9 +247,9 @@
             </div>
         </div>
     </div>
-    
-    
-    
+
+
+
     <!-- تبويب إرفاق المستندات -->
     <div class="tab-pane fade" id="documents" role="tabpanel" aria-labelledby="documents-tab">
         <!-- تبويبات فرعية داخل إرفاق المستندات -->
@@ -357,7 +289,7 @@
             <option>Document 1</option>
             <option>Document 2</option>
         </select>
-        
+
         <!-- زر "أرفق" -->
         <button class="btn btn-success me-2" style="margin-left: 10px;">
             أرفق
@@ -398,8 +330,8 @@
 
                     </div>
                 </div>
-                
-        
+
+
             </div>
         </div>
     </div>
@@ -430,17 +362,17 @@
     <div class="editor-content mt-2" contenteditable="true">
         <!-- يمكن للمستخدم الكتابة هنا -->
     </div>
-    
 
-    
+
+
 
     <!-- إعدادات الحقول المخصصة -->
-    
+
 
     <!-- الأزرار الأساسية -->
     <form action="{{ route('store-credit-notification') }}" method="POST">
     @csrf <!-- حماية النموذج بـ CSRF token -->
-    
+
     <!-- هنا يمكن وضع الحقول والنماذج -->
 
     <div class="button-group">
@@ -474,82 +406,4 @@
     </div>
 </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="../js/date.js"></script>
-
-</body>
-<script>
     // دالة لإضافة بند جديد
-    function addItem() {
-        const tableBody = document.getElementById('invoice-body');
-        const rowCount = tableBody.rows.length;
-        const row = tableBody.insertRow(rowCount);
-
-        row.innerHTML = `
-            <td>${rowCount + 1}</td>
-            <td><input type="text" class="form-control" placeholder="الوصف"></td>
-            <td><input type="number" class="form-control" placeholder="سعر الوحدة" value="0" oninput="calculateTotal(this)"></td>
-            <td><input type="number" class="form-control" placeholder="الكمية" value="1" oninput="calculateTotal(this)"></td>
-            <td><input type="number" class="form-control" placeholder="الخصم" value="0" oninput="calculateTotal(this)"></td>
-            <td><input type="number" class="form-control" placeholder="الضريبة 1" value="0" oninput="calculateTotal(this)"></td>
-            <td><input type="number" class="form-control" placeholder="الضريبة 2" value="0" oninput="calculateTotal(this)"></td>
-            <td><span class="total">0.00</span></td>
-        `;
-    }
-
-    // دالة لحساب المجموع
-    function calculateTotal(input) {
-        const row = input.closest('tr');
-        const unitPrice = parseFloat(row.cells[2].querySelector('input').value) || 0;
-        const quantity = parseFloat(row.cells[3].querySelector('input').value) || 0;
-        const discount = parseFloat(row.cells[4].querySelector('input').value) || 0;
-        const tax1 = parseFloat(row.cells[5].querySelector('input').value) || 0;
-        const tax2 = parseFloat(row.cells[6].querySelector('input').value) || 0;
-
-        const total = (unitPrice * quantity) - discount;
-        const totalWithTax = total + (total * tax1 / 100) + (total * tax2 / 100);
-
-        row.cells[7].querySelector('.total').textContent = totalWithTax.toFixed(2);
-        updateGrandTotal();
-    }
-
-    // دالة لحساب الإجمالي الكلي
-    function updateGrandTotal() {
-        let grandTotal = 0;
-        document.querySelectorAll('.total').forEach(total => {
-            grandTotal += parseFloat(total.textContent) || 0;
-        });
-        document.getElementById('grand-total').textContent = grandTotal.toFixed(2);
-    }
-    
-</script>
-
-<script>
-    function addAdditionalFields() {
-        const container = document.getElementById('additional-fields-container');
-
-        // إنشاء الحقول الجديدة
-        const newFields = document.createElement('div');
-        newFields.classList.add('d-flex', 'align-items-center', 'mt-3');
-
-        newFields.innerHTML = `
-            <button class="btn btn-danger me-2" onclick="removeField(this)"><i class="bi bi-x"></i></button>
-            <input type="text" class="form-control me-2" placeholder="بيانات إضافية">
-            <input type="text" class="form-control" placeholder="عنوان إضافي">
-        `;
-
-        // إضافة الحقول الجديدة إلى الحاوية
-        container.appendChild(newFields);
-    }
-
-    // دالة لحذف الحقول عند الضغط على زر الحذف
-    function removeField(button) {
-        button.parentElement.remove();
-    }
-</script>
-</body>
-</html>

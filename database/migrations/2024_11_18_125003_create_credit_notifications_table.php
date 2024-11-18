@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -15,10 +16,16 @@ return new class extends Migration
             $table->id();
             $table->string('notification_number')->nullable(); // رقم إشعار دائن
             $table->date('notification_date')->nullable(); // تاريخ إشعار دائن
-            $table->string('sales_responsible')->nullable(); // مسؤول مبيعات
             $table->date('issue_date')->nullable(); // تاريخ الإصدار
-            $table->string('client')->nullable(); // العميل
+            $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('employee_id');
+            $table->string('sales_responsible')->nullable(); // مسؤول مبيعات
             $table->string('method')->nullable(); // الطريقة
+
+            // مفتاح خارجي للعملاء
+            $table->foreign('client_id')->references('client_id')->on('clients')->onDelete('cascade');
+
+    $table->foreign('employee_id')->references('employee_id')->on('employees')->onDelete('cascade');
             $table->timestamps();
         });
     }

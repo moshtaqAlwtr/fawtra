@@ -33,12 +33,24 @@ class QuoteController extends Controller
      */
     public function store(Request $request)
     {
+
+        if ($request->has('quote_date')) {
+            try {
+                $request->merge([
+                    'quote_date' => \Carbon\Carbon::createFromFormat('d/m/Y', $request->quote_date)->format('Y-m-d'),
+                ]);
+            } catch (\Exception $e) {
+                return back()->withErrors(['quote_date' => 'التاريخ المدخل غير صحيح.']);
+            }
+        }
+
         $validatedData = $request->validate([
             'client_id' => 'required|exists:clients,client_id',
             'quote_date' => 'required|date',
             'total_amount' => 'nullable|numeric',
             'status' => 'required|in:مبدئي,مقبول,مرفوض',
             'created_by' => 'required|exists:employees,employee_id',
+
         ]);
 
         // تخزين البيانات

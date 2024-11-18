@@ -94,7 +94,7 @@
 </head>
 <body>
 
-<div class="invoice-container">
+
     <div class="invoice-header">
         <h2> اضافة عرض سعر</h2>
     </div>
@@ -122,8 +122,8 @@
         </ul>
     </div>
 @endif
+<div class = "alert alert-success">
 
-    <div class="container">
         <form method="POST" action="{{ route('quotes.store') }}">
             @csrf <!-- الحماية من CSRF -->
             <div class="row">
@@ -163,7 +163,7 @@
                     <div class="form-group row mb-3">
                         <label class="col-sm-4 col-form-label">تاريخ عرض السعر</label>
                         <div class="col-sm-8">
-                            <input type="date" name="quote_date" id="deliveryStartDate" class="form-control" style="width: 100%;">
+                            <input type="date" id="deliveryStartDate" name="quote_date" class="form-control" required>
                         </div>
                     </div>
 
@@ -181,14 +181,14 @@
 
                     <div class="form-group">
                         <label for="status">حالة العرض</label>
-                        <select name="status" id="status" class="form-control" required>
+                        <select name="status" id="stat" class="form-control" required>
                             <option value="">اختر الحالة</option>
                             <option value="مبدئي">مبدئي</option>
                             <option value="مقبول">مقبول</option>
                             <option value="مرفوض">مرفوض</option>
                         </select>
-
                     </div>
+
 
                     <!-- المنطقة التي سيتم فيها إضافة الحقول الجديدة -->
                     <div id="additional-fields-container"></div>
@@ -196,21 +196,12 @@
                     <div class="d-flex justify-content-end mt-3">
                         <button type="button" class="btn btn-primary" onclick="addAdditionalFields()"><i class="bi bi-plus-circle"></i> إضافة</button>
                     </div>
-                    <div class="d-flex justify-content-end mt-3">
 
-                        <button type="submit" class="btn btn-success"><i class="bi bi-check-circle"></i> حفظ</button>
-
-
-                    </div>
                 </div>
             </div>
-        </form>
-        @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-    </div>
+
+
+
 
 
             <!-- تضمين أيقونات Bootstrap -->
@@ -408,13 +399,20 @@
 
         <!-- زر حفظ دون طباعة -->
         <div class="btn-group">
-            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">حفظ دون طباعة</button>
+
+            <div class="d-flex justify-content-end mt-3">
+
+                <button type="submit" class="btn btn-success"><i class="bi bi-check-circle"></i> حفظ</button>
+
+
+            </div>
+
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="#" onclick="saveAndPrint()">حفظ وطباعة</a>
             </div>
         </div>
     </div>
-
+</form>
     <div class="footer">
         <p>شكراً لتعاملكم معنا!</p>
         <p>شركتنا - جميع الحقوق محفوظة © 2024</p>

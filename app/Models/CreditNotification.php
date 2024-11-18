@@ -9,16 +9,27 @@ class CreditNotification extends Model
 {
     use HasFactory;
 
-    // اسم الجدول في قاعدة البيانات
     protected $table = 'credit_notifications';
 
-    // الحقول المسموح بملئها (fillable)
     protected $fillable = [
-        'client_name',
-        'city',
-        'tax_number',
-        'amount',
         'notification_number',
-        'created_by'
+        'notification_date',
+        'sales_responsible',
+        'issue_date',
+        'client_id',
+        'employee_id', // تأكد من إضافة هذا الحقل في الميجريشن
+        'method',
     ];
+
+    // العلاقة مع جدول العملاء
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'client_id');
+    }
+
+    // العلاقة مع جدول الموظفين
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
+    }
 }

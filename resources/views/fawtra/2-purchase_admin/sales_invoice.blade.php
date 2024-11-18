@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فاتورة مبيعات</title> 
+    <title>فاتورة مبيعات</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -15,7 +15,7 @@
             <!-- تضمين مكتبة Font Awesome لأيقونة البحث -->
 
 
-  
+
     <style>
         body {
             font-family: 'Tahoma', sans-serif;
@@ -108,19 +108,19 @@
         </ul>
     </div>
 @endif
-<div class="invoice-container">
+<div class = "alert alert-success">
     <form action="{{ route('invoices.store') }}" method="POST">
         @csrf
-        <div class="container mt-5">
+
             <div class="row">
                 <!-- معلومات العميل والطريقة -->
                 <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
                     <h5 class="mb-4 text-primary"><i class="bi bi-person"></i> {{ __('sales_invoice.client_info') }}</h5>
                     <div class="form-group row mb-3">
-                        <label class="col-sm-4 col-form-label">{{ __('sales_invoice.method') }}</label> 
+                        <label class="col-sm-4 col-form-label">{{ __('sales_invoice.method') }}</label>
                         <div class="col-sm-8">
                             <select name="payment_method" class="form-control">
-                                <option value="print">{{ __('sales_invoice.print') }}</option> 
+                                <option value="print">{{ __('sales_invoice.print') }}</option>
                                 <option value="email">{{ __('sales_invoice.email') }}</option>
                             </select>
                         </div>
@@ -142,7 +142,7 @@
                 <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
                     <h5 class="mb-4 text-primary"><i class="bi bi-receipt"></i> {{ __('sales_invoice.invoice_info') }}</h5>
                     <div class="form-group row mb-3">
-                        <label class="col-sm-4 col-form-label">{{ __('sales_invoice.invoice_id') }}</label> 
+                        <label class="col-sm-4 col-form-label">{{ __('sales_invoice.invoice_id') }}</label>
                         <div class="col-sm-8">
                             <input type="text" name="invoice_id" class="form-control" value="{{ $nextInvoiceId ?? '' }}" readonly>
                         </div>
@@ -202,24 +202,13 @@
         </thead>
         <tbody id="invoice-body">
             <tr>
-                <td>1</td>
-                <td><input type="text" class="form-control" placeholder="{{ __('sales_invoice.description') }}"></td>
-                <td><input type="number" class="form-control" placeholder="{{ __('sales_invoice.unit_price') }}" value="0" oninput="calculateTotal(this)"></td>
-                <td><input type="number" class="form-control" placeholder="{{ __('sales_invoice.quantity') }}" value="1" oninput="calculateTotal(this)"></td>
-                <td>
-                    <div class="input-group">
-                        <input type="number" class="form-control" placeholder="{{ __('sales_invoice.discount') }}" value="0" oninput="calculateTotal(this)">
-                        <div class="input-group-append">
-                            <select class="custom-select">
-                                <option value="%">%</option>
-                                <option value="$">$</option>
-                            </select>
-                        </div>
-                    </div>
-                </td>
-                <td><input type="number" class="form-control" placeholder="{{ __('sales_invoice.tax1') }}" value="0" oninput="calculateTotal(this)"></td>
-                <td><input type="number" class="form-control" placeholder="{{ __('sales_invoice.tax2') }}" value="0" oninput="calculateTotal(this)"></td>
-                <td><span class="total">0.00</span></td>
+                <td><input type="text" name="items[0][description]" class="form-control" placeholder="الوصف"></td>
+                <td><input type="number" name="items[0][unit_price]" class="form-control" placeholder="سعر الوحدة" value="0"></td>
+                <td><input type="number" name="items[0][quantity]" class="form-control" placeholder="الكمية" value="1"></td>
+                <td><input type="number" name="items[0][discount]" class="form-control" placeholder="الخصم" value="0"></td>
+                <td><input type="number" name="items[0][tax1]" class="form-control" placeholder="الضريبة 1" value="0"></td>
+                <td><input type="number" name="items[0][tax2]" class="form-control" placeholder="الضريبة 2" value="0"></td>
+                <td><input type="number" name="items[0][total]" class="form-control" placeholder="الإجمالي" value="0"></td>
             </tr>
         </tbody>
         <tfoot>

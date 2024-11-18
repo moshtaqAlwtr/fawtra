@@ -23,35 +23,28 @@ class EmployeeController extends Controller
      * إنشاء موظف جديد
      */
     public function store(Request $request)
-{
-    $validatedData = $request->validate([
-        'first_name' => 'required|string|max:100',
-        'last_name' => 'required|string|max:100',
-        'position' => 'nullable|string|max:100',
-        'department' => 'nullable|string|max:100',
-        'hire_date' => 'required|date',
-        'salary' => 'nullable|numeric|min:0',
-        'contact_info' => 'nullable|string|max:255',
-        'status' => 'nullable|in:Active,Inactive',
-        'id_number' => 'nullable|string|max:20|unique:employees,id_number',
-        'gender' => 'nullable|in:Male,Female',
-        'nationality' => 'nullable|string|max:100',
-        'address' => 'nullable|string|max:255',
-        'email' => 'nullable|email|max:100|unique:employees,email',
-        'phone' => 'nullable|string|max:20',
-        'notes' => 'nullable|string',
-        // 'user_id' => 'required|integer|exists:users,id',
-    ]);
+    {
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:100',
+            'last_name' => 'required|string|max:100',
+            'hire_date' => 'required|date',
+            'salary' => 'nullable|numeric|min:0',
+            'id_number' => 'nullable|string|max:20|unique:employees,id_number',
+            'gender' => 'nullable|in:Male,Female',
+            'nationality' => 'nullable|string|max:100',
+            'address' => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:100|unique:employees,email',
+            'phone' => 'nullable|string|max:20',
+            'notes' => 'nullable|string',
+        ]);
 
-    // تخزين البيانات
-    $employee = Employee::create($validatedData);
+        // تخزين البيانات
+        Employee::create($validatedData);
 
-    // إرجاع رسالة نجاح
-    return response()->json([
-        'message' => 'تم إضافة الموظف بنجاح.',
-        'employee' => $employee,
-    ]);
-}
+        // إعادة المستخدم لنفس الصفحة مع رسالة نجاح
+        return redirect()->back()->with('success', 'تم إضافة الموظف بنجاح.');
+    }
+
 
     /**
      * عرض بيانات موظف معين
