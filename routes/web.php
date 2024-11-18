@@ -64,6 +64,11 @@ Route::group(
         Route::get('/quotation-management', function () {
             return view('layouts.nav-slider-route', ['page' => 'quotation-management']);
         })->name('quotation-management');
+        Route::get('/debit-notices', function () {
+            return view('layouts.nav-slider-route', ['page' => 'debit-notices']);
+        })->name('debit-notices');
+
+
 
 
 

@@ -123,6 +123,10 @@
                     @include('fawtra.2-purchase_admin.quotation-management')
 
                     @break
+                    @case('debit-notices')
+                    @include('fawtra.2-purchase_admin.debit-notices')
+
+                    @break
                         @default
                     @endswitch
                 @endif

@@ -49,7 +49,7 @@
                         <a href="{{route('quotation')}}">{{ trans('main_trans.Create_quote') }}</a>
                     </li>
                     <li>
-                        <a href="">{{ trans('main_trans.Credit_notes') }}</a>
+                        <a href="{{route('debit-notices')}}">{{ trans('main_trans.Credit_notes') }}</a>
 
                     </li>
                     <li>

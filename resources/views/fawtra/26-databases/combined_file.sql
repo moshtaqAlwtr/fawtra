@@ -457,3 +457,16 @@ CREATE TABLE IF NOT EXISTS quote_items (
   FOREIGN KEY (quote_id) REFERENCES quotes(quote_id) ON DELETE CASCADE,
   FOREIGN KEY (product_id) REFERENCES products(product_id) ON DELETE CASCADE
 );
+--جدول أشعارات مدينة
+
+CREATE TABLE credit_notifications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    client_name VARCHAR(255) NOT NULL, -- اسم العميل
+    city VARCHAR(255), -- المدينة
+    tax_number VARCHAR(50), -- الرقم الضريبي
+    amount DECIMAL(10, 2) NOT NULL, -- المبلغ
+    notification_number VARCHAR(50), -- رقم الإشعار
+    created_by VARCHAR(255), -- اسم المستخدم الذي أنشأ الإشعار
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- تاريخ ووقت الإنشاء
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- تاريخ ووقت التحديث
+);
