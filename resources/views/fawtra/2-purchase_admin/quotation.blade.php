@@ -122,7 +122,8 @@
         </ul>
     </div>
 @endif
-    <div class="container mt-5">
+
+    <div class="container">
         <form method="POST" action="{{ route('quotes.store') }}">
             @csrf <!-- الحماية من CSRF -->
             <div class="row">
@@ -166,24 +167,28 @@
                         </div>
                     </div>
 
-                    {{-- <div class="form-group">
-        <label for="created_by">مسؤول المبيعات</label>
-        <select name="created_by" id="created_by" class="form-control" required>
-            <option value="">اختر مسؤول المبيعات</option>
-            @foreach ($employees as $employee)
-                <option value="{{ $employee->employee_id }}">{{ $employee->name }}</option>
-            @endforeach
-        </select>
-    </div> --}}
-    <div class="form-group">
-        <label for="status">حالة العرض</label>
-        <select name="status" id="status" class="form-control" required>
-            <option value="">اختر الحالة</option>
-            <option value="مبدئي">مبدئي</option>
-            <option value="مقبول">مقبول</option>
-            <option value="مرفوض">مرفوض</option>
-        </select>
-    </div>
+                    <div class="form-group">
+                        <label for="created_by">مسؤول المبيعات</label>
+                        <select name="created_by" id="created_by" class="form-control" required>
+                            <option value="">اختر مسؤول المبيعات</option>
+                            @foreach ($employees as $employee)
+                                <option value="{{ $employee->employee_id }}">
+                                    {{ $employee->first_name }} {{ $employee->last_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">حالة العرض</label>
+                        <select name="status" id="status" class="form-control" required>
+                            <option value="">اختر الحالة</option>
+                            <option value="مبدئي">مبدئي</option>
+                            <option value="مقبول">مقبول</option>
+                            <option value="مرفوض">مرفوض</option>
+                        </select>
+
+                    </div>
 
                     <!-- المنطقة التي سيتم فيها إضافة الحقول الجديدة -->
                     <div id="additional-fields-container"></div>
@@ -197,12 +202,16 @@
                 </div>
             </div>
         </form>
-
+        @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     </div>
 
 
             <!-- تضمين أيقونات Bootstrap -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
 
 
             <!-- القسم الأيمن: الطريقة والعميل -->
@@ -211,7 +220,7 @@
     </div>
 
     <!-- تضمين أيقونات Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
 
 
     <!-- جدول الفاتورة -->

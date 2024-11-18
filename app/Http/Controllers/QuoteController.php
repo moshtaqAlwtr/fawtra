@@ -4,30 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Quote;
 use App\Models\Client;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class QuoteController extends Controller
 {
     /**
      * عرض جميع عروض الأسعار مع بيانات العملاء.
-     */
-    public function index()
-    {
-        $clients = Client::all();
-        // $employees = Employee::all(); // جلب جميع العملاء
-        $quotes = Quote::with('client')->get(); // جلب جميع عروض الأسعار مع علاقاتها بالعملاء
+     */public function index()
+{
+    $clients = Client::all();
+    $employees = Employee::all(); // جلب جميع الموظفين
+    $quotes = Quote::with('client')->get(); // جلب جميع عروض الأسعار مع العملاء
 
-        // احصل على رقم عرض السعر التالي
-        $nextQuoteId = Quote::max('quote_id') + 1;
+    // احصل على رقم عرض السعر التالي
+    $nextQuoteId = Quote::max('quote_id') + 1;
 
-        return view('layouts.nav-slider-route', [
-            'page' => 'quotation',
-            'clients' => $clients,
-            'quotes' => $quotes,
-            'nextQuoteId' => $nextQuoteId
-        ]);
-    }
-
+    return view('layouts.nav-slider-route', [
+        'page' => 'quotation',
+        'clients' => $clients,
+        'employees' => $employees,
+        'quotes' => $quotes,
+        'nextQuoteId' => $nextQuoteId
+    ]);
+}
     /**
      * تخزين عرض سعر جديد.
      */

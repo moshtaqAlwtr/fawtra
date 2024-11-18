@@ -25,6 +25,7 @@ class CreateEmployeesTable extends Migration
             $table->string('phone', 20)->nullable(); // Phone number
             $table->enum('status', ['Active', 'Inactive'])->default('Active'); // Employment status
             $table->text('notes')->nullable(); // Additional notes
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps(); // Created and updated timestamps
         });
     }

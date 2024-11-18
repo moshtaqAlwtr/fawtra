@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Employee
- * 
+ *
  * @property int $employee_id
  * @property string $first_name
  * @property string $last_name
@@ -23,7 +23,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $contact_info
  * @property string|null $status
  * @property int $user_id
- * 
+ * @property string|null $id_number
+ * @property string|null $gender
+ * @property string|null $nationality
+ * @property string|null $address
+ * @property string|null $email
+ * @property string|null $phone
+ * @property string|null $notes
+ *
  * @property Collection|BranchManagement[] $branch_managements
  * @property Collection|Branch[] $branches
  *
@@ -38,7 +45,7 @@ class Employee extends Model
 	protected $casts = [
 		'hire_date' => 'datetime',
 		'salary' => 'float',
-		'user_id' => 'int'
+		// 'user_id' => 'int'
 	];
 
 	protected $fillable = [
@@ -50,7 +57,14 @@ class Employee extends Model
 		'salary',
 		'contact_info',
 		'status',
-		'user_id'
+		// 'user_id',
+		'id_number',       // رقم الهوية
+		'gender',          // الجنس
+		'nationality',     // الجنسية
+		'address',         // العنوان
+		'email',           // البريد الإلكتروني
+		'phone',           // رقم الهاتف
+		'notes'            // ملاحظات
 	];
 
 	public function branch_managements()

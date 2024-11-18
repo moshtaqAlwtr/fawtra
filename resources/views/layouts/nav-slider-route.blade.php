@@ -127,6 +127,14 @@
                     @include('fawtra.2-purchase_admin.debit-notices')
 
                     @break
+                    @case('employee_management')
+                    @include('fawtra.18-HR_Files.employee_management')
+
+                    @break
+                    @case('add_employee')
+                    @include('fawtra.18-HR_Files.add_employee')
+
+                    @break
                         @default
                     @endswitch
                 @endif

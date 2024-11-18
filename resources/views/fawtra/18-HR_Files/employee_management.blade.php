@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../Design/css/data.css">
     <style>
@@ -149,7 +149,7 @@
     </style>
 </head>
 <body class="bg-light text-right">
-    <div class="container my-4">
+
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div class="dropdown">
                 <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -157,7 +157,7 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="add_user_employ.html">مستخدم</a></li>
-                    <li><a class="dropdown-item" href="add_employee.html">موظف</a></li>
+                    <li><a class="dropdown-item" href="{{ route('add_employee') }}">موظف</a></li>
                 </ul>
             </div>
             <div class="header-actions">
@@ -177,12 +177,12 @@
         </div>
 
         <!-- نموذج البحث والتصفية -->
-      
+
 
         <!-- نموذج البحث والتصفية -->
         <form class="card p-4 shadow-sm border-0 mb-4" id="fieldSection">
-     
-            
+
+
             <!-- حقول البحث الأساسية -->
             <div class="row mb-4">
                 <div class="col-md-3">
@@ -206,7 +206,7 @@
                     </select>
                 </div>
             </div>
-        
+
             <!-- قسم الحقول المتقدمة -->
             <div id="advancedFields" class="hidden">
                 <h6 class="text-muted mb-3">الحقول المتقدمة</h6>
@@ -232,7 +232,7 @@
                         </select>
                     </div>
                 </div>
-        
+
                 <div class="row">
                     <div class="col-md-3">
                         <select class="form-select bg-light border-0 shadow-sm">
@@ -262,22 +262,22 @@
                     </div>
                 </div>
             </div>
-        
+
             <!-- زر البحث -->
             <div class="row mt-4">
                 <div class="col-md-3 mx-auto">
                     <button type="submit" class="btn btn-primary btn-md w-100 shadow-sm rounded-pill bg-gradient text-white">بحث</button>
                 </div>
             </div>
-            
+
         </form>
-        
-        
+
+
 
         <!-- قسم الجدول -->
-    
- 
-        
+
+
+
         <div class="table-responsive">
             <table class="table table-hover align-middle shadow-lg rounded">
                 <thead class="bg-primary text-white bg-gradient">
@@ -342,13 +342,13 @@
                 </tbody>
             </table>
         </div>
-        
-        
 
-        
-        
+
+
+
+
     </div>
-  
+
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
@@ -380,7 +380,7 @@
                 toggleVisibilityButton.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء';
             }
         }
-        
+
     </script>
 </body>
 </html>

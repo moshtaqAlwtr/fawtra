@@ -8,6 +8,8 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\EmployeeController;
+
 
 
 // تفعيل مسارات المصادقة بدون التحقق من البريد الإلكتروني
@@ -69,21 +71,25 @@ Route::group(
         Route::get('/debit-notices', function () {
             return view('layouts.nav-slider-route', ['page' => 'debit-notices']);
         })->name('debit-notices');
+        Route::get('/employee_management', function () {
+            return view('layouts.nav-slider-route', ['page' => 'employee_management']);
+        })->name('employee_management');
 
-
-
-
-
-
+        Route::get('/add_employee', function () {
+            return view('layouts.nav-slider-route', ['page' => 'add_employee']);
+        })->name('add_employee');
         Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
-
         Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
         Route::post('/clients/store', [ClientController::class, 'storeClient'])->name('storeClient');
         Route::get('/products', [ProductController::class, 'create'])->name('products.index');
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 Route::get('/quotation', [QuoteController::class, 'index'])->name('quotation');
-
+Route::get('/employees', [EmployeeController::class, 'index'])->name('employees');
 Route::post('/quotes', [QuoteController::class, 'store'])->name('quotes.store');
+
+Route::post('/employees/store', [EmployeeController::class, 'store'])->name('employees.store');
+// Route::get('/employee_management', [EmployeeController::class, 'index'])->name('employee_management');
+
 
 
     }
