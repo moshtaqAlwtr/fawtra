@@ -125,7 +125,8 @@
 
     <!-- زر إضافة موعد جديد -->
     <div class="mt-4">
-        <button class="btn btn-green mb-3" onclick="window.location.href='schedule_appointment.html'"><i class="fas fa-calendar-plus"></i> موعد جديد</button>
+    <button class="btn btn-green mb-3" onclick="window.location.href='{{ route('schedule.appointment') }}'"><i class="fas fa-calendar-plus"></i> موعد جديد</button>
+
     </div>
 
     <!-- قسم البحث -->
