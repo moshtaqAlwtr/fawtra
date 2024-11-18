@@ -59,15 +59,17 @@
 </head>
 <body>
 
-<div class="container">
+
+
+
     <!-- Header -->
     <div class="header-bar">
         <h4>إدارة الإشعارات الدائنة</h4>
     </div>
-    
+
 
     <!-- Header Buttons -->
-    
+
 <div class="d-flex justify-content-between align-items-center mt-3">
     <!-- زر إنشاء إشعار دائنة -->
     <button class="btn btn-success" onclick="location.href='credit-note.html'">
@@ -147,7 +149,7 @@
                         <input type="text" class="form-control" placeholder="أدخل قيمة">
                     </div>
                 </div>
-    
+
                 <!-- الصف الثاني -->
                 <div class="form-row mb-3">
                     <div class="form-group col-md-3">
@@ -181,7 +183,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <!-- الصف الثالث -->
                 <div class="form-row mb-3">
                     <div class="form-group col-md-3">
@@ -215,7 +217,7 @@
                         </div>
                     </div>
                 </div>
-    
+
                 <!-- الصف الرابع -->
                 <div class="form-row mb-3">
                     <div class="form-group col-md-3">
@@ -248,7 +250,7 @@
                         </select>
                     </div>
                 </div>
-    
+
                 <!-- الصف الأخير -->
                 <div class="form-row">
                     <div class="form-group col-md-3">
@@ -259,7 +261,7 @@
             </div>
         </form>
     </div>
-    
+
 
     <!-- Main Action Buttons -->
     <div class="d-flex mt-3">
@@ -271,7 +273,7 @@
     </div>
 
 
-  
+
     <div class="row">
         <!-- Repeat this card for each item -->
         <div class="col-12 mb-3">
@@ -312,9 +314,8 @@
         </div>
     </div>
 
-</div>
 
-    </div>
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
