@@ -20,7 +20,7 @@
                 <!-- Language Selection -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-globe"></i> Language
+                        <i class="fas fa-globe"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">
                         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
