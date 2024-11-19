@@ -1,49 +1,79 @@
-
+/* Reset and Base Styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
     margin: 0;
     padding: 20px;
     direction: rtl;
+    text-align: right;
 }
+
+/* Container and Box Styling */
 .container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-.box {
+.box, .form-section, .content-box, .table-card, .bottom-section {
     background-color: #fff;
     padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: calc(46% - 5px);
-    min-height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    display: flex;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    flex: 1;
+    min-width: 280px; /* لضمان ظهور العناصر بشكل مناسب */
 }
-h2 {
+.box {
+    flex: 1 1 calc(50% - 20px);
+}
+
+/* Headings and Buttons Styling */
+h2, .form-section h6, .toolbar h5 {
     font-size: 18px;
     margin-bottom: 10px;
+    color: #2d3748;
 }
-.filter-box {
+.btn, .btn-gradient, .btn-custom, .btn-add {
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn-gradient, .btn-custom, .btn-add {
+    background: linear-gradient(to right, #64b5f6, #42a5f5);
+    color: #fff;
+    font-weight: bold;
+}
+.btn-gradient:hover, .btn-custom:hover, .btn-add:hover {
+    background: linear-gradient(to right, #42a5f5, #64b5f6);
+}
+
+/* Filter, Search, and Toolbar Sections */
+.filter-box, .search-box, .toolbar {
     display: flex;
     gap: 10px;
+    align-items: center;
+    padding: 15px;
+    background: #eef1f7;
+    border-radius: 5px;
     margin-bottom: 10px;
-    align-items: center;
 }
-.filter-box select {
-    padding: 5px;
+.toolbar {
+    justify-content: space-between;
+    background-color: #e3f2fd;
+    margin-bottom: 1.5em;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
 }
-.attendance-summary, .salary-summary, .rules-summary {
+.toolbar .toolbar-actions {
     display: flex;
-    gap: 10px;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 10px;
+    gap: 15px;
 }
+
+/* Circle Styling */
 .circle {
     width: 80px;
     height: 80px;
@@ -53,846 +83,116 @@ h2 {
     align-items: center;
     justify-content: center;
     font-size: 16px;
-    position: relative;
     margin: 0 auto;
-    flex-direction: column;
-}
-.circle span {
-    font-size: 14px;
-    margin-top: 5px;
 }
 .circle-1 { border-color: #4caf50; }
 .circle-2 { border-color: #f44336; }
 .circle-3 { border-color: #9c27b0; }
 .circle-4 { border-color: #ff9800; }
-.salary-summary-box, .contract-summary-box {
-    flex: 1;
-    text-align: center;
-    font-size: 16px;
-}
-.salary-summary-box p, .contract-summary-box p {
-    margin: 5px 0;
-}
-.rules-summary div {
-    flex: 1;
-    text-align: center;
-    font-size: 16px;
-}
-.pending-requests {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 16px;
-    color: #888;
-}
-.link {
-    color: #007bff;
-    text-decoration: none;
-}
-.btn-add {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    align-self: flex-end;
-}
 
- .main-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-}
-.content-box {
-    width: 100%;
-    max-width: 900px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.top-bar {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    border-radius: 8px 8px 0 0;
-}
-
-.filter-section, .tab-section, .invoice-card, .sort-section {
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-.invoice-card {
-    padding: 20px;
-    margin-bottom: 10px;
-}
-.badge-status {
-    font-size: 0.8rem;
-    padding: 5px 8px;
-    border-radius: 5px;
-    margin-left: 5px;
-}
-.flatpickr-footer {
-    text-align: center;
-    padding: 10px;
-}
-.btn-clear, .btn-today {
-    border: none;
-    padding: 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #fff;
-    border-radius: 4px;
-}
-.btn-clear { background-color: #dc3545; margin-right: 10px; }
-.btn-today { background-color: #0d6efd; }
-.badge-status.paid { background-color: #28a745; color: #fff; }
-.badge-status.pending { background-color: #ffc107; color: #212529; }
-.badge-status.unpaid { background-color: #dc3545; color: #fff; }
-.pagination-custom {
-    justify-content: center;
-}
-.dropdown-menu {
-    min-width: 150px;
-}
-.page-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
+/* Navbar Styling */
 .navbar {
-    background: linear-gradient(180deg, #ffffff, #f0f0f0) !important; /* تدرج لوني من الأبيض إلى الرمادي الفاتح */
+    background: linear-gradient(180deg, #ffffff, #e6e6e6);
     padding: 1rem;
-    border-bottom: 2px solid #e0e0e0; /* إضافة حدود سفلية */
+    border-bottom: 1px solid #dcdcdc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
-.search-box .form-control {
-    background-color: #f9f9f9; /* لون خلفية حقل البحث */
-    color: #333333;
-    border: none;
-    padding-right: 35px;
-}.admin-header {
-    background: linear-gradient(180deg, #f9f9fc, #ffffff);
-    border-bottom: 1px solid #e0e0e0;
-    padding: 1rem 1.5rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.search-box {
-    display: flex;
-    align-items: center;
-    background-color: #eef1f7;
-    border-radius: 4px;
-    padding: 0.3rem 0.6rem;
-}
-
-.search-box .form-control {
-    border: none;
-    background-color: transparent;
-    color: #333;
-}
-
-.search-box .btn-search {
-    background-color: #6c5ce7;
-    color: #fff;
-    padding: 0.3rem 1rem;
-    border-radius: 4px;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.search-box .btn-search:hover {
-    background-color: #4a3ea8;
-}
-.navbar {
-    background: linear-gradient(180deg, #ffffff, #e6e6e6) !important; /* تدرج لوني من الأبيض إلى الرمادي الفاتح */
-    padding: 1rem;
-    border-bottom: 1px solid #dcdcdc; /* حدود سفلية رمادية خفيفة */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-brand img {
-    max-height: 40px; /* حجم شعار العلامة */
-}
-
-/* إعدادات صندوق البحث */
-.search-box .form-control {
-    background-color: #f7f7f7; /* خلفية رمادية فاتحة لحقل البحث */
-    color: #333333;
-    border: none;
-    padding-right: 35px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* ظل داخلي لإبراز الحقل */
-}
-
-.search-box .btn-search {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #666666;
-}
-@media (max-width: 768px) {
-    #leftside-menu-container {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        z-index: 1050; /* لضمان ظهور القائمة فوق المحتوى */
-        background-color: #f8f9fa;
-        top: 0;
-        left: -100%;
-        transition: left 0.3s ease-in-out;
-    }
-
-    /* عند إظهار القائمة على الشاشة الصغيرة */
-    #leftside-menu-container.show {
-        left: 0;
-    }
-}
-
-/* جعل الشريط الجانبي يكون دائماً في الخلفية */
-.sidebar-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1049;
-    display: none;
-}
-
-.sidebar-overlay.show {
-    display: block;
-}
-
-
-/* تنسيقات النص والأيقونات */
-.navbar-nav .nav-link {
-    color: #333333 !important; /* لون النص */
+.navbar .nav-link {
+    color: #333 !important;
     font-weight: 500;
     transition: color 0.3s;
 }
-
-.navbar-nav .nav-link:hover {
-    color: #007bff !important; /* لون عند التمرير */
+.navbar .nav-link:hover {
+    color: #007bff !important;
 }
 
-/* تدرجات الأيقونات */
-.navbar-nav .nav-link i {
-    background: linear-gradient(45deg, #007bff, #00d4ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: background 0.3s;
-}
-
-.navbar-nav .nav-link:hover i {
-    background: linear-gradient(45deg, #00d4ff, #007bff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* تنسيق القوائم المنسدلة */
-.navbar-nav .dropdown-menu {
-    background-color: #f9f9f9; /* خلفية بيضاء للقائمة المنسدلة */
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* ظل للقائمة */
-}
-
-.dropdown-menu .dropdown-item {
-    color: #333333;
-}
-
-.dropdown-menu .dropdown-item:hover {
-    background-color: #007bff; /* لون عند التمرير */
-    color: #ffffff;
-}
-
-.badge-danger {
-    background-color: #ff4d4d;
-    font-size: 10px;
-    border-radius: 12px;
-    padding: 0.2em 0.5em;
-}
-
-
-.form-section {
-    border: 1px solid #e2e8f0; /* حدود خفيفة */
-    padding: 20px;
-    background: linear-gradient(to right, #ffffff, #f7fafc); /* خلفية فاتحة وهادئة */
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* ظل خفيف */
-}
-.form-section h6 {
-    font-weight: bold;
-    color: #2d3748;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-}
-.header-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-.btn-custom {
-    background: linear-gradient(135deg, #90cdf4, #63b3ed); /* تدرج هادئ بين الأزرق الفاتح والرمادي المزرق */
-    color: white;
-    border: none;
-}
-.btn-custom:hover {
-    background: linear-gradient(135deg, #63b3ed, #90cdf4);
-}
-.footer-info {
+/* Table and Badge Styling */
+.table th, .table td, .badge-status {
     text-align: center;
-    font-size: 0.85rem;
-    color: #718096;
-    margin-top: 20px;
+    vertical-align: middle;
 }
-.map-container {
-    border: 1px solid #e2e8f0;
-    height: 400px;
-    background-color: #edf2f7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    border-radius: 8px;
-    color: #718096;
-}
-.form-label {
-    font-weight: bold;
-    color: #4a5568;
-}
-.input-group-text {
-    background: #90cdf4; /* لون هادئ للإدخالات */
+.table th {
+    background: linear-gradient(45deg, #007bff, #0056b3);
     color: white;
-    border: none;
 }
+.badge-status {
+    padding: 0.4em 1.2em;
+    border-radius: 15px;
+    font-weight: bold;
+    color: #fff;
+}
+.status-active { background-color: #43a047; }
+.status-inactive { background-color: #e53935; }
+
+/* General Form Inputs */
 .form-control, .form-select {
     border: 1px solid #cbd5e0;
     border-radius: 8px;
-}
-.icon-section i {
-    color: #63b3ed;
-    font-size: 1.5rem;
-    margin-left: 5px;
-}
-
-.btn-gradient {
-    background: linear-gradient(to right, #64b5f6, #42a5f5);
-    color: #fff;
-    border: none;
-    padding: 0.5em 1.5em;
-    transition: background 0.3s, transform 0.2s;
-    font-weight: bold;
-}
-.btn-gradient:hover {
-    background: linear-gradient(to right, #42a5f5, #64b5f6);
-    transform: scale(1.05);
-}
-
-/* تصميم بطاقة الجدول */
-.table-card {
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    padding: 1.5em;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2em;
-}
-
-/* تصميم الشارات */
-.badge-status {
-    padding: 0.4em 1.2em;
-    font-size: 0.9em;
-    border-radius: 15px;
-    color: #fff;
-    font-weight: bold;
-}
-.status-active {
-    background-color: #43a047; /* أخضر */
-}
-.status-inactive {
-    background-color: #e53935; /* أحمر */
-}
-
-/* تنسيقات شريط الأدوات */
-.toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.7em 1em;
-    background-color: #e3f2fd;
-    border-radius: 8px;
-    margin-bottom: 1.5em;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
-}
-.toolbar h5 {
-    margin: 0;
-    color: #1e88e5;
-}
-.toolbar .toolbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-.toolbar .toolbar-actions .action {
-    color: #1e88e5;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-.toolbar .toolbar-actions .action:hover {
-    color: #1565c0;
-}
-
-/* تنسيقات عامة */
-body {
-    text-align: right;
-    font-family: 'Arial', sans-serif;
-    background-color: #fafafa;
-}
-
-/* تصميم حقول الإدخال */
-.form-control {
-    border-radius: 4px;
-    border: 1px solid #ddd;
     padding: 0.6em 1em;
-    transition: box-shadow 0.3s;
+    transition: border-color 0.3s ease;
+    width: 100%;
 }
-.form-control:focus {
-    box-shadow: 0 0 8px rgba(66, 165, 245, 0.5);
-    border-color: #42a5f5;
+.form-control:focus, .form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
-
-/* تنسيق زر البحث */
-.btn-gradient {
-    background: linear-gradient(to right, #42a5f5, #64b5f6);
-    color: #fff;
-    border: none;
-    transition: background 0.3s;
-}
-.btn-gradient:hover {
-    background: linear-gradient(to right, #64b5f6, #42a5f5);
-}
-
-/* إخفاء العناصر المتقدمة */
-.hidden {
-    display: none !important;
-}
-.dropdown-menu {
-position: absolute;
-top: 100%; /* لتظهر تحت الزر */
-left: 0;
-z-index: 1050;
-}
-
-.dropdown-item i {
-    margin-left: 8px;
-}
-.dropdown-item .fa-eye {
-    color: #4CAF50; /* لون أخضر للعرض */
-}
-.dropdown-item .fa-pencil-alt {
-    color: #2196F3; /* لون أزرق للتعديل */
-}
-.dropdown-item .fa-copy {
-    color: #00BCD4; /* لون سماوي للنسخ */
-}
-.dropdown-item .fa-trash {
-    color: #f44336; /* لون أحمر للحذف */
-}
-.dropdown-item .fa-sign-in-alt {
-    color: #FF9800; /* لون برتقالي للدخول */
-}
-.dropdown-item .fa-calculator {
-    color: #3F51B5; /* لون أزرق داكن لكشف الحساب */
-}
-
-.header {
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: #fff;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    margin: 20px;
-}
-
-.controls {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    padding: 15px;
-    margin-right: 20px;
-}
-
-.controls .btn {
-    border-radius: 5px;
-}
-
-.form-container {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-}
-
-.form-section {
-    flex: 1;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
 .form-group label {
     font-weight: bold;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    transition: border-color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
+/* Upload Container */
 .upload-container {
     border: 2px dashed #ccc;
-    border-radius: 8px;
     padding: 20px;
     text-align: center;
-    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 15px;
     transition: border-color 0.3s ease;
     color: #666;
-    margin-bottom: 15px;
 }
-
 .upload-container:hover {
     border-color: #007bff;
 }
 
-.upload-container input[type="file"] {
-    display: none;
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .box {
+        width: 100%;
+    }
+    .toolbar {
+        flex-direction: column;
+    }
+    .filter-box, .search-box, .toolbar .toolbar-actions {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+.attendance-summary {
+    display: flex;
+    gap: 15px; /* مسافة بين الدوائر */
+    justify-content: center; /* لتوسيط الدوائر أفقيًا */
+    align-items: center;
+    margin-top: 10px;
 }
 
-.upload-icon {
-    font-size: 24px;
-    color: #007bff;
-    margin-bottom: 8px;
+.circle {
+    width: 80px;
+    height: 80px;
+    border: 5px solid #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-direction: column;
+    text-align: center;
 }
 
-.upload-container span {
-    display: block;
-    color: #007bff;
-    text-decoration: underline;
-}
-
-.bottom-section {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    direction: rtl;
-    text-align: right;
-}
-
-.action-buttons .btn {
-    margin: 0 5px;
-}
-.container {
-    max-width: 900px;
-    margin-top: 20px;
-}
-.card {
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-.form-section {
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-.form-control {
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
-.btn-outline-secondary {
-    background-color: #e9ecef;
-    color: #212529;
-}
-.results {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-        /* تنسيقات عامة */
-        .top-bar {
-            background: linear-gradient(45deg, #007bff, #0056b3);
-            padding: 10px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .filter-section {
-            margin-top: 20px;
-            padding: 15px;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        .advanced-search {
-            display: none;
-            margin-top: 15px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background: linear-gradient(135deg, #ffffff, #f1f1f1);
-        }
-        .btn-green {
-            background-color: #28a745;
-            color: white;
-        }
-        .table-section {
-            margin-top: 20px;
-        }
-        /* تحسين مظهر الجدول */
-        .table th, .table td {
-            text-align: center;
-            vertical-align: middle;
-        }
-        .table th {
-            background: linear-gradient(45deg, #007bff, #0056b3);
-            color: white;
-        }
-        .appointment-card {
-            background: linear-gradient(135deg, #fff5f5, #ffe6e6);
-            border: 1px solid #dc3545;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .appointment-details {
-            flex: 1;
-        }
-        .export-btn {
-            background: linear-gradient(90deg, #00c6ff, #0072ff); /* Example gradient */
-            border: none;
-        }
-
-        .export-btn:hover {
-            background: linear-gradient(90deg, #0072ff, #00c6ff); /* Reverse gradient on hover */
-        }
-        .appointment-status {
-            color: #28a745;
-            font-weight: bold;
-            background-color: #d4edda;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        .appointment-actions {
-            margin-left: 10px;
-        }
-        .appointment-actions .btn {
-            background-color: transparent;
-            color: #000;
-        }
-        .appointment-meta {
-            color: #6c757d;
-        }
-        .card-icon {
-            color: #007bff;
-            margin-right: 5px;
-        }
-        .export-section {
-            background-color: #ddd;
-            color: black;
-            padding: 10px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            margin-top: 15px;
-            font-size: 14px;
-            justify-content: left;
-        }
-        .export-section i {
-            margin-left: 5px;
-        }
-
-        .invoice-container {
-            max-width: 1200px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .invoice-header {
-            border-bottom: 2px solid #007bff;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            text-align: right;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #555;
-        }
-        .editor-toolbar {
-
-            background-color: #f8f9fa;
-            padding: 5px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-        .editor-toolbar .btn {
-            padding: 5px 10px;
-        }
-        .editor-content {
-            border: 1px solid #ced4da;
-            padding: 10px;
-            min-height: 100px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        th {
-            background-color: #007bff;
-            color: white;
-            text-align: right;
-        }
-        td {
-            text-align: right;
-        }
-        .button-group {
-            margin: 20px 0;
-            text-align: center;
-        }
-        .add-item {
-            margin: 10px 0;
-            text-align: right;
-        }
-        .add-item button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .add-item button:hover {
-            background-color: #0056b3;
-        }
-        .gifts-section {
-            background: #f1f1f1;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        .invoice-container {
-            max-width: 1200px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .invoice-header {
-            border-bottom: 2px solid #007bff;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            text-align: right;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #555;
-        }
-        .editor-toolbar {
-
-            background-color: #f8f9fa;
-            padding: 5px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-        .editor-toolbar .btn {
-            padding: 5px 10px;
-        }
-        .editor-content {
-            border: 1px solid #ced4da;
-            padding: 10px;
-            min-height: 100px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        th {
-            background-color: #007bff;
-            color: white;
-            text-align: right;
-        }
-        td {
-            text-align: right;
-        }
-        .button-group {
-            margin: 20px 0;
-            text-align: center;
-        }
-        .add-item {
-            margin: 10px 0;
-            text-align: right;
-        }
-        .add-item button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .add-item button:hover {
-            background-color: #0056b3;
-        }
-        .gifts-section {
-            background: #f1f1f1;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-
-
+/* ألوان الحدود لكل دائرة */
+.circle-1 { border-color: #4caf50; } /* دائرة الحضور */
+.circle-2 { border-color: #f44336; } /* دائرة الغياب */
+.circle-3 { border-color: #9c27b0; } /* دائرة الإجازة */
+.circle-4 { border-color: #ff9800; } /* دائرة العطلة */
