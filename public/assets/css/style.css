@@ -895,3 +895,101 @@ z-index: 1050;
             margin-top: 20px;
         }
 
+        .sidebar h5 {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .list-group-item a {
+            text-decoration: none;
+            color: #343a40;
+            font-weight: 600;
+        }
+        .list-group-item a:hover {
+            color: #007bff;
+        }
+        .list-group-item i {
+            margin-right: 10px;
+            color: #007bff;
+        }
+        .content h4 {
+            color: #6610f2;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .list-group-item {
+            border: none;
+            padding: 15px;
+            font-size: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .list-group-item:hover {
+            background: #f8f9fa;
+        }
+        .dots-menu {
+            cursor: pointer;
+        }
+        .btn-success {
+            background: linear-gradient(to right, #28a745, #218838);
+            border: none;
+        }
+        .btn-success:hover {
+            background: #218838;
+        }
+        .modal-content {
+            border-radius: 15px;
+        }
+        .modal-header {
+            background: #00c6ff;
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .dots-menu {
+            position: relative;
+            display: inline-block;
+        }
+        .dots-menu .dropdown-menu {
+            position: absolute;
+            z-index: 1;
+            right: 0;
+            display: none;
+        }
+        .dots-menu:hover .dropdown-menu {
+            display: block;
+        }
+        .account-info {
+            text-align: center;
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        .icon {
+            margin-right: 8px;
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+        .account-details {
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+        .account-name {
+            font-weight: bold;
+        }

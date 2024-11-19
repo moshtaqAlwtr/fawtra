@@ -149,6 +149,9 @@
                     @case('schedule_appointment')
                     @include('fawtra.9-sales_management.schedule_appointment')
                     @break
+                    @case('chart_of_accounts')
+                    @include('fawtra.15-General_Accounting.chart_of_accounts')
+                    @break
                         @default
 
                     @endswitch

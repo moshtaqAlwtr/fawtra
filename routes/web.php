@@ -87,6 +87,10 @@ Route::group(
         Route::get('/appointments', function () {
             return view('layouts.nav-slider-route', ['page' => 'appointments']);
         })->name('appointments');
+        Route::get('/chart_of_accounts', function () {
+            return view('layouts.nav-slider-route', ['page' => 'chart_of_accounts']);
+        })->name('chart_of_accounts');
+
 
         Route::get('/schedule-appointment', [AppointmentController::class, 'index'])->name('schedule.appointment');
         Route::get('/schedule-appointment/create', [AppointmentController::class, 'create'])->name('schedule.create');
@@ -139,6 +143,7 @@ Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('i
 Route::post('/invoice-items/store', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
 
 Route::get('/invoice-items/create', [InvoiceItemController::class, 'create'])->name('invoice-items.create');
+Route::post('/accounts/add', [ChartOfAccountController::class, 'store'])->name('accounts.add');
 
 // Route::prefix('invoices/{invoice}/items')->group(function () {
 //     Route::get('/', [InvoiceItemController::class, 'index'])->name('invoice-items.index');
@@ -154,7 +159,9 @@ Route::get('/invoice-items/create', [InvoiceItemController::class, 'create'])->n
 
 
 Route::prefix('accounts')->group(function () {
-    Route::get('/', [ChartOfAccountController::class, 'index'])->name('accounts.index'); // عرض قائمة الحسابات
+
+        Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index');
+
     Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create'); // نموذج إضافة حساب جديد
     Route::post('/', [ChartOfAccountController::class, 'store'])->name('accounts.store'); // حفظ حساب جديد
     Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accounts.edit'); // تعديل حساب

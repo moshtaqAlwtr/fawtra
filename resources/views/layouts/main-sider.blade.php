@@ -604,7 +604,7 @@
                         </li>
                         <!-- دليل الحسابات -->
                         <li class="side-nav-item">
-                            <a href="">
+                            <a href="{{route('chart_of_accounts') }}">
                                 <span>{{ trans('main_trans.Chart_of_Accounts') }}</span>
                             </a>
                         </li>

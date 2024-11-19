@@ -6,25 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ChartOfAccount;
 
+
 class ChartOfAccountController extends Controller
 {
-    // عرض قائمة الحسابات مع إمكانية البحث
     public function index(Request $request)
     {
-        $query = ChartOfAccount::query();
+        // استعلام البيانات من الجدول
+        $assets = ChartOfAccount::where('type', 'asset')->get();
+        $liabilities = ChartOfAccount::where('type', 'liability')->get();
+        $expenses = ChartOfAccount::where('type', 'expense')->get();
+        $revenues = ChartOfAccount::where('type', 'revenue')->get();
 
-        // إذا كان هناك بحث
-        if ($request->filled('search')) {
-            $search = $request->input('search');
-            $query->where('name', 'LIKE', "%{$search}%")
-                  ->orWhere('type', 'LIKE', "%{$search}%")
-                  ->orWhere('normal_balance', 'LIKE', "%{$search}%");
-        }
-
-        $accounts = $query->get();
-
-        return view('accounts.index', compact('accounts'));
+        // تمرير البيانات إلى صفحة العرض
+        return view('fawtra.15-General_Accounting.chart_of_accounts', compact('assets', 'liabilities', 'expenses', 'revenues'));
     }
+
+
 
     // نموذج إنشاء حساب جديد
     public function create()
@@ -35,18 +32,26 @@ class ChartOfAccountController extends Controller
 
     // حفظ حساب جديد
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'type' => 'required|in:asset,liability,equity,revenue,expense',
-            'parent_account_id' => 'nullable|exists:chart_of_accounts,id',
-            'normal_balance' => 'required|in:debit,credit',
-        ]);
+{
+    $validated = $request->validate([
+        'type' => 'required|in:asset,liability,equity,revenue,expense',
+        'code' => 'required|unique:chart_of_accounts,code|max:10', // الكود يجب أن يكون فريدًا
+        'name' => 'required|string|max:255', // اسم الحساب
+        'normal_balance' => 'required|in:debit,credit', // طبيعة الحساب
+    ]);
 
-        ChartOfAccount::create($validated);
+    // حفظ الحساب في قاعدة البيانات
+    ChartOfAccount::create([
+        'name' => $request->input('name'),
+        'type' => $request->input('type'),
+        'code' => $request->input('code'),
+        'normal_balance' => $request->input('normal_balance'),
+        'parent_account_id' => $request->input('parent_account_id', null),
+    ]);
 
-        return redirect()->route('accounts.index')->with('success', 'تم إنشاء الحساب بنجاح.');
-    }
+    return redirect()->back()->with('success', 'تم إضافة الحساب بنجاح.');
+}
+
 
     // نموذج تعديل الحساب
     public function edit($id)
