@@ -127,7 +127,7 @@ $(document).ready(function () {
     $('#advanced-search-toggle').click(function() {
         $('.advanced-search').slideToggle(300);
     });
-    
+
     $('.datepicker').datepicker({
         format: "dd/mm/yyyy",
         language: "ar",
@@ -144,3 +144,136 @@ link.href = 'path/to/your/file.pdf'; // Replace with the path to your file
 link.download = 'filtered_results.pdf'; // Specify the download file name
 link.click();
 });
+    // دالة لإضافة بند جديد
+    function addItem() {
+        const tableBody = document.getElementById('invoice-body');
+        const rowCount = tableBody.rows.length;
+        const row = tableBody.insertRow(rowCount);
+
+        row.innerHTML = `
+            <td>${rowCount + 1}</td>
+            <td><input type="text" class="form-control" placeholder="الوصف"></td>
+            <td><input type="number" class="form-control" placeholder="سعر الوحدة" value="0" oninput="calculateTotal(this)"></td>
+            <td><input type="number" class="form-control" placeholder="الكمية" value="1" oninput="calculateTotal(this)"></td>
+            <td><input type="number" class="form-control" placeholder="الخصم" value="0" oninput="calculateTotal(this)"></td>
+            <td><input type="number" class="form-control" placeholder="الضريبة 1" value="0" oninput="calculateTotal(this)"></td>
+            <td><input type="number" class="form-control" placeholder="الضريبة 2" value="0" oninput="calculateTotal(this)"></td>
+            <td><span class="total">0.00</span></td>
+        `;
+    }
+
+    // دالة لحساب المجموع
+    function calculateTotal(input) {
+        const row = input.closest('tr');
+        const unitPrice = parseFloat(row.cells[2].querySelector('input').value) || 0;
+        const quantity = parseFloat(row.cells[3].querySelector('input').value) || 0;
+        const discount = parseFloat(row.cells[4].querySelector('input').value) || 0;
+        const tax1 = parseFloat(row.cells[5].querySelector('input').value) || 0;
+        const tax2 = parseFloat(row.cells[6].querySelector('input').value) || 0;
+
+        const total = (unitPrice * quantity) - discount;
+        const totalWithTax = total + (total * tax1 / 100) + (total * tax2 / 100);
+
+        row.cells[7].querySelector('.total').textContent = totalWithTax.toFixed(2);
+        updateGrandTotal();
+    }
+
+
+    function updateGrandTotal() {
+        let grandTotal = 0;
+        document.querySelectorAll('.total').forEach(total => {
+            grandTotal += parseFloat(total.textContent) || 0;
+        });
+        document.getElementById('grand-total').textContent = grandTotal.toFixed(2);
+    }
+
+
+    function addAdditionalFields() {
+        const container = document.getElementById('additional-fields-container');
+
+        // إنشاء الحقول الجديدة
+        const newFields = document.createElement('div');
+        newFields.classList.add('d-flex', 'align-items-center', 'mt-3');
+
+        newFields.innerHTML = `
+            <button class="btn btn-danger me-2" onclick="removeField(this)"><i class="bi bi-x"></i></button>
+            <input type="text" class="form-control me-2" placeholder="بيانات إضافية">
+            <input type="text" class="form-control" placeholder="عنوان إضافي">
+        `;
+
+        // إضافة الحقول الجديدة إلى الحاوية
+        container.appendChild(newFields);
+    }
+
+    // دالة لحذف الحقول عند الضغط على زر الحذف
+    function removeField(button) {
+        button.parentElement.remove();
+    }
+
+    CKEDITOR.replace('notes', {
+        language: 'ar',  // تعيين اللغة إلى العربية
+        toolbar: [
+            { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike'] },
+            { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'] },
+            { name: 'links', items: ['Link', 'Unlink'] },
+            { name: 'styles', items: ['Font', 'FontSize', 'TextColor', 'BGColor'] },
+            { name: 'insert', items: ['HorizontalRule'] }
+        ],
+        height: 200  // ارتفاع الصندوق
+    });
+    function updateTotal(input) {
+        const row = input.closest('tr'); // الحصول على الصف الحالي
+        const unitPrice = parseFloat(row.querySelector('input[name*="[unit_price]"]').value) || 0;
+        const quantity = parseFloat(row.querySelector('input[name*="[quantity]"]').value) || 0;
+        const discount = parseFloat(row.querySelector('input[name*="[discount]"]').value) || 0;
+        const tax1 = parseFloat(row.querySelector('input[name*="[tax1]"]').value) || 0;
+        const tax2 = parseFloat(row.querySelector('input[name*="[tax2]"]').value) || 0;
+
+        // حساب الإجمالي
+        const subtotal = unitPrice * quantity;
+        const totalDiscount = subtotal * (discount / 100);
+        const totalTax = subtotal * (tax1 / 100) + subtotal * (tax2 / 100);
+        const total = subtotal - totalDiscount + totalTax;
+
+        // تحديث حقل الإجمالي
+        row.querySelector('input[name*="[total]"]').value = total.toFixed(2);
+
+        // تحديث المجموع الكلي
+        updateGrandTotal();
+    }
+
+    function updateGrandTotal() {
+        const rows = document.querySelectorAll('#invoice-body tr');
+        let grandTotal = 0;
+
+        rows.forEach(row => {
+            const total = parseFloat(row.querySelector('input[name*="[total]"]').value) || 0;
+            grandTotal += total;
+        });
+
+        document.getElementById('grand-total').value = grandTotal.toFixed(2);
+    }
+
+    function addRow() {
+        const tableBody = document.getElementById('invoice-body');
+        const rowCount = tableBody.rows.length;
+        const newRow = tableBody.insertRow();
+
+        newRow.innerHTML = `
+            <td><input type="text" name="items[${rowCount}][item]" class="form-control" placeholder="البند"></td>
+            <td><input type="text" name="items[${rowCount}][description]" class="form-control" placeholder="الوصف"></td>
+            <td><input type="number" name="items[${rowCount}][unit_price]" class="form-control" placeholder="0.00" step="0.01" oninput="updateTotal(this)"></td>
+            <td><input type="number" name="items[${rowCount}][quantity]" class="form-control" placeholder="1" min="1" value="1" oninput="updateTotal(this)"></td>
+            <td><input type="number" name="items[${rowCount}][discount]" class="form-control" placeholder="0.00" step="0.01" oninput="updateTotal(this)"></td>
+            <td><input type="number" name="items[${rowCount}][tax1]" class="form-control" placeholder="0.00" step="0.01" oninput="updateTotal(this)"></td>
+            <td><input type="number" name="items[${rowCount}][tax2]" class="form-control" placeholder="0.00" step="0.01" oninput="updateTotal(this)"></td>
+            <td><input type="number" name="items[${rowCount}][total]" class="form-control" placeholder="0.00" readonly></td>
+            <td><button type="button" class="btn btn-danger" onclick="removeRow(this)">حذف</button></td>
+        `;
+    }
+
+    function removeRow(button) {
+        const row = button.closest('tr');
+        row.remove();
+        updateGrandTotal();
+    }

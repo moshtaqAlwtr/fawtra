@@ -1,14 +1,4 @@
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>انشاء اشعارات دائنة</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="../Design/css/data.css">
-
   <!-- عرض رسالة الأخطاء إن وجدت -->
   @if ($errors->any())
         <div class="alert alert-danger">
@@ -64,12 +54,12 @@
                     <label class="col-sm-4 col-form-label">العميل <span class="text-danger">*</span></label>
                     <div class="col-sm-8">
                         <select name="client_id" class="form-control" required>
-                        <option value="" selected>(اختر عميل)</option>
-                        @foreach ($clients as $client)
-                            <option value="{{ $client->id }}">{{ $client->trade_name }}</option>
-                        @endforeach
-                    </select>
-                        @if ($errors->has('client_id'))
+                            <option value="" selected>(اختر عميل)</option>
+                            @foreach ($clients as $client)
+                                <option value="{{ $client->client_id }}">{{ $client->trade_name }}</option>
+                            @endforeach
+                        </select>
+                          @if ($errors->has('client_id'))
                             <div class="text-danger">
                                 {{ $errors->first('client_id') }}
                             </div>
@@ -90,10 +80,12 @@
                 <div class="form-group row mb-3">
                     <label class="col-sm-4 col-form-label">مسؤول المبيعات</label>
                     <div class="col-sm-8">
-                        <select name="employee_id" class="form-control" required>
-                            <option value="" selected>(اختر موظف)</option>
+                        <select name="created_by" id="created_by" class="form-control" required>
+                            <option value="">اختر مسؤول المبيعات</option>
                             @foreach ($employees as $employee)
-                                <option value="{{ $employee->id }}">{{ $employee->first_name }} {{ $employee->last_name }}</option>
+                                <option value="{{ $employee->employee_id }}">
+                                    {{ $employee->first_name }} {{ $employee->last_name }}
+                                </option>
                             @endforeach
                         </select>
                              @if ($errors->has('employee_id'))
@@ -406,4 +398,4 @@
     </div>
 </div>
 </div>
-    // دالة لإضافة بند جديد
+

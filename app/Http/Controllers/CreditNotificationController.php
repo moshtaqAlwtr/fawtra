@@ -64,15 +64,16 @@ class CreditNotificationController extends Controller
     }
 
 
-        $validatedData = $request->validate([
-            'notification_number' => 'nullable|string|max:255',
-            'notification_date' => 'required|date',
-            'issue_date' => 'required|date',
-            'sales_responsible' => 'nullable|string|max:255',
-            'method' => 'required|string|max:255',
-          'client_id' => 'required|exists:clients,id',
-'employee_id' => 'required|exists:employees,id',
-        ]);
+    $validatedData = $request->validate([
+        'notification_number' => 'nullable|string|max:255',
+        'notification_date' => 'required|date',
+        'issue_date' => 'required|date',
+        'sales_responsible' => 'nullable|string|max:255',
+        'method' => 'required|string|max:255',
+        'client_id' => 'nullable|exists:clients,id',
+        'employee_id' => 'nullable|exists:employees,id',
+    ]);
+
 
         // تخزين البيانات
         CreditNotification::create($validatedData);

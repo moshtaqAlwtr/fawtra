@@ -1,65 +1,3 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إشعارات مدينة</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="../Design/css/data.css">
-    <style>
-        body {
-            font-family: 'Tahoma', sans-serif;
-            background-color: #f4f6f9;
-            direction: rtl;
-        }
-        .header-bar {
-            background-color: #007bff;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            border-radius: 8px 8px 0 0;
-        }
-        .action-buttons .btn {
-            margin: 0 5px;
-        }
-        .container {
-            max-width: 900px;
-            margin-top: 20px;
-        }
-        .card {
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        .form-section {
-            background-color: #fff;
-            border: 1px solid #dee2e6;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        .form-control {
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-        .btn-outline-secondary {
-            background-color: #e9ecef;
-            color: #212529;
-        }
-        .results {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-</head>
-<body>
-
-
 
 
     <!-- Header -->
@@ -323,11 +261,3 @@
 
 
 
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="../js/date.js"></script>
-
-</body>
-</html>

@@ -1,13 +1,14 @@
 <?php
+namespace App\Http\Controllers\Invoices;
 
-namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller; // إضافة السطر لتضمين Controller
 use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use Illuminate\Http\Request;
-
-class InvoiceController extends Controller
+;
+class InvoiceItemController extends Controller
 {
+
     /**
      * Display a listing of the invoices.
      *
@@ -32,7 +33,7 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        $clients = \App\Models\Client::all();
+        $clients = \App\Models\nv::all();
         return view('invoices.create', compact('clients'));
     }
 
@@ -45,34 +46,20 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'client_id' => 'required|exists:clients,client_id',
-            'invoice_date' => 'required|date',
-            'payment_terms' => 'nullable|string',
-            'sales_manager' => 'nullable|string',
-            'issue_date' => 'nullable|date',
+            'invoice_id' => 'required|exists:invoices,id', // التحقق من وجود invoice_id
             'items' => 'required|array',
             'items.*.description' => 'nullable|string',
-            'items.*.unit_price' => 'required|numeric',
-            'items.*.quantity' => 'required|integer',
-            'items.*.discount' => 'nullable|numeric',
-            'items.*.tax1' => 'nullable|numeric',
-            'items.*.tax2' => 'nullable|numeric',
-            'items.*.total' => 'required|numeric',
+            'items.*.unit_price' => 'required|numeric|min:0',
+            'items.*.quantity' => 'required|integer|min:1',
+            'items.*.discount' => 'nullable|numeric|min:0',
+            'items.*.tax1' => 'nullable|numeric|min:0',
+            'items.*.tax2' => 'nullable|numeric|min:0',
+            'items.*.total' => 'required|numeric|min:0',
         ]);
 
-        // إنشاء الفاتورة
-        $invoice = Invoice::create([
-            'client_id' => $request->client_id,
-            'invoice_date' => $request->invoice_date,
-            'payment_terms' => $request->payment_terms,
-            'sales_manager' => $request->sales_manager,
-            'issue_date' => $request->issue_date,
-        ]);
-
-        // حفظ البنود المرتبطة بالفاتورة
         foreach ($request->items as $item) {
             InvoiceItem::create([
-                'invoice_id' => $invoice->id,
+                'invoice_id' => $request->invoice_id, // تعيين invoice_id
                 'description' => $item['description'],
                 'unit_price' => $item['unit_price'],
                 'quantity' => $item['quantity'],
@@ -83,8 +70,9 @@ class InvoiceController extends Controller
             ]);
         }
 
-        return redirect()->route('invoices.index')->with('success', 'Invoice and items created successfully!');
+        return redirect()->back()->with('success', 'تم حفظ البنود بنجاح!');
     }
+
 
     /**
      * Display the specified invoice.

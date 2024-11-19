@@ -14,20 +14,20 @@ return new class extends Migration
     {
         Schema::create('credit_notifications', function (Blueprint $table) {
             $table->id();
-            $table->string('notification_number')->nullable(); // رقم إشعار دائن
-            $table->date('notification_date')->nullable(); // تاريخ إشعار دائن
-            $table->date('issue_date')->nullable(); // تاريخ الإصدار
+            $table->string('notification_number')->nullable();
+            $table->date('notification_date')->nullable();
+            $table->date('issue_date')->nullable();
             $table->unsignedBigInteger('client_id');
             $table->unsignedBigInteger('employee_id');
-            $table->string('sales_responsible')->nullable(); // مسؤول مبيعات
-            $table->string('method')->nullable(); // الطريقة
+            $table->string('sales_responsible')->nullable();
+            $table->string('method')->nullable();
 
-            // مفتاح خارجي للعملاء
-            $table->foreign('client_id')->references('client_id')->on('clients')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
 
-    $table->foreign('employee_id')->references('employee_id')->on('employees')->onDelete('cascade');
             $table->timestamps();
         });
+
     }
 
     /**
