@@ -1,254 +1,345 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل الحسابات</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>شجرة الحسابات</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .navbar {
-            background-color: #007bff;
-            color: white;
-        }
-        .navbar .navbar-brand {
-            color: white;
-            font-size: 1.5em;
-            font-weight: bold;
-            margin: 0 auto;
-        }
-        .accounts-list {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .accounts-list ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .accounts-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #dee2e6;
-            position: relative;
-        }
-        .accounts-list li a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-        }
-        .accounts-list li a:hover {
-            text-decoration: underline;
-        }
-        .btn-add-account {
-            margin-top: 15px;
-            width: 100%;
-        }
-        .modal-header {
-            background-color: #007bff;
-            color: white;
-        }
-        .dropdown {
+        .sidebar {
+            width: 250px;
             float: right;
+            border-left: 1px solid #ddd;
+            padding: 10px;
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+        .content {
+            margin-right: 260px;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .dots-menu {
+            position: relative;
+            display: inline-block;
+        }
+        .dots-menu .dropdown-menu {
+            position: absolute;
+            z-index: 1;
+            right: 0;
+            display: none;
+        }
+        .dots-menu:hover .dropdown-menu {
+            display: block;
+        }
+        .account-info {
+            text-align: center;
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        .icon {
+            margin-right: 8px;
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+        .account-details {
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+        .account-name {
+            font-weight: bold;
         }
     </style>
 </head>
-<body>
-    <!-- شريط أزرق في الأعلى -->
-    <nav class="navbar navbar-expand-lg">
-        <a class="navbar-brand mx-auto" href="#">دليل الحسابات</a>
-    </nav>
+<body dir="rtl">
 
-    <div class="container mt-4">
+    <div class="container-fluid">
+        <!-- الشريط العلوي -->
+        <div class="header">
+            دليل الحسابات
+        </div>
+
         <div class="row">
-            <div class="col-3">
-                <div class="accounts-list">
-                    <ul id="accounts-list">
-                        <li>
-                            <a href="#" data-category="الأصول">#1 - الأصول</a>
-                            <button class="btn btn-sm btn-primary btn-add-account" data-toggle="modal" data-target="#addAccountModal" data-parent-id="assets-list">إضافة حساب</button>
-                            <ul class="sub-account" id="assets-list"></ul>
+            <div class="col-3 sidebar bg-light">
+                <h5>دليل الحسابات</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" onclick="showSection('assets')"><i class="icon">&#x1F4C1;</i> الأصول</a></li>
+                    <li><a href="#" onclick="showSection('liabilities')"><i class="icon">&#x1F4C1;</i> الخصوم</a></li>
+                    <li><a href="#" onclick="showSection('expenses')"><i class="icon">&#x1F4C1;</i> المصروفات</a></li>
+                    <li><a href="#" onclick="showSection('revenues')"><i class="icon">&#x1F4C1;</i> الإيرادات</a></li>
+                </ul>
+            </div>
+
+            <div class="col content  col-6" >
+                <!-- قسم الأصول -->
+                <div id="assets" class="section">
+                    <h4>الأصول</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="account-details">
+                                <span class="account-info">
+                                    <i class="icon">&#x1F4C1;</i> <span class="account-name">الأصول المتداولة</span> <br>
+                                    <span>#11</span>
+                                </span>
+                                <span class="account-info">
+                                    الرصيد: 24,257 SAR <br>
+                                    النوع: مدين
+                                </span>
+                            </div>
+                            <span class="dots-menu">
+                                ...
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">تعديل</a></li>
+                                    <li><a class="dropdown-item" href="#">حذف</a></li>
+                                </ul>
+                            </span>
                         </li>
-                        <li>
-                            <a href="#" data-category="الخصوم">#2 - الخصوم</a>
-                            <button class="btn btn-sm btn-primary btn-add-account" data-toggle="modal" data-target="#addAccountModal" data-parent-id="liabilities-list">إضافة حساب</button>
-                            <ul class="sub-account" id="liabilities-list"></ul>
-                        </li>
-                        <li>
-                            <a href="#" data-category="المصروفات">#3 - المصروفات</a>
-                            <button class="btn btn-sm btn-primary btn-add-account" data-toggle="modal" data-target="#addAccountModal" data-parent-id="expenses-list">إضافة حساب</button>
-                            <ul class="sub-account" id="expenses-list"></ul>
-                        </li>
-                        <li>
-                            <a href="#" data-category="الإيرادات">#4 - الإيرادات</a>
-                            <button class="btn btn-sm btn-primary btn-add-account" data-toggle="modal" data-target="#addAccountModal" data-parent-id="revenues-list">إضافة حساب</button>
-                            <ul class="sub-account" id="revenues-list"></ul>
+                        <li class="list-group-item">
+                            <div class="account-details">
+                                <span class="account-info">
+                                    <i class="icon">&#x1F4C1;</i> <span class="account-name">الأصول الثابتة</span> <br>
+                                    <span>#12</span>
+                                </span>
+                                <span class="account-info">
+                                    الرصيد: 2,875,645.32 SAR <br>
+                                    النوع: مدين
+                                </span>
+                            </div>
+                            <span class="dots-menu">
+                                ...
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">تعديل</a></li>
+                                    <li><a class="dropdown-item" href="#">حذف</a></li>
+                                </ul>
+                            </span>
                         </li>
                     </ul>
+                    <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#addAccountModal">إضافة حساب</button>
                 </div>
-            </div>
-            <div class="col-9">
-                <div class="card">
-                    <div class="card-header">
-                        تفاصيل الحساب
-                    </div>
-                    <div class="card-body" id="account-details">
-                        <p>يرجى اختيار حساب من القائمة على اليمين لعرض التفاصيل.</p>
-                    </div>
+
+                <!-- قسم الخصوم -->
+                <div id="liabilities" class="section" style="display: none;">
+                    <h4>الخصوم</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="account-details">
+                                <span class="account-info">
+                                    <i class="icon">&#x1F4C1;</i> <span class="account-name">الخصوم المتداولة</span> <br>
+                                    <span>#21</span>
+                                </span>
+                                <span class="account-info">
+                                    الرصيد: 100,000 SAR <br>
+                                    النوع: دائن
+                                </span>
+                            </div>
+                            <span class="dots-menu">
+                                ...
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">تعديل</a></li>
+                                    <li><a class="dropdown-item" href="#">حذف</a></li>
+                                </ul>
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="account-details">
+                                <span class="account-info">
+                                    <i class="icon">&#x1F4C1;</i> <span class="account-name">الخصوم طويلة الأجل</span> <br>
+                                    <span>#22</span>
+                                </span>
+                                <span class="account-info">
+                                    الرصيد: 200,000 SAR <br>
+                                    النوع: دائن
+                                </span>
+                            </div>
+                            <span class="dots-menu">
+                                ...
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">تعديل</a></li>
+                                    <li><a class="dropdown-item" href="#">حذف</a></li>
+                                </ul>
+                            </span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#addAccountModal">إضافة حساب</button>
                 </div>
+
+                <!-- قسم المصروفات -->
+                <div id="expenses" class="section" style="display: none;">
+                    <h4>المصروفات</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="account-details">
+                                <span class="account-info">
+                                    <i class="icon">&#x1F4C1;</i> <span class="account-name">مصروفات التشغيل</span> <br>
+                                    <span>#31</span>
+                                </span>
+                                <span class="account-info">
+                                    الرصيد: 50,000 SAR <br>
+                                    النوع: مدين
+                                </span>
+                            </div>
+                            <span class="dots-menu">
+                                ...
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">تعديل</a></li>
+                                    <li><a class="dropdown-item" href="#">حذف</a></li>
+                                </ul>
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="account-details">
+                                <span class="account-info">
+                                    <i class="icon">&#x1F4C1;</i> <span class="account-name">مصروفات غير تشغيلية</span> <br>
+                                    <span>#32</span>
+                                </span>
+                                <span class="account-info">
+                                    الرصيد: 20,000 SAR <br>
+                                    النوع: مدين
+                                </span>
+                            </div>
+                            <span class="dots-menu">
+                                ...
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">تعديل</a></li>
+                                    <li><a class="dropdown-item" href="#">حذف</a></li>
+                                </ul>
+                            </span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#addAccountModal">إضافة حساب</button>
+                </div>
+
+                <!-- قسم الإيرادات -->
+                <div id="revenues" class="section" style="display: none;">
+                    <h4>الإيرادات</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <div class="account-details">
+                                <span class="account-info">
+                                    <i class="icon">&#x1F4C1;</i> <span class="account-name">إيرادات المبيعات</span> <br>
+                                    <span>#41</span>
+                                </span>
+                                <span class="account-info">
+                                    الرصيد: 300,000 SAR <br>
+                                    النوع: دائن
+                                </span>
+                            </div>
+                            <span class="dots-menu">
+                                ...
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">تعديل</a></li>
+                                    <li><a class="dropdown-item" href="#">حذف</a></li>
+                                </ul>
+                            </span>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="account-details">
+                                <span class="account-info">
+                                    <i class="icon">&#x1F4C1;</i> <span class="account-name">إيرادات الإيجارات</span> <br>
+                                    <span>#42</span>
+                                </span>
+                                <span class="account-info">
+                                    الرصيد: 150,000 SAR <br>
+                                    النوع: دائن
+                                </span>
+                            </div>
+                            <span class="dots-menu">
+                                ...
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">تعديل</a></li>
+                                    <li><a class="dropdown-item" href="#">حذف</a></li>
+                                </ul>
+                            </span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#addAccountModal">إضافة حساب</button>
+                </div>
+
             </div>
         </div>
     </div>
 
-    <!-- Modal لإضافة حساب -->
-    <div class="modal fade" id="addAccountModal" tabindex="-1" role="dialog" aria-labelledby="addAccountModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <!-- Modal for Adding Account -->
+    <div class="modal fade" id="addAccountModal" tabindex="-1" aria-labelledby="addAccountModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addAccountModalLabel">أضف حساب</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="addAccountForm">
-                        <div class="form-group">
-                            <label for="accountCode">الكود</label>
-                            <input type="text" class="form-control" id="accountCode" value="13">
-                        </div>
-                        <div class="form-group">
-                            <label for="accountType">نوع الحساب</label>
-                            <select class="form-control" id="accountType">
-                                <option>حساب رئيسي</option>
-                                <option>حساب فرعي</option>
+                    <form>
+                        <div class="mb-3">
+                            <label for="accountType" class="form-label">نوع الحساب</label>
+                            <select class="form-select" id="accountType" required>
+                                <option value="main">حساب رئيسي</option>
+                                <option value="sub">حساب فرعي</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="mainAccount">حساب رئيسي</label>
-                            <select class="form-control" id="mainAccount">
-                                <option value="assets">الأصول</option>
-                                <option value="liabilities">الخصوم</option>
-                                <option value="expenses">المصروفات</option>
-                                <option value="revenues">الإيرادات</option>
-                            </select>
+                        <div class="mb-3">
+                            <label for="code" class="form-label">الكود</label>
+                            <input type="text" class="form-control" id="code" required>
                         </div>
-                        <div class="form-group">
-                            <label for="accountName">الاسم</label>
-                            <input type="text" class="form-control" id="accountName">
+                        <div class="mb-3">
+                            <label for="accountName" class="form-label">الاسم</label>
+                            <input type="text" class="form-control" id="accountName" required>
                         </div>
-                        <div class="form-group">
-                            <label>النوع</label><br>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="accountTypeOptions" id="debit" value="debit" checked>
-                                <label class="form-check-label" for="debit">مدين</label>
+                        <div class="mb-3">
+                            <label class="form-label">النوع</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="accountTypeRadio" id="debit" value="debit" checked>
+                                    <label class="form-check-label" for="debit">مدين</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="accountTypeRadio" id="credit" value="credit">
+                                    <label class="form-check-label" for="credit">دائن</label>
+                                </div>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="accountTypeOptions" id="credit" value="credit">
-                                <label class="form-check-label" for="credit">دائن</label>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                            <button type="submit" class="btn btn-success">حفظ</button>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
-                    <button type="button" class="btn btn-success" id="saveAccountBtn">حفظ</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        $(document).ready(function() {
-            let parentId = '';
-
-            $('.btn-add-account').click(function() {
-                parentId = $(this).data('parent-id');
+        function showSection(sectionId) {
+            // إخفاء جميع الأقسام
+            var sections = document.querySelectorAll('.section');
+            sections.forEach(function(section) {
+                section.style.display = 'none';
             });
 
-            $('#saveAccountBtn').click(function() {
-                const accountCode = $('#accountCode').val();
-                const accountName = $('#accountName').val();
-                const mainAccount = parentId ? parentId : $('#mainAccount').val();
-                let listId;
-
-                // تحديد القائمة المناسبة
-                switch (mainAccount) {
-                    case 'assets':
-                        listId = '#assets-list';
-                        break;
-                    case 'liabilities':
-                        listId = '#liabilities-list';
-                        break;
-                    case 'expenses':
-                        listId = '#expenses-list';
-                        break;
-                    case 'revenues':
-                        listId = '#revenues-list';
-                        break;
-                    default:
-                        listId = `#${mainAccount}`;
-                        break;
-                }
-
-                // تحديد الرقم الجديد للحساب بناءً على عدد العناصر الحالية في القسم
-                const newAccountNumber = $(listId + ' li').length + 1;
-                const newAccountCode = `${accountCode}.${newAccountNumber}`;
-
-                // إضافة الحساب الجديد إلى القائمة المناسبة في الجانب الأيمن
-                $(listId).append(`<li><a href="#" class="account-item" data-code="${newAccountCode}" data-name="${accountName}">${newAccountCode} - ${accountName}</a>
-                    <ul class="sub-account" id="${newAccountCode}-list"></ul>
-                </li>`);
-
-                // إضافة الحساب الجديد إلى الوسط مع ثلاث نقاط للتعديل وإضافة حساب فرعي
-                $('#account-details').append(`
-                    <div class="card mb-2">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div>
-                                <strong>${newAccountCode} - ${accountName}</strong>
-                            </div>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    ...
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item edit-account" href="#" data-code="${newAccountCode}" data-name="${accountName}">تعديل</a>
-                                    <a class="dropdown-item add-sub-account" href="#" data-parent-id="${newAccountCode}-list">إضافة حساب فرعي</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `);
-
-                // إغلاق المودال
-                $('#addAccountModal').modal('hide');
-            });
-
-            // تعديل الحساب عند النقر على زر التعديل
-            $(document).on('click', '.edit-account', function() {
-                const accountCode = $(this).data('code');
-                const accountName = $(this).data('name');
-
-                // تعبئة النموذج بقيم الحساب الحالية
-                $('#accountCode').val(accountCode);
-                $('#accountName').val(accountName);
-
-                // فتح المودال للتعديل
-                $('#addAccountModal').modal('show');
-            });
-
-            // إضافة حساب فرعي عند النقر على زر إضافة حساب فرعي
-            $(document).on('click', '.add-sub-account', function() {
-                parentId = $(this).data('parent-id');
-                $('#accountCode').val('');
-                $('#accountName').val('');
-                $('#addAccountModal').modal('show');
-            });
-        });
+            // عرض القسم المطلوب
+            var selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+            }
+        }
     </script>
 </body>
 </html>
