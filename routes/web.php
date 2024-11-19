@@ -88,6 +88,14 @@ Route::group(
             return view('layouts.nav-slider-route', ['page' => 'appointments']);
         })->name('appointments');
 
+        Route::get('/schedule-appointment', [AppointmentController::class, 'index'])->name('schedule.appointment');
+        Route::get('/schedule-appointment/create', [AppointmentController::class, 'create'])->name('schedule.create');
+        Route::post('/schedule-appointment', [AppointmentController::class, 'store'])->name('schedule.store');
+        Route::get('/schedule-appointment/{id}', [AppointmentController::class, 'show'])->name('schedule.show');
+        Route::get('/schedule-appointment/{id}/edit', [AppointmentController::class, 'edit'])->name('schedule.edit');
+        Route::put('/schedule-appointment/{id}', [AppointmentController::class, 'update'])->name('schedule.update');
+        Route::delete('/schedule-appointment/{id}', [AppointmentController::class, 'destroy'])->name('schedule.destroy');
+        
         // إضافة المسارات لإنشاء إشعارات دائنة
         Route::get('/create-credit-notification', [CreditNotificationController::class, 'create'])->name('create-credit-notification');
         Route::post('/store-credit-notification', [CreditNotificationController::class, 'store'])->name('store-credit-notification');
