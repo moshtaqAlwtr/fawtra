@@ -12,7 +12,7 @@ use App\Http\Controllers\QuoteController;
 use App\Http\Controllers\CreditNotificationController ;  // إضافة الاستيراد الجديد
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Invoices\InvoiceItemController;
-
+use App\Http\Controllers\Accounts\ChartOfAccountController;
 
 
 
@@ -151,6 +151,16 @@ Route::get('/invoice-items/create', [InvoiceItemController::class, 'create'])->n
 // Route::get('/employee_management', [EmployeeController::class, 'index'])->name('employee_management');
 
 
+
+
+Route::prefix('accounts')->group(function () {
+    Route::get('/', [ChartOfAccountController::class, 'index'])->name('accounts.index'); // عرض قائمة الحسابات
+    Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create'); // نموذج إضافة حساب جديد
+    Route::post('/', [ChartOfAccountController::class, 'store'])->name('accounts.store'); // حفظ حساب جديد
+    Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accounts.edit'); // تعديل حساب
+    Route::put('/{id}', [ChartOfAccountController::class, 'update'])->name('accounts.update'); // تحديث حساب
+    Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy'); // حذف حساب
+});
 
 
     }

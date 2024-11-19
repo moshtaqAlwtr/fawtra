@@ -289,17 +289,3 @@ link.click();
         ],
         height: 200  // ارتفاع الصندوق
     });
-    document.addEventListener('DOMContentLoaded', function () {
-        const toggleButton = document.getElementById('advanced-search-toggle');
-        const advancedSearchSection = document.querySelector('.advanced-search');
-
-        toggleButton.addEventListener('click', function () {
-            if (advancedSearchSection.style.display === 'none' || !advancedSearchSection.style.display) {
-                advancedSearchSection.style.display = 'block';
-                console.log('عرض البحث المتقدم');
-            } else {
-                advancedSearchSection.style.display = 'none';
-                console.log('إخفاء البحث المتقدم');
-            }
-        });
-    });
