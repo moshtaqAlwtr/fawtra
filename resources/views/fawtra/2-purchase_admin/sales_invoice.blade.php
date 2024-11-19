@@ -112,7 +112,17 @@
                     <td><input type="text" name="items[0][description]" class="form-control" placeholder="الوصف"></td>
                     <td><input type="number" name="items[0][unit_price]" class="form-control" placeholder="0.00" step="0.01" oninput="updateTotal(this)"></td>
                     <td><input type="number" name="items[0][quantity]" class="form-control" placeholder="1" min="1" value="1" oninput="updateTotal(this)"></td>
-                    <td><input type="number" name="items[0][discount]" class="form-control" placeholder="0.00" step="0.01" oninput="updateTotal(this)"></td>
+                    <td>
+                        <div class="input-group" style="width: 100%; align-items: center;">
+                            <input type="number" name="items[0][discount]" class="form-control form-control-lg" placeholder="0.00" step="0.01" oninput="updateTotal(this)" style="min-width: 80px; height: 45px;">
+                            <select name="items[0][discount_type]" class="form-control form-control-lg" onchange="updateTotal(this)" style="min-width: 80px; height: 45px;">
+                                <option value="percentage">%</option>
+                                <option value="amount">ريال</option>
+                            </select>
+                        </div>
+                    </td>
+
+
                     <td><input type="number" name="items[0][tax1]" class="form-control" placeholder="0.00" step="0.01" oninput="updateTotal(this)"></td>
                     <td><input type="number" name="items[0][tax2]" class="form-control" placeholder="0.00" step="0.01" oninput="updateTotal(this)"></td>
                     <td><input type="number" name="items[0][total]" class="form-control" placeholder="0.00" readonly></td>
@@ -132,5 +142,4 @@
 
         <button type="submit" class="btn btn-success">حفظ البنود</button>
     </form>
-
 
