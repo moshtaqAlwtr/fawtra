@@ -95,7 +95,7 @@ Route::group(
         Route::get('/schedule-appointment/{id}/edit', [AppointmentController::class, 'edit'])->name('schedule.edit');
         Route::put('/schedule-appointment/{id}', [AppointmentController::class, 'update'])->name('schedule.update');
         Route::delete('/schedule-appointment/{id}', [AppointmentController::class, 'destroy'])->name('schedule.destroy');
-        
+
         // إضافة المسارات لإنشاء إشعارات دائنة
         Route::get('/create-credit-notification', [CreditNotificationController::class, 'create'])->name('create-credit-notification');
         Route::post('/store-credit-notification', [CreditNotificationController::class, 'store'])->name('store-credit-notification');
@@ -108,6 +108,9 @@ Route::group(
         Route::get('/add_employee', function () {
             return view('layouts.nav-slider-route', ['page' => 'add_employee']);
         })->name('add_employee');
+        Route::get('/schedule_appointment', function () {
+            return view('layouts.nav-slider-route', ['page' => 'schedule_appointment']);
+        })->name('schedule_appointment');
 
         Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
         Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');

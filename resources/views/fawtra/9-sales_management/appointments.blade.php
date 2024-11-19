@@ -13,7 +13,7 @@
 
     <!-- زر إضافة موعد جديد -->
     <div class="mt-4">
-    <button class="btn btn-green mb-3" onclick="window.location.href=''"><i class="fas fa-calendar-plus"></i> موعد جديد</button>
+    <button class="btn btn-green mb-3" onclick="window.location.href='{{route('schedule_appointment')}}'"><i class="fas fa-calendar-plus"></i> موعد جديد</button>
 
     </div>
 
@@ -118,10 +118,10 @@
             <i class="fas fa-file-export me-1"></i> تصدير
         </button>
     </div>
-    
+
     <style>
-      
+
     </style>
-    
-    
+
+
 </div>

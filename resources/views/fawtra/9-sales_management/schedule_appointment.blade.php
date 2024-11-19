@@ -1,40 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أضافة موعد </title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../Design/css/data.css">
- 
 
-    <style>
-        body {
-            background-color: #e0e7ed;
-        }
-        .card {
-            background-color: #fff;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        .gradient-btn {
-            background: linear-gradient(90deg, #00c6ff, #0072ff);
-            color: white;
-        }
-        .gradient-btn:hover {
-            background: linear-gradient(90deg, #0072ff, #00c6ff);
-        }
-        .form-label {
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body dir="rtl">
-
-<div class="container my-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div class="d-inline-flex gap-2">
             <button class="btn btn-success gradient-btn d-flex align-items-center">
@@ -44,7 +8,7 @@
                 <i class="fas fa-times me-1"></i> إلغاء
             </button>
         </div>
-        
+
         <button class="btn btn-light"><i class="fas fa-times-circle me-1"></i> </button>
     </div>
 
@@ -108,24 +72,3 @@
         </button>
     </div>
 </div>
-<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="../js/date.js"></script>
-<script>
-    // تطبيق CKEditor على عنصر textarea
-    CKEDITOR.replace('notes', {
-        language: 'ar',  // تعيين اللغة إلى العربية
-        toolbar: [
-            { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike'] },
-            { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'] },
-            { name: 'links', items: ['Link', 'Unlink'] },
-            { name: 'styles', items: ['Font', 'FontSize', 'TextColor', 'BGColor'] },
-            { name: 'insert', items: ['HorizontalRule'] }
-        ],
-        height: 200  // ارتفاع الصندوق
-    });
-</script>
-</body>
-</html>

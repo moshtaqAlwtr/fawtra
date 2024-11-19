@@ -277,3 +277,29 @@ link.click();
         row.remove();
         updateGrandTotal();
     }
+
+    CKEDITOR.replace('notes', {
+        language: 'ar',  // تعيين اللغة إلى العربية
+        toolbar: [
+            { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike'] },
+            { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'] },
+            { name: 'links', items: ['Link', 'Unlink'] },
+            { name: 'styles', items: ['Font', 'FontSize', 'TextColor', 'BGColor'] },
+            { name: 'insert', items: ['HorizontalRule'] }
+        ],
+        height: 200  // ارتفاع الصندوق
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleButton = document.getElementById('advanced-search-toggle');
+        const advancedSearchSection = document.querySelector('.advanced-search');
+
+        toggleButton.addEventListener('click', function () {
+            if (advancedSearchSection.style.display === 'none' || !advancedSearchSection.style.display) {
+                advancedSearchSection.style.display = 'block';
+                console.log('عرض البحث المتقدم');
+            } else {
+                advancedSearchSection.style.display = 'none';
+                console.log('إخفاء البحث المتقدم');
+            }
+        });
+    });
