@@ -750,3 +750,149 @@ z-index: 1050;
             margin-left: 5px;
         }
 
+        .invoice-container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .invoice-header {
+            border-bottom: 2px solid #007bff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            text-align: right;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+        .editor-toolbar {
+
+            background-color: #f8f9fa;
+            padding: 5px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .editor-toolbar .btn {
+            padding: 5px 10px;
+        }
+        .editor-content {
+            border: 1px solid #ced4da;
+            padding: 10px;
+            min-height: 100px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            text-align: right;
+        }
+        td {
+            text-align: right;
+        }
+        .button-group {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .add-item {
+            margin: 10px 0;
+            text-align: right;
+        }
+        .add-item button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .add-item button:hover {
+            background-color: #0056b3;
+        }
+        .gifts-section {
+            background: #f1f1f1;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .invoice-container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .invoice-header {
+            border-bottom: 2px solid #007bff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            text-align: right;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+        .editor-toolbar {
+
+            background-color: #f8f9fa;
+            padding: 5px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .editor-toolbar .btn {
+            padding: 5px 10px;
+        }
+        .editor-content {
+            border: 1px solid #ced4da;
+            padding: 10px;
+            min-height: 100px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            text-align: right;
+        }
+        td {
+            text-align: right;
+        }
+        .button-group {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .add-item {
+            margin: 10px 0;
+            text-align: right;
+        }
+        .add-item button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .add-item button:hover {
+            background-color: #0056b3;
+        }
+        .gifts-section {
+            background: #f1f1f1;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+

@@ -8,10 +8,11 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuoteController;
-use App\Http\Controllers\InvoiceItemController;
-use App\Http\Controllers\CreditNotificationController; // إضافة الاستيراد الجديد
 
+use App\Http\Controllers\CreditNotificationController ;  // إضافة الاستيراد الجديد
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\Invoices\InvoiceItemController;
+
 
 
 
@@ -123,14 +124,18 @@ Route::get('/notifications/create', [CreditNotificationController::class, 'creat
 Route::post('/notifications/store', [CreditNotificationController::class, 'store'])->name('notifications.store');
 
 Route::post('/employees/store', [EmployeeController::class, 'store'])->name('employees.store');
+Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
+Route::post('/invoice-items/store', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
 
-Route::prefix('invoices/{invoice}/items')->group(function () {
-    Route::get('/', [InvoiceItemController::class, 'index'])->name('invoice-items.index');
-    Route::post('/', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
-    Route::get('/{item}', [InvoiceItemController::class, 'show'])->name('invoice-items.show');
-    Route::put('/{item}', [InvoiceItemController::class, 'update'])->name('invoice-items.update');
-    Route::delete('/{item}', [InvoiceItemController::class, 'destroy'])->name('invoice-items.destroy');
-});
+Route::get('/invoice-items/create', [InvoiceItemController::class, 'create'])->name('invoice-items.create');
+
+// Route::prefix('invoices/{invoice}/items')->group(function () {
+//     Route::get('/', [InvoiceItemController::class, 'index'])->name('invoice-items.index');
+//     Route::post('/', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
+//     Route::get('/{item}', [InvoiceItemController::class, 'show'])->name('invoice-items.show');
+//     Route::put('/{item}', [InvoiceItemController::class, 'update'])->name('invoice-items.update');
+//     Route::delete('/{item}', [InvoiceItemController::class, 'destroy'])->name('invoice-items.destroy');
+// });
 
 // Route::get('/employee_management', [EmployeeController::class, 'index'])->name('employee_management');
 
