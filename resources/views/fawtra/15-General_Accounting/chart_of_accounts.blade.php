@@ -1,4 +1,5 @@
 
+@dump($assets, $liabilities, $expenses, $revenues)
 
 <div class="container-fluid">
     <!-- Header -->
@@ -45,49 +46,36 @@
             <div id="assets" class="section">
                 <h4>الأصول</h4>
                 <ul class="list-group">
-                    @if (count($asset)>0)
-                        @foreach ($assets as $asset)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ $asset->name }}
-                                <span class="badge bg-primary">{{ $asset->normal_balance }}</span>
-                            </li>
-                        @endforeach
-                    @else
-                        <li class="list-group-item">لا توجد أصول حاليًا.</li>
-                    @endif
-                </ul>
+                    @if (isset($assets) && $assets->count() > 0)
+                    @foreach ($assets as $asset)
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ $asset->name }}
+                            <span class="badge bg-primary">{{ $asset->normal_balance }}</span>
+                        </li>
+                    @endforeach
+                @else
+                    <li class="list-group-item">لا توجد بيانات حاليًا.</li>
+                @endif                </ul>
 
             </div>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>اسم الحساب</th>
-                        <th>نوع الحساب</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($assets as $asset)
-                        <tr>
-                            <td>{{ $asset->name }}</td>
-                            <td>{{ $asset->type }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
 
 
             <!-- Liabilities Section -->
             <div id="liabilities" class="section" style="display: none;">
                 <h4>الخصوم</h4>
                 <ul class="list-group">
+                    @if (isset($liabilities) && count($liabilities) > 0)
                     @foreach ($liabilities as $liability)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             {{ $liability->name }}
-                            <span class="badge bg-danger">{{ $liability->balance }} SAR</span>
+                            <span class="badge bg-danger">{{ $liability->balance ?? 0 }} SAR</span>
                         </li>
                     @endforeach
-                </ul>
+                @else
+                    <li class="list-group-item">لا توجد خصوم حاليًا.</li>
+                @endif
+
+                                </ul>
                 <button class="btn btn-success mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal">
                     <i class="fa-solid fa-plus"></i> إضافة حساب
                 </button>
@@ -97,12 +85,17 @@
             <div id="expenses" class="section" style="display: none;">
                 <h4>المصروفات</h4>
                 <ul class="list-group">
-                    @foreach ($expenses as $expense)
+                    @if (isset($expenses) && count($expenses) > 0)
+                    @foreach ($expenses as $expenses)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ $expense->name }}
-                            <span class="badge bg-warning">{{ $expense->balance }} SAR</span>
+                            {{ $expenses->name }}
+                            <span class="badge bg-danger">{{ $expenses->balance ?? 0 }} SAR</span>
                         </li>
                     @endforeach
+                @else
+                    <li class="list-group-item">لا توجد خصوم حاليًا.</li>
+                @endif
+
                 </ul>
                 <button class="btn btn-success mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal">
                     <i class="fa-solid fa-plus"></i> إضافة حساب
@@ -113,12 +106,16 @@
             <div id="revenues" class="section" style="display: none;">
                 <h4>الإيرادات</h4>
                 <ul class="list-group">
-                    @foreach ($revenues as $revenue)
+                    @if (isset($revenues) && count($revenues) > 0)
+                    @foreach ($revenues as $revenues)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ $revenue->name }}
-                            <span class="badge bg-success">{{ $revenue->balance }} SAR</span>
+                            {{ $revenues->name }}
+                            <span class="badge bg-danger">{{ $revenues->balance ?? 0 }} SAR</span>
                         </li>
                     @endforeach
+                @else
+                    <li class="list-group-item">لا توجد خصوم حاليًا.</li>
+                @endif
                 </ul>
                 <button class="btn btn-success mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal">
                     <i class="fa-solid fa-plus"></i> إضافة حساب
