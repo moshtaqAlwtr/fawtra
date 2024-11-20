@@ -277,21 +277,43 @@ link.click();
         row.remove();
         updateGrandTotal();
     }
-
-    CKEDITOR.replace('notes', {
-        language: 'ar',  // تعيين اللغة إلى العربية
-        toolbar: [
-            { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike'] },
-            { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'] },
-            { name: 'links', items: ['Link', 'Unlink'] },
-            { name: 'styles', items: ['Font', 'FontSize', 'TextColor', 'BGColor'] },
-            { name: 'insert', items: ['HorizontalRule'] }
-        ],
-        height: 200  // ارتفاع الصندوق
-    });
-
-    function showSection(sectionId) {
-        const sections = document.querySelectorAll('.section');
-        sections.forEach(section => section.style.display = 'none');
-        document.getElementById(sectionId).style.display = 'block';
+    function addRow() {
+        const tableBody = document.getElementById('entryTable');
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>
+                <select class="form-select">
+                    <option>اختر حساب</option>
+                    <option>الحساب 1</option>
+                    <option>الحساب 2</option>
+                </select>
+            </td>
+            <td><input type="text" class="form-control" placeholder="الوصف"></td>
+            <td><select class="form-select"><option>لا شيء</option><option>مركز 1</option></select></td>
+            <td><input type="number" class="form-control" value="0"></td>
+            <td><input type="number" class="form-control" value="0"></td>
+            <td>
+                <button class="btn btn-outline-danger btn-sm" onclick="removeRow(this)"><i class="fas fa-trash-alt"></i></button>
+            </td>
+        `;
+        tableBody.insertBefore(newRow, tableBody.lastElementChild);
     }
+
+    // دالة لإزالة صف
+    function removeRow(button) {
+        button.closest('tr').remove();
+    }
+    flatpickr("#date", {
+        locale: "ar", // اللغة العربية
+        dateFormat: "Y-m-d",
+        wrap: false,
+        onReady: (selectedDates, dateStr, instance) => {
+            const footerButtons = document.createElement("div");
+            footerButtons.className = "d-flex justify-content-center mt-2";
+            footerButtons.innerHTML = `
+                <button type="button" class="flatpickr-today" onclick="instance.setDate(new Date()); instance.close()">اليوم</button>
+                <button type="button" class="flatpickr-clear" onclick="instance.clear(); instance.close()">مسح</button>
+            `;
+            instance.calendarContainer.appendChild(footerButtons);
+        }
+    });

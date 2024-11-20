@@ -6,77 +6,7 @@
     <title>إضافة قيد</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <style>
-        body {
-            background-color: #f7faff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            direction: rtl;
-        }
-        .top-bar {
-            background: linear-gradient(135deg, #007bff, #00c4ff);
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-        .btn-save, .btn-cancel, .btn-draft {
-            padding: 10px 20px;
-            margin-left: 5px;
-        }
-        .btn-save {
-            background-color: #28a745;
-            color: white;
-            border: none;
-        }
-        .btn-draft {
-            background-color: #6c757d;
-            color: white;
-            border: none;
-        }
-        .btn-cancel {
-            background-color: #dc3545;
-            color: white;
-            border: none;
-        }
-        .table thead {
-            background-color: #f2f4f8;
-        }
-        .table td, .table th {
-            vertical-align: middle;
-            text-align: center;
-        }
-        .upload-section {
-            border: 2px dashed #ced4da;
-            padding: 20px;
-            text-align: center;
-            color: #6c757d;
-            border-radius: 5px;
-        }
-        .upload-section i {
-            font-size: 24px;
-            color: #007bff;
-        }
-        .btn-add-row {
-            font-size: 12px;
-            padding: 4px 8px;
-            position: relative;
-            float: right;
-        }
-        .flatpickr-calendar .flatpickr-clear, .flatpickr-calendar .flatpickr-today {
-            margin: 5px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .flatpickr-clear {
-            background-color: #dc3545;
-            color: white;
-        }
-        .flatpickr-today {
-            background-color: #007bff;
-            color: white;
-        }
-    </style>
+    
 </head>
 <body>
 
@@ -85,7 +15,7 @@
         <h2>إضافة قيد</h2>
     </div>
 
-    <div class="container mt-4">
+    
         <div class="d-flex justify-content-between mb-3">
             <button class="btn btn-save"><i class="fas fa-save"></i> حفظ</button>
             <button class="btn btn-draft"><i class="fas fa-file-alt"></i> حفظ كمسودة</button>
@@ -170,53 +100,8 @@
         </div>
     </div>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        // تهيئة Flatpickr لحقل التاريخ
-        flatpickr("#date", {
-            locale: "ar", // اللغة العربية
-            dateFormat: "Y-m-d",
-            wrap: false,
-            onReady: (selectedDates, dateStr, instance) => {
-                const footerButtons = document.createElement("div");
-                footerButtons.className = "d-flex justify-content-center mt-2";
-                footerButtons.innerHTML = `
-                    <button type="button" class="flatpickr-today" onclick="instance.setDate(new Date()); instance.close()">اليوم</button>
-                    <button type="button" class="flatpickr-clear" onclick="instance.clear(); instance.close()">مسح</button>
-                `;
-                instance.calendarContainer.appendChild(footerButtons);
-            }
-        });
+           // تهيئة Flatpickr لحقل التاريخ
+    
 
         // دالة لإضافة صف جديد
-        function addRow() {
-            const tableBody = document.getElementById('entryTable');
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td>
-                    <select class="form-select">
-                        <option>اختر حساب</option>
-                        <option>الحساب 1</option>
-                        <option>الحساب 2</option>
-                    </select>
-                </td>
-                <td><input type="text" class="form-control" placeholder="الوصف"></td>
-                <td><select class="form-select"><option>لا شيء</option><option>مركز 1</option></select></td>
-                <td><input type="number" class="form-control" value="0"></td>
-                <td><input type="number" class="form-control" value="0"></td>
-                <td>
-                    <button class="btn btn-outline-danger btn-sm" onclick="removeRow(this)"><i class="fas fa-trash-alt"></i></button>
-                </td>
-            `;
-            tableBody.insertBefore(newRow, tableBody.lastElementChild);
-        }
-
-        // دالة لإزالة صف
-        function removeRow(button) {
-            button.closest('tr').remove();
-        }
-    </script>
-</body>
-</html>
+      

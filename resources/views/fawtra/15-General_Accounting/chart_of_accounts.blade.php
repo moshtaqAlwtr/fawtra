@@ -1,5 +1,5 @@
 
-@dump($assets, $liabilities, $expenses, $revenues)
+
 
 <div class="container-fluid">
     <!-- Header -->

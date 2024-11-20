@@ -598,7 +598,7 @@
                         </li>
                         <!-- أضف قيد -->
                         <li class="side-nav-item">
-                            <a href="">
+                            <a href="{{route('add_entry')}}">
                                 <span>{{ trans('main_trans.Add_Entry') }}</span>
                             </a>
                         </li>

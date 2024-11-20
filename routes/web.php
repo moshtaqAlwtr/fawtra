@@ -90,8 +90,11 @@ Route::group(
         Route::get('/chart_of_accounts', function () {
             return view('layouts.nav-slider-route', ['page' => 'chart_of_accounts']);
         })->name('chart_of_accounts');
+        Route::get('/add_entry', function () {
+            return view('layouts.nav-slider-route', ['page' => 'add_entry']);
+        })->name('add_entry');
 
-
+    
         Route::get('/schedule-appointment', [AppointmentController::class, 'index'])->name('schedule.appointment');
         Route::get('/schedule-appointment/create', [AppointmentController::class, 'create'])->name('schedule.create');
         Route::post('/schedule-appointment', [AppointmentController::class, 'store'])->name('schedule.store');
