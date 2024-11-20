@@ -15,7 +15,7 @@
         <h2 class="m-0">إضافة قيد</h2>
     </div>
 
-    <div class="container">
+    
     <form action="{{ route('journal_entries.store') }}" method="POST" enctype="multipart/form-data">
     @csrf <!-- حماية من هجمات CSRF -->
 

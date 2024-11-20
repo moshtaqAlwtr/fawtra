@@ -91,9 +91,11 @@ Route::group(
         Route::get('/chart_of_accounts', function () {
             return view('layouts.nav-slider-route', ['page' => 'chart_of_accounts']);
         })->name('chart_of_accounts');
+
         Route::get('/add_entry', function () {
-            return view('layouts.nav-slider-route', ['page' => 'add_entry']);
+         return view('layouts.nav-slider-route', ['page' => 'add_entry']); // الملف الخاص بالعرض
         })->name('add_entry');
+        
      
         Route::post('/journal-entries', [JournalEntryController::class, 'store'])->name('journal_entries.store');
         Route::get('/journal-entries', [JournalEntryController::class, 'index'])->name('journal_entries.index');

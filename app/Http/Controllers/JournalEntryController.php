@@ -11,47 +11,47 @@ class JournalEntryController extends Controller
     public function index()
     {
         $journalEntries = JournalEntry::all(); // استرجاع جميع القيود
-        return view('journal_entries.index', compact('journalEntries'));
+        return view('add_entry.index', compact('journalEntries'));
     }
 
     // عرض نموذج إضافة قيد جديد
     public function create()
     {
-        return view('journal_entries.create');
+        return view('add_entry.create');
     }
 
     // تخزين القيد الجديد
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'date' => 'required|date',
-            'description' => 'nullable|string',
-            'currency' => 'required|string',
-            'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
-        ]);
-    
-        // حفظ الملف إذا تم رفعه
-        $attachmentPath = null;
-        if ($request->hasFile('attachment')) {
-            $attachmentPath = $request->file('attachment')->store('attachments', 'public');
-        }
-    
-        // إنشاء القيد
-        JournalEntry::create([
-            'date' => $request->date,
-            'description' => $request->description,
-            'currency' => $request->currency,
-            'attachment' => $attachmentPath,
-        ]);
-    
-        return redirect()->route('journal_entries.index')->with('success', 'تم إضافة القيد بنجاح.');
+ public function store(Request $request)
+{
+    $validated = $request->validate([
+        'date' => 'required|date',
+        'description' => 'nullable|string',
+        'currency' => 'required|string',
+        'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+    ]);
+
+    // حفظ الملف إذا تم رفعه
+    $attachmentPath = null;
+    if ($request->hasFile('attachment')) {
+        $attachmentPath = $request->file('attachment')->store('attachments', 'public');
     }
-    
+
+    // إنشاء القيد
+    JournalEntry::create([
+        'date' => $request->date,
+        'description' => $request->description,
+        'currency' => $request->currency,
+        'attachment' => $attachmentPath,
+    ]);
+
+    return redirect()->route('add_entry')->with('success', 'تم إضافة القيد بنجاح.');
+}
+
     // عرض تفاصيل قيد معين
     public function show($id)
     {
         $journalEntry = JournalEntry::findOrFail($id); // استرجاع القيد المحدد
-        return view('journal_entries.show', compact('journalEntry'));
+        return view('add_entry.show', compact('journalEntry'));
     }
 
     // حذف القيد
@@ -60,6 +60,6 @@ class JournalEntryController extends Controller
         $journalEntry = JournalEntry::findOrFail($id);
         $journalEntry->delete(); // حذف القيد
 
-        return redirect()->route('journal_entries.index')->with('success', 'تم حذف القيد بنجاح.');
+        return redirect()->route('add_entry.index')->with('success', 'تم حذف القيد بنجاح.');
     }
 }

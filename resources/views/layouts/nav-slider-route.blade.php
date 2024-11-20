@@ -154,6 +154,7 @@
                     @case('chart_of_accounts')
                     @include('fawtra.15-General_Accounting.chart_of_accounts')
                     @break
+                    
                     @case('add_entry')
                     @include('fawtra.15-General_Accounting.add_entry')
                     @break
