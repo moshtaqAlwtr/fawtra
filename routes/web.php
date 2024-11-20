@@ -87,10 +87,10 @@ Route::group(
         Route::get('/appointments', function () {
             return view('layouts.nav-slider-route', ['page' => 'appointments']);
         })->name('appointments');
-        Route::get('/chart_of_accounts', function () {
-            return view('layouts.nav-slider-route', ['page' => 'chart_of_accounts']);
-        })->name('chart_of_accounts');
-
+        // Route::get('/chart_of_accounts', function () {
+        //     return view('layouts.nav-slider-route', ['page' => 'chart_of_accounts',]);
+        // })->name('chart_of_accounts');
+        Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
 
         Route::get('/schedule-appointment', [AppointmentController::class, 'index'])->name('schedule.appointment');
         Route::get('/schedule-appointment/create', [AppointmentController::class, 'create'])->name('schedule.create');
