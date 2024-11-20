@@ -21,6 +21,7 @@ class ChartOfAccountController extends Controller
      */
     public function index()
     {
+
         // جلب جميع الحسابات
         $accounts = ChartOfAccount::all();
 
@@ -47,29 +48,34 @@ class ChartOfAccountController extends Controller
             'expenses' => $expenses,
             'revenues' => $revenues,
         ]);
-    }
 
+    }
     private function buildTree($accounts, $type, $parentId = null)
     {
+        // فلترة الحسابات بناءً على النوع والـ parent_account_id
         $filteredAccounts = $accounts->filter(function ($account) use ($type, $parentId) {
-            return $account->type === $type && $account->parent_account_id === $parentId;
+            return $account->type === $type && $account->parent_account_id == $parentId;
         });
 
+        // إذا لم يكن هناك حسابات مطابقة
         if ($filteredAccounts->isEmpty()) {
-            return '';
+            return '<ul><li>لا توجد بيانات</li></ul>';
         }
 
+        // بناء الشجرة
         $html = '<ul>';
         foreach ($filteredAccounts as $account) {
             $html .= '<li>';
             $html .= '<i class="fa-solid fa-folder"></i> ' . $account->name;
-            $html .= $this->buildTree($accounts, $type, $account->id); // عرض الحسابات الفرعية
+            // عرض الحسابات الفرعية
+            $html .= $this->buildTree($accounts, $type, $account->id);
             $html .= '</li>';
         }
         $html .= '</ul>';
 
         return $html;
     }
+
 
         // نموذج إنشاء حساب جديد
     public function create()

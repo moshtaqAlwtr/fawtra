@@ -60,11 +60,10 @@
             <h5 class="fw-bold mb-3">أقسام الحسابات</h5>
             <div class="treeview">
                 <ul>
-                    @foreach ($assets as $asset)
                     <li>
-                        <i class="fa-solid fa-folder"></i> {{ $asset->name }}
+                        <i class="fa-solid fa-folder"></i> الأصول
+                        {!! $assetsTree !!}
                     </li>
-                @endforeach
                     <li>
                         <i class="fa-solid fa-folder"></i> الخصوم
                         {!! $liabilitiesTree !!}
