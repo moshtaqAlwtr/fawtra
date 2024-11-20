@@ -1,11 +1,32 @@
 
 
 
+
+
+
 <div class="container-fluid">
     <!-- Header -->
     <div class="header bg-primary text-white p-3 mb-4">
         <h3>دليل الحسابات</h3>
     </div>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
     <div class="row">
         <!-- Sidebar -->
@@ -46,36 +67,67 @@
             <div id="assets" class="section">
                 <h4>الأصول</h4>
                 <ul class="list-group">
-                    @if (isset($assets) && $assets->count() > 0)
-                    @foreach ($assets as $asset)
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ $asset->name }}
-                            <span class="badge bg-primary">{{ $asset->normal_balance }}</span>
-                        </li>
-                    @endforeach
-                @else
-                    <li class="list-group-item">لا توجد بيانات حاليًا.</li>
-                @endif                </ul>
+                    @if ($assets && count($assets) > 0)
+                        @foreach ($assets as $asset)
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ $asset->name }}
+                                <span class="badge bg-primary">{{ $asset->normal_balance }}</span>
+                            </li>
+                        @endforeach
+                    @else
+                        <li class="list-group-item">لا توجد أصول حاليًا.</li>
+                    @endif
+                </ul>
 
             </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>اسم الحساب</th>
+                        <th>نوع الحساب</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($assets as $asset)
+                        <tr>
+                            <td>{{ $asset->name }}</td>
+                            <td>{{ $asset->type }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
 
 
             <!-- Liabilities Section -->
             <div id="liabilities" class="section" style="display: none;">
                 <h4>الخصوم</h4>
                 <ul class="list-group">
-                    @if (isset($liabilities) && count($liabilities) > 0)
                     @foreach ($liabilities as $liability)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             {{ $liability->name }}
-                            <span class="badge bg-danger">{{ $liability->balance ?? 0 }} SAR</span>
+                            <span class="badge bg-danger">{{ $liability->balance }} SAR</span>
                         </li>
                     @endforeach
-                @else
-                    <li class="list-group-item">لا توجد خصوم حاليًا.</li>
-                @endif
+                </ul>
 
-                                </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>اسم الحساب</th>
+                        <th>نوع الحساب</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($liabilities as $liability)
+                        <tr>
+                            <td>{{ $liability->name }}</td>
+                            <td>{{ $liability->type }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
                 <button class="btn btn-success mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal">
                     <i class="fa-solid fa-plus"></i> إضافة حساب
                 </button>
@@ -85,17 +137,12 @@
             <div id="expenses" class="section" style="display: none;">
                 <h4>المصروفات</h4>
                 <ul class="list-group">
-                    @if (isset($expenses) && count($expenses) > 0)
-                    @foreach ($expenses as $expenses)
+                    @foreach ($expenses as $expense)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ $expenses->name }}
-                            <span class="badge bg-danger">{{ $expenses->balance ?? 0 }} SAR</span>
+                            {{ $expense->name }}
+                            <span class="badge bg-warning">{{ $expense->balance }} SAR</span>
                         </li>
                     @endforeach
-                @else
-                    <li class="list-group-item">لا توجد خصوم حاليًا.</li>
-                @endif
-
                 </ul>
                 <button class="btn btn-success mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal">
                     <i class="fa-solid fa-plus"></i> إضافة حساب
@@ -106,16 +153,12 @@
             <div id="revenues" class="section" style="display: none;">
                 <h4>الإيرادات</h4>
                 <ul class="list-group">
-                    @if (isset($revenues) && count($revenues) > 0)
-                    @foreach ($revenues as $revenues)
+                    @foreach ($revenues as $revenue)
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{ $revenues->name }}
-                            <span class="badge bg-danger">{{ $revenues->balance ?? 0 }} SAR</span>
+                            {{ $revenue->name }}
+                            <span class="badge bg-success">{{ $revenue->balance }} SAR</span>
                         </li>
                     @endforeach
-                @else
-                    <li class="list-group-item">لا توجد خصوم حاليًا.</li>
-                @endif
                 </ul>
                 <button class="btn btn-success mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal">
                     <i class="fa-solid fa-plus"></i> إضافة حساب
@@ -148,20 +191,24 @@
                     </div>
                     <div class="mb-3">
                         <label for="code" class="form-label text-primary fw-bold">الكود</label>
-                        <input type="text" class="form-control border-primary rounded-pill" id="code" name="code" placeholder="أدخل كود الحساب" required>
+                        <input type="text" class="form-control border-primary rounded-pill" id="code"
+                            name="code" placeholder="أدخل كود الحساب" required>
                     </div>
                     <div class="mb-3">
                         <label for="accountName" class="form-label text-primary fw-bold">اسم الحساب</label>
-                        <input type="text" class="form-control border-primary rounded-pill" id="accountName" name="name" placeholder="أدخل اسم الحساب" required>
+                        <input type="text" class="form-control border-primary rounded-pill" id="accountName"
+                            name="name" placeholder="أدخل اسم الحساب" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label text-primary fw-bold">الطبيعة</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="normal_balance" id="debit" value="debit" checked>
+                            <input class="form-check-input" type="radio" name="normal_balance" id="debit"
+                                value="debit" checked>
                             <label class="form-check-label" for="debit">مدين</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="normal_balance" id="credit" value="credit">
+                            <input class="form-check-input" type="radio" name="normal_balance" id="credit"
+                                value="credit">
                             <label class="form-check-label" for="credit">دائن</label>
                         </div>
                     </div>
@@ -180,4 +227,3 @@
         document.getElementById(section).style.display = 'block';
     }
 </script>
-
