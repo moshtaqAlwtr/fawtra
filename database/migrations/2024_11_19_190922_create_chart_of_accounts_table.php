@@ -11,7 +11,8 @@ return new class extends Migration
             $table->id(); // رقم الحساب
             $table->string('name'); // اسم الحساب
             $table->enum('type', ['asset', 'liability', 'equity', 'revenue', 'expense']); // نوع الحساب
-            $table->string('code')->nullable(); // الكود مع السماح أن يكون اختيارياً
+            $table->string('code')->unique()->nullable();
+            // الكود مع السماح أن يكون اختيارياً
             $table->unsignedBigInteger('parent_account_id')->nullable(); // الحساب الرئيسي إذا كان فرعياً
             $table->enum('normal_balance', ['debit', 'credit']); // طبيعة الحساب
             $table->timestamps();

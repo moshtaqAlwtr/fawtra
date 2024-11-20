@@ -95,14 +95,14 @@ Route::group(
             return view('layouts.nav-slider-route', ['page' => 'add_entry']);
         })->name('add_entry');
 
-    
+
 
         // Route::get('/chart_of_accounts', function () {
         //     return view('layouts.nav-slider-route', ['page' => 'chart_of_accounts',]);
         // })->name('chart_of_accounts');
         Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
 
->>>>>>> 2d9b175d2591aad09f52138b22e5d64a32fb60ca
+
         Route::get('/schedule-appointment', [AppointmentController::class, 'index'])->name('schedule.appointment');
         Route::get('/schedule-appointment/create', [AppointmentController::class, 'create'])->name('schedule.create');
         Route::post('/schedule-appointment', [AppointmentController::class, 'store'])->name('schedule.store');

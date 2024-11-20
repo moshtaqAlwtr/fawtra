@@ -49,6 +49,7 @@ class ChartOfAccountController extends Controller
             'parent_account_id' => $request->input('parent_account_id', null),
         ]);
 
+
         return redirect()->route('accounts.index')->with('success', 'تم إضافة الحساب بنجاح.');
     }
 

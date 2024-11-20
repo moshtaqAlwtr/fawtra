@@ -12,6 +12,7 @@ class ChartOfAccount extends Model
     protected $fillable = [
         'name',
         'type',
+        'code',
         'parent_account_id',
         'normal_balance',
     ];

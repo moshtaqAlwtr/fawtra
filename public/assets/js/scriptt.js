@@ -317,3 +317,11 @@ link.click();
             instance.calendarContainer.appendChild(footerButtons);
         }
     });
+    function showSection(sectionId) {
+        document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
+    function setAccountType(type) {
+        document.getElementById('accountType').value = type;
+    }

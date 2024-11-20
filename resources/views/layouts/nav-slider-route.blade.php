@@ -31,7 +31,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" rel="stylesheet">
     <!-- ملفات CSS الخاصة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style2.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/icons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('Design/css/data.css') }}">

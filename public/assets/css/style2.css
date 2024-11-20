@@ -1,0 +1,28 @@
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.headerr {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+}
+.sidebarr {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.contentt {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.list-group-items a {
+    text-decoration: none;
+    color: #007bff;
+}
+.list-group-items a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
