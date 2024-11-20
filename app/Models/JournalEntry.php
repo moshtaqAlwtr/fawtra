@@ -12,7 +12,10 @@ class JournalEntry extends Model
     protected $fillable = [
         'date',
         'description',
+        'currency',   // العملة
+        'attachment', // الملف المرفق
     ];
+    
 
     public function details()
     {

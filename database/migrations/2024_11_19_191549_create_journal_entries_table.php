@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id(); // رقم القيد
             $table->date('date'); // تاريخ القيد
             $table->text('description')->nullable(); // وصف القيد
-            $table->timestamps();
+            $table->string('currency')->nullable(); // العملة
+            $table->string('attachment')->nullable(); // الملف المرفق
+            $table->timestamps(); // تواريخ الإنشاء والتعديل
         });
     }
-
 
     /**
      * Reverse the migrations.
