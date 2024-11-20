@@ -9,27 +9,85 @@ use App\Models\ChartOfAccount;
 
 class ChartOfAccountController extends Controller
 {
-    public function index(Request $request)
+/*************  ✨ Codeium Command ⭐  *************/
+    /**
+     * Display a listing of the resource.
+     *
+     * جلب جميع الحسابات وبناء الشجرة لكل قسم
+     * جلب الأقسام المختلفة
+     * تمرير البيانات إلى العرض
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        // استعلام البيانات من الجدول
+        // جلب جميع الحسابات
+        $accounts = ChartOfAccount::all();
+
+        // بناء الشجرة لكل قسم
+        $assetsTree = $this->buildTree($accounts, 'asset');
+        $liabilitiesTree = $this->buildTree($accounts, 'liability');
+        $expensesTree = $this->buildTree($accounts, 'expense');
+        $revenuesTree = $this->buildTree($accounts, 'revenue');
+
+        // جلب الأقسام المختلفة
         $assets = ChartOfAccount::where('type', 'asset')->get();
         $liabilities = ChartOfAccount::where('type', 'liability')->get();
         $expenses = ChartOfAccount::where('type', 'expense')->get();
         $revenues = ChartOfAccount::where('type', 'revenue')->get();
 
-        // تمرير البيانات إلى صفحة العرض
-        // return view('fawtra.15-General_Accounting.chart_of_accounts', compact('assets', 'liabilities', 'expenses', 'revenues'));
-        return view('layouts.nav-slider-route',['page' => 'chart_of_accounts',],compact('assets', 'liabilities', 'expenses', 'revenues'));
+        // تمرير البيانات إلى العرض
+        return view('layouts.nav-slider-route', [
+            'assetsTree' => $assetsTree,
+            'liabilitiesTree' => $liabilitiesTree,
+            'expensesTree' => $expensesTree,
+            'revenuesTree' => $revenuesTree,
+            'assets' => $assets,
+            'liabilities' => $liabilities,
+            'expenses' => $expenses,
+            'revenues' => $revenues,
+        ]);
     }
 
+    private function buildTree($accounts, $type, $parentId = null)
+    {
+        $filteredAccounts = $accounts->filter(function ($account) use ($type, $parentId) {
+            return $account->type === $type && $account->parent_account_id === $parentId;
+        });
 
+        if ($filteredAccounts->isEmpty()) {
+            return '';
+        }
 
-    // نموذج إنشاء حساب جديد
+        $html = '<ul>';
+        foreach ($filteredAccounts as $account) {
+            $html .= '<li>';
+            $html .= '<i class="fa-solid fa-folder"></i> ' . $account->name;
+            $html .= $this->buildTree($accounts, $type, $account->id); // عرض الحسابات الفرعية
+            $html .= '</li>';
+        }
+        $html .= '</ul>';
+
+        return $html;
+    }
+
+        // نموذج إنشاء حساب جديد
     public function create()
     {
         $accounts = ChartOfAccount::all();
         return view('accounts.create', compact('accounts'));
     }
+
+    public function parentAccount()
+{
+    return $this->belongsTo(ChartOfAccount::class, 'parent_account_id');
+}
+
+public function childAccounts()
+{
+    return $this->hasMany(ChartOfAccount::class, 'parent_account_id');
+}
+
 
     // حفظ حساب جديد
     public function store(Request $request)

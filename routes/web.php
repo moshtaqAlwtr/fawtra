@@ -171,13 +171,13 @@ Route::post('/accounts/add', [ChartOfAccountController::class, 'store'])->name('
 
 Route::prefix('accounts')->group(function () {
 
-        Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index');
+//    Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index');
 
-    Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create'); // نموذج إضافة حساب جديد
-    Route::post('/', [ChartOfAccountController::class, 'store'])->name('accounts.store'); // حفظ حساب جديد
-    Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accounts.edit'); // تعديل حساب
-    Route::put('/{id}', [ChartOfAccountController::class, 'update'])->name('accounts.update'); // تحديث حساب
-    Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy'); // حذف حساب
+    // Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create'); // نموذج إضافة حساب جديد
+    // Route::post('/', [ChartOfAccountController::class, 'store'])->name('accounts.store'); // حفظ حساب جديد
+    // Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accounts.edit'); // تعديل حساب
+    // Route::put('/{id}', [ChartOfAccountController::class, 'update'])->name('accounts.update'); // تحديث حساب
+    // Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy'); // حذف حساب
 });
 
 

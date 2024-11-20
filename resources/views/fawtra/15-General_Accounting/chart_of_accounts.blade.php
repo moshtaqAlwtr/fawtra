@@ -25,14 +25,26 @@
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .list-group-item a {
+        .treeview ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        .treeview li {
+            margin-bottom: 5px;
+        }
+        .treeview a {
             text-decoration: none;
             color: #007bff;
         }
-        .list-group-item a:hover {
-            text-decoration: underline;
-            color: #0056b3;
-        }
+        .treeview li ul {
+    display: none;
+    padding-left: 20px;
+}
+
+.treeview li.open > ul {
+    display: block;
+}
+
     </style>
 </head>
 <body>
@@ -46,29 +58,32 @@
         <!-- Sidebar -->
         <div class="col-md-3 sidebar bg-light p-3">
             <h5 class="fw-bold mb-3">أقسام الحسابات</h5>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <a href="#" onclick="showSection('assets')">
-                        <i class="fa-solid fa-folder"></i> الأصول
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <a href="#" onclick="showSection('liabilities')">
+            <div class="treeview">
+                <ul>
+                    @foreach ($assets as $asset)
+                    <li>
+                        <i class="fa-solid fa-folder"></i> {{ $asset->name }}
+                    </li>
+                @endforeach
+                    <li>
                         <i class="fa-solid fa-folder"></i> الخصوم
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <a href="#" onclick="showSection('expenses')">
+                        {!! $liabilitiesTree !!}
+                    </li>
+                    <li>
                         <i class="fa-solid fa-folder"></i> المصروفات
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <a href="#" onclick="showSection('revenues')">
+                        {!! $expensesTree !!}
+                    </li>
+                    <li>
                         <i class="fa-solid fa-folder"></i> الإيرادات
-                    </a>
-                </li>
-            </ul>
+                        {!! $revenuesTree !!}
+                    </li>
+
+                </ul>
+            </div>
+
         </div>
+
+
 
         <!-- Content -->
         <div class="col-md-9 content p-4">
@@ -77,80 +92,61 @@
                 <div class="alert alert-success text-center fw-bold">{{ session('success') }}</div>
             @endif
 
-            <!-- Assets Section -->
+            <!-- Sections -->
             <div id="assets" class="section">
                 <h4 class="text-primary fw-bold mb-3">الأصول</h4>
                 <ul class="list-group">
-                    @if ($assets && count($assets) > 0)
-                        @foreach ($assets as $asset)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ $asset->name }}
-                                <span class="badge bg-primary">{{ $asset->normal_balance }}</span>
-                            </li>
-                        @endforeach
-                    @else
-                        <li class="list-group-item">لا توجد أصول حاليًا.</li>
-                    @endif
+                    @foreach ($assets as $asset)
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ $asset->name }}
+                            <span class="badge bg-primary">{{ $asset->normal_balance }}</span>
+                        </li>
+                    @endforeach
                 </ul>
                 <button class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal" onclick="setAccountType('asset')">
                     <i class="fa-solid fa-plus"></i> إضافة حساب
                 </button>
             </div>
 
-            <!-- Liabilities Section -->
             <div id="liabilities" class="section" style="display: none;">
                 <h4 class="text-danger fw-bold mb-3">الخصوم</h4>
                 <ul class="list-group">
-                    @if ($liabilities && count($liabilities) > 0)
-                        @foreach ($liabilities as $liability)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ $liability->name }}
-                                <span class="badge bg-danger">{{ $liability->balance }} SAR</span>
-                            </li>
-                        @endforeach
-                    @else
-                        <li class="list-group-item">لا توجد خصوم حاليًا.</li>
-                    @endif
+                    @foreach ($liabilities as $liability)
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ $liability->name }}
+                            <span class="badge bg-danger">{{ $liability->normal_balance }}</span>
+                        </li>
+                    @endforeach
                 </ul>
                 <button class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal" onclick="setAccountType('liability')">
                     <i class="fa-solid fa-plus"></i> إضافة حساب
                 </button>
             </div>
 
-            <!-- Expenses Section -->
             <div id="expenses" class="section" style="display: none;">
                 <h4 class="text-warning fw-bold mb-3">المصروفات</h4>
                 <ul class="list-group">
-                    @if ($expenses && count($expenses) > 0)
-                        @foreach ($expenses as $expense)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ $expense->name }}
-                                <span class="badge bg-warning">{{ $expense->balance }} SAR</span>
-                            </li>
-                        @endforeach
-                    @else
-                        <li class="list-group-item">لا توجد مصروفات حاليًا.</li>
-                    @endif
+                    @foreach ($expenses as $expense)
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ $expense->name }}
+                            <span class="badge bg-warning">{{ $expense->normal_balance }}</span>
+                        </li>
+                    @endforeach
                 </ul>
                 <button class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal" onclick="setAccountType('expense')">
                     <i class="fa-solid fa-plus"></i> إضافة حساب
                 </button>
             </div>
 
-            <!-- Revenues Section -->
             <div id="revenues" class="section" style="display: none;">
                 <h4 class="text-success fw-bold mb-3">الإيرادات</h4>
                 <ul class="list-group">
-                    @if ($revenues && count($revenues) > 0)
-                        @foreach ($revenues as $revenue)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ $revenue->name }}
-                                <span class="badge bg-success">{{ $revenue->balance }} SAR</span>
-                            </li>
-                        @endforeach
-                    @else
-                        <li class="list-group-item">لا توجد إيرادات حاليًا.</li>
-                    @endif
+                    @foreach ($revenues as $revenue)
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            {{ $revenue->name }}
+                            <span class="badge bg-success">{{ $revenue->normal_balance }}</span>
+                        </li>
+                    @endforeach
                 </ul>
                 <button class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal" onclick="setAccountType('revenue')">
                     <i class="fa-solid fa-plus"></i> إضافة حساب
@@ -166,50 +162,36 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="addAccountModalLabel">إضافة حساب جديد</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" style="margin-left: 1%" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="{{ route('accounts.add') }}" method="POST">
                     @csrf
-                    <!-- نوع الحساب -->
                     <div class="mb-3">
                         <label for="type" class="form-label">نوع الحساب</label>
                         <select name="type" id="type" class="form-select" required>
                             <option value="asset">الأصول</option>
                             <option value="liability">الخصوم</option>
-                            <option value="equity">حقوق الملكية</option>
-                            <option value="revenue">الإيرادات</option>
                             <option value="expense">المصروفات</option>
+                            <option value="revenue">الإيرادات</option>
                         </select>
                     </div>
-
-                    <!-- كود الحساب -->
                     <div class="mb-3">
                         <label for="code" class="form-label">كود الحساب</label>
-                        <input type="text" class="form-control" id="code" name="code" placeholder="أدخل كود الحساب" required>
+                        <input type="text" class="form-control" id="code" name="code" required>
                     </div>
-
-                    <!-- اسم الحساب -->
                     <div class="mb-3">
-                        <label for="accountName" class="form-label">اسم الحساب</label>
-                        <input type="text" class="form-control" id="accountName" name="name" placeholder="أدخل اسم الحساب" required>
+                        <label for="name" class="form-label">اسم الحساب</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
-
-                    <!-- طبيعة الحساب -->
                     <div class="mb-3">
-                        <label class="form-label">الطبيعة</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="normal_balance" id="debit" value="debit" checked>
-                            <label class="form-check-label" for="debit">مدين</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="normal_balance" id="credit" value="credit">
-                            <label class="form-check-label" for="credit">دائن</label>
-                        </div>
+                        <label for="normal_balance" class="form-label">الطبيعة</label>
+                        <select name="normal_balance" id="normal_balance" class="form-select" required>
+                            <option value="debit">مدين</option>
+                            <option value="credit">دائن</option>
+                        </select>
                     </div>
-
-                    <!-- زر الحفظ -->
-                    <button type="submit" class="btn btn-primary w-100 mt-3">حفظ</button>
+                    <button type="submit" class="btn btn-primary w-100">حفظ</button>
                 </form>
             </div>
         </div>
@@ -222,9 +204,25 @@
         document.getElementById(sectionId).style.display = 'block';
     }
 
-    function setAccountType(type) {
-        document.getElementById('accountType').value = type;
+    function buildTree(accounts, parentId = null) {
+        let html = '<ul>';
+        accounts.forEach(account => {
+            if (account.parent_account_id === parentId) {
+                html += `<li><strong>${account.name}</strong>`;
+                html += buildTree(accounts, account.id);
+                html += '</li>';
+            }
+        });
+        html += '</ul>';
+        return html;
     }
+    document.querySelectorAll('.treeview li').forEach(function (item) {
+    item.addEventListener('click', function (e) {
+        e.stopPropagation();
+        this.classList.toggle('open');
+    });
+});
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
