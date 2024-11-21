@@ -48,33 +48,28 @@ class ChartOfAccountController extends Controller
         ]);
     }
 
-private function buildTree($accounts, $type, $parentId = null)
-{
-    // تصفية الحسابات بناءً على النوع ومعرف الأب
-    $filteredAccounts = $accounts->filter(function ($account) use ($type, $parentId) {
-        return $account->type === $type && $account->parent_account_id == $parentId;
-    });
+    private function buildTree($accounts, $type, $parentId = null)
+    {
+        $filteredAccounts = $accounts->filter(function ($account) use ($type, $parentId) {
+            return $account->type === $type && $account->parent_account_id == $parentId;
+        });
 
-    // التحقق من الحسابات المفلترة
-    if ($filteredAccounts->isEmpty()) {
-        return '<ul><li>لا توجد حسابات مطابقة</li></ul>';
+        if ($filteredAccounts->isEmpty()) {
+            return '';
+        }
+
+        $html = '<ul>';
+        foreach ($filteredAccounts as $account) {
+            $html .= '<li>';
+            $html .= '<i class="fa-solid fa-folder"></i> ' . $account->name;
+            $html .= $this->buildTree($accounts, $type, $account->id);
+            $html .= '</li>';
+        }
+        $html .= '</ul>';
+
+        return $html;
     }
-
-    // بناء الشجرة
-    $html = '<ul>';
-    foreach ($filteredAccounts as $account) {
-        $html .= '<li>';
-        $html .= '<i class="fa-solid fa-folder"></i> ' . $account->name;
-        // عرض الحسابات الفرعية
-        $html .= $this->buildTree($accounts, $type, $account->id);
-        $html .= '</li>';
-    }
-    $html .= '</ul>';
-
-    return $html;
-}
-
-        // نموذج إنشاء حساب جديد
+            // نموذج إنشاء حساب جديد
     public function create()
     {
         $accounts = ChartOfAccount::all();

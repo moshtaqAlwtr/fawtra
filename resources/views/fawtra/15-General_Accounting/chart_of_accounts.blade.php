@@ -167,6 +167,13 @@
                             <option value="revenue">الإيرادات</option>
                         </select>
                     </div>
+                    <select name="parent_account_id" class="form-select">
+                        <option value="">-- اختر الحساب الأب --</option>
+                        @foreach($accounts as $account)
+                            <option value="{{ $account->id }}">{{ $account->name }}</option>
+                        @endforeach
+                    </select>
+
                     <div class="mb-3">
                         <label for="code" class="form-label">كود الحساب</label>
                         <input type="text" class="form-control" id="code" name="code" required>

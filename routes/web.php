@@ -120,12 +120,6 @@ Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('acco
 
 
 
-        // Route::get('/chart_of_accounts', function () {
-        //     return view('layouts.nav-slider-route', ['page' => 'chart_of_accounts',]);
-        // })->name('chart_of_accounts');
-        // Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
-
-
         Route::resource('schedule-appointment', AppointmentController::class)->names([
             'index' => 'schedule.appointment',
             'create' => 'schedule.create',
@@ -151,6 +145,16 @@ Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('acco
         Route::get('/schedule_appointment', function () {
             return view('layouts.nav-slider-route', ['page' => 'schedule_appointment']);
         })->name('schedule_appointment');
+
+        Route::resource('accounts', ChartOfAccountController::class)->names([
+            'index' => 'accounts.index',  // عرض جميع الحسابات
+            'create' => 'accounts.create',  // عرض نموذج إضافة حساب جديد
+            'store' => 'accounts.store',  // حفظ الحساب الجديد
+            'edit' => 'accounts.edit',  // تعديل الحساب
+            'update' => 'accounts.update',  // تحديث الحساب
+            'destroy' => 'accounts.destroy',  // حذف الحساب
+        ]);
+
 
         Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
         Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
