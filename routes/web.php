@@ -174,18 +174,6 @@ Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('i
 Route::post('/invoice-items/store', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
 
 Route::get('/invoice-items/create', [InvoiceItemController::class, 'create'])->name('invoice-items.create');
-// Route::post('/accounts/add', [ChartOfAccountController::class, 'store'])->name('accounts.add');
-
-// Route::prefix('invoices/{invoice}/items')->group(function () {
-//     Route::get('/', [InvoiceItemController::class, 'index'])->name('invoice-items.index');
-//     Route::post('/', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
-//     Route::get('/{item}', [InvoiceItemController::class, 'show'])->name('invoice-items.show');
-//     Route::put('/{item}', [InvoiceItemController::class, 'update'])->name('invoice-items.update');
-//     Route::delete('/{item}', [InvoiceItemController::class, 'destroy'])->name('invoice-items.destroy');
-// });
-
-// Route::get('/employee_management', [EmployeeController::class, 'index'])->name('employee_management');
-
 
 
 

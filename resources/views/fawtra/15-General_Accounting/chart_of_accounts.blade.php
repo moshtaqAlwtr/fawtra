@@ -67,8 +67,10 @@
                         <i class="fa-solid fa-folder"></i> الإيرادات
                         {!! $revenuesTree !!}
                     </li>
+
                 </ul>
             </div>
+
         </div>
 
 
