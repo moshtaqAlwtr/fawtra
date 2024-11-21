@@ -17,65 +17,78 @@ class ChartOfAccountController extends Controller
      * جلب الأقسام المختلفة
      * تمرير البيانات إلى العرض
      *
-     * @return \Illuminate\Http\Response
+
      */
     public function index()
-    {
+{
+    // جلب جميع الحسابات من جدول chart_of_accounts
+    $accounts = ChartOfAccount::all();
 
-        // جلب جميع الحسابات
-        $accounts = ChartOfAccount::all();
+    // بناء الشجرة لكل قسم
+    $assetsTree = $this->buildTree($accounts, 'asset');
+    $liabilitiesTree = $this->buildTree($accounts, 'liability');
+    $expensesTree = $this->buildTree($accounts, 'expense');
+    $revenuesTree = $this->buildTree($accounts, 'revenue');
 
-        // بناء الشجرة لكل قسم
-        $assetsTree = $this->buildTree($accounts, 'asset');
-        $liabilitiesTree = $this->buildTree($accounts, 'liability');
-        $expensesTree = $this->buildTree($accounts, 'expense');
-        $revenuesTree = $this->buildTree($accounts, 'revenue');
+    // جلب الأقسام المختلفة
+    $assets = ChartOfAccount::where('type', 'asset')->get();
+    $liabilities = ChartOfAccount::where('type', 'liability')->get();
+    $expenses = ChartOfAccount::where('type', 'expense')->get();
+    $revenues = ChartOfAccount::where('type', 'revenue')->get();
+    // dd([
+    //     'accounts' => $accounts,
+    //     'assetsTree' => $assetsTree,
+    //     'liabilitiesTree' => $liabilitiesTree,
+    //     'expensesTree' => $expensesTree,
+    //     'revenuesTree' => $revenuesTree,
+    //     'assets' => $assets,
+    //     'liabilities' => $liabilities,
+    //     'expenses' => $expenses,
+    //     'revenues' => $revenues,
+    // ]);
 
-        // جلب الأقسام المختلفة
-        $assets = ChartOfAccount::where('type', 'asset')->get();
-        $liabilities = ChartOfAccount::where('type', 'liability')->get();
-        $expenses = ChartOfAccount::where('type', 'expense')->get();
-        $revenues = ChartOfAccount::where('type', 'revenue')->get();
+    // إضافة dd لاختبار المتغيرات
+     // تمرير البيانات إلى العرض
+     return view('layouts.nav-slider-route', [
+        'accounts' => $accounts,
+        'assetsTree' => $assetsTree,
+        'liabilitiesTree' => $liabilitiesTree,
+        'expensesTree' => $expensesTree,
+        'revenuesTree' => $revenuesTree,
+        'assets' => $assets,
+        'liabilities' => $liabilities,
+        'expenses' => $expenses,
+        'revenues' => $revenues,
+    ]);
 
-        // تمرير البيانات إلى العرض
-        return view('layouts.nav-slider-route', [
-            'assetsTree' => $assetsTree,
-            'liabilitiesTree' => $liabilitiesTree,
-            'expensesTree' => $expensesTree,
-            'revenuesTree' => $revenuesTree,
-            'assets' => $assets,
-            'liabilities' => $liabilities,
-            'expenses' => $expenses,
-            'revenues' => $revenues,
-        ]);
 
+
+}
+private function buildTree($accounts, $type, $parentId = null)
+{
+    // تصفية الحسابات بناءً على النوع ومعرف الأب
+    $filteredAccounts = $accounts->filter(function ($account) use ($type, $parentId) {
+        return $account->type === $type && $account->parent_account_id == $parentId;
+    });
+
+    // التحقق من الحسابات المفلترة
+    if ($filteredAccounts->isEmpty()) {
+        return '<ul><li>لا توجد حسابات مطابقة</li></ul>';
     }
-    private function buildTree($accounts, $type, $parentId = null)
-    {
-        // فلترة الحسابات بناءً على النوع والـ parent_account_id
-        $filteredAccounts = $accounts->filter(function ($account) use ($type, $parentId) {
-            return $account->type === $type && $account->parent_account_id == $parentId;
-        });
 
-        // إذا لم يكن هناك حسابات مطابقة
-        if ($filteredAccounts->isEmpty()) {
-            return '<ul><li>لا توجد بيانات</li></ul>';
-        }
-
-        // بناء الشجرة
-        $html = '<ul>';
-        foreach ($filteredAccounts as $account) {
-            $html .= '<li>';
-            $html .= '<i class="fa-solid fa-folder"></i> ' . $account->name;
-            // عرض الحسابات الفرعية
-            $html .= $this->buildTree($accounts, $type, $account->id);
-            $html .= '</li>';
-        }
-        $html .= '</ul>';
-
-        return $html;
+    // بناء الشجرة
+    $html = '<ul>';
+    foreach ($filteredAccounts as $account) {
+        $html .= '<li>';
+        $html .= '<i class="fa-solid fa-folder"></i> ' . $account->name;
+        // عرض الحسابات الفرعية
+        $html .= $this->buildTree($accounts, $type, $account->id);
+        $html .= '</li>';
     }
+    $html .= '</ul>';
 
+    return $html;
+}
 
         // نموذج إنشاء حساب جديد
     public function create()

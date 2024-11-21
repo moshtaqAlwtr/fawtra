@@ -36,15 +36,6 @@
             text-decoration: none;
             color: #007bff;
         }
-        .treeview li ul {
-    display: none;
-    padding-left: 20px;
-}
-
-.treeview li.open > ul {
-    display: block;
-}
-
     </style>
 </head>
 <body>
@@ -76,11 +67,10 @@
                         <i class="fa-solid fa-folder"></i> الإيرادات
                         {!! $revenuesTree !!}
                     </li>
-
                 </ul>
             </div>
-
         </div>
+
 
 
 
