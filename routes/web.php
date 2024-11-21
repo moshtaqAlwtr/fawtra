@@ -94,18 +94,17 @@ Route::group(
 
 
 
+        Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
 
-        Route::get('/employee_management', function () {
-            return view('layouts.nav-slider-route', ['page' => 'employee_management']);
-        })->name('employee_management');
 
-        Route::get('/add_employee', function () {
-            return view('layouts.nav-slider-route', ['page' => 'add_employee']);
-        })->name('add_employee');
-        Route::get('/schedule_appointment', function () {
-            return view('layouts.nav-slider-route', ['page' => 'schedule_appointment']);
-        })->name('schedule_appointment');
+Route::prefix('accounts')->group(function () {
 
+Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create'); // نموذج إضافة حساب جديد
+Route::post('/', [ChartOfAccountController::class, 'store'])->name('accounts.store'); // حفظ حساب جديد
+Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accounts.edit'); // تعديل حساب
+Route::put('/{id}', [ChartOfAccountController::class, 'update'])->name('accounts.update'); // تحديث حساب
+Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy'); // حذف حساب
+});
 
         Route::get('/add_entry', [JournalEntryController::class, 'create'])->name('add_entry');
 
@@ -126,11 +125,6 @@ Route::group(
         // })->name('chart_of_accounts');
         // Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
 
-        Route::resource('accounts', ChartOfAccountController::class)->names([
-            'index' => 'accounts.index',
-            'store' => 'accounts.add',
-        ]);
-
 
         Route::resource('schedule-appointment', AppointmentController::class)->names([
             'index' => 'schedule.appointment',
@@ -146,6 +140,17 @@ Route::group(
         Route::get('/create-credit-notification', [CreditNotificationController::class, 'create'])->name('create-credit-notification');
         Route::post('/store-credit-notification', [CreditNotificationController::class, 'store'])->name('store-credit-notification');
 
+
+        Route::get('/employee_management', function () {
+            return view('layouts.nav-slider-route', ['page' => 'employee_management']);
+        })->name('employee_management');
+
+        Route::get('/add_employee', function () {
+            return view('layouts.nav-slider-route', ['page' => 'add_employee']);
+        })->name('add_employee');
+        Route::get('/schedule_appointment', function () {
+            return view('layouts.nav-slider-route', ['page' => 'schedule_appointment']);
+        })->name('schedule_appointment');
 
         Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
         Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
@@ -174,23 +179,25 @@ Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('i
 Route::post('/invoice-items/store', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
 
 Route::get('/invoice-items/create', [InvoiceItemController::class, 'create'])->name('invoice-items.create');
+Route::post('/accounts/add', [ChartOfAccountController::class, 'store'])->name('accounts.add');
+
+// Route::prefix('invoices/{invoice}/items')->group(function () {
+//     Route::get('/', [InvoiceItemController::class, 'index'])->name('invoice-items.index');
+//     Route::post('/', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
+//     Route::get('/{item}', [InvoiceItemController::class, 'show'])->name('invoice-items.show');
+//     Route::put('/{item}', [InvoiceItemController::class, 'update'])->name('invoice-items.update');
+//     Route::delete('/{item}', [InvoiceItemController::class, 'destroy'])->name('invoice-items.destroy');
+// });
+
+// Route::get('/employee_management', [EmployeeController::class, 'index'])->name('employee_management');
 
 
-
-Route::prefix('accounts')->group(function () {
-
-
-    // Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index');
-    // Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create'); // نموذج إضافة حساب جديد
-    // Route::post('/', [ChartOfAccountController::class, 'store'])->name('accounts.store'); // حفظ حساب جديد
-    // Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accounts.edit'); // تعديل حساب
-    // Route::put('/{id}', [ChartOfAccountController::class, 'update'])->name('accounts.update'); // تحديث حساب
-    // Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy'); // حذف حساب
-});
+// Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index');
 
 
     }
 );
+Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index ');
 
 // مسارات الملف الشخصي
 Route::middleware(['auth'])->group(function () {

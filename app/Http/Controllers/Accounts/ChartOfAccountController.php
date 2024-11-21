@@ -20,50 +20,34 @@ class ChartOfAccountController extends Controller
 
      */
     public function index()
-{
-    // جلب جميع الحسابات من جدول chart_of_accounts
-    $accounts = ChartOfAccount::all();
+    {
+        // جلب جميع الحسابات
+        $accounts = ChartOfAccount::all();
+        $assets = ChartOfAccount::where('type', 'asset')->get();
+        $liabilities = ChartOfAccount::where('type', 'liability')->get();
+        $expenses = ChartOfAccount::where('type', 'expense')->get();
+        $revenues = ChartOfAccount::where('type', 'revenue')->get();
+        // بناء الشجرة لكل قسم
+        $assetsTree = $this->buildTree($accounts, 'asset');
+        $liabilitiesTree = $this->buildTree($accounts, 'liability');
+        $expensesTree = $this->buildTree($accounts, 'expense');
+        $revenuesTree = $this->buildTree($accounts, 'revenue');
 
-    // بناء الشجرة لكل قسم
-    $assetsTree = $this->buildTree($accounts, 'asset');
-    $liabilitiesTree = $this->buildTree($accounts, 'liability');
-    $expensesTree = $this->buildTree($accounts, 'expense');
-    $revenuesTree = $this->buildTree($accounts, 'revenue');
+        // تمرير البيانات إلى العرض
+        return view('layouts.nav-slider-route', [
+            'page' => 'chart_of_accounts',
+            'accounts' => $accounts,
+            'assetsTree' => $assetsTree,
+            'liabilitiesTree' => $liabilitiesTree,
+            'expensesTree' => $expensesTree,
+            'revenuesTree' => $revenuesTree,
+            'assets'=>$assets,
+            'expenses'=>$expenses,
+            'liabilities'=>$liabilities,
+           'revenues'=>$revenues,
+        ]);
+    }
 
-    // جلب الأقسام المختلفة
-    $assets = ChartOfAccount::where('type', 'asset')->get();
-    $liabilities = ChartOfAccount::where('type', 'liability')->get();
-    $expenses = ChartOfAccount::where('type', 'expense')->get();
-    $revenues = ChartOfAccount::where('type', 'revenue')->get();
-    // dd([
-    //     'accounts' => $accounts,
-    //     'assetsTree' => $assetsTree,
-    //     'liabilitiesTree' => $liabilitiesTree,
-    //     'expensesTree' => $expensesTree,
-    //     'revenuesTree' => $revenuesTree,
-    //     'assets' => $assets,
-    //     'liabilities' => $liabilities,
-    //     'expenses' => $expenses,
-    //     'revenues' => $revenues,
-    // ]);
-
-    // إضافة dd لاختبار المتغيرات
-     // تمرير البيانات إلى العرض
-     return view('layouts.nav-slider-route', [
-        'accounts' => $accounts,
-        'assetsTree' => $assetsTree,
-        'liabilitiesTree' => $liabilitiesTree,
-        'expensesTree' => $expensesTree,
-        'revenuesTree' => $revenuesTree,
-        'assets' => $assets,
-        'liabilities' => $liabilities,
-        'expenses' => $expenses,
-        'revenues' => $revenues,
-    ]);
-
-
-
-}
 private function buildTree($accounts, $type, $parentId = null)
 {
     // تصفية الحسابات بناءً على النوع ومعرف الأب
