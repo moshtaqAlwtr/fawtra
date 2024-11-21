@@ -15,20 +15,21 @@ return new class extends Migration
             $table->id(); // رقم التفاصيل
             $table->unsignedBigInteger('journal_entry_id'); // القيد المرتبط
             $table->unsignedBigInteger('account_id'); // الحساب المرتبط
+            $table->string('description')->nullable(); // وصف تفصيلي للبند
             $table->decimal('debit', 15, 2)->default(0); // المبلغ المدين
             $table->decimal('credit', 15, 2)->default(0); // المبلغ الدائن
             $table->timestamps();
 
+            // العلاقات الخارجية
             $table->foreign('journal_entry_id')->references('id')->on('journal_entries')->onDelete('cascade');
             $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('cascade');
         });
     }
 
-
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('journal_entry_details');
     }

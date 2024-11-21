@@ -36,15 +36,6 @@
             text-decoration: none;
             color: #007bff;
         }
-        .treeview li ul {
-    display: none;
-    padding-left: 20px;
-}
-
-.treeview li.open > ul {
-    display: block;
-}
-
     </style>
 </head>
 <body>
@@ -57,44 +48,30 @@
     <div class="row">
         <!-- Sidebar -->
         <div class="col-md-3 sidebar bg-light p-3">
-    <h5 class="fw-bold mb-3">أقسام الحسابات</h5>
-    <div class="treeview">
-        <ul>
-            <li>
-                <i class="fa-solid fa-folder"></i> الأصول
-                @if (!empty($assetsTree))
-                    {!! $assetsTree !!}
-                @else
-                    <ul><li>لا توجد بيانات</li></ul>
-                @endif
-            </li>
-            <li>
-                <i class="fa-solid fa-folder"></i> الخصوم
-                @if (!empty($liabilitiesTree))
-                    {!! $liabilitiesTree !!}
-                @else
-                    <ul><li>لا توجد بيانات</li></ul>
-                @endif
-            </li>
-            <li>
-                <i class="fa-solid fa-folder"></i> المصروفات
-                @if (!empty($expensesTree))
-                    {!! $expensesTree !!}
-                @else
-                    <ul><li>لا توجد بيانات</li></ul>
-                @endif
-            </li>
-            <li>
-                <i class="fa-solid fa-folder"></i> الإيرادات
-                @if (!empty($revenuesTree))
-                    {!! $revenuesTree !!}
-                @else
-                    <ul><li>لا توجد بيانات</li></ul>
-                @endif
-            </li>
-        </ul>
-    </div>
-</div>
+            <h5 class="fw-bold mb-3">أقسام الحسابات</h5>
+            <div class="treeview">
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-folder"></i> الأصول
+                        {!! $assetsTree !!}
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-folder"></i> الخصوم
+                        {!! $liabilitiesTree !!}
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-folder"></i> المصروفات
+                        {!! $expensesTree !!}
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-folder"></i> الإيرادات
+                        {!! $revenuesTree !!}
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
 
 
 

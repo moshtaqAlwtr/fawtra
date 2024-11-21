@@ -15,93 +15,98 @@
         <h2 class="m-0">إضافة قيد</h2>
     </div>
 
-    
+
     <form action="{{ route('journal_entries.store') }}" method="POST" enctype="multipart/form-data">
-    @csrf <!-- حماية من هجمات CSRF -->
+        @csrf <!-- حماية من هجمات CSRF -->
 
-            <!-- أزرار الحفظ -->
-            <div class="d-flex justify-content-between mb-3">
-                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> حفظ</button>
-                <button type="button" class="btn btn-warning text-white"><i class="fas fa-file-alt"></i> حفظ كمسودة</button>
-                <button type="button" class="btn btn-danger"><i class="fas fa-times"></i> إلغاء</button>
+        <!-- القسم الأساسي لإدخال البيانات -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <div class="mb-3">
+                        <label for="date" class="form-label">التاريخ</label>
+                        <input type="text" id="date" name="date" class="form-control" placeholder="اختر التاريخ" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="currency" class="form-label">العملة</label>
+                        <select id="currency" name="currency" class="form-select" required>
+                            <option value="SAR">ريال سعودي</option>
+                            <option value="USD">دولار أمريكي</option>
+                            <option value="EUR">يورو</option>
+                        </select>
+                    </div>
+                    @if(isset($nextId))
+                    <div class="mb-3">
+                        <label for="entry_id" class="form-label">رقم القيد</label>
+                        <input type="text" id="entry_id" class="form-control" value="{{ $nextId }}" readonly>
+                    </div>
+                @endif
+
+
+
+                </div>
             </div>
+            <div class="col-md-8">
+                <div class="card p-3">
+                    <label for="description" class="form-label">الوصف</label>
+                    <textarea id="description" name="description" class="form-control" rows="4" placeholder="أدخل الوصف هنا"></textarea>
+                    <div class="upload-section mt-3">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <label for="attachment" class="form-label d-block">أسقط الملف هنا أو اختر من جهازك</label>
+                        <input type="file" id="attachment" name="attachment" class="form-control" accept=".jpg,.jpeg,.png,.pdf">
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <!-- القسم الأساسي لإدخال البيانات -->
-            <div class="row mb-4">
-                <div class="col-md-4">
-                    <div class="card p-3">
-                        <div class="mb-3">
-                            <label for="date" class="form-label">التاريخ</label>
-                            <input type="text" id="date" name="date" class="form-control" placeholder="اختر التاريخ" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="currency" class="form-label">العملة</label>
-                            <select id="currency" name="currency" class="form-select" required>
-                                <option value="SAR">ريال سعودي</option>
-                                <option value="USD">دولار أمريكي</option>
-                                <option value="EUR">يورو</option>
+        <!-- جدول الإدخالات -->
+        <div class="card p-3">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>اسم الحساب <span class="text-danger">*</span></th>
+                        <th>الوصف</th>
+                        <th>مركز التكلفة</th>
+                        <th>مدين</th>
+                        <th>دائن</th>
+                        <th>إجراء</th>
+                    </tr>
+                </thead>
+                <tbody id="entryTable">
+                    <tr>
+                        <td>
+                            <select name="accounts[]" class="form-select" required>
+                                <option value="">اختر حساب</option>
+                                @foreach($accounts as $account)
+                                    <option value="{{ $account->id }}">{{ $account->name }}</option>
+                                @endforeach
                             </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="number" class="form-label">رقم القيد</label>
-                            <input type="text" id="number" name="entry_number" class="form-control" placeholder="أدخل رقم القيد" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="card p-3">
-                        <label for="description" class="form-label">الوصف</label>
-                        <textarea id="description" name="description" class="form-control" rows="4" placeholder="أدخل الوصف هنا"></textarea>
-                        <div class="upload-section mt-3">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                            <label for="attachment" class="form-label d-block">أسقط الملف هنا أو اختر من جهازك</label>
-                            <input type="file" id="attachment" name="attachment" class="form-control" accept=".jpg,.jpeg,.png,.pdf">
-                        </div>
-                    </div>
-                </div>
-            </div>
-</form>
-            <!-- جدول الإدخالات -->
-            <div class="card p-3">
-                <table class="table table-bordered text-center">
-                    <thead>
-                        <tr>
-                            <th>اسم الحساب <span class="text-danger">*</span></th>
-                            <th>الوصف</th>
-                            <th>مركز التكلفة</th>
-                            <th>مدين</th>
-                            <th>دائن</th>
-                            <th>إجراء</th>
-                        </tr>
-                    </thead>
-                    <tbody id="entryTable">
-                        <tr>
-                            <td>
-                                <select name="accounts[]" class="form-select" required>
-                                    <option value="">اختر حساب</option>
-                                    <option value="1">الحساب 1</option>
-                                    <option value="2">الحساب 2</option>
-                                </select>
-                            </td>
-                            <td><input type="text" name="descriptions[]" class="form-control" placeholder="الوصف"></td>
-                            <td>
-                                <select name="cost_centers[]" class="form-select">
-                                    <option value="">لا شيء</option>
-                                    <option value="1">مركز 1</option>
-                                </select>
-                            </td>
-                            <td><input type="number" name="debits[]" class="form-control" value="0"></td>
-                            <td><input type="number" name="credits[]" class="form-control" value="0"></td>
-                            <td>
-                                <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeRow(this)"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button type="button" class="btn btn-primary btn-add-row mt-2" onclick="addRow()"><i class="fas fa-plus-circle"></i> إضافة صف</button>
-            </div>
-        
-    </div>
+
+                        </td>
+                         <td><input type="text" name="descriptions[]" class="form-control" placeholder="الوصف"></td>
+                        <td>
+                            <select name="cost_centers[]" class="form-select">
+                                <option value="">لا شيء</option>
+                                <option value="1">مركز 1</option>
+                            </select>
+                        </td>
+                        <td><input type="number" name="debits[]" class="form-control" value="0"></td>
+                        <td><input type="number" name="credits[]" class="form-control" value="0"></td>
+                        <td>
+                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeRow(this)"><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary btn-add-row mt-2" onclick="addRow()"><i class="fas fa-plus-circle"></i> إضافة صف</button>
+        </div>
+
+        <!-- زر الحفظ -->
+        <div class="d-flex justify-content-between mt-3">
+            <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> حفظ</button>
+        </div>
+    </form>
+     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

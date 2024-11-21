@@ -22,6 +22,7 @@ class CreditNotificationController extends Controller
         'employees' => $employees,
         'notifications' => $notifications,
     ]);
+
 }
 
 

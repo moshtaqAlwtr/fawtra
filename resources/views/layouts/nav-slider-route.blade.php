@@ -154,7 +154,7 @@
                     @case('chart_of_accounts')
                     @include('fawtra.15-General_Accounting.chart_of_accounts')
                     @break
-                    
+
                     @case('add_entry')
                     @include('fawtra.15-General_Accounting.add_entry')
                     @break
@@ -165,6 +165,7 @@
             </div>
         </div>
     </div>
+
 
     <!-- إضافة مكتبات JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
