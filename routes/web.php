@@ -13,7 +13,7 @@ use App\Http\Controllers\CreditNotificationController ;  // إضافة الاس�
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Invoices\InvoiceItemController;
 use App\Http\Controllers\Accounts\ChartOfAccountController;
-use App\Http\Controllers\JournalEntryController; // اضف قيد
+
 
 
 
@@ -91,27 +91,14 @@ Route::group(
         Route::get('/chart_of_accounts', function () {
             return view('layouts.nav-slider-route', ['page' => 'chart_of_accounts']);
         })->name('chart_of_accounts');
-
         Route::get('/add_entry', function () {
-         return view('layouts.nav-slider-route', ['page' => 'add_entry']); // الملف الخاص بالعرض
+            return view('layouts.nav-slider-route', ['page' => 'add_entry']);
         })->name('add_entry');
-        
+
+    
+
      
-        Route::post('/journal-entries', [JournalEntryController::class, 'store'])->name('journal_entries.store');
-        Route::get('/journal-entries', [JournalEntryController::class, 'index'])->name('journal_entries.index');
-        
-        
-        // Route::get('/journal-entries/create', [JournalEntryController::class, 'create'])->name('journal_entries.create');
-        // Route::post('/journal-entries', [JournalEntryController::class, 'store'])->name('journal_entries.store');
-        // Route::get('/journal-entries/{id}', [JournalEntryController::class, 'show'])->name('journal_entries.show');
-        // Route::delete('/journal-entries/{id}', [JournalEntryController::class, 'destroy'])->name('journal_entries.destroy');
-        
-
-
-        // Route::get('/chart_of_accounts', function () {
-        //     return view('layouts.nav-slider-route', ['page' => 'chart_of_accounts',]);
-        // })->name('chart_of_accounts');
-        Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
+      
 
 
         Route::get('/schedule-appointment', [AppointmentController::class, 'index'])->name('schedule.appointment');
@@ -182,13 +169,13 @@ Route::post('/accounts/add', [ChartOfAccountController::class, 'store'])->name('
 
 Route::prefix('accounts')->group(function () {
 
-//    Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index');
+        Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index');
 
-    // Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create'); // نموذج إضافة حساب جديد
-    // Route::post('/', [ChartOfAccountController::class, 'store'])->name('accounts.store'); // حفظ حساب جديد
-    // Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accounts.edit'); // تعديل حساب
-    // Route::put('/{id}', [ChartOfAccountController::class, 'update'])->name('accounts.update'); // تحديث حساب
-    // Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy'); // حذف حساب
+    Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create'); // نموذج إضافة حساب جديد
+    Route::post('/', [ChartOfAccountController::class, 'store'])->name('accounts.store'); // حفظ حساب جديد
+    Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accounts.edit'); // تعديل حساب
+    Route::put('/{id}', [ChartOfAccountController::class, 'update'])->name('accounts.update'); // تحديث حساب
+    Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy'); // حذف حساب
 });
 
 
