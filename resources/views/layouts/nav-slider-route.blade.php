@@ -132,16 +132,11 @@
 
                     @case('credit-note')
                     @include('fawtra.2-purchase_admin.credit-note')
-
-
-
                     @break
-
 
                     @case('employee_management')
                     @include('fawtra.18-HR_Files.employee_management')
                     @break
-
                     @case('add_employee')
                     @include('fawtra.18-HR_Files.add_employee')
                     @break
@@ -158,7 +153,12 @@
                     @case('add_entry')
                     @include('fawtra.15-General_Accounting.add_entry')
                     @break
-                        @default
+
+                    @case('journal_entries_day')
+                    @include('fawtra.15-General_Accounting.journal_entries_day')
+                    @break
+
+                    @default
 
                     @endswitch
                 @endif

@@ -12,13 +12,25 @@ return new class extends Migration
     public function up()
     {
         Schema::create('journal_entries', function (Blueprint $table) {
-            $table->id(); // رقم القيد
-            $table->date('date'); // تاريخ القيد
-            $table->text('description')->nullable(); // وصف القيد
-            $table->string('currency')->nullable(); // العملة
-            $table->string('attachment')->nullable(); // الملف المرفق
-            $table->timestamps(); // تواريخ الإنشاء والتعديل
+            $table->id(); // Primary Key
+            $table->date('date');
+            $table->text('description')->nullable();
+            $table->string('currency')->nullable();
+            $table->string('attachment')->nullable();
+
+            // Foreign Keys
+            $table->unsignedBigInteger('client_id')->nullable();
+            $table->unsignedBigInteger('employee_id')->nullable();
+            $table->unsignedBigInteger('invoice_id')->nullable();
+
+            $table->timestamps();
+
+            // علاقات
+            $table->foreign('client_id')->references('client_id')->on('clients')->onDelete('cascade');
+            $table->foreign('employee_id')->references('employee_id')->on('employees')->onDelete('cascade');
+            $table->foreign('invoice_id')->references('invoice_id')->on('invoices')->onDelete('cascade');
         });
+
     }
 
     /**

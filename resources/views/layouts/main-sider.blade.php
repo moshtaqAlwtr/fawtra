@@ -592,7 +592,7 @@
                     <ul class="side-nav-second-level">
                         <!-- القيود اليومية -->
                         <li class="side-nav-item">
-                            <a href="">
+                            <a href="{{route('journal_entries_day') }}">
                                 <span>{{ trans('main_trans.Journal_Entries') }}</span>
                             </a>
                         </li>

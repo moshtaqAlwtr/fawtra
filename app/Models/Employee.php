@@ -76,4 +76,8 @@ class Employee extends Model
 	{
 		return $this->hasMany(Branch::class, 'manager_id');
 	}
+    public function journalEntries()
+    {
+        return $this->hasMany(JournalEntry::class, 'employee_id');
+    }
 }

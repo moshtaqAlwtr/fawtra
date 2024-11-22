@@ -1,44 +1,4 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل الحسابات</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .header {
-            background: linear-gradient(90deg, #007bff, #0056b3);
-            color: #fff;
-            text-align: center;
-            border-radius: 10px;
-        }
-        .sidebar {
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .content {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .treeview ul {
-            list-style: none;
-            padding-left: 20px;
-        }
-        .treeview li {
-            margin-bottom: 5px;
-        }
-        .treeview a {
-            text-decoration: none;
-            color: #007bff;
-        }
-    </style>
-</head>
-<body>
+
 <div class="container-fluid mt-4">
     <!-- Header -->
     <div class="header p-4 mb-4">
@@ -52,19 +12,19 @@
             <div class="treeview">
                 <ul>
                     <li>
-                        <i class="fa-solid fa-folder"></i> الأصول
+                        <i class="fa-solid fa-folder" onclick="showSectionData('asset')"></i> الأصول
                         {!! $assetsTree !!}
                     </li>
                     <li>
-                        <i class="fa-solid fa-folder"></i> الخصوم
+                        <i class="fa-solid fa-folder" onclick="showSectionData('liability')"></i> الخصوم
                         {!! $liabilitiesTree !!}
                     </li>
                     <li>
-                        <i class="fa-solid fa-folder"></i> المصروفات
+                        <i class="fa-solid fa-folder"  onclick="showSectionData('expense')"></i> المصروفات
                         {!! $expensesTree !!}
                     </li>
                     <li>
-                        <i class="fa-solid fa-folder"></i> الإيرادات
+                        <i class="fa-solid fa-folder" onclick="showSectionData('revenue')"></i> الإيرادات
                         {!! $revenuesTree !!}
                     </li>
 
@@ -77,7 +37,10 @@
 
 
         <!-- Content -->
-        <div class="col-md-9 content p-4">
+        <div class="col-md-9 content p-4" id="section-content">
+            <div id="loading" style="display: none; text-align: center; margin-top: 10px;">
+                <i class="fa fa-spinner fa-spin fa-2x text-primary"></i>
+            </div>
             <!-- Success Message -->
             @if (session('success'))
                 <div class="alert alert-success text-center fw-bold">{{ session('success') }}</div>
@@ -139,9 +102,7 @@
                         </li>
                     @endforeach
                 </ul>
-                <button class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal" onclick="setAccountType('revenue')">
-                    <i class="fa-solid fa-plus"></i> إضافة حساب
-                </button>
+
             </div>
         </div>
     </div>
@@ -222,6 +183,77 @@
 });
 
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // عرض الشجرة عند الضغط على أيقونة
+        document.querySelectorAll('.treeview li i').forEach(function (icon) {
+            icon.addEventListener('click', function (e) {
+                e.stopPropagation(); // لمنع تنفيذ الأحداث الأخرى
+                const subTree = this.nextElementSibling; // الشجرة الفرعية
+                if (subTree) {
+                    subTree.style.display = subTree.style.display === 'none' ? 'block' : 'none';
+                }
+            });
+        });
+
+        // عرض البيانات عند الضغط على العنصر
+        document.querySelectorAll('.treeview li').forEach(function (item) {
+            item.addEventListener('click', function (e) {
+                e.stopPropagation(); // لمنع تأثير النقر على العنصر الرئيسي
+                const sectionId = this.getAttribute('data-section-id'); // قم بتحديد الـ ID الخاص بالقسم
+                if (sectionId) {
+                    showSection(sectionId);
+                }
+            });
+        });
+    });
+
+    // دالة لعرض القسم المطلوب
+    function showSection(sectionId) {
+        // إخفاء جميع الأقسام
+        document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
+        // عرض القسم المطلوب
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.style.display = 'block';
+        }
+    }
+    function showSectionData(sectionType) {
+    // إجراء طلب إلى السيرفر لجلب البيانات
+    fetch(`/section-data/${sectionType}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(section => {
+            if (section) {
+                // تحديث المحتوى بناءً على البيانات المستردة
+                const contentDiv = document.getElementById("section-content");
+                contentDiv.innerHTML = `
+                    <h4 class="fw-bold mb-3">${section.title}</h4>
+                    <ul class="list-group">
+                        ${section.data
+                            .map(
+                                (item) =>
+                                    `<li class="list-group-item d-flex justify-content-between align-items-center">
+                                        ${item.name}
+                                        <span class="badge bg-primary">${item.normal_balance}</span>
+                                    </li>`
+                            )
+                            .join("")}
+                    </ul>
+                `;
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching section data:", error);
+        });
+}
+
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

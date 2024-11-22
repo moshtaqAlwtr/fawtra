@@ -51,7 +51,7 @@ class Invoice extends Model
 		'invoice_date',
 		'sales_manager',
 		'issue_date',
-	
+
 	];
 
 
@@ -70,4 +70,8 @@ class Invoice extends Model
 	{
 		return $this->hasMany(InvoiceItem::class);
 	}
+    public function journalEntries()
+    {
+        return $this->hasMany(JournalEntry::class, 'invoice_id');
+    }
 }
