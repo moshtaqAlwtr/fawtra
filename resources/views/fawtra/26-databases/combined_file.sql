@@ -89,19 +89,28 @@ CREATE TABLE IF NOT EXISTS invoices (
 
 -- جدول مدفوعات العملاء (Client Payments)
 CREATE TABLE IF NOT EXISTS client_payments (
-  payment_id INT AUTO_INCREMENT PRIMARY KEY,
-  client_id INT,
-  invoice_id INT,
-  payment_date DATE NOT NULL,
-  amount DECIMAL(10, 2) NOT NULL,
-  payment_method ENUM('Cash', 'Bank Transfer', 'Credit Card', 'Other') NOT NULL,
-  discount_amount DECIMAL(10, 2) DEFAULT 0,
-  partial_payment_amount DECIMAL(10, 2) DEFAULT 0,
-  status ENUM('Paid', 'Pending', 'Failed') DEFAULT 'Pending',
-  notes TEXT,
-  FOREIGN KEY (client_id) REFERENCES clients(client_id),
-  FOREIGN KEY (invoice_id) REFERENCES invoices(invoice_id)
+  payment_id INT AUTO_INCREMENT PRIMARY KEY, -- معرف الدفع
+  client_id INT, -- معرف العميل
+  invoice_id INT, -- معرف الفاتورة
+  employee_id INT, -- معرف الموظف
+  entry_id INT, -- معرف القيد
+  treasury_id INT, -- معرف الخزينة
+  payment_date DATE NOT NULL, -- تاريخ الدفع
+  amount DECIMAL(10, 2) NOT NULL, -- المبلغ المدفوع
+  payment_method ENUM('Cash', 'Bank Transfer', 'Credit Card', 'Other') NOT NULL, -- طريقة الدفع
+  discount_amount DECIMAL(10, 2) DEFAULT 0, -- مبلغ الخصم
+  partial_payment_amount DECIMAL(10, 2) DEFAULT 0, -- مبلغ الدفع الجزئي
+  status ENUM('Paid', 'Pending', 'Failed') DEFAULT 'Pending', -- حالة الدفع
+  notes TEXT, -- ملاحظات إضافية
+
+  -- المفاتيح الخارجية
+  FOREIGN KEY (client_id) REFERENCES clients(client_id), -- الربط مع جدول العملاء
+  FOREIGN KEY (invoice_id) REFERENCES invoices(invoice_id), -- الربط مع جدول الفواتير
+  FOREIGN KEY (employee_id) REFERENCES employees(employee_id), -- الربط مع جدول الموظفين
+  FOREIGN KEY (entry_id) REFERENCES journal_entries(entry_id), -- الربط مع جدول القيود اليومية
+  FOREIGN KEY (treasury_id) REFERENCES treasuries(treasury_id) -- الربط مع جدول الخزينة
 );
+
 
 -- جدول بنود الفواتير (Invoice Items)
 CREATE TABLE IF NOT EXISTS invoice_items (

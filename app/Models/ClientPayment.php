@@ -1,67 +1,57 @@
 <?php
-
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
-use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class ClientPayment
- * 
- * @property int $payment_id
- * @property int|null $client_id
- * @property int|null $invoice_id
- * @property Carbon $payment_date
- * @property float $amount
- * @property string $payment_method
- * @property float|null $discount_amount
- * @property float|null $partial_payment_amount
- * @property string|null $status
- * @property string|null $notes
- * 
- * @property Client|null $client
- * @property Invoice|null $invoice
- *
- * @package App\Models
- */
 class ClientPayment extends Model
 {
-	protected $table = 'client_payments';
-	protected $primaryKey = 'payment_id';
-	public $timestamps = false;
+    use HasFactory;
 
-	protected $casts = [
-		'client_id' => 'int',
-		'invoice_id' => 'int',
-		'payment_date' => 'datetime',
-		'amount' => 'float',
-		'discount_amount' => 'float',
-		'partial_payment_amount' => 'float'
-	];
+    protected $table = 'client_payments';
 
-	protected $fillable = [
-		'client_id',
-		'invoice_id',
-		'payment_date',
-		'amount',
-		'payment_method',
-		'discount_amount',
-		'partial_payment_amount',
-		'status',
-		'notes'
-	];
+    protected $fillable = [
+        'client_id',
+        'invoice_id',
+        'employee_id',
+        'entry_id',
+        'treasury_id',
+        'payment_date',
+        'amount',
+        'payment_method',
+        'discount_amount',
+        'partial_payment_amount',
+        'status',
+        'notes',
+    ];
 
-	public function client()
-	{
-		return $this->belongsTo(Client::class);
-	}
+    // العلاقة مع العميل
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'client_id');
+    }
 
-	public function invoice()
-	{
-		return $this->belongsTo(Invoice::class);
-	}
+    // العلاقة مع الفاتورة
+    public function invoice()
+    {
+        return $this->belongsTo(Invoice::class, 'invoice_id');
+    }
+
+    // العلاقة مع الموظف
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
+    }
+
+    // العلاقة مع الخزينة
+    public function treasury()
+    {
+        return $this->belongsTo(Treasury::class, 'treasury_id');
+    }
+
+    // العلاقة مع قيد اليومية
+    public function journalEntry()
+    {
+        return $this->belongsTo(JournalEntry::class, 'entry_id');
+    }
 }
