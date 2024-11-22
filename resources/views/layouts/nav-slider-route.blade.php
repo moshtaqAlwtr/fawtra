@@ -158,6 +158,9 @@
                     @include('fawtra.15-General_Accounting.journal_entries_day')
                     @break
 
+                    @case('customer_payments')
+                    @include('fawtra.2-purchase_admin.customer_payments')
+                    @break
                     @default
 
                     @endswitch

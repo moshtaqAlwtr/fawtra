@@ -90,7 +90,7 @@
 </nav>
 
 <!-- المحتوى -->
-<div class="container content mt-4">
+
     <div class="header d-flex justify-content-between align-items-center">
         <h4 class="mb-0">مدفوعات العملاء</h4>
         

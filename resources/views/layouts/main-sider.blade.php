@@ -71,7 +71,7 @@
 
                     </li>
                     <li>
-                        <a href="">{{ trans('main_trans.Customer_payments') }}</a>
+                        <a href="{{route('customer_payments')}}">{{ trans('main_trans.Customer_payments') }}</a>
 
 
                     </li>

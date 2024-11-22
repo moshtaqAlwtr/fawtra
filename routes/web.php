@@ -63,6 +63,11 @@ Route::group(
         Route::get('/quotation', function () {
             return view('layouts.nav-slider-route', ['page' => 'quotation']);
         })->name('quotation');
+        // توجيه لصفحة مدفوعات العملاء
+Route::get('/customer_payments', function () {
+    return view('layouts.nav-slider-route', ['page' => 'customer_payments']);
+})->name('customer_payments');
+
 // مسار صفحة المنتجات
         Route::get('/products', function () {
             return view('layouts.nav-slider-route', ['page' => 'products']);
