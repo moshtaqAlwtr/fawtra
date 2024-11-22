@@ -43,7 +43,7 @@ Route::group(
         Route::get('/human-resources', function () {
             return view('layouts.nav-slider-route', ['page' => 'human_resources']);
         })->name('human_resources');
-//مسار ادارة الفواتير 
+//مسار ادارة الفواتير
         Route::get('/invoice-management', function () {
             return view('layouts.nav-slider-route', ['page' => 'invoice-management']);
         })->name('invoice-management');
@@ -157,7 +157,8 @@ Route::get('/journal-entries/search', [JournalEntryController::class, 'search'])
 
 
         Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
-        
+        Route::get('/customer-management', [ClientController::class, 'index'])->name('customer-management');
+
         Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
         Route::resource('clients', ClientController::class);
         Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');

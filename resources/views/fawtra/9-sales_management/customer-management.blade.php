@@ -1,8 +1,7 @@
-<p>تم تضمين الملف بنجاح</p>
 
- 
+
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <button class="btn btn-gradient" onclick="window.location.href='add_customer.html'">+ أضف العميل</button>
+            <button class="btn btn-gradient" onclick="window.location.href='{{ route('add_customer') }}'">+ أضف العميل</button>
             <div class="header-actions">
                 <button class="btn btn-outline-secondary"><i class="fas fa-upload"></i></button>
                 <button class="btn btn-outline-secondary"><i class="fas fa-cog"></i></button>
@@ -104,49 +103,59 @@
 
         <!-- قسم الجدول -->
                <!-- قسم الجدول -->
-               <div class="table-responsive table-card">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>الإجراء</th>
-                        <th>ترتيب</th>
-                        <th>الحالة</th>
-                        <th>العنوان</th>
-                        <th>البريد الإلكتروني</th>
-                    </tr>
-                </thead>
-                <tbody>
-    @foreach($clients as $client)
-        <tr>
-            <td style="position: relative;">
-                <div class="dropdown">
-                    <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v"></i>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-eye"></i> عرض</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i> تعديل</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> نسخ</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-trash"></i> حذف</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i> الدخول به</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
-                    </ul>
-                </div>
-            </td>
-            <td>#{{ $client->id }}</td>
-            <td>
-                <span class="badge badge-status {{ $client->status == 'active' ? 'status-active' : 'status-inactive' }}">
-                    {{ $client->status == 'active' ? 'نشط' : 'موقوف' }}
-                </span>
-            </td>
-            <td>{{ $client->trade_name }}</td>
-            <td>{{ $client->email }}</td>
-        </tr>
-    @endforeach
-</tbody>
 
-            </table>
-        </div>
+               <div class="container-fluid">
+                <div class="row">
+                    @foreach($clients as $client)
+                        <div class="col-12 mb-3">
+                            <div class="card shadow-sm">
+                                <div class="card-body d-flex align-items-center justify-content-between">
+                                    <!-- الجزء الأيسر: شارة الحرف الأول -->
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0">
+                                            <span class="badge bg-primary text-white p-3 fs-5">
+                                                {{ mb_substr($client->trade_name, 0, 1) }}
+                                            </span>
+                                        </div>
+                                        <div class="ms-3">
+                                            <h5 class="mb-1">{{ $client->trade_name }}</h5>
+                                            <p class="mb-0 text-muted">
+                                                <i class="fas fa-envelope"></i> {{ $client->email }}
+                                            </p>
+                                            <p class="mb-0 text-muted">
+                                                <i class="fas fa-map-marker-alt"></i> {{ $client->address ?? 'العنوان غير متوفر' }}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- الجزء الأوسط: الحالة -->
+                                    <div class="text-center">
+                                        <span class="badge {{ $client->status == 'active' ? 'bg-success' : 'bg-danger' }} p-2">
+                                            {{ $client->status == 'active' ? 'نشط' : 'موقوف' }}
+                                        </span>
+                                    </div>
+
+                                    <!-- الجزء الأيمن: القائمة المنسدلة -->
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-eye"></i> عرض</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i> تعديل</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> نسخ</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-trash"></i> حذف</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i> الدخول به</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
 
     </div>
 

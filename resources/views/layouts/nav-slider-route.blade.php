@@ -103,12 +103,12 @@
                         @break
 
                         @case('customer-management')
-                               @include('fawtra.9-sales_management.customer-management', ['clients' => $clients])
+                               @include('fawtra.9-sales_management.customer-management')
                                @break
 
 
                     @case('sales_invoice')
-                    @include('fawtra.2-purchase_admin.sales_invoice', ['clients' => $clients])
+                    @include('fawtra.2-purchase_admin.sales_invoice')
                 @break
 
                 @case('quotation')
@@ -169,7 +169,7 @@
                     @case('add_payment_process')
                     @include('fawtra.2-purchase_admin.add_payment_process')
                     @break
-                    
+
                     @default
 
                     @endswitch
