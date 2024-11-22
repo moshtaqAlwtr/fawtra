@@ -13,14 +13,23 @@ class ClientPaymentController extends Controller
     // عرض صفحة إنشاء دفعة جديدة
     public function create()
     {
+       
         $clients = Client::all();
         $invoices = Invoice::all();
-        $treasuries = Treasury::where('status', 'Active')->get();
-        $employees = Employee::where('status', 'Active')->get();
-
-        return view('payments.create', compact('clients', 'invoices', 'treasuries', 'employees'));
-    }
-
+        $treasuries = Treasury::all();
+        $employees = Employee::all();
+    
+        dd($clients, $invoices, $treasuries, $employees);
+        return view('layouts.nav-slider-route', [
+            'page' => 'add_payment_process',
+            'clients' => $clients,
+            'employees' => $employees,
+            'invoices' => $invoices,
+            'treasuries' => $treasuries,
+        ]);
+        
+            }
+    
     // تخزين دفعة جديدة
     public function store(Request $request)
     {

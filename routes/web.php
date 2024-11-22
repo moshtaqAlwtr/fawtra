@@ -8,7 +8,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\QuoteController;
-
+use App\Http\Controllers\Accounts\ClientPaymentController;
 use App\Http\Controllers\CreditNotificationController ;  // إضافة الاستيراد الجديد
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Invoices\InvoiceItemController;
@@ -198,7 +198,10 @@ Route::post('/accounts/add', [ChartOfAccountController::class, 'store'])->name('
     }
 );
 Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index ');
+Route::get('/add_payment_process', [ClientPaymentController::class, 'create'])->name('payments.create');
 
+// تخزين بيانات الدفع
+Route::post('/add_payment_process', [ClientPaymentController::class, 'store'])->name('payments.store');
 // مسارات الملف الشخصي
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

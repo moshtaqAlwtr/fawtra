@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,13 +11,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('journal_entries', function (Blueprint $table) {
-            $table->id(); // Primary Key
+            $table->id(); // المفتاح الأساسي
             $table->date('date');
             $table->text('description')->nullable();
             $table->string('currency')->nullable();
             $table->string('attachment')->nullable();
 
-            // Foreign Keys
+            // المفاتيح الخارجية
             $table->unsignedBigInteger('client_id')->nullable();
             $table->unsignedBigInteger('employee_id')->nullable();
             $table->unsignedBigInteger('invoice_id')->nullable();
@@ -30,7 +29,6 @@ return new class extends Migration
             $table->foreign('employee_id')->references('employee_id')->on('employees')->onDelete('cascade');
             $table->foreign('invoice_id')->references('invoice_id')->on('invoices')->onDelete('cascade');
         });
-
     }
 
     /**
