@@ -140,28 +140,28 @@
                             </span>
                         </div>
 
-                        <!-- العمود الرابع: القائمة المنسدلة -->
-                        <div class="col-auto">
-                            <div class="dropdown">
-                                <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-eye"></i> عرض</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i> تعديل</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> نسخ</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-trash"></i> حذف</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i> الدخول به</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
-                                </ul>
+                                    <!-- العمود الرابع: القائمة المنسدلة -->
+                                    <div class="col-auto">
+                                        <div class="dropdown">
+                                            <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-eye"></i> عرض</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i> تعديل</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> نسخ</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-trash"></i> حذف</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i> الدخول به</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        @endforeach
-    </div>
-</div>
 
 
 

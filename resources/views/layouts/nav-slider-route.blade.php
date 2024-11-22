@@ -111,7 +111,10 @@
                         @case('customer-management')
                                @include('fawtra.9-sales_management.customer-management')
                                @break
-
+                               
+                               @case('client-view')
+                               @include('fawtra.9-sales_management.client-view')
+                               @break
 
                     @case('sales_invoice')
                     @include('fawtra.2-purchase_admin.sales_invoice')
