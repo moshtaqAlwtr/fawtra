@@ -47,6 +47,36 @@ class ChartOfAccountController extends Controller
            'revenues'=>$revenues,
         ]);
     }
+        public function getSectionData($type)
+    {
+        // التحقق من نوع القسم وجلب البيانات من قاعدة البيانات
+        switch ($type) {
+            case 'asset':
+                $data = ChartOfAccount::where('type', 'asset')->get();
+                $title = 'الأصول';
+                break;
+            case 'liability':
+                $data = ChartOfAccount::where('type', 'liability')->get();
+                $title = 'الخصوم';
+                break;
+            case 'expense':
+                $data = ChartOfAccount::where('type', 'expense')->get();
+                $title = 'المصروفات';
+                break;
+            case 'revenue':
+                $data = ChartOfAccount::where('type', 'revenue')->get();
+                $title = 'الإيرادات';
+                break;
+            default:
+                return response()->json(['error' => 'نوع القسم غير صالح.'], 400);
+        }
+
+        // إعادة البيانات كـ JSON
+        return response()->json([
+            'title' => $title,
+            'data' => $data,
+        ]);
+    }
 
     private function buildTree($accounts, $type, $parentId = null)
     {

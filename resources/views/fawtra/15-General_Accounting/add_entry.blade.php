@@ -46,6 +46,7 @@
 
                 </div>
             </div>
+
             <div class="col-md-8">
                 <div class="card p-3">
                     <label for="description" class="form-label">الوصف</label>
@@ -55,6 +56,46 @@
                         <label for="attachment" class="form-label d-block">أسقط الملف هنا أو اختر من جهازك</label>
                         <input type="file" id="attachment" name="attachment" class="form-control" accept=".jpg,.jpeg,.png,.pdf">
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <label for="client_id" class="form-label">العميل</label>
+
+                    <select id="client_id" name="client_id" class="form-select">
+                        <option value="">اختر العميل</option>
+                        @foreach($clients as $client)
+                            <option value="{{ $client->id }}">{{ $client->trade_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <label for="invoice_id" class="form-label">الفاتورة</label>
+                        <select id="invoice_id" name="invoice_id" class="form-select">
+                        <option value="">اختر الفاتورة</option>
+                        @foreach($invoices as $invoice)
+                            <option value="{{ $invoice->id }}">{{ $invoice->id }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <label for="employee_id" class="form-label">الموظف</label>
+
+                        <select id="employee_id" name="employee_id" class="form-select">
+                        <option value="">اختر الموظف</option>
+                        @foreach($employees as $employee)
+                            <option value="{{ $employee->id }}">{{ $employee->first_name }} {{ $employee->last_name }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
         </div>

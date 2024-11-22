@@ -40,4 +40,9 @@ class Client extends Model
     {
         return $this->hasMany(CreditNotification::class, 'client_id');
     }
+
+    public function journalEntries()
+    {
+        return $this->hasMany(JournalEntry::class, 'client_id');
+    }
 }

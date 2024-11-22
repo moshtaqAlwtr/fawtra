@@ -325,3 +325,23 @@ link.click();
     function setAccountType(type) {
         document.getElementById('accountType').value = type;
     }
+    window.addEventListener("load", function () {
+        const loader = document.getElementById("loading-spinner");
+        if (loader) {
+            loader.style.visibility = "hidden";
+        }
+    });
+
+    // إظهار التحميل عند إرسال فورم أو بدء عملية
+    function showLoading() {
+        const loader = document.getElementById("loading-spinner");
+        if (loader) {
+            loader.style.visibility = "visible";
+        }
+    }
+
+    $(document).ajaxStart(function () {
+        $("#loading-spinner").css("visibility", "visible");
+    }).ajaxStop(function () {
+        $("#loading-spinner").css("visibility", "hidden");
+    });

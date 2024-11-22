@@ -1062,3 +1062,73 @@ z-index: 1050;
             background-color: #007bff;
             color: white;
         }
+        #loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            visibility: hidden;
+        }
+
+        .spinner-border {
+            width: 4rem;
+            height: 4rem;
+            color: #007bff;
+        }
+        .top-bar {
+            background: linear-gradient(135deg, #007bff, #00c4ff);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #007bff, #00c4ff);
+            color: white;
+            border: none;
+            transition: background 0.3s;
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(135deg, #0056b3, #0096d6);
+        }
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        /* ألوان الأيقونات في القائمة المنسدلة */
+        .dropdown-item .fa-eye { color: #007bff; }
+        .dropdown-item .fa-edit { color: #ffc107; }
+        .dropdown-item .fa-trash { color: #dc3545; }
+        .dropdown-item .fa-file-alt { color: #17a2b8; }
+
+        /* تخصيص أزرار اليوم ومسح في Flatpickr */
+        .flatpickr-calendar .flatpickr-clear {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .flatpickr-calendar .flatpickr-today {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .flatpickr-calendar .flatpickr-weekday {
+            color: #6c757d;
+        }
+
+        /* إخفاء البحث المتقدم افتراضياً */
+        .advanced-search {
+            display: none;
+        }

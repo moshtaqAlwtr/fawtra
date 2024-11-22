@@ -93,6 +93,9 @@ Route::group(
         })->name('chart_of_accounts');
 
 
+        Route::get('/journal_entries_day', function () {
+            return view('layouts.nav-slider-route', ['page' => 'journal_entries_day']);
+        })->name('journal_entries_day');
 
         Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
 
@@ -109,31 +112,16 @@ Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('acco
         Route::get('/add_entry', [JournalEntryController::class, 'create'])->name('add_entry');
 
         Route::get('/journal-entries/create', [JournalEntryController::class, 'create'])->name('journal_entries.create');
+        Route::get('/journal_entries_day', [JournalEntryController::class, 'displayEntries'])->name('journal_entries_day');
+
+Route::get('/journal-entries/search', [JournalEntryController::class, 'search'])->name('journal_entries.search');
 
         Route::post('/journal-entries', [JournalEntryController::class, 'store'])->name('journal_entries.store');
         Route::get('/journal-entries/{id}', [JournalEntryController::class, 'show'])->name('journal_entries.show');
         Route::delete('/journal-entries/{id}', [JournalEntryController::class, 'destroy'])->name('journal_entries.destroy');
-        // Route::get('/journal-entries/create', [JournalEntryController::class, 'create'])->name('journal_entries.create');
-        // Route::post('/journal-entries', [JournalEntryController::class, 'store'])->name('journal_entries.store');
-        // Route::get('/journal-entries/{id}', [JournalEntryController::class, 'show'])->name('journal_entries.show');
-        // Route::delete('/journal-entries/{id}', [JournalEntryController::class, 'destroy'])->name('journal_entries.destroy');
-
-
-
-        Route::resource('schedule-appointment', AppointmentController::class)->names([
-            'index' => 'schedule.appointment',
-            'create' => 'schedule.create',
-            'store' => 'schedule.store',
-            'show' => 'schedule.show',
-            'edit' => 'schedule.edit',
-            'update' => 'schedule.update',
-            'destroy' => 'schedule.destroy',
-        ]);
 
         // إضافة المسارات لإنشاء إشعارات دائنة
-        Route::get('/create-credit-notification', [CreditNotificationController::class, 'create'])->name('create-credit-notification');
-        Route::post('/store-credit-notification', [CreditNotificationController::class, 'store'])->name('store-credit-notification');
-
+        Route::get('/create-credit-notification', [CreditNotificationController::class, 'create'])->name('create-credit-notification');        Route::post('/store-credit-notification', [CreditNotificationController::class, 'store'])->name('store-credit-notification');
 
         Route::get('/employee_management', function () {
             return view('layouts.nav-slider-route', ['page' => 'employee_management']);
@@ -172,6 +160,7 @@ Route::get('/credit-note', [CreditNotificationController::class, 'index'])->name
 
 Route::post('/quotes', [QuoteController::class, 'store'])->name('quotes.store');
 Route::get('/notifications', [CreditNotificationController::class, 'index'])->name('notifications');
+Route::get('/section-data/{type}', [ChartOfAccountController::class, 'getSectionData']);
 
 
 Route::get('/notifications/create', [CreditNotificationController::class, 'create'])->name('notifications.create');
@@ -184,21 +173,6 @@ Route::post('/invoice-items/store', [InvoiceItemController::class, 'store'])->na
 
 Route::get('/invoice-items/create', [InvoiceItemController::class, 'create'])->name('invoice-items.create');
 Route::post('/accounts/add', [ChartOfAccountController::class, 'store'])->name('accounts.add');
-
-// Route::prefix('invoices/{invoice}/items')->group(function () {
-//     Route::get('/', [InvoiceItemController::class, 'index'])->name('invoice-items.index');
-//     Route::post('/', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
-//     Route::get('/{item}', [InvoiceItemController::class, 'show'])->name('invoice-items.show');
-//     Route::put('/{item}', [InvoiceItemController::class, 'update'])->name('invoice-items.update');
-//     Route::delete('/{item}', [InvoiceItemController::class, 'destroy'])->name('invoice-items.destroy');
-// });
-
-// Route::get('/employee_management', [EmployeeController::class, 'index'])->name('employee_management');
-
-
-// Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index');
-
-
     }
 );
 Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index ');
