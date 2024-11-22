@@ -91,6 +91,11 @@ Route::get('/add_payment_process', function () {
             return view('layouts.nav-slider-route', ['page' => 'debit-notices']);
         })->name('debit-notices');
 //مسار الاشعارات الدائنة
+// مسار عرض العملاء 
+
+Route::get('/client-view', function () {
+    return view('layouts.nav-slider-route', ['page' => 'client-view']);
+})->name('client-view');
 
         Route::get('/credit-note', function () {
             return view('layouts.nav-slider-route', ['page' => 'credit-note']);
