@@ -4,22 +4,6 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <!-- Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<style>
-    .card {
-        border-radius: 10px;
-        border: 1px solid #ddd;
-    }
-    .badge {
-        font-size: 1rem;
-        display: inline-block;
-        min-width: 40px;
-        text-align: center;
-    }
-    .dropdown-menu {
-        min-width: 150px;
-    }
-</style>
-
 
         <div class="d-flex justify-content-between align-items-center mb-4">
             <button class="btn btn-gradient" onclick="window.location.href='{{ route('add_customer') }}'">+ أضف العميل</button>
@@ -125,59 +109,59 @@
         <!-- قسم الجدول -->
                <!-- قسم الجدول -->
 
-               <div class="container-fluid">
-                <div class="row">
-                    @foreach($clients as $client)
-                        <div class="col-12 mb-3">
-                            <div class="card shadow-sm p-3">
-                                <div class="row align-items-center">
-                                    <!-- العمود الأول: الحرف الأول -->
-                                    <div class="col-auto">
-                                        <span class="badge bg-primary text-white p-3 fs-5">
-                                            {{ mb_substr($client->trade_name, 0, 1) }}
-                                        </span>
-                                    </div>
+    <div class="container-fluid">
+    <div class="row">
+        @foreach($clients as $client)
+            <div class="col-12 mb-3">
+                <div class="card shadow-sm p-3">
+                    <div class="row align-items-center">
+                        <!-- العمود الأول: الحرف الأول -->
+                        <div class="col-auto">
+                            <span class="badge bg-primary text-white p-3 fs-5">
+                                {{ mb_substr($client->trade_name, 0, 1) }}
+                            </span>
+                        </div>
 
-                                    <!-- العمود الثاني: تفاصيل العميل -->
-                                    <div class="col">
-                                        <h5 class="mb-1">{{ $client->trade_name }}</h5>
-                                        <p class="mb-0 text-muted">
-                                            <i class="fas fa-envelope"></i> {{ $client->email }}
-                                        </p>
-                                        <p class="mb-0 text-muted">
-                                            <i class="fas fa-map-marker-alt"></i> {{ $client->address ?? 'العنوان غير متوفر' }}
-                                        </p>
-                                    </div>
+                        <!-- العمود الثاني: تفاصيل العميل -->
+                        <div class="col">
+                            <h5 class="mb-1">{{ $client->trade_name }}</h5>
+                            <p class="mb-0 text-muted">
+                                <i class="fas fa-envelope"></i> {{ $client->email }}
+                            </p>
+                            <p class="mb-0 text-muted">
+                                <i class="fas fa-map-marker-alt"></i> {{ $client->address ?? 'العنوان غير متوفر' }}
+                            </p>
+                        </div>
 
-                                    <!-- العمود الثالث: الحالة -->
-                                    <div class="col-auto text-center">
-                                        <span class="badge {{ $client->status == 'active' ? 'bg-success' : 'bg-danger' }} fs-6 px-3 py-2">
-                                            {{ $client->status == 'active' ? 'نشط' : 'موقوف' }}
-                                        </span>
-                                    </div>
+                        <!-- العمود الثالث: الحالة -->
+                        <div class="col-auto text-center">
+                            <span class="badge {{ $client->status == 'active' ? 'bg-success' : 'bg-danger' }} fs-6 px-3 py-2">
+                                {{ $client->status == 'active' ? 'نشط' : 'موقوف' }}
+                            </span>
+                        </div>
 
-                                    <!-- العمود الرابع: القائمة المنسدلة -->
-                                    <div class="col-auto">
-                                        <div class="dropdown">
-                                            <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-eye"></i> عرض</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i> تعديل</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> نسخ</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-trash"></i> حذف</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i> الدخول به</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                        <!-- العمود الرابع: القائمة المنسدلة -->
+                        <div class="col-auto">
+                            <div class="dropdown">
+                                <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-eye"></i> عرض</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i> تعديل</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> نسخ</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-trash"></i> حذف</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i> الدخول به</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
+                                </ul>
                             </div>
                         </div>
-                    @endforeach
+                    </div>
                 </div>
             </div>
+        @endforeach
+    </div>
+</div>
 
 
 
