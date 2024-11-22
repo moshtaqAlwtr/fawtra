@@ -181,12 +181,12 @@
                         <i class="fas fa-ellipsis-h"></i>
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#"><i class="fas fa-eye text-success"></i> {{ trans('purchase_admin.view') }}</a>
+                        <a class="dropdown-item" href="{{route('invoice_preview')}}"><i class="fas fa-eye text-success"></i> {{ trans('purchase_admin.view') }}</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-edit text-primary"></i> {{ trans('purchase_admin.edit') }}</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-file-pdf text-danger"></i> PDF</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-print text-secondary"></i> {{ trans('purchase_admin.print_pdf') }}</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-envelope text-info"></i> {{ trans('purchase_admin.send_to_client') }}</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-credit-card text-warning"></i> {{ trans('purchase_admin.add_payment') }}</a>
+                        <a class="dropdown-item" href="{{route('add_payment_process')}}"><i class="fas fa-credit-card text-warning"></i> {{ trans('purchase_admin.add_payment') }}</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-trash-alt text-danger"></i> {{ trans('purchase_admin.delete') }}</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-copy text-secondary"></i> {{ trans('purchase_admin.copy') }}</a>
                     </div>

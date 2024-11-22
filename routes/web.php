@@ -67,6 +67,12 @@ Route::group(
 Route::get('/customer_payments', function () {
     return view('layouts.nav-slider-route', ['page' => 'customer_payments']);
 })->name('customer_payments');
+Route::get('/invoice_preview', function () {
+    return view('layouts.nav-slider-route', ['page' => 'invoice_preview']);
+})->name('invoice_preview');
+Route::get('/add_payment_process', function () {
+    return view('layouts.nav-slider-route', ['page' => 'add_payment_process']);
+})->name('add_payment_process');
 
 // مسار صفحة المنتجات
         Route::get('/products', function () {
@@ -152,7 +158,8 @@ Route::get('/journal-entries/search', [JournalEntryController::class, 'search'])
 
         Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
         
-
+        Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
+        Route::resource('clients', ClientController::class);
         Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
         Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
         Route::post('/clients/store', [ClientController::class, 'storeClient'])->name('storeClient');

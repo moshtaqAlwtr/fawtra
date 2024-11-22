@@ -66,8 +66,8 @@
     <div class="top-bar">إضافة عملية دفع</div>
 
     <!-- المحتوى -->
-    <div class="container mt-4">
-        <div class="form-container">
+   
+        <div class="">
             <div class="row mb-3">
                 <div class="col-12 d-flex justify-content-end">
                     <button type="submit" class="btn btn-success me-2"><i class="fas fa-plus"></i> إضافة عملية دفع</button>

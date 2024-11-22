@@ -103,8 +103,9 @@
                         @break
 
                         @case('customer-management')
-                        @include('fawtra.9-sales_management.customer-management')
-                    @break
+                               @include('fawtra.9-sales_management.customer-management', ['clients' => $clients])
+                               @break
+
 
                     @case('sales_invoice')
                     @include('fawtra.2-purchase_admin.sales_invoice', ['clients' => $clients])
@@ -161,6 +162,14 @@
                     @case('customer_payments')
                     @include('fawtra.2-purchase_admin.customer_payments')
                     @break
+                    @case('invoice_preview')
+                    @include('fawtra.2-purchase_admin.invoice_preview')
+                    @break
+
+                    @case('add_payment_process')
+                    @include('fawtra.2-purchase_admin.add_payment_process')
+                    @break
+                    
                     @default
 
                     @endswitch

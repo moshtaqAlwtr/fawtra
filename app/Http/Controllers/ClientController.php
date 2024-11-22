@@ -9,6 +9,24 @@ use Illuminate\Support\Facades\Storage;
 class ClientController extends Controller
 {
     /**
+     * عرض جميع العملاء.
+     */
+    public function index()
+    {
+        // جلب جميع العملاء
+        $clients = Client::all();
+    
+        // تمرير المتغير إلى العرض
+        return view('layouts.nav-slider-route', [
+            'page' => 'customer-management',
+            'clients' => $clients, // تأكد من تمرير المتغير هنا
+        ]);
+    }
+    
+  
+
+
+    /**
      * عرض نموذج إضافة عميل جديد.
      */
     public function create()
@@ -21,7 +39,7 @@ class ClientController extends Controller
      */
     public function storeClient(Request $request)
     {
-        // التحقق من صحة البيانات القادمة من الطلب، مع جعل printing_method غير إلزامي
+        // التحقق من صحة البيانات القادمة من الطلب
         $validatedData = $request->validate([
             'trade_name' => 'required|string|max:255',
             'account_code' => 'required|string|max:50',
@@ -39,7 +57,7 @@ class ClientController extends Controller
             'commercial_registration' => 'nullable|string|max:50',
             'credit_limit' => 'nullable|numeric',
             'credit_period' => 'nullable|integer',
-            'printing_method' => 'nullable|in:طباعة,إرسال بالبريد', // الآن الحقل اختياري
+            'printing_method' => 'nullable|in:طباعة,إرسال بالبريد',
             'opening_balance' => 'nullable|numeric',
             'opening_balance_date' => 'nullable|date',
             'currency' => 'nullable|string|max:10',

@@ -1,16 +1,6 @@
-    <!-- Bootstrap CSS و Font Awesome و Flatpickr -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<p>تم تضمين الملف بنجاح</p>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" rel="stylesheet">
-    <!-- ملفات CSS الخاصة -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/icons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('Design/css/data.css') }}">
-    <div class="container my-4">
+ 
         <div class="d-flex justify-content-between align-items-center mb-4">
             <button class="btn btn-gradient" onclick="window.location.href='add_customer.html'">+ أضف العميل</button>
             <div class="header-actions">
@@ -113,11 +103,11 @@
         </form>
 
         <!-- قسم الجدول -->
-        <div class="table-responsive table-card">
+               <!-- قسم الجدول -->
+               <div class="table-responsive table-card">
             <table class="table table-hover">
                 <thead>
                     <tr>
-
                         <th>الإجراء</th>
                         <th>ترتيب</th>
                         <th>الحالة</th>
@@ -126,87 +116,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+    @foreach($clients as $client)
+        <tr>
+            <td style="position: relative;">
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-eye"></i> عرض</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i> تعديل</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> نسخ</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-trash"></i> حذف</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i> الدخول به</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
+                    </ul>
+                </div>
+            </td>
+            <td>#{{ $client->id }}</td>
+            <td>
+                <span class="badge badge-status {{ $client->status == 'active' ? 'status-active' : 'status-inactive' }}">
+                    {{ $client->status == 'active' ? 'نشط' : 'موقوف' }}
+                </span>
+            </td>
+            <td>{{ $client->trade_name }}</td>
+            <td>{{ $client->email }}</td>
+        </tr>
+    @endforeach
+</tbody>
 
-                        <td style="position: relative;">
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-outline-primary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-eye"></i> عرض</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i> تعديل</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> نسخ</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-trash"></i> حذف</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i> الدخول به</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
-                                </ul>
-                            </div>
-
-                        </td>
-                        <td>#101</td>
-                        <td><span class="badge badge-status status-inactive">موقوف</span></td>
-                        <td>أسواق محمد غيثان العامري</td>
-                        <td>kj@yahyjoyo.com</td>
-                    </tr>
-                    <tr>
-
-                        <td style="position: relative;">
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-outline-primary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-eye"></i> عرض</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i> تعديل</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> نسخ</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-trash"></i> حذف</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i> الدخول به</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
-                                </ul>
-                            </div>
-
-                        </td>
-                        <td>#101</td>
-                        <td><span class="badge badge-status status-inactive">موقوف</span></td>
-                        <td>أسواق محمد غيثان العامري</td>
-                        <td>kj@yahyjoyo.com</td>
-                    </tr>
-                    <tr>
-
-                        <td style="position: relative;">
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-outline-primary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-eye"></i> عرض</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i> تعديل</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> نسخ</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-trash"></i> حذف</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i> الدخول به</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
-                                </ul>
-                            </div>
-
-                        </td>
-                        <td>#101</td>
-                        <td><span class="badge badge-status status-inactive">موقوف</span></td>
-                        <td>أسواق محمد غيثان العامري</td>
-                        <td>kj@yahyjoyo.com</td>
-                    </tr>
-                    <!-- المزيد من الصفوف هنا حسب الحاجة -->
-                </tbody>
             </table>
         </div>
+
     </div>
-
-
-    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
-    <script src="{{ asset('assets/js/app.min.js') }}"></script>
-    <script src="{{ asset('assets/js/scriptt.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/chart.min.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/demo.dashboard-projects.js') }}"></script>
-    <script src="{{ asset('Design/js/date.js') }}"></script>
 
 

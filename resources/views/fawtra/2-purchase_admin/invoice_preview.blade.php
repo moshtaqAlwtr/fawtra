@@ -23,6 +23,7 @@
             background-color: transparent;
             border: none;
             color: black;
+            margin-right: 20px;
             font-size: 14px;
         }
 
@@ -63,10 +64,11 @@
         <div class="col-md-6 d-flex justify-content-end align-items-center">
             <p class="text-muted mb-0 me-auto">48209# عدد: غير</p>
             <!-- إضافة الزرين -->
-            <div class="mt-2 d-flex ms-auto">
-                <button class="btn btn-success me-2"><i class="fas fa-plus"></i> أضف عملية دفع</button>
-                <button class="btn btn-primary"><i class="fas fa-print"></i> طباعة الفاتورة</button>
-            </div>
+            <div class="mt-2 d-flex justify-content-end">
+    <button class="btn btn-success me-2" onclick="window.location.href='{{route('add_payment_process')}}'"><i class="fas fa-plus"  ></i> أضف عملية دفع</button>
+    <button class="btn btn-primary" ><i class="fas fa-print"></i> طباعة الفاتورة</button>
+</div>
+
         </div>
     </div>
 </div>
@@ -78,7 +80,7 @@
     
 
     <!-- محتوى الصفحة داخل كونتينر -->
-    <div class="container mt-4">
+   
         <!-- Top Tabs -->
         <div class="top-tabs d-flex justify-content-between align-items-center mb-3">
             <!-- القوائم المنسدلة -->
