@@ -14,6 +14,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Invoices\InvoiceItemController;
 use App\Http\Controllers\Accounts\ChartOfAccountController;
 use App\Http\Controllers\JournalEntryController; // اضف قيد
+use App\Http\Controllers\AppointmentController;  // أضف موعد
 
 
 
@@ -42,43 +43,43 @@ Route::group(
         Route::get('/human-resources', function () {
             return view('layouts.nav-slider-route', ['page' => 'human_resources']);
         })->name('human_resources');
-
+//مسار ادارة الفواتير 
         Route::get('/invoice-management', function () {
             return view('layouts.nav-slider-route', ['page' => 'invoice-management']);
         })->name('invoice-management');
-
+// مسار اضافة عميل
         Route::get('/add_customer', function () {
             return view('layouts.nav-slider-route', ['page' => 'add_customer']);
         })->name('add_customer');
-
+// أدارة العملاء
         Route::get('/customer-management', function () {
             return view('layouts.nav-slider-route', ['page' => 'customer-management']);
         })->name('customer-management');
-
+// مسار اضافة فاتورة
         Route::get('/salas_invoice', function () {
             return view('layouts.nav-slider-route', ['page' => 'salas_invoice']);
         })->name('cussalas_invoice');
-
+// مسار عرض سعر
         Route::get('/quotation', function () {
             return view('layouts.nav-slider-route', ['page' => 'quotation']);
         })->name('quotation');
-
+// مسار صفحة المنتجات
         Route::get('/products', function () {
             return view('layouts.nav-slider-route', ['page' => 'products']);
         })->name('products');
-
+// مسار أدارة المنتجات
         Route::get('/mang_products', function () {
             return view('layouts.nav-slider-route', ['page' => 'mang_products']);
         })->name('mang_products');
-
+// مسار أدارة  المنتجات
         Route::get('/quotation-management', function () {
             return view('layouts.nav-slider-route', ['page' => 'quotation-management']);
         })->name('quotation-management');
-
+//مسار الاشعارات المدينية
         Route::get('/debit-notices', function () {
             return view('layouts.nav-slider-route', ['page' => 'debit-notices']);
         })->name('debit-notices');
-
+//مسار الاشعارات الدائنة
 
         Route::get('/credit-note', function () {
             return view('layouts.nav-slider-route', ['page' => 'credit-note']);
@@ -87,19 +88,19 @@ Route::group(
         Route::get('/appointments', function () {
             return view('layouts.nav-slider-route', ['page' => 'appointments']);
         })->name('appointments');
-
+//مسار دليل الحسابات
         Route::get('/chart_of_accounts', function () {
             return view('layouts.nav-slider-route', ['page' => 'chart_of_accounts']);
         })->name('chart_of_accounts');
 
-
+//مسار القيد
         Route::get('/journal_entries_day', function () {
             return view('layouts.nav-slider-route', ['page' => 'journal_entries_day']);
         })->name('journal_entries_day');
-
+//مسار دليل الحسابات
         Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
 
-
+// مجموعة المسارات للحسابات
 Route::prefix('accounts')->group(function () {
 
 Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create'); // نموذج إضافة حساب جديد
@@ -108,9 +109,9 @@ Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accou
 Route::put('/{id}', [ChartOfAccountController::class, 'update'])->name('accounts.update'); // تحديث حساب
 Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy'); // حذف حساب
 });
-
+//مسار اضافة القيد
         Route::get('/add_entry', [JournalEntryController::class, 'create'])->name('add_entry');
-
+// مجموعة المسارات للقيود
         Route::get('/journal-entries/create', [JournalEntryController::class, 'create'])->name('journal_entries.create');
         Route::get('/journal_entries_day', [JournalEntryController::class, 'displayEntries'])->name('journal_entries_day');
 
@@ -122,18 +123,18 @@ Route::get('/journal-entries/search', [JournalEntryController::class, 'search'])
 
         // إضافة المسارات لإنشاء إشعارات دائنة
         Route::get('/create-credit-notification', [CreditNotificationController::class, 'create'])->name('create-credit-notification');        Route::post('/store-credit-notification', [CreditNotificationController::class, 'store'])->name('store-credit-notification');
-
+//مسار أدارة الموظفين
         Route::get('/employee_management', function () {
             return view('layouts.nav-slider-route', ['page' => 'employee_management']);
         })->name('employee_management');
-
+//مسار اضافة موظف
         Route::get('/add_employee', function () {
             return view('layouts.nav-slider-route', ['page' => 'add_employee']);
         })->name('add_employee');
         Route::get('/schedule_appointment', function () {
             return view('layouts.nav-slider-route', ['page' => 'schedule_appointment']);
         })->name('schedule_appointment');
-
+// مسار دليل الحسابات
         Route::resource('accounts', ChartOfAccountController::class)->names([
             'index' => 'accounts.index',  // عرض جميع الحسابات
             'create' => 'accounts.create',  // عرض نموذج إضافة حساب جديد
@@ -143,6 +144,9 @@ Route::get('/journal-entries/search', [JournalEntryController::class, 'search'])
             'destroy' => 'accounts.destroy',  // حذف الحساب
         ]);
 
+
+        Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
+        
 
         Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
         Route::post('sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
