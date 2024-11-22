@@ -1,10 +1,7 @@
-<!-- Bootstrap CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-<!-- Font Awesome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-<!-- Bootstrap JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <button class="btn btn-gradient" onclick="window.location.href='{{ route('add_customer') }}'">+ أضف العميل</button>
             <div class="header-actions">
@@ -147,7 +144,7 @@
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-eye"></i> عرض</a></li>
+                                                <li><a class="dropdown-item" href=""><i class="fas fa-eye"></i> عرض</a></li>
                                                 <li><a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i> تعديل</a></li>
                                                 <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> نسخ</a></li>
                                                 <li><a class="dropdown-item" href="#"><i class="fas fa-trash"></i> حذف</a></li>
@@ -166,5 +163,3 @@
 
 
     </div>
-
-
