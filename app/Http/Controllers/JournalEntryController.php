@@ -117,7 +117,7 @@ class JournalEntryController extends Controller
     }
     public function displayEntries()
     {
-        $journalEntries = JournalEntry::with(['details.chartOfAccount', 'invoice', 'client', 'employee'])->latest()->get();
+        $journalEntries = JournalEntry::all();
         $accounts = ChartOfAccount::all(); // استرجاع جميع الحسابات
 
         // طباعة البيانات للتأكد من أنها تسترجع بشكل صحيح
