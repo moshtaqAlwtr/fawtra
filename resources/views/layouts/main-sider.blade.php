@@ -556,7 +556,7 @@
                     <ul class="side-nav-second-level">
                         <!-- المصروفات -->
                         <li class="side-nav-item">
-                            <a href="">
+                            <a href="{{route('import_expense_receipts')}}">
                                 <span>{{ trans('main_trans.Expenses') }}</span>
                             </a>
                         </li>

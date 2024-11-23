@@ -15,19 +15,15 @@ class AccountsClientPaymentController extends Controller
     // عرض صفحة إنشاء دفعة جديدة
     public function create()
     {
-        $clients = Client::with(['invoices'])->get();
-        $invoices = Invoice::with(['client'])->get();
+        // جلب جميع البيانات المطلوبة
+        $clients = Client::with('invoices')->get();
         $treasuries = Treasury::all();
         $employees = Employee::all();
-$dd($clients, $invoices, $treasuries, $employees);
-        return view('layouts.nav-slider-route', [
-            'page' => 'add_payment_process',
-            'clients' => $clients,
-            'invoices' => $invoices,
-            'treasuries' => $treasuries,
-            'employees' => $employees,
-        ]);
+
+        // إرسال البيانات إلى View مباشرة
+        return view('add_payment_process', compact('clients', 'treasuries', 'employees'));
     }
+
     // تخزين دفعة جديدة
     public function store(Request $request)
 {

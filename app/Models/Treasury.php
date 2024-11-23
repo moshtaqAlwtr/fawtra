@@ -24,6 +24,6 @@ class Treasury extends Model
     }
     public function payments()
     {
-        return $this->hasMany(ClientPayment::class, 'treasury_id');
+        return $this->hasMany(ClientPayment::class, 'treasury_id', 'treasury_id');
     }
 }

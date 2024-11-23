@@ -16,6 +16,7 @@ use App\Http\Controllers\Accounts\ChartOfAccountController;
 use App\Http\Controllers\JournalEntryController; // اضف قيد
 use App\Http\Controllers\AppointmentController;  // أضف موعد
 
+use App\Models\Client;
 
 
 // تفعيل مسارات المصادقة بدون التحقق من البريد الإلكتروني
@@ -113,7 +114,16 @@ Route::get('/client-view', function () {
         Route::get('/journal_entries_day', function () {
             return view('layouts.nav-slider-route', ['page' => 'journal_entries_day']);
         })->name('journal_entries_day');
+
 //مسار دليل الحسابات
+        Route::get('/import_expense_receipts', function () {
+            return view('layouts.nav-slider-route', ['page' => 'import_expense_receipts']);
+        })->name('import_expense_receipts');
+
+        Route::get('/expense_voucher', function () {
+            return view('layouts.nav-slider-route', ['page' => 'expense_voucher']);
+        })->name('expense_voucher');
+
         Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
 
 // مجموعة المسارات للحسابات
@@ -180,7 +190,6 @@ Route::get('/quotation', [QuoteController::class, 'index'])->name('quotation');
 Route::get('/employees', [EmployeeController::class, 'index'])->name('employees');
 Route::get('/credit-note', [CreditNotificationController::class, 'index'])->name('credit-note');
 
-Route::post('/quotes', [QuoteController::class, 'store'])->name('quotes.store');
 Route::get('/notifications', [CreditNotificationController::class, 'index'])->name('notifications');
 Route::get('/section-data/{type}', [ChartOfAccountController::class, 'getSectionData']);
 
@@ -197,14 +206,16 @@ Route::get('/invoice-items/create', [InvoiceItemController::class, 'create'])->n
 Route::post('/accounts/add', [ChartOfAccountController::class, 'store'])->name('accounts.add');
     }
 );
-Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index ');
-
-Route::get('/add_payment_process', [AccountsClientPaymentController::class, 'create'])->name('payments.create');
-
-// تخزين بيانات الدفع
-Route::post('/add_payment_process', [AccountsClientPaymentController::class, 'store'])->name('payments.store');
+Route::get('/chart-of-accounts', [ChartOfAccountsController::class, 'index'])->name('chart_of_accounts');
 
 
+
+Route::get('/payments', [AccountsClientPaymentController::class, 'create'])->name('payments.create');
+Route::post('/payments', [AccountsClientPaymentController::class, 'store'])->name('payments.store');
+
+Route::get('/api/clients/{client}/invoices', function (Client $client) {
+    return $client->invoices;
+});
 // مسارات الملف الشخصي
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

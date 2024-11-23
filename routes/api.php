@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Client;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,3 +20,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 Route::post('register',);
+Route::get('/clients/{client}/invoices', function (Client $client) {
+    return response()->json($client->invoices);
+});

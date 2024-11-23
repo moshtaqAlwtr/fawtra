@@ -81,8 +81,8 @@ class Employee extends Model
         return $this->hasMany(JournalEntry::class, 'employee_id');
     }
     public function payments()
-{
-    return $this->hasMany(ClientPayment::class, 'employee_id', 'employee_id');
-}
+    {
+        return $this->hasMany(ClientPayment::class,  'employee_id');
+    }
 }
 

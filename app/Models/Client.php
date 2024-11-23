@@ -42,7 +42,6 @@ class Client extends Model
     {
         return $this->hasMany(ClientPayment::class, 'client_id', 'client_id');
     }
-
     public function creditNotifications()
     {
         return $this->hasMany(CreditNotification::class, 'client_id');
@@ -52,4 +51,10 @@ class Client extends Model
     {
         return $this->hasMany(JournalEntry::class, 'client_id');
     }
+
+    public function invoices()
+{
+    return $this->hasMany(Invoice::class, 'client_id', 'client_id');
+}
+
 }

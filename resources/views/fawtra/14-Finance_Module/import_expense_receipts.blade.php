@@ -76,10 +76,21 @@
     </div>
 
     <!-- أزرار التحكم -->
-    <div class="container my-3 d-flex align-items-center">
-        <button class="btn btn-primary mr-2" onclick="window.location.href='expense_voucher.html'"><i class="fas fa-plus-circle"></i> سند صرف</button>
-        <button class="btn-import" onclick="window.location.href='import.html'"><i class="fas fa-upload"></i> استيراد</button>
-        <button class="btn-settings"><i class="fas fa-cog"></i></button>
+ <div class="container my-4 d-flex align-items-center gap-2">
+        <!-- زر سند صرف -->
+        <button class="btn btn-primary d-flex align-items-center" onclick="window.location.href='{{route('expense_voucher')}}'">
+            <i class="fas fa-plus-circle me-2"></i> سند صرف
+        </button>
+
+        <!-- زر استيراد -->
+        <button class="btn btn-success d-flex align-items-center" onclick="window.location.href='import.html'">
+            <i class="fas fa-upload me-2"></i> استيراد
+        </button>
+
+        <!-- زر الإعدادات -->
+        <button class="btn btn-secondary d-flex align-items-center">
+            <i class="fas fa-cog"></i>
+        </button>
     </div>
 
     <!-- إحصائيات سريعة -->
@@ -99,7 +110,7 @@
     </div>
 
     <!-- البحث -->
-    <div class="container search-container">
+
         <h5>بحث</h5>
         <form>
             <div class="row">
@@ -125,11 +136,7 @@
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-md-12 text-right">
-                    <button type="button" class="btn btn-secondary" onclick="resetFilters()">إلغاء الفلتر</button>
-                    <button type="button" class="btn btn-primary" onclick="search()">بحث</button>
-                    <button type="button" class="btn btn-warning" onclick="toggleAdvancedSearch()">بحث متقدم</button>
-                </div>
+
             </div>
         </form>
 
@@ -179,7 +186,11 @@
             </div>
         </div>
     </div>
-
+    <div class="col-md-12 text-right">
+        <button type="button" class="btn btn-secondary" onclick="resetFilters()">إلغاء الفلتر</button>
+        <button type="button" class="btn btn-primary" onclick="search()">بحث</button>
+        <button type="button" class="btn btn-warning" onclick="toggleAdvancedSearch()">بحث متقدم</button>
+    </div>
     <!-- جدول المصروفات -->
     <div class="container table-container">
         <h5>النتائج</h5>
@@ -198,7 +209,7 @@
                     <tr>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-sm btn-light" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
@@ -218,7 +229,7 @@
                     <tr>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn btn-sm btn-light" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton2">

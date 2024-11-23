@@ -87,30 +87,44 @@
                 <div class="col-md-6">
                     <label for="client" class="form-label">العميل</label>
                     <select id="client" name="client_id" class="form-select" required>
-    <option value="">اختر العميل</option>
-    @if(isset($clients) && count($clients) > 0)
-    @foreach($clients as $client)
-        <option value="{{ $client->client_id }}">{{ $client->trade_name }}</option>
-    @endforeach
-@else
-    <option value="">لا توجد بيانات</option>
-@endif
+                        <option value="">اختر العميل</option>
+                        @if(isset($clients) && $clients->count() > 0)
+                            @foreach($clients as $client)
+                                <option value="{{ $client->client_id }}">{{ $client->trade_name }}</option>
+                            @endforeach
+                        @else
+                            <option value="" disabled>لا توجد بيانات للعميل</option>
+                        @endif
+                    </select>
 
-</select>
+
 
                 </div>
                 <div class="col-md-6">
     <label for="invoice" class="form-label">الفاتورة</label>
-    <select id="invoice" name="invoice_id" class="form-select">
+    <select id="invoice" name="invoice_id" class="form-select" required>
         <option value="">اختر الفاتورة</option>
-        @if(isset($invoices) && $invoices->count() > 0)
-            @foreach($invoices as $invoice)
-                <option value="{{ $invoice->invoice_id }}">فاتورة #{{ $invoice->invoice_id }} - المبلغ: {{ $invoice->total_amount }}</option>
+        @if(isset($clients) && $clients->count() > 0)
+            @foreach($clients as $client)
+                @if($client->invoices->count() > 0)
+                    <optgroup label="فواتير {{ $client->trade_name }}">
+                        @foreach($client->invoices as $invoice)
+                            <option value="{{ $invoice->invoice_id }}">
+                                فاتورة #{{ $invoice->invoice_id }}
+                            </option>
+                        @endforeach
+                    </optgroup>
+                @endif
             @endforeach
         @else
-            <option value="">لا توجد فواتير</option>
+            <option value="" disabled>لا توجد فواتير متوفرة</option>
         @endif
     </select>
+
+
+
+
+
 </div>
             </div>
 
@@ -134,12 +148,13 @@
         <option value="">اختر الخزينة</option>
         @if(isset($treasuries) && $treasuries->count() > 0)
             @foreach($treasuries as $treasury)
-                <option value="{{ $treasury->treasury_id }}">{{ $treasury->treasury_name }} - الرصيد: {{ $treasury->balance }}</option>
+                <option value="{{ $treasury->treasury_id }}">{{ $treasury->name }} - الرصيد: {{ $treasury->balance }}</option>
             @endforeach
         @else
-            <option value="">لا توجد خزائن متوفرة</option>
+            <option value="" disabled>لا توجد خزائن متوفرة</option>
         @endif
     </select>
+
 </div>
   <div class="col-md-6">
                     <label for="paymentMethod" class="form-label">وسيلة الدفع</label>
@@ -172,9 +187,10 @@
                 <option value="{{ $employee->employee_id }}">{{ $employee->first_name }} {{ $employee->last_name }}</option>
             @endforeach
         @else
-            <option value="">لا توجد بيانات للموظفين</option>
+            <option value="" disabled>لا توجد بيانات للموظفين</option>
         @endif
     </select>
+
 </div>            </div>
 
             <!-- الحقول: رقم معرف وبيانات الدفع -->
@@ -212,9 +228,45 @@
                 </div>
             </div>
         </form>
+
     </div>
 </div>
 </div>
+<script>
+    document.getElementById('client').addEventListener('change', function () {
+        const clientId = this.value; // جلب معرف العميل
+        const invoiceSelect = document.getElementById('invoice'); // حقل الفواتير
+        const noInvoicesMessage = document.getElementById('no-invoices'); // رسالة عدم وجود فواتير
+
+        // تنظيف حقل الفواتير
+        invoiceSelect.innerHTML = '<option value="">اختر الفاتورة</option>';
+        noInvoicesMessage.classList.add('d-none'); // إخفاء رسالة عدم وجود فواتير
+
+        if (clientId) {
+            // جلب الفواتير باستخدام Fetch API
+            fetch(`/api/clients/${clientId}/invoices`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        // إضافة الفواتير إلى الحقل
+                        data.forEach(invoice => {
+                            const option = document.createElement('option');
+                            option.value = invoice.invoice_id;
+                            option.textContent = `فاتورة #${invoice.invoice_id} - المبلغ: ${invoice.total ?? 'غير متوفر'}`;
+                            invoiceSelect.appendChild(option);
+                        });
+                    } else {
+                        // إظهار رسالة عدم وجود فواتير
+                        noInvoicesMessage.classList.remove('d-none');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    });
+</script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

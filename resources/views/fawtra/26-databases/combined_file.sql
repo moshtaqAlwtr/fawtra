@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS users (
   PRIMARY KEY (id)
 );
 
+
 -- جدول الموظفين (Employees)
 CREATE TABLE IF NOT EXISTS employees (
   employee_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -478,4 +479,166 @@ CREATE TABLE credit_notifications (
     created_by VARCHAR(255), -- اسم المستخدم الذي أنشأ الإشعار
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- تاريخ ووقت الإنشاء
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- تاريخ ووقت التحديث
+);
+
+-- جدول chart_of_accounts (دليل الحسابات)
+CREATE TABLE `chart_of_accounts` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `account_name` VARCHAR(255) NOT NULL,
+    `account_type` ENUM('asset', 'liability', 'equity', 'revenue', 'expense') NOT NULL,
+    `parent_id` BIGINT UNSIGNED DEFAULT NULL,
+    `created_at` TIMESTAMP NULL DEFAULT NULL,
+    `updated_at` TIMESTAMP NULL DEFAULT NULL
+);
+
+-- جدول bank_accounts (الحسابات البنكية)
+CREATE TABLE `bank_accounts` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `bank_name` VARCHAR(255) NOT NULL,
+    `account_number` VARCHAR(255) NOT NULL,
+    `branch_name` VARCHAR(255) DEFAULT NULL,
+    `account_holder_name` VARCHAR(255) NOT NULL,
+    `account_status` ENUM('active', 'inactive') DEFAULT 'active',
+    `currency` VARCHAR(10) NOT NULL,
+    `description` TEXT DEFAULT NULL,
+    `permissions` ENUM('withdraw', 'deposit', 'both') DEFAULT 'both',
+    `balance` DECIMAL(15, 2) DEFAULT 0,
+    `account_id` BIGINT UNSIGNED NOT NULL,
+    `created_at` TIMESTAMP NULL DEFAULT NULL,
+    `updated_at` TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (`account_id`) REFERENCES `chart_of_accounts`(`id`) ON DELETE CASCADE
+);
+
+-- جدول treasuries (الخزائن)
+CREATE TABLE `treasuries` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255) NOT NULL,
+    `location` VARCHAR(255) DEFAULT NULL,
+    `treasury_status` ENUM('active', 'inactive') DEFAULT 'active',
+    `description` TEXT DEFAULT NULL,
+    `balance` DECIMAL(15, 2) DEFAULT 0,
+    `created_at` TIMESTAMP NULL DEFAULT NULL,
+    `updated_at` TIMESTAMP NULL DEFAULT NULL
+);
+
+-- جدول treasury_accounts (حسابات الخزائن)
+CREATE TABLE `treasury_accounts` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `treasury_id` BIGINT UNSIGNED NOT NULL,
+    `account_id` BIGINT UNSIGNED NOT NULL,
+    `created_at` TIMESTAMP NULL DEFAULT NULL,
+    `updated_at` TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (`treasury_id`) REFERENCES `treasuries`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`account_id`) REFERENCES `chart_of_accounts`(`id`) ON DELETE CASCADE
+);
+
+-- جدول journal_entries (قيود اليومية)
+CREATE TABLE `journal_entries` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `date` DATE NOT NULL,
+    `description` TEXT DEFAULT NULL,
+    `currency` VARCHAR(255) DEFAULT NULL,
+    `attachment` VARCHAR(255) DEFAULT NULL,
+    `client_id` BIGINT UNSIGNED DEFAULT NULL,
+    `employee_id` BIGINT UNSIGNED DEFAULT NULL,
+    `invoice_id` BIGINT UNSIGNED DEFAULT NULL,
+    `created_at` TIMESTAMP NULL DEFAULT NULL,
+    `updated_at` TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (`client_id`) REFERENCES `clients`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`employee_id`) REFERENCES `employees`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`invoice_id`) REFERENCES `invoices`(`id`) ON DELETE CASCADE
+);
+
+-- جدول journal_entry_details (تفاصيل قيود اليومية)
+CREATE TABLE `journal_entry_details` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `journal_entry_id` BIGINT UNSIGNED NOT NULL,
+    `account_id` BIGINT UNSIGNED NOT NULL,
+    `description` VARCHAR(255) DEFAULT NULL,
+    `debit` DECIMAL(15, 2) DEFAULT 0,
+    `credit` DECIMAL(15, 2) DEFAULT 0,
+    `created_at` TIMESTAMP NULL DEFAULT NULL,
+    `updated_at` TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (`journal_entry_id`) REFERENCES `journal_entries`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`account_id`) REFERENCES `chart_of_accounts`(`id`) ON DELETE CASCADE
+);
+
+-- جدول payment_vouchers (سندات الدفع)
+CREATE TABLE `payment_vouchers` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `date` DATE NOT NULL,
+    `payee_name` VARCHAR(255) NOT NULL,
+    `amount` DECIMAL(15, 2) NOT NULL,
+    `description` TEXT DEFAULT NULL,
+    `account_id` BIGINT UNSIGNED NOT NULL,
+    `created_by` VARCHAR(255) DEFAULT NULL,
+    `created_at` TIMESTAMP NULL DEFAULT NULL,
+    `updated_at` TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (`account_id`) REFERENCES `chart_of_accounts`(`id`) ON DELETE CASCADE
+);
+
+-- جدول receipt_vouchers (سندات القبض)
+CREATE TABLE `receipt_vouchers` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `date` DATE NOT NULL,
+    `payer_name` VARCHAR(255) NOT NULL,
+    `amount` DECIMAL(15, 2) NOT NULL,
+    `description` TEXT DEFAULT NULL,
+    `account_id` BIGINT UNSIGNED NOT NULL,
+    `created_by` VARCHAR(255) DEFAULT NULL,
+    `created_at` TIMESTAMP NULL DEFAULT NULL,
+    `updated_at` TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (`account_id`) REFERENCES `chart_of_accounts`(`id`) ON DELETE CASCADE
+);
+
+-- جدول taxes (الضرائب)
+CREATE TABLE `taxes` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(255) NOT NULL,
+    `rate` DECIMAL(5, 2) NOT NULL,
+    `description` TEXT DEFAULT NULL,
+    `account_id` BIGINT UNSIGNED NOT NULL,
+    `created_at` TIMESTAMP NULL DEFAULT NULL,
+    `updated_at` TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (`account_id`) REFERENCES `chart_of_accounts`(`id`) ON DELETE CASCADE
+);
+
+-- جدول expenses (المصروفات) مع الربط
+CREATE TABLE `expenses` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `date` DATE NOT NULL,
+    `expense_type` VARCHAR(255) NOT NULL,
+    `amount` DECIMAL(15, 2) NOT NULL,
+    `description` TEXT DEFAULT NULL,
+    `account_id` BIGINT UNSIGNED NOT NULL,
+    `treasury_id` BIGINT UNSIGNED DEFAULT NULL,
+    `bank_account_id` BIGINT UNSIGNED DEFAULT NULL,
+    `journal_entry_id` BIGINT UNSIGNED DEFAULT NULL,
+    `created_by` VARCHAR(255) DEFAULT NULL,
+    `created_at` TIMESTAMP NULL DEFAULT NULL,
+    `updated_at` TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (`account_id`) REFERENCES `chart_of_accounts`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`treasury_id`) REFERENCES `treasuries`(`id`) ON DELETE SET NULL,
+    FOREIGN KEY (`bank_account_id`) REFERENCES `bank_accounts`(`id`) ON DELETE SET NULL,
+    FOREIGN KEY (`journal_entry_id`) REFERENCES `journal_entries`(`id`) ON DELETE SET NULL
+);
+
+-- جدول revenues (الإيرادات) مع الربط
+CREATE TABLE `revenues` (
+    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    `date` DATE NOT NULL,
+    `source` VARCHAR(255) NOT NULL,
+    `amount` DECIMAL(15, 2) NOT NULL,
+    `description` TEXT DEFAULT NULL,
+    `account_id` BIGINT UNSIGNED NOT NULL,
+    `treasury_id` BIGINT UNSIGNED DEFAULT NULL,
+    `bank_account_id` BIGINT UNSIGNED DEFAULT NULL,
+    `journal_entry_id` BIGINT UNSIGNED DEFAULT NULL,
+    `created_by` VARCHAR(255) DEFAULT NULL,
+    `created_at` TIMESTAMP NULL DEFAULT NULL,
+    `updated_at` TIMESTAMP NULL DEFAULT NULL,
+    FOREIGN KEY (`account_id`) REFERENCES `chart_of_accounts`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`treasury_id`) REFERENCES `treasuries`(`id`) ON DELETE SET NULL,
+    FOREIGN KEY (`bank_account_id`) REFERENCES `bank_accounts`(`id`) ON DELETE SET NULL,
+    FOREIGN KEY (`journal_entry_id`) REFERENCES `journal_entries`(`id`) ON DELETE SET NULL
 );

@@ -56,10 +56,9 @@ class Invoice extends Model
 
 
     public function client()
-{
-    return $this->belongsTo(Client::class, 'client_id', 'client_id');
-}
-
+	{
+		return $this->hasMany(Client::class);
+	}
 
 	public function client_payments()
 	{
@@ -70,8 +69,8 @@ class Invoice extends Model
 	{
 		return $this->hasMany(InvoiceItem::class);
 	}
-    public function journalEntries()
-    {
-        return $this->hasMany(JournalEntry::class, 'invoice_id');
-    }
+    // public function payments()
+    // {
+    //     return $this->hasMany(ClientPayment::class, 'invoice_id', 'invoice_id');
+    // }
 }

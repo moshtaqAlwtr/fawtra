@@ -459,11 +459,7 @@ h2 {
 }
 
 /* تنسيقات عامة */
-body {
-    text-align: right;
-    font-family: 'Arial', sans-serif;
-    background-color: #fafafa;
-}
+
 
 /* تصميم حقول الإدخال */
 .form-control {
@@ -993,11 +989,7 @@ z-index: 1050;
         .account-name {
             font-weight: bold;
         }
-        body {
-            background-color: #f7faff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            direction: rtl;
-        }
+
         .top-bar {
             background: linear-gradient(135deg, #007bff, #00c4ff);
             color: white;
