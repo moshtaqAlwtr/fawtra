@@ -1,404 +1,488 @@
-
+/* إعدادات عامة للجسم */
 body {
-    font-family: 'Cairo', sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 20px;
-    direction: rtl;
+    font-family: 'Cairo', sans-serif; /* خط الصفحة */
+    background-color: #f5f5f5; /* لون الخلفية */
+    margin: 0; /* إزالة الهوامش */
+    padding: 20px; /* إضافة مسافة داخلية */
+    direction: rtl; /* الاتجاه من اليمين إلى اليسار */
 }
+
+/* تصميم الحاوية الرئيسية */
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
+    display: flex; /* استخدام تخطيط مرن */
+    flex-wrap: wrap; /* السماح بتفاف العناصر */
+    gap: 20px; /* مسافة بين العناصر */
+    justify-content: space-between; /* توزيع العناصر بالتساوي */
 }
+
+/* تصميم الصناديق */
 .box {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: calc(46% - 5px);
-    min-height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    display: flex;
+    background-color: #fff; /* خلفية بيضاء */
+    padding: 20px; /* مسافة داخلية */
+    border-radius: 4px; /* زوايا دائرية */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+    width: calc(46% - 5px); /* عرض الصندوق */
+    min-height: 100px; /* الحد الأدنى للطول */
+    display: flex; /* استخدام تخطيط مرن */
+    flex-direction: column; /* ترتيب العمود */
+    justify-content: space-between; /* توزيع متساوٍ داخل الصندوق */
 }
+
+/* تصميم العناوين */
 h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 18px; /* حجم الخط */
+    margin-bottom: 10px; /* مسافة أسفل العنوان */
 }
+
+/* تصميم صندوق الفلاتر */
 .filter-box {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-    align-items: center;
+    display: flex; /* استخدام تخطيط مرن */
+    gap: 10px; /* مسافة بين العناصر */
+    margin-bottom: 10px; /* مسافة أسفل الصندوق */
+    align-items: center; /* محاذاة العناصر عموديًا */
 }
+
 .filter-box select {
-    padding: 5px;
+    padding: 5px; /* مسافة داخلية */
 }
+
+/* تصميم أقسام الملخص */
 .attendance-summary, .salary-summary, .rules-summary {
-    display: flex;
-    gap: 10px;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 10px;
+    display: flex; /* استخدام تخطيط مرن */
+    gap: 10px; /* مسافة بين العناصر */
+    justify-content: space-around; /* توزيع العناصر بالتساوي */
+    align-items: center; /* محاذاة عمودية للعناصر */
+    margin-top: 10px; /* مسافة علوية */
 }
+
+/* تصميم الدوائر */
 .circle {
-    width: 80px;
-    height: 80px;
-    border: 5px solid #ddd;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    position: relative;
-    margin: 0 auto;
-    flex-direction: column;
+    width: 80px; /* عرض الدائرة */
+    height: 80px; /* ارتفاع الدائرة */
+    border: 5px solid #ddd; /* حدود الدائرة */
+    border-radius: 50%; /* زوايا دائرية 100% */
+    display: flex; /* استخدام تخطيط مرن */
+    align-items: center; /* محاذاة عمودية */
+    justify-content: center; /* محاذاة أفقية */
+    font-size: 16px; /* حجم النص */
+    position: relative; /* موضع نسبي */
+    margin: 0 auto; /* محاذاة وسط */
+    flex-direction: column; /* ترتيب النص عموديًا */
 }
+
 .circle span {
-    font-size: 14px;
-    margin-top: 5px;
+    font-size: 14px; /* حجم النص */
+    margin-top: 5px; /* مسافة علوية */
 }
-.circle-1 { border-color: #4caf50; }
-.circle-2 { border-color: #f44336; }
-.circle-3 { border-color: #9c27b0; }
-.circle-4 { border-color: #ff9800; }
+
+/* تخصيص ألوان الدوائر */
+.circle-1 { border-color: #4caf50; /* لون أخضر */ }
+.circle-2 { border-color: #f44336; /* لون أحمر */ }
+.circle-3 { border-color: #9c27b0; /* لون بنفسجي */ }
+.circle-4 { border-color: #ff9800; /* لون برتقالي */ }
+
+/* تصميم مربعات ملخصات الرواتب والعقود */
 .salary-summary-box, .contract-summary-box {
-    flex: 1;
-    text-align: center;
-    font-size: 16px;
+    flex: 1; /* أخذ مساحة متساوية */
+    text-align: center; /* محاذاة النص */
+    font-size: 16px; /* حجم الخط */
 }
+
 .salary-summary-box p, .contract-summary-box p {
-    margin: 5px 0;
+    margin: 5px 0; /* مسافة حول الفقرة */
 }
+
+/* تصميم ملخص القواعد */
 .rules-summary div {
-    flex: 1;
-    text-align: center;
-    font-size: 16px;
+    flex: 1; /* أخذ مساحة متساوية */
+    text-align: center; /* محاذاة النص */
+    font-size: 16px; /* حجم الخط */
 }
+
+/* تصميم الطلبات المعلقة */
 .pending-requests {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 16px;
-    color: #888;
+    text-align: center; /* محاذاة النص في المنتصف */
+    margin-top: 40px; /* مسافة علوية */
+    font-size: 16px; /* حجم النص */
+    color: #888; /* لون النص */
 }
+
+/* تصميم الروابط */
 .link {
-    color: #007bff;
-    text-decoration: none;
+    color: #007bff; /* لون الرابط */
+    text-decoration: none; /* إزالة التسطير */
 }
+
+/* تصميم زر الإضافة */
 .btn-add {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    align-self: flex-end;
+    background-color: #007bff; /* لون الخلفية */
+    color: white; /* لون النص */
+    padding: 8px 12px; /* مسافة داخلية */
+    border: none; /* إزالة الحدود */
+    border-radius: 5px; /* زوايا دائرية */
+    cursor: pointer; /* مؤشر اليد */
+    margin-top: 10px; /* مسافة علوية */
+    align-self: flex-end; /* محاذاة إلى اليمين */
 }
 
- .main-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+/* تصميم الحاوية الرئيسية */
+.main-container {
+    display: flex; /* استخدام تخطيط مرن */
+    justify-content: center; /* محاذاة أفقية */
+    align-items: center; /* محاذاة عمودية */
+    min-height: 100vh; /* ارتفاع الصفحة بالكامل */
+    padding: 20px; /* مسافة داخلية */
 }
+
+/* تصميم صندوق المحتوى */
 .content-box {
-    width: 100%;
-    max-width: 900px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.top-bar {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    border-radius: 8px 8px 0 0;
+    width: 100%; /* العرض الكامل */
+    max-width: 900px; /* الحد الأقصى للعرض */
+    background-color: #fff; /* لون الخلفية */
+    padding: 20px; /* مسافة داخلية */
+    border-radius: 8px; /* زوايا دائرية */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل */
 }
 
+/* تصميم الشريط العلوي */
+.top-bar {
+    background-color: #007bff; /* لون الخلفية */
+    color: white; /* لون النص */
+    padding: 10px; /* مسافة داخلية */
+    text-align: center; /* محاذاة النص */
+    border-radius: 8px 8px 0 0; /* زوايا دائرية */
+}
+
+/* تصميم قسم الفلاتر والتبويبات وبطاقات الفواتير */
 .filter-section, .tab-section, .invoice-card, .sort-section {
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 20px;
+    background-color: #fff; /* لون الخلفية */
+    border: 1px solid #dee2e6; /* إطار خفيف */
+    border-radius: 5px; /* زوايا دائرية */
+    padding: 15px; /* مسافة داخلية */
+    margin-bottom: 20px; /* مسافة سفلية */
 }
+
+/* تصميم بطاقات الفواتير */
 .invoice-card {
-    padding: 20px;
-    margin-bottom: 10px;
+    padding: 20px; /* مسافة داخلية إضافية */
+    margin-bottom: 10px; /* مسافة سفلية */
 }
+
+/* تصميم شارات الحالة */
 .badge-status {
-    font-size: 0.8rem;
-    padding: 5px 8px;
-    border-radius: 5px;
-    margin-left: 5px;
+    font-size: 0.8rem; /* حجم الخط */
+    padding: 5px 8px; /* مسافة داخلية */
+    border-radius: 5px; /* زوايا دائرية */
+    margin-left: 5px; /* مسافة جانبية */
 }
+
+/* شارات الحالة بألوان مخصصة */
+.badge-status.paid {
+    background-color: #28a745; /* لون أخضر */
+    color: #fff; /* نص أبيض */
+}
+.badge-status.pending {
+    background-color: #ffc107; /* لون أصفر */
+    color: #212529; /* نص داكن */
+}
+.badge-status.unpaid {
+    background-color: #dc3545; /* لون أحمر */
+    color: #fff; /* نص أبيض */
+}
+
+/* أزرار التحكم في الفلاتر الزمنية */
 .flatpickr-footer {
-    text-align: center;
-    padding: 10px;
+    text-align: center; /* محاذاة النص */
+    padding: 10px; /* مسافة داخلية */
 }
 .btn-clear, .btn-today {
-    border: none;
-    padding: 5px 10px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #fff;
-    border-radius: 4px;
+    border: none; /* إزالة الحدود */
+    padding: 5px 10px; /* مسافة داخلية */
+    font-weight: bold; /* خط غامق */
+    cursor: pointer; /* مؤشر اليد */
+    color: #fff; /* لون النص */
+    border-radius: 4px; /* زوايا دائرية */
 }
-.btn-clear { background-color: #dc3545; margin-right: 10px; }
-.btn-today { background-color: #0d6efd; }
-.badge-status.paid { background-color: #28a745; color: #fff; }
-.badge-status.pending { background-color: #ffc107; color: #212529; }
-.badge-status.unpaid { background-color: #dc3545; color: #fff; }
+.btn-clear {
+    background-color: #dc3545; /* لون أحمر */
+    margin-right: 10px; /* مسافة جانبية */
+}
+.btn-today {
+    background-color: #0d6efd; /* لون أزرق */
+}
+
+/* تصميم الترقيم */
 .pagination-custom {
-    justify-content: center;
+    justify-content: center; /* توسيط الترقيم */
 }
+
+/* القائمة المنسدلة */
 .dropdown-menu {
-    min-width: 150px;
+    min-width: 150px; /* العرض الأدنى للقائمة */
 }
+
+/* أدوات التحكم في الصفحة */
 .page-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    display: flex; /* استخدام تخطيط مرن */
+    align-items: center; /* محاذاة عمودية */
+    gap: 10px; /* مسافة بين العناصر */
 }
 
+/* شريط التنقل */
 .navbar {
-    background: linear-gradient(180deg, #ffffff, #f0f0f0) !important; /* تدرج لوني من الأبيض إلى الرمادي الفاتح */
-    padding: 1rem;
+    background: linear-gradient(180deg, #ffffff, #f0f0f0); /* تدرج لوني */
+    padding: 1rem; /* مسافة داخلية */
     border-bottom: 2px solid #e0e0e0; /* إضافة حدود سفلية */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ظل */
 }
 
-.search-box .form-control {
-    background-color: #f9f9f9; /* لون خلفية حقل البحث */
-    color: #333333;
-    border: none;
-    padding-right: 35px;
-}.admin-header {
-    background: linear-gradient(180deg, #f9f9fc, #ffffff);
-    border-bottom: 1px solid #e0e0e0;
-    padding: 1rem 1.5rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
+/* صندوق البحث */
 .search-box {
-    display: flex;
-    align-items: center;
-    background-color: #eef1f7;
-    border-radius: 4px;
-    padding: 0.3rem 0.6rem;
+    display: flex; /* استخدام تخطيط مرن */
+    align-items: center; /* محاذاة عمودية */
+    background-color: #eef1f7; /* لون خلفية */
+    border-radius: 4px; /* زوايا دائرية */
+    padding: 0.3rem 0.6rem; /* مسافة داخلية */
 }
 
 .search-box .form-control {
-    border: none;
-    background-color: transparent;
-    color: #333;
+    border: none; /* إزالة الحدود */
+    background-color: transparent; /* خلفية شفافة */
+    color: #333; /* لون النص */
 }
 
+/* الهيدر الإداري */
+.admin-header {
+    background: linear-gradient(180deg, #f9f9fc, #ffffff); /* تدرج لوني */
+    border-bottom: 1px solid #e0e0e0; /* حدود سفلية */
+    padding: 1rem 1.5rem; /* مسافة داخلية */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ظل */
+}
+
+/* تخصيص الحقول داخل صندوق البحث */
+.search-box .form-control {
+    background-color: #f9f9f9; /* لون خلفية الحقل */
+    color: #333333; /* لون النص */
+    border: none; /* إزالة الحدود */
+    padding-right: 35px; /* مسافة داخلية */
+}
+
+/* أزرار البحث داخل صندوق البحث */
 .search-box .btn-search {
-    background-color: #6c5ce7;
-    color: #fff;
-    padding: 0.3rem 1rem;
-    border-radius: 4px;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    background-color: #6c5ce7; /* لون خلفية الزر الرئيسي */
+    color: #fff; /* لون النص داخل الزر */
+    padding: 0.3rem 1rem; /* مسافة داخلية حول النص */
+    border-radius: 4px; /* زوايا دائرية للزر */
+    border: none; /* إزالة الحدود */
+    font-weight: 600; /* وزن النص غامق */
+    cursor: pointer; /* تغيير المؤشر عند التمرير */
+    transition: background-color 0.3s; /* إضافة تأثير انتقال لتغيير اللون */
 }
 
 .search-box .btn-search:hover {
-    background-color: #4a3ea8;
+    background-color: #4a3ea8; /* لون عند التمرير فوق الزر */
 }
+
+/* الشريط العلوي (Navbar) */
 .navbar {
     background: linear-gradient(180deg, #ffffff, #e6e6e6) !important; /* تدرج لوني من الأبيض إلى الرمادي الفاتح */
-    padding: 1rem;
+    padding: 1rem; /* مسافة داخلية للشريط */
     border-bottom: 1px solid #dcdcdc; /* حدود سفلية رمادية خفيفة */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* إضافة ظل للشريط */
 }
 
 .navbar-brand img {
-    max-height: 40px; /* حجم شعار العلامة */
+    max-height: 40px; /* تحديد حجم شعار العلامة التجارية */
 }
 
 /* إعدادات صندوق البحث */
 .search-box .form-control {
-    background-color: #f7f7f7; /* خلفية رمادية فاتحة لحقل البحث */
-    color: #333333;
-    border: none;
-    padding-right: 35px;
+    background-color: #f7f7f7; /* خلفية رمادية فاتحة للحقل */
+    color: #333333; /* لون النص داخل الحقل */
+    border: none; /* إزالة الحدود */
+    padding-right: 35px; /* مسافة داخلية من الجهة اليمنى */
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* ظل داخلي لإبراز الحقل */
 }
 
+/* زر البحث داخل صندوق البحث */
 .search-box .btn-search {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: #666666;
+    position: absolute; /* تحديد موضع الزر بشكل مطلق */
+    right: 5px; /* إزاحة الزر لليمين */
+    top: 50%; /* تموضع في منتصف الحقل عمودياً */
+    transform: translateY(-50%); /* تصحيح التمركز العمودي */
+    background: none; /* إزالة لون الخلفية */
+    border: none; /* إزالة الحدود */
+    color: #666666; /* لون النص أو الأيقونة داخل الزر */
 }
+
+/* القائمة الجانبية للشاشات الصغيرة */
 @media (max-width: 768px) {
     #leftside-menu-container {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        z-index: 1050; /* لضمان ظهور القائمة فوق المحتوى */
-        background-color: #f8f9fa;
-        top: 0;
-        left: -100%;
-        transition: left 0.3s ease-in-out;
+        position: fixed; /* تثبيت القائمة في الشاشة */
+        width: 100%; /* عرض القائمة كامل */
+        height: 100%; /* ارتفاع القائمة كامل */
+        z-index: 1050; /* ضمان ظهور القائمة فوق المحتوى */
+        background-color: #f8f9fa; /* لون الخلفية */
+        top: 0; /* تثبيت القائمة في أعلى الشاشة */
+        left: -100%; /* إخفاء القائمة خارج الشاشة */
+        transition: left 0.3s ease-in-out; /* انتقال ناعم عند إظهار القائمة */
     }
 
     /* عند إظهار القائمة على الشاشة الصغيرة */
     #leftside-menu-container.show {
-        left: 0;
+        left: 0; /* إظهار القائمة */
     }
 }
 
-/* جعل الشريط الجانبي يكون دائماً في الخلفية */
+/* الطبقة الخلفية للقائمة الجانبية */
 .sidebar-overlay {
-    position: fixed;
+    position: fixed; /* تثبيت الطبقة فوق المحتوى */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1049;
-    display: none;
+    background: rgba(0, 0, 0, 0.5); /* خلفية شفافة سوداء */
+    z-index: 1049; /* أقل قليلاً من القائمة */
+    display: none; /* إخفاء الطبقة افتراضياً */
 }
 
 .sidebar-overlay.show {
-    display: block;
+    display: block; /* إظهار الطبقة عند عرض القائمة */
 }
 
-
-/* تنسيقات النص والأيقونات */
+/* تنسيقات النص والأيقونات داخل الشريط العلوي */
 .navbar-nav .nav-link {
-    color: #333333 !important; /* لون النص */
-    font-weight: 500;
-    transition: color 0.3s;
+    color: #333333 !important; /* لون النص داخل الروابط */
+    font-weight: 500; /* وزن النص متوسط */
+    transition: color 0.3s; /* تأثير ناعم عند تغيير اللون */
 }
 
 .navbar-nav .nav-link:hover {
-    color: #007bff !important; /* لون عند التمرير */
+    color: #007bff !important; /* لون أزرق عند التمرير */
 }
 
-/* تدرجات الأيقونات */
+/* تدرجات الأيقونات داخل الشريط العلوي */
 .navbar-nav .nav-link i {
-    background: linear-gradient(45deg, #007bff, #00d4ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: background 0.3s;
+    background: linear-gradient(45deg, #007bff, #00d4ff); /* تدرج لوني */
+    -webkit-background-clip: text; /* قص الخلفية حسب النص */
+    -webkit-text-fill-color: transparent; /* جعل النص شفافًا */
+    transition: background 0.3s; /* تأثير ناعم لتغيير التدرج */
 }
 
+
+/* تأثير عند التمرير على الأيقونات داخل الروابط */
 .navbar-nav .nav-link:hover i {
-    background: linear-gradient(45deg, #00d4ff, #007bff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: linear-gradient(45deg, #00d4ff, #007bff); /* تدرج لوني بين الأزرق الفاتح والداكن */
+    -webkit-background-clip: text; /* تحديد التدرج للنص */
+    -webkit-text-fill-color: transparent; /* جعل النص شفافًا لإظهار التدرج */
 }
 
 /* تنسيق القوائم المنسدلة */
 .navbar-nav .dropdown-menu {
-    background-color: #f9f9f9; /* خلفية بيضاء للقائمة المنسدلة */
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* ظل للقائمة */
+    background-color: #f9f9f9; /* لون خلفية أبيض */
+    border: 1px solid #e0e0e0; /* حدود رمادية خفيفة */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* ظل خفيف */
 }
-
 .dropdown-menu .dropdown-item {
-    color: #333333;
+    color: #333333; /* لون النص داخل القوائم */
 }
-
 .dropdown-menu .dropdown-item:hover {
-    background-color: #007bff; /* لون عند التمرير */
-    color: #ffffff;
+    background-color: #007bff; /* لون أزرق عند التمرير */
+    color: #ffffff; /* لون النص أبيض */
 }
 
+/* شارة تحذيرية (Danger Badge) */
 .badge-danger {
-    background-color: #ff4d4d;
-    font-size: 10px;
-    border-radius: 12px;
-    padding: 0.2em 0.5em;
+    background-color: #ff4d4d; /* لون أحمر للتحذير */
+    font-size: 10px; /* حجم النص صغير */
+    border-radius: 12px; /* زوايا دائرية بالكامل */
+    padding: 0.2em 0.5em; /* مسافة داخلية حول النص */
 }
 
-
+/* قسم النماذج (Form Section) */
 .form-section {
-    border: 1px solid #e2e8f0; /* حدود خفيفة */
-    padding: 20px;
-    background: linear-gradient(to right, #ffffff, #f7fafc); /* خلفية فاتحة وهادئة */
-    border-radius: 8px;
+    border: 1px solid #e2e8f0; /* حدود رمادية خفيفة */
+    padding: 20px; /* مسافة داخلية */
+    background: linear-gradient(to right, #ffffff, #f7fafc); /* خلفية بتدرج هادئ */
+    border-radius: 8px; /* زوايا دائرية */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* ظل خفيف */
 }
 .form-section h6 {
-    font-weight: bold;
-    color: #2d3748;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-}
-.header-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-.btn-custom {
-    background: linear-gradient(135deg, #90cdf4, #63b3ed); /* تدرج هادئ بين الأزرق الفاتح والرمادي المزرق */
-    color: white;
-    border: none;
-}
-.btn-custom:hover {
-    background: linear-gradient(135deg, #63b3ed, #90cdf4);
-}
-.footer-info {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #718096;
-    margin-top: 20px;
-}
-.map-container {
-    border: 1px solid #e2e8f0;
-    height: 400px;
-    background-color: #edf2f7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    border-radius: 8px;
-    color: #718096;
-}
-.form-label {
-    font-weight: bold;
-    color: #4a5568;
-}
-.input-group-text {
-    background: #90cdf4; /* لون هادئ للإدخالات */
-    color: white;
-    border: none;
-}
-.form-control, .form-select {
-    border: 1px solid #cbd5e0;
-    border-radius: 8px;
-}
-.icon-section i {
-    color: #63b3ed;
-    font-size: 1.5rem;
-    margin-left: 5px;
+    font-weight: bold; /* خط غامق للعناوين */
+    color: #2d3748; /* لون داكن */
+    margin-bottom: 20px; /* مسافة سفلية للعناوين */
+    font-size: 1.2rem; /* حجم النص متوسط */
 }
 
-.btn-gradient {
-    background: linear-gradient(to right, #64b5f6, #42a5f5);
-    color: #fff;
-    border: none;
-    padding: 0.5em 1.5em;
-    transition: background 0.3s, transform 0.2s;
-    font-weight: bold;
+/* أزرار الهيدر (Header Buttons) */
+.header-buttons {
+    display: flex; /* تخطيط مرن للأزرار */
+    justify-content: flex-end; /* محاذاة الأزرار إلى اليمين */
+    gap: 10px; /* مسافة بين الأزرار */
+    margin-bottom: 20px; /* مسافة سفلية للقسم */
 }
+.btn-custom {
+    background: linear-gradient(135deg, #90cdf4, #63b3ed); /* تدرج ألوان هادئ */
+    color: white; /* لون النص أبيض */
+    border: none; /* إزالة الحدود */
+}
+.btn-custom:hover {
+    background: linear-gradient(135deg, #63b3ed, #90cdf4); /* تغيير التدرج عند التمرير */
+}
+
+/* معلومات الفوتر (Footer Info) */
+.footer-info {
+    text-align: center; /* محاذاة النص في المنتصف */
+    font-size: 0.85rem; /* حجم النص صغير */
+    color: #718096; /* لون رمادي هادئ */
+    margin-top: 20px; /* مسافة علوية */
+}
+
+/* حاوية الخريطة (Map Container) */
+.map-container {
+    border: 1px solid #e2e8f0; /* حدود رمادية خفيفة */
+    height: 400px; /* ارتفاع الخريطة */
+    background-color: #edf2f7; /* لون خلفية رمادي فاتح */
+    display: flex; /* تخطيط مرن */
+    align-items: center; /* محاذاة عمودية للمحتوى */
+    justify-content: center; /* محاذاة أفقية للمحتوى */
+    margin-top: 10px; /* مسافة علوية */
+    border-radius: 8px; /* زوايا دائرية */
+    color: #718096; /* لون النص */
+}
+
+/* عناصر النموذج (Form Elements) */
+.form-label {
+    font-weight: bold; /* نص غامق */
+    color: #4a5568; /* لون داكن */
+}
+.input-group-text {
+    background: #90cdf4; /* لون أزرق فاتح */
+    color: white; /* لون النص أبيض */
+    border: none; /* إزالة الحدود */
+}
+.form-control, .form-select {
+    border: 1px solid #cbd5e0; /* حدود رمادية خفيفة */
+    border-radius: 8px; /* زوايا دائرية */
+}
+
+/* الأيقونات داخل الأقسام (Icon Section) */
+.icon-section i {
+    color: #63b3ed; /* لون أزرق */
+    font-size: 1.5rem; /* حجم الأيقونة كبير نسبيًا */
+    margin-left: 5px; /* مسافة بين الأيقونة والنص */
+}
+
+/* زر التدرج (Gradient Button) */
+.btn-gradient {
+    background: linear-gradient(to right, #64b5f6, #42a5f5); /* تدرج أزرق فاتح إلى داكن */
+    color: #fff; /* لون النص أبيض */
+    border: none; /* إزالة الحدود */
+    padding: 0.5em 1.5em; /* مسافة داخلية */
+    transition: background 0.3s, transform 0.2s; /* تأثير الانتقال */
+    font-weight: bold; /* خط غامق */
+}
+
 .btn-gradient:hover {
     background: linear-gradient(to right, #42a5f5, #64b5f6);
     transform: scale(1.05);
@@ -438,65 +522,71 @@ h2 {
     border-radius: 8px;
     margin-bottom: 1.5em;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
-}
+/* تنسيق شريط الأدوات */
 .toolbar h5 {
-    margin: 0;
-    color: #1e88e5;
+    margin: 0; /* إزالة الهوامش */
+    color: #1e88e5; /* لون النص */
 }
 .toolbar .toolbar-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    display: flex; /* استخدام تخطيط مرن */
+    align-items: center; /* محاذاة عمودية للعناصر */
+    gap: 15px; /* مسافة بين العناصر */
 }
 .toolbar .toolbar-actions .action {
-    color: #1e88e5;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: color 0.2s;
+    color: #1e88e5; /* لون النص للأفعال */
+    font-size: 1rem; /* حجم النص */
+    cursor: pointer; /* مؤشر اليد */
+    transition: color 0.2s; /* تأثير انتقال عند تغيير اللون */
 }
 .toolbar .toolbar-actions .action:hover {
-    color: #1565c0;
+    color: #1565c0; /* لون عند التمرير */
 }
 
 /* تنسيقات عامة */
-
+body {
+    text-align: right;
+    font-family: 'Arial', sans-serif;
+    background-color: #fafafa;
+}
 
 /* تصميم حقول الإدخال */
 .form-control {
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    padding: 0.6em 1em;
-    transition: box-shadow 0.3s;
+    border-radius: 4px; /* زوايا دائرية */
+    border: 1px solid #ddd; /* حدود رمادية خفيفة */
+    padding: 0.6em 1em; /* مسافة داخلية */
+    transition: box-shadow 0.3s; /* تأثير الظل */
 }
 .form-control:focus {
-    box-shadow: 0 0 8px rgba(66, 165, 245, 0.5);
-    border-color: #42a5f5;
+    box-shadow: 0 0 8px rgba(66, 165, 245, 0.5); /* ظل عند التركيز */
+    border-color: #42a5f5; /* لون الحدود */
 }
 
 /* تنسيق زر البحث */
 .btn-gradient {
-    background: linear-gradient(to right, #42a5f5, #64b5f6);
-    color: #fff;
-    border: none;
-    transition: background 0.3s;
+    background: linear-gradient(to right, #42a5f5, #64b5f6); /* تدرج ألوان */
+    color: #fff; /* لون النص */
+    border: none; /* إزالة الحدود */
+    transition: background 0.3s; /* تأثير انتقال للخلفية */
 }
 .btn-gradient:hover {
-    background: linear-gradient(to right, #64b5f6, #42a5f5);
+    background: linear-gradient(to right, #64b5f6, #42a5f5); /* تغيير التدرج عند التمرير */
 }
 
 /* إخفاء العناصر المتقدمة */
 .hidden {
-    display: none !important;
+    display: none !important; /* إخفاء كامل */
 }
+
+/* تنسيق القائمة المنسدلة */
 .dropdown-menu {
-position: absolute;
-top: 100%; /* لتظهر تحت الزر */
-left: 0;
-z-index: 1050;
+    position: absolute; /* موضع ثابت */
+    top: 100%; /* لتظهر تحت الزر */
+    left: 0; /* محاذاة من اليسار */
+    z-index: 1050; /* ترتيب الظهور */
 }
 
 .dropdown-item i {
-    margin-left: 8px;
+    margin-left: 8px; /* مسافة بين الأيقونة والنص */
 }
 .dropdown-item .fa-eye {
     color: #4CAF50; /* لون أخضر للعرض */
@@ -517,379 +607,382 @@ z-index: 1050;
     color: #3F51B5; /* لون أزرق داكن لكشف الحساب */
 }
 
+/* تنسيق الهيدر */
 .header {
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: #fff;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    margin: 20px;
+    background: linear-gradient(135deg, #007bff, #0056b3); /* تدرج أزرق */
+    color: #fff; /* لون النص أبيض */
+    padding: 15px; /* مسافة داخلية */
+    display: flex; /* تخطيط مرن */
+    justify-content: center; /* توسيط أفقياً */
+    align-items: center; /* توسيط عمودياً */
+    border-radius: 5px; /* زوايا دائرية */
+    margin: 20px; /* مسافة خارجية */
 }
 
+/* عناصر التحكم */
 .controls {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    padding: 15px;
-    margin-right: 20px;
-}
-
+    display: flex; /* تخطيط مرن */
+    justify-content: flex-end; /* محاذاة إلى اليمين */
+    gap: 10px; /* مسافة بين العناصر */
+    padding: 15px; /* مسافة داخلية */
+    margin-right: 20px; /* مسافة جانبية من اليمين */
+/* تصميم الأزرار داخل عناصر التحكم */
 .controls .btn {
-    border-radius: 5px;
+    border-radius: 5px; /* زوايا دائرية للأزرار */
 }
 
+/* تصميم الحاوية الرئيسية للنموذج */
 .form-container {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
+    display: flex; /* استخدام التخطيط المرن */
+    gap: 20px; /* مسافة بين الأقسام */
+    padding: 20px; /* مسافة داخلية */
 }
 
+/* تصميم أقسام النماذج */
 .form-section {
-    flex: 1;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1; /* توزيع المساحة بالتساوي */
+    background-color: #fff; /* خلفية بيضاء */
+    padding: 20px; /* مسافة داخلية */
+    border-radius: 8px; /* زوايا دائرية */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+    border: 1px solid #dee2e6; /* حدود خفيفة */
+    margin-bottom: 20px; /* مسافة سفلية */
 }
 
+/* تصميم مجموعة الحقول */
 .form-group label {
-    font-weight: bold;
+    font-weight: bold; /* خط غامق */
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    transition: border-color 0.3s ease;
+    border-radius: 4px; /* زوايا دائرية */
+    border: 1px solid #ccc; /* حدود رمادية */
+    transition: border-color 0.3s ease; /* تأثير تغيير اللون */
+    margin-bottom: 10px; /* مسافة بين الحقول */
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    border-color: #007bff; /* لون الحدود عند التركيز */
+    outline: none; /* إزالة التحديد الافتراضي */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* إضافة ظل */
 }
 
+/* تصميم منطقة رفع الملفات */
 .upload-container {
-    border: 2px dashed #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: border-color 0.3s ease;
-    color: #666;
-    margin-bottom: 15px;
+    border: 2px dashed #ccc; /* حدود متقطعة */
+    border-radius: 8px; /* زوايا دائرية */
+    padding: 20px; /* مسافة داخلية */
+    text-align: center; /* توسيط النص */
+    cursor: pointer; /* مؤشر اليد */
+    transition: border-color 0.3s ease; /* تأثير تغيير اللون */
+    color: #666; /* لون النص */
+    margin-bottom: 15px; /* مسافة سفلية */
 }
 
 .upload-container:hover {
-    border-color: #007bff;
+    border-color: #007bff; /* تغيير لون الحدود عند التمرير */
 }
 
 .upload-container input[type="file"] {
-    display: none;
+    display: none; /* إخفاء حقل رفع الملفات */
 }
 
 .upload-icon {
-    font-size: 24px;
-    color: #007bff;
-    margin-bottom: 8px;
+    font-size: 24px; /* حجم الأيقونة */
+    color: #007bff; /* لون الأيقونة */
+    margin-bottom: 8px; /* مسافة أسفل الأيقونة */
 }
 
 .upload-container span {
-    display: block;
-    color: #007bff;
-    text-decoration: underline;
+    display: block; /* عرض النص في سطر منفصل */
+    color: #007bff; /* لون النص */
+    text-decoration: underline; /* خط تحت النص */
 }
 
+/* تصميم القسم السفلي */
 .bottom-section {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    direction: rtl;
-    text-align: right;
+    margin-top: 20px; /* مسافة علوية */
+    padding: 20px; /* مسافة داخلية */
+    background-color: #fff; /* خلفية بيضاء */
+    border-radius: 8px; /* زوايا دائرية */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+    direction: rtl; /* اتجاه النص من اليمين إلى اليسار */
+    text-align: right; /* محاذاة النص لليمين */
 }
 
+/* تصميم أزرار الإجراءات */
 .action-buttons .btn {
-    margin: 0 5px;
+    margin: 0 5px; /* مسافة جانبية بين الأزرار */
 }
+
+/* الحاوية الرئيسية */
 .container {
-    max-width: 900px;
-    margin-top: 20px;
+    max-width: 900px; /* العرض الأقصى للحاوية */
+    margin-top: 20px; /* مسافة علوية */
 }
+
+/* تصميم البطاقات */
 .card {
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* زوايا دائرية */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* ظل متوسط */
 }
-.form-section {
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
+
+/* تحسين تصميم عناصر النموذج */
 .form-control {
-    margin-bottom: 10px;
-    border-radius: 5px;
+    margin-bottom: 10px; /* مسافة سفلية بين الحقول */
+    border-radius: 5px; /* زوايا دائرية */
 }
+/* تنسيق الأزرار */
 .btn-outline-secondary {
-    background-color: #e9ecef;
-    color: #212529;
+    background-color: #e9ecef; /* لون خلفية رمادي فاتح */
+    color: #212529; /* لون النص */
 }
+.btn-green {
+    background-color: #28a745; /* لون أخضر */
+    color: white; /* لون النص أبيض */
+}
+.export-btn {
+    background: linear-gradient(90deg, #00c6ff, #0072ff); /* تدرج أزرق */
+    border: none; /* إزالة الحدود */
+}
+.export-btn:hover {
+    background: linear-gradient(90deg, #0072ff, #00c6ff); /* عكس التدرج عند التمرير */
+}
+
+/* تنسيق الشريط العلوي */
+.top-bar {
+    background: linear-gradient(45deg, #007bff, #0056b3); /* تدرج أزرق */
+    padding: 10px; /* مسافة داخلية */
+    color: white; /* لون النص أبيض */
+    display: flex; /* استخدام التخطيط المرن */
+    justify-content: space-between; /* توزيع المحتوى */
+    align-items: center; /* محاذاة عمودية للعناصر */
+}
+
+/* تنسيق قسم الفلاتر */
+.filter-section {
+    margin-top: 20px; /* مسافة علوية */
+    padding: 15px; /* مسافة داخلية */
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* تدرج رمادي */
+    border-radius: 5px; /* زوايا دائرية */
+    transition: all 0.3s ease; /* تأثير عند التغيير */
+}
+.advanced-search {
+    display: none; /* إخفاء افتراضي */
+    margin-top: 15px; /* مسافة علوية */
+    padding: 15px; /* مسافة داخلية */
+    border: 1px solid #ddd; /* حدود رمادية */
+    border-radius: 5px; /* زوايا دائرية */
+    background: linear-gradient(135deg, #ffffff, #f1f1f1); /* تدرج خلفية أبيض */
+}
+
+/* تحسين مظهر الجدول */
+.table-section {
+    margin-top: 20px; /* مسافة علوية */
+}
+.table th, .table td {
+    text-align: center; /* محاذاة النص في الوسط */
+    vertical-align: middle; /* محاذاة عمودية */
+}
+.table th {
+    background: linear-gradient(45deg, #007bff, #0056b3); /* تدرج أزرق */
+    color: white; /* لون النص أبيض */
+}
+
+/* تنسيق بطاقة المواعيد */
+.appointment-card {
+    background: linear-gradient(135deg, #fff5f5, #ffe6e6); /* تدرج وردي */
+    border: 1px solid #dc3545; /* حدود حمراء */
+    border-radius: 8px; /* زوايا دائرية */
+    padding: 15px; /* مسافة داخلية */
+    margin-bottom: 15px; /* مسافة سفلية */
+    display: flex; /* استخدام التخطيط المرن */
+    justify-content: space-between; /* توزيع المحتوى */
+    align-items: center; /* محاذاة عمودية للعناصر */
+}
+.appointment-details {
+    flex: 1; /* توسيع القسم */
+}
+.appointment-status {
+    color: #28a745; /* لون أخضر */
+    font-weight: bold; /* نص غامق */
+    background-color: #d4edda; /* خلفية خضراء فاتحة */
+    padding: 5px 10px; /* مسافة داخلية */
+    border-radius: 5px; /* زوايا دائرية */
+}
+.appointment-actions {
+    margin-left: 10px; /* مسافة جانبية */
+}
+.appointment-actions .btn {
+    background-color: transparent; /* خلفية شفافة */
+    color: #000; /* لون النص أسود */
+}
+.appointment-meta {
+    color: #6c757d; /* لون رمادي للنصوص الوصفية */
+}
+.card-icon {
+    color: #007bff; /* لون أيقونات أزرق */
+    margin-right: 5px; /* مسافة جانبية */
+}
+
+/* تنسيق قسم النتائج */
 .results {
-    margin-top: 30px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px; /* مسافة علوية */
+    padding: 20px; /* مسافة داخلية */
+    background-color: #ffffff; /* خلفية بيضاء */
+    border-radius: 8px; /* زوايا دائرية */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* ظل خفيف */
 }
 
-        /* تنسيقات عامة */
-        .top-bar {
-            background: linear-gradient(45deg, #007bff, #0056b3);
-            padding: 10px;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .filter-section {
-            margin-top: 20px;
-            padding: 15px;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        .advanced-search {
-            display: none;
-            margin-top: 15px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background: linear-gradient(135deg, #ffffff, #f1f1f1);
-        }
-        .btn-green {
-            background-color: #28a745;
-            color: white;
-        }
-        .table-section {
-            margin-top: 20px;
-        }
-        /* تحسين مظهر الجدول */
-        .table th, .table td {
-            text-align: center;
-            vertical-align: middle;
-        }
-        .table th {
-            background: linear-gradient(45deg, #007bff, #0056b3);
-            color: white;
-        }
-        .appointment-card {
-            background: linear-gradient(135deg, #fff5f5, #ffe6e6);
-            border: 1px solid #dc3545;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .appointment-details {
-            flex: 1;
-        }
-        .export-btn {
-            background: linear-gradient(90deg, #00c6ff, #0072ff); /* Example gradient */
-            border: none;
-        }
+/* قسم التصدير */
+.export-section {
+    background-color: #ddd; /* لون خلفية رمادي */
+    color: black; /* لون النص أسود */
+    padding: 10px; /* مسافة داخلية */
+    border-radius: 5px; /* زوايا دائرية */
+    display: flex; /* استخدام التخطيط المرن */
+    align-items: center; /* محاذاة عمودية */
+    margin-top: 15px; /* مسافة علوية */
+    font-size: 14px; /* حجم النص */
+    justify-content: left; /* محاذاة أفقية إلى اليسار */
+}
+.export-section i {
+    margin-left: 5px; /* مسافة جانبية للأيقونات */
+}
 
-        .export-btn:hover {
-            background: linear-gradient(90deg, #0072ff, #00c6ff); /* Reverse gradient on hover */
-        }
-        .appointment-status {
-            color: #28a745;
-            font-weight: bold;
-            background-color: #d4edda;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        .appointment-actions {
-            margin-left: 10px;
-        }
-        .appointment-actions .btn {
-            background-color: transparent;
-            color: #000;
-        }
-        .appointment-meta {
-            color: #6c757d;
-        }
-        .card-icon {
-            color: #007bff;
-            margin-right: 5px;
-        }
-        .export-section {
-            background-color: #ddd;
-            color: black;
-            padding: 10px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            margin-top: 15px;
-            font-size: 14px;
-            justify-content: left;
-        }
-        .export-section i {
-            margin-left: 5px;
-        }
+/* تصميم حاوية الفاتورة */
+.invoice-container {
+    max-width: 1200px; /* العرض الأقصى للحاوية */
+    margin: auto; /* توسيط الحاوية */
+    background: #fff; /* خلفية بيضاء */
+    padding: 20px; /* مسافة داخلية */
+    border-radius: 8px; /* زوايا دائرية */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+}
 
-        .invoice-container {
-            max-width: 1200px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .invoice-header {
-            border-bottom: 2px solid #007bff;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            text-align: right;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #555;
-        }
-        .editor-toolbar {
+/* رأس الفاتورة */
+.invoice-header {
+    border-bottom: 2px solid #007bff; /* خط سفلي أزرق */
+    margin-bottom: 20px; /* مسافة سفلية */
+    padding-bottom: 10px; /* مسافة داخلية */
+    text-align: right; /* محاذاة النص لليمين */
+}
 
-            background-color: #f8f9fa;
-            padding: 5px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-        .editor-toolbar .btn {
-            padding: 5px 10px;
-        }
-        .editor-content {
-            border: 1px solid #ced4da;
-            padding: 10px;
-            min-height: 100px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
+/* تذييل الصفحة */
+.footer {
+    text-align: center; /* توسيط النص */
+    margin-top: 20px; /* مسافة علوية */
+    font-size: 14px; /* حجم النص */
+    color: #555; /* لون النص */
+}
 
-        th {
-            background-color: #007bff;
-            color: white;
-            text-align: right;
-        }
-        td {
-            text-align: right;
-        }
-        .button-group {
-            margin: 20px 0;
-            text-align: center;
-        }
-        .add-item {
-            margin: 10px 0;
-            text-align: right;
-        }
-        .add-item button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .add-item button:hover {
-            background-color: #0056b3;
-        }
-        .gifts-section {
-            background: #f1f1f1;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        .invoice-container {
-            max-width: 1200px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .invoice-header {
-            border-bottom: 2px solid #007bff;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            text-align: right;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #555;
-        }
-        .editor-toolbar {
+/* شريط أدوات المحرر */
+.editor-toolbar {
+    background-color: #f8f9fa; /* خلفية رمادية فاتحة */
+    padding: 5px; /* مسافة داخلية */
+    border: 1px solid #ced4da; /* حدود رمادية */
+    border-radius: 5px; /* زوايا دائرية */
+}
+.editor-toolbar .btn {
+    padding: 5px 10px; /* مسافة داخلية للأزرار */
+}
 
-            background-color: #f8f9fa;
-            padding: 5px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-        .editor-toolbar .btn {
-            padding: 5px 10px;
-        }
-        .editor-content {
-            border: 1px solid #ced4da;
-            padding: 10px;
-            min-height: 100px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
+/* محتوى المحرر */
+.editor-content {
+    border: 1px solid #ced4da; /* حدود رمادية */
+    padding: 10px; /* مسافة داخلية */
+    min-height: 100px; /* الحد الأدنى للارتفاع */
+    border-radius: 5px; /* زوايا دائرية */
+    margin-top: 10px; /* مسافة علوية */
+}
 
-        th {
-            background-color: #007bff;
-            color: white;
-            text-align: right;
-        }
-        td {
-            text-align: right;
-        }
-        .button-group {
-            margin: 20px 0;
-            text-align: center;
-        }
-        .add-item {
-            margin: 10px 0;
-            text-align: right;
-        }
-        .add-item button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .add-item button:hover {
-            background-color: #0056b3;
-        }
-        .gifts-section {
-            background: #f1f1f1;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
+/* تصميم الجدول */
+th {
+    background-color: #007bff; /* خلفية رأس الجدول */
+    color: white; /* لون النص أبيض */
+    text-align: right; /* محاذاة النص لليمين */
+}
+td {
+    text-align: right; /* محاذاة النص لليمين */
+}
+
+/* مجموعة الأزرار */
+.button-group {
+    margin: 20px 0; /* مسافة علوية وسفلية */
+    text-align: center; /* توسيط النص */
+}
+
+/* إضافة عناصر جديدة */
+.add-item {
+    margin: 10px 0; /* مسافة علوية وسفلية */
+    text-align: right; /* محاذاة لليمين */
+}
+.add-item button {
+    background-color: #007bff; /* خلفية زرقاء */
+    color: #fff; /* لون النص أبيض */
+    border: none; /* إزالة الحدود */
+    padding: 10px 20px; /* مسافة داخلية */
+    border-radius: 4px; /* زوايا دائرية */
+    cursor: pointer; /* مؤشر اليد */
+}
+.add-item button:hover {
+    background-color: #0056b3; /* لون داكن عند التمرير */
+}
+
+/* قسم الهدايا */
+.gifts-section {
+    background: #f1f1f1; /* خلفية رمادية فاتحة */
+    padding: 15px; /* مسافة داخلية */
+    border: 1px solid #ccc; /* حدود رمادية */
+    border-radius: 5px; /* زوايا دائرية */
+    margin-top: 20px; /* مسافة علوية */
+}
+
+/* تنسيق الجدول */
+th {
+    background-color: #007bff; /* خلفية رأس الجدول */
+    color: white; /* لون النص أبيض */
+    text-align: right; /* محاذاة النص لليمين */
+}
+td {
+    text-align: right; /* محاذاة النص لليمين */
+}
+
+/* مجموعة الأزرار */
+.button-group {
+    margin: 20px 0; /* مسافة علوية وسفلية */
+    text-align: center; /* توسيط النص */
+}
+
+/* إضافة عناصر جديدة */
+.add-item {
+    margin: 10px 0; /* مسافة علوية وسفلية */
+    text-align: right; /* محاذاة النص لليمين */
+}
+.add-item button {
+    background-color: #007bff; /* خلفية زرقاء */
+    color: #fff; /* لون النص أبيض */
+    border: none; /* إزالة الحدود */
+    padding: 10px 20px; /* مسافة داخلية */
+    border-radius: 4px; /* زوايا دائرية */
+    cursor: pointer; /* مؤشر اليد */
+}
+.add-item button:hover {
+    background-color: #0056b3; /* لون داكن عند التمرير */
+}
+
+/* قسم الهدايا */
+.gifts-section {
+    background: #f1f1f1; /* خلفية رمادية فاتحة */
+    padding: 15px; /* مسافة داخلية */
+    border: 1px solid #ccc; /* حدود رمادية */
+    border-radius: 5px; /* زوايا دائرية */
+    margin-top: 20px; /* مسافة علوية */
+}
 
         .sidebar h5 {
             font-weight: bold;
@@ -989,7 +1082,11 @@ z-index: 1050;
         .account-name {
             font-weight: bold;
         }
-
+        body {
+            background-color: #f7faff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            direction: rtl;
+        }
         .top-bar {
             background: linear-gradient(135deg, #007bff, #00c4ff);
             color: white;
@@ -1099,42 +1196,49 @@ z-index: 1050;
         .dropdown-item .fa-trash { color: #dc3545; }
         .dropdown-item .fa-file-alt { color: #17a2b8; }
 
-        /* تخصيص أزرار اليوم ومسح في Flatpickr */
-        .flatpickr-calendar .flatpickr-clear {
-            background-color: #dc3545;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .flatpickr-calendar .flatpickr-today {
-            background-color: #007bff;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 5px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .flatpickr-calendar .flatpickr-weekday {
-            color: #6c757d;
-        }
+/* تخصيص أزرار اليوم ومسح في Flatpickr */
+.flatpickr-calendar .flatpickr-clear {
+    background-color: #dc3545; /* خلفية حمراء */
+    color: white; /* لون النص */
+    padding: 5px 15px; /* مسافة داخلية */
+    border-radius: 5px; /* زوايا دائرية */
+    font-size: 14px; /* حجم النص */
+    cursor: pointer; /* مؤشر اليد */
+}
+.flatpickr-calendar .flatpickr-today {
+    background-color: #007bff; /* خلفية زرقاء */
+    color: white; /* لون النص */
+    padding: 5px 15px; /* مسافة داخلية */
+    border-radius: 5px; /* زوايا دائرية */
+    font-size: 14px; /* حجم النص */
+    cursor: pointer; /* مؤشر اليد */
+}
+.flatpickr-calendar .flatpickr-weekday {
+    color: #6c757d; /* لون رمادي */
+}
 
-        /* إخفاء البحث المتقدم افتراضياً */
-        .advanced-search {
-            display: none;
-        }
+/* إخفاء البحث المتقدم افتراضياً */
+.advanced-search {
+    display: none; /* إخفاء افتراضي */
+}
 
-        .card {
-            border-radius: 10px;
-            border: 1px solid #ddd;
-        }
-        .badge {
-            font-size: 1rem;
-            display: inline-block;
-            min-width: 40px;
-            text-align: center;
-        }
-        .dropdown-menu {
-            min-width: 150px;
-        }
+/* تصميم البطاقة */
+.card {
+    border-radius: 10px; /* زوايا دائرية */
+    border: 1px solid #ddd; /* حدود رمادية */
+}
+
+/* شارة التنبيه */
+.badge {
+    font-size: 1rem; /* حجم النص */
+    display: inline-block; /* عرض الشارة بشكل خطي */
+    min-width: 40px; /* عرض أدنى */
+    text-align: center; /* توسيط النص */
+}
+
+/* القائمة المنسدلة */
+.dropdown-menu {
+    min-width: 150px; /* العرض الأدنى للقائمة */
+}
+}
+}
