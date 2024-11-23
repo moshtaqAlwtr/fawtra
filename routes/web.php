@@ -90,7 +90,10 @@ Route::get('/add_payment_process', function () {
         Route::get('/debit-notices', function () {
             return view('layouts.nav-slider-route', ['page' => 'debit-notices']);
         })->name('debit-notices');
-//مسار الاشعارات الدائنة
+//مسار عرض الاشعارات الدائنة
+Route::get('/show_credit_notice', function () {
+    return view('layouts.nav-slider-route', ['page' => 'show_credit_notice']);
+})->name('show_credit_notice');
 // مسار عرض العملاء
 
 Route::get('/client-view', function () {
@@ -147,6 +150,7 @@ Route::get('/journal-entries/search', [JournalEntryController::class, 'search'])
         Route::get('/add_employee', function () {
             return view('layouts.nav-slider-route', ['page' => 'add_employee']);
         })->name('add_employee');
+
         Route::get('/schedule_appointment', function () {
             return view('layouts.nav-slider-route', ['page' => 'schedule_appointment']);
         })->name('schedule_appointment');

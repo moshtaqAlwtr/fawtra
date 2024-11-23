@@ -160,6 +160,9 @@
                     @case('add_payment_process')
                         @include('fawtra.2-purchase_admin.add_payment_process')
                     @break
+                    @case('show_credit_notice')
+                        @include('fawtra.2-purchase_admin.show_credit_notice')
+                    @break
 
                     @default
                 @endswitch
