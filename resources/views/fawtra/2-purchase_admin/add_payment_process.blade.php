@@ -66,7 +66,8 @@
     <div class="top-bar">إضافة عملية دفع</div>
 
     <!-- المحتوى -->
-   
+
+
         <div class="">
             <div class="row mb-3">
                 <div class="col-12 d-flex justify-content-end">
@@ -88,12 +89,13 @@
                     <select id="client" name="client_id" class="form-select" required>
     <option value="">اختر العميل</option>
     @if(isset($clients) && count($clients) > 0)
-        @foreach($clients as $client)
-            <option value="{{ $client->client_id }}">{{ $client->client_name }}</option>
-        @endforeach
-    @else
-        <option value="">لا توجد بيانات</option>
-    @endif
+    @foreach($clients as $client)
+        <option value="{{ $client->client_id }}">{{ $client->trade_name }}</option>
+    @endforeach
+@else
+    <option value="">لا توجد بيانات</option>
+@endif
+
 </select>
 
                 </div>
@@ -211,6 +213,7 @@
             </div>
         </form>
     </div>
+</div>
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

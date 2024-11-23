@@ -39,5 +39,9 @@ public function invoice()
 {
     return $this->belongsTo(Invoice::class, 'invoice_id');
 }
+public function payments()
+{
+    return $this->hasMany(ClientPayment::class, 'employee_id', 'employee_id');
+}
 
 }

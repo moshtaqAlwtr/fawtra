@@ -1,15 +1,16 @@
 <?php
-
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    protected $table = 'clients'; // تأكد أن اسم الجدول صحيح
-    protected $primaryKey = 'client_id'; // إذا كان لديك حقل مفتاح أساسي غير الحقل الافتراضي `id`
+    use HasFactory;
 
-    public $timestamps = false; // إذا لم يكن لديك حقول created_at و updated_at
+    protected $table = 'clients';
+    protected $primaryKey = 'client_id'; // تأكد من أن المفتاح الأساسي معرف
+    public $timestamps = false; // إذا لم يكن لديك created_at و updated_at
 
     protected $fillable = [
         'trade_name',
@@ -34,8 +35,14 @@ class Client extends Model
         'client_type',
         'notes',
         'attachments',
-      //  'display_language'
     ];
+
+    // العلاقة مع ClientPayment
+    public function payments()
+    {
+        return $this->hasMany(ClientPayment::class, 'client_id', 'client_id');
+    }
+
     public function creditNotifications()
     {
         return $this->hasMany(CreditNotification::class, 'client_id');

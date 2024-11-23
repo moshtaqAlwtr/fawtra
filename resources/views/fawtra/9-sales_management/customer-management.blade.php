@@ -145,7 +145,7 @@
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href=""><i class="fas fa-eye"></i> عرض</a></li>
+                                                <li><a class="dropdown-item" href="{{ route('add_payment_process') }}"><i class="fas fa-eye"></i> عرض</a></li>
                                                 <li><a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i> تعديل</a></li>
                                                 <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> نسخ</a></li>
                                                 <li><a class="dropdown-item" href="#"><i class="fas fa-trash"></i> حذف</a></li>

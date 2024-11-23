@@ -28,30 +28,22 @@ class ClientPayment extends Model
     // العلاقة مع العميل
     public function client()
     {
-        return $this->belongsTo(Client::class, 'client_id');
+        return $this->belongsTo(Client::class, 'client_id', 'client_id');
     }
 
-    // العلاقة مع الفاتورة
+
     public function invoice()
     {
-        return $this->belongsTo(Invoice::class, 'invoice_id');
+        return $this->belongsTo(Invoice::class, 'invoice_id', 'invoice_id');
     }
 
-    // العلاقة مع الموظف
-    public function employee()
-    {
-        return $this->belongsTo(Employee::class, 'employee_id');
-    }
-
-    // العلاقة مع الخزينة
     public function treasury()
     {
-        return $this->belongsTo(Treasury::class, 'treasury_id');
+        return $this->belongsTo(Treasury::class, 'treasury_id', 'treasury_id');
     }
 
-    // العلاقة مع قيد اليومية
-    public function journalEntry()
+    public function employee()
     {
-        return $this->belongsTo(JournalEntry::class, 'entry_id');
+        return $this->belongsTo(Employee::class, 'employee_id', 'employee_id');
     }
 }
