@@ -91,7 +91,10 @@ Route::group([
 
     // مسارات المواعيد
     Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
+// مسار انشاء عرض سعر 
 
+        Route::get('/quotation', [QuoteController::class, 'index'])->name('quotation');
+        Route::post('/quotes', [QuoteController::class, 'store'])->name('quotes.store');
     // مسارات الإشعارات الدائنة
     Route::get('/create-credit-notification', [CreditNotificationController::class, 'create'])->name('create-credit-notification');
     Route::post('/store-credit-notification', [CreditNotificationController::class, 'store'])->name('store-credit-notification');
