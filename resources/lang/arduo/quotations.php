@@ -28,8 +28,7 @@ return [
     'pdf' => 'PDF',
     'image' => 'تصویر',
     'copy' => 'کاپی',
-];
-return [
+
     'add_quotation' => 'کوٹیشن شامل کریں',
     'invoice_template' => 'انوائس ٹیمپلیٹ',
     'default_template' => 'ڈیفالٹ ٹیمپلیٹ',
