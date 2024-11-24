@@ -38,14 +38,6 @@ Route::group([
     // الموارد
     Route::resource('products', ProductController::class);
     Route::resource('clients', ClientController::class)->names(['index' => 'clients.index']);
-    Route::resource('accounts', ChartOfAccountController::class)->names([
-        'index' => 'accounts.index',
-        'create' => 'accounts.create',
-        'store' => 'accounts.store',
-        'edit' => 'accounts.edit',
-        'update' => 'accounts.update',
-        'destroy' => 'accounts.destroy',
-    ]);
 
     // صفحات ثابتة مع محتوى ديناميكي
     $navSliderRoutes = [
@@ -77,9 +69,10 @@ Route::group([
     foreach ($navSliderRoutes as $route => $page) {
         Route::get("/$route", fn() => view('layouts.nav-slider-route', ['page' => $page]))->name($route);
     }
-
+    Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
     // مسارات الحسابات
     Route::prefix('accounts')->group(function () {
+        Route::get('/add', [ChartOfAccountController::class, 'add'])->name('accounts.add');
         Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create');
         Route::post('/', [ChartOfAccountController::class, 'store'])->name('accounts.store');
         Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accounts.edit');
@@ -98,7 +91,8 @@ Route::group([
 
     // مسارات المواعيد
     Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
-
+    Route::get('/quotation', [QuoteController::class, 'index'])->name('quotation');
+    Route::post('/quotes', [QuoteController::class, 'store'])->name('quotes.store');
     // مسارات الإشعارات الدائنة
     Route::get('/create-credit-notification', [CreditNotificationController::class, 'create'])->name('create-credit-notification');
     Route::post('/store-credit-notification', [CreditNotificationController::class, 'store'])->name('store-credit-notification');
