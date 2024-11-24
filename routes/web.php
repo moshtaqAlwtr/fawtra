@@ -99,6 +99,7 @@ Route::group([
     // مسارات المواعيد
     Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
 
+    
     // مسارات الإشعارات الدائنة
     Route::get('/create-credit-notification', [CreditNotificationController::class, 'create'])->name('create-credit-notification');
     Route::post('/store-credit-notification', [CreditNotificationController::class, 'store'])->name('store-credit-notification');
