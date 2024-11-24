@@ -22,7 +22,7 @@ class PaymentVoucherController extends Controller
 
         // جلب الحسابات
         $accounts = ChartOfAccount::with('childAccounts')->get();
-        dd($expenses, $paymentVouchers);
+
         // تمرير البيانات إلى View
         return view('layouts.nav-slider-route', [
             'page' => 'import_expense_receipts',
@@ -38,7 +38,6 @@ class PaymentVoucherController extends Controller
     public function create()
     {
         $accounts = ChartOfAccount::with('childAccounts')->get();
-        dd($accounts);
         // جلب الحسابات
         return view('layouts.nav-slider-route', [
             'page' => 'expense_voucher',
@@ -77,7 +76,6 @@ class PaymentVoucherController extends Controller
 
         // جلب الحسابات من قاعدة البيانات
         $accounts = ChartOfAccount::with('childAccounts')->get();
-dd($accounts);
 
 
         // إعادة التوجيه إلى الصفحة مع الحسابات

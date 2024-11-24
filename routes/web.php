@@ -122,10 +122,11 @@ Route::group([
 
 // مسارات سندات الصرف
 Route::prefix('expense_voucher')->group(function () {
-    Route::get('/import_expense_receipts', [PaymentVoucherController::class, 'index'])->name('import_expense_receipts.index');
+    Route::get('/expense_voucher', [PaymentVoucherController::class, 'index'])->name('payment_vouchers.index');
     Route::get('/create', [PaymentVoucherController::class, 'create'])->name('payment_vouchers.create');
     Route::post('/', [PaymentVoucherController::class, 'store'])->name('payment_vouchers.store');
 });
+
     Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
         Route::resource('clients', ClientController::class);
          Route::post('/clients/store', [ClientController::class, 'storeClient'])->name('storeClient');
