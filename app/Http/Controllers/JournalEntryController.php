@@ -62,7 +62,7 @@ class JournalEntryController extends Controller
         'attachment' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
         'client_id' => 'nullable|exists:clients,id',
         'employee_id' => 'nullable|exists:employees,id',
-        'invoice_id' => 'nullable|exists:invoices,id',
+        'invoice_id' => 'nullable|exists:invoices,invoice_id',
         'accounts' => 'required|array',
         'accounts.*' => 'required|integer|exists:chart_of_accounts,id',
         'descriptions.*' => 'nullable|string',

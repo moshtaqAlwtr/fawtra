@@ -80,7 +80,7 @@
                         <select id="invoice_id" name="invoice_id" class="form-select">
                         <option value="">اختر الفاتورة</option>
                         @foreach($invoices as $invoice)
-                            <option value="{{ $invoice->id }}">{{ $invoice->id }}</option>
+                            <option value="{{ $invoice->invoice_id }}">{{ $invoice->invoice_id }}</option>
                         @endforeach
                     </select>
                 </div>

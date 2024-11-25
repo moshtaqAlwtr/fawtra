@@ -11,10 +11,10 @@ class InvoiceController extends Controller
     {
         $clients = Client::all(); // جلب جميع العملاء
         $invoices = Invoice::all(); // جلب جميع الفواتير
-    
+
         // احصل على رقم الفاتورة التالي
         $nextInvoiceId = Invoice::max('invoice_id') + 1;
-    
+
         return view('layouts.nav-slider-route', [
             'page' => 'sales_invoice',
             'clients' => $clients,
@@ -22,7 +22,7 @@ class InvoiceController extends Controller
             'nextInvoiceId' => $nextInvoiceId
         ]);
     }
-    
+
 
 
 
@@ -31,8 +31,8 @@ class InvoiceController extends Controller
 
 
         $validatedData = $request->validate([
-         
-            'client_id' => 'required|exists:clients,client_id',
+
+            'client_id' => 'required|exists:clients,id',
             'invoice_date' => 'nullable|date',
             'sales_manager' => 'nullable|string|max:100',
             'issue_date' => 'nullable|date',

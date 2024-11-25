@@ -56,12 +56,12 @@ Route::group([
         'debit-notices' => 'debit-notices',
         'show_credit_notice' => 'show_credit_notice',
         'client-view' => 'client-view',
-        'credit-note' => 'credit-note',
+
         'appointments' => 'appointments',
         'chart_of_accounts' => 'chart_of_accounts',
         'journal_entries_day' => 'journal_entries_day',
         'import_expense_receipts' => 'import_expense_receipts',
-        'expense_voucher' => 'expense_voucher',
+
         'employee_management' => 'employee_management',
         'add_employee' => 'add_employee',
         'schedule_appointment' => 'schedule_appointment',
@@ -79,7 +79,8 @@ Route::group([
         Route::put('/{id}', [ChartOfAccountController::class, 'update'])->name('accounts.update');
         Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy');
     });
-
+Route::post('/accounts/add', [ChartOfAccountController::class, 'store'])->name('accounts.add');
+// Route::get('/chart_of_accounts-kk', [ChartOfAccountController::class, 'index'])->name('accounts.index');
     // مسارات القيود اليومية
     Route::get('/add_entry', [JournalEntryController::class, 'create'])->name('add_entry');
     Route::get('/journal-entries/create', [JournalEntryController::class, 'create'])->name('journal_entries.create');
@@ -99,7 +100,7 @@ Route::group([
     Route::get('/notifications', [CreditNotificationController::class, 'index'])->name('notifications');
     Route::get('/notifications/create', [CreditNotificationController::class, 'create'])->name('notifications.create');
     Route::post('/notifications/store', [CreditNotificationController::class, 'store'])->name('notifications.store');
-
+    Route::get('/products', [ProductController::class, 'create'])->name('products.index');
     // مسارات الفواتير
     Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
     Route::post('/sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
@@ -113,12 +114,14 @@ Route::group([
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 });
-
+Route::post('/employees/store', [EmployeeController::class, 'store'])->name('employees.store');
 // مسارات سندات الصرف
 Route::prefix('expense_voucher')->group(function () {
     Route::get('/expense_voucher', [PaymentVoucherController::class, 'index'])->name('payment_vouchers.index');
     Route::get('/create', [PaymentVoucherController::class, 'create'])->name('payment_vouchers.create');
     Route::post('/', [PaymentVoucherController::class, 'store'])->name('payment_vouchers.store');
+    Route::get('/', [PaymentVoucherController::class, 'create'])->name('payment_vouchers.create');
+
 });
 
     Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');

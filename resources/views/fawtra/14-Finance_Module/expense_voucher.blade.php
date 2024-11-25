@@ -10,7 +10,7 @@
             <form action="{{ route('payment_vouchers.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf <!-- الحماية من هجمات CSRF -->
 
-                <!-- الصف الأول -->
+                <!-- الحقول الرئيسية -->
                 <div class="row g-3">
                     <div class="col-md-4">
                         <label for="payee_name" class="form-label">اسم المستفيد</label>
@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-                <!-- الصف الثاني -->
+                <!-- الحقول الإضافية -->
                 <div class="row g-3 mt-3">
                     <div class="col-md-4">
                         <label for="attachment" class="form-label">المرفقات</label>
@@ -42,70 +42,114 @@
                     </div>
                 </div>
 
-                <!-- الصف الثالث -->
-                <div class="row g-3 mt-3">
-                    <div class="col-md-4">
-                        <label for="unit" class="form-label">الوحدة</label>
-                        <select id="unit" name="unit" class="form-select rounded-pill shadow-sm">
+                <!-- حقل "الوحدة" مع الرابط متعدد -->
+                <div class="row g-3 mt-3 p-3 border rounded shadow-sm bg-white">
+                    <!-- الوحدة -->
+                    <div class="col-md-3">
+                        <label for="unit" class="form-label fw-bold">الوحدة
+                            <a href="#" id="toggle-multi" class="text-primary ms-2 text-decoration-none">متعدد</a>
+                        </label>
+                        <select id="unit" name="unit" class="form-select rounded-pill shadow">
                             <option selected>حدد الوحدة</option>
                             <option>وحدة 1</option>
                             <option>وحدة 2</option>
                         </select>
                     </div>
-                    <div class="col-md-4">
-                        <label for="category" class="form-label">التصنيف</label>
-                        <select id="category" name="category" class="form-select rounded-pill shadow-sm">
-                            <option selected>إضافة تصنيف</option>
-                            <option>تصنيف 1</option>
-                            <option>تصنيف 2</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="seller" class="form-label">البائع</label>
-                        <select id="seller" name="seller" class="form-select rounded-pill shadow-sm">
-                            <option selected>اختر بائع</option>
-                            <option>بائع 1</option>
-                            <option>بائع 2</option>
-                        </select>
-                    </div>
-                </div>
 
-                <!-- الصف الرابع -->
-                <div class="row g-3 mt-3">
-                    <div class="col-md-4">
-                        <label for="warehouse" class="form-label">الخزينة</label>
-                        <select id="warehouse" name="warehouse" class="form-select rounded-pill shadow-sm">
-                            <option selected>رئيسي</option>
-                            <option>فرعي</option>
+                    <!-- الخزينة -->
+                    <div class="col-md-3">
+                        <label for="treasury_id" class="form-label fw-bold">الخزينة</label>
+                        <select id="treasury_id" name="treasury_id" class="form-select rounded-pill shadow">
+                            <option selected>اختر خزينة</option>
+                            @if(isset($treasuries) && $treasuries->count() > 0)
+                                @foreach($treasuries as $treasury)
+                                    <option value="{{ $treasury->id }}">{{ $treasury->name }}</option>
+                                @endforeach
+                            @else
+                                <option value="">لا توجد خزائن متاحة</option>
+                            @endif
                         </select>
                     </div>
-                    <div class="col-md-4">
-                        <label for="min_limit" class="form-label">الحد الأدنى</label>
-                        <input type="text" class="form-control rounded-pill shadow-sm" id="min_limit" name="min_limit" placeholder="أدخل الحد الأدنى">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="vendor" class="form-label">المورد</label>
-                        <select id="vendor" name="vendor" class="form-select rounded-pill shadow-sm">
-                            <option selected>اختر مورد</option>
-                            <option>مورد 1</option>
-                            <option>مورد 2</option>
-                        </select>
-                    </div>
-                </div>
 
-                <!-- الصف الخامس -->
-                <div class="row g-3 mt-3">
-                    <div class="col-md-4">
-                        <label for="account_id" class="form-label">الحساب</label>
-                        <select id="account_id" name="account_id" class="form-select rounded-pill shadow-sm">
+                    <!-- الضريبة -->
+                    <div class="col-md-3">
+                        <label for="tax_id" class="form-label fw-bold">الضريبة</label>
+                        <select id="tax_id" name="tax_id" class="form-select rounded-pill shadow">
+                            <option selected>اختر ضريبة</option>
+                            @if(isset($taxes) && $taxes->count() > 0)
+                                @foreach($taxes as $tax)
+                                    <option value="{{ $tax->id }}">{{ $tax->name }}</option>
+                                @endforeach
+                            @else
+                                <option value="">لا توجد ضرائب متاحة</option>
+                            @endif
+                        </select>
+                    </div>
+
+                    <!-- الحساب -->
+                    <div class="col-md-3">
+                        <label for="account_id" class="form-label fw-bold">الحساب</label>
+                        <select id="account_id" name="account_id" class="form-select rounded-pill shadow">
                             <option selected>اختر حسابًا</option>
                             @foreach($accounts as $account)
-                            <option value="{{ $account->id }}">{{ $account->name }}</option>
-
+                                <option value="{{ $account->id }}">{{ $account->name }}</option>
                             @endforeach
                         </select>
-
                     </div>
+                </div>
+
+                <!-- جدول متعدد -->
+                <div id="multi-fields" class="mt-4 d-none">
+                    <h5>تفاصيل السند</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>الوحدة</th>
+                                <th>المبلغ</th>
+                                <th>التصنيف</th>
+                                <th>الضريبة</th>
+                                <th>الحساب</th>
+                                <th>الوصف</th>
+                                <th>إجراء</th>
+                            </tr>
+                        </thead>
+                        <tbody id="details">
+                            <tr>
+                                <td><input type="text" name="details[0][unit]" class="form-control" placeholder="الوحدة"></td>
+                                <td><input type="number" name="details[0][amount]" class="form-control" step="0.01" placeholder="المبلغ"></td>
+                                <td><input type="text" name="details[0][category]" class="form-control" placeholder="التصنيف"></td>
+                                <td>
+                                    <div class="col-md-4">
+                                        <label for="tax_id" class="form-label">الضريبة</label>
+                                        <select id="tax_id" name="tax_id" class="form-select">
+                                            <option selected>اختر ضريبة</option>
+                                            @if(isset($taxes) && $taxes->count() > 0)
+                                                @foreach($taxes as $tax)
+                                                    <option value="{{ $tax->id }}">{{ $tax->name }}</option>
+                                                @endforeach
+                                            @else
+                                                <option value="">لا توجد ضرائب متاحة</option>
+                                            @endif
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                </td>
+                                <td>
+                                    <select name="details[0][account_id]" class="form-select">
+                                        <option value="">بدون</option>
+                                        @foreach($accounts as $account)
+                                        <option value="{{ $account->id }}">{{ $account->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td><textarea name="details[0][description]" class="form-control" placeholder="الوصف"></textarea></td>
+                                <td><button type="button" onclick="removeRow(this)" class="btn btn-danger btn-sm">حذف</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" onclick="addRow()" class="btn btn-primary btn-sm">إضافة صف</button>
                 </div>
 
                 <!-- الأزرار -->
@@ -119,3 +163,55 @@
         </div>
     </div>
 </div>
+
+<script>
+    const toggleMulti = document.getElementById('toggle-multi');
+    const multiFields = document.getElementById('multi-fields');
+    const singleFields = document.querySelectorAll('.single-fields');
+    let rowIndex = 1;
+
+    // تبديل العرض بين الحقول الفردية والجدول متعدد
+    toggleMulti.addEventListener('click', function (e) {
+        e.preventDefault();
+        multiFields.classList.toggle('d-none');
+        singleFields.forEach(field => {
+            field.classList.toggle('d-none');
+        });
+    });
+
+    // إضافة صف جديد
+    function addRow() {
+        const table = document.getElementById('details');
+        const newRow = `
+            <tr>
+                <td><input type="text" name="details[${rowIndex}][unit]" class="form-control" placeholder="الوحدة"></td>
+                <td><input type="number" name="details[${rowIndex}][amount]" class="form-control" step="0.01" placeholder="المبلغ"></td>
+                <td><input type="text" name="details[${rowIndex}][category]" class="form-control" placeholder="التصنيف"></td>
+                <td>
+                    <select name="details[${rowIndex}][tax_id]" class="form-select">
+                        <option value="">بدون</option>
+                        <option>ضريبة 1</option>
+                        <option>ضريبة 2</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="details[${rowIndex}][account_id]" class="form-select">
+                        <option value="">بدون</option>
+                        @foreach($accounts as $account)
+                        <option value="{{ $account->id }}">{{ $account->name }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td><textarea name="details[${rowIndex}][description]" class="form-control" placeholder="الوصف"></textarea></td>
+                <td><button type="button" onclick="removeRow(this)" class="btn btn-danger btn-sm">حذف</button></td>
+            </tr>
+        `;
+        table.insertAdjacentHTML('beforeend', newRow);
+        rowIndex++;
+    }
+
+    // حذف الصف
+    function removeRow(button) {
+        button.parentElement.parentElement.remove();
+    }
+</script>

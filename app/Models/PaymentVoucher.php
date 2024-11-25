@@ -22,9 +22,10 @@ class PaymentVoucher extends Model
         'attachment',
         'unit',
         'vendor',
-        'seller',
+        'employee_name', // اسم الموظف الجديد
+        'employee_id', // معرف الموظف الجديد
+        'tax_id', // معرف الضريبة الجديد
         'category',
-        'min_limit',
         'code_number',
         'created_by',
     ];
@@ -44,6 +45,21 @@ class PaymentVoucher extends Model
     {
         return $this->hasMany(Revenue::class, 'payment_voucher_id');
     }
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id'); // علاقة مع جدول الموظفين
+    }
+
+    public function tax()
+    {
+        return $this->belongsTo(Tax::class, 'tax_id'); // علاقة مع جدول الضرائب
+    }
+    public function details()
+{
+    return $this->hasMany(PaymentVoucherDetail::class, 'payment_voucher_id');
+}
+
 
     // يمكنك إضافة أي علاقات إضافية هنا حسب متطلباتك
 }

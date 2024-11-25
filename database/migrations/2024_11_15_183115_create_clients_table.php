@@ -1,18 +1,17 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateClientsTable extends Migration
 {
     /**
      * Run the migrations.
      */
-    public function up(): void{
-
+    public function up()
+    {
         Schema::create('clients', function (Blueprint $table) {
-            $table->id('client_id'); // Auto-increment Primary Key
+            $table->id(); // Primary Key
             $table->string('trade_name', 255);
             $table->string('first_name', 100)->nullable();
             $table->string('last_name', 100)->nullable();
@@ -37,19 +36,13 @@ return new class extends Migration
             $table->text('account_code')->nullable();
             $table->timestamps();
         });
-
-      }
+    }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('clients');
     }
-    public function invoices()
-{
-    return $this->hasMany(Invoice::class, 'client_id', 'client_id');
 }
-
-};
