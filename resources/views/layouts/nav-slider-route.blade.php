@@ -162,10 +162,10 @@
                     @break
 
                     @case('import_expense_receipts')
-                    @include('fawtra.14-finance_module/import_expense_receipts')
+                    @include('fawtra.14-finance_module.import_expense_receipts')
                 @break
                 @case('expense_voucher')
-                @include('fawtra.14-finance_module/expense_voucher')
+                @include('fawtra.14-finance_module.expense_voucher')
             @break
 
                     @case('show_credit_notice')
