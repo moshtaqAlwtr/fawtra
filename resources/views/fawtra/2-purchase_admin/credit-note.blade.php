@@ -36,7 +36,7 @@
         </div>
     </div>
     <div class = "alert alert-success">
-    <form action="{{ route('store-credit-notification') }}" method="POST" class="needs-validation">
+    <form action="{{ route('notifications.store') }}" method="POST" class="needs-validation">
         @csrf <!-- حماية من CSRF -->
         <div class="row">
             <div class="col-md-6 p-4 mb-4 bg-light border rounded shadow-sm">
