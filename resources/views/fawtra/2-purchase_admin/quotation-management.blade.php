@@ -23,10 +23,10 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>{{ __('quotations.manage_quotations') }}</h2>
         <div class="d-flex align-items-center">
-            <a href="quotation.html" class="btn btn-success ml-2">
+            <button class="btn btn-success ml-2" onclick="location.href='{{route('quotation')}}'" >
                 <i class="fas fa-plus-circle"></i> {{ __('quotations.add_new_quotation') }}
-            </a>
-            <button class="btn btn-secondary ml-2" onclick="location.href='../9-sales_management/schedule_appointment.html'">
+           </button>
+            <button class="btn btn-secondary ml-2" onclick="location.href='{{route('appointments')}}'">
                 <i class="fas fa-calendar-alt"></i> {{ __('quotations.appointments') }}
             </button>
             <div class="dropdown ml-2">
