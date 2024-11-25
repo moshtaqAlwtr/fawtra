@@ -1,7 +1,7 @@
 <?php
 return [
-    'page_title' => 'إدارة الإشعارات الدائنة',
-    'create_credit_notice' => 'إنشاء إشعار دائنة',
+    'credit_note_management' => 'إدارة الإشعارات الدائنة',
+    'create_credit_note' => 'إنشاء إشعار دائنة',
     'actions' => 'الإجراءات',
     'delete' => 'حذف',
     'send_to_zakat' => 'إرسال الفواتير إلى هيئة الزكاة والدخل',
@@ -51,4 +51,17 @@ return [
     'delete' => 'حذف',
     'created_by' => 'بواسطة',
     'created_at' => 'تاريخ الإنشاء',
+    'sales_representative'=>'ممثل مبيعات',
+    'due_from_to' => 'الأستحقاق من ألى  ',
+    'creation_date'=>'تاريخ الانشاء',
+    'all' => 'الكل',
+    'enter_field' => 'ادخل الحقل',
+    'from' => 'من',
+    'to' => 'إلى',
+    'select'=>'أختر',
+    'any_employee' => 'اي موظف',
+    'any_sales_rep' => 'اي ممثل مبيعات',
+    'pos shift' => 'Pos Shift',
+    'select_client' => 'اختر العميل',
+
 ];

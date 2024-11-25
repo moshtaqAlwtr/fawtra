@@ -28,8 +28,7 @@ return [
     'pdf' => 'PDF',
     'image' => 'Image',
     'copy' => 'Copy',
-];
-return [
+
     'add_quotation' => 'Add Quotation',
     'invoice_template' => 'Invoice Template',
     'default_template' => 'Default Template',
