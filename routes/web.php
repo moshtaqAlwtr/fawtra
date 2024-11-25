@@ -80,6 +80,11 @@ Route::group([
         Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy');
     });
 
+    Route::get('/add_payment_process', [AccountsClientPaymentController::class, 'create'])->name('payments.create');
+
+// تخزين بيانات الدفع
+Route::post('/add_payment_process', [AccountsClientPaymentController::class, 'store'])->name('payments.store');
+
     // مسارات القيود اليومية
     Route::get('/add_entry', [JournalEntryController::class, 'create'])->name('add_entry');
     Route::get('/journal-entries/create', [JournalEntryController::class, 'create'])->name('journal_entries.create');
@@ -98,7 +103,7 @@ Route::group([
     // مسارات الإشعارات الدائنة
     Route::get('/create-credit-notification', [CreditNotificationController::class, 'create'])->name('create-credit-notification');
     Route::post('/store-credit-notification', [CreditNotificationController::class, 'store'])->name('store-credit-notification');
-    Route::get('/notifications', [CreditNotificationController::class, 'index'])->name('notifications');
+    Route::get('/credit-note', [CreditNotificationController::class, 'index'])->name('notifications');
     Route::get('/notifications/create', [CreditNotificationController::class, 'create'])->name('notifications.create');
     Route::post('/notifications/store', [CreditNotificationController::class, 'store'])->name('notifications.store');
 
