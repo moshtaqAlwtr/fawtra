@@ -270,7 +270,7 @@ Route::get('/client-view', function () {
             return view('layouts.nav-slider-route', ['page' => 'journal_entries_day']);
         })->name('journal_entries_day');
 //مسار دليل الحسابات
-        Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
+  //      Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
 
 // مجموعة المسارات للحسابات
 Route::prefix('accounts')->group(function () {
@@ -354,7 +354,7 @@ Route::get('/invoice-items/create', [InvoiceItemController::class, 'create'])->n
 Route::post('/accounts/add', [ChartOfAccountController::class, 'store'])->name('accounts.add');
     }
 );
-Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index ');
+//Route::get('/chart_of_accounts', [ChartOfAccountController::class, 'index'])->name('accounts.index ');
 
 Route::get('/add_payment_process', [AccountsClientPaymentController::class, 'create'])->name('payments.create');
 
