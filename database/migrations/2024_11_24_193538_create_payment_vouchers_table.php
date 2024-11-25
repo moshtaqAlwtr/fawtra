@@ -27,8 +27,8 @@ class CreatePaymentVouchersTable extends Migration
             $table->timestamps();
 
             // تعريف العلاقات
-            $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('cascade');
-            $table->foreign('treasury_id')->references('id')->on('treasuries')->onDelete('cascade');
+            $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('set null');
+            $table->foreign('treasury_id')->references('id')->on('treasuries')->onDelete('set null');
             $table->foreign('employee_id')->references('employee_id')->on('employees')->onDelete('set null');
             $table->foreign('tax_id')->references('id')->on('taxes')->onDelete('set null');
         });
