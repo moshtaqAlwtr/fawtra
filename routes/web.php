@@ -92,7 +92,7 @@ Route::group([
 //     // مسارات المواعيد
 //     Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
 // // مسار انشاء عرض سعر
-
+        Route::get('/customer-management', [ClientController::class, 'index'])->name('customer-management');
         Route::get('/quotation', [QuoteController::class, 'index'])->name('quotation');
         Route::post('/quotes', [QuoteController::class, 'store'])->name('quotes.store');
     // مسارات الإشعارات الدائنة
@@ -127,8 +127,10 @@ Route::prefix('expense_voucher')->group(function () {
         Route::resource('clients', ClientController::class);
          Route::post('/clients/store', [ClientController::class, 'storeClient'])->name('storeClient');
 // مسارات مدفوعات العملاء
-Route::get('/payments', [AccountsClientPaymentController::class, 'create'])->name('payments.create');
-Route::post('/payments', [AccountsClientPaymentController::class, 'store'])->name('payments.store');
+Route::get('/', [AccountsClientPaymentController::class, 'create'])->name('payments.create');
+
+// تخزين بيانات الدفع
+Route::post('/', [AccountsClientPaymentController::class, 'store'])->name('payments.store');
 
 // واجهة API
 Route::get('/api/clients/{client}/invoices', fn(Client $client) => $client->invoices);
