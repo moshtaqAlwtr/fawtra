@@ -20,9 +20,13 @@ return new class extends Migration
             $table->text('description')->nullable(); // الوصف
             $table->timestamps(); // وقت الإنشاء والتحديث
 
-            // تعريف العلاقات
-            $table->foreign('payment_id')->references('payment_id')->on('payment_vouchers')->onDelete('set null');
-        });
+    // تعريف العلاقات
+    $table->foreign('payment_id')->references('payment_id')->on('payment_vouchers')->onDelete('cascade');
+    $table->foreign('tax_id')->references('id')->on('taxes')->onDelete('set null');
+    $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('cascade');
+});
+
+
     }
 
     /**
