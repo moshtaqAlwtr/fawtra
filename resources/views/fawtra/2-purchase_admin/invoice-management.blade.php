@@ -1,3 +1,6 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
 <div class="main-container">
     <div class="content-box">
 
@@ -7,13 +10,13 @@
         <div class="container my-4">
             <!-- Header Buttons -->
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <button class="btn btn-success" onclick="location.href='sales_invoice.html'">
+                <button class="btn btn-success" onclick="location.href='{{route('sales_invoice')}}'">
                     <i class="fas fa-plus-circle"></i> {{ trans('purchase_admin.new_invoice') }}
                 </button>
 
                 <!-- Settings and Actions Buttons -->
                 <div class="d-flex align-items-center">
-                    <button class="btn btn-secondary mr-2" onclick="location.href='../9-sales_management/schedule_appointment.html'">
+                    <button class="btn btn-secondary mr-2" onclick="location.href='{{route('appointments')}}'">
                         {{ trans('purchase_admin.appointments') }}
                     </button>
                     <div class="dropdown">
@@ -177,25 +180,30 @@
                 </div>
                 <!-- Dropdown Button -->
                 <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-ellipsis-h"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{route('invoice_preview')}}"><i class="fas fa-eye text-success"></i> {{ trans('purchase_admin.view') }}</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-edit text-primary"></i> {{ trans('purchase_admin.edit') }}</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-file-pdf text-danger"></i> PDF</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-print text-secondary"></i> {{ trans('purchase_admin.print_pdf') }}</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-envelope text-info"></i> {{ trans('purchase_admin.send_to_client') }}</a>
-                        <a class="dropdown-item" href="{{route('add_payment_process')}}"><i class="fas fa-credit-card text-warning"></i> {{ trans('purchase_admin.add_payment') }}</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-trash-alt text-danger"></i> {{ trans('purchase_admin.delete') }}</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-copy text-secondary"></i> {{ trans('purchase_admin.copy') }}</a>
-                    </div>
+               
+    <button class="btn btn-secondary fas " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+    
+    </button>
+    <ul class="dropdown-menu  fa-ellipsis-v" aria-labelledby="dropdownMenuButton" >
+        <li><a class="dropdown-item" href="{{route('invoice_preview')}}"><i class="fas fa-eye text-success"></i> {{ trans('purchase_admin.view') }}</a></li>
+        <li><a class="dropdown-item" href="#"><i class="fas fa-edit text-primary"></i> {{ trans('purchase_admin.edit') }}</a></li>
+        <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf text-danger"></i> PDF</a></li>
+        <li><a class="dropdown-item" href="#"><i class="fas fa-print text-secondary"></i> {{ trans('purchase_admin.print_pdf') }}</a></li>
+        <li><a class="dropdown-item" href="#"><i class="fas fa-envelope text-info"></i> {{ trans('purchase_admin.send_to_client') }}</a></li>
+        <li><a class="dropdown-item" href="{{route('add_payment_process')}}"><i class="fas fa-credit-card text-warning"></i> {{ trans('purchase_admin.add_payment') }}</a></li>
+        <li><a class="dropdown-item" href="#"><i class="fas fa-trash-alt text-danger"></i> {{ trans('purchase_admin.delete') }}</a></li>
+        <li><a class="dropdown-item" href="#"><i class="fas fa-copy text-secondary"></i> {{ trans('purchase_admin.copy') }}</a></li>
+    </ul>
+</div>
+
                 </div>
             </div>
         </div>
 
         <!-- Pagination -->
-        <nav>
+    
+    </div>
+    <nav>
             <ul class="pagination pagination-custom">
                 <li class="page-item"><a class="page-link" href="#">{{ trans('purchase_admin.previous') }}</a></li>
                 <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -204,5 +212,18 @@
                 <li class="page-item"><a class="page-link" href="#">{{ trans('purchase_admin.next') }}</a></li>
             </ul>
         </nav>
-    </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    var dropdownElement = document.querySelector('.dropdown-toggle');
+    if (dropdownElement) {
+        dropdownElement.addEventListener('click', function () {
+            console.log('Dropdown clicked!');
+        });
+    } else {
+        console.log('Dropdown element not found!');
+    }
+});
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
