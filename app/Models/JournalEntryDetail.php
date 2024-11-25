@@ -18,12 +18,11 @@ class JournalEntryDetail extends Model
 
     ];
 
-
-
     public function journalEntry()
     {
-        return $this->belongsTo(JournalEntry::class, 'journal_entry_id');
+        return $this->belongsTo(JournalEntry::class, 'entry_id', 'id');
     }
+
 
     public function chartOfAccount()
 {

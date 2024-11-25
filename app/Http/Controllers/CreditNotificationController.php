@@ -71,7 +71,7 @@ class CreditNotificationController extends Controller
         'issue_date' => 'required|date',
         'sales_responsible' => 'nullable|string|max:255',
         'method' => 'required|string|max:255',
-'client_id' => 'nullable|exists:clients,client_id',
+'client_id' => 'nullable|exists:clients,id',
 
         'employee_id' => 'nullable|exists:employees,employee_id',
     ]);

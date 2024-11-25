@@ -9,7 +9,7 @@ class Client extends Model
     use HasFactory;
 
     protected $table = 'clients';
-    protected $primaryKey = 'client_id'; // تأكد من أن المفتاح الأساسي معرف
+    protected $primaryKey = 'id'; // تأكد من أن المفتاح الأساسي معرف
     public $timestamps = false; // إذا لم يكن لديك created_at و updated_at
 
     protected $fillable = [
@@ -39,22 +39,24 @@ class Client extends Model
 
     // العلاقة مع ClientPayment
     public function payments()
-    {
-        return $this->hasMany(ClientPayment::class, 'client_id', 'client_id');
-    }
+{
+    return $this->hasMany(ClientPayment::class, 'client_id', 'id');
+}
+
     public function creditNotifications()
     {
         return $this->hasMany(CreditNotification::class, 'client_id');
     }
 
+
     public function journalEntries()
     {
-        return $this->hasMany(JournalEntry::class, 'client_id');
+        return $this->hasMany(JournalEntry::class, 'id');
     }
 
     public function invoices()
 {
-    return $this->hasMany(Invoice::class, 'client_id', 'client_id');
+    return $this->hasMany(Invoice::class, 'id', 'id');
 }
 
 }

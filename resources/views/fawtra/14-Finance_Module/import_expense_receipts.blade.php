@@ -78,7 +78,7 @@
     <!-- أزرار التحكم -->
  <div class="container my-4 d-flex align-items-center gap-2">
         <!-- زر سند صرف -->
-        <button class="btn btn-primary d-flex align-items-center" onclick="window.location.href='{{route('expense_voucher')}}'">
+        <button class="btn btn-primary d-flex align-items-center" onclick="window.location.href='{{route('payment_vouchers.create')}}'">
             <i class="fas fa-plus-circle me-2"></i> سند صرف
         </button>
 

@@ -56,7 +56,7 @@
                         <select name="client_id" class="form-control" required>
                             <option value="" selected>(اختر عميل)</option>
                             @foreach ($clients as $client)
-                                <option value="{{ $client->client_id }}">{{ $client->trade_name }}</option>
+                                <option value="{{ $client->id }}">{{ $client->trade_name }}</option>
                             @endforeach
                         </select>
                           @if ($errors->has('client_id'))

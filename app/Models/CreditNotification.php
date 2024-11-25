@@ -24,12 +24,12 @@ class CreditNotification extends Model
     // العلاقة مع جدول العملاء
     public function client()
 {
-    return $this->belongsTo(Client::class, 'client_id', 'client_id');
+    return $this->belongsTo(Client::class, 'id');
 }
 
 public function employee()
 {
-    return $this->belongsTo(Employee::class, 'employee_id', 'employee_id');
+    return $this->belongsTo(Employee::class,  'employee_id');
 }
 
 }
