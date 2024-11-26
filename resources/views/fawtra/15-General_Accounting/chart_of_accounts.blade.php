@@ -1,5 +1,4 @@
 
-<div class="container-fluid mt-4">
     <!-- Header -->
     <div class="header p-4 mb-4">
         <h2>دليل الحسابات</h2>
@@ -10,23 +9,24 @@
         <div class="col-md-3 sidebar bg-light p-3">
             <div class="treeview">
                 <ul>
-                    <li>
-                        <i class="fa-solid fa-folder text-primary" onclick="showSectionData('asset')"></i> الأصول
+                    <li data-section-id="assets">
+                        <i class="fa-solid fa-folder text-primary"></i> الأصول
                         {!! $assetsTree !!}
                     </li>
-                    <li>
-                        <i class="fa-solid fa-folder text-danger" onclick="showSectionData('liability')"></i> الخصوم
+                    <li data-section-id="liabilities">
+                        <i class="fa-solid fa-folder text-danger"></i> الخصوم
                         {!! $liabilitiesTree !!}
                     </li>
-                    <li>
-                        <i class="fa-solid fa-folder text-warning" onclick="showSectionData('expense')"></i> المصروفات
+                    <li data-section-id="expenses">
+                        <i class="fa-solid fa-folder text-warning"></i> المصروفات
                         {!! $expensesTree !!}
                     </li>
-                    <li>
-                        <i class="fa-solid fa-folder text-success" onclick="showSectionData('revenue')"></i> الإيرادات
+                    <li data-section-id="revenues">
+                        <i class="fa-solid fa-folder text-success"></i> الإيرادات
                         {!! $revenuesTree !!}
                     </li>
                 </ul>
+
             </div>
 
         </div>
@@ -100,7 +100,9 @@
                         </li>
                     @endforeach
                 </ul>
-
+                <button class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal" onclick="setAccountType('asset')">
+                    <i class="fa-solid fa-plus"></i> إضافة حساب
+                </button>
             </div>
         </div>
     </div>
@@ -118,7 +120,7 @@
 
 
 
-                <div class="container mt-5">
+
                     <div class="row justify-content-center">
                         <div class="col-md-6">
                             <form action="{{ route('accounts.store') }}" method="get"
@@ -191,7 +193,27 @@
     </div>
 </div>
 
-<script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // عند الضغط على عنصر في الشجرة
+        document.querySelectorAll('.treeview li').forEach(function (item) {
+            item.addEventListener('click', function () {
+                const sectionId = this.getAttribute('data-section-id'); // الحصول على ID القسم
+                if (sectionId) {
+                    // إخفاء جميع الأقسام
+                    document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
+                    // عرض القسم المطلوب
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        section.style.display = 'block';
+                    }
+                }
+            });
+        });
+    });
+
+
     function showSection(sectionId) {
         document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
         document.getElementById(sectionId).style.display = 'block';
