@@ -97,152 +97,104 @@
     <div class="container stats-container">
         <div class="stat-box">
             <h5>آخر 7 أيام</h5>
-            <h2>ر.س 0.00</h2>
+            <h2>ر.س {{ number_format($stats['last_7_days'], 2) }}</h2>
         </div>
         <div class="stat-box">
             <h5>آخر 30 يوم</h5>
-            <h2>ر.س 0.00</h2>
+            <h2>ر.س {{ number_format($stats['last_30_days'], 2) }}</h2>
         </div>
         <div class="stat-box">
             <h5>آخر 365 يوم</h5>
-            <h2>ر.س 0.00</h2>
+            <h2>ر.س {{ number_format($stats['last_365_days'], 2) }}</h2>
         </div>
     </div>
+
+
 
     <!-- البحث -->
-
-        <h5>بحث</h5>
-        <form>
-            <div class="row">
-                <div class="col-md-3">
-                    <label for="code">الكود</label>
-                    <input type="text" id="code" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="category">التصنيف</label>
-                    <select id="category" class="form-control">
-                        <option>أي تصنيف</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <label for="status">الحالة</label>
-                    <select id="status" class="form-control">
-                        <option>الكل</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <label for="date">التاريخ</label>
-                    <input type="date" id="date" class="form-control">
-                </div>
+    <form action="{{ route('payment_vouchers.index') }}" method="GET">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="code">الكود</label>
+                <input type="text" name="payment_id" placeholder="ادخل ID" value="{{ request('payment_id') }}">
             </div>
-            <div class="row mt-3">
-
+            <div class="col-md-3">
+                <label for="category">التصنيف</label>
+                <select id="category" name="category" class="form-control">
+                    <option value="">أي تصنيف</option>
+                    <!-- أضف التصنيفات هنا -->
+                </select>
             </div>
-        </form>
-
-        <!-- البحث المتقدم -->
-        <div class="advanced-search" id="advanced-search">
-            <div class="row">
-                <div class="col-md-3">
-                    <label for="description">الوصف</label>
-                    <input type="text" id="description" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="amount-more">المبلغ أكثر من</label>
-                    <input type="text" id="amount-more" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="amount-less">المبلغ أقل من</label>
-                    <input type="text" id="amount-less" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="added-by">أضيفت بواسطة</label>
-                    <select id="added-by" class="form-control">
-                        <option>أي موظف</option>
-                    </select>
-                </div>
+            <div class="col-md-3">
+                <label for="status">الحالة</label>
+                <select id="status" name="status" class="form-control">
+                    <option value="">الكل</option>
+                    <!-- أضف الحالات هنا -->
+                </select>
             </div>
-            <div class="row mt-3">
-                <div class="col-md-3">
-                    <label for="account">الحساب الفرعي</label>
-                    <select id="account" class="form-control">
-                        <option>أي حساب</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <label for="salesman">البائع</label>
-                    <select id="salesman" class="form-control">
-                        <option>أي بائع</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <label for="date-range-from">تاريخ الإنشاء من</label>
-                    <input type="date" id="date-range-from" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="date-range-to">إلى</label>
-                    <input type="date" id="date-range-to" class="form-control">
-                </div>
+            <div class="col-md-3">
+                <label for="date">التاريخ</label>
+                <input type="date" id="date" name="voucher_date" class="form-control" value="{{ request()->input('voucher_date') }}">
             </div>
         </div>
-    </div>
-    <div class="col-md-12 text-right">
-        <button type="button" class="btn btn-secondary" onclick="resetFilters()">إلغاء الفلتر</button>
-        <button type="button" class="btn btn-primary" onclick="search()">بحث</button>
-        <button type="button" class="btn btn-warning" onclick="toggleAdvancedSearch()">بحث متقدم</button>
-    </div>
+
+        <div class="col-md-12 text-right">
+            <button type="button" class="btn btn-secondary" onclick="resetFilters()">إلغاء الفلتر</button>
+            <button type="submit" class="btn btn-primary">بحث</button>
+        </div>
+    </form>
+
     <!-- جدول المصروفات -->
-
-
-            <div class="list-group">
-                @foreach($paymentVouchers as $voucher)
-                    <div class="list-group-item bg-white shadow-sm rounded mb-3 p-3">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <!-- معلومات سند الصرف -->
-                            <div>
-                                <h6 class="mb-1">{{ $voucher->payee_name }}</h6>
-                                <small class="text-muted">{{ $voucher->date }}</small>
-                            </div>
-                            <div class="text-end">
-                                <h5 class="text-success mb-0">{{ number_format($voucher->amount, 2) }} ر.س</h5>
-                                <small class="text-muted">{{ $voucher->treasury->name ?? 'غير محدد' }}</small>
-                            </div>
-
-                            <!-- قائمة الخيارات -->
-                            <div class="dropdown ms-3">
-                                <button class="btn btn-sm btn-light" type="button" id="dropdownMenu{{ $voucher->id }}" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu{{ $voucher->id }}">
-                                    <li>
-                                        <a class="dropdown-item d-flex align-items-center" href="#">
-                                            <i class="fas fa-eye text-primary me-2"></i> عرض
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item d-flex align-items-center" href="#">
-                                            <i class="fas fa-edit text-info me-2"></i> تعديل
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <form method="POST" action="#">
-                                            @csrf
-                                            <button class="dropdown-item d-flex align-items-center" type="submit" onclick="return confirm('هل أنت متأكد من الحذف؟')">
-                                                <i class="fas fa-trash text-danger me-2"></i> حذف
-                                            </button>
-                                        </form>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item d-flex align-items-center" href="#">
-                                            <i class="fas fa-print text-primary me-2"></i> طباعة
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+    <div class="list-group">
+        @foreach($paymentVouchers as $voucher)
+            <div class="list-group-item bg-white shadow-sm rounded mb-3 p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <!-- معلومات سند الصرف -->
+                    <div>
+                        <h6 class="mb-1">{{ $voucher->payee_name }}</h6>
+                        <small class="text-muted">{{ $voucher->date }}</small>
                     </div>
-                @endforeach
+                    <div class="text-end">
+                        <h5 class="text-success mb-0">{{ number_format($voucher->amount, 2) }} ر.س</h5>
+                        <small class="text-muted">{{ $voucher->treasury->name ?? 'غير محدد' }}</small>
+                    </div>
+
+                    <!-- قائمة الخيارات -->
+                    <div class="dropdown ms-3">
+                        <button class="btn btn-sm btn-light" type="button" id="dropdownMenu{{ $voucher->payment_id }}" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu{{ $voucher->payment_id }}">
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <i class="fas fa-eye text-primary me-2"></i> عرض
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <i class="fas fa-edit text-info me-2"></i> تعديل
+                                </a>
+                            </li>
+                            <li>
+                                <form method="POST" action="#">
+                                    @csrf
+                                    <button class="dropdown-item d-flex align-items-center" type="submit" onclick="return confirm('هل أنت متأكد من الحذف؟')">
+                                        <i class="fas fa-trash text-danger me-2"></i> حذف
+                                    </button>
+                                </form>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <i class="fas fa-print text-primary me-2"></i> طباعة
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+        @endforeach
+    </div>
+
 
         </div>
 
@@ -270,5 +222,7 @@
             alert('إعادة تعيين الفلتر...');
         }
     </script>
+
+
 </body>
 </html>

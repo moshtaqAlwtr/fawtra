@@ -15,7 +15,7 @@ class PaymentVoucher extends Model
 
     // الحقول القابلة للتعبئة
     protected $fillable = [
-        'date',
+        'voucher_date',
         'payee_name',
         'amount',
         'description',
@@ -59,6 +59,7 @@ class PaymentVoucher extends Model
     {
         return $this->hasMany(PaymentVoucherDetail::class, 'payment_id');
     }
+
 
 public function treasury()
 {

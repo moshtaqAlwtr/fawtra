@@ -85,17 +85,7 @@ Route::group([
 
       Route::post('/index', [ChartOfAccountController::class, 'index'])->name('accounts.index');
     Route::post('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create');});
-    // مسارات الحسابات
-    // Route::prefix('accounts')->group(function () {
 
-
-
-    //     Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create');
-    //     Route::post('/', [ChartOfAccountController::class, 'store'])->name('accounts.store');
-    //     Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accounts.edit');
-    //     Route::put('/{id}', [ChartOfAccountController::class, 'update'])->name('accounts.update');
-    //     Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy');
-    // });
 
     // مسارات القيود اليومية
     Route::get('/add_entry', [JournalEntryController::class, 'create'])->name('add_entry');
@@ -141,11 +131,12 @@ Route::group([
     Route::get('/payments/create', [AccountsClientPaymentController::class, 'create'])->name('payments.create');
     Route::post('/payments', [AccountsClientPaymentController::class, 'store'])->name('payments.store');
         // مسارات سندات الصرف
-        Route::prefix('expense_voucher')->group(function () {
-            Route::get('/', [PaymentVoucherController::class, 'index'])->name('payment_vouchers.index');
-            Route::get('/payment_vouchers', [PaymentVoucherController::class, 'create'])->name('payment_vouchers.create');
-            Route::post('/', [PaymentVoucherController::class, 'store'])->name('payment_vouchers.store');
-        });
+
+        Route::get('/paymentVouchers', [PaymentVoucherController::class, 'index'])->name('payment_vouchers.index');
+        Route::get('/create', [PaymentVoucherController::class, 'create'])->name('payment_vouchers.create');
+        Route::post('/', [PaymentVoucherController::class, 'store'])->name('payment_vouchers.store');
+        Route::get('/payment-vouchers/search', [PaymentVoucherController::class, 'search'])->name('payment_vouchers.search');
+
 
 //الموظفين
 Route::post('/employees/store', [EmployeeController::class, 'store'])->name('employees.store');
@@ -154,9 +145,6 @@ Route::post('/employees/store', [EmployeeController::class, 'store'])->name('emp
     Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
     Route::resource('clients', ClientController::class);
     Route::post('/clients/store', [ClientController::class, 'storeClient'])->name('storeClient');
-
-    // Route::resource('payment_vouchers', PaymentVoucherController::class);
-    // Route::get('paymentVouchers/{id}/export-pdf', [PaymentVoucherController::class, 'exportToPDF'])->name('payment_vouchers.exportToPDF');
 
     // واجهة API
     Route::get('/api/clients/{client}/invoices', fn(Client $client) => $client->invoices);
