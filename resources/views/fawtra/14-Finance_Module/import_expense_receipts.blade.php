@@ -194,10 +194,7 @@
     <!-- جدول المصروفات -->
 
 
-        <h5 class="mb-3">النتائج</h5>
-
-            <h5 class="mb-3">النتائج</h5>
-            {{-- <div class="list-group">
+            <div class="list-group">
                 @foreach($paymentVouchers as $voucher)
                     <div class="list-group-item bg-white shadow-sm rounded mb-3 p-3">
                         <div class="d-flex justify-content-between align-items-center">
@@ -245,7 +242,7 @@
                         </div>
                     </div>
                 @endforeach
-            </div> --}}
+            </div>
 
         </div>
 
