@@ -65,7 +65,7 @@ Route::group([
         'client-view' => 'client-view',
         'credit-note' => 'credit-note',
         'appointments' => 'appointments',
-        'chart_of_accounts' => 'chart_of_accounts',
+        // 'chart_of_accounts' => 'chart_of_accounts',
         'journal_entries_day' => 'journal_entries_day',
         'import_expense_receipts' => 'import_expense_receipts',
         'expense_voucher' => 'expense_voucher',
@@ -76,16 +76,26 @@ Route::group([
     foreach ($navSliderRoutes as $route => $page) {
         Route::get("/$route", fn() => view('layouts.nav-slider-route', ['page' => $page]))->name($route);
     }
-
-    // مسارات الحسابات
+    Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
     Route::prefix('accounts')->group(function () {
-        Route::get('/add', [ChartOfAccountController::class, 'add'])->name('accounts.add');
-        Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create');
-        Route::post('/', [ChartOfAccountController::class, 'store'])->name('accounts.store');
-        Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accounts.edit');
-        Route::put('/{id}', [ChartOfAccountController::class, 'update'])->name('accounts.update');
-        Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy');
-    });
+
+        Route::get('/index', ChartOfAccountController::class.'@index')->name('accounts.index');
+
+      Route::get('/store', [ChartOfAccountController::class, 'store'])->name('accounts.store');
+
+      Route::post('/index', [ChartOfAccountController::class, 'index'])->name('accounts.index');
+    Route::post('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create');});
+    // مسارات الحسابات
+    // Route::prefix('accounts')->group(function () {
+
+
+
+    //     Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create');
+    //     Route::post('/', [ChartOfAccountController::class, 'store'])->name('accounts.store');
+    //     Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accounts.edit');
+    //     Route::put('/{id}', [ChartOfAccountController::class, 'update'])->name('accounts.update');
+    //     Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy');
+    // });
 
     // مسارات القيود اليومية
     Route::get('/add_entry', [JournalEntryController::class, 'create'])->name('add_entry');
@@ -124,15 +134,19 @@ Route::group([
     Route::get('/credit-note', [CreditNotificationController::class, 'index'])->name('credit-note');
 
     // مسارات مدفوعات العملاء
-    Route::get('/add_payment_process', [AccountsClientPaymentController::class, 'create'])->name('payments.create');
-    Route::post('/add_payment_process', [AccountsClientPaymentController::class, 'store'])->name('payments.store');
 
-    // مسارات سندات الصرف
+    Route::get('/add_payment_process', [AccountsClientPaymentController::class, 'index'])->name('payments.index');
+
+    Route::get('/payments/create', [AccountsClientPaymentController::class, 'create'])->name('payments.create');
+    Route::post('/payments', [AccountsClientPaymentController::class, 'store'])->name('payments.store');
+        // مسارات سندات الصرف
     Route::prefix('expense_voucher')->group(function () {
         Route::get('/expense_voucher', [PaymentVoucherController::class, 'index'])->name('payment_vouchers.index');
         Route::get('/create', [PaymentVoucherController::class, 'create'])->name('payment_vouchers.create');
         Route::post('/', [PaymentVoucherController::class, 'store'])->name('payment_vouchers.store');
     });
+//الموظفين
+Route::post('/employees/store', [EmployeeController::class, 'store'])->name('employees.store');
 
     // مسارات العملاء
     Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');

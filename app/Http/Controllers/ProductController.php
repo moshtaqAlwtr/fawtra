@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
-
-
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -24,7 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('layouts.nav-slider-route', ['page' => 'products']);
+        return view('products.create');
     }
 
     /**
@@ -32,17 +31,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->merge([
-            'available_online' => $request->has('available_online'),
-            'featured_product' => $request->has('featured_product'),
-            'track_inventory' => $request->has('track_inventory'),
-        ]);
-        // التحقق من صحة البيانات المدخلة
         $validatedData = $request->validate([
             'product_name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'category' => 'nullable|string|max:255',
-
             'stock_quantity' => 'nullable|integer|min:0',
             'reorder_level' => 'nullable|integer|min:0',
             'serial_number' => 'nullable|string|max:255',
@@ -67,10 +59,8 @@ class ProductController extends Controller
             'profit_margin' => 'nullable|numeric|min:0',
         ]);
 
-        // إنشاء المنتج في قاعدة البيانات
         Product::create($validatedData);
 
-        // إعادة التوجيه إلى صفحة المنتجات مع رسالة نجاح
         return redirect()->route('products.index')->with('success', 'تمت إضافة المنتج بنجاح!');
     }
 
@@ -103,7 +93,6 @@ class ProductController extends Controller
             'product_name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'category' => 'nullable|string|max:255',
-            'price' => 'required|numeric|min:0',
             'stock_quantity' => 'nullable|integer|min:0',
             'reorder_level' => 'nullable|integer|min:0',
             'serial_number' => 'nullable|string|max:255',
@@ -142,5 +131,123 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products.index')->with('success', 'تم حذف المنتج بنجاح!');
+    }
+
+    /**
+     * البحث عن المنتجات.
+     */
+    public function search(Request $request)
+    {
+        $query = Product::query();
+
+        if ($request->filled('product_name')) {
+            $query->where('product_name', 'LIKE', '%' . $request->product_name . '%');
+        }
+
+        if ($request->filled('category')) {
+            $query->where('category', $request->category);
+        }
+
+        if ($request->filled('brand')) {
+            $query->where('brand', $request->brand);
+        }
+
+        $products = $query->get();
+
+        return view('products.search-results', compact('products'));
+    }
+
+    /**
+     * عرض المنتجات منخفضة الكمية.
+     */
+    public function lowStockAlert()
+    {
+        $products = Product::whereColumn('stock_quantity', '<=', 'reorder_level')->get();
+
+        return view('products.low-stock', compact('products'));
+    }
+
+    /**
+     * رفع صورة للمنتج.
+     */
+    public function uploadImage(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('products', 'public');
+            $product->update(['image_path' => $path]);
+        }
+
+        return redirect()->route('products.index')->with('success', 'تم تحديث صورة المنتج بنجاح!');
+    }
+
+    /**
+     * عرض المنتجات الأكثر مبيعًا.
+     */
+    public function bestSellers()
+    {
+        $products = Product::withCount('sales')
+            ->orderBy('sales_count', 'desc')
+            ->take(10)
+            ->get();
+
+        return view('products.best-sellers', compact('products'));
+    }
+
+    /**
+     * حساب الأرباح لكل منتج.
+     */
+    public function calculateProfit($id)
+    {
+        $product = Product::findOrFail($id);
+
+        $profit = ($product->sale_price - $product->purchase_price) * $product->sales_count;
+
+        return response()->json([
+            'product' => $product->product_name,
+            'profit' => $profit,
+        ]);
+    }
+
+    /**
+     * تصدير قائمة المنتجات إلى ملف Excel.
+     */
+    public function exportToExcel()
+    {
+        $products = Product::all();
+
+        // استخدام مكتبة Excel للتصدير
+        return Excel::download(new ProductsExport($products), 'products.xlsx');
+    }
+
+    /**
+     * استيراد المنتجات من ملف Excel.
+     */
+    public function importFromExcel(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,csv',
+        ]);
+
+        Excel::import(new ProductsImport, $request->file('file'));
+
+        return redirect()->route('products.index')->with('success', 'تم استيراد المنتجات بنجاح.');
+    }
+
+    /**
+     * عرض تقرير المخزون.
+     */
+    public function stockReport()
+    {
+        $products = Product::select('product_name', 'stock_quantity', 'reorder_level')
+            ->orderBy('stock_quantity', 'asc')
+            ->get();
+
+        return view('products.stock-report', compact('products'));
     }
 }

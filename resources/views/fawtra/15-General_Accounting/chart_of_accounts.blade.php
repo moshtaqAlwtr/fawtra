@@ -8,26 +8,24 @@
     <div class="row">
         <!-- Sidebar -->
         <div class="col-md-3 sidebar bg-light p-3">
-            <h5 class="fw-bold mb-3">أقسام الحسابات</h5>
             <div class="treeview">
                 <ul>
                     <li>
-                        <i class="fa-solid fa-folder" onclick="showSectionData('asset')"></i> الأصول
+                        <i class="fa-solid fa-folder text-primary" onclick="showSectionData('asset')"></i> الأصول
                         {!! $assetsTree !!}
                     </li>
                     <li>
-                        <i class="fa-solid fa-folder" onclick="showSectionData('liability')"></i> الخصوم
+                        <i class="fa-solid fa-folder text-danger" onclick="showSectionData('liability')"></i> الخصوم
                         {!! $liabilitiesTree !!}
                     </li>
                     <li>
-                        <i class="fa-solid fa-folder"  onclick="showSectionData('expense')"></i> المصروفات
+                        <i class="fa-solid fa-folder text-warning" onclick="showSectionData('expense')"></i> المصروفات
                         {!! $expensesTree !!}
                     </li>
                     <li>
-                        <i class="fa-solid fa-folder" onclick="showSectionData('revenue')"></i> الإيرادات
+                        <i class="fa-solid fa-folder text-success" onclick="showSectionData('revenue')"></i> الإيرادات
                         {!! $revenuesTree !!}
                     </li>
-
                 </ul>
             </div>
 
@@ -117,41 +115,77 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('accounts.add') }}" method="POST">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="type" class="form-label">نوع الحساب</label>
-                        <select name="type" id="type" class="form-select" required>
-                            <option value="asset">الأصول</option>
-                            <option value="liability">الخصوم</option>
-                            <option value="expense">المصروفات</option>
-                            <option value="revenue">الإيرادات</option>
-                        </select>
-                    </div>
-                    <select name="parent_account_id" class="form-select">
-                        <option value="">-- اختر الحساب الأب --</option>
-                        @foreach($accounts as $account)
-                            <option value="{{ $account->id }}">{{ $account->name }}</option>
-                        @endforeach
-                    </select>
 
-                    <div class="mb-3">
-                        <label for="code" class="form-label">كود الحساب</label>
-                        <input type="text" class="form-control" id="code" name="code" required>
+
+
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <form action="{{ route('accounts.store') }}" method="get"
+                                  class="p-4 rounded shadow-lg"
+                                  style="background: rgba(255, 255, 255, 0.5); border: 2px solid rgba(0, 123, 255, 0.7);">
+                                @csrf
+
+                                <h3 class="text-center mb-4 fw-bold"
+                                    style="color: #007bff; border-bottom: 2px solid rgba(0, 123, 255, 0.7); padding-bottom: 10px;">
+                                    إنشاء حساب جديد
+                                </h3>
+
+                                <div class="mb-3">
+                                    <label for="type" class="form-label fw-bold">نوع الحساب</label>
+                                    <select name="type" id="type" class="form-select" required
+                                            style="background: rgba(255, 255, 255, 0.8); color: #333; border: 1px solid #ccc;">
+                                        <option value="asset">الأصول</option>
+                                        <option value="liability">الخصوم</option>
+                                        <option value="expense">المصروفات</option>
+                                        <option value="revenue">الإيرادات</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="parent_account_id" class="form-label fw-bold">الحساب الأب</label>
+                                    <select name="parent_account_id" id="parent_account_id" class="form-select"
+                                            style="background: rgba(255, 255, 255, 0.8); color: #333; border: 1px solid #ccc;">
+                                        <option value="">-- اختر الحساب الأب --</option>
+                                        @foreach($accounts as $account)
+                                            <option value="{{ $account->id }}">{{ $account->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="code" class="form-label fw-bold">كود الحساب</label>
+                                    <input type="text" class="form-control" id="code" name="code" required
+                                           style="background: rgba(255, 255, 255, 0.8); color: #333; border: 1px solid #ccc;">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="name" class="form-label fw-bold">اسم الحساب</label>
+                                    <input type="text" class="form-control" id="name" name="name" required
+                                           style="background: rgba(255, 255, 255, 0.8); color: #333; border: 1px solid #ccc;">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="normal_balance" class="form-label fw-bold">الطبيعة</label>
+                                    <select name="normal_balance" id="normal_balance" class="form-select" required
+                                            style="background: rgba(255, 255, 255, 0.8); color: #333; border: 1px solid #ccc;">
+                                        <option value="debit">مدين</option>
+                                        <option value="credit">دائن</option>
+                                    </select>
+                                </div>
+
+                                <button type="submit" class="btn w-100 fw-bold"
+                                        style="color: #fff; background: rgba(0, 123, 255, 0.9); border: none; padding: 10px;">
+                                    حفظ
+                                </button>
+                            </form>
+
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="name" class="form-label">اسم الحساب</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="normal_balance" class="form-label">الطبيعة</label>
-                        <select name="normal_balance" id="normal_balance" class="form-select" required>
-                            <option value="debit">مدين</option>
-                            <option value="credit">دائن</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">حفظ</button>
-                </form>
+                </div>
+
+
+
             </div>
         </div>
     </div>
@@ -185,24 +219,36 @@
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // عرض الشجرة عند الضغط على أيقونة
-        document.querySelectorAll('.treeview li i').forEach(function (icon) {
-            icon.addEventListener('click', function (e) {
-                e.stopPropagation(); // لمنع تنفيذ الأحداث الأخرى
-                const subTree = this.nextElementSibling; // الشجرة الفرعية
-                if (subTree) {
-                    subTree.style.display = subTree.style.display === 'none' ? 'block' : 'none';
+        // عند الضغط على عنصر في الشجرة
+        document.querySelectorAll('.treeview li').forEach(function (item) {
+            item.addEventListener('click', function () {
+                const sectionId = this.getAttribute('data-section-id'); // الحصول على ID القسم
+                if (sectionId) {
+                    // إخفاء جميع الأقسام
+                    document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
+                    // عرض القسم المطلوب
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        section.style.display = 'block';
+                    }
                 }
             });
         });
+    });
 
-        // عرض البيانات عند الضغط على العنصر
+    document.addEventListener('DOMContentLoaded', function () {
+        // عند الضغط على عنصر في الشجرة
         document.querySelectorAll('.treeview li').forEach(function (item) {
-            item.addEventListener('click', function (e) {
-                e.stopPropagation(); // لمنع تأثير النقر على العنصر الرئيسي
-                const sectionId = this.getAttribute('data-section-id'); // قم بتحديد الـ ID الخاص بالقسم
+            item.addEventListener('click', function () {
+                const sectionId = this.getAttribute('data-section-id'); // الحصول على ID القسم
                 if (sectionId) {
-                    showSection(sectionId);
+                    // إخفاء جميع الأقسام
+                    document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
+                    // عرض القسم المطلوب
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        section.style.display = 'block';
+                    }
                 }
             });
         });

@@ -32,39 +32,28 @@ class ClientPayment extends Model
      * العلاقة مع موديل العميل (clients).
      */
     public function client()
-    {
-        return $this->belongsTo(Client::class, 'client_id', 'client_id');
-    }
+{
+    return $this->belongsTo(Client::class, 'client_id');
+}
 
-    /**
-     * العلاقة مع موديل الفاتورة (invoices).
-     */
-    public function invoice()
-    {
-        return $this->belongsTo(Invoice::class, 'invoice_id', 'invoice_id');
-    }
+public function invoice()
+{
+    return $this->belongsTo(Invoice::class, 'invoice_id'); // المفتاح الأساسي هو invoice_id
+}
 
-    /**
-     * العلاقة مع موديل الموظف (employees).
-     */
-    public function employee()
-    {
-        return $this->belongsTo(Employee::class, 'employee_id', 'employee_id');
-    }
 
-    /**
-     * العلاقة مع موديل القيود اليومية (journal_entries).
-     */
-    public function entry()
-    {
-        return $this->belongsTo(JournalEntry::class, 'entry_id', 'entry_id');
-    }
+public function employee()
+{
+    return $this->belongsTo(Employee::class, 'employee_id',);
+}
 
-    /**
-     * العلاقة مع موديل الخزينة (treasuries).
-     */
-    public function treasury()
-    {
-        return $this->belongsTo(Treasury::class, 'treasury_id', 'treasury_id');
-    }
+public function entry()
+{
+    return $this->belongsTo(JournalEntry::class, 'entry_id');
+}
+
+public function treasury()
+{
+    return $this->belongsTo(Treasury::class, 'treasury_id');
+}
 }

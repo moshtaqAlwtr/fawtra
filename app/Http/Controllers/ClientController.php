@@ -15,17 +15,13 @@ class ClientController extends Controller
     {
         // جلب جميع العملاء
         $clients = Client::all();
-    
+
         // تمرير المتغير إلى العرض
         return view('layouts.nav-slider-route', [
             'page' => 'customer-management',
             'clients' => $clients, // تأكد من تمرير المتغير هنا
         ]);
     }
-    
-  
-
-
     /**
      * عرض نموذج إضافة عميل جديد.
      */
@@ -35,11 +31,10 @@ class ClientController extends Controller
     }
 
     /**
-     * حفظ بيانات العميل في قاعدة البيانات.
+     * حفظ بيانات العميل الجديد.
      */
     public function storeClient(Request $request)
     {
-        // التحقق من صحة البيانات القادمة من الطلب
         $validatedData = $request->validate([
             'trade_name' => 'required|string|max:255',
             'account_code' => 'required|string|max:50',
@@ -47,43 +42,166 @@ class ClientController extends Controller
             'last_name' => 'nullable|string|max:255',
             'phone' => 'nullable|string|max:20',
             'mobile' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:255',
             'street_address_1' => 'nullable|string|max:255',
-            'street_address_2' => 'nullable|string|max:255',
             'city' => 'nullable|string|max:255',
-            'region' => 'nullable|string|max:255',
-            'postal_code' => 'nullable|string|max:10',
             'country' => 'nullable|string|max:255',
-            'tax_number' => 'nullable|string|max:50',
-            'commercial_registration' => 'nullable|string|max:50',
             'credit_limit' => 'nullable|numeric',
             'credit_period' => 'nullable|integer',
-            'printing_method' => 'nullable|in:طباعة,إرسال بالبريد',
-            'opening_balance' => 'nullable|numeric',
-            'opening_balance_date' => 'nullable|date',
-            'currency' => 'nullable|string|max:10',
-            'email' => 'nullable|email|max:255',
-            'client_type' => 'nullable|string|max:50',
             'notes' => 'nullable|string',
             'attachments' => 'nullable|file',
-            'display_language' => 'nullable|string|max:50',
         ]);
 
-        try {
-            // حفظ البيانات في قاعدة البيانات
-            $client = Client::create($validatedData);
+        $client = Client::create($validatedData);
 
-            // رفع الملف وحفظ مساره في قاعدة البيانات إذا وُجدت
-            if ($request->hasFile('attachments')) {
-                $path = $request->file('attachments')->store('attachments', 'public');
-                $client->update(['attachments' => $path]);
+        if ($request->hasFile('attachments')) {
+            $path = $request->file('attachments')->store('attachments', 'public');
+            $client->update(['attachments' => $path]);
+        }
+
+        return redirect()->route('clients.index')->with('success', 'تم إضافة العميل بنجاح.');
+    }
+
+    /**
+     * عرض تفاصيل عميل معين.
+     */
+    public function show($id)
+    {
+        $client = Client::findOrFail($id);
+        return view('clients.show', compact('client'));
+    }
+
+    /**
+     * عرض نموذج تعديل بيانات العميل.
+     */
+    public function edit($id)
+    {
+        $client = Client::findOrFail($id);
+        return view('clients.edit', compact('client'));
+    }
+
+    /**
+     * تحديث بيانات العميل.
+     */
+    public function update(Request $request, $id)
+    {
+        $client = Client::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'trade_name' => 'required|string|max:255',
+            'account_code' => 'required|string|max:50',
+            'first_name' => 'nullable|string|max:255',
+            'last_name' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:20',
+            'mobile' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:255',
+            'street_address_1' => 'nullable|string|max:255',
+            'city' => 'nullable|string|max:255',
+            'country' => 'nullable|string|max:255',
+            'credit_limit' => 'nullable|numeric',
+            'credit_period' => 'nullable|integer',
+            'notes' => 'nullable|string',
+            'attachments' => 'nullable|file',
+        ]);
+
+        $client->update($validatedData);
+
+        if ($request->hasFile('attachments')) {
+            if ($client->attachments) {
+                Storage::disk('public')->delete($client->attachments);
             }
 
-            // إعادة التوجيه مع رسالة نجاح
-            return redirect()->back()->with('success', 'تم إضافة العميل بنجاح.');
-
-        } catch (\Exception $e) {
-            // إعادة التوجيه مع رسالة خطأ مع عرض الرسالة التفصيلية
-            return redirect()->back()->withErrors(['error' => 'حدث خطأ: ' . $e->getMessage()]);
+            $path = $request->file('attachments')->store('attachments', 'public');
+            $client->update(['attachments' => $path]);
         }
+
+        return redirect()->route('clients.index')->with('success', 'تم تحديث بيانات العميل بنجاح.');
+    }
+
+    /**
+     * حذف العميل.
+     */
+    public function destroy($id)
+    {
+        $client = Client::findOrFail($id);
+
+        if ($client->attachments) {
+            Storage::disk('public')->delete($client->attachments);
+        }
+
+        $client->delete();
+
+        return redirect()->route('clients.index')->with('success', 'تم حذف العميل بنجاح.');
+    }
+
+    /**
+     * البحث عن العملاء.
+     */
+    public function search(Request $request)
+    {
+        $query = Client::query();
+
+        if ($request->filled('trade_name')) {
+            $query->where('trade_name', 'LIKE', '%' . $request->trade_name . '%');
+        }
+
+        if ($request->filled('email')) {
+            $query->where('email', 'LIKE', '%' . $request->email . '%');
+        }
+
+        if ($request->filled('city')) {
+            $query->where('city', 'LIKE', '%' . $request->city . '%');
+        }
+
+        $clients = $query->get();
+
+        return view('clients.search-results', compact('clients'));
+    }
+
+    /**
+     * تصدير قائمة العملاء إلى ملف Excel.
+     */
+    public function exportToExcel()
+    {
+        $clients = Client::all();
+
+        // تصدير باستخدام مكتبة Excel
+        return Excel::download(new ClientsExport($clients), 'clients.xlsx');
+    }
+
+    /**
+     * استيراد قائمة العملاء من ملف Excel.
+     */
+    public function importFromExcel(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,csv',
+        ]);
+
+        Excel::import(new ClientsImport, $request->file('file'));
+
+        return redirect()->route('clients.index')->with('success', 'تم استيراد العملاء بنجاح.');
+    }
+
+    /**
+     * عرض تقرير شامل عن العملاء.
+     */
+    public function generateReport()
+    {
+        $clients = Client::select('trade_name', 'email', 'city', 'credit_limit')
+            ->orderBy('trade_name', 'asc')
+            ->get();
+
+        return view('clients.report', compact('clients'));
+    }
+
+    /**
+     * عرض العملاء الذين تجاوزوا حد الائتمان.
+     */
+    public function creditLimitExceeded()
+    {
+        $clients = Client::whereColumn('credit_limit', '<', 'outstanding_balance')->get();
+
+        return view('clients.credit-limit-exceeded', compact('clients'));
     }
 }

@@ -185,7 +185,6 @@
 <body>
 
     <!-- بداية الكونتينر -->
-    <div class="container">
 
         <!-- الهيدر -->
         <div class="header">

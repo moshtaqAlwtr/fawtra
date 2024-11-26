@@ -1,167 +1,174 @@
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <button class="btn btn-gradient" onclick="window.location.href='{{ route('add_customer') }}'">+ أضف العميل</button>
-            <div class="header-actions">
-                <button class="btn btn-outline-secondary"><i class="fas fa-upload"></i></button>
-                <button class="btn btn-outline-secondary"><i class="fas fa-cog"></i></button>
-            </div>
-        </div>
+    <title>مدفوعات العملاء</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-        <!-- شريط الأدوات العلوي -->
-        <div class="toolbar">
-            <h5>بحث وتصفيه</h5>
-            <div class="toolbar-actions">
-                <span class="action" id="toggleVisibilityButton" onclick="toggleVisibility()"><i class="fas fa-eye-slash"></i> إخفاء</span>
-                <span class="action" id="toggleButton" onclick="toggleForm()">متقدم</span>
-                <i class="fas fa-sliders-h action"></i>
-            </div>
-        </div>
-
-        <!-- نموذج البحث والتصفية -->
-        <form class="table-card mb-4" id="fieldSection">
-            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
-                <div class="col-md-3 p-0">
-                    <label>إختر التصنيف</label>
-                    <select class="form-control">
-                        <option>إختر التصنيف</option>
-                    </select>
-                </div>
-                <div class="col-md-3 p-0">
-                    <label>إختر الحالة</label>
-                    <select class="form-control">
-                        <option>إختر الحالة</option>
-                    </select>
-                </div>
-                <div class="col-md-3 p-0">
-                    <label>الاسم</label>
-                    <input type="text" class="form-control" placeholder="الاسم">
-                </div>
-                <div class="col-md-3 p-0">
-                    <label>إختر العميل</label>
-                    <select class="form-control">
-                        <option>إختر العميل</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- قسم الحقول المتقدمة -->
-            <div id="advancedFields" class="hidden">
-                <div class="row">
-                    <div class="col-md-3 mt-3">
-                        <label>إختر البلد</label>
-                        <select class="form-control">
-                            <option>إختر البلد</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label>العنوان</label>
-                        <input type="text" class="form-control" placeholder="العنوان">
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label>تاريخ الإنشاء (من)</label>
-                        <input type="date" class="form-control" id="deliveryStartDate">
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label>تاريخ الإنشاء (إلى)</label>
-                        <input type="date" class="form-control" id="deliveryStartDate">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 mt-3">
-                        <label>اختر الموظفين المعينين</label>
-                        <select class="form-control">
-                            <option>اختر الموظفين</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label>اختر الموظفين المعينين</label>
-                        <select class="form-control">
-                            <option>اختر الموظفين</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label>إختر أضيفت بواسطة</label>
-                        <select class="form-control">
-                            <option>إختر أضيفت بواسطة</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 mt-3">
-                        <label>إختر وسم</label>
-                        <select class="form-control">
-                            <option>إختر وسم</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- زر البحث -->
-            <div class="col-md-3 mt-3 d-flex align-items-end">
-                <button type="submit" class="btn btn-gradient w-100">بحث</button>
-            </div>
-        </form>
-
-        <!-- قسم الجدول -->
-               <!-- قسم الجدول -->
-
-    <div class="container-fluid">
+<div class="container-fluid">
     <div class="row">
+        <!-- العنوان وأزرار الإضافة -->
+        <div class="col-12 d-flex justify-content-between align-items-center my-4">
+            <button class="btn btn-success" onclick="window.location.href='{{ route('add_customer') }}'">
+                <i class="fas fa-user-plus me-2"></i> أضف العميل
+            </button>
+            <div>
+                <button class="btn btn-outline-secondary"><i class="fas fa-upload me-2"></i> رفع</button>
+                <button class="btn btn-outline-secondary"><i class="fas fa-cog me-2"></i> إعدادات</button>
+            </div>
+        </div>
+
+        <!-- قسم البحث -->
+        <div class="col-12 mb-4">
+            <form id="searchForm" class="card p-4">
+                <h5 class="card-title"><i class="fas fa-search me-2"></i> بحث وتصفيه</h5>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="category">إختر التصنيف</label>
+                        <select id="category" class="form-control">
+                            <option>إختر التصنيف</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="status">إختر الحالة</label>
+                        <select id="status" class="form-control">
+                            <option>إختر الحالة</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="name">الاسم</label>
+                        <input id="name" type="text" class="form-control" placeholder="الاسم">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="client">إختر العميل</label>
+                        <select id="client" class="form-control">
+                            <option>إختر العميل</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- الحقول المتقدمة -->
+                <div id="advancedFields" class="collapse">
+                    <h6 class="mt-4"><i class="fas fa-filter me-2"></i> بحث متقدم</h6>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="country">إختر البلد</label>
+                            <select id="country" class="form-control">
+                                <option>إختر البلد</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="address">العنوان</label>
+                            <input id="address" type="text" class="form-control" placeholder="العنوان">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="startDate">تاريخ الإنشاء (من)</label>
+                            <input id="startDate" type="date" class="form-control">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="endDate">تاريخ الإنشاء (إلى)</label>
+                            <input id="endDate" type="date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="employee">اختر الموظفين</label>
+                            <select id="employee" class="form-control">
+                                <option>اختر الموظفين</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="addedBy">أضيفت بواسطة</label>
+                            <select id="addedBy" class="form-control">
+                                <option>إختر المستخدم</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="referenceNumber">الرقم المرجعي</label>
+                            <input id="referenceNumber" type="text" class="form-control" placeholder="الرقم المرجعي">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="tag">إختر وسم</label>
+                            <select id="tag" class="form-control">
+                                <option>إختر وسم</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- أزرار البحث -->
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#advancedFields">
+                            <i class="fas fa-chevron-down me-2"></i> إظهار الحقول المتقدمة
+                        </button>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-search me-2"></i> بحث
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- عرض العملاء -->
         @foreach($clients as $client)
-            <div class="col-12 mb-3">
-                <div class="card shadow-sm p-3">
-                    <div class="row align-items-center">
-                        <!-- العمود الأول: الحرف الأول -->
-                        <div class="col-auto">
-                            <span class="badge bg-primary text-white p-3 fs-5">
-                                {{ mb_substr($client->trade_name, 0, 1) }}
-                            </span>
-                        </div>
-
-                        <!-- العمود الثاني: تفاصيل العميل -->
-                        <div class="col">
-                            <h5 class="mb-1">{{ $client->trade_name }}</h5>
-                            <p class="mb-0 text-muted">
-                                <i class="fas fa-envelope"></i> {{ $client->email }}
-                            </p>
-                            <p class="mb-0 text-muted">
-                                <i class="fas fa-map-marker-alt"></i> {{ $client->address ?? 'العنوان غير متوفر' }}
-                            </p>
-                        </div>
-
-                        <!-- العمود الثالث: الحالة -->
-                        <div class="col-auto text-center">
-                            <span class="badge {{ $client->status == 'active' ? 'bg-success' : 'bg-danger' }} fs-6 px-3 py-2">
-                                {{ $client->status == 'active' ? 'نشط' : 'موقوف' }}
-                            </span>
-                        </div>
-
-                                    <!-- العمود الرابع: القائمة المنسدلة -->
-                                    <div class="col-auto">
-                                        <div class="dropdown">
-                                            <button class="btn btn-outline-primary btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item" href="{{ route('add_payment_process') }}"><i class="fas fa-eye"></i> عرض</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-pencil-alt"></i> تعديل</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> نسخ</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-trash"></i> حذف</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i> الدخول به</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-calculator"></i> كشف حساب</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
+        <div class="col-12 mb-4">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body d-flex flex-column flex-md-row align-items-center">
+                    <!-- الحرف الأول -->
+                    <div class="badge bg-primary text-white fs-3 p-4 rounded-circle d-flex align-items-center justify-content-center me-3">
+                        {{ mb_substr($client->trade_name, 0, 1) }}
+                    </div>
+                    <!-- التفاصيل -->
+                    <div class="flex-grow-1">
+                        <h4 class="card-title text-dark mb-2">{{ $client->trade_name }}</h4>
+                        <p class="card-text text-secondary mb-1">
+                            <i class="fas fa-envelope text-primary me-2"></i>{{ $client->email }}
+                        </p>
+                        <p class="card-text text-secondary mb-1">
+                            <i class="fas fa-map-marker-alt text-danger me-2"></i>{{ $client->address ?? 'العنوان غير متوفر' }}
+                        </p>
+                    </div>
+                    <!-- الحالة -->
+                    <div class="text-center me-4">
+                        <span class="badge {{ $client->status == 'active' ? 'bg-success' : 'bg-danger' }} fs-6 px-4 py-2 rounded-pill">
+                            {{ $client->status == 'active' ? 'نشط' : 'موقوف' }}
+                        </span>
+                    </div>
+                    <!-- الإجراءات -->
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary btn-sm rounded-circle" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                            <li>
+                                <a class="dropdown-item" href="{{route('add_payment_process')}}">
+                                    <i class="fas fa-eye text-primary me-2"></i> عرض
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-pencil-alt text-warning me-2"></i> تعديل
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-copy text-info me-2"></i> نسخ
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-danger" href="#">
+                                    <i class="fas fa-trash me-2"></i> حذف
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </div>
+    @endforeach
+        </div>
+</div>
 
-
-
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>

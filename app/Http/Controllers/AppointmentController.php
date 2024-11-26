@@ -32,7 +32,7 @@ class AppointmentController extends Controller
             'notes' => 'nullable|string',
             'repeat' => 'nullable|boolean',
             'share_with_client' => 'nullable|boolean',
-            'assign_to_employees' => 'nullable|boolean'
+            'assign_to_employees' => 'nullable|boolean',
         ]);
 
         Appointment::create($validatedData);
@@ -66,7 +66,7 @@ class AppointmentController extends Controller
             'notes' => 'nullable|string',
             'repeat' => 'nullable|boolean',
             'share_with_client' => 'nullable|boolean',
-            'assign_to_employees' => 'nullable|boolean'
+            'assign_to_employees' => 'nullable|boolean',
         ]);
 
         $appointment = Appointment::findOrFail($id);
@@ -81,5 +81,71 @@ class AppointmentController extends Controller
         Appointment::destroy($id);
 
         return redirect()->route('schedule.appointment')->with('success', 'تم حذف الموعد بنجاح.');
+    }
+
+    // =================== إضافات مقترحة ===================
+
+    /**
+     * عرض المواعيد المستقبلية فقط.
+     */
+    public function upcomingAppointments()
+    {
+        $appointments = Appointment::where('date', '>=', now())->orderBy('date', 'asc')->get();
+        return view('appointments.upcoming', compact('appointments'));
+    }
+
+    /**
+     * عرض المواعيد الخاصة بعميل معين.
+     */
+    public function appointmentsByClient(Request $request)
+    {
+        $clientName = $request->input('client');
+        $appointments = Appointment::where('client', 'like', "%{$clientName}%")->get();
+        return view('appointments.by-client', compact('appointments'));
+    }
+
+    /**
+     * إلغاء موعد معين.
+     */
+    public function cancel($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        $appointment->update(['status' => 'cancelled']);
+
+        return redirect()->route('schedule.appointment')->with('success', 'تم إلغاء الموعد بنجاح.');
+    }
+
+    /**
+     * تأكيد موعد معين.
+     */
+    public function confirm($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        $appointment->update(['status' => 'confirmed']);
+
+        return redirect()->route('schedule.appointment')->with('success', 'تم تأكيد الموعد بنجاح.');
+    }
+
+    /**
+     * إرسال تذكير بموعد معين.
+     */
+    public function sendReminder($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+
+        // هنا يمكن إضافة منطق الإرسال بالبريد أو رسالة نصية
+        // كود افتراضي: Mail::to($appointment->client_email)->send(new AppointmentReminder($appointment));
+
+        return redirect()->route('schedule.appointment')->with('success', 'تم إرسال تذكير للموعد.');
+    }
+
+    /**
+     * عرض المواعيد حسب التاريخ.
+     */
+    public function appointmentsByDate(Request $request)
+    {
+        $date = $request->input('date');
+        $appointments = Appointment::where('date', $date)->get();
+        return view('appointments.by-date', compact('appointments'));
     }
 }

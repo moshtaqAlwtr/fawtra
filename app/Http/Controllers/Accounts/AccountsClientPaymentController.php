@@ -12,23 +12,52 @@ use Illuminate\Http\Request;
 
 class AccountsClientPaymentController extends Controller
 {
-    // عرض صفحة إنشاء دفعة جديدة
-    public function create()
+    public function index()
     {
-        // جلب جميع البيانات المطلوبة
-        $clients = Client::with('invoices')->get();
-        $treasuries = Treasury::all();
-        $employees = Employee::all();
+        // جلب جميع المدفوعات مع العلاقات المطلوبة
+        $payments = ClientPayment::with(['client', 'invoice', 'treasury', 'employee'])->paginate(10);
+        $clients = Client::with('invoices')->get();// العملاء والفواتير
+        $treasuries = Treasury::all(); // الخزائن
+        $employees = Employee::all(); // الموظفون
+$invoices=Invoice::all();
 
-        // إرسال البيانات إلى View مباشرة
-        return view('add_payment_process', compact('clients', 'treasuries', 'employees'));
+        // إرسال جميع البيانات إلى العرض
+        return view('layouts.nav-slider-route', [
+            'page' => 'add_payment_process',
+            'payments' => $payments,
+            'clients' => $clients,
+
+            'treasuries' => $treasuries,
+            'employees' => $employees,
+        ]);
     }
+        // عرض صفحة إنشاء دفعة جديدة
+        public function create()
+{
+    $clients = Client::all();
+    $invoices = Invoice::all();
+    $treasuries = Treasury::all();
+    $employees = Employee::all();
+
+    if ($clients->isEmpty() || $treasuries->isEmpty() || $employees->isEmpty()) {
+        return redirect()->route('payments.index')->with('error', 'لا توجد بيانات كافية.');
+    }
+
+    return view('layouts.nav-slider-route', [
+        'page' => 'add_payment_process',
+        'clients' => $clients,
+        'invoices' => $invoices,
+        'treasuries' => $treasuries,
+        'employees' => $employees,
+    ]);
+}
+
 
     // تخزين دفعة جديدة
     public function store(Request $request)
 {
     $request->validate([
-        'client_id' => 'required|exists:clients,client_id',
+        'client_id' => 'required|exists:clients,id',
         'invoice_id' => 'required|exists:invoices,invoice_id',
         'treasury_id' => 'required|exists:treasuries,treasury_id',
         'employee_id' => 'required|exists:employees,employee_id',

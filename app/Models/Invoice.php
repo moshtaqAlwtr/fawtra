@@ -60,17 +60,13 @@ class Invoice extends Model
 		return $this->hasMany(Client::class);
 	}
 
-	public function client_payments()
-	{
-		return $this->hasMany(ClientPayment::class);
-	}
 
 	public function invoice_items()
 	{
 		return $this->hasMany(InvoiceItem::class);
 	}
-    // public function payments()
-    // {
-    //     return $this->hasMany(ClientPayment::class, 'invoice_id', 'invoice_id');
-    // }
+    public function payments()
+    {
+        return $this->hasMany(ClientPayment::class, 'invoice_id');
+    }
 }
