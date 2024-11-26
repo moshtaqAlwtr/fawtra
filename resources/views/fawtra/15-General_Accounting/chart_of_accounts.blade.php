@@ -14,19 +14,19 @@
             <h4 class="mb-4">الأقسام</h4>
             <div class="treeview">
                 <ul class="list-unstyled">
-                    <li class="mb-2">
+                    <li class="mb-2" data-target="assets" >
                         <i class="fa-solid fa-folder text-primary toggle-folder"></i> الأصول
                         {!! $assetsTree !!}
                     </li>
-                    <li class="mb-2">
+                    <li class="mb-2"data-target="liabilities">
                         <i class="fa-solid fa-folder text-danger toggle-folder"></i> الخصوم
                         {!! $liabilitiesTree !!}
                     </li>
-                    <li class="mb-2">
+                    <li class="mb-2" data-target="expenses">
                         <i class="fa-solid fa-folder text-warning toggle-folder"></i> المصروفات
                         {!! $expensesTree !!}
                     </li>
-                    <li class="mb-2">
+                    <li class="mb-2" data-target="revenues">
                         <i class="fa-solid fa-folder text-success toggle-folder"></i> الإيرادات
                         {!! $revenuesTree !!}
                     </li>
@@ -53,8 +53,19 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {{ $asset->name }}
                                 <span class="badge bg-primary">{{ $asset->normal_balance }}</span>
+                                <div class="dropdown">
+                                            <button class="btn btn-light btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">تعديل</a></li>
+                                                <li><a class="dropdown-item" href="#">حذف</a></li>
+                                                <li><a class="dropdown-item" href="#">تفاصيل</a></li>
+                                            </ul>
+                                        </div>
                             </li>
                         @endforeach
+                        
                     </ul>
                     <button class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal" onclick="setAccountType('asset')">
                         <i class="fa-solid fa-plus"></i> إضافة حساب
@@ -68,9 +79,22 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {{ $liability->name }}
                                 <span class="badge bg-danger">{{ $liability->normal_balance }}</span>
+                                <div class="dropdown">
+                                            <button class="btn btn-light btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">تعديل</a></li>
+                                                <li><a class="dropdown-item" href="#">حذف</a></li>
+                                                <li><a class="dropdown-item" href="#">تفاصيل</a></li>
+                                            </ul>
+                                        </div>
                             </li>
                         @endforeach
                     </ul>
+                    <button class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal" onclick="setAccountType('asset')">
+                        <i class="fa-solid fa-plus"></i> إضافة حساب
+                    </button>
                 </div>
 
                 <div id="expenses" class="section" style="display: none;">
@@ -80,9 +104,22 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {{ $expense->name }}
                                 <span class="badge bg-warning">{{ $expense->normal_balance }}</span>
+                                <div class="dropdown">
+                                            <button class="btn btn-light btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">تعديل</a></li>
+                                                <li><a class="dropdown-item" href="#">حذف</a></li>
+                                                <li><a class="dropdown-item" href="#">تفاصيل</a></li>
+                                            </ul>
+                                        </div>
                             </li>
                         @endforeach
                     </ul>
+                    <button class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal" onclick="setAccountType('asset')">
+                        <i class="fa-solid fa-plus"></i> إضافة حساب
+                    </button>
                 </div>
 
                 <div id="revenues" class="section" style="display: none;">
@@ -92,9 +129,22 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {{ $revenue->name }}
                                 <span class="badge bg-success">{{ $revenue->normal_balance }}</span>
+                                <div class="dropdown">
+                                            <button class="btn btn-light btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">تعديل</a></li>
+                                                <li><a class="dropdown-item" href="#">حذف</a></li>
+                                                <li><a class="dropdown-item" href="#">تفاصيل</a></li>
+                                            </ul>
+                                        </div>
                             </li>
                         @endforeach
                     </ul>
+                    <button class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#addAccountModal" onclick="setAccountType('asset')">
+                        <i class="fa-solid fa-plus"></i> إضافة حساب
+                    </button>
                 </div>
 
             </div>
@@ -154,9 +204,10 @@
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // إضافة خاصية النقر على أيقونة القسم
+        // إضافة خاصية النقر على أيقونة المجلد
         document.querySelectorAll('.toggle-folder').forEach(function (icon) {
-            icon.addEventListener('click', function () {
+            icon.addEventListener('click', function (e) {
+                e.stopPropagation(); // منع تأثير النقر على العنصر الأب
                 const sublist = this.nextElementSibling;
                 if (sublist) {
                     sublist.classList.toggle('collapse');
@@ -168,16 +219,27 @@
 
         // التعامل مع الأقسام الجانبية لعرض المحتوى الخاص بها
         const sections = document.querySelectorAll('.section');
-        document.querySelectorAll('.treeview li').forEach(function (item, index) {
-            item.addEventListener('click', function () {
-                sections.forEach(function (section) {
-                    section.style.display = 'none'; // إخفاء جميع الأقسام
-                });
-                sections[index].style.display = 'block'; // عرض القسم المطلوب
+        document.querySelectorAll('.treeview li').forEach(function (item) {
+            item.addEventListener('click', function (e) {
+                e.stopPropagation(); // منع تأثير النقر على العناصر الداخلية
+                const target = this.getAttribute('data-target'); // جلب القسم المستهدف
+                if (target) {
+                    // إخفاء جميع الأقسام
+                    sections.forEach(function (section) {
+                        section.style.display = 'none';
+                    });
+
+                    // عرض القسم المستهدف
+                    const targetSection = document.getElementById(target);
+                    if (targetSection) {
+                        targetSection.style.display = 'block';
+                    }
+                }
             });
         });
     });
 </script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
