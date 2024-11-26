@@ -134,8 +134,9 @@ Route::group([
     Route::get('/credit-note', [CreditNotificationController::class, 'index'])->name('credit-note');
 
     // مسارات مدفوعات العملاء
+    Route::get('/add_payment_process', [AccountsClientPaymentController::class, 'index'])->name('add_payment_process');
 
-    Route::get('/add_payment_process', [AccountsClientPaymentController::class, 'index'])->name('payments.index');
+   //ابو فالح Route::get('/add_payment_process', [AccountsClientPaymentController::class, 'index'])->name('payments.index');
 
     Route::get('/payments/create', [AccountsClientPaymentController::class, 'create'])->name('payments.create');
     Route::post('/payments', [AccountsClientPaymentController::class, 'store'])->name('payments.store');
