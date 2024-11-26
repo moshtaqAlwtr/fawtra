@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="date" class="form-label">التاريخ</label>
-                        <input type="date" class="form-control rounded-pill shadow-sm" id="date" name="date" required>
+                        <input type="date" class="form-control rounded-pill shadow-sm" id="date" name="voucher_date" required>
                     </div>
                 </div>
 

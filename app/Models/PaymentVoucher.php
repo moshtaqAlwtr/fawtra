@@ -11,6 +11,7 @@ class PaymentVoucher extends Model
 
     // اسم الجدول
     protected $table = 'payment_vouchers';
+    protected $primaryKey = 'payment_id';
 
     // الحقول القابلة للتعبئة
     protected $fillable = [
@@ -38,12 +39,12 @@ class PaymentVoucher extends Model
 
     public function expenses()
     {
-        return $this->hasMany(Expense::class, 'payment_voucher_id');
+        return $this->hasMany(Expense::class, '');
     }
 
     public function revenues()
     {
-        return $this->hasMany(Revenue::class, 'payment_voucher_id');
+        return $this->hasMany(Revenue::class, 'payment_id');
     }
 
     public function employee()
@@ -54,10 +55,23 @@ class PaymentVoucher extends Model
     public function tax()
     {
         return $this->belongsTo(Tax::class, 'tax_id'); // علاقة مع جدول الضرائب
+    }public function details()
+    {
+        return $this->hasMany(PaymentVoucherDetail::class, 'payment_id');
     }
-    public function details()
+
+public function treasury()
 {
-    return $this->hasMany(PaymentVoucherDetail::class, 'payment_voucher_id');
+    return $this->belongsTo(Treasury::class, 'treasury_id');
+}
+
+protected static function booted()
+{
+    static::creating(function ($paymentVoucher) {
+        if (is_null($paymentVoucher->voucher_date)) {
+            $paymentVoucher->voucher_date = now(); // تعيين التاريخ الحالي
+        }
+    });
 }
 
 

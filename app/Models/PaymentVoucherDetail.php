@@ -14,7 +14,7 @@ class PaymentVoucherDetail extends Model
 
     // الحقول القابلة للتعبئة
     protected $fillable = [
-        'payment_voucher_id',
+        'payment_id',
         'unit',
         'amount',
         'category',

@@ -192,64 +192,68 @@
         <button type="button" class="btn btn-warning" onclick="toggleAdvancedSearch()">بحث متقدم</button>
     </div>
     <!-- جدول المصروفات -->
-    <div class="container table-container">
-        <h5>النتائج</h5>
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead class="thead-light">
-                    <tr>
-                        <th>التحكم</th>
-                        <th>الوصف</th>
-                        <th>المبلغ</th>
-                        <th>التاريخ</th>
-                        <th>الحالة</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-light" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+
+        <h5 class="mb-3">النتائج</h5>
+
+            <h5 class="mb-3">النتائج</h5>
+            {{-- <div class="list-group">
+                @foreach($paymentVouchers as $voucher)
+                    <div class="list-group-item bg-white shadow-sm rounded mb-3 p-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- معلومات سند الصرف -->
+                            <div>
+                                <h6 class="mb-1">{{ $voucher->payee_name }}</h6>
+                                <small class="text-muted">{{ $voucher->date }}</small>
+                            </div>
+                            <div class="text-end">
+                                <h5 class="text-success mb-0">{{ number_format($voucher->amount, 2) }} ر.س</h5>
+                                <small class="text-muted">{{ $voucher->treasury->name ?? 'غير محدد' }}</small>
+                            </div>
+
+                            <!-- قائمة الخيارات -->
+                            <div class="dropdown ms-3">
+                                <button class="btn btn-sm btn-light" type="button" id="dropdownMenu{{ $voucher->id }}" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v"></i>
                                 </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
-                                    <a class="dropdown-item" href="#"><i class="fas fa-eye text-primary"></i> عرض</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-edit text-info"></i> تعديل</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-copy text-warning"></i> نسخ</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-trash text-danger"></i> حذف</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-print text-primary"></i> طباعة سند صرف</a>
-                                </div>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu{{ $voucher->id }}">
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="#">
+                                            <i class="fas fa-eye text-primary me-2"></i> عرض
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="#">
+                                            <i class="fas fa-edit text-info me-2"></i> تعديل
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <form method="POST" action="#">
+                                            @csrf
+                                            <button class="dropdown-item d-flex align-items-center" type="submit" onclick="return confirm('هل أنت متأكد من الحذف؟')">
+                                                <i class="fas fa-trash text-danger me-2"></i> حذف
+                                            </button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center" href="#">
+                                            <i class="fas fa-print text-primary me-2"></i> طباعة
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-                        </td>
-                        <td>إصلاح السيارة</td>
-                        <td>313.45 ر.س</td>
-                        <td>03/01/2022</td>
-                        <td><span class="badge badge-success">مدفوع</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-light" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton2">
-                                    <a class="dropdown-item" href="#"><i class="fas fa-eye text-primary"></i> عرض</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-edit text-info"></i> تعديل</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-copy text-warning"></i> نسخ</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-trash text-danger"></i> حذف</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-print text-primary"></i> طباعة سند صرف</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>إصلاح السيارة</td>
-                        <td>34.50 ر.س</td>
-                        <td>27/04/2021</td>
-                        <td><span class="badge badge-danger">غير مدفوع</span></td>
-                    </tr>
-                </tbody>
-            </table>
+                        </div>
+                    </div>
+                @endforeach
+            </div> --}}
+
         </div>
+
     </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
