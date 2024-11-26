@@ -3,259 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سند قبض</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-    <style>
-        body {
-            font-family: 'Tahoma', sans-serif;
-            background-color: #f4f6f9;
-            direction: rtl;
-        }
-        .header {
-            background-color: #007bff;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-        .stats-container {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        .stat-box {
-            flex: 1;
-            background: linear-gradient(to right, #007bff, #00c6ff);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-        }
-        .search-container, .table-container {
-            background-color: #ffffff;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        .action-buttons button {
-            margin-top: 10px;
-        }
-        .btn-primary, .btn-primary:hover {
-            background-color: #28a745;
-            border: none;
-        }
-        .advanced-search {
-            display: none;
-            margin-top: 15px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-        }
-        .btn-import, .btn-settings {
-            background-color: #e9ecef;
-            border: none;
-            color: #6c757d;
-            margin-left: 5px;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .btn-import:hover, .btn-settings:hover {
-            background-color: #d3d9df;
-        }
-        .dropdown-menu-right {
-            text-align: right;
-        }
-    </style>
+    <title>إضافة سند قبض</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
-<body>
-
-    <!-- الهيدر -->
-    <div class="header">
-        <h1>سند قبض</h1>
-    </div>
-
-    <!-- أزرار التحكم -->
-    <div class="container my-3 d-flex align-items-center">
-        <button class="btn btn-primary mr-2" onclick="window.location.href='add_receipt.html'"><i class="fas fa-plus-circle"></i> سند قبض</button>
-        <button class="btn-import" onclick="window.location.href='import.html'"><i class="fas fa-upload"></i> استيراد</button>
-        <button class="btn-settings"><i class="fas fa-cog"></i></button>
-    </div>
-
-    <!-- إحصائيات سريعة -->
-    <div class="container stats-container">
-        <div class="stat-box">
-            <h5>آخر 7 أيام</h5>
-            <h2>ر.س 0.00</h2>
+<body class="bg-light">
+    <div class="container">
+        <!-- الشريط الأزرق -->
+        <div class="bg-primary text-white text-center py-3 rounded-top">
+            <h5>إضافة سند قبض</h5>
         </div>
-        <div class="stat-box">
-            <h5>آخر 30 يوم</h5>
-            <h2>ر.س 0.00</h2>
+        
+        <!-- الأزرار -->
+        <div class="d-flex justify-content-start gap-2 py-3">
+            <button type="submit" class="btn btn-primary">حفظ</button>
+            <button type="button" class="btn btn-secondary">حفظ كمسودة</button>
+            <button type="reset" class="btn btn-danger">إلغاء</button>
         </div>
-        <div class="stat-box">
-            <h5>آخر 365 يوم</h5>
-            <h2>ر.س 0.00</h2>
-        </div>
-    </div>
+        
+        <!-- النموذج -->
+        <form id="receiptForm">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <!-- السطر الأول -->
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="amount" class="form-label">المبلغ</label>
+                            <div class="input-group">
+                                <input type="number" id="amount" name="amount" class="form-control text-end" value="0.00" step="0.01" style="font-size: 1.2rem; font-weight: bold;">
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">SAR</button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">SAR</a></li>
+                                    <li><a class="dropdown-item" href="#">USD</a></li>
+                                    <li><a class="dropdown-item" href="#">EUR</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="description" class="form-label">الوصف</label>
+                            <textarea id="description" name="description" class="form-control"></textarea>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">المرفقات</label>
+                            <div class="d-flex flex-column align-items-center border border-primary p-3 rounded">
+                                <i class="bi bi-cloud-upload display-4 text-primary"></i>
+                                <p class="mt-2">اسحب الملف هنا أو اختر جهازك</p>
+                                <input type="file" id="attachments" name="attachments[]" multiple class="form-control" style="cursor: pointer; opacity: 0; position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- السطر الثاني -->
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="code" class="form-label">رقم الكود <span class="text-danger">*</span></label>
+                            <input type="text" id="code" name="code" class="form-control" value="1" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="date" class="form-label">التاريخ</label>
+                            <input type="date" id="date" name="date" class="form-control" value="2024-11-26">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="text" class="form-label">الوحدة</label>
+                            <select id="text" name="text" class="form-control">
+                                <!-- إضافة الخيارات هنا -->
+                            </select>
+                        </div>
+                    </div>
 
-    <!-- البحث -->
-    <div class="container search-container">
-        <h5>بحث</h5>
-        <form>
-            <div class="row">
-                <div class="col-md-3">
-                    <label for="code">الكود</label>
-                    <input type="text" id="code" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="category">التصنيف</label>
-                    <select id="category" class="form-control">
-                        <option>أي تصنيف</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <label for="status">الحالة</label>
-                    <select id="status" class="form-control">
-                        <option>الكل</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <label for="date">التاريخ</label>
-                    <input type="date" id="date" class="form-control">
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-12 text-right">
-                    <button type="button" class="btn btn-secondary" onclick="resetFilters()">إلغاء الفلتر</button>
-                    <button type="button" class="btn btn-primary" onclick="search()">بحث</button>
-                    <button type="button" class="btn btn-warning" onclick="toggleAdvancedSearch()">بحث متقدم</button>
+                    <!-- السطر الثالث -->
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label for="seller" class="form-label">البائع</label>
+                            <input type="text" id="seller" name="seller" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="classification" class="form-label">التصنيف</label>
+                            <select id="classification" name="classification" class="form-control">
+                                <option value="default">التصنيف الافتراضي</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="treasury" class="form-label">الخزينة</label>
+                            <select id="treasury" name="treasury" class="form-control">
+                                <option value="main">Main</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- خيار متكرر -->
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="recurring" name="recurring" onchange="toggleRecurring()">
+                                <label class="form-check-label" for="recurring">متكرر</label>
+                            </div>
+                            <div id="recurringSection" class="d-none mt-3">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="frequency" class="form-label">التكرار</label>
+                                        <select id="frequency" name="frequency" class="form-control">
+                                            <option value="weekly">Weekly</option>
+                                            <option value="monthly">Monthly</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="end_date" class="form-label">تاريخ الانتهاء</label>
+                                        <input type="date" id="end_date" name="end_date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- خيار متعدد -->
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="multiple" name="multiple" onchange="toggleDetails()">
+                        <label class="form-check-label" for="multiple">متعدد</label>
+                    </div>
+
+                    <!-- تفاصيل الحسابات -->
+                    <div id="detailsSection" class="d-none">
+                        <h5 class="mt-4">تفاصيل الحسابات</h5>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>الحساب الفرعي</th>
+                                    <th>الوصف</th>
+                                    <th>مركز التكلفة</th>
+                                    <th>المبلغ</th>
+                                    <th>الضرائب</th>
+                                    <th>الإجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="detailsTable">
+                                <tr>
+                                    <td>
+                                        <select class="form-control" name="accounts[]">
+                                            <option value="default">الحساب الافتراضي</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="descriptions[]" class="form-control">
+                                    </td>
+                                    <td>
+                                        <select class="form-control" name="cost_centers[]">
+                                            <option value="none">لا شيء</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="amounts[]" class="form-control">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="taxes[]" class="form-control">
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-sm" onclick="addRow()">إضافة</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </form>
-
-        <!-- البحث المتقدم -->
-        <div class="advanced-search" id="advanced-search">
-            <div class="row">
-                <div class="col-md-3">
-                    <label for="description">الوصف</label>
-                    <input type="text" id="description" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="amount-more">المبلغ أكثر من</label>
-                    <input type="text" id="amount-more" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="amount-less">المبلغ أقل من</label>
-                    <input type="text" id="amount-less" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="added-by">أضيفت بواسطة</label>
-                    <select id="added-by" class="form-control">
-                        <option>أي موظف</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-3">
-                    <label for="account">الحساب الفرعي</label>
-                    <select id="account" class="form-control">
-                        <option>أي حساب</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <label for="salesman">البائع</label>
-                    <select id="salesman" class="form-control">
-                        <option>أي بائع</option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <label for="date-range-from">تاريخ الإنشاء من</label>
-                    <input type="date" id="date-range-from" class="form-control">
-                </div>
-                <div class="col-md-3">
-                    <label for="date-range-to">إلى</label>
-                    <input type="date" id="date-range-to" class="form-control">
-                </div>
-            </div>
-        </div>
     </div>
-
-    <!-- جدول المصروفات -->
-    <div class="container table-container">
-        <h5>النتائج</h5>
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead class="thead-light">
-                    <tr>
-                        <th>التحكم</th>
-                        <th>الوصف</th>
-                        <th>المبلغ</th>
-                        <th>التاريخ</th>
-                        <th>الحالة</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
-                                    <a class="dropdown-item" href="#"><i class="fas fa-eye text-primary"></i> عرض</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-edit text-info"></i> تعديل</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-copy text-warning"></i> نسخ</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-trash text-danger"></i> حذف</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-print text-primary"></i> طباعة سند صرف</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>إصلاح السيارة</td>
-                        <td>313.45 ر.س</td>
-                        <td>03/01/2022</td>
-                        <td><span class="badge badge-success">مدفوع</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton2">
-                                    <a class="dropdown-item" href="#"><i class="fas fa-eye text-primary"></i> عرض</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-edit text-info"></i> تعديل</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-copy text-warning"></i> نسخ</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-trash text-danger"></i> حذف</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-print text-primary"></i> طباعة سند قيض</a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>إصلاح السيارة</td>
-                        <td>34.50 ر.س</td>
-                        <td>27/04/2021</td>
-                        <td><span class="badge badge-danger">غير مدفوع</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        function toggleAdvancedSearch() {
-            $("#advanced-search").slideToggle();
+        function toggleRecurring() {
+            document.getElementById('recurringSection').classList.toggle('d-none');
         }
 
-        function search() {
-            alert('تنفيذ عملية البحث...');
+        function toggleDetails() {
+            document.getElementById('detailsSection').classList.toggle('d-none');
         }
 
-        function resetFilters() {
-            alert('إعادة تعيين الفلتر...');
+        function addRow() {
+            const table = document.getElementById('detailsTable');
+            const row = ` 
+                <tr>
+                    <td><select class="form-control" name="accounts[]"><option>الحساب الافتراضي</option></select></td>
+                    <td><input type="text" name="descriptions[]" class="form-control"></td>
+                    <td><select class="form-control" name="cost_centers[]"><option>لا شيء</option></select></td>
+                    <td><input type="number" name="amounts[]" class="form-control"></td>
+                    <td><input type="number" name="taxes[]" class="form-control"></td>
+                    <td><button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">حذف</button></td>
+                </tr>`;
+            table.insertAdjacentHTML('beforeend', row);
+        }
+
+        function removeRow(button) {
+            button.closest('tr').remove();
         }
     </script>
 </body>
