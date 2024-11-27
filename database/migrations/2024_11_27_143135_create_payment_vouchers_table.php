@@ -9,10 +9,12 @@ class CreatePaymentVouchersTable extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
-    {
+
+        public function up()
+{
+    if (!Schema::hasTable('payment_vouchers')) {
         Schema::create('payment_vouchers', function (Blueprint $table) {
-            $table->id('payment_id'); // المفتاح الأساسي
+            $table->id('payment_id');
             $table->unsignedBigInteger('account_id')->nullable();
             $table->unsignedBigInteger('treasury_id')->nullable();
             $table->unsignedBigInteger('employee_id')->nullable();
@@ -27,12 +29,13 @@ class CreatePaymentVouchersTable extends Migration
             $table->enum('status', ['Pending', 'Approved', 'Rejected'])->default('Pending');
             $table->timestamps();
 
-            // تعريف العلاقات
+            // Define foreign keys
             $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('set null');
             $table->foreign('treasury_id')->references('id')->on('treasuries')->onDelete('set null');
             $table->foreign('employee_id')->references('employee_id')->on('employees')->onDelete('set null');
             $table->foreign('tax_id')->references('id')->on('taxes')->onDelete('set null');
         });
+    }
     }
 
     /**

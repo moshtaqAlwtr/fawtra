@@ -6,97 +6,122 @@ use Illuminate\Http\Request;
 use App\Models\Invoice;
 use App\Models\Client;
 use App\Models\InvoiceItem;
+use App\Models\Employee;  // Make sure to include the Employee model
 use PDF;
 use Mail;
 
 class InvoiceController extends Controller
 {
     /**
-     * عرض جميع الفواتير
+     * Display all invoices.
      */
     public function index()
     {
-        $clients = Client::all(); // جلب جميع العملاء
-        $invoices = Invoice::all(); // جلب جميع الفواتير
-
-        // احصل على رقم الفاتورة التالي
-        $nextInvoiceId = Invoice::max('invoice_id') + 1;
+        $clients = Client::all(); // Get all clients
+        $invoices = Invoice::all(); // Get all invoices
+$employees = Employee::all();
+        // Get the next invoice number
+        $nextInvoiceId = (Invoice::max('invoice_id') ?? 0) + 1;
 
         return view('layouts.nav-slider-route', [
             'page' => 'sales_invoice',
             'clients' => $clients,
             'invoices' => $invoices,
-            'nextInvoiceId' => $nextInvoiceId
+            'employees' => $employees,
+            'nextInvoiceId' => $nextInvoiceId,
         ]);
     }
+
     /**
-     * عرض نموذج إنشاء فاتورة جديدة
+     * Display the form to create a new invoice.
      */
     public function create()
     {
         $clients = Client::all();
-        return view('invoices.create', compact('clients'));
+        $employees = Employee::all(); // Fetch all employees
+        return view('invoices.create', compact('clients', 'employees'));
     }
 
     /**
-     * تخزين فاتورة جديدة
+     * Store a new invoice.
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        // التحقق من صحة البيانات
+        $validated = $request->validate([
+            'payment_status' => 'required|string',
             'client_id' => 'required|exists:clients,id',
             'invoice_date' => 'required|date',
-            'items' => 'required|array',
-            'items.*.description' => 'required|string|max:255',
+            'employee_id' => 'required|exists:employees,employee_id', // التحقق من وجود الـemployee_id
+            'items.*.item' => 'required|string',
+            'items.*.unit_price' => 'required|numeric|min:0',
             'items.*.quantity' => 'required|numeric|min:1',
-            'items.*.price' => 'required|numeric|min:0',
+            'items.*.total' => 'nullable|numeric',
         ]);
 
-        $invoice = Invoice::create([
-            'client_id' => $validatedData['client_id'],
-            'invoice_date' => $validatedData['invoice_date'],
-            'total' => 0, // سيتم حسابه لاحقًا
-        ]);
+        // إنشاء الفاتورة
+        $invoice = new Invoice();
+        $invoice->client_id = $request->client_id;
+        $invoice->invoice_date = $request->invoice_date;
+        $invoice->payment_status = $request->payment_status;
+        $invoice->employee_id = $request->employee_id; // تخزين الـemployee_id
+        $invoice->sales_manager = $request->sales_manager ?? null; // حقل المدير يمكن أن يكون null
+        $invoice->issue_date = $request->issue_date;
+        $invoice->payment_terms = $request->payment_terms;
+        $invoice->grand_total = array_sum(array_column($request->items, 'total'));
+        $invoice->save();
 
-        $total = 0;
-
-        foreach ($validatedData['items'] as $item) {
-            $invoice->items()->create($item);
-            $total += $item['quantity'] * $item['price'];
+        // إضافة عناصر الفاتورة
+        foreach ($request->items as $item) {
+            $invoiceItem = new InvoiceItem();
+            $invoiceItem->invoice_id = $invoice->id;
+            $invoiceItem->item = $item['item'];
+            $invoiceItem->description = $item['description'];
+            $invoiceItem->unit_price = $item['unit_price'];
+            $invoiceItem->quantity = $item['quantity'];
+            $invoiceItem->discount = $item['discount'];
+            $invoiceItem->discount_type = $item['discount_type'];
+            $invoiceItem->tax_1 = $item['tax1'];
+            $invoiceItem->tax_2 = $item['tax2'];
+            $invoiceItem->total = $item['total'];
+            $invoiceItem->save();
         }
 
-        $invoice->update(['total' => $total]);
-
-        return redirect()->route('invoices.index')->with('success', 'تم إنشاء الفاتورة بنجاح.');
+        // العودة إلى صفحة الفواتير مع رسالة نجاح
+        return redirect()->route('invoices.index')->with('success', 'Invoice created successfully!');
     }
 
+
+
     /**
-     * عرض تفاصيل فاتورة معينة
+     * Display details for a specific invoice.
      */
     public function show($id)
     {
-        $invoice = Invoice::with(['client', 'items'])->findOrFail($id);
+        $invoice = Invoice::with(['client', 'invoice_items', 'employee'])->findOrFail($id);
         return view('invoices.show', compact('invoice'));
     }
 
     /**
-     * تعديل الفاتورة
+     * Show the form to edit an invoice.
      */
     public function edit($id)
     {
-        $invoice = Invoice::with('items')->findOrFail($id);
+        $invoice = Invoice::with('invoice_items')->findOrFail($id);
         $clients = Client::all();
-        return view('invoices.edit', compact('invoice', 'clients'));
+        $employees = Employee::all(); // Fetch all employees for the edit form
+        return view('invoices.edit', compact('invoice', 'clients', 'employees'));
     }
 
     /**
-     * تحديث فاتورة
+     * Update a specific invoice.
      */
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
             'client_id' => 'required|exists:clients,id',
             'invoice_date' => 'required|date',
+            'employee_id' => 'required|exists:employees,employee_id', // Employee validation
             'items' => 'required|array',
             'items.*.description' => 'required|string|max:255',
             'items.*.quantity' => 'required|numeric|min:1',
@@ -107,35 +132,42 @@ class InvoiceController extends Controller
         $invoice->update([
             'client_id' => $validatedData['client_id'],
             'invoice_date' => $validatedData['invoice_date'],
+            'employee_id' => $validatedData['employee_id'], // Update the employee
         ]);
 
-        $invoice->items()->delete();
+        // Delete old invoice items
+        $invoice->invoice_items()->delete();
         $total = 0;
 
+        // Add new items
         foreach ($validatedData['items'] as $item) {
-            $invoice->items()->create($item);
+            if (!isset($item['price'])) {
+                return back()->withErrors(['items.*.price' => 'Price is required for each item'])->withInput();
+            }
+
+            $invoice->invoice_items()->create($item);
             $total += $item['quantity'] * $item['price'];
         }
 
         $invoice->update(['total' => $total]);
 
-        return redirect()->route('invoices.index')->with('success', 'تم تحديث الفاتورة بنجاح.');
+        return redirect()->route('invoices.index')->with('success', 'Invoice updated successfully.');
     }
 
     /**
-     * حذف فاتورة
+     * Delete a specific invoice.
      */
     public function destroy($id)
     {
         $invoice = Invoice::findOrFail($id);
-        $invoice->items()->delete();
+        $invoice->invoice_items()->delete();
         $invoice->delete();
 
-        return redirect()->route('invoices.index')->with('success', 'تم حذف الفاتورة بنجاح.');
+        return redirect()->route('invoices.index')->with('success', 'Invoice deleted successfully.');
     }
 
     /**
-     * إضافة ضريبة وخصم
+     * Add tax and discount to the invoice.
      */
     public function addTaxAndDiscount(Request $request, $id)
     {
@@ -145,24 +177,27 @@ class InvoiceController extends Controller
         ]);
 
         $invoice = Invoice::findOrFail($id);
-        $total = $invoice->items->sum(function ($item) {
+        $total = $invoice->invoice_items->sum(function ($item) {
             return $item->quantity * $item->price;
         });
 
-        $total += $validated['tax'] ?? 0;
-        $total -= $validated['discount'] ?? 0;
+        $tax = $validated['tax'] ?? 0;
+        $discount = $validated['discount'] ?? 0;
+
+        $total += $tax;
+        $total -= $discount;
 
         $invoice->update([
-            'tax' => $validated['tax'],
-            'discount' => $validated['discount'],
+            'tax' => $tax,
+            'discount' => $discount,
             'total' => $total,
         ]);
 
-        return redirect()->route('invoices.index')->with('success', 'تم تحديث الضريبة والخصومات بنجاح.');
+        return redirect()->route('invoices.index')->with('success', 'Tax and discounts updated successfully.');
     }
 
     /**
-     * إنشاء تقرير فواتير
+     * Generate a report for invoices.
      */
     public function generateReport(Request $request)
     {
@@ -184,11 +219,15 @@ class InvoiceController extends Controller
     }
 
     /**
-     * إرسال الفاتورة بالبريد الإلكتروني
+     * Send the invoice to the client via email.
      */
     public function sendToClient($id)
     {
         $invoice = Invoice::with('client')->findOrFail($id);
+
+        if (!$invoice->client->email) {
+            return redirect()->route('invoices.index')->with('error', 'No email address for this client.');
+        }
 
         $pdf = PDF::loadView('invoices.pdf', compact('invoice'));
 
@@ -198,15 +237,15 @@ class InvoiceController extends Controller
                 ->attachData($pdf->output(), 'invoice-' . $invoice->id . '.pdf');
         });
 
-        return redirect()->route('invoices.index')->with('success', 'تم إرسال الفاتورة إلى العميل بنجاح.');
+        return redirect()->route('invoices.index')->with('success', 'Invoice sent to client successfully.');
     }
 
     /**
-     * طباعة الفاتورة كملف PDF
+     * Print the invoice as a PDF.
      */
     public function print($id)
     {
-        $invoice = Invoice::with(['client', 'items'])->findOrFail($id);
+        $invoice = Invoice::with(['client', 'invoice_items'])->findOrFail($id);
 
         $pdf = PDF::loadView('invoices.pdf', compact('invoice'));
 
@@ -214,7 +253,7 @@ class InvoiceController extends Controller
     }
 
     /**
-     * فلترة الفواتير
+     * Filter invoices based on criteria.
      */
     public function filter(Request $request)
     {

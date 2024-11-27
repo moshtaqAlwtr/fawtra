@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('payer_name'); // اسم الدافع
             $table->decimal('amount', 15, 2); // المبلغ
             $table->text('description')->nullable(); // وصف السند
-            $table->unsignedBigInteger('account_id'); // الحساب المرتبط
+            $table->unsignedBigInteger('account_id')->nullable(); // الحساب المرتبط
             $table->string('created_by')->nullable(); // المستخدم الذي أنشأ السند
             $table->timestamps();
 
-            $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('cascade');
+            $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('set null ');
         });
     }
 

@@ -26,9 +26,9 @@ return new class extends Migration
             $table->timestamps(); // وقت الإنشاء والتحديث
 
             // علاقات
-            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-            $table->foreign('employee_id')->references('employee_id')->on('employees')->onDelete('cascade');
-            $table->foreign('invoice_id')->references('invoice_id')->on('invoices')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('set null');
+            $table->foreign('employee_id')->references('employee_id')->on('employees')->onDelete('set null');
+            $table->foreign('invoice_id')->references('invoice_id')->on('invoices')->onDelete('set null');
         });
     }
 

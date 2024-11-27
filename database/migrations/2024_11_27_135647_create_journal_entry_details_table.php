@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('journal_entry_details', function (Blueprint $table) {
             $table->id(); // رقم التفاصيل
-            $table->unsignedBigInteger('journal_entry_id'); // القيد المرتبط
-            $table->unsignedBigInteger('account_id'); // الحساب المرتبط
+            $table->unsignedBigInteger('journal_entry_id')->nullable(); // القيد المرتبط
+            $table->unsignedBigInteger('account_id')->nullable(); // الحساب المرتبط
             $table->string('description')->nullable(); // وصف تفصيلي للبند
             $table->decimal('debit', 15, 2)->default(0); // المبلغ المدين
             $table->decimal('credit', 15, 2)->default(0); // المبلغ الدائن
             $table->timestamps();
 
             // العلاقات الخارجية
-            $table->foreign('journal_entry_id')->references('id')->on('journal_entries')->onDelete('cascade');
-            $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('cascade');
+            $table->foreign('journal_entry_id')->references('id')->on('journal_entries')->onDelete('set null');
+            $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('set null');
         });
     }
 

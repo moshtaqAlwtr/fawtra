@@ -9,32 +9,10 @@ class InvoiceItem extends Model
 {
     use HasFactory;
 
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
     protected $table = 'invoice_items';
-
-    /**
-     * The primary key associated with the table.
-     *
-     * @var string
-     */
     protected $primaryKey = 'item_id';
-
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
     public $incrementing = true;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'invoice_id',
         'description',
@@ -46,11 +24,6 @@ class InvoiceItem extends Model
         'total',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'unit_price' => 'decimal:2',
         'discount' => 'decimal:2',
@@ -59,14 +32,14 @@ class InvoiceItem extends Model
         'total' => 'decimal:2',
     ];
 
-    /**
-     * Define a relationship with the Invoice model.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function invoice()
     {
         return $this->belongsTo(Invoice::class, 'invoice_id', 'invoice_id');
     }
 
+    // إضافة علاقة مع الدفع (PaymentVoucherDetail)
+    public function paymentVoucherDetails()
+    {
+        return $this->hasMany(PaymentVoucherDetail::class, 'invoice_item_id');
+    }
 }

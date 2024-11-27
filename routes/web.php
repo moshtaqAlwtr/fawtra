@@ -85,8 +85,12 @@ Route::group([
 
       Route::post('/index', [ChartOfAccountController::class, 'index'])->name('accounts.index');
     Route::post('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create');});
+
+    Route::resource('invoices', InvoiceController::class);
+
     // مسارات الحسابات
     // Route::prefix('accounts')->group(function () {
+
 
 
 

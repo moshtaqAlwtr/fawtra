@@ -21,8 +21,8 @@ class PaymentVoucherController extends Controller
         $query = PaymentVoucher::query();
 
         // تحقق إذا كان هناك قيمة مرفقة بـ 'id' في الطلب
-        if ($request->has('id') && $request->input('id') != '') {
-            $query->where('id', $request->input('id'));  // تعديل هنا
+        if ($request->has('payment_id') && $request->input('payment_id') != '') {
+            $query->where('payment_id', $request->input('payment_id'));  // تعديل هنا
         }
 
         // أضف شروط أخرى إذا كنت ترغب
