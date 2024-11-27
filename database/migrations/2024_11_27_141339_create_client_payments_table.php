@@ -11,11 +11,11 @@ class CreateClientPaymentsTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('client_payments')) {
+
             Schema::create('client_payments', function (Blueprint $table) {
                 $table->id();
-                $table->unsignedBigInteger('client_id');
-                $table->unsignedBigInteger('invoice_id');
+                $table->unsignedBigInteger('client_id')->nullable();
+                $table->unsignedBigInteger('invoice_id')->nullable();
                 $table->unsignedBigInteger('employee_id')->nullable();
                 $table->unsignedBigInteger('entry_id')->nullable();
                 $table->unsignedBigInteger('treasury_id')->nullable();
@@ -28,13 +28,13 @@ class CreateClientPaymentsTable extends Migration
                 $table->text('notes')->nullable();
                 $table->timestamps();
 
-                $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-                $table->foreign('invoice_id')->references('invoice_id')->on('invoices')->onDelete('cascade');
+                $table->foreign('client_id')->references('id')->on('clients')->onDelete('set null');
+                $table->foreign('invoice_id')->references('invoice_id')->on('invoices')->onDelete('set null');
                 $table->foreign('employee_id')->references('employee_id')->on('employees')->onDelete('set null');
                 $table->foreign('entry_id')->references('id')->on('journal_entries')->onDelete('set null');
                 $table->foreign('treasury_id')->references('id')->on('treasuries')->onDelete('set null');
             });
-        }
+
     }
 
     /**

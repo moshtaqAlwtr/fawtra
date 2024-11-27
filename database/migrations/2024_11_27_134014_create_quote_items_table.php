@@ -10,8 +10,8 @@ class CreateQuoteItemsTable extends Migration
     {
         Schema::create('quote_items', function (Blueprint $table) {
             $table->id('quote_item_id');
-            $table->unsignedBigInteger('quote_id'); // الربط مع جدول quotes
-            $table->unsignedBigInteger('product_id'); // الربط مع جدول products
+            $table->unsignedBigInteger('quote_id')->nullable(); // الربط مع جدول quotes
+            $table->unsignedBigInteger('product_id')->nullable(); // الربط مع جدول products
             $table->integer('quantity');
             $table->decimal('unit_price', 10, 2);
             $table->decimal('total_price', 10, 2);
@@ -20,12 +20,12 @@ class CreateQuoteItemsTable extends Migration
             $table->foreign('quote_id')
                   ->references('quote_id')
                   ->on('quotes')
-                  ->onDelete('cascade');
+                  ->onDelete('set null');
 
             $table->foreign('product_id')
                   ->references('product_id')
                   ->on('products')
-                  ->onDelete('cascade');
+                  ->onDelete('set null');
         });
     }
 

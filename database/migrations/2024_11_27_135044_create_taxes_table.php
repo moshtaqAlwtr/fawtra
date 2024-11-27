@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name'); // اسم الضريبة
             $table->decimal('rate', 5, 2); // نسبة الضريبة
             $table->text('description')->nullable(); // وصف الضريبة
-            $table->unsignedBigInteger('account_id'); // الحساب المرتبط
+            $table->unsignedBigInteger('account_id')->nullable(); // الحساب المرتبط
             $table->timestamps();
 
-            $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('cascade');
+            $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('set null');
         });
     }
 

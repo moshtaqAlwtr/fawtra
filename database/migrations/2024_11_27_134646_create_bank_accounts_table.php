@@ -22,10 +22,10 @@ return new class extends Migration
             $table->text('description')->nullable(); // وصف الحساب
             $table->enum('permissions', ['withdraw', 'deposit', 'both'])->default('both'); // الصلاحيات
             $table->decimal('balance', 15, 2)->default(0); // الرصيد الحالي
-            $table->unsignedBigInteger('account_id'); // الحساب المرتبط
+            $table->unsignedBigInteger('account_id')->nullable(); // الحساب المرتبط
             $table->timestamps();
 
-            $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('cascade');
+            $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('set null');
         });
     }
 

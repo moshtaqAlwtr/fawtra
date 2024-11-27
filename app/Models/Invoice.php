@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
 use Carbon\Carbon;
@@ -29,44 +25,63 @@ use Illuminate\Database\Eloquent\Model;
  * @property Client $client
  * @property Collection|ClientPayment[] $client_payments
  * @property Collection|InvoiceItem[] $invoice_items
+ * @property Collection|PaymentVoucher[] $paymentVouchers
+ * @property Employee $employee  // علاقة الموظف
  *
  * @package App\Models
  */
 class Invoice extends Model
 {
-	protected $table = 'invoices';
-	protected $primaryKey = 'invoice_id';
-	public $timestamps = false;
+    protected $table = 'invoices';
+    protected $primaryKey = 'invoice_id';
+    public $timestamps = true;
 
-	protected $casts = [
-		'client_id' => 'int',
-		'invoice_date' => 'datetime',
-		'issue_date' => 'datetime',
-		'total' => 'float',
-		'grand_total' => 'float'
-	];
+    protected $casts = [
+        'client_id' => 'int',
+        'invoice_date' => 'datetime',
+        'issue_date' => 'datetime',
+        'total' => 'float',
+        'grand_total' => 'float'
+    ];
 
-	protected $fillable = [
-		'client_id',
-		'invoice_date',
-		'sales_manager',
-		'issue_date',
-
-	];
-
+    protected $fillable = [
+        'client_id',
+        'invoice_number',  // إضافة رقم الفاتورة
+        'invoice_date',
+        'sales_manager',
+        'issue_date',
+        'payment_terms',
+        'payment_status',
+        'currency',
+        'total',
+        'grand_total',
+        'employee_id',  // إضافة employee_id لحفظ الموظف المسؤول
+    ];
 
     public function client()
-	{
-		return $this->hasMany(Client::class);
-	}
+    {
+        return $this->belongsTo(Client::class, 'client_id');
+    }
 
+    public function invoice_items()
+    {
+        return $this->hasMany(InvoiceItem::class, 'invoice_id', 'invoice_id');
+    }
 
-	public function invoice_items()
-	{
-		return $this->hasMany(InvoiceItem::class);
-	}
     public function payments()
     {
         return $this->hasMany(ClientPayment::class, 'invoice_id');
     }
+
+    public function paymentVouchers()
+    {
+        return $this->hasMany(PaymentVoucher::class, 'invoice_id');
+    }
+
+    // إضافة علاقة مع الموظف المسؤول
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
+    }
+
 }

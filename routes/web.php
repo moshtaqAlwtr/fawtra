@@ -85,7 +85,7 @@ Route::group([
 
       Route::post('/index', [ChartOfAccountController::class, 'index'])->name('accounts.index');
     Route::post('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create');});
-
+    Route::resource('invoices', InvoiceController::class);
 
     // مسارات القيود اليومية
     Route::get('/add_entry', [JournalEntryController::class, 'create'])->name('add_entry');

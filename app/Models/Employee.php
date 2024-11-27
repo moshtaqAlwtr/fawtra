@@ -84,5 +84,9 @@ class Employee extends Model
     {
         return $this->hasMany(ClientPayment::class,  'employee_id');
     }
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class, 'employee_id');  // العلاقة مع الفواتير
+    }
 }
 
