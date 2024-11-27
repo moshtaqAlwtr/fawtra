@@ -596,9 +596,11 @@ class CreateReceiptsTable extends Migration
             $table->foreignId('unit_id')->constrained(); // جدول الوحدات
             $table->foreignId('employee_id')->constrained(); // جدول الموظفين
             $table->foreignId('treasury_id')->constrained(); // جدول الخزائن
-            $table->string('seller')->nullable(); // البائع
             $table->enum('classification', ['default', 'custom'])->default('default'); // التصنيف
-            $table->boolean('is_recurring')->default(false); // هل هو متكرر؟
+            $table->boolean('is_recurring')->default(false); // هل السند مكرر؟
+            $table->enum('recurrence_type', ['daily', 'weekly', 'monthly'])->nullable(); // نوع التكرار
+            $table->date('recurrence_start_date')->nullable(); // تاريخ بدء التكرار
+            $table->date('recurrence_end_date')->nullable(); // تاريخ انتهاء التكرار (اختياري)
             $table->foreignId('account_id')->constrained(); // جدول الحسابات
             $table->foreignId('client_id')->constrained(); // العلاقة مع جدول العملاء
             $table->json('attachments')->nullable(); // المرفقات (تخزينها بصيغة JSON لحفظ روابط الملفات)
@@ -629,6 +631,7 @@ class CreateReceiptsTable extends Migration
         Schema::dropIfExists('receipts');
     }
 }
+
 
 -- جدول taxes (الضرائب)
 CREATE TABLE `taxes` (
