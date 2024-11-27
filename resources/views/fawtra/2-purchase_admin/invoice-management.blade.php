@@ -165,43 +165,61 @@
         </div>
 
         <!-- Invoice Cards -->
-        <div class="invoice-card mb-3" style="direction: rtl;">
-            <div class="d-flex justify-content-between align-items-start">
-                <div>
-                    <h5 class="mb-1">432.00 ر.س</h5>
-                    <span class="badge badge-status unpaid">{{ trans('purchase_admin.unpaid') }}</span>
-                    <span class="badge badge-status pending">{{ trans('purchase_admin.due') }}</span>
-                </div>
-                <div class="text-right">
-                    <p class="mb-1">28/10/2024 - #08732</p>
-                    <p class="mb-0">بقالة الراجحي للمواد الغذائية</p>
-                    <small class="text-muted">, </small><br>
-                    <small class="text-muted">{{ trans('purchase_admin.by') }}:  </small>
-                </div>
-                <!-- Dropdown Button -->
-                <div class="dropdown">
-               
-    <button class="btn btn-secondary fas " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-    
-    </button>
-    <ul class="dropdown-menu  fa-ellipsis-v" aria-labelledby="dropdownMenuButton" >
-        <li><a class="dropdown-item" href="{{route('invoice_preview')}}"><i class="fas fa-eye text-success"></i> {{ trans('purchase_admin.view') }}</a></li>
-        <li><a class="dropdown-item" href="#"><i class="fas fa-edit text-primary"></i> {{ trans('purchase_admin.edit') }}</a></li>
-        <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf text-danger"></i> PDF</a></li>
-        <li><a class="dropdown-item" href="#"><i class="fas fa-print text-secondary"></i> {{ trans('purchase_admin.print_pdf') }}</a></li>
-        <li><a class="dropdown-item" href="#"><i class="fas fa-envelope text-info"></i> {{ trans('purchase_admin.send_to_client') }}</a></li>
-        <li><a class="dropdown-item" href="{{route('add_payment_process')}}"><i class="fas fa-credit-card text-warning"></i> {{ trans('purchase_admin.add_payment') }}</a></li>
-        <li><a class="dropdown-item" href="#"><i class="fas fa-trash-alt text-danger"></i> {{ trans('purchase_admin.delete') }}</a></li>
-        <li><a class="dropdown-item" href="#"><i class="fas fa-copy text-secondary"></i> {{ trans('purchase_admin.copy') }}</a></li>
-    </ul>
-</div>
+        <div class="row">
+            @foreach($invoices as $invoice)
+                <div class="col-md-4 mb-4">
+                    <div class="invoice-card mb-3" style="direction: rtl;">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <!-- المبلغ الإجمالي -->
+                                <h5 class="mb-1">{{ number_format($invoice->grand_total, 2) }} ر.س</h5>
 
+                                <!-- حالة الفاتورة -->
+                                <span class="badge badge-status {{ $invoice->status == 'unpaid' ? 'unpaid' : 'paid' }}">
+                                    {{ $invoice->status == 'unpaid' ? trans('purchase_admin.unpaid') : trans('purchase_admin.paid') }}
+                                </span>
+                                <span class="badge badge-status {{ $invoice->due_date < now() ? 'pending' : 'due' }}">
+                                    {{ $invoice->due_date < now() ? trans('purchase_admin.due') : trans('purchase_admin.pending') }}
+                                </span>
+                            </div>
+                            <div class="text-right">
+                                <!-- تاريخ الفاتورة ورقم الفاتورة -->
+                                <p class="mb-1">{{ $invoice->invoice_date }} - #{{ $invoice->invoice_id }}</p>
+
+                                <!-- اسم العميل -->
+                                <p class="mb-0">{{ $invoice->client->trade_name }}</p>
+
+                                <!-- اسم الموظف -->
+                                <small class="text-muted"> {{ $invoice->employee->first_name }}</small>
+                            </div>
+
+                            <!-- زر القائمة المنسدلة -->
+                            <div class="dropdown">
+                                <button class="btn btn-secondary fas" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="{{ route('invoice_preview', $invoice->id) }}"><i class="fas fa-eye text-success"></i> {{ trans('purchase_admin.view') }}</a></li>
+                                    <li><a class="dropdown-item" href=""><i class="fas fa-edit text-primary"></i> {{ trans('purchase_admin.edit') }}</a></li>
+                                    <li><a class="dropdown-item" href=""><i class="fas fa-file-pdf text-danger"></i> PDF</a></li>
+                                    <li><a class="dropdown-item" href=""><i class="fas fa-print text-secondary"></i> {{ trans('purchase_admin.print_pdf') }}</a></li>
+                                    <li><a class="dropdown-item" href=""><i class="fas fa-envelope text-info"></i> {{ trans('purchase_admin.send_to_client') }}</a></li>
+                                    <li><a class="dropdown-item" href=""><i class="fas fa-credit-card text-warning"></i> {{ trans('purchase_admin.add_payment') }}</a></li>
+                                    <li><a class="dropdown-item" href=""><i class="fas fa-trash-alt text-danger"></i> {{ trans('purchase_admin.delete') }}</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fas fa-copy text-secondary"></i> {{ trans('purchase_admin.copy') }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
                 </div>
             </div>
         </div>
 
         <!-- Pagination -->
-    
+
     </div>
     <nav>
             <ul class="pagination pagination-custom">

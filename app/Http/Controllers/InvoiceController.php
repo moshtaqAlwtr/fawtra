@@ -17,21 +17,14 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $clients = Client::all(); // Get all clients
-        $invoices = Invoice::all(); // Get all invoices
-$employees = Employee::all();
-        // Get the next invoice number
-        $nextInvoiceId = (Invoice::max('invoice_id') ?? 0) + 1;
+        // جلب جميع الفواتير مع العميل والموظف
+        $invoices = Invoice::with(['client', 'employee'])->get();
 
         return view('layouts.nav-slider-route', [
-            'page' => 'sales_invoice',
-            'clients' => $clients,
-            'invoices' => $invoices,
-            'employees' => $employees,
-            'nextInvoiceId' => $nextInvoiceId,
+            'page' => 'invoice-management',
+            'invoices' => $invoices
         ]);
     }
-
     /**
      * Display the form to create a new invoice.
      */
@@ -39,68 +32,76 @@ $employees = Employee::all();
     {
         $clients = Client::all();
         $employees = Employee::all(); // Fetch all employees
-        return view('invoices.create', compact('clients', 'employees'));
+
+        return view('layouts.nav-slider-route', [
+            'page' => 'salas_invoice',
+            'invoices' => $invoices
+        ]);
     }
 
     /**
      * Store a new invoice.
      */
     public function store(Request $request)
-    {
-        // التحقق من صحة البيانات
-        $validated = $request->validate([
-            'payment_status' => 'required|string',
-            'client_id' => 'required|exists:clients,id',
-            'invoice_date' => 'required|date',
-            'employee_id' => 'required|exists:employees,employee_id', // التحقق من وجود الـemployee_id
-            'items.*.item' => 'required|string',
-            'items.*.unit_price' => 'required|numeric|min:0',
-            'items.*.quantity' => 'required|numeric|min:1',
-            'items.*.total' => 'nullable|numeric',
-        ]);
+{
+    // التحقق من صحة البيانات
+    $validated = $request->validate([
+        'payment_status' => 'required|string',
+        'client_id' => 'required|exists:clients,id',
+        'invoice_date' => 'required|date',
+        'employee_id' => 'required|exists:employees,employee_id',
+        'items.*.item' => 'required|string',
+        'items.*.unit_price' => 'required|numeric|min:0',
+        'items.*.quantity' => 'required|numeric|min:1',
+        'items.*.total' => 'nullable|numeric',
+    ]);
 
-        // إنشاء الفاتورة
-        $invoice = new Invoice();
-        $invoice->client_id = $request->client_id;
-        $invoice->invoice_date = $request->invoice_date;
-        $invoice->payment_status = $request->payment_status;
-        $invoice->employee_id = $request->employee_id; // تخزين الـemployee_id
-        $invoice->sales_manager = $request->sales_manager ?? null; // حقل المدير يمكن أن يكون null
-        $invoice->issue_date = $request->issue_date;
-        $invoice->payment_terms = $request->payment_terms;
-        $invoice->grand_total = array_sum(array_column($request->items, 'total'));
-        $invoice->save();
+    // إنشاء الفاتورة
+    $invoice = new Invoice();
+    $invoice->client_id = $request->client_id;
+    $invoice->invoice_date = $request->invoice_date;
+    $invoice->payment_status = $request->payment_status;
+    $invoice->employee_id = $request->employee_id;
+    $invoice->sales_manager = $request->sales_manager ?? null;
+    $invoice->issue_date = $request->issue_date;
+    $invoice->payment_terms = $request->payment_terms;
+    $invoice->grand_total = array_sum(array_column($request->items, 'total'));
+    $invoice->save();
 
-        // إضافة عناصر الفاتورة
-        foreach ($request->items as $item) {
-            $invoiceItem = new InvoiceItem();
-            $invoiceItem->invoice_id = $invoice->id;
-            $invoiceItem->item = $item['item'];
-            $invoiceItem->description = $item['description'];
-            $invoiceItem->unit_price = $item['unit_price'];
-            $invoiceItem->quantity = $item['quantity'];
-            $invoiceItem->discount = $item['discount'];
-            $invoiceItem->discount_type = $item['discount_type'];
-            $invoiceItem->tax_1 = $item['tax1'];
-            $invoiceItem->tax_2 = $item['tax2'];
-            $invoiceItem->total = $item['total'];
-            $invoiceItem->save();
-        }
-
-        // العودة إلى صفحة الفواتير مع رسالة نجاح
-        return redirect()->route('invoices.index')->with('success', 'Invoice created successfully!');
+    // إضافة عناصر الفاتورة
+    foreach ($request->items as $item) {
+        $invoiceItem = new InvoiceItem();
+        $invoiceItem->invoice_id = $invoice->id;
+        $invoiceItem->item = $item['item'];
+        $invoiceItem->description = $item['description'];
+        $invoiceItem->unit_price = $item['unit_price'];
+        $invoiceItem->quantity = $item['quantity'];
+        $invoiceItem->discount = $item['discount'];
+        $invoiceItem->discount_type = $item['discount_type'];
+        $invoiceItem->tax_1 = $item['tax1'];
+        $invoiceItem->tax_2 = $item['tax2'];
+        $invoiceItem->total = $item['total'];
+        $invoiceItem->save();
     }
 
+    // العودة إلى صفحة عرض الفاتورة
+    return redirect()->route('invoice-management.show', ['invoice' => $invoice])
+                     ->with('success', __('sales_invoice.invoice_saved'));
+}
 
 
     /**
      * Display details for a specific invoice.
      */
-    public function show($id)
-    {
-        $invoice = Invoice::with(['client', 'invoice_items', 'employee'])->findOrFail($id);
-        return view('invoices.show', compact('invoice'));
-    }
+    // public function show(Invoice $invoice)  // استخدم Implicit Binding
+    // {
+    //     return view('layouts.nav-slider-route', [
+    //         'page' => 'invoice-management',
+    //         'invoice' => $invoice
+    //     ]);
+    // }
+
+
 
     /**
      * Show the form to edit an invoice.

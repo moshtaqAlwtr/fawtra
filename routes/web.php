@@ -127,6 +127,12 @@ Route::group([
     Route::post('/sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
     Route::post('/invoice-items/store', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
     Route::get('/invoice-items/create', [InvoiceItemController::class, 'create'])->name('invoice-items.create');
+    Route::get('invoice-management/{invoice}', [InvoiceController::class, 'show'])->name('invoice-management.show');
+
+
+
+    Route::get('invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+
 
     // مسارات الملف الشخصي
     Route::middleware(['auth'])->group(function () {
