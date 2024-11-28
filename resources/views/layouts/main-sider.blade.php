@@ -36,11 +36,11 @@
             <div class="collapse" id="sidebarEcommerce">
                 <ul class="side-nav-second-level">
                     <li>
-                         <a href="{{ route('invoice-management') }}">{{ trans('main_trans.invoice_management') }}</a>
+                         <a href="{{ route('invoice-management') }}?page=management">{{ trans('main_trans.invoice_management') }}</a>
 
                     </li>
                     <li>
-                        <a href="{{route('sales_invoice')}}">{{ trans('main_trans.creaat_invoice') }}</a>
+                        <a href="{{ route('sales_invoice') }}?page=create">{{ trans('main_trans.creaat_invoice') }}</a>
                     </li>
                     <li>
                        <a href="{{route('quotation-management')}}">{{ trans('main_trans.Quotation_Management') }}</a>

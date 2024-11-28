@@ -1,15 +1,13 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- عرض الأخطاء -->
-@if($errors->any())
-    <div class="alert alert-danger rounded-3 shadow-sm">
-        <ul class="mb-0">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+@if(session('new_invoice'))
+    <div class="alert alert-success">
+        فاتورة جديدة تم إنشاؤها بنجاح!
+        رقم الفاتورة: {{ session('new_invoice')->invoice_id }}
     </div>
 @endif
+
 
 <!-- قسم بيانات العميل -->
 <div class="row mb-4">
@@ -44,8 +42,9 @@
                 <div class="card-body bg-white text-dark rounded-bottom-4">
                     <div class="mb-3">
                         <label for="invoice_id" class="form-label fs-5">{{ __('sales_invoice.invoice_id') }}</label>
-                        <input type="text" name="invoice_id" id="invoice_id" class="form-control rounded-3" value="{{ $nextInvoiceId ?? '' }}" readonly>
+                        <input type="text" name="invoice_id" id="invoice_id" class="form-control rounded-3" value="{{ session('nextInvoiceId') ?? '' }}" readonly>
                     </div>
+
                     <div class="mb-3">
                         <label for="invoice_date" class="form-label fs-5">{{ __('sales_invoice.invoice_date') }}</label>
                         <input type="date" name="invoice_date" id="invoice_date" class="form-control rounded-3">
@@ -99,19 +98,19 @@
                 <tr>
                     <td><input type="text" name="items[0][item]" class="form-control rounded-3" placeholder="{{ __('sales_invoice.item') }}" required></td>
                     <td><input type="text" name="items[0][description]" class="form-control rounded-3" placeholder="{{ __('sales_invoice.description') }}"></td>
-                    <td><input type="number" name="items[0][unit_price]" class="form-control rounded-3" step="0.01" required oninput="updateTotal(this)"></td>
-                    <td><input type="number" name="items[0][quantity]" class="form-control rounded-3" min="1" value="1" required oninput="updateTotal(this)"></td>
+                    <td><input type="number" name="items[0][unit_price]" class="form-control rounded-3" step="0.01" required oninput="updateRowTotal(this)"></td>
+                    <td><input type="number" name="items[0][quantity]" class="form-control rounded-3" min="1" value="1" required oninput="updateRowTotal(this)"></td>
                     <td>
                         <div class="input-group">
-                            <input type="number" name="items[0][discount]" class="form-control rounded-3" step="0.01" oninput="updateTotal(this)">
-                            <select name="items[0][discount_type]" class="form-select rounded-3" onchange="updateTotal(this)">
+                            <input type="number" name="items[0][discount]" class="form-control rounded-3" step="0.01" oninput="updateRowTotal(this)">
+                            <select name="items[0][discount_type]" class="form-select rounded-3" onchange="updateRowTotal(this)">
                                 <option value="percentage">{{ __('sales_invoice.percentage') }}</option>
                                 <option value="amount">{{ __('sales_invoice.amount') }}</option>
                             </select>
                         </div>
                     </td>
-                    <td><input type="number" name="items[0][tax1]" class="form-control rounded-3" step="0.01" oninput="updateTotal(this)"></td>
-                    <td><input type="number" name="items[0][tax2]" class="form-control rounded-3" step="0.01" oninput="updateTotal(this)"></td>
+                    <td><input type="number" name="items[0][tax1]" class="form-control rounded-3" step="0.01" oninput="updateRowTotal(this)"></td>
+                    <td><input type="number" name="items[0][tax2]" class="form-control rounded-3" step="0.01" oninput="updateRowTotal(this)"></td>
                     <td><input type="number" name="items[0][total]" class="form-control rounded-3" readonly></td>
                     <td><button type="button" class="btn btn-danger btn-sm" onclick="removeRow(this)">{{ __('sales_invoice.delete') }}</button></td>
                 </tr>
@@ -156,39 +155,45 @@
         updateGrandTotal();
     }
 
-    function updateTotal(input) {
-        const row = input.closest('tr');
-        const unitPrice = parseFloat(row.querySelector('[name$="[unit_price]"]').value) || 0;
-        const quantity = parseFloat(row.querySelector('[name$="[quantity]"]').value) || 1;
-        const discount = parseFloat(row.querySelector('[name$="[discount]"]').value) || 0;
-        const discountType = row.querySelector('[name$="[discount_type]"]').value;
-        const tax1 = parseFloat(row.querySelector('[name$="[tax1]"]').value) || 0;
-        const tax2 = parseFloat(row.querySelector('[name$="[tax2]"]').value) || 0;
+    function updateRowTotal(input) {
+    const row = input.closest('tr');
+    const unitPrice = parseFloat(row.querySelector('[name$="[unit_price]"]').value) || 0;
+    const quantity = parseFloat(row.querySelector('[name$="[quantity]"]').value) || 1;
+    const discount = parseFloat(row.querySelector('[name$="[discount]"]').value) || 0;
+    const discountType = row.querySelector('[name$="[discount_type]"]').value;
+    const tax1 = parseFloat(row.querySelector('[name$="[tax1]"]').value) || 0;
+    const tax2 = parseFloat(row.querySelector('[name$="[tax2]"]').value) || 0;
 
-        let total = unitPrice * quantity;
+    let total = unitPrice * quantity;
 
-        // حساب الخصم
-        if (discountType === 'percentage') {
-            total -= total * (discount / 100);
-        } else {
-            total -= discount;
-        }
-
-        // حساب الضرائب
-        total += total * (tax1 / 100);
-        total += total * (tax2 / 100);
-
-        row.querySelector('[name$="[total]"]').value = total.toFixed(2);
-
-        updateGrandTotal();
+    // حساب الخصم
+    if (discountType === 'percentage') {
+        total -= total * (discount / 100); // تطبيق الخصم كنسبة مئوية
+    } else {
+        total -= discount; // تطبيق الخصم كمبلغ ثابت
     }
 
-    function updateGrandTotal() {
-        let grandTotal = 0;
-        document.querySelectorAll('[name$="[total]"]').forEach(input => {
-            grandTotal += parseFloat(input.value) || 0;
-        });
+    // حساب الضرائب
+    total += total * (tax1 / 100); // تطبيق الضريبة الأولى
+    total += total * (tax2 / 100); // تطبيق الضريبة الثانية
 
-        document.getElementById('grand-total').value = grandTotal.toFixed(2);
-    }
+    // تحديث قيمة الإجمالي في السطر
+    row.querySelector('[name$="[total]"]').value = total.toFixed(2);
+
+    // تحديث الإجمالي الكبير (Grand Total) في الأسفل
+    updateGrandTotal();
+}
+
+function updateGrandTotal() {
+    let grandTotal = 0;
+
+    // حساب الإجمالي الكبير من جميع السطور
+    document.querySelectorAll('[name$="[total]"]').forEach(input => {
+        grandTotal += parseFloat(input.value) || 0;
+    });
+
+    // تحديث الإجمالي الكبير في الحقل المخصص
+    document.getElementById('grand-total').value = grandTotal.toFixed(2);
+}
+
 </script>

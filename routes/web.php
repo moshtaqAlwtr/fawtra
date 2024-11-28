@@ -89,17 +89,6 @@ Route::group([
     Route::resource('invoices', InvoiceController::class);
 
     // مسارات الحسابات
-    // Route::prefix('accounts')->group(function () {
-
-
-
-
-    //     Route::get('/create', [ChartOfAccountController::class, 'create'])->name('accounts.create');
-    //     Route::post('/', [ChartOfAccountController::class, 'store'])->name('accounts.store');
-    //     Route::get('/{id}/edit', [ChartOfAccountController::class, 'edit'])->name('accounts.edit');
-    //     Route::put('/{id}', [ChartOfAccountController::class, 'update'])->name('accounts.update');
-    //     Route::delete('/{id}', [ChartOfAccountController::class, 'destroy'])->name('accounts.destroy');
-    // });
 
     // مسارات القيود اليومية
     Route::get('/add_entry', [JournalEntryController::class, 'create'])->name('add_entry');
@@ -123,16 +112,29 @@ Route::group([
     Route::post('/notifications/store', [CreditNotificationController::class, 'store'])->name('notifications.store');
 
     // مسارات الفواتير
-    Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
-    Route::post('/sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
-    Route::post('/invoice-items/store', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
-    Route::get('/invoice-items/create', [InvoiceItemController::class, 'create'])->name('invoice-items.create');
-    Route::get('invoice-management/{invoice}', [InvoiceController::class, 'show'])->name('invoice-management.show');
 
+// عرض الفواتير
+Route::get('/invoice-management', [InvoiceController::class, 'index'])->name('invoice-management');
+Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
 
+// عرض صفحة إضافة فاتورة جديدة
+Route::get('/invoice', [InvoiceController::class, 'create'])->name('sales_invoice.create');
 
-    Route::get('invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+// حفظ الفاتورة
+Route::post('/sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
 
+// عرض وتفاصيل الفاتورة
+Route::get('invoice-management/{id}', [InvoiceController::class, 'show'])->name('invoice-management.show');
+
+// // عرض الفاتورة للمعاينة (preview)
+// Route::get('/invoice/{id}/preview', [InvoiceController::class, 'show'])->name('invoice_preview');
+// Route::get('/invoice/{id}/edit', [InvoiceController::class, 'edit'])->name('invoice_edit');
+// Route::get('invoice/{id}/print', [InvoiceController::class, 'print'])->name('invoice_print');
+
+// Route::get('/invoice/{id}/send-to-client', [InvoiceController::class, 'sendToClient'])->name('invoice_send');
+Route::delete('/invoice/{id}/delete', [InvoiceController::class, 'destroy'])->name('invoice_delete');
+
+// Route::get('/invoice/{id}/copy', [InvoiceController::class, 'copy'])->name('invoice_copy');
 
     // مسارات الملف الشخصي
     Route::middleware(['auth'])->group(function () {
@@ -146,7 +148,7 @@ Route::group([
     // مسارات مدفوعات العملاء
     Route::get('/add_payment_process', [AccountsClientPaymentController::class, 'index'])->name('add_payment_process');
 
-   //ابو فالح Route::get('/add_payment_process', [AccountsClientPaymentController::class, 'index'])->name('payments.index');
+
 
     Route::get('/payments/create', [AccountsClientPaymentController::class, 'create'])->name('payments.create');
     Route::post('/payments', [AccountsClientPaymentController::class, 'store'])->name('payments.store');
@@ -165,8 +167,6 @@ Route::post('/employees/store', [EmployeeController::class, 'store'])->name('emp
     Route::resource('clients', ClientController::class);
     Route::post('/clients/store', [ClientController::class, 'storeClient'])->name('storeClient');
 
-    // Route::resource('payment_vouchers', PaymentVoucherController::class);
-    // Route::get('paymentVouchers/{id}/export-pdf', [PaymentVoucherController::class, 'exportToPDF'])->name('payment_vouchers.exportToPDF');
 
     // واجهة API
     Route::get('/api/clients/{client}/invoices', fn(Client $client) => $client->invoices);

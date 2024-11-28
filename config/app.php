@@ -99,6 +99,8 @@ return [
     'fallback_locale' => 'ar', // Or any default you prefer, other than English
 
 
+
+
     /*
     |--------------------------------------------------------------------------
     | Faker Locale
@@ -158,6 +160,7 @@ return [
 
     'providers' => ServiceProvider::defaultProviders()->merge([
 
+
         /*
          * Package Service Providers...
          */
@@ -171,6 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ])->toArray(),
 
@@ -186,6 +190,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+       'PDF' => Barryvdh\DomPDF\Facade::class,
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 

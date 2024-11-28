@@ -10,7 +10,7 @@
         <div class="container my-4">
             <!-- Header Buttons -->
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <button class="btn btn-success" onclick="location.href='{{route('sales_invoice')}}'">
+                <button class="btn btn-success" onclick="location.href='{{ route('sales_invoice') }}?page=create'">
                     <i class="fas fa-plus-circle"></i> {{ trans('purchase_admin.new_invoice') }}
                 </button>
 
@@ -194,21 +194,27 @@
                             </div>
 
                             <!-- زر القائمة المنسدلة -->
-                            <div class="dropdown">
+                            {{-- <div class="dropdown">
                                 <button class="btn btn-secondary fas" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v"></i>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="{{ route('invoice_preview', $invoice->id) }}"><i class="fas fa-eye text-success"></i> {{ trans('purchase_admin.view') }}</a></li>
-                                    <li><a class="dropdown-item" href=""><i class="fas fa-edit text-primary"></i> {{ trans('purchase_admin.edit') }}</a></li>
-                                    <li><a class="dropdown-item" href=""><i class="fas fa-file-pdf text-danger"></i> PDF</a></li>
-                                    <li><a class="dropdown-item" href=""><i class="fas fa-print text-secondary"></i> {{ trans('purchase_admin.print_pdf') }}</a></li>
-                                    <li><a class="dropdown-item" href=""><i class="fas fa-envelope text-info"></i> {{ trans('purchase_admin.send_to_client') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('invoice_preview', ['id' => $invoice->id]) }}">
+                                    </li>
+
+                                    <li><a class="dropdown-item" href="{{ route('invoice_edit', $invoice->id) }}"><i class="fas fa-edit text-primary"></i> {{ trans('purchase_admin.edit') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('invoice_print', $invoice->id) }}"><i class="fas fa-file-pdf text-danger"></i> PDF</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('invoice_print', $invoice->id) }}"><i class="fas fa-print text-secondary"></i> {{ trans('purchase_admin.print_pdf') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('invoice_send', $invoice->id) }}"><i class="fas fa-envelope text-info"></i> {{ trans('purchase_admin.send_to_client') }}</a></li>
                                     <li><a class="dropdown-item" href=""><i class="fas fa-credit-card text-warning"></i> {{ trans('purchase_admin.add_payment') }}</a></li>
-                                    <li><a class="dropdown-item" href=""><i class="fas fa-trash-alt text-danger"></i> {{ trans('purchase_admin.delete') }}</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="fas fa-copy text-secondary"></i> {{ trans('purchase_admin.copy') }}</a></li>
+                                    <li><form action="{{ route('invoice_delete', $invoice->id) }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="dropdown-item"><i class="fas fa-trash-alt text-danger"></i> {{ trans('purchase_admin.delete') }}</button>
+                                    </form></li>
+                                    <li><a class="dropdown-item" href="{{ route('invoice_copy', $invoice->id) }}"><i class="fas fa-copy text-secondary"></i> {{ trans('purchase_admin.copy') }}</a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
