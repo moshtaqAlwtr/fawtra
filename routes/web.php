@@ -116,10 +116,9 @@ Route::group([
 
 // عرض الفواتير
 // عرض صفحة إدارة الفواتير
-Route::get('/invoice-management', [InvoiceController::class, 'index'])->name('invoice-management');
-
-// عرض صفحة فواتير المبيعات
+// عرض صفحة فواتير المبيعات أو إدارة الفواتير
 Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
+Route::get('/invoice-management', [InvoiceController::class, 'index'])->name('invoice-management');
 
 // عرض صفحة إضافة فاتورة جديدة
 Route::get('/invoice', [InvoiceController::class, 'create'])->name('sales_invoice.create');
@@ -128,10 +127,10 @@ Route::get('/invoice', [InvoiceController::class, 'create'])->name('sales_invoic
 Route::post('/sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
 
 // عرض وتفاصيل الفاتورة
+// عرض تفاصيل فاتورة معينة باستخدام المعرف
 Route::get('invoice-management/{id}', [InvoiceController::class, 'show'])->name('invoice-management.show');
 
 // عرض الفاتورة للمعاينة (preview)
-Route::get('/invoice/{id}/preview', [InvoiceController::class, 'preview'])->name('invoice_preview');
 
 // عرض صفحة تعديل الفاتورة
 // مسار حذف الفاتورة

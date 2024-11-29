@@ -17,14 +17,30 @@ class InvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        // جلب جميع الفواتير مع العميل والموظف
-        $invoices = Invoice::with(['client', 'employee'])->get();
+        $page = $request->query('page');
 
-        return view('layouts.nav-slider-route', [
-            'page' => 'invoice-management',
-            'invoices' => $invoices
-        ]);
+        if ($page == 'create') {
+            // قم بتمرير البيانات المطلوبة إلى View
+            $clients = Client::all();  // جلب جميع العملاء
+            $employees = Employee::all();  // جلب جميع الموظفين
+
+            return view('layouts.nav-slider-route', [
+                'page'=>'sales_invoice',
+                'clients' => $clients,
+                'employees' => $employees
+            ]);
+        } elseif ($page == 'manage') {
+            $invoices = Invoice::with(['client', 'employee'])->get();
+            return view('layouts.nav-slider-route', [
+                'page'=>'invoice-management',
+                'invoices' => $invoices
+            ]);
+        }
+
+        return redirect()->route('invoice-management');
     }
+
+
     /**
      * Display the form to create a new invoice.
      */
@@ -85,21 +101,23 @@ class InvoiceController extends Controller
     }
 
     // العودة إلى صفحة عرض الفاتورة
-    return redirect()->route('invoice-management.show', ['invoice' => $invoice])
-                     ->with('success', __('sales_invoice.invoice_saved'));
+   // العودة إلى صفحة عرض الفاتورة
+// العودة إلى صفحة عرض الفاتورة باستخدام المعرف
+return redirect()->route('invoice-management.show', ['id' => $invoice->id])
+                 ->with('success', __('sales_invoice.invoice_saved'));
 }
 
 
     /**
      * عرض تفاصيل فاتورة معينة
      */
-    // public function show(Invoice $invoice)  // استخدم Implicit Binding
-    // {
-    //     return view('layouts.nav-slider-route', [
-    //         'page' => 'invoice-management',
-    //         'invoice' => $invoice
-    //     ]);
-    // }
+    public function show(Invoice $invoice)  // استخدم Implicit Binding
+    {
+        return view('layouts.nav-slider-route', [
+            'page' => 'invoice-management',
+            'invoice' => $invoice
+        ]);
+    }
 
 
 

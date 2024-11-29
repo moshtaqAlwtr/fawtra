@@ -36,7 +36,7 @@
             <div class="collapse" id="sidebarEcommerce">
                 <ul class="side-nav-second-level">
                     <li>
-                         <a href="{{ route('invoice-management') }}?page=management">{{ trans('main_trans.invoice_management') }}</a>
+                         <a href="{{ route('invoice-management') }}?page=manage">{{ trans('main_trans.invoice_management') }}</a>
 
                     </li>
                     <li>
