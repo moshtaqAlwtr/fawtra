@@ -23,10 +23,14 @@ class PaymentVoucher extends Model
         'treasury_id',
         'tax_id',
         'attachment',
-        'voucher_type',
-        'tax_amount',
-        'employee_id',
-        'status',
+        'unit',
+        'vendor',
+        'employee_name', // اسم الموظف الجديد
+        'employee_id', // معرف الموظف الجديد
+        'tax_id', // معرف الضريبة الجديد
+        'category',
+        'code_number',
+        'created_by',
     ];
 
     // العلاقات
