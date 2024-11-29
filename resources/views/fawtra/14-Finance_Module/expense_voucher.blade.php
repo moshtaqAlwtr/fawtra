@@ -1,3 +1,13 @@
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="container vh-100 d-flex justify-content-center align-items-center">
     <div class="w-100" style="max-width: 800px;">
         <h1 class="text-primary">إضافة سند صرف</h1>

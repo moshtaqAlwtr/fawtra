@@ -160,71 +160,85 @@ class InvoiceController extends Controller
     /**
      * Show the form to edit an invoice.
      */
-    public function edit($id)
-    {
-        $invoice = Invoice::with('invoice_items')->findOrFail($id);
-        $clients = Client::all();
-        $employees = Employee::all(); // Fetch all employees for the edit form
-        return view('invoices.edit', compact('invoice', 'clients', 'employees'));
+// عرض صفحة تعديل الفاتورة
+public function edit(Invoice $invoice)
+{
+    // التحقق من حالة الفاتورة إذا كانت قد تم إصدارها
+    if ($invoice->status != 'issued') {
+        return back()->with('error', 'طبقًا لتعليمات هيئة الزكاة والضريبة لا يمكن تعديل أو حذف فاتورة بعد إصدارها. ولكن يمكن إصدار فاتورة مرتجعة أو إشعار دائن لإلغائها أو تعديلها.');
     }
+
+    // جلب العملاء والموظفين لتعبئة الفورم
+    $clients = Client::all();
+    $employees = Employee::all();
+
+    // عرض صفحة التعديل مع البيانات
+    return view('invoices.edit', [
+        'invoice' => $invoice,
+        'clients' => $clients,
+        'employees' => $employees,
+    ]);
+}
 
     /**
      * Update a specific invoice.
      */
-    public function update(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'client_id' => 'required|exists:clients,id',
-            'invoice_date' => 'required|date',
-            'employee_id' => 'required|exists:employees,employee_id', // Employee validation
-            'items' => 'required|array',
-            'items.*.description' => 'required|string|max:255',
-            'items.*.quantity' => 'required|numeric|min:1',
-            'items.*.price' => 'required|numeric|min:0',
-        ]);
-
-        $invoice = Invoice::findOrFail($id);
-        $invoice->update([
-            'client_id' => $validatedData['client_id'],
-            'invoice_date' => $validatedData['invoice_date'],
-            'employee_id' => $validatedData['employee_id'], // Update the employee
-        ]);
-
-        // Delete old invoice items
-        $invoice->invoice_items()->delete();
-        $total = 0;
-
-        // Add new items
-        foreach ($validatedData['items'] as $item) {
-            if (!isset($item['price'])) {
-                return back()->withErrors(['items.*.price' => 'Price is required for each item'])->withInput();
-            }
-
-            $invoice->invoice_items()->create($item);
-            $total += $item['quantity'] * $item['price'];
-        }
-
-        $invoice->update(['total' => $total]);
-
-        return redirect()->route('invoices.index')->with('success', 'Invoice updated successfully.');
+// تعديل فاتورة
+public function update(Request $request, Invoice $invoice)
+{
+    // التحقق من حالة الفاتورة إذا كانت قد تم إصدارها
+    if ($invoice->status != 'issued') {
+        // عرض رسالة مع روابط لفتح الفاتورة المرتجعة أو إشعار دائن
+        return redirect()->route('invoice-management')->with('error',
+            'طبقًا لتعليمات هيئة الزكاة والضريبة لا يمكن تعديل أو حذف فاتورة بعد إصدارها. ولكن يمكن
+            <a href="' . route('returned_invoices') . '">إصدار فاتورة مرتجعة</a> أو
+            <a href="' . route('debit-notices') . '">إصدار إشعار دائن</a> لإلغائها أو تعديلها.'
+        );
     }
 
-    /**
+
+    // التحقق من البيانات المدخلة من الـ Form
+    $validatedData = $request->validate([
+        'client_id' => 'required|exists:clients,id',
+        'employee_id' => 'required|exists:employees,id',
+    ]);
+
+    // تحديث بيانات الفاتورة بناءً على الحقول المرسلة
+    $invoice->update($validatedData);
+
+    // إعادة التوجيه إلى صفحة الفاتورة مع رسالة النجاح
+    return redirect()->route('invoice-management')->with('success', 'تم تحديث الفاتورة بنجاح.');
+}
+
+// حذف فاتورة
+
+    // الحصول على الفاتورة بناءً على معرف الفاتورة المرسل عبر الطلب
+    public function destroy(Request $request, $invoice_id)
+    {
+        // الحصول على الفاتورة باستخدام invoice_id المرسل عبر الطلب
+        $invoice = Invoice::findOrFail($invoice_id);
+
+        // التحقق من حالة الفاتورة إذا كانت قد تم إصدارها
+        if ($invoice->status != 'issued') {
+            // عرض رسالة مع روابط لفتح الفاتورة المرتجعة أو إشعار دائن
+            return redirect()->route('invoice-management')->with('error',
+                'طبقًا لتعليمات هيئة الزكاة والضريبة لا يمكن تعديل أو حذف فاتورة بعد إصدارها. ولكن يمكن
+                <a href="' . route('returned_invoices') . '">إصدار فاتورة مرتجعة</a> أو
+                <a href="' . route('debit-notices') . '">إصدار إشعار دائن</a> لإلغائها أو تعديلها.'
+            );}
+        // حذف عناصر الفاتورة وحذف الفاتورة نفسها فقط إذا كانت لم تُصدر
+        $invoice->invoice_items()->delete();
+        $invoice->delete();
+
+        // إعادة التوجيه إلى صفحة إدارة الفواتير مع رسالة النجاح
+        return redirect()->route('invoice-management')->with('success', 'تم حذف الفاتورة بنجاح.');
+    }
+
+
+
+   /**
      * Delete a specific invoice.
      */
-    public function destroy($id)
-    {
-        $invoice = Invoice::findOrFail($id);
-        $invoice->invoice_items()->delete();  // حذف العناصر المرتبطة بالفاتورة
-        $invoice->delete();  // حذف الفاتورة نفسها
-
-        // إعادة التوجيه مع رسالة نجاح
-        return view('layouts.nav-slider-route', [
-            'page' => 'invoice-management',
-            'invoice' => $invoice  // تمرير الفاتورة هنا
-        ]);
-    }
-
     /**
      * Add tax and discount to the invoice.
      */

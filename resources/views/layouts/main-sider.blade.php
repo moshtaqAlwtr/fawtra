@@ -54,7 +54,7 @@
                     </li>
                     <li>
 
-            <a href="">{{ trans('main_trans.Returned_invoices') }}</a>
+            <a href="{{route('returned_invoices')}}">{{ trans('main_trans.Returned_invoices') }}</a>
 
                     </li>
                     <li>

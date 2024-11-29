@@ -12,7 +12,7 @@ class CreatePaymentVouchersTable extends Migration
 
         public function up()
 {
-    if (!Schema::hasTable('payment_vouchers')) {
+
         Schema::create('payment_vouchers', function (Blueprint $table) {
             $table->id('payment_id');
             $table->unsignedBigInteger('account_id')->nullable();
@@ -35,7 +35,7 @@ class CreatePaymentVouchersTable extends Migration
             $table->foreign('employee_id')->references('employee_id')->on('employees')->onDelete('set null');
             $table->foreign('tax_id')->references('id')->on('taxes')->onDelete('set null');
         });
-    }
+
     }
 
     /**

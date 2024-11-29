@@ -1,5 +1,19 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- عرض الرسائل (success أو error) -->
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+
+@if(session('error'))
+    <div class="alert alert-danger">
+        <!-- عرض الرسالة مع الروابط -->
+        {!! session('error') !!}
+    </div>
+@endif
 
 <div class="main-container">
     <div class="content-box">
@@ -193,28 +207,58 @@
                                 <small class="text-muted"> {{ $invoice->employee->first_name }}</small>
                             </div>
 
-                            <!-- زر القائمة المنسدلة -->
-                            {{-- <div class="dropdown">
-                                <button class="btn btn-secondary fas" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="{{ route('invoice_preview', ['id' => $invoice->id]) }}">
-                                    </li>
+                        <!-- زر القائمة المنسدلة -->
+<div class="dropdown">
+    <button class="btn btn-secondary fas" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-ellipsis-v"></i>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <!-- قائمة الخيارات الأخرى -->
+        <li><li>
+            <!-- في الأعلى من الصفحة لعرض الرسائل -->
+            <form action="{{ route('invoice.delete', ['invoice' => $invoice->invoice_id]) }}" method="POST" style="display:inline;" onsubmit="return confirm('هل أنت متأكد من حذف هذه الفاتورة؟')">
+                @csrf
+                @method('DELETE')
 
-                                    <li><a class="dropdown-item" href="{{ route('invoice_edit', $invoice->id) }}"><i class="fas fa-edit text-primary"></i> {{ trans('purchase_admin.edit') }}</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('invoice_print', $invoice->id) }}"><i class="fas fa-file-pdf text-danger"></i> PDF</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('invoice_print', $invoice->id) }}"><i class="fas fa-print text-secondary"></i> {{ trans('purchase_admin.print_pdf') }}</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('invoice_send', $invoice->id) }}"><i class="fas fa-envelope text-info"></i> {{ trans('purchase_admin.send_to_client') }}</a></li>
-                                    <li><a class="dropdown-item" href=""><i class="fas fa-credit-card text-warning"></i> {{ trans('purchase_admin.add_payment') }}</a></li>
-                                    <li><form action="{{ route('invoice_delete', $invoice->id) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="dropdown-item"><i class="fas fa-trash-alt text-danger"></i> {{ trans('purchase_admin.delete') }}</button>
-                                    </form></li>
-                                    <li><a class="dropdown-item" href="{{ route('invoice_copy', $invoice->id) }}"><i class="fas fa-copy text-secondary"></i> {{ trans('purchase_admin.copy') }}</a></li>
-                                </ul>
-                            </div> --}}
+                    <!-- عرض الزر للحذف فقط إذا كانت الفاتورة في حالة غير 'issued' -->
+                    <button type="submit" class="dropdown-item">
+                        <i class="fas fa-trash-alt text-danger"></i> {{ trans('purchase_admin.delete') }}
+                    </button>
+
+            </form>
+
+
+
+
+                    </li>
+
+        </li>
+        {{-- <li><a class="dropdown-item" href="{{ route('invoice_copy', $invoice->id) }}">
+            <i class="fas fa-copy text-secondary"></i> {{ trans('purchase_admin.copy') }}
+        </a></li> --}}
+        <li>
+            <form method="POST" action="{{ route('invoices.update', $invoice) }}">
+                @csrf
+                @method('PUT')
+
+                <!-- الحقول الخاصة بالتعديل مثل العميل، الموظف، المبلغ، إلخ -->
+                <button type="submit" class="dropdown-item">
+                    <i class="fas fa-edit text-primary"></i> {{ trans('purchase_admin.edit') }}
+                </button>
+            </form>
+
+
+
+        </li>
+        {{-- <li><a class="dropdown-item" href="{{ route('invoice_print', $invoice->id) }}">
+            <i class="fas fa-print text-secondary"></i> {{ trans('purchase_admin.print_pdf') }}
+        </a></li> --}}
+        {{-- <li><a class="dropdown-item" href="{{ route('invoice_send', $invoice->id) }}">
+            <i class="fas fa-envelope text-info"></i> {{ trans('purchase_admin.send_to_client') }}
+        </a></li> --}}
+    </ul>
+</div>
+
                         </div>
                     </div>
                 </div>

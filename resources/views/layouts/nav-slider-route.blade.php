@@ -97,6 +97,10 @@
                         @include('fawtra.2-purchase_admin.sales_invoice')
                     @break
 
+                    @case('returned_invoices')
+                        @include('fawtra.2-purchase_admin.returned_invoices')
+                    @break
+
                     @case('quotation')
                         @include('fawtra.2-purchase_admin.quotation')
                     @break

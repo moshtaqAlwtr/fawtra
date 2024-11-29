@@ -64,6 +64,7 @@ Route::group([
         'show_credit_notice' => 'show_credit_notice',
         'client-view' => 'client-view',
         'credit-note' => 'credit-note',
+        'returned_invoices' => 'returned_invoices',
         'appointments' => 'appointments',
         // 'chart_of_accounts' => 'chart_of_accounts',
         'journal_entries_day' => 'journal_entries_day',
@@ -114,7 +115,10 @@ Route::group([
     // مسارات الفواتير
 
 // عرض الفواتير
+// عرض صفحة إدارة الفواتير
 Route::get('/invoice-management', [InvoiceController::class, 'index'])->name('invoice-management');
+
+// عرض صفحة فواتير المبيعات
 Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
 
 // عرض صفحة إضافة فاتورة جديدة
@@ -126,13 +130,28 @@ Route::post('/sales_invoice/store', [InvoiceController::class, 'store'])->name('
 // عرض وتفاصيل الفاتورة
 Route::get('invoice-management/{id}', [InvoiceController::class, 'show'])->name('invoice-management.show');
 
-// // عرض الفاتورة للمعاينة (preview)
-// Route::get('/invoice/{id}/preview', [InvoiceController::class, 'show'])->name('invoice_preview');
-// Route::get('/invoice/{id}/edit', [InvoiceController::class, 'edit'])->name('invoice_edit');
-// Route::get('invoice/{id}/print', [InvoiceController::class, 'print'])->name('invoice_print');
+// عرض الفاتورة للمعاينة (preview)
+Route::get('/invoice/{id}/preview', [InvoiceController::class, 'preview'])->name('invoice_preview');
 
-// Route::get('/invoice/{id}/send-to-client', [InvoiceController::class, 'sendToClient'])->name('invoice_send');
-Route::delete('/invoice/{id}/delete', [InvoiceController::class, 'destroy'])->name('invoice_delete');
+// عرض صفحة تعديل الفاتورة
+// مسار حذف الفاتورة
+// بدل من ذلك، اجعلها تأخذ معرف الفاتورة مباشرة:
+Route::delete('/invoice/delete/{invoice}', [InvoiceController::class, 'destroy'])->name('invoice.delete');
+
+// عرض الفاتورة وتعديلها
+Route::get('/invoices/{invoice}/edit', [InvoiceController::class, 'edit'])->name('invoices.edit');
+
+// تحديث الفاتورة بعد التعديل
+Route::put('/invoices/{invoice}', [InvoiceController::class, 'update'])->name('invoices.update');
+
+
+// طباعة الفاتورة
+Route::get('invoice/{id}/print', [InvoiceController::class, 'print'])->name('invoice_print');
+
+// إرسال الفاتورة إلى العميل
+Route::get('/invoice/{id}/send-to-client', [InvoiceController::class, 'sendToClient'])->name('invoice_send');
+
+// حذف الفاتورة (detele)
 
 // Route::get('/invoice/{id}/copy', [InvoiceController::class, 'copy'])->name('invoice_copy');
 
@@ -153,10 +172,14 @@ Route::delete('/invoice/{id}/delete', [InvoiceController::class, 'destroy'])->na
     Route::get('/payments/create', [AccountsClientPaymentController::class, 'create'])->name('payments.create');
     Route::post('/payments', [AccountsClientPaymentController::class, 'store'])->name('payments.store');
         // مسارات سندات الصرف
+        Route::get('/import_expense_receipts', [PaymentVoucherController::class, 'index'])->name('import_expense_receipts');
         Route::prefix('expense_voucher')->group(function () {
-            Route::get('/', [PaymentVoucherController::class, 'index'])->name('payment_vouchers.index');
+            Route::get('/paymentVouchers', [PaymentVoucherController::class, 'index'])->name('payment_vouchers.index');
             Route::get('/payment_vouchers', [PaymentVoucherController::class, 'create'])->name('payment_vouchers.create');
-            Route::post('/', [PaymentVoucherController::class, 'store'])->name('payment_vouchers.store');
+            Route::post('', [PaymentVoucherController::class, 'store'])->name('payment_vouchers.store');
+
+            Route::delete('/payment-voucher/{payment_id}', [PaymentVoucherController::class, 'destroy'])->name('payment_vouchers.destroy');
+
         });
 
 //الموظفين
