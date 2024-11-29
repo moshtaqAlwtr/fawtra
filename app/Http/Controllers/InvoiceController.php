@@ -85,15 +85,15 @@ class InvoiceController extends Controller
     }
 
     // العودة إلى صفحة عرض الفاتورة
-<<<<<<< Updated upstream
+
    // العودة إلى صفحة عرض الفاتورة
 // العودة إلى صفحة عرض الفاتورة باستخدام المعرف
 return redirect()->route('invoice-management.show', ['id' => $invoice->invoice_id])
                  ->with('success', __('sales_invoice.invoice_saved'));
-=======
+
     return redirect()->route('invoice-management.show', ['invoice' => $invoice])
                      ->with('success', __('sales_invoice.invoice_saved'));
->>>>>>> Stashed changes
+
 }
 
 
