@@ -11,24 +11,33 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('revenues', function (Blueprint $table) {
+        Schema::create('receipts', function (Blueprint $table) {
             $table->id(); // Primary Key
-            $table->date('date'); // Revenue Date
-            $table->string('source', 255); // Revenue Source
-            $table->decimal('amount', 15, 2); // Amount
-            $table->text('description')->nullable(); // Description
-            $table->unsignedBigInteger('account_id'); // Foreign Key to Chart of Accounts
-            $table->unsignedBigInteger('treasury_id')->nullable(); // Foreign Key to Treasuries
-            $table->unsignedBigInteger('bank_account_id')->nullable(); // Foreign Key to Bank Accounts
-            $table->unsignedBigInteger('journal_entry_id')->nullable(); // Foreign Key to Journal Entries
-            $table->string('created_by', 255)->nullable(); // User who created the revenue
+            $table->string('code')->unique(); // رقم السند
+            $table->decimal('amount', 15, 2); // المبلغ
+            $table->text('description')->nullable(); // الوصف
+            $table->string('currency')->default('SAR'); // العملة
+            $table->date('date'); // تاريخ السند
+          $table->unsignedBigInteger('treasury_id')->nullable(); // جدول الخزائن (اختياري)
+            $table->unsignedBigInteger('bank_account_id')->nullable(); // جدول حسابات البنوك (اختياري)
+            $table->unsignedBigInteger('journal_entry_id')->nullable(); // جدول القيود المحاسبية
+            $table->enum('classification', ['default', 'custom'])->default('default'); // التصنيف
+            $table->boolean('is_recurring')->default(false); // هل السند مكرر؟
+            $table->enum('recurrence_type', ['daily', 'weekly', 'monthly'])->nullable(); // نوع التكرار
+            $table->date('recurrence_start_date')->nullable(); // تاريخ بدء التكرار
+            $table->date('recurrence_end_date')->nullable(); // تاريخ انتهاء التكرار
+            // جدول الحسابات
+            $table->unsignedBigInteger('client_id')->nullable(); // جدول العملاء
+            $table->json('attachments')->nullable(); // المرفقات
+            $table->string('created_by', 255)->nullable(); // الشخص الذي أنشأ السند
             $table->timestamps();
 
             // Foreign Key Constraints
-            $table->foreign('account_id')->references('id')->on('chart_of_accounts')->onDelete('cascade');
+            $table->foreign('journal_entry_id')->references('id')->on('journal_entries')->onDelete('set null');
             $table->foreign('treasury_id')->references('id')->on('treasuries')->onDelete('set null');
             $table->foreign('bank_account_id')->references('id')->on('bank_accounts')->onDelete('set null');
-            $table->foreign('journal_entry_id')->references('id')->on('journal_entries')->onDelete('set null');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('set null');
+
         });
     }
 
@@ -37,6 +46,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('revenues');
+        Schema::dropIfExists('receipts');
     }
 };

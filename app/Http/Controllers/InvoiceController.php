@@ -103,7 +103,7 @@ class InvoiceController extends Controller
     // العودة إلى صفحة عرض الفاتورة
    // العودة إلى صفحة عرض الفاتورة
 // العودة إلى صفحة عرض الفاتورة باستخدام المعرف
-return redirect()->route('invoice-management.show', ['id' => $invoice->id])
+return redirect()->route('invoice-management.show', ['id' => $invoice->invoice_id])
                  ->with('success', __('sales_invoice.invoice_saved'));
 }
 

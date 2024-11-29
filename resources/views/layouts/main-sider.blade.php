@@ -562,13 +562,13 @@
                         </li>
                         <!-- سندات القبض -->
                         <li class="side-nav-item">
-                            <a href="">
+                            <a href="{{route('actions_page')}}">
                                 <span>{{ trans('main_trans.Receipts') }}</span>
                             </a>
                         </li>
                         <!-- خزائن وحسابات بنكية -->
                         <li class="side-nav-item">
-                            <a href="">
+                            <a href="{{route('add_receipt')}}">
                                 <span>{{ trans('main_trans.Cash_and_Bank_Accounts') }}</span>
                             </a>
                         </li>

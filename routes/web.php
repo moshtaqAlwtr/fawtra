@@ -12,6 +12,7 @@ use App\Http\Controllers\{
     CreditNotificationController,
     EmployeeController,
     Invoices\InvoiceItemController,
+    Finance\ReceiptController,
     Accounts\ChartOfAccountController,
     Accounts\AccountsClientPaymentController,
     JournalEntryController,
@@ -69,10 +70,12 @@ Route::group([
         // 'chart_of_accounts' => 'chart_of_accounts',
         'journal_entries_day' => 'journal_entries_day',
         'import_expense_receipts' => 'import_expense_receipts',
+        'add_receipt'=> 'add_receipt',
         'expense_voucher' => 'expense_voucher',
         'employee_management' => 'employee_management',
         'add_employee' => 'add_employee',
         'schedule_appointment' => 'schedule_appointment',
+        'actions_page' => 'actions_page',
     ];
     foreach ($navSliderRoutes as $route => $page) {
         Route::get("/$route", fn() => view('layouts.nav-slider-route', ['page' => $page]))->name($route);
@@ -153,7 +156,13 @@ Route::get('/invoice/{id}/send-to-client', [InvoiceController::class, 'sendToCli
 // حذف الفاتورة (detele)
 
 // Route::get('/invoice/{id}/copy', [InvoiceController::class, 'copy'])->name('invoice_copy');
+Route::get('/receipts', [ReceiptController::class, 'index'])->name('receipts.index');
 
+// روت لعرض صفحة إنشاء السندات
+Route::get('/receipts/create', [ReceiptController::class, 'create'])->name('receipts.create');
+
+// روت لحفظ السندات
+Route::post('/receipts', [ReceiptController::class, 'store'])->name('receipts.store');
     // مسارات الملف الشخصي
     Route::middleware(['auth'])->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

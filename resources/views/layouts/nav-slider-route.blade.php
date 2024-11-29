@@ -172,10 +172,16 @@
                 @include('fawtra.14-finance_module.expense_voucher')
             @break
 
-                    @case('show_credit_notice')
+            @case('actions_page')
+            @include('fawtra.14-finance_module.actions_page')
+        @break
+                @case('show_credit_notice')
                         @include('fawtra.2-purchase_admin.show_credit_notice')
                     @break
 
+                    @case('add_receipt')
+                    @include('fawtra.14-finance_module.add_receipt')
+                @break
 
                     @default
                 @endswitch
