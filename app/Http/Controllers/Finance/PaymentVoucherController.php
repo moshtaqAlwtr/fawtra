@@ -163,6 +163,7 @@ class PaymentVoucherController extends Controller
             'description' => 'nullable|string|max:255',
             'account_id' => 'required|exists:chart_of_accounts,id',
             'treasury_id' => 'required|exists:treasuries,id',
+            'tax_id' => 'required|exists:taxes,id',
             'attachment' => 'nullable|file|max:2048',
             'details' => 'array', // التحقق إذا كانت التفاصيل موجودة
             'details.*.unit' => 'nullable|string|max:50',

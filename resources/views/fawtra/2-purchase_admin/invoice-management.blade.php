@@ -193,8 +193,8 @@
                                 <small class="text-muted"> {{ $invoice->employee->first_name }}</small>
                             </div>
 
-                            <!-- زر القائمة المنسدلة -->
-                            {{-- <div class="dropdown">
+                            
+                             <!-- <div class="dropdown">
                                 <button class="btn btn-secondary fas" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v"></i>
                                 </button>
@@ -214,8 +214,8 @@
                                     </form></li>
                                     <li><a class="dropdown-item" href="{{ route('invoice_copy', $invoice->id) }}"><i class="fas fa-copy text-secondary"></i> {{ trans('purchase_admin.copy') }}</a></li>
                                 </ul>
-                            </div> --}}
-                        </div>
+                            </div>  -->
+                        </div> 
                     </div>
                 </div>
             @endforeach

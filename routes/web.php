@@ -153,6 +153,8 @@ Route::delete('/invoice/{id}/delete', [InvoiceController::class, 'destroy'])->na
     Route::get('/payments/create', [AccountsClientPaymentController::class, 'create'])->name('payments.create');
     Route::post('/payments', [AccountsClientPaymentController::class, 'store'])->name('payments.store');
         // مسارات سندات الصرف
+        Route::get('/import_expense_receipts', [PaymentVoucherController::class, 'index'])->name('import_expense_receipts');
+
         Route::prefix('expense_voucher')->group(function () {
             Route::get('/', [PaymentVoucherController::class, 'index'])->name('payment_vouchers.index');
             Route::get('/payment_vouchers', [PaymentVoucherController::class, 'create'])->name('payment_vouchers.create');

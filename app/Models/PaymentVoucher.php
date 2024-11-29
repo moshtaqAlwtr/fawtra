@@ -23,7 +23,8 @@ class PaymentVoucher extends Model
         'attachment',
         'unit',
         'vendor',
-        'employee_name', // اسم الموظف الجديد
+        'treasury_id',
+         // اسم الموظف الجديد
         'employee_id', // معرف الموظف الجديد
         'tax_id', // معرف الضريبة الجديد
         'category',
