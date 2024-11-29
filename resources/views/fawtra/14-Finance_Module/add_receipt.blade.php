@@ -2,6 +2,15 @@
     <title>إضافة سند قيض</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
     <!-- الهيدر -->
     <div class="bg-primary text-white text-center py-3">
@@ -68,7 +77,7 @@
                             <select id="seller" class="form-control" name="seller">
                                 <option selected>اختر بائع</option>
                                 @foreach($employees as $employee)
-                                    <option value="{{ $employee->employee_id }}">{{ $employee->name }}</option>
+                                    <option value="{{ $employee->employee_id }}">{{ $employee->first_name }}</option>
                                 @endforeach
                             </select>
                         </div>
