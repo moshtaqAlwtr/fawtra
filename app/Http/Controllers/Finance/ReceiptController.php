@@ -21,23 +21,21 @@ class ReceiptController extends Controller
     public function index()
     {
         // جلب السندات مع جميع العلاقات المطلوبة
-        $receipts = ReceiptVoucher::with([
-            'paymentVoucherDetail',
-            'employee',
-            'account',
-            'treasury',
-            'entry',
-        ])->get();
+        $receipts = ReceiptVoucher::all();
+       // ��لب ��ميع الحسابات
+        $employees = Employee::all(); // ��لب المو��فين
+        $treasuries = Treasury::all(); // ��لب الخزا��ن
+
 
         // عرض البيانات في العرض
         return view('layouts.nav-slider-route', [
             'page' => 'add_receipt',
             'receipts' => $receipts,
-            'accounts' => Account::all(),
-            'employees' => Employee::all(),
-            'treasuries' => Treasury::all(),
-            'paymentVoucherDetails' => PaymentVoucherDetail::all(),
-            'entries' => Entry::all(),
+
+            'employees' => $employees,
+            'treasuries' => $treasuries
+
+
         ]);
     }
 
@@ -48,6 +46,9 @@ class ReceiptController extends Controller
     {
         $paymentVoucherDetails = PaymentVoucherDetail::all();
         $employees = Employee::all();
+        $treasuries= Treasury::all();
+        $receipts = ReceiptVoucher::all();
+        $accounts = Account::all();
         return view('layouts.nav-slider-route', [
             'page' => 'add_receipt',
             'receipts' => $receipts,
@@ -83,7 +84,7 @@ class ReceiptController extends Controller
         $account = Account::where('type', 'restriction')->first();
 
         // إنشاء السند
-        $receipt = new Receipt();
+        $receipt = new ReceiptVoucher();
         $receipt->code = $request->code;
         $receipt->amount = $request->amount;
         $receipt->description = $request->description;
@@ -113,7 +114,10 @@ class ReceiptController extends Controller
      */
     public function show($id)
     {
-        $receipt = Receipt::with(['paymentVoucherDetail', 'employee'])->findOrFail($id);
+        $receiptVoucher = ReceiptVoucher::find($id);
+
+        // الحصول على الموظف المرتبط بالـ ReceiptVoucher
+        $employee = $receiptVoucher->employee;
         return view('fawtra.14fcdcdc.account.receipts.show', compact('receipt'));
     }
 
@@ -125,6 +129,7 @@ class ReceiptController extends Controller
         $receipt = Receipt::findOrFail($id);
         $paymentVoucherDetails = PaymentVoucherDetail::all();
         $employees = Employee::all();
+
         return view('fawtra.14fcdcdc.account.receipts.edit', compact('receipt', 'paymentVoucherDetails', 'employees'));
     }
 
