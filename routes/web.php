@@ -131,7 +131,8 @@ Route::post('/sales_invoice/store', [InvoiceController::class, 'store'])->name('
 
 // عرض وتفاصيل الفاتورة
 // عرض تفاصيل فاتورة معينة باستخدام المعرف
-Route::get('invoice-management/{id}', [InvoiceController::class, 'show'])->name('invoice-management.show');
+Route::get('invoice-management/{invoice}', [InvoiceController::class, 'show'])->name('invoice-management.show');
+
 
 // عرض الفاتورة للمعاينة (preview)
 

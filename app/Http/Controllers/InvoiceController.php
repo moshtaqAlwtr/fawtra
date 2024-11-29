@@ -83,7 +83,7 @@ class InvoiceController extends Controller
     $invoice->payment_terms = $request->payment_terms;
     $invoice->grand_total = array_sum(array_column($request->items, 'total'));
     $invoice->save();
-
+    
     // إضافة عناصر الفاتورة
     foreach ($request->items as $item) {
         $invoiceItem = new InvoiceItem();
@@ -103,22 +103,39 @@ class InvoiceController extends Controller
     // العودة إلى صفحة عرض الفاتورة
    // العودة إلى صفحة عرض الفاتورة
 // العودة إلى صفحة عرض الفاتورة باستخدام المعرف
-return redirect()->route('invoice-management.show', ['id' => $invoice->invoice_id])
-                 ->with('success', __('sales_invoice.invoice_saved'));
+$invoices = Invoice::all(); // جلب جميع السجلات
+if ($invoices->isEmpty()) {
+    return redirect()->route('invoice-management')
+                     ->with(['error' => __('sales_invoice.no_invoice_found')]);
 }
+
+
+
+// إعادة التوجيه إلى صفحة عرض الفاتورة بعد الحفظ
+return redirect()->route('invoice-management.show', ['invoice' => $invoice->invoice_id])
+                 ->with('success', __('sales_invoice.invoice_saved'))
+                 ->with('invoices', $invoices);  // هنا
+}
+
+
 
 
     /**
      * عرض تفاصيل فاتورة معينة
      */
-    public function show(Invoice $invoice)  // استخدم Implicit Binding
+    public function show(Invoice $invoice)
     {
-        return view('layouts.nav-slider-route', [
+        // جلب جميع الفواتير
+        $invoices = Invoice::all(); // جلب جميع الفواتير
+    
+        return view('fawtra.2-purchase_admin.invoice-management', [
             'page' => 'invoice-management',
-            'invoice' => $invoice
+            'invoice' => $invoice,
+            'invoices' => $invoices // تأكد من تمرير $invoices هنا
         ]);
     }
-
+    
+    
 
 
     /**
