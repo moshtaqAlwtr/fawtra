@@ -220,5 +220,6 @@
     <script src="{{ asset('assets/js/date.js') }}"></script>
 
     @yield('scripts')
+    <script src="{{ asset('js/invoice-management.js') }}"></script>
 </body>
 </html>
