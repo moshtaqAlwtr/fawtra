@@ -19,16 +19,18 @@
 
 <div class="main-container">
     <div class="content-box">
-
         <div class="top-bar">
             <h5 class="mb-0">{{ trans('purchase_admin.invoice_management') }}</h5>
         </div>
+
         <div class="container my-4">
             <!-- Header Buttons -->
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <button class="btn btn-success" onclick="location.href='{{ route('sales_invoice') }}?page=create'">
                     <i class="fas fa-plus-circle"></i> {{ trans('purchase_admin.new_invoice') }}
                 </button>
+
+                <!-- أزرار البحث الأساسية -->
 
                 <!-- Settings and Actions Buttons -->
                 <div class="d-flex align-items-center">
@@ -65,45 +67,96 @@
                     <input type="text" id="invoiceNumber" class="form-control">
                 </div>
                 <div class="form-group col-md-3">
-                    <label for="status">{{ trans('purchase_admin.status') }}</label>
-                    <select id="status" class="form-control">
-                        <option>{{ trans('purchase_admin.any_status') }}</option>
+                    <label for="status12">الحالة </label>
+                    <select id="status12" class="form-control">
+                        <option value="">اي حالة</option>
+                        <option value="pending">قيد الانتظار</option>
+                        <option value="processing">قيد المعالجة</option>
+                        <option value="completed">مكتمل</option>
+                        <option value="cancelled">ملغي</option>
                     </select>
                 </div>
             </div>
         </div>
 
         <!-- Advanced Search Form Section -->
-        <div id="advancedSearchForm" style="display: none;">
-            <div class="card mt-3">
-                <div class="card-body">
-                    <h5 class="card-title">{{ trans('purchase_admin.advanced_search') }}</h5>
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <label>{{ trans('purchase_admin.item') }}</label>
-                            <input type="text" class="form-control">
+        <div id="advancedSearchForm" style="display: none;" class="advanced-search-section">
+            <h5 class="advanced-search-title">{{ trans('purchase_admin.advanced_search') }}</h5>
+            <form id="advancedSearchFormElement" class="advanced-search-form">
+                <div class="search-row">
+                    <div class="search-col">
+                        <div class="form-group">
+                            <label>رقم الفاتورة</label>
+                            <input type="text" class="form-control" name="invoice_number" id="invoice_number">
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <label>{{ trans('purchase_admin.currency') }}</label>
-                            <select class="form-control">
-                                <option>{{ trans('purchase_admin.all') }}</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label>{{ trans('purchase_admin.total_amount') }}</label>
-                            <input type="number" class="form-control">
+                    </div>
+                    <div class="search-col">
+                        <div class="form-group">
+                            <label>العميل</label>
+                            <input type="text" class="form-control" name="client_name" id="client_name">
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Action Buttons Always Visible -->
-        <div class="d-flex mb-3 mt-3">
-            <button class="btn btn-primary ml-2">{{ trans('purchase_admin.search') }}</button>
-            <button class="btn btn-secondary ml-2" id="resetFiltersBtn">{{ trans('purchase_admin.reset_filters') }}</button>
-            <button class="btn btn-outline-secondary ml-2" id="toggleAdvancedSearch">
-                <i class="fas fa-search-plus"></i> {{ trans('purchase_admin.advanced_search') }}
+                <div class="search-row">
+                    <div class="search-col">
+                        <div class="form-group">
+                            <label>تاريخ الفاتورة من</label>
+                            <input type="date" class="form-control" name="date_from" id="date_from">
+                        </div>
+                    </div>
+                    <div class="search-col">
+                        <div class="form-group">
+                            <label>تاريخ الفاتورة إلى</label>
+                            <input type="date" class="form-control" name="date_to" id="date_to">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-row">
+                    <div class="search-col">
+                        <div class="form-group">
+                            <label>حالة الدفع</label>
+                            <select class="form-control" name="payment_status" id="payment_status">
+                                <option value="">الكل</option>
+                                <option value="paid">مدفوع</option>
+                                <option value="unpaid">غير مدفوع</option>
+                                <option value="partial">مدفوع جزئياً</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="search-col">
+                        <div class="form-group">
+                            <label>المبلغ الإجمالي</label>
+                            <input type="number" class="form-control" name="grand_total" id="grand_total" step="0.01">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-buttons-container">
+                    <button type="submit" class="search-btn primary">
+                        <i class="fas fa-search"></i>
+                        بحث
+                    </button>
+                    <button type="reset" class="search-btn outline">
+                        <i class="fas fa-redo"></i>
+                        إعادة تعيين
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="search-buttons-container">
+            <button type="button" class="search-btn primary" id="basicSearchBtn">
+                <i class="fas fa-search"></i>
+                بحث
+            </button>
+            <button type="button" class="search-btn outline" id="toggleAdvancedSearch">
+                <i class="fas fa-search-plus"></i>
+                بحث متقدم
+            </button>
+            <button type="button" class="search-btn secondary" id="cancelSearchBtn">
+                <i class="fas fa-times"></i>
+                إلغاء
             </button>
         </div>
 
@@ -247,32 +300,3 @@
             </ul>
         </nav>
 </div>
-
-@section('scripts')
-<script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-    // تفعيل البحث المتقدم
-    document.getElementById('toggleAdvancedSearch').addEventListener('click', function() {
-        var advancedForm = document.getElementById('advancedSearchForm');
-        if (advancedForm.style.display === 'none' || advancedForm.style.display === '') {
-            advancedForm.style.display = 'block';
-        } else {
-            advancedForm.style.display = 'none';
-        }
-    });
-
-    // إعادة تعيين النموذج
-    document.getElementById('resetFiltersBtn').addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelectorAll('form').forEach(form => form.reset());
-    });
-});
-
-function showUnauthorizedMessage(action) {
-    const messages = {
-        'edit': '{{ trans('purchase_admin.unauthorized_edit') }}',
-        'delete': '{{ trans('purchase_admin.unauthorized_delete') }}'
-    };
-    alert(messages[action]);
-}
-</script>
