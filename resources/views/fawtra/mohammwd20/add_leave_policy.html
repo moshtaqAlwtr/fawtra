@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة سياسة الإجازات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+        }
+        .top-bar button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container {
+            padding: 20px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .save-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .cancel-btn {
+            background-color: #dc3545;
+            color: white;
+            margin-right: 10px;
+        }
+        .leave-types-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .leave-types-table th, .leave-types-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .leave-types-table th {
+            background-color: #f1f1f1;
+        }
+        .add-row-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border: none;
+        }
+        .remove-row-btn {
+            color: #dc3545;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <button class="go-to-site">الذهاب إلى الموقع</button>
+        <button class="help">المساعدة</button>
+    </div>
+
+    <div class="container">
+        <form action="save_leave_policy.php" method="post">
+            <div class="form-group">
+                <label for="policy-name">الاسم *</label>
+                <input type="text" id="policy-name" name="policy_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="policy-status">الحالة *</label>
+                <select id="policy-status" name="policy_status" required>
+                    <option value="نشط">نشط</option>
+                    <option value="غير نشط">غير نشط</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="policy-description">الوصف</label>
+                <textarea id="policy-description" name="policy_description"></textarea>
+            </div>
+
+            <!-- Leave Types Section -->
+            <div class="form-group">
+                <label for="leave-types">الإجازات</label>
+                <table class="leave-types-table">
+                    <thead>
+                        <tr>
+                            <th>نوع الإجازة</th>
+                            <th>إزالة</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leave-types-body">
+                        <tr>
+                            <td>
+                                <select name="leave_type[]">
+                                    <option value="إجازة سنوية">إجازة سنوية</option>
+                                    <option value="إجازة مرضية">إجازة مرضية</option>
+                                </select>
+                            </td>
+                            <td><span class="remove-row-btn" onclick="removeRow(this)">إزالة</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="add-row-btn" onclick="addRow()">إضافة</button>
+            </div>
+
+            <button type="submit" class="save-btn">حفظ</button>
+            <button type="button" class="cancel-btn" onclick="window.location.href='leave_policy_list.html'">إلغاء</button>
+        </form>
+    </div>
+
+    <script>
+        function addRow() {
+            const tableBody = document.getElementById('leave-types-body');
+            const newRow = `
+                <tr>
+                    <td>
+                        <select name="leave_type[]">
+                            <option value="إجازة سنوية">إجازة سنوية</option>
+                            <option value="إجازة مرضية">إجازة مرضية</option>
+                        </select>
+                    </td>
+                    <td><span class="remove-row-btn" onclick="removeRow(this)">إزالة</span></td>
+                </tr>
+            `;
+            tableBody.insertAdjacentHTML('beforeend', newRow);
+        }
+
+        function removeRow(element) {
+            const row = element.parentNode.parentNode;
+            row.remove();
+        }
+    </script>
+</body>
+</html>

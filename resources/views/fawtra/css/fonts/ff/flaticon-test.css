@@ -1,0 +1,180 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 12/11/2018 13:33
+  	*/
+
+	@font-face {
+	    font-family: "sss";
+	    src: url("./Flaticon.eot");
+	    src: url("./Flaticon.eot") format("embedded-opentype"), url("./Flaticon.eot") format("woff"), url("./Flaticon.ttf") format("truetype"), url("./Flaticon.svg#Flaticon") format("svg");
+	    font-weight: normal;
+	    font-style: normal;
+	}
+
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+	    @font-face {
+	        font-family: "sss";
+	        src: url("Flaticon.svg#Flaticon") format("svg");
+	    }
+	}
+
+	[class^="flaticon-"]:before,
+	[class*=" flaticon-"]:before,
+	[class^="flaticon-"]:after,
+	[class*=" flaticon-"]:after {
+	    font-family: sss;
+	    font-size: 20px;
+	    font-style: normal;
+	}
+
+	.flaticon-time_tracking-calender::before {
+	    content: "\f101" !important;
+	    font-family: sss !important;
+	}
+
+	.flaticon-timetable:before {
+	    content: "\f100";
+	}
+
+	.flaticon-event:before {
+	    content: "\f101";
+	}
+
+	.flaticon-bookings:before {
+	    content: "\f101" !important;
+	    font-family: sss !important;
+	}
+
+	.flaticon-calendar:before {
+	    content: "\f102" !important;
+	    font-family: sss !important;
+	}
+
+	.flaticon-organization:before {
+	    content: "\f103";
+	}
+
+	.flaticon-connection:before {
+	    content: "\f104";
+	}
+
+	.flaticon-bank:before {
+	    content: "\f105";
+	}
+
+	.flaticon-bank-1:before {
+	    content: "\f106";
+	}
+
+	.flaticon-employees:before {
+	    content: "\f107";
+	}
+
+	.flaticon-worker-in-front-of-a-computer-monitor:before {
+	    content: "\f108";
+	}
+
+	.flaticon-desk:before {
+	    content: "\f109";
+	}
+
+	.flaticon-salary:before {
+	    content: "\f10a";
+	}
+
+	.flaticon-growth:before {
+	    content: "\f10b";
+	}
+
+	.flaticon-chat:before {
+	    content: "\f10c";
+	}
+
+	.flaticon-bank-2:before {
+	    content: "\f10d";
+	}
+
+	.flaticon-incomes:before {
+	    content: "\f10e";
+	}
+
+	.flaticon-checking-attendance:before {
+	    content: "\f10f";
+	}
+
+	.flaticon-sports-car:before {
+	    content: "\f110";
+	}
+
+	.flaticon-airplane-flight:before {
+	    content: "\f111";
+	    font-family: sss !important;
+	}
+
+	.flaticon-file:before {
+	    content: "\f112";
+	}
+
+	.flaticon-open-folder-with-document:before {
+	    content: "\f113";
+	}
+
+	.flaticon-document:before {
+	    content: "\f114";
+	}
+
+	.flaticon-pdf-file-format-symbol:before {
+	    content: "\f115";
+	}
+
+	.flaticon-pdf-file-format-symbol-1:before {
+	    content: "\f116";
+	}
+
+	.flaticon-car-compact:before {
+	    content: "\f117";
+	}
+
+	.flaticon-sedan-car-front:before {
+	    content: "\f118";
+	}
+
+	.flaticon-delivery-truck:before {
+	    content: "\f119";
+	}
+
+	.flaticon-car-black-side-silhouette:before {
+	    content: "\f11a";
+	}
+
+	.flaticon-racing:before {
+	    content: "\f11b";
+	}
+
+	.flaticon-car-trip:before {
+	    content: "\f11c";
+	}
+
+	.flaticon-speed-meter:before {
+	    content: "\f11d";
+	}
+
+	.flaticon-car:before {
+	    content: "\f11e";
+	}
+
+	.flaticon-repair:before {
+	    content: "\f11f";
+	}
+
+	.flaticon-petrol:before {
+	    content: "\f120";
+	}
+
+	.flaticon-smoke:before {
+	    content: "\f121";
+	}
+
+	.flaticon-earth:before {
+	    content: "\f122";
+	}

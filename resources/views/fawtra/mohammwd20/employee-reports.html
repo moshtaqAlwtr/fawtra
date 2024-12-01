@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقارير الموظفين</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .top-bar {
+            background-color: #004085;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar button {
+            background-color: #f8f9fa;
+            color: #004085;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .top-bar button:hover {
+            background-color: #e9ecef;
+        }
+
+        header {
+            background-color: #004085;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        /* تصميم الشبكة: مربعين لكل صف، وفي النهاية مربع واحد */
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        /* تصميم الصف الأخير بمربع واحد */
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .report-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .report-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .report-box h3 {
+            font-size: 20px;
+            color: #004085;
+        }
+
+        .link-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .link-item i {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .link-item .link-text {
+            text-align: right;
+            padding-right: 10px;
+            font-size: 16px;
+        }
+
+        .link-item .action {
+            font-size: 14px;
+            color: #007bff;
+            display: flex;
+            align-items: center;
+        }
+
+        .link-item .action i {
+            margin-left: 5px;
+        }
+
+        .link-item .action:hover {
+            text-decoration: underline;
+        }
+
+        .emoji-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <button>محمد العتيبي</button>
+        <div class="buttons">
+            <button>الذهاب إلى الموقع</button>
+            <button>المساعدة</button>
+        </div>
+    </div>
+
+    <header>
+        تقارير الموظفين
+    </header>
+
+    <div class="container">
+        <div class="reports-grid">
+
+            <!-- المربع الأول: تقارير الموظفين -->
+            <div class="report-box">
+                <h3 class="emoji-title">👨‍💼 تقارير الموظفين</h3>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">تقرير حالة إقامات الموظفين</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+            </div>
+
+            <!-- المربع الثاني: تقرير الحضور -->
+            <div class="report-box">
+                <h3 class="emoji-title">🕒 تقرير الحضور</h3>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">تقرير الحضور تفصيلي (موظف واحد)</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">تقرير الحضور تفصيلي (عدة موظفين)</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">تقرير رصيد إجازات الموظفين</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+            </div>
+
+            <!-- المربع الثالث: ملخص تقرير الحضور -->
+            <div class="report-box">
+                <h3 class="emoji-title">📅 ملخص تقرير الحضور</h3>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">ملخص تقرير الحضور - حسب الموظف</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">ملخص تقرير الحضور - حسب اليوم</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">ملخص تقرير الحضور - حسب الأسبوع</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">ملخص تقرير الحضور - حسب الشهر</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">ملخص تقرير الحضور - حسب السنة</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">ملخص تقرير الحضور - حسب القسم</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+            </div>
+
+            <!-- المربع الرابع: تقرير ورديات الحضور -->
+            <div class="report-box">
+                <h3 class="emoji-title">⏰ تقرير ورديات الحضور</h3>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">تقرير ورديات الحضور</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+            </div>
+
+            <!-- المربع الخامس: تقارير المرتبات -->
+            <div class="report-box full-width">
+                <h3 class="emoji-title">💼 تقارير المرتبات</h3>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">تقرير المرتبات حسب الموظف</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">تقرير المرتبات شهري</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">تقرير المرتبات سنوي</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">تقرير المرتبات حسب القسم</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">تقرير المرتبات حسب الفرع</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">تقرير سلف الموظفين</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-eye"></i>
+                    <span class="link-text">تقرير عقود الموظفين</span>
+                    <a class="action" href="#"><i class="fas fa-eye"></i> عرض</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة بند راتب</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f8f9fa;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .content {
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .btn-green {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-red {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+        .form-group-inline {
+            display: flex;
+            gap: 10px;
+        }
+        .form-group-inline div {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <h2>إضافة بند راتب</h2>
+    </div>
+
+    <div class="content">
+        <div class="form-group">
+            <label>الاسم</label>
+            <input type="text" placeholder="أدخل اسم البند">
+        </div>
+
+        <div class="form-group">
+            <label>النوع</label>
+            <select>
+                <option>مستحق</option>
+                <option>مستقطع</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>الوصف</label>
+            <input type="text" placeholder="أدخل الوصف">
+        </div>
+
+        <div class="form-group">
+            <label>الحالة</label>
+            <select>
+                <option>نشط</option>
+                <option>غير نشط</option>
+            </select>
+        </div>
+
+        <div class="form-group-inline">
+            <div>
+                <label>المبلغ</label>
+                <input type="number" placeholder="أدخل المبلغ">
+            </div>
+            <div>
+                <label>الصيغة الحسابية</label>
+                <input type="text" placeholder="أدخل الصيغة الحسابية">
+            </div>
+        </div>
+
+        <div class="form-group-inline">
+            <div>
+                <label>الشرط</label>
+                <input type="text" placeholder="أدخل الشرط">
+            </div>
+            <div>
+                <label>الحساب الافتراضي</label>
+                <input type="text" placeholder="أدخل الحساب الافتراضي">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>قيمة مرجعية فقط</label>
+            <select>
+                <option>نعم</option>
+                <option>لا</option>
+            </select>
+        </div>
+
+        <button class="btn-green">حفظ</button>
+        <button class="btn-red" onclick="window.location.href='salary_items.html'">إلغاء</button>
+    </div>
+
+</body>
+</html>

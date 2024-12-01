@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سندات القبض - قوالب الطباعة</title>
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        h2.text-center {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .add-template-btn {
+            display: block;
+            width: 150px;
+            margin: 0 auto 20px auto;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .add-template-btn:hover {
+            background-color: #218838;
+            text-decoration: none;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .col-md-4 {
+            flex: 0 0 30%;
+            max-width: 30%;
+        }
+
+        .template-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .template-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .template-card p {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">سندات القبض - قوالب الطباعة</h2>
+        <!-- زر إضافة قالب -->
+        <a href="add_new_template.html" class="add-template-btn">إضافة قالب</a>
+
+        <!-- عرض القوالب الحالية -->
+        <div class="row">
+            <!-- قالب 1 -->
+            <div class="col-md-4">
+                <div class="template-card">
+                    <img src="images/template1.jpg" alt="قالب 1"> <!-- مسار الصورة المناسب -->
+                    <p>طباعة سند قبض - نموذج 1</p>
+                </div>
+            </div>
+            <!-- قالب 2 -->
+            <div class="col-md-4">
+                <div class="template-card">
+                    <img src="images/template2.jpg" alt="قالب 2">
+                    <p>طباعة سند قبض - نموذج 2</p>
+                </div>
+            </div>
+            <!-- قالب 3 -->
+            <div class="col-md-4">
+                <div class="template-card">
+                    <img src="images/template3.jpg" alt="قالب 3">
+                    <p>طباعة سند قبض - نموذج 3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

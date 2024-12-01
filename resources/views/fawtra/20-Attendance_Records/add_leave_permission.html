@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إذن إجازة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="../Design/css/data.css">    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            background: linear-gradient(to bottom right, #e3f2fd, #bbdefb);
+            font-family: 'Tajawal', sans-serif;
+            color: #333;
+            text-align: right;
+        }
+        .form-container {
+            background: linear-gradient(to bottom right, #ffffff, #f1f1f1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+        .form-header {
+            background: linear-gradient(to right, #64b5f6, #42a5f5);
+            padding: 15px;
+            border-radius: 10px;
+            color: #ffffff;
+            font-weight: bold;
+            text-align: right;
+            font-size: 1.2rem;
+        }
+        .btn-group {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .btn-save {
+            background: linear-gradient(to right, #66bb6a, #43a047);
+            border: none;
+            color: #fff;
+        }
+        .btn-cancel {
+            background: linear-gradient(to right, #ef5350, #e53935);
+            border: none;
+            color: #fff;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #555;
+        }
+        .custom-file-label::after {
+            content: "رفع";
+            color: #007bff;
+        }
+        .input-group input {
+            border-right: 0;
+            border-radius: 0;
+        }
+        .input-group .form-control:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        .input-group .form-control:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        .custom-file {
+            border: 1px dashed #007bff;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-container">
+        <div class="form-header">معلومات إذن إجازة</div>
+        <form>
+            <div class="row mt-4">
+                <div class="col-md-6 form-group">
+                    <label for="employee">موظف <span class="text-danger">*</span></label>
+                    <select class="form-control" id="employee" required>
+                        <option value="">اختر موظف</option>
+                    </select>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="leave-type">نوع الإجازة <span class="text-danger">*</span></label>
+                    <select class="form-control" id="leave-type" required>
+                        <option value="">من فضلك اختر</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="date-range">التاريخ</label>
+                    <div class="input-group">
+                        <input type="date" class="form-control" id="deliveryStartDate" placeholder="التاريخ من">
+                        <input type="date" class="form-control"id="deliveryStartDate" placeholder="التاريخ إلى">
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="note">ملاحظة</label>
+                    <textarea class="form-control" id="note" placeholder="أدخل ملاحظاتك"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="submission-date">تاريخ التقديم</label>
+                    <input type="date" class="form-control" id="deliveryStartDate">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="attachments">المرفقات</label>
+                    <div class="card-body">
+                        <div class="upload-area p-4 border border-dashed text-center">
+                            <i class="fas fa-cloud-upload-alt fa-2x text-primary mb-2"></i>
+                            <p>أسقط الملف هنا أو اختر من جهازك</p>
+                            <input type="file" class="form-control-file" style="display: none;" id="fileUploadInput">
+                            <button class="btn btn-primary" onclick="document.getElementById('fileUploadInput').click();">اختر ملف</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" class="btn btn-save px-4"><i class="fas fa-save"></i> حفظ</button>
+                <button type="reset" class="btn btn-cancel px-4"><i class="fas fa-times"></i> إلغاء</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script src="../js/date.js"></script>
+</body>
+</html>

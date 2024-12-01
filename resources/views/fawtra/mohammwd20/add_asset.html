@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أضف أصل</title>
+    <style>
+        body {
+            direction: rtl;
+            font-family: Arial, sans-serif;
+        }
+        .top-bar {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .container {
+            margin: 20px;
+        }
+        .form-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .form-section {
+            flex: 1;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .save-button {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .cancel-button {
+            background-color: gray;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <button onclick="location.href='assets.html'">العودة للأصول</button>
+    <button onclick="location.href='#'">مساعدة</button>
+</div>
+
+<div class="container">
+    <div class="form-container">
+        <div class="form-section">
+            <h3>تفاصيل الأصل</h3>
+            <div class="form-group">
+                <label for="asset-name">الاسم</label>
+                <input type="text" id="asset-name" placeholder="أدخل اسم الأصل">
+            </div>
+            <div class="form-group">
+                <label for="asset-code">الكود</label>
+                <input type="text" id="asset-code" value="000001">
+            </div>
+            <div class="form-group">
+                <label for="purchase-date">تاريخ الشراء</label>
+                <input type="date" id="purchase-date" value="2024-09-29">
+            </div>
+            <div class="form-group">
+                <label for="main-account">الحساب الرئيسي</label>
+                <select id="main-account">
+                    <option>اختر الحساب</option>
+                    <!-- يمكن إضافة خيارات الحسابات هنا -->
+                </select>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>تفاصيل التسعير</h3>
+            <div class="form-group">
+                <label for="purchase-value">قيمة الشراء</label>
+                <input type="text" id="purchase-value" placeholder="أدخل قيمة الشراء">
+            </div>
+            <div class="form-group">
+                <label for="currency">العملة</label>
+                <select id="currency">
+                    <option>SAR</option>
+                    <option>USD</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tax-account">حساب الضريبة</label>
+                <select id="tax-account">
+                    <option>اختر الضريبة</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button class="save-button" onclick="saveAsset()">حفظ</button>
+        <button class="cancel-button" onclick="location.href='assets.html'">إلغاء</button>
+    </div>
+</div>
+
+<script>
+    function saveAsset() {
+        alert('تم حفظ الأصل بنجاح!');
+        location.href = 'assets.html'; // العودة إلى صفحة الأصول بعد الحفظ
+    }
+</script>
+
+</body>
+</html>

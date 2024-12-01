@@ -1,0 +1,61 @@
+@import "../../variables";
+@import "../../mixins";
+@import "../../../../../../node_modules/bootstrap-v4-rtl/scss/functions";
+@import "../../../../../../node_modules/bootstrap-v4-rtl/scss/variables";
+@import "../../../../../../node_modules/bootstrap-v4-rtl/scss/mixins";
+
+
+.s2020.border         { border: $border-width solid $border-color !important; }
+.s2020.border-top     { border-top: $border-width solid $border-color !important; }
+.s2020.border-right   { border-right: $border-width solid $border-color !important; }
+.s2020.border-bottom  { border-bottom: $border-width solid $border-color !important; }
+.s2020.border-left    { border-left: $border-width solid $border-color !important; }
+
+.s2020.border-0        { border: 0 !important; }
+.s2020.border-top-0    { border-top: 0 !important; }
+.s2020.border-right-0  { border-right: 0 !important; }
+.s2020.border-bottom-0 { border-bottom: 0 !important; }
+.s2020.border-left-0   { border-left: 0 !important; }
+
+@each $color, $value in $theme-colors {
+  body .s2020.border-#{$color} {
+    border-color: $value !important;
+  }
+}
+
+
+body .border-0-s2020         { border-bottom-width: 0 !important; }
+body .border-s2020         { border-width: $border-width !important; border-style: solid !important; }
+body .border-top-s2020     { border-top-width: $border-width !important; border-style: solid !important; }
+body .border-right-s2020   { border-right-width: $border-width !important; border-style: solid !important; }
+body .border-bottom-s2020  { border-bottom-width: $border-width !important; border-style: solid !important; }
+body .border-bottom-0-s2020  { border-bottom-width: 0 !important; }
+body .border-left-s2020    { border-left-width: $border-width !important; border-style: solid !important; }
+
+@each $color, $value in $theme-colors {
+  body .border-#{$color}-s2020 {
+    border-color: $value !important;
+  }
+  .border-left-#{$color}-s2020 {
+    @include body('.ltr') {
+      border-left-color: $value !important;
+    }
+    @include body('.rtl') {
+      border-right-color: $value !important;
+    }
+  }
+  .border-right-#{$color}-s2020 {
+    @include body('.ltr') {
+      border-right-color: $value !important;
+    }
+    @include body('.rtl') {
+      border-left-color: $value !important;
+    }
+  }
+  .border-top-#{$color}-s2020 {
+      border-top-color: $value !important;
+  }
+  .border-bottom-#{$color}-s2020 {
+      border-bottom-color: $value !important;
+  }
+}

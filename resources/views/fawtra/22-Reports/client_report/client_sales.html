@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة تقرير مبيعات العملاء</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .btn-custom {
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .action-buttons .btn-primary {
+            background-color: #28a745;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+        }
+
+        .action-buttons .btn-primary:hover {
+            background-color: #218838;
+        }
+
+        .table-container {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-section {
+            padding: 15px;
+            background-color: #e9f0f7;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .action-buttons {
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        table thead {
+            background-color: #e9f0f7;
+            font-weight: bold;
+        }
+
+        .alert {
+            padding: 10px;
+            color: white;
+            background-color: #ff4d4d;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .dropdown-menu a {
+            color: #000;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f0f0f0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Filter Section -->
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="date-from" class="form-label">التاريخ من:</label>
+                <input type="date" id="date-from" class="form-control" value="2024-10-09">
+            </div>
+            <div class="col-md-3">
+                <label for="date-to" class="form-label">التاريخ إلى:</label>
+                <input type="date" id="date-to" class="form-control" value="2024-11-09">
+            </div>
+            <div class="col-md-3">
+                <label for="client-category" class="form-label">تصنيف العميل:</label>
+                <select id="client-category" class="form-select">
+                    <option>الكل</option>
+                    <option>عميل فردي</option>
+                    <option>مؤسسة</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="currency" class="form-label">العملة:</label>
+                <select id="currency" class="form-select">
+                    <option>(SAR) الجمع إلى</option>
+                    <option>USD</option>
+                    <option>EUR</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="order-by" class="form-label">ترتيب حسب:</label>
+                <select id="order-by" class="form-select">
+                    <option>الكل</option>
+                    <option>العميل</option>
+                    <option>الفرع</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="branch" class="form-label">فرع:</label>
+                <select id="branch" class="form-select">
+                    <option>الكل</option>
+                    <option>Main Branch</option>
+                    <option>فرع 2</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="client" class="form-label">العميل:</label>
+                <select id="client" class="form-select">
+                    <option>الكل</option>
+                    <option>عميل 1</option>
+                    <option>عميل 2</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="status" class="form-label">حالة المتابعة:</label>
+                <select id="status" class="form-select">
+                    <option>الكل</option>
+                    <option>نشط</option>
+                    <option>غير نشط</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            
+            <div class="col-md-6 text-end">
+                <button class="btn btn-custom">عرض التقرير</button>
+                <button class="btn btn-secondary">إلغاء الفلتر</button>
+            </div>
+        </div>
+
+        <!-- Export & Print Buttons -->
+        <div class="action-buttons">
+            <button class="btn btn-primary"><i class="fas fa-print"></i> طباعة</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-download"></i> تصدير
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-file-csv"></i> تصدير إلى CSV</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-file-excel"></i> تصدير إلى Excel</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i> تصدير إلى PDF</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Header Section -->
+        <div class="header-section mt-4">
+            <h5>مبيعات العملاء - تجميع حسب العميل</h5>
+            <p>الوقت: 15:19 | التاريخ: 09/11/2024</p>
+            <p>مؤسسة أعمال خاصة للتجارة - الرياض</p>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-container">
+            <table class="table table-striped table-hover text-center">
+                <thead>
+                    <tr>
+                        <th>الكود</th>
+                        <th>رقم الحساب</th>
+                        <th>الاسم</th>
+                        <th>فرع</th>
+                        <th>حالة البدولة</th>
+                        <th>الموظف</th>
+                        <th>الرصيد قبل</th>
+                        <th>إجمالي المبيعات</th>
+                        <th>إجمالي المرتجع</th>
+                        <th>صافي المبيعات</th>
+                        <th>إجمالي المدفوعات</th>
+                        <th>تسويات</th>
+                        <th>الرصيد</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>123094</td>
+                        <td>124190</td>
+                        <td>مؤسسة جوهرة زمل للتجارة</td>
+                        <td>Main Branch</td>
+                        <td>نشط</td>
+                        <td>محمد المنصوب</td>
+                        <td>216.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                        <td>116.00</td>
+                        <td>0.00</td>
+                        <td>100.00</td>
+                    </tr>
+                    <tr>
+                        <td>123240</td>
+                        <td>124326</td>
+                        <td>تموينات النفط المتعدد</td>
+                        <td>Main Branch</td>
+                        <td>نشط</td>
+                        <td>محمد المنصوب</td>
+                        <td>216.00</td>
+                        <td>216.00</td>
+                        <td>0.00</td>
+                        <td>216.00</td>
+                        <td>0.00</td>
+                        <td>0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Alert Section for Negative Values -->
+        <div class="alert mt-3">
+            <i class="fas fa-exclamation-circle"></i> * Negative values are invalid for a pie chart
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

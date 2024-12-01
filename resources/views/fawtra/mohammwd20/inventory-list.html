@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl" class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة الجرد - مؤسسة أعمال خاصة للتجارة</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+<body class="fluid rtl light">
+    <div class="header">
+        <div class="container">
+            <h1>إدارة أوراق الجرد</h1>
+            <button onclick="window.location.href='inventory-add.html'">إضافة ورقة جرد جديدة</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <table class="inventory-table">
+            <thead>
+                <tr>
+                    <th>رقم الجرد</th>
+                    <th>المستودع</th>
+                    <th>التاريخ</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample data row -->
+                <tr>
+                    <td>000001</td>
+                    <td>المستودع الرئيسي</td>
+                    <td>26/09/2024</td>
+                    <td>
+                        <button>تعديل</button>
+                        <button>حذف</button>
+                    </td>
+                </tr>
+                <!-- Additional rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

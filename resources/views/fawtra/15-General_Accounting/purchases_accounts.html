@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>توجيه الحسابات</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        /* تنسيق الشريط الجانبي */
+        .sidebar {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 20px;
+            height: 100vh;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 10px 0;
+            font-weight: bold;
+            cursor: pointer;
+            color: #e2e6ea;
+        }
+        .sidebar ul li:hover {
+            color: #ffffff;
+        }
+        .content-header {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #007bff;
+        }
+        /* تنسيق الصندوق */
+        .box {
+            background: linear-gradient(135deg, #e0f7fa, #e0f2f1);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .box h3 {
+            font-size: 1.2rem;
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- الشريط الجانبي -->
+        <div class="col-md-2 sidebar">
+            <ul id="menu">
+                <li onclick="loadContent('mabieat')">المبيعات</li>
+                <li onclick="loadContent('mushtarayat')">المشتريات</li>
+                <li onclick="loadContent('mukhazan')">المخزون</li>
+                <li onclick="loadContent('khazina')">خزينة</li>
+                <li onclick="loadContent('idhan_mukhzan')">إذن مخزون</li>
+                <li onclick="loadContent('muratab_almoazaf')">مرتب الموظف</li>
+                <li onclick="loadContent('shabakat')">الشبكات</li>
+                <li onclick="loadContent('sana_malia')">سنة مالية</li>
+            </ul>
+        </div>
+
+        <!-- المحتوى الرئيسي -->
+        <div class="col-md-10 p-4">
+            <div class="d-flex justify-content-start mb-4">
+                <button class="btn btn-success me-2"><i class="fas fa-save"></i> حفظ</button>
+                <button class="btn btn-danger"><i class="fas fa-times"></i> إلغاء</button>
+            </div>
+
+            <!-- المحتوى الديناميكي -->
+            <div id="contentArea" class="content-box">
+                <!-- يتم تحميل المحتوى هنا عند الضغط على القائمة اليمنى -->
+                <div class="content-header">توجيه الحسابات</div>
+                <p>يرجى اختيار عنصر من القائمة اليمينية لعرض التفاصيل هنا.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- المكتبات -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+    function loadContent(section) {
+        let contentArea = document.getElementById("contentArea");
+        
+        let content = "";
+
+        if (section === "mabieat") {
+            // محتوى قسم المبيعات
+            content = `
+                <div class="content-header">المبيعات</div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="box">
+                            <h3>المبيعات</h3>
+                            <label>نوع التوجيه</label>
+                            <select class="form-select mb-3">
+                                <option>تعيين تلقائي</option>
+                            </select>
+                            <label>الحساب</label>
+                            <select class="form-select">
+                                <option>41 - المبيعات</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="box">
+                            <h3>العملاء</h3>
+                            <label>نوع التوجيه</label>
+                            <select class="form-select mb-3">
+                                <option>تعيين تلقائي</option>
+                            </select>
+                            <label>الحساب</label>
+                            <select class="form-select">
+                                <option>العملاء</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="box">
+                            <h3>خصم مسموح به</h3>
+                            <label>نوع التوجيه</label>
+                            <select class="form-select mb-3">
+                                <option>تعيين تلقائي</option>
+                            </select>
+                            <label>الحساب</label>
+                            <select class="form-select">
+                                <option>49 - خصم مسموح به</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="box">
+                            <h3>المرتجعات</h3>
+                            <label>نوع التوجيه</label>
+                            <select class="form-select mb-3">
+                                <option>تعيين تلقائي</option>
+                            </select>
+                            <label>الحساب</label>
+                            <select class="form-select">
+                                <option>42 - المرتجعات</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="box">
+                            <h3>توجيه التسوية</h3>
+                            <label>نوع التوجيه</label>
+                            <select class="form-select mb-3">
+                                <option>إلغاء الحسابات</option>
+                            </select>
+                            <label>الحساب</label>
+                            <select class="form-select">
+                                <option>إلغاء الحسابات</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="box">
+                            <h3>حساب مبيعات المنتج</h3>
+                            <label>نوع التوجيه</label>
+                            <select class="form-select mb-3">
+                                <option>تعيين لكل منها</option>
+                            </select>
+                            <label>الحساب</label>
+                            <select class="form-select">
+                                <option>تعيين لكل منها</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else if (section === "mushtarayat") {
+            // محتوى قسم المشتريات
+            content = `
+                <div class="content-header">المشتريات</div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="box">
+                            <h3>المشتريات</h3>
+                            <label>نوع التوجيه</label>
+                            <select class="form-select mb-3">
+                                <option>تعيين تلقائي</option>
+                            </select>
+                            <label>الحساب</label>
+                            <select class="form-select">
+                                <option>129 - المشتريات</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="box">
+                            <h3>الموردين</h3>
+                            <label>نوع التوجيه</label>
+                            <select class="form-select mb-3">
+                                <option>تعيين تلقائي</option>
+                            </select>
+                            <label>الحساب</label>
+                            <select class="form-select">
+                                <option>الموردون</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="box">
+                            <h3>خصم مكتسب</h3>
+                            <label>نوع التوجيه</label>
+                            <select class="form-select mb-3">
+                                <option>إلغاء الحسابات</option>
+                            </select>
+                            <label>الحساب</label>
+                            <select class="form-select">
+                                <option>إلغاء الحسابات</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="box">
+                            <h3>مرتجعات المشتريات</h3>
+                            <label>نوع التوجيه</label>
+                            <select class="form-select mb-3">
+                                <option>تعيين تلقائي</option>
+                            </select>
+                            <label>الحساب</label>
+                            <select class="form-select">
+                                <option>129 - المشتريات</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="box">
+                            <h3>توجيه التسوية</h3>
+                            <label>نوع التوجيه</label>
+                            <select class="form-select mb-3">
+                                <option>إلغاء الحسابات</option>
+                            </select>
+                            <label>الحساب</label>
+                            <select class="form-select">
+                                <option>إلغاء الحسابات</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else if (section === "mukhazan") {
+            // محتوى قسم المخزون
+            content = `
+                <div class="content-header">المخزون</div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="box">
+                            <h3>المستودعات</h3>
+                            <label>نوع التوجيه</label>
+                            <select class="form-select mb-3">
+                                <option>تعيين تلقائي</option>
+                            </select>
+                            <label>الحساب</label>
+                            <select class="form-select">
+                                <option>المخزون</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else if (section === "idhan_mukhzan") {
+            // محتوى قسم إذن مخزون
+            content = `
+                <div class="content-header">إذن مخزون</div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="box">
+                            <label>إذن إضافة مخزون</label>
+                            <select class="form-select mb-3">
+                                <option>12035 - مخزن حسب</option>
+                            </select>
+                            <label>إذن صرف مخزون</label>
+                            <select class="form-select mb-3">
+                                <option>12035 - مخزن حسب</option>
+                            </select>
+                            <label>وثيقة توريد مشتريات</label>
+                            <select class="form-select mb-3">
+                                <option>35 - تكلفة المبيعات</option>
+                            </select>
+                            <label>وثيقة توريد واردات</label>
+                            <select class="form-select mb-3">
+                                <option>35 - تكلفة المبيعات</option>
+                            </select>
+                            <label>فاتورة</label>
+                            <select class="form-select mb-3">
+                                <option>35 - تكلفة المبيعات</option>
+                            </select>
+                            <label>فاتورة مرتجعة</label>
+                            <select class="form-select mb-3">
+                                <option>35 - تكلفة المبيعات</option>
+                            </select>
+                            <label>إصدار داخلي</label>
+                            <select class="form-select mb-3">
+                                <option>35 - تكلفة المبيعات</option>
+                            </select>
+                            <label>إصدار مخزن المشتريات</label>
+                            <select class="form-select mb-3">
+                                <option>120 - المشتريات</option>
+                            </select>
+                            <label>POB Shift Outbound</label>
+                            <select class="form-select mb-3">
+                                <option>35 - تكلفة المبيعات</option>
+                            </select>
+                            <label>POB Shift Inbound</label>
+                            <select class="form-select mb-3">
+                                <option>35 - تكلفة المبيعات</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else if (section === "khazina") {
+            // محتوى قسم الخزينة
+            content = `
+                <div class="content-header">الخزينة</div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="box">
+                            <h3>الخزينة</h3>
+                            <label>نوع التوجيه</label>
+                            <select class="form-select mb-3">
+                                <option>تعيين تلقائي</option>
+                            </select>
+                            <label>الحساب</label>
+                            <select class="form-select">
+                                <option>الخزينة</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else   if (section === "muratab_almoazaf") {
+        // محتوى قسم مرتب الموظف
+        content = `
+            <div class="content-header">توجيه حسابات الموظفين</div>
+            <div class="box">
+                <div class="mb-3">
+                    <label for="directiveType">نوع التوجيه</label>
+                    <select id="directiveType" class="form-select">
+                        <option>آلي</option>
+                        <option>يدوي</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="employeeAccount">توجيه حسابات الموظفين</label>
+                    <p><strong>توجيه حسابات الموظفين</strong></p>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="#" class="btn btn-success"><i class="fas fa-save"></i> حفظ الإعدادات</a>
+            </div>
+        `;
+    } else  if (section === "muratab_almoazaf") {
+        // محتوى قسم مرتب الموظف
+        content = `
+            <div class="content-header">توجيه حسابات الموظفين</div>
+            <div class="box">
+                <div class="mb-3">
+                    <label for="directiveType">نوع التوجيه</label>
+                    <select id="directiveType" class="form-select">
+                        <option>آلي</option>
+                        <option>يدوي</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="employeeAccount">توجيه حسابات الموظفين</label>
+                    <p><strong>توجيه حسابات الموظفين</strong></p>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="#" class="btn btn-success"><i class="fas fa-save"></i> حفظ الإعدادات</a>
+            </div>
+        `;
+    } else if (section === "shabakat") {
+        // محتوى قسم الشيكات
+        content = `
+            <div class="content-header">توجيه حساب الشيك</div>
+            <div class="box">
+                <div class="mb-3">
+                    <label for="checkAccountType1">نوع التوجيه</label>
+                    <select id="checkAccountType1" class="form-select">
+                        <option>آلي</option>
+                        <option>يدوي</option>
+                    </select>
+                    <p><strong>توجيه حساب الشيك</strong></p>
+                </div>
+                <div class="mb-3">
+                    <label for="checkAccountType2">نوع التوجيه</label>
+                    <select id="checkAccountType2" class="form-select">
+                        <option>آلي</option>
+                        <option>يدوي</option>
+                    </select>
+                    <p><strong>حساب الشيك المستلم</strong></p>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="#" class="btn btn-success"><i class="fas fa-save"></i> حفظ الإعدادات</a>
+            </div>
+        `;
+    } else    if (section === "muratab_almoazaf") {
+        // محتوى قسم مرتب الموظف
+        content = `
+            <div class="content-header">توجيه حسابات الموظفين</div>
+            <div class="box">
+                <div class="mb-3">
+                    <label for="directiveType">نوع التوجيه</label>
+                    <select id="directiveType" class="form-select">
+                        <option>آلي</option>
+                        <option>يدوي</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="employeeAccount">توجيه حسابات الموظفين</label>
+                    <p><strong>توجيه حسابات الموظفين</strong></p>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="#" class="btn btn-success"><i class="fas fa-save"></i> حفظ الإعدادات</a>
+            </div>
+        `;
+    } else if (section === "shabakat") {
+        // محتوى قسم الشيكات
+        content = `
+            <div class="content-header">توجيه حساب الشيك</div>
+            <div class="box">
+                <div class="mb-3">
+                    <label for="checkAccountType1">نوع التوجيه</label>
+                    <select id="checkAccountType1" class="form-select">
+                        <option>آلي</option>
+                        <option>يدوي</option>
+                    </select>
+                    <p><strong>توجيه حساب الشيك</strong></p>
+                </div>
+                <div class="mb-3">
+                    <label for="checkAccountType2">نوع التوجيه</label>
+                    <select id="checkAccountType2" class="form-select">
+                        <option>آلي</option>
+                        <option>يدوي</option>
+                    </select>
+                    <p><strong>حساب الشيك المستلم</strong></p>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <a href="#" class="btn btn-success"><i class="fas fa-save"></i> حفظ الإعدادات</a>
+            </div>
+        `;
+    } else if (section === "sana_malia") {
+        // محتوى قسم سنة مالية
+        content = `
+            <div class="content-header">توجيه الأرباح المرحلة</div>
+            <div class="box">
+                <div class="mb-3">
+                    <label for="directiveType">نوع التوجيه</label>
+                    <select id="directiveType" class="form-select">
+                        <option>تعيين تلقائي</option>
+                        <option>تعيين يدوي</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="account">الحساب</label>
+                    <select id="account" class="form-select">
+                        <option>52 - أرباح وخسائر مرحلة</option>
+                        <option>خيارات أخرى</option>
+                    </select>
+                </div>
+            </div>
+        `;
+    } else {
+        // محتوى افتراضي
+        content = `
+            <div class="content-header">توجيه الحسابات</div>
+            <p>يرجى اختيار عنصر من القائمة اليمينية لعرض التفاصيل هنا.</p>
+        `;
+    }
+
+    // تحديث المحتوى
+    contentArea.innerHTML = content;
+}  
+
+
+ 
+ 
+
+
+</script>
+
+</body>
+</html>

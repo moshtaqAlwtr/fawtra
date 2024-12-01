@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورقة الجرد</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9ecef;
+            direction: rtl;
+            text-align: right;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #007bff;
+            color: white;
+        }
+        .navbar a {
+            color: white;
+        }
+        .card {
+            margin-top: 20px;
+        }
+        .form-control-sm {
+            height: 30px;
+        }
+        .btn-add, .btn-filter {
+            margin-top: 10px;
+        }
+        .inventory-table {
+            margin-top: 20px;
+        }
+        .modal-content {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">ورقة الجرد</a>
+            <div class="navbar-nav ml-auto">
+                <a class="nav-item nav-link" href="#">الذهاب إلى الموقع</a>
+                <a class="nav-item nav-link" href="#">المساعدة</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Search Section -->
+        <div class="card">
+            <div class="card-header">
+                <h4>البحث في الجرد</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="searchWarehouse">المستودع</label>
+                        <select class="form-control form-control-sm" id="searchWarehouse">
+                            <option>الكل</option>
+                            <option>المستودع الرئيسي</option>
+                            <option>مستودع الفروع</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="searchProduct">رقم المنتج</label>
+                        <input type="text" class="form-control form-control-sm" id="searchProduct" placeholder="أدخل رقم المنتج">
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-filter">بحث</button>
+            </div>
+        </div>
+
+        <!-- Counter Section -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h4>معلومات الجرد</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-row">
+                    <!-- Warehouse Field -->
+                    <div class="form-group col-md-3">
+                        <label for="warehouseInfo">المستودع</label>
+                        <input type="text" class="form-control form-control-sm" id="warehouseInfo" readonly>
+                    </div>
+
+                    <!-- Inventory Date Field -->
+                    <div class="form-group col-md-3">
+                        <label for="inventoryDateInfo">تاريخ الجرد</label>
+                        <input type="date" class="form-control form-control-sm" id="inventoryDateInfo" readonly>
+                    </div>
+
+                    <!-- Employee Name Field -->
+                    <div class="form-group col-md-3">
+                        <label for="employeeNameInfo">اسم الموظف</label>
+                        <input type="text" class="form-control form-control-sm" id="employeeNameInfo" readonly>
+                    </div>
+
+                    <!-- Inventory Time Field -->
+                    <div class="form-group col-md-3">
+                        <label for="inventoryTimeInfo">وقت الجرد</label>
+                        <input type="time" class="form-control form-control-sm" id="inventoryTimeInfo" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inventory Table -->
+        <div class="card inventory-table">
+            <div class="card-header">
+                <h4>قائمة الجرد</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>رقم المنتج</th>
+                            <th>الباركود</th>
+                            <th>الاسم</th>
+                            <th>الكمية</th>
+                            <th>التاريخ</th>
+                            <th>الملاحظات</th>
+                            <th>الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventoryList">
+                        <!-- Inventory items will be added here dynamically -->
+                    </tbody>
+                </table>
+                <button class="btn btn-success btn-add" data-toggle="modal" data-target="#addModal">إضافة منتج +</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">إضافة منتج جديد</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="productNumber">رقم المنتج</label>
+                        <input type="text" class="form-control" id="productNumber" placeholder="أدخل رقم المنتج">
+                    </div>
+                    <div class="form-group">
+                        <label for="productBarcode">الباركود</label>
+                        <input type="text" class="form-control" id="productBarcode" placeholder="أدخل الباركود">
+                    </div>
+                    <div class="form-group">
+                        <label for="productName">الاسم</label>
+                        <input type="text" class="form-control" id="productName" placeholder="أدخل اسم المنتج">
+                    </div>
+                    <div class="form-group">
+                        <label for="productQuantity">الكمية</label>
+                        <input type="number" class="form-control" id="productQuantity" placeholder="أدخل الكمية">
+                    </div>
+                    <div class="form-group">
+                        <label for="productDate">التاريخ</label>
+                        <input type="date" class="form-control" id="productDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="productNotes">الملاحظات</label>
+                        <textarea class="form-control" id="productNotes" rows="2" placeholder="أدخل الملاحظات"></textarea>
+                    </div>
+                    <button class="btn btn-primary" onclick="addProduct()">إضافة</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for Inventory Management -->
+    <script>
+        // Function to add a product to the inventory table
+        function addProduct() {
+            var productNumber = document.getElementById("productNumber").value;
+            var productBarcode = document.getElementById("productBarcode").value;
+            var productName = document.getElementById("productName").value;
+            var productQuantity = document.getElementById("productQuantity").value;
+            var productDate = document.getElementById("productDate").value;
+            var productNotes = document.getElementById("productNotes").value;
+
+            var table = document.getElementById("inventoryList");
+            var row = table.insertRow();
+            row.innerHTML = `
+                <td>${productNumber}</td>
+                <td>${productBarcode}</td>
+                <td>${productName}</td>
+                <td>${productQuantity}</td>
+                <td>${productDate}</td>
+                <td>${productNotes}</td>
+                <td><button class="btn btn-danger btn-sm" onclick="removeProduct(this)">حذف</button></td>
+            `;
+
+            // Clear the modal inputs
+            document.getElementById("productNumber").value = '';
+            document.getElementById("productBarcode").value = '';
+            document.getElementById("productName").value = '';
+            document.getElementById("productQuantity").value = '';
+            document.getElementById("productDate").value = '';
+            document.getElementById("productNotes").value = '';
+
+            // Close the modal
+            $('#addModal').modal('hide');
+        }
+
+        // Function to remove a product from the inventory table
+        function removeProduct(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script>
+</body>
+</html>

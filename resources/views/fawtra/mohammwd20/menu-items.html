@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة عناصر القائمة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: right;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .btn {
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .green {
+            background-color: #28a745;
+        }
+        .blue {
+            background-color: #007bff;
+        }
+        .red {
+            background-color: #dc3545;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .table-actions button {
+            background: none;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>إدارة عناصر القائمة</h1>
+        <div class="form-group">
+            <label for="menu-name">مسمى</label>
+            <input type="text" id="menu-name" placeholder="أدخل اسم القائمة">
+        </div>
+        <div class="form-group">
+            <label for="type">النوع</label>
+            <select id="type">
+                <option value="category">تصنيف</option>
+                <option value="product">منتج</option>
+                <option value="link">رابط</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="category">التصنيفات</label>
+            <select id="category">
+                <option value="product">منتج</option>
+                <option value="service">خدمة</option>
+            </select>
+        </div>
+        <div class="actions">
+            <button class="btn blue">إضافة +</button>
+            <button class="btn green">تحديث</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>الإجراءات</th>
+                    <th>اسم العنصر</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-actions">
+                        <button>تعديل</button>
+                        <button>حذف</button>
+                    </td>
+                    <td>الرئيسية</td>
+                </tr>
+                <tr>
+                    <td class="table-actions">
+                        <button>تعديل</button>
+                        <button>حذف</button>
+                    </td>
+                    <td>كل المنتجات</td>
+                </tr>
+                <tr>
+                    <td class="table-actions">
+                        <button>تعديل</button>
+                        <button>حذف</button>
+                    </td>
+                    <td>إتصل بنا</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

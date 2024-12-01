@@ -1,0 +1,266 @@
+/* English Edits */
+
+/* Desktop */
+
+.well {
+    border: 0px;
+}
+
+.invoice-fields .table tr td {
+    text-align: left;
+    padding-left: 15px;
+}
+
+.status-list {
+    float: left;
+}
+
+.custom-styled td {
+    border-top: 0px !important;
+}
+
+.custom-styled td a {
+    width: 100%;
+}
+
+.new-row {
+    margin-top: 10px;
+}
+
+.resize-side-Content {
+    width: 100% !important;
+    margin-left: 0px !important;
+}
+
+.report {
+    overflow: initial;
+}
+
+textarea {
+    width: 100%;
+}
+
+.side-nav {
+    bottom: 0px;
+    height: auto;
+}
+
+.form-group input,
+.form-group textarea {
+    max-width: 100%;
+    margin-right: 5px;
+}
+
+.clip-check {
+    margin-bottom: 15px;
+}
+
+.side-content .item-list {
+    display: block;
+}
+
+.reports-holder {
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-caption>.btn {
+    background: none;
+    border: 0px;
+    padding: 0px;
+    color: #fff !important;
+    padding-top: 5px;
+}
+
+.inside-form-box {
+    border: 0px;
+}
+
+.section-tab-title h3 {
+    display: block !important;
+}
+
+.nav-wrapper {
+    background: none;
+    border: 0px;
+}
+
+.checkbox label {
+    padding-right: 5px;
+}
+
+.breadcrumb>li+li:before {
+    padding: 0px;
+}
+
+input[type=radio]:not(.ui-radio):not(.ui-switch),
+input[type=checkbox]:not(.ui-checkbox):not(.ui-switch) {
+    width: auto;
+}
+
+.report-title-name,
+.report-title-company,
+.report-title-daterange,
+.report-title-description,
+.report-title-address {
+    line-height: normal;
+}
+
+.new-global-btn i {
+    float: none;
+}
+
+.breadcrumb .m {
+    display: none;
+}
+
+.breadcrumb a {
+    background: transparent !important;
+    /*color: hsla(0, 0%, 100%, .72) !important;*/
+}
+
+.breadcrumb li {
+    color: hsla(0, 0%, 100%, .72);
+}
+
+.header-breadcrumb {
+    margin: 0 0 0 0 !important;
+    padding: 0;
+    background: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: .75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #e9ecef;
+    border-radius: .25rem;
+}
+
+.header-breadcrumb .breadcrumb-item {
+    color: #fff;
+    /*line-height: 45px;*/
+    font-size: 12px;
+    line-height: 1;
+}
+
+.header-breadcrumb .breadcrumb-item a {
+    color: #fff;
+    transition: all .2s ease-in-out;
+    /*height: 40px;*/
+    font-size: 14px;
+    display: inline-block;
+    /*line-height: 40px;*/
+}
+
+.header-breadcrumb .breadcrumb-item {
+    color: #fff;
+    /*line-height: 45px;*/
+    line-height: 1;
+    font-size: 12px;
+    padding-left: .5rem;
+}
+
+.breadcrumb-item+.breadcrumb-item {
+    padding-left: .5rem;
+    font-size: 16px;
+}
+
+.breadcrumb-item+.breadcrumb-item span {
+    font-size: 14px;
+}
+
+.header-breadcrumb .breadcrumb-item+.breadcrumb-item:before {
+    font-family: Material Design Icons;
+    content: "\f142" !important;
+    color: rgba(255, 255, 255, .72);
+    font-size: 16px;
+    display: inline-block;
+    padding-right: .5rem;
+}
+
+.removeItem {
+    float: left;
+}
+
+.dynamic-width-menu {
+    width: calc(100% - 140px);
+    margin-left: 140px
+}
+
+.overflow-auto {
+    overflow: auto;
+}
+
+.bootstrap-select.btn-group .dropdown-menu {
+    z-index: 98;
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1700px) {
+    .dynamic-width-menu {
+        width: 100%;
+        margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .day-view-entry {
+        padding-left: 10px;
+    }
+    .rtl .day-view-entry {
+        padding-left: 0;
+        padding-right: 10px;
+    }
+    .day-view-entry td {
+        padding-right: 10px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dynamic-width-menu {
+        width: auto;
+        margin-left: 0
+    }
+    .fixed-div {
+        /* padding: 15px 0px; */
+    }
+    .pages-head {
+        /* padding-right: 5px; */
+    }
+    .invoice-items .table tr td.move-table,
+    .invoice-items .table tr td.delete-product-cell {
+        width: 20px;
+        min-height: 20px;
+    }
+    .invoice-items .table tr td.delete-product-cell a {
+        width: 20px;
+        height: 20px;
+        line-height: 17px;
+    }
+    .float-right-important {
+        float: right !important;
+    }
+    #top_buttons .bootstrap-select {
+        width: 100% !important;
+    }
+    #top_buttons .bootstrap-select .dropdown-menu {
+        right: auto !important;
+        left: 0 !important;
+    }
+    #FilterForm div {
+        /* float: none !important; */
+        /* width: 100%; */
+    }
+    .range select {
+        width: 100%;
+    }
+    .steper ul li {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    input:not([type="checkbox"]):not([type="select-one"]):not([type="radio"]) {
+        width: 100% !important;
+        display: block;
+    }
+}

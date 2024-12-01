@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقارير ميزان مراجعة</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.1.0/daterangepicker.css">
+</head>
+<body dir="rtl">
+    <div class="container-fluid">
+        <!-- الشريط العلوي -->
+        <div class="bg-primary text-white p-3 mb-3 text-center">
+            <h3 class="m-0">تقارير ميزان مراجعة مجاميع وأرصدة</h3>
+        </div>
+
+        <!-- أزرار الطباعة وخيارات التصدير في اليسار -->
+        <div class="d-flex mb-3 justify-content-start">
+            <button class="btn btn-light mr-2">طباعة</button>
+            <div class="btn-group">
+                <button class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    خيارات التصدير
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#"><i class="text-primary fas fa-file-pdf"></i> تصدير كملف PDF</a>
+                    <a class="dropdown-item" href="#"><i class="text-success fas fa-file-excel"></i> تصدير كملف Excel</a>
+                    <a class="dropdown-item" href="#"><i class="text-warning fas fa-print"></i> طباعة</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- نموذج الإدخال العلوي -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="startDate">الفترة من</label>
+                            <input type="text" id="startDate" class="form-control datepicker" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="endDate">إلى</label>
+                            <input type="text" id="endDate" class="form-control datepicker" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="accountType">نوع الحساب</label>
+                            <select id="accountType" class="form-control">
+                                <option>حساب رئيسي</option>
+                                <option>حساب فرعي</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="addedBy">أضيفت بواسطة</label>
+                            <select id="addedBy" class="form-control">
+                                <option>الكل</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="branch">فرع القيود</label>
+                            <select id="branch" class="form-control">
+                                <option>اختر فرع</option>
+                                <option>الفرع الرئيسي</option>
+                                <option>فرع 1</option>
+                                <option>فرع 2</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="accountsView">عرض جميع الحسابات</label>
+                            <select id="accountsView" class="form-control">
+                                <option>عرض جميع الحسابات</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="levels">المستويات</label>
+                            <select id="levels" class="form-control">
+                                <option>المستويات الإفتراضية</option>
+                                <option>المستوى 1</option>
+                                <option>المستوى 2</option>
+                                <option>المستوى 3</option>
+                                <option>المستوى 4</option>
+                                <option>المستوى 5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">عرض التقرير</button>
+                    <button type="reset" class="btn btn-danger ml-2">إلغاء الفلتر</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- أزرار المستويات أعلى الجدول -->
+        <div class="d-flex justify-content-end mb-2">
+            <button class="btn btn-outline-secondary ml-1">مستوى 1</button>
+            <button class="btn btn-outline-secondary ml-1">مستوى 2</button>
+            <button class="btn btn-outline-secondary ml-1">مستوى 3</button>
+            <button class="btn btn-outline-secondary ml-1">مستوى 4</button>
+            <button class="btn btn-outline-secondary ml-1">مستوى 5</button>
+        </div>
+
+        <!-- جدول التقرير الرئيسي لكل مستوى -->
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>الاسم</th>
+                        <th>الكود</th>
+                        <th>الرصيد قبل الحركات (مدين)</th>
+                        <th>الرصيد قبل الحركات (دائن)</th>
+                        <th>رصيد الحركات (مدين)</th>
+                        <th>رصيد الحركات (دائن)</th>
+                        <th>الرصيد بعد (مدين)</th>
+                        <th>الرصيد بعد (دائن)</th>
+                        <th>الأرصدة (مدين)</th>
+                        <th>الأرصدة (دائن)</th>
+                        <th>المستوى</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>الأصول</td>
+                        <td>1</td>
+                        <td>4,357,214.32</td>
+                        <td>2,141,028.06</td>
+                        <td>1,359,658.58</td>
+                        <td>692,250.52</td>
+                        <td>5,716,882.90</td>
+                        <td>2,841,278.58</td>
+                        <td>2,882,403.32</td>
+                        <td>2,882,604.32</td>
+                        <td>المستوى 1</td>
+                    </tr>
+                    <!-- بيانات إضافية حسب الحاجة -->
+                </tbody>
+                <tfoot>
+                    <tr class="font-weight-bold">
+                        <td colspan="8">الإجمالي</td>
+                        <td>5,987,190.60</td>
+                        <td>5,986,989.60</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <!-- تكرار الجدول لكل مستوى (2، 3، 4، 5) -->
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>الاسم</th>
+                        <th>الكود</th>
+                        <th>الرصيد قبل الحركات (مدين)</th>
+                        <th>الرصيد قبل الحركات (دائن)</th>
+                        <th>رصيد الحركات (مدين)</th>
+                        <th>رصيد الحركات (دائن)</th>
+                        <th>الرصيد بعد (مدين)</th>
+                        <th>الرصيد بعد (دائن)</th>
+                        <th>الأرصدة (مدين)</th>
+                        <th>الأرصدة (دائن)</th>
+                        <th>المستوى</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>الأصول</td>
+                        <td>1</td>
+                        <td>4,357,214.32</td>
+                        <td>2,141,028.06</td>
+                        <td>1,359,658.58</td>
+                        <td>692,250.52</td>
+                        <td>5,716,882.90</td>
+                        <td>2,841,278.58</td>
+                        <td>2,882,403.32</td>
+                        <td>2,882,604.32</td>
+                        <td>المستوى 2</td>
+                    </tr>
+                    <!-- بيانات إضافية حسب الحاجة -->
+                </tbody>
+                <tfoot>
+                    <tr class="font-weight-bold">
+                        <td colspan="8">الإجمالي</td>
+                        <td>5,987,190.60</td>
+                        <td>5,986,989.60</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <!-- جافا سكريبت -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.1.0/daterangepicker.min.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <script>
+            $(function() {
+                $('#startDate, #endDate').daterangepicker({
+                    singleDatePicker: true,
+                    showDropdowns: true,
+                    autoUpdateInput: false,
+                    locale: {
+                        format: 'DD/MM/YYYY',
+                        applyLabel: "اختر",
+                        cancelLabel: "مسح"
+                    }
+                });
+
+                $('#startDate, #endDate').on('apply.daterangepicker', function(ev, picker) {
+                    $(this).val(picker.startDate.format('DD/MM/YYYY'));
+                });
+
+                $('#startDate, #endDate').on('cancel.daterangepicker', function(ev, picker) {
+                    $(this).val('');
+                });
+
+                $('.dropdown-toggle').dropdown();
+            });
+        </script>
+    </body>
+</html>

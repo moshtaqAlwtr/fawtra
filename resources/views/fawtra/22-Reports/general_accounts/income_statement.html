@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>قائمة الدخل</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f3f4f6, #e3e4e8);
+            direction: rtl;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .btn-custom {
+            background: linear-gradient(90deg, #4caf50, #45a049);
+            color: white;
+            border-radius: 25px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(90deg, #45a049, #3e8e41);
+        }
+
+        .btn-outline-light {
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline-light:hover {
+            background-color: #e3e4e8;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #ffffff, #f8f9fb);
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+        }
+
+        table {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .section-title {
+            background: linear-gradient(135deg, #343a40, #2c3136);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <!-- Export and Print Buttons -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        خيارات التصدير
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">تصدير إلى CSV</a></li>
+                        <li><a class="dropdown-item" href="#">تصدير إلى Excel</a></li>
+                        <li><a class="dropdown-item" href="#">تصدير إلى PDF</a></li>
+                    </ul>
+                </div>
+                <button class="btn btn-outline-secondary ms-2"><i class="fas fa-print"></i> طباعة</button>
+                <button class="btn btn-outline-secondary ms-2"><i class="fas fa-calendar"></i> شهري</button>
+            </div>
+        </div>
+        <!-- Header -->
+        <div class="card gradient-bg p-4 mb-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3>قائمة الدخل</h3>
+                <div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            خيارات التصدير
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">تصدير إلى CSV</a></li>
+                            <li><a class="dropdown-item" href="#">تصدير إلى Excel</a></li>
+                            <li><a class="dropdown-item" href="#">تصدير إلى PDF</a></li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-outline-secondary ms-2"><i class="fas fa-print"></i> طباعة</button>
+                    <button class="btn btn-outline-secondary ms-2"><i class="fas fa-calendar"></i> شهري</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="card p-4 mb-4">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-3">
+                    <label for="inputAccounts" class="form-label fw-bold">عرض جميع الحسابات:</label>
+                    <select class="form-select" id="inputAccounts">
+                        <option selected>عرض جميع الحسابات</option>
+                        <option>حساب 1</option>
+                        <option>حساب 2</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="inputBranch" class="form-label fw-bold">فرع القيود:</label>
+                    <select class="form-select" id="inputBranch">
+                        <option selected>اختر فرع</option>
+                        <option>فرع 1</option>
+                        <option>فرع 2</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="inputDateRange" class="form-label fw-bold">الفترة من / إلى:</label>
+                    <input type="text" class="form-control" id="inputDateRange" placeholder="الفترة من - إلى">
+                </div>
+                <div class="col-md-3">
+                    <label for="inputLevels" class="form-label fw-bold">المستويات:</label>
+                    <select class="form-select" id="inputLevels">
+                        <option selected>المستويات الافتراضية</option>
+                        <option>مستوى 1</option>
+                        <option>مستوى 2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="text-start mt-4">
+                <button class="btn btn-custom">عرض التقرير</button>
+            </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="card p-4 mb-4 text-center">
+            <h5 class="fw-bold">شركة الأعمال التجارية</h5>
+            <p>العنوان: الرياض، السعودية</p>
+            <p>الفترة من 08/10/2024 إلى 08/11/2024</p>
+        </div>
+
+        <table class="table table-bordered table-hover mb-4">
+            <thead class="table-header">
+                <tr>
+                    <th>البند</th>
+                    <th>المبلغ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>مبيعات</td>
+                    <td>5000.00</td>
+                </tr>
+                <tr>
+                    <td>دخل آخر</td>
+                    <td>1500.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-end fw-bold">إجمالي الإيرادات: 6500.00</div>
+
+        <table class="table table-bordered table-hover mb-4">
+            <thead class="table-header">
+                <tr>
+                    <th>البند</th>
+                    <th>المبلغ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>إيجارات</td>
+                    <td>2000.00</td>
+                </tr>
+                <tr>
+                    <td>رواتب الموظفين</td>
+                    <td>3000.00</td>
+                </tr>
+                <tr>
+                    <td>مصروفات أخرى</td>
+                    <td>500.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-end fw-bold">إجمالي المصروفات: 5500.00</div>
+
+        <!-- Net Income Section -->
+        <div class="section-title">صافي الدخل</div>
+        <table class="table table-bordered table-hover mb-4">
+            <tbody>
+                <tr>
+                    <td>صافي الدخل</td>
+                    <td>1000.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

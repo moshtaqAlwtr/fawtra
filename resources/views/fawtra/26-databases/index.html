@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js lt-ie10"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+
+
+
+<html lang="en" dir="rtl" class="no-js" data-site-data='{"dateFormat": "d/m/Y"}'>
+<!--<![endif]-->
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>لوحة التحكم - الوتر سوفت</title>
+    
+    <link rel="stylesheet" href="Design/css/bootstrap.rtl.css" />
+        <link rel="stylesheet" href="Design/css/select2.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <link rel="stylesheet" href="Design/css/datetimepicker.css" /><link rel="stylesheet" href="Design/css/datetimepicker.css" />
+    <link rel="stylesheet" href="Design/css/style.rtl.css" />t-type" content="text/html; charset=utf-8" />
+
+    <link rel="shortcut icon" href="css/images/Daftra-favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="css/oifonts.css?v=10" />
+    <link rel="stylesheet" type="text/css" href="css/fonts/ff/flaticon-test.css?v=10" />
+    <link rel="stylesheet" type="text/css" href="css/flaticon.css?v=10" />
+    <link rel="stylesheet" type="text/css" href="css/nav-ico/simple-line-icons.css?v=9" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.tooltip.css?v=130" />
+    <link rel="stylesheet" type="text/css" href="css/jqueryui.css?v=813" />
+    <link rel="stylesheet" type="text/css" href="css/app_rtl_v813.css" />
+    <link rel="stylesheet" type="text/css" href="css/common_v813.css" />
+    <link rel="stylesheet" type="text/css" href="css/fonts_v813.css" />
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css?v=13" />
+    <link rel="stylesheet" type="text/css" href="css/pages.css?v=14" />
+    <link rel="stylesheet" type="text/css" href="css/listing.css?v=13" />
+    <link rel="stylesheet" type="text/css" href="css/payment.css?v=16" />
+    <link rel="stylesheet" type="text/css" href="css/import.css?v=13" />
+    <link rel="stylesheet" type="text/css" href="css/messages.css?v=14" />
+    <link rel="stylesheet" type="text/css" href="css/pos-app.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="css/beta.css?v=2" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.8.95/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/buttons.css?v=13" />
+    <link rel="stylesheet" type="text/css" href="css/breadcrumb_new.css?v=1" />
+    <link rel="stylesheet" href="css/app-manager-dropdown.css" />
+    <link rel="stylesheet" type="text/css" href="css/cal-css/jquery.calendars.picker.css?v=1" />
+    <link rel="stylesheet" href="https://cdn.daftra.com/assets/s2020/css/layout/app.min.css?v=813" />
+    <link rel="stylesheet" href="https://cdn.daftra.com/assets/s2020/css/layout/dark.min.css?v=813" />
+    <link rel="stylesheet" type="text/css" href="css/breadcrumb_new_ar_v1.css" />
+    <link rel="stylesheet" type="text/css" href="css/delete_message_v1.css" />
+    <link href="https://fonts.googleapis.com/css?family=Amiri|Cairo:600|Roboto&amp;subset=arabic" rel="stylesheet">
+    <link id="help-css" rel="stylesheet" type="text/css" href="dist/app/js/pages/help/help.styles.css" media="all">
+    <script>
+        isLocalStorageSupported = function() {
+            var testKey = 'test',
+                storage = window.sessionStorage;
+            try {
+                storage.setItem(testKey, '1');
+                storage.removeItem(testKey);
+                return true;
+            } catch (error) {
+                return false;
+            }
+        };
+
+        if (isLocalStorageSupported() && localStorage.getItem('dark')) {
+            document.documentElement.classList.add('dark-active');
+        } else {
+            document.documentElement.classList.remove('dark-active');
+        }
+
+        var IS_APP = false;
+        var IS_SAFARI = false;
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/rtl-fix.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="/css/rtl-breadcrumb.css" /> !-->
+
+    <link rel="stylesheet" type="text/css" href="css/screen-sidenav_v813.css?v=27" />
+    <link rel="stylesheet" type="text/css" href="css/all-screen-responsive-ar.css?v=1" />
+    <script>
+        var __jsDateFormat = 'dd/mm/yy';
+        var __countryCode = 'SA';
+        var __currencyCode = 'SAR';
+    </script>
+
+
+    <style type="text/css" media="screen">
+        /* #main-content, .main-area{
+                margin-top: 5px !important;
+            }
+            .main-area {
+                padding-top: 0 !important;
+            }
+            #nav_control {
+                margin-bottom: 5px !important;
+            }        */
+
+        .xdebug-var-dump {
+            text-align: left;
+        }
+
+        .appoint-bg-panel,
+        .master-widget .widget-head\,
+        .paging ul li.current,
+        .paging ul li a:hover,
+        .header,
+        .login-box-container h1,
+        .footer,
+        .action a.ui-menu-item:hover,
+        .mob-nav-trigger,
+        .mob-nav-trigger::cue,
+        .mob-nav-trigger:focus,
+        .head-bar,
+        .primary-bg {
+            background: #fff;
+        }
+
+        .appoint-bg-panel .panel-heading,
+        .expense-item p,
+        .expense-item span,
+        .table table-striped b-light td a:hover,
+        .master-widget .widget-head h3,
+        .paging ul li.current,
+        .paging ul li a:hover,
+        .login-box-container h1,
+        .action a:hover,
+        .mob-nav-trigger,
+        .mob-nav-trigger:hover,
+        .mob-nav-trigger:focus,
+        .head-bar,
+        .head-bar a,
+        .navbar-nav>li>a>i,
+        .navbar-nav>li>a,
+        .current-date,
+        #shrink-sidebar i,
+        .header .breadcrumb a,
+        .header .breadcrumb>.active,
+        .header-breadcrumb .breadcrumb-item+.breadcrumb-item:before,
+        .header .mdi-account-circle,
+        .header .drop-cont,
+        .navbar-nav>li>a p,
+        .res-right .text-white {
+            color:black
+        }
+
+        .calendars-month {
+            width: 1em !important;
+        }
+
+        .calendars-month-header {
+            height: 2em !important;
+        }
+
+        .calendars-popup {
+            z-index: 10000;
+        }
+
+        .day-view-entry-label.day-view-entry-label {
+            position: relative;
+            border: none;
+            border-left: 3px solid #ddd;
+        }
+
+        .xdebug-var-dump {
+            direction: ltr !important;
+        }
+
+        .light .footer-logo {
+            background: url(https://moshtaqkaid6.daftra.com/css/images/en_daftra_small_logo.png) no-repeat !important;
+            width: 113px;
+            height: 39px;
+            background-size: cover;
+        }
+    </style>
+    <script>
+        function getImageLightness(imageSrc, callback) {
+            var img = document.createElement("img");
+            img.src = imageSrc;
+            img.style.display = "none";
+            document.body.appendChild(img);
+
+            var colorSum = 0;
+
+            img.onload = function() {
+                // create canvas
+                var canvas = document.createElement("canvas");
+                canvas.width = this.width;
+                canvas.height = this.height;
+
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(this, 0, 0);
+
+                var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                var data = imageData.data;
+                var r, g, b, avg;
+
+                for (var x = 0, len = data.length; x < len; x += 4) {
+                    r = data[x];
+                    g = data[x + 1];
+                    b = data[x + 2];
+
+                    avg = Math.floor((r + g + b) / 3);
+                    colorSum += avg;
+                }
+
+                var brightness = Math.floor(colorSum / (this.width * this.height));
+                callback(brightness);
+            }
+        }
+    </script>
+  
+    
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jqueryui.js"></script>
+    <script type="text/javascript" src="js/app.js?v=3"></script>
+    <script type="text/javascript" src="js/perfect-scrollbar.jquery.min.js"></script>
+    <script type="text/javascript" src="js/functions_v1121.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jqueryui.css" />
+    <link rel="stylesheet" type="text/css" href="css/pc.css" />
+    <link rel="stylesheet" type="text/css" href="css/rtl_v2.css" />
+    <!--[if lt IE 8]>
+             <script src="js/html5shiv.min.js"></script>
+             <script src="js/respond.min.js"></script>
+           <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="css/app_new_layout_v813.css" />
+    <link rel="stylesheet" type="text/css" href="css/app_new_layout_ar_v813.css" />
+
+    <script type="text/javascript" src="js/cal-js/jquery.plugin.min.js"></script>
+    <script type="text/javascript" src="js/cal-js/jquery.calendars.js"></script>
+    <script type="text/javascript" src="js/cal-js/jquery.calendars.plus.js"></script>
+    <script type="text/javascript" src="js/cal-js/jquery.calendars.picker.js"></script>
+    <script type="text/javascript" src="js/cal-js/jquery.calendars.ummalqura.js"></script>
+
+    <script type="text/javascript" src="js/cal-js/jquery.calendars-ar-EG_v1121.js"></script>
+    <script type="text/javascript" src="js/cal-js/jquery.calendars.picker-ar-EG.js"></script>
+    <script type="text/javascript" src="js/cal-js/jquery.calendars.ummalqura-ar.js"></script>
+
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/daterangepicker_v1121.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="css/new-style_v5.css" />
+    <link rel="stylesheet" type="text/css" href="css/new-style-ar_v1.css" />
+    <link rel="stylesheet" type="text/css" href="css/s2020_rtl_v813.css" />
+    <!-- Global site tag (gtag.js) - Google Ads: 847451904 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-847451904"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'AW-847451904');
+    </script>
+
+
+
+    <script src="https://cdn.daftra.com/assets/s2020/js/layout/helpers.js?v=1121"></script>
+    <link rel="stylesheet" type="text/css" href="dist/daftra/daftra.compat.styles.css?v=813" />
+</head>
+<script>
+    var savedRecord = null;
+</script>
+
+<body class="fluid rtl light ">
+
+
+
+
+    <div class="main-nav" id="main-nav">
+        <div class="logo"> <a class="logo-img" href="/" title="الوتر سوفت">
+                                                                                         الوتر سوفت                                                                                     </a>
+
+            <div class="clearfix"></div>
+        </div>
+        <style>
+            .nav-disable-scroll {
+                height: auto !important;
+            }
+        </style>
+        <div class="prim-nav main-nav nav-scroll clearfix app-manager-dropdown-container" data-app-manager-dropdown-container="true">
+            <div class="prim-nav main-nav nav-disable-scroll clearfix">
+                <ul class="prim-nav mob-nav nav-disable-scroll clearfix">
+                    <li class=" super-menu mn_1 mn_dashboard" onclick="sideMenuClick(this,event)" data-menu-item-id="1" data-app-sidebar-list-item="1"> <a href="/" class="menu-item home"><i class="list-icon mdi mdi-home">
+                        
+                    </i> <span>لوحة التحكم</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="/" class="" onclick="subSideMenuClick(event)"> المبيعات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="hr-dashboard.htm" class="" onclick="subSideMenuClick(event)"> الموارد البشرية </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <div class="app-manager-dropdown" data-app-manager-dropdown="true" style="display: none;"> <button class="app-manager-dropdown-app active" data-app-manager-dropdown-app=""> <i class="mdi mdi-apps app-manager-dropdown-app-icon" style="color: #247DBD" data-app-manager-dropdown-app-icon="true"></i> <span data-app-manager-dropdown-app-title="true">كل التطبيقات</span> </button>                        <button class="app-manager-dropdown-app" data-app-manager-dropdown-app="1"> <i class="mdi mdi-receipt app-manager-dropdown-app-icon" data-app-manager-dropdown-app-icon="true" style="color: #8C1ECB"></i> <span data-app-manager-dropdown-app-title="true">المبيعات</span> </button>                        <button class="app-manager-dropdown-app" data-app-manager-dropdown-app="5"> <i class="mdi mdi-account-tie app-manager-dropdown-app-icon" data-app-manager-dropdown-app-icon="true" style="color: #37A592"></i> <span data-app-manager-dropdown-app-title="true">إدارة علاقات العملاء</span> </button>                        <button class="app-manager-dropdown-app" data-app-manager-dropdown-app="6"> <i class="mdi mdi-account-multiple-outline app-manager-dropdown-app-icon" data-app-manager-dropdown-app-icon="true" style="color: #F37535"></i> <span data-app-manager-dropdown-app-title="true">الموارد البشرية</span> </button>                        <button class="app-manager-dropdown-app" data-app-manager-dropdown-app="2"> <i class="mdi mdi-package-variant-closed app-manager-dropdown-app-icon" data-app-manager-dropdown-app-icon="true" style="color: #E41A71"></i> <span data-app-manager-dropdown-app-title="true">المخزون و المشتريات</span> </button>                        <button class="app-manager-dropdown-app" data-app-manager-dropdown-app="4"> <i class="mdi mdi-clipboard-text app-manager-dropdown-app-icon" data-app-manager-dropdown-app-icon="true" style="color: #01AEEF"></i> <span data-app-manager-dropdown-app-title="true">التشغيل</span> </button>                        <button class="app-manager-dropdown-app" data-app-manager-dropdown-app="3"> <i class="mdi mdi-cash-multiple app-manager-dropdown-app-icon" data-app-manager-dropdown-app-icon="true" style="color: #80C343"></i> <span data-app-manager-dropdown-app-title="true">الحسابات العامة</span> </button>                        <button class="app-manager-dropdown-app" data-app-manager-dropdown-app="7"> <i class="mdi mdi-gauge app-manager-dropdown-app-icon" data-app-manager-dropdown-app-icon="true" style="color: #247DBD"></i> <span data-app-manager-dropdown-app-title="true">الاعدادات العامة</span> </button>                        <a class="app-manager-dropdown-app app-manager-dropdown-footer" href="/v2/owner/plugin-manager/2"> <span data-app-manager-dropdown-app-title="true">إدارة التطبيقات</span> <i class="mdi mdi-cog app-manager-dropdown-app-icon" data-app-manager-dropdown-app-icon="true" style="color: #3A3E63"></i> </a>                        </div>
+                    <li class=" super-menu mn_2 mn_invoices" onclick="sideMenuClick(this,event)" data-menu-item-id="10" data-app-sidebar-list-item="10"> <a href="#" class="menu-item receipt"><i class="list-icon mdi mdi-receipt"></i> <span>المبيعات</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/invoices/index?reset=1" class="view-invoices" onclick="subSideMenuClick(event)"> إدارة الفواتير </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/invoices/add" class="create-invoice" onclick="subSideMenuClick(event)"> إنشاء فاتورة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/invoices/estimates" class="estimates" onclick="subSideMenuClick(event)"> إدارة عروض الأسعار </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/invoices/add_estimate" class="" onclick="subSideMenuClick(event)"> إنشاء عرض سعر </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/invoices/creditnotes" class="estimates" onclick="subSideMenuClick(event)"> إشعارات دائنة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/invoices/refund" class="estimates" onclick="subSideMenuClick(event)"> الفواتير المرتجعة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/invoices/subscriptions" class="recurring-invoices" onclick="subSideMenuClick(event)"> الفواتير الدورية </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/invoice_payments/index?reset=1" class="payment-history" onclick="subSideMenuClick(event)"> مدفوعات العملاء </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="v2/owner/sales_settings" class="global-settings" onclick="subSideMenuClick(event)"> إعدادات المبيعات </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_3 mn_pos_sessions" onclick="sideMenuClick(this,event)" data-menu-item-id="2" data-app-sidebar-list-item="2"> <a href="#" class="menu-item desktop-classic"><i class="list-icon mdi mdi-desktop-classic"></i> <span>نقاط البيع</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/pos_shifts/open" class="global-settings" onclick="subSideMenuClick(event)"> بدأ البيع </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/pos_shifts/index?reset=1" class="global-settings" onclick="subSideMenuClick(event)"> الجلسات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/pos_shifts/reports" class="global-settings" onclick="subSideMenuClick(event)"> تقرير نقاط البيع </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="v2/owner/pos/settings" class="set-taxes" onclick="subSideMenuClick(event)"> إعدادات نقاط البيع </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mn_multi-line super-menu mn_4 mn_sales-commissions-parent" onclick="sideMenuClick(this,event)" data-menu-item-id="177" data-app-sidebar-list-item="177"> <a href="/v2/owner/commissions" class="menu-item cash-multiple"><i class="list-icon mdi mdi-cash-multiple"></i> <span>المبيعات المستهدفة و العمولات</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="v2/owner/commission_rules" class="" onclick="subSideMenuClick(event)"> قواعد العمولة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="v2/owner/commissions" class="" onclick="subSideMenuClick(event)"> عمولات المبيعات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="v2/owner/commission_sheets" class="" onclick="subSideMenuClick(event)"> فترات المبيعات </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_5 mn_work_orders" onclick="sideMenuClick(this,event)" data-menu-item-id="19" data-app-sidebar-list-item="19"> <a href="#" class="menu-item clipboard-text-outline"><i class="list-icon mdi mdi-clipboard-text-outline"></i> <span>أوامر الشغل</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="4"> <a href="owner/work_orders/index?reset=1" class="view-clients" onclick="subSideMenuClick(event)"> أوامر الشغل </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="4"> <a href="owner/work_orders/add" class="add-new-client" onclick="subSideMenuClick(event)"> أضف أمر شغل </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="4"> <a href="v2/owner/work-order/settings" class="view-clients" onclick="subSideMenuClick(event)"> إعدادات أوامر الشغل </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_6 mn_workflows" onclick="sideMenuClick(this,event)" data-menu-item-id="195" data-app-sidebar-list-item="195"> <a href="#" class="menu-item clipboard-text-outline"><i class="list-icon mdi mdi-clipboard-text-outline"></i> <span>دورات العمل</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="4"> <a href="v2/owner/workflow/settings" class="" onclick="subSideMenuClick(event)"> الإعدادات </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_7 mn_clients" onclick="sideMenuClick(this,event)" data-menu-item-id="25" data-app-sidebar-list-item="25"> <a href="#" class="menu-item account-tie"><i class="list-icon mdi mdi-account-tie"></i> <span>العملاء</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="5"> <a href="v2/owner/entity/client/list?reset=1" class="view-clients" onclick="subSideMenuClick(event)"> إدارة العملاء </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="5"> <a href="owner/clients/add" class="add-new-client" onclick="subSideMenuClick(event)"> إضافة عميل جديد </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="5"> <a href="owner/appointments/index/0/1" class="view-clients" onclick="subSideMenuClick(event)"> المواعيد </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="5"> <a href="owner/client_contacts/index?reset=1" class="view-clients" onclick="subSideMenuClick(event)"> قائمة الاتصال </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="5"> <a href="v2/owner/crm" class="" onclick="subSideMenuClick(event)"> إدارة علاقات العملاء </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="5"> <a href="v2/owner/clients/settings" class="global-settings" onclick="subSideMenuClick(event)"> إعدادات العميل </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_8 mn_credits" onclick="sideMenuClick(this,event)" data-menu-item-id="160" data-app-sidebar-list-item="160"> <a href="/" class="menu-item layers-triple"><i class="list-icon mdi mdi-layers-triple"></i> <span>النقاط و الأرصدة</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="5"> <a href="v2/owner/credit_charges" onclick="subSideMenuClick(event)"> إدارة شحن الأرصدة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="5"> <a href="v2/owner/credit_usages" onclick="subSideMenuClick(event)"> إدارة استهلاك الأرصدة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="5"> <a href="v2/owner/packages" onclick="subSideMenuClick(event)"> إدارة الباقات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="5"> <a href="v2/owner/credit_types/setting" onclick="subSideMenuClick(event)"> الإعدادات </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mn_multi-line super-menu mn_9 mn_client_loyalty_points" onclick="sideMenuClick(this,event)" data-menu-item-id="203" data-app-sidebar-list-item="203"> <a href="#" class="menu-item gift"><i class="list-icon mdi mdi-gift"></i> <span>نقاط الولاء</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="v2/owner/entity/loyalty_rule/list?reset=1" class="" onclick="subSideMenuClick(event)"> قواعد ولاء العملاء </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="v2/owner/client_loyalty/settings" class="" onclick="subSideMenuClick(event)"> الإعدادات </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_10 mn_inventory" onclick="sideMenuClick(this,event)" data-menu-item-id="36" data-app-sidebar-list-item="36"> <a href="#" class="menu-item package-variant-closed"><i class="list-icon mdi mdi-package-variant-closed"></i> <span>المخزون</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="owner/products/index?reset=1" class="" onclick="subSideMenuClick(event)"> المنتجات والخدمات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="owner/requisitions/index?reset=1" class="" onclick="subSideMenuClick(event)"> إدارة الإذون المخزنية </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="v2/owner/price_lists" class="" onclick="subSideMenuClick(event)"> قوائم الأسعار </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="owner/stores/index?reset=1" class="" onclick="subSideMenuClick(event)"> المستودعات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="owner/stocktakings/index?reset=1" class="" onclick="subSideMenuClick(event)"> إدارة الجرد </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="v2/owner/inventory/settings" class="" onclick="subSideMenuClick(event)"> إعدادات المخزون </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="v2/owner/products/settings" class="" onclick="subSideMenuClick(event)"> إعدادات المنتجات </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_11 mn_purchases" onclick="sideMenuClick(this,event)" data-menu-item-id="182" data-app-sidebar-list-item="182"> <a href="#" class="menu-item truck-delivery-outline"><i class="list-icon mdi mdi-truck-delivery-outline"></i> <span>المشتريات</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="v2/owner/entity/purchase_request/list?reset=1" class="calendar-month" onclick="subSideMenuClick(event)"> طلبات الشراء </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="v2/owner/entity/quotation_request/list?reset=1" class="calendar-month" onclick="subSideMenuClick(event)"> طلبات عروض الأسعار </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="v2/owner/entity/purchase_quotation/list?reset=1" class="calendar-month" onclick="subSideMenuClick(event)"> عروض أسعار المشتريات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="v2/owner/entity/purchase_order-13/list?reset=1" class="calendar-month" onclick="subSideMenuClick(event)"> أوامر الشراء </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="v2/owner/entity/purchase_order/list?reset=1" class="" onclick="subSideMenuClick(event)"> فواتير الشراء </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="v2/owner/entity/purchase_refund/list?reset=1" class="" onclick="subSideMenuClick(event)"> مرتجعات المشتريات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="v2/owner/entity/purchase_debit_note/list?reset=1" class="" onclick="subSideMenuClick(event)"> إشعارات مدينة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="v2/owner/entity/supplier/list?reset=1" class="" onclick="subSideMenuClick(event)"> إدارة الموردين </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="owner/purchase_order_payments/index" class="" onclick="subSideMenuClick(event)"> مدفوعات الموردين </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="v2/owner/purchase-invoices/settings" class="" onclick="subSideMenuClick(event)"> إعدادات فواتير الشراء </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="v2/owner/suppliers/settings" class="" onclick="subSideMenuClick(event)"> إعدادت الموردين </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_12 mn_finance_parent_menu" onclick="sideMenuClick(this,event)" data-menu-item-id="52" data-app-sidebar-list-item="52"> <a href="#" class="menu-item safe"><i class="list-icon mdi mdi-safe"></i> <span>المالية</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="3"> <a href="owner/expenses/index?reset=1" class="" onclick="subSideMenuClick(event)"> المصروفات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="3"> <a href="owner/incomes/index?reset=1" class="" onclick="subSideMenuClick(event)"> سندات القبض </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="3"> <a href="v2/owner/banks/treasury" class="saved-reports" onclick="subSideMenuClick(event)"> خزائن وحسابات بنكية </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="3"> <a href="v2/owner/finance_settings" class="" onclick="subSideMenuClick(event)"> إعدادات المالية </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mn_multi-line super-menu mn_13 mn_accounting_parent_menu" onclick="sideMenuClick(this,event)" data-menu-item-id="181" data-app-sidebar-list-item="181"> <a href="#" class="menu-item cash-multiple"><i class="list-icon mdi mdi-cash-multiple"></i> <span>الحسابات العامة</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="3"> <a href="owner/journals/index?reset=1" class="" onclick="subSideMenuClick(event)"> القيود اليومية </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="3"> <a href="owner/journals/add" class="" onclick="subSideMenuClick(event)"> أضف قيد </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="3"> <a href="v2/owner/chart-of-accounts" class="" onclick="subSideMenuClick(event)"> دليل الحسابات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="3"> <a href="v2/owner/cost-centers" class="" onclick="subSideMenuClick(event)"> مراكز التكلفة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="3"> <a href="owner/assets/index?reset=1" class="" onclick="subSideMenuClick(event)"> الأصول </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="3"> <a href="v2/owner/accounting/settings" class="" onclick="subSideMenuClick(event)"> إعدادات الحسابات العامه </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_14 mn_requests" onclick="sideMenuClick(this,event)" data-menu-item-id="153" data-app-sidebar-list-item="153"> <a href="/v2/owner/request_types" class="menu-item clipboard-list-outline"><i class="list-icon mdi mdi-clipboard-list-outline"></i> <span>الطلبات</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/request_types/manage" onclick="subSideMenuClick(event)"> إدارة الطلبات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/request_types/settings" onclick="subSideMenuClick(event)"> الإعدادات </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_15 mn_staffs" onclick="sideMenuClick(this,event)" data-menu-item-id="61" data-app-sidebar-list-item="61"> <a href="#" class="menu-item account-multiple-outline"><i class="list-icon mdi mdi-account-multiple-outline"></i> <span>الموظفين</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/entity/staff/list?reset=1" class="add-new-client" onclick="subSideMenuClick(event)"> إدارة الموظفين </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="owner/roles/index?reset=1" class="add-new-client" onclick="subSideMenuClick(event)"> إدارة أدوار الموظفين </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/staff/settings" class="" onclick="subSideMenuClick(event)"> الإعدادات </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_16 mn_organizational" onclick="sideMenuClick(this,event)" data-menu-item-id="113" data-app-sidebar-list-item="113"> <a href="#" class="menu-item sitemap"><i class="list-icon mdi mdi-sitemap"></i> <span>الهيكل التنظيمي</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/designations" class="poll-box" onclick="subSideMenuClick(event)"> إدارة المسميات الوظيفية </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/departments" class="poll-box" onclick="subSideMenuClick(event)"> إدارة الأقسام </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/employment_levels" class="poll-box" onclick="subSideMenuClick(event)"> إدارة المستويات الوظيفية </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/employment_types" class="poll-box" onclick="subSideMenuClick(event)"> إدارة أنواع الوظائف </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_17 mn_attendance" onclick="sideMenuClick(this,event)" data-menu-item-id="118" data-app-sidebar-list-item="118"> <a href="#" class="menu-item calendar-month"><i class="list-icon mdi mdi-calendar-month"></i> <span>الحضور</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/attendance_logs" class="poll-box" onclick="subSideMenuClick(event)"> سجلات الحضور </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/attendance_days" class="poll-box" onclick="subSideMenuClick(event)"> أيام الحضور </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/attendance_sheets" class="poll-box" onclick="subSideMenuClick(event)"> دفاتر الحضور </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/attendance_permissions" class="poll-box" onclick="subSideMenuClick(event)"> أذونات إجازة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/entity/leave_application/list?reset=1" class="poll-box" onclick="subSideMenuClick(event)"> طلبات الإجازة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/shifts" class="poll-box" onclick="subSideMenuClick(event)"> إدارة الورديات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/allocated_shifts" class="poll-box" onclick="subSideMenuClick(event)"> ورديات المخصصة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/attendance_sessions" class="poll-box" onclick="subSideMenuClick(event)"> سجل جلسات الحضور </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/attendance_settings" class="poll-box" onclick="subSideMenuClick(event)"> الإعدادات </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_18 mn_payroll" onclick="sideMenuClick(this,event)" data-menu-item-id="132" data-app-sidebar-list-item="132"> <a href="#" class="menu-item cash-usd"><i class="list-icon mdi mdi-cash-usd"></i> <span>المرتبات</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/entity/contract/list" class="" onclick="subSideMenuClick(event)"> العقود </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/payruns" class="poll-box" onclick="subSideMenuClick(event)"> مسير الرواتب </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/payslips" class="poll-box" onclick="subSideMenuClick(event)"> قسائم الرواتب </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/loans" class="" onclick="subSideMenuClick(event)"> السلف </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/salary_components" class="poll-box" onclick="subSideMenuClick(event)"> بنود الراتب </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/salary_structures" class="poll-box" onclick="subSideMenuClick(event)"> قوالب الراتب </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="v2/owner/payroll_settings" class="poll-box" onclick="subSideMenuClick(event)"> الإعدادات </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_19 mn_reports" onclick="sideMenuClick(this,event)" data-menu-item-id="68" data-app-sidebar-list-item="68"> <a href="#" class="menu-item poll-box"><i class="list-icon mdi mdi-poll-box"></i> <span>التقارير</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/reports/list/#invoices" class="" onclick="subSideMenuClick(event)"> تقارير المبيعات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="owner/reports/list/#purchase_orders" class="" onclick="subSideMenuClick(event)"> تقارير المشتريات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="3"> <a href="owner/reports/list/#accounting" class="" onclick="subSideMenuClick(event)"> تقارير الحسابات العامة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/reports/list/#sms_reports" class="" onclick="subSideMenuClick(event)"> تقارير الـ SMS </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="5"> <a href="owner/reports/list/#credits_reports" class="poll-box" onclick="subSideMenuClick(event)"> تقارير النقاط و الأرصدة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="6"> <a href="owner/reports/list/#employees_reports" class="poll-box" onclick="subSideMenuClick(event)"> تقارير الموظفين </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="4"> <a href="owner/reports/list/#workflows" class="poll-box" onclick="subSideMenuClick(event)"> تقارير دورة العمل </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="4"> <a href="owner/reports/list/#work_orders" class="" onclick="subSideMenuClick(event)"> تقارير أوامر الشغل </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="5"> <a href="owner/reports/list/#clients" class="" onclick="subSideMenuClick(event)"> تقارير العملاء </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="2"> <a href="owner/reports/list/#inventory" class="" onclick="subSideMenuClick(event)"> تقارير المخزون </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/action_lines/index?reset=1" class="" onclick="subSideMenuClick(event)"> سجل النشاطات للحساب </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_20 mn_branches" onclick="sideMenuClick(this,event)" data-menu-item-id="79" data-app-sidebar-list-item="79"> <a href="#" class="menu-item map-marker-multiple"><i class="list-icon mdi mdi-map-marker-multiple"></i> <span>الفروع</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/branches/index?reset=1" class="branches-options" onclick="subSideMenuClick(event)"> إدارة الفروع </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/branches/add" class="branches-options" onclick="subSideMenuClick(event)"> أضف فرع </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/branches/settings" class="branches-options" onclick="subSideMenuClick(event)"> إعدادات الفروع </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_21 mn_templates" onclick="sideMenuClick(this,event)" data-menu-item-id="83" data-app-sidebar-list-item="83"> <a href="#" class="menu-item file-document-outline"><i class="list-icon mdi mdi-file-document-outline"></i> <span>القوالب</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/printable_templates/index?reset=1" class="view-documents" onclick="subSideMenuClick(event)"> قوالب للطباعة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/invoices/templates" class="invoice-layouts" onclick="subSideMenuClick(event)"> قوالب الفواتير الجاهزة </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/email_templates/index?reset=1" class="view-email-templates" onclick="subSideMenuClick(event)"> قوالب البريد الإلكتروني </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/sms_templates/index?reset=1" class="view-email-templates" onclick="subSideMenuClick(event)"> قوالب الـ SMS </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/terms/index?reset=1" class="terms-conditions" onclick="subSideMenuClick(event)"> الشروط والأحكام </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/documents/index?reset=1" class="view-documents" onclick="subSideMenuClick(event)"> إدارة الملفات والمستندات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/auto_reminder_rules/index?reset=1" class="view-documents" onclick="subSideMenuClick(event)"> قواعد الإرسال الآلي </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class=" super-menu mn_22 mn_sites" onclick="sideMenuClick(this,event)" data-menu-item-id="93" data-app-sidebar-list-item="93"> <a href="#" class="menu-item settings-outline"><i class="list-icon mdi mdi-settings-outline"></i> <span>الإعدادات</span><i class="mdi mdi-chevron-down"></i></a>
+                        <div class="sub-menu-cont">
+                            <ul class="left sub-menu ">
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/owners/account_info" class="global-settings" onclick="subSideMenuClick(event)"> معلومات الحساب </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="settings" class="global-settings" onclick="subSideMenuClick(event)"> إعدادات الحساب </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="smtp_settings" class="global-settings" onclick="subSideMenuClick(event)"> إعدادات الـ SMTP </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="1"> <a href="owner/payment_gateways/index?reset=1" class="payment-options" onclick="subSideMenuClick(event)"> طرق الدفع </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/sms/index?reset=1" class="payment-options" onclick="subSideMenuClick(event)"> إعدادات الـ SMS </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/numbering/settings/0" class="payment-options" onclick="subSideMenuClick(event)"> إعدادات الترقيم المتسلسل </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/taxes/index?reset=1" class="set-taxes" onclick="subSideMenuClick(event)"> إعدادات الضرائب </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="v2/owner/plugin-manager/2" class="set-taxes" onclick="subSideMenuClick(event)"> إدارة التطبيقات </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="/?colors=1" class="set-taxes" onclick="subSideMenuClick(event)"> <i class="far s2020 fa-paint-brush middle"></i> شعار وألوان النظام </a> </li>
+                                <li data-app-sidebar-list-item-sublist-item-group-id="7"> <a href="owner/api_keys/dashboard" class="global-settings" onclick="subSideMenuClick(event)"> API </a> </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu-overlay"></div>
+        <script type="text/javascript">
+            if (isLocalStorageSupported()) {
+                var lastOpenedMenuItemID = localStorage.getItem('openedMenuItem');
+                if (lastOpenedMenuItemID) {
+                    var lastOpenedMenuItem = $('li[data-menu-item-id="' + lastOpenedMenuItemID + '"]');
+                    lastOpenedMenuItem.addClass('open-submenu');
+                    if (!$('body').hasClass('shrinked-sidebar')) {
+                        lastOpenedMenuItem.find('.sub-menu-cont').show();
+                    }
+                }
+                $('.prim-nav').scroll(function() {
+                    localStorage.scrollTop = $(this).scrollTop();
+                });
+                $(window).load(function() {
+                    setTimeout(function() {
+                        if (localStorage.scrollTop != "undefined") {
+                            $('.prim-nav').scrollTop(localStorage.scrollTop);
+                        }
+                    }, 0);
+                });
+            }
+            $(document).ready(function() {
+                $('.menu-overlay').on('click', function() {
+                    $('body').toggleClass('collapse-sidebar visible-sidbar');
+                });
+                var pathName = document.location.pathname;
+                if (pathName === '/') return; /*owner*/
+                $(".prim-nav a[href='/']").parent().addClass("current").length || $(".prim-nav .sub-menu a[href='" + pathName + "']").first().parents(".super-menu").addClass("current").length || $(".prim-nav .sub-menu a[href='" + pathName.replace(/edit[^\/]*\/[\d]+\/?/, 'add') + "']").first().parents(".super-menu").addClass("current").length || $(".prim-nav .sub-menu a[href='" + pathName.replace(/\/[\d]+\/?/, '') + "']").first().parents(".super-menu").addClass("current").length || $(".prim-nav .sub-menu a[href^='" + pathName + "']").first().parents(".super-menu").addClass("current").length || $(".prim-nav .sub-menu a[href^='" + pathName.replace(/^(\/(owner|client)\/[^\/]+\/?).*$/, '$1') + "']").first().parents(".super-menu").addClass("current").length /*client*/ || $(".prim-nav a.menu-item[href='" + pathName + "']").first().parent().addClass("current").length || $(".prim-nav a.menu-item[href^='" + pathName + "']").first().parent().addClass("current").length;
+                $('.fluid.light.ad1 .prim-nav .sub-menu-cont a').each(function() {
+                    if ($(this).attr('href') === pathName) {
+                        $(this).parents('.current').addClass('open-submenu').find('.sub-menu-cont').css("display", "block");;
+                        $(this).parent('li').css("background", "#fff");
+                    }
+                });
+            });
+        </script>
+        <script src="js/app-manager-dropdown.js?v=3"></script>
+        <div class="clear"></div>
+
+    </div>
+
+    <div class="layout" id="main-content">
+        <div class="layout-container">
+            <div class="header clearfix">
+                <div class="container-fluid no-padder">
+                    <div class="header-elements row">
+                        <div class="col-md-8 col-sm-8 col-xs-7 head-pos-fix">
+                            <a href="#" id="shrink-sidebar">
+                                    <i class="mdi mdi-backburger"></i></a>
+                            <ol class="breadcrumb up-bread header-breadcrumb" id="breadcrumb" style="display: none"></ol>
+
+                        </div>
+                        <!-- <div class="col-xs-5 col-sm-6 header-breadcrumbs-wrap visible-xs">
+                                  <div id="top-header-title"></div>
+                                </div> -->
+                                <nav class="navbar navbar-static-top" role="navigation">
+                    
+                                    <asp:LinkButton TabIndex="-1" ClientIDMode="Static" ID="btn_MenuToggle" CausesValidation="false" data-toggle="offcanvas"
+                                        Class="sidebar-toggle">
+                                         <span class="sr-only"></span>
+                                    </asp:LinkButton>
+                
+                                    <input type="hidden" name="ctl00$_Lit_MenuToggle" id="_Lit_MenuToggle" value="Open" />
+                
+                                    <div class="navbar-custom-menu">
+                                        <ul class="nav navbar-nav flex-row">
+                                            <li id="ctl00_lnk_lang" data-toggle="tooltip" data-placement="right" title="">
+                                                <a id="ctl00_btn_Lang" tabindex="-1" title="English" data-toggle="tooltip" data-placement="right" title="Arabic" href="javascript:__doPostBack(&#39;ctl00$btn_Lang&#39;,&#39;&#39;)">                             <i>
+                                                    <img src="Design/images/ar.png"   class="languages" alt=""></i>                                </a>
+                                            </li>
+                
+                
+                                            <li><a tabindex="-1" href="managment/logout.aspx?Lock=True" title="Lock Screen"><i class="fa fa-lock"></i></a></li>
+                                            <li><a tabindex="-1" href="#" class="fullscreen"><i class="fa fa-arrows-alt"></i></a></li>
+                                            <li class="dropdown Categories-menu" data-toggle="tooltip" data-placement="right">
+                                                <a tabindex="-1" href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                                    <i class="fa fa-th"></i>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a href="Invoices/SellInvoice.aspx" id="ctl00_li_DropMenuSellInvoice" class="dropdown-item" tabindex="-1">
+                                                            <i class="fa fa-list-alt"></i>
+                                                            <span>
+                                                                فواتير البيع</span></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="Invoices/SellBackInvoice.aspx" id="ctl00_li_DropMenuSellBackInvoice" class="dropdown-item" tabindex="-1">
+                                                            <i class="fa fa-cogs"></i>
+                                                            <span>
+                                                                مرتجع البيع</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" tabindex="-1" href="Customers/customersGrid.aspx">
+                                                            <i class="fa fa-group"></i>
+                                                            <span>
+                                                                العملاء</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="Invoices/buyInvoiceGrid.aspx" id="ctl00_li_DropMenuBuyInvoice" class="dropdown-item" tabindex="-1">
+                                                            <i class="fa fa-list-alt"></i>
+                                                            <span>
+                                                                فواتير الشراء</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="Invoices/BuybackInvoice.aspx" id="ctl00_li_DropMenuBuyBackInvoice" class="dropdown-item" tabindex="-1">
+                                                            <i class="fa fa-list-alt"></i>
+                                                            <span>
+                                                                مرتجع الشراء</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="Vendors/vendorsGrid.aspx" id="ctl00_li_DropMenuVendor" class="dropdown-item" tabindex="-1">
+                                                            <i class="fa fa-group"></i>
+                                                            <span>
+                                                                الموردين</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" tabindex="-1" href="Stores/items_grid.aspx">
+                                                            <i class="fa fa-align-justify"></i>
+                                                            <span>
+                                                                الاصناف</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="Stores/LastTotalStores.aspx" id="ctl00_li_LastTotalStores" class="dropdown-item" tabindex="-1">
+                                                            <i class="fa fa-align-justify"></i>
+                                                            <span>
+                                                                رصيد المخزن</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="Stores/RequiredItems.aspx" id="ctl00_li_RequiredItems" class="dropdown-item" tabindex="-1">
+                                                            <i class="fa fa-align-justify"></i>
+                                                            <span>
+                                                                حد الطلب</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a    class="dropdown-item" tabindex="-1" href="invoices/SellOrderGrid.aspx">
+                                                            <i class="fa fa-picture-o"></i>
+                                                            <span>
+                                                                عرض أسعار</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item" tabindex="-1" href="managment/users_grid.aspx">
+                                                            <i class="fa fa-group"></i>
+                                                            <span>
+                                                                المستخدمين</span>
+                                                        </a>
+                                                    </li>
+                
+                                                    <li>
+                                                        <a class="dropdown-item" tabindex="-1" href="managment/company_info.aspx">
+                                                            <i class="fa fa-cogs"></i>
+                                                            <span>
+                                                                اعدادات عامة</span>
+                                                        </a>
+                                                    </li>
+                
+                                                </ul>
+                                            </li>
+                
+                                            <li class="dropdown user user-menu">
+                                                <a tabindex="-1" href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                                    <img src="Design/Images/avatar5.png" class="user-image" alt="">
+                                                    <span class="hidden-xs">
+                                                        admin
+                                                    </span>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="user-header">
+                                                        <img src="Design/Images/avatar5.png" class="img-circle" alt="">
+                                                        <p>
+                                                            admin
+                                                        </p>
+                                                    </li>
+                                                    <li class="user-footer">
+                                                        <div class="pull-left"><a tabindex="-1" href="managment/change_account.aspx" class="btn btn-flat"><i class="fa fa-user"></i>&nbsp;&nbsp;تعديل</a></div>
+                                                        <div class="pull-right"><a tabindex="-1" href="managment/logout.aspx" class="btn btn-flat"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;خروج</a></div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                
+                                            <li class="dropdown settings-menu" data-toggle="tooltip" data-placement="right" title="">
+                                                <a tabindex="-1" href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+                                                    <i class="fa fa-cogs"></i>
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" tabindex="-1" href="managment/company_info.aspx"><i class="fa fa-wrench"></i>&nbsp;&nbsp;إعدادات النظام</a></li>
+                                                    <li><a class="dropdown-item" tabindex="-1" href="managment/change_account.aspx"><i class="fa fa-user"></i>&nbsp;&nbsp;تغير كلمة المرور </a></li>
+                                                    <li><a class="dropdown-item" tabindex="-1" href="managment/RefreshCashierData.aspx"><i class="fa fa-refresh"></i>&nbsp;&nbsp;تحديث بيانات نقاط البيع</a></li>
+                
+                                                    <li><a tabindex="-1" href="managment/logout.aspx"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;تسجيل خروج</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="main-area clearfix ">
+                <div class="container">
+                    <div class="flash-wrapper master-widget-container" style="padding-bottom: 0;padding-top: 0;">
+                    </div>
+                    <script>
+                        $(function() {
+                            if ($('.side-nav').length) {
+                                $('.flash-wrapper').addClass('nav-wrapper');
+                            }
+                        });
+                    </script>
+                    <ol>
+                        <link rel="stylesheet" type="text/css" href="https://cdn.daftra.com/assets/s2020/css/index/index.min.css?v=813" />
+                        <style>
+                            .shadow {
+                                box-shadow: 0 3px 6px rgba(78, 83, 129, .1);
+                            }
+
+                            .ui-menu {
+                                border: 1px solid #ddd;
+                                box-shadow: 0 3px 6px rgba(78, 83, 129, .1);
+                            }
+
+                            .ui-menu .ui-menu-item {
+                                padding: 10px !important;
+                            }
+
+                            .ui-menu .ui-menu-item:last-child {
+                                border-bottom: 0 !important;
+                            }
+
+                            .ui-menu .ui-menu-item:hover,
+                            .ui-menu .ui-menu-item.ui-state-focus {
+                                background-color: #00b0ef;
+                                color: #fff;
+                                cursor: pointer;
+                            }
+
+                            .overflow_table_width {
+                                overflow-x: auto !important;
+                            }
+
+                            .nav-tabs>li>a.btn {
+                                margin-left: 0;
+                                margin-right: 0;
+                            }
+
+                            @media (min-width: 1200px) {
+                                .col-flex-lg {
+                                    flex: 1 0 0%;
+                                }
+                            }
+                        </style>
+
+
+                        <div id="no-report" style="display:none;">
+                            <div class="row">
+                                <div style="height:260px;" class="no-data col-md-8 col-sm-12">
+                                    <div class="no-data" style="text-align:center;height:260px;background:#fff;">
+                                        <img align="center" src="/css/images/no_data_wide.png" style="opacity: 0.3;filter: alpha(opacity=30);" />
+                                        <button class="btn btn-link btn-lg">لاتوجد بيانات متاحة</button>
+                                    </div>
+
+                                </div>
+                                <div style="height:260px;" class="col-md-4 col-sm-12">
+                                    <div class="no-data" style="text-align:center;height:260px;background:#fff;">
+                                        <img align="center" src="/css/images/no_data_pie.png" style="max-height:100%; opacity: 0.3;filter: alpha(opacity=30);" />
+                                        <button class="btn btn-link btn-lg">لاتوجد بيانات متاحة</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script type="text/javascript">
+                            var report_urls = {
+                                invoices_url: "/owner/reports/revenue?report_type=period&date_from=2023-10-09&date_to=2024-10-09&period_type=daily&group_by=monthly&quick=1&currency=-1",
+                                payments_url: "/owner/reports/payments?group_by=monthly&date_from=2023-10-09&date_to=2024-10-09&is_summary=1&report_type=payment&type=payment&staff_id=&currency=-1&payment_method=&client_id=&quick=1",
+                                times_url: "/owner/time_tracking/report?group=daily&date_from=09/09/2024&date_to=09/10/2024&summary=yes&quick=1",
+                                profit_url: "/owner/reports/profit?type=monthly&income_type=payment&date_from=2023-11-09&currency=-1&quick=1",
+                                cash_profit_url: "/owner/reports/profit?type=monthly&income_type=payment&date_from=2023-11-09&currency=-1&quick=1",
+                                accural_profit_url: "/owner/reports/accounts_profit_accrual/3?type=monthly&date_from=2023-11-09&date_to=2024-10-09&quick=1",
+                                activities_url: '/owner/action_lines/index?quick=1',
+                                appointments_url: '/owner/appointments/index/0/1?compact=0'
+
+                            }
+                        </script>
+
+<div class="wrapper">
+    <section class="content">
+
+        <div class="row">
+            <div class="col col-sm-6">
+                <div class="small-box box color-green">
+                    <div class="icon"><i class="fa fa-user-plus"></i></div>
+                    <div class="box-header">
+                        <h3 style="color: white" class="box-title">
+                            تعريفات أساسية
+                        </h3>
+                    </div>
+                    <div class="widget-stats">
+                        <div class="wrap transparent">
+                            <a href="Stores/items_form2.aspx" class="item-title">
+                                إضافة
+                                <span>
+                                صنف</span></a>
+                        </div>
+                    </div>
+                    <div class="widget-stats">
+                        <div class="wrap transparent">
+                            <a href="Customers/customers.aspx" class="item-title">
+                                إضافة
+                                <span>
+                                عميل</span></a>
+                        </div>
+                    </div>
+                    <div id="ctl00_ContentPlaceHolder1_li_vendor" class="widget-stats">
+                        <div class="wrap last">
+                            <a href="Vendors/vendors.aspx" class="item-title">
+                                إضافة
+                                <span>
+                                مورد</span></a>
+                        </div>
+                    </div>
+                    <div class="progress dd">
+                        <div class="progress-bar" style="width: 50%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col col-sm-6">
+                <div class="small-box box color-blue">
+                    <div class="icon"><i class="fa fa-file-text-o"></i></div>
+                    <div class="box-header">
+                        <h3 style="color: white" class="box-title">
+                            الفواتير
+                        </h3>
+                    </div>
+                    <div class="widget-stats">
+                        <div class="wrap transparent">
+                            <a href="Invoices/SellInvoice.aspx" id="ctl00_ContentPlaceHolder1_li_OpenSellInvoice" class="item-title">
+                                فاتورة
+                                <span>
+                                بيع</span></a>
+                        </div>
+                    </div>
+                    <div class="widget-stats">
+                        <div class="wrap transparent">
+                            <a href="Invoices/buyInvoice.aspx" id="ctl00_ContentPlaceHolder1_li_OpenbuyInvoice" class="item-title">
+                                فاتورة
+                                <span>
+                                شراء</span></a>
+                        </div>
+                    </div>
+                    <div class="widget-stats">
+                        <div class="wrap transparent">
+                            <a href="Invoices/SellBackInvoice.aspx" id="ctl00_ContentPlaceHolder1_li_OpenSellBackInvoice" class="item-title">
+                                مرتجع
+                                <span>
+                                بيع</span></a>
+                        </div>
+                    </div>
+                    <div class="widget-stats">
+                        <div class="wrap last">
+                            <a href="Invoices/BuybackInvoice.aspx" id="ctl00_ContentPlaceHolder1_li_OpenBuybackInvoice" class="item-title">
+                                مرتجع
+                                <span>
+                                شراء</span></a>
+                        </div>
+                    </div>
+                    <div class="progress dd">
+                        <div class="progress-bar" style="width: 50%"></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="ctl00_ContentPlaceHolder1_pnlSafe2" class="col col-sm-6">
+
+
+                <div class="small-box box color-purple">
+                    <div class="icon"><i class="fa fa-archive"></i></div>
+                    <div class="box-header">
+                        <h3 style="color: white" class="box-title">
+                            الخزينة
+                        </h3>
+                    </div>
+                    <div class="widget-stats">
+                        <div class="wrap transparent">
+                            <a href="Safe/Safe_Move.aspx" class="item-title">
+                                رصيد
+                                <span>
+                                    الخزينة
+                                </span></a>
+                        </div>
+                    </div>
+                    <div class="widget-stats">
+                        <div class="wrap last">
+                            <a href="Safe/safe_payment.aspx" class="item-title">
+                                تسجيل
+                                <span>
+                                    نقدية</span></a>
+                        </div>
+                    </div>
+                    <div class="progress dd">
+                        <div class="progress-bar" style="width: 50%"></div>
+                    </div>
+                </div>
+
+            
+</div>
+
+            <div class="col col-sm-6">
+                <div class="small-box box color-red">
+                    <div class="icon"><i class="fa fa-database"></i></div>
+                    <div class="box-header">
+                        <h3 style="color: white" class="box-title">
+                            المخزن
+                        </h3>
+                        
+                    </div>
+                    <div class="widget-stats">
+                        <div class="wrap transparent">
+                            <a href="Stores/LastTotalStores.aspx" class="item-title">
+                                رصيد
+                                <span>
+                                المخزن</span></a>
+                        </div>
+                    </div>
+                    <div id="ctl00_ContentPlaceHolder1_li_RequiredItems" class="widget-stats">
+                        <div class="wrap last">
+                            <a href="Stores/RequiredItems.aspx" class="item-title">
+                                الأصناف
+                                <span>
+                                الناقصة</span></a>
+                        </div>
+                    </div>
+                    <div class="progress dd">
+                        <div class="progress-bar" style="width: 50%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <!-- Left col -->
+            <div class="col-md-8">
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">
+                            آخر فواتير البيع
+                        </h3>
+
+                        <div class="box-tools pull-right">
+                            <a id="ctl00_ContentPlaceHolder1_btn_Print" class="btn btn-flat bg-green" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$btn_Print&#39;,&#39;&#39;)">
+                                <i class="fa fa-print"></i>
+                                طباعة فواتير اليوم</a>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                           
+                            <i class="fa fa-minus"></i>
+                        </button>
+                            
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table id="tbl_LastOrder" class="table no-margin">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            رقم الفاتورة
+                                        </th>
+                                        <th>
+                                            التاريخ
+                                        </th>
+                                        <th>
+                                            العميل
+                                        </th>
+                                        <th>
+                                            القيمة
+                                        </th>
+                                        <th>
+                                            المستخدم
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+                        <a href="Invoices/SellInvoice.aspx" id="ctl00_ContentPlaceHolder1_li_SellInvoice" class="btn btn-sm btn-info btn-flat pull-left">
+                            فاتورة بيع جديدة
+                        </a>
+
+                        <a href="Invoices/SellInvoiceGrid.aspx" class="btn btn-sm btn-default btn-flat pull-right">
+                            عرض كل فواتير البيع
+                        </a>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+
+            <div class="col-md-4">
+                <div id="ctl00_ContentPlaceHolder1_pnl_HomeWidgets">
+                    <!-- Info Boxes Style 2 -->
+                    <div class="info-box bg-yellow">
+                        <span class="info-box-icon"><i class="fa fa-tags"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">
+                        مبيعات</span>
+                            <span class="info-box-number">
+                        
+                    </span>
+
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 50%"></div>
+                            </div>
+                            <span class="progress-description">
+                        تقرير حسابات المبيعات اليومية</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                    <div class="info-box bg-green">
+                        <span class="info-box-icon"><i class="fa fa-usd"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">
+                        مصروفات</span>
+                            <span class="info-box-number">
+                        0
+                    </span>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 20%"></div>
+                            </div>
+                            <span class="progress-description">
+                        تقرير حسابات المصروفات اليومية
+                    </span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                    <div id="ctl00_ContentPlaceHolder1_pnlSafe">
+
+
+                        <div class="info-box bg-red">
+                            <span class="info-box-icon"><i class="fa fa-hdd-o"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">
+                            الخزينة</span>
+                                <span class="info-box-number">
+                            0
+                        </span>
+
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 70%"></div>
+                                </div>
+                                <span class="progress-description">
+                            تقرير حسابات الخزينة اليومية
+                        </span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                    
+</div>
+                </div>
+                <div id="ctl00_ContentPlaceHolder1_UpdatePanelFeesMessage">
+
+
+                        <div id="ctl00_ContentPlaceHolder1_pnlPrintMessage" class="modalPopup" style="display: none;">
+
+                            <div class="header">
+                                <span id="ctl00_ContentPlaceHolder1_Label2"> BeCreative </span>
+                            </div>
+                            <div class="body">
+                                <h4>
+                                     لتجنب وقف الخدمه برجاء تجديد الباقة قبل الموعد المحدد لها باقى اقل من خمس ايام  
+                                </h4>
+                            </div>
+                            <div class="footer">
+                                <a id="ctl00_ContentPlaceHolder1_btn_PayLater" class="btn bg-red" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$btn_PayLater&#39;,&#39;&#39;)">
+                                    <i class="fa fa-bookmark"></i>
+                                    التذكير لاحقا</a>
+                                <a id="ctl00_ContentPlaceHolder1_btnPay" class="btn btn-sm btn-flat bg-green" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$btnPay&#39;,&#39;&#39;)">
+                                    <i class="fa fa-usd"></i>
+                                    تجديد الاشتراك</a>
+                            </div>
+                        
+</div>
+                        
+                    
+</div>
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Left col -->
+            
+
+
+                <!-- /.col -->
+
+
+                <!-- /.col -->
+                
+                    <!-- /.col -->
+        </div>
+
+        <div class="row">
+
+
+            <div class="col-md-5">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">
+                             فيديو شرح للنظام 
+                        </h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <a href="https://www.youtube.com/watch?v=MbdLkLzOWD4&list=UUdWCRilSc83__QvnbETripw" class="html5lightbox"><img src="Design\Images\video.png" class="img-fluid" alt=""></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /.col -->
+            <div class="col-md-3">
+                <!-- DIRECT CHAT -->
+                <div class="box box-warning direct-chat direct-chat-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">
+                            الشات
+                        </h3>
+
+                        <div class="box-tools pull-right">
+                            <span id="sp_Notification" data-toggle="tooltip" title="No Messages" class="badge bg-yellow">0</span>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                            
+                                
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <!-- Conversations are loaded here -->
+                        <div id="ChatBody" class="direct-chat-messages"></div>
+                        <!--/.direct-chat-messages-->
+                    </div>
+
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        
+                            <div class="input-group">
+                                <input id="txt_Message" type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                <span class="input-group-btn">
+                            <button id="btn_SendMessage" type="button" class="btn btn-warning btn-flat">Send</button>
+                        </span>
+                            </div>
+                            
+                    </div>
+                    <!-- /.box-footer-->
+                </div>
+                <!--/.direct-chat -->
+            </div>
+
+            <div class="col-md-4">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">
+                             آخر التحديثات   
+                        </h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <ul id="ctl00_ContentPlaceHolder1_ul_Updates" class="products-list product-list-in-box"><li class='item'><div class='product-img'><img src='Design/images/be.png' alt=''></div><div class='product-info'><a href='javascript:void(0)' class='product-title'>إصـــدار 18.0<span class='label label-danger pull-right'>2/6/2022</span></a><span class='product-description'>تصميم جديد وتحسينات فى اداء النظام </span></div></li class='item'><li class='item'><div class='product-img'><img src='Design/images/be.png' alt=''></div><div class='product-info'><a href='javascript:void(0)' class='product-title'>إصـــدار 5.7<span class='label label-warning pull-right'>11/28/2016</span></a><span class='product-description'>تحسين طباعة فاتورة البيع واضافة البيانات الضريبة للشركة ودعم احتساب الضريبة الجديدة ضريبة القيمة المضافة </span></div></li class='item'><li class='item'><div class='product-img'><img src='Design/images/be.png' alt=''></div><div class='product-info'><a href='javascript:void(0)' class='product-title'>إصـــدار 5.6<span class='label label-success pull-right'>10/3/2016</span></a><span class='product-description'>جرد المخازن عن طريق اسكانر الباركود وتسوية الجرد سواء بالعجز او الزيادة . دعم السكانر الاسلكى واضافة امكانية جرد المخزن ككل او جزء من المخزن وتسوية </span></div></li class='item'><li class='item'><div class='product-img'>
+                            <img src='Design/images/be.png' alt=''></div><div class='product-info'><a href='javascript:void(0)' class='product-title'>إصـــدار 5.1<span class='label label-info pull-right'>2/10/2016</span></a><span class='product-description'>امكانية عمل النظام بدون اتصال بالانترنت لحين توفره يقوم النظام بتحديث البيانات Becreative  Offline Mode</span></div></li class='item'></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <!-- USERS LIST -->
+                <div class="box box-danger ">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">
+                            المستخدمين المتواجدين حاليا 
+                        </h3>
+
+                        <div class="box-tools pull-right">
+                            
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                                
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body no-padding">
+                        <ul class="users-list clearfix">
+                            <li> <img src = 'Design/Images/avatar5.png' alt='User Image'><a Class='users-list-name' href='#'>Admin</a><span Class='users-list-Date'>Today</span> </li>
+                        </ul>
+                        <!-- /.users-list -->
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <a href="managment/users_grid.aspx" class="uppercase">
+                            عرض كل المستخدمين
+                        </a>
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+                <!--/.box -->
+            </div>
+
+
+        </div>
+    </section>
+</div>
+
+
+	<script type="text/javascript" src="/js/jqueryui.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="/js/google-drawchart_v1121.js"></script>
+	<script type="text/javascript" src="/js/dashboard/in_viewport.js"></script>
+	<script type="text/javascript" src="/js/dashboard/widgets.js"></script>
+	<script type="text/javascript" src="/js/dashboard/owner.js?v=2"></script>
+	<script type="text/javascript" src="/js/loadingoverlay.min.js"></script>
+<!-- Modal -->
+<div id="LoaderModal" class="modal fade" role="dialog">
+    <!-- <div class="modal-dialog"> -->
+        <!-- Modal content-->
+        <!-- <div class="modal-content" style="opacity: 1.0;"> -->
+            <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                <i class="fa fa-circle-o-notch fa-spin" style="color: #fff;font-size:50px;"></i>
+            </div>
+        <!-- </div> -->
+
+    <!-- </div> -->
+</div>
+
+
+	<script type="text/javascript" src="/js/jquery.scannerdetection.js"></script>
+<script>
+
+    $( document ).ready( function() {
+            // var anything_is_focused = (
+            //     document.hasFocus() &&
+            //         document.activeElement !== null &&
+            //         document.activeElement !== document.body &&
+            //         document.activeElement !== document.documentElement
+            //     );
+            //
+            // $( document).keydown(function(){
+            //     anything_is_focused = (
+            //         document.hasFocus() &&
+            //             document.activeElement !== null &&
+            //             document.activeElement !== document.body &&
+            //             document.activeElement !== document.documentElement
+            //         );
+            // });
+
+
+            $( document ).scannerDetection({
+                timeBeforeScanTest: 200, // wait for the next character for upto 200ms
+                avgTimeByChar: 100, // it's not a barcode if a character takes longer than 100ms
+                onComplete: function(barcode, qty){
+                    $('#LoaderModal').modal('show');
+                    $.get('/owner/oibarcodes/redirect_using_barcode/'+ barcode)
+                        .done(function(data){
+                            if(data == "fail")
+                            {
+                                $('#LoaderModal').modal('hide');
+                                return false;
+                            }
+                            window.location = data;
+                        }).fail(function(data){
+                            $('#LoaderModal').modal('hide');
+                            initToast(__('Invalid Barcode', true), 'danger');
+                        });
+                        
+
+                }
+            });
+
+        }
+    );
+</script>
+
+	<script type="text/javascript" src="/js/tags-view.js"></script>
+<script>
+    $(document).on('show.bs.dropdown', 'table .mobile-options', function() {
+        var wrapper = $(this).closest('.widget-body-wrapper');
+        if (!(wrapper[0].scrollHeight > wrapper[0].clientHeight)) {
+            wrapper.css('overflow', 'visible');
+        }
+    });
+    $(document).on('hide.bs.dropdown', 'table .mobile-options', function() {
+        var wrapper = $(this).closest('.widget-body-wrapper');
+        if (!(wrapper[0].scrollHeight > wrapper[0].clientHeight)) {
+            wrapper.removeAttr('style');
+        }
+    });
+</script>
+<script>
+	</script>
+                        </ol>
+                    </div>
+
+                    
+                </div>
+                
+                
+                <!-- / main-area -->
+                <div class="clear"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var prefix = '';
+	                        prefix = 'owner';
+	                </script>
+                <script src="https://cdn.daftra.com/assets/s2020/js/layout/libs.js?v=1121"></script>
+        <script src="https://cdn.daftra.com/assets/s2020/js/layout/helpers.js?v=1121"></script>
+        <script src="https://cdn.daftra.com/assets/s2020/js/layout/app.js?v=1121"></script>
+        
+	<script type="text/javascript" src="/js/jquery.lightbox_me.js"></script>
+	<script type="text/javascript" src="/js/jquery.tooltip.js"></script>
+	<script type="text/javascript" src="/js/layout.js?v=1121"></script>
+        
+                    <button type="button" class="popup-chat hidden-xs support-btn">
+                <span>لديك سؤال</span> <img src="/css/img/q.png" alt="">
+            </button>
+        <!-- Modal -->
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-md"  role="document">
+                <div class="modal-content">
+                    <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                    <div class="modal-header">
+                   
+                        <h4 class="modal-title" id="myModalLabel">أسأل سؤال أو أرسل رأيك </h4>
+                    </div>
+                    <div class="modal-body">
+  
+                        <iframe id="contact_iframe" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModalGeneral" tabindex="-1" role="dialog" aria-labelledby="myModalGeneralLabel">
+            <div id="myModalGeneralSize" class="modal-dialog modal-lg"  role="document">
+                <div class="modal-content">
+                    <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                    <div id="myModalGeneralheader" class="modal-header">
+
+                        <h4 class="modal-title" id="myModalGeneralLabel">الضرائب</h4>
+                    </div>
+                    <div class="modal-body">
+                        <iframe id="myModalGeneral_iframe" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script>
+            setTimeout(function() {
+                if ($('.isDatePicker').length) {
+                    $('.isDatePicker').attr('autocomplete', 'off');
+                }
+            }, 500);
+        </script>
+
+
+<div class="modal fade" id="promptModalDelete-global" tabindex="-1" role="dialog" aria-labelledby="promptModalLabel-global"
+        style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-transparent border-0 position-absolute w-100" style="z-index: 9;">
+                <h5 class="modal-title d-none" id="promptModalLabel-global"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body px-4 text-center">
+                <i class="mdi mdi-trash-can-outline fs-36 text-danger d-block py-2"></i>
+                <div id="prompt-body-global"></div>
+            </div>
+            <form method="post" id="row-action-form-global" name="row-action-form-delete" action="">
+                <input type="hidden" name="_token" id="prompt-token-global" value=""/>
+                <input type="hidden" name="_method" id="prompt-method-global" value=""/>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">نعم</button>
+                    <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">لا</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="help-container">
+<div class="modal-bg-container">
+        <div class="modal-bg"></div>
+    </div>
+    <div id="modal-container" >
+    </div>
+</div>
+
+        
+	<script type="text/javascript" src="/js/submit_handler_v1121.js"></script>
+        
+	<script type="text/javascript" src="/js/jquery.scannerdetection.js"></script>
+        <link rel="stylesheet" media="print" type="text/css" href="/css/print_v813.css?v=5"  />
+        <script src="/dist/daftra/daftra.compat.js?v=1121"></script>
+        <script type="text/javascript" src="/js/reports.js?v=10"></script>
+        <script type="text/javascript" src="/js/beta.js?v=1"></script>
+        <script type="text/javascript" src="/js/modals.js"></script>
+        <script type="text/javascript">
+               $(document).on('click','.support-btn, .support-modal-btn', function() {
+                IzamModal.closeModals();
+                    IzamModal.addUrlModal('/v2/owner/support-channels/index', '', '', false, false)
+                })
+        </script>     
+                <script type="text/javascript" src="/js/navigation-shortcuts.js"></script>
+        <script type="text/javascript" src="/js/navigation-listener.js"></script>  
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+        <script src="Design/js/bootstrap.js"></script> 
+        <script src="Design/js/global.js"></script>
+        <script src="Design/js/textfield.js"></script>
+        <script src="Design/js/select2.js"></script>
+        <script src="Design/js/custom-file-input.js"></script>
+        <script src="Design/js/after-refresh.js"></script>
+         <script src="Design/js/Chart.js"></script>
+    
+        <script src="Design/js/bootstrap-datetimepicker.js"></script>
+        
+       
+        <!-- fullscreen -->
+        <script src="Design/js/screenfull.js"></script>
+     
+        
+        <script src="Design/js/app.min.js"></script>
+        <script src="Design/js/ActiveMenu.js"></script>
+        <script src="Design/js/autocomplete.js"></script>
+         
+       
+        
+        <!-- Google tag (gtag.js) -->
+            </body>
+</html>
+
+

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة حساب بنكي</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+        .top-bar {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .button-row {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .green-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .input-field {
+            margin-bottom: 15px;
+        }
+        .input-field label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-field input, .input-field select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div>
+            <button>الذهاب للموقع</button>
+            <button>المساعدة</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="button-row">
+            <button>إلغاء</button>
+            <button class="green-button">حفظ</button>
+        </div>
+
+        <div class="input-field">
+            <label>النوع:</label>
+            <p>💳 حساب بنكي</p>
+        </div>
+
+        <div class="input-field">
+            <label>الاسم:</label>
+            <input type="text" placeholder="أدخل اسم الحساب">
+        </div>
+
+        <div class="input-field">
+            <label>العملة:</label>
+            <select>
+                <option>ريال سعودي</option>
+                <option>دولار</option>
+            </select>
+        </div>
+
+        <div class="input-field">
+            <label>الحالة:</label>
+            <select>
+                <option>نشط</option>
+                <option>غير نشط</option>
+            </select>
+        </div>
+
+        <div class="input-field">
+            <label>الوصف:</label>
+            <input type="text" placeholder="أدخل وصف">
+        </div>
+
+        <div class="input-field">
+            <label>الإيداع:</label>
+            <select>
+                <option>الكل</option>
+                <option>موظف محدد</option>
+                <option>فرع محدد</option>
+                <option>دور وظيفي محدد</option>
+            </select>
+        </div>
+
+        <div class="input-field">
+            <label>السحب:</label>
+            <select>
+                <option>الكل</option>
+                <option>موظف محدد</option>
+                <option>فرع محدد</option>
+                <option>دور وظيفي محدد</option>
+            </select>
+        </div>
+    </div>
+
+</body>
+</html>

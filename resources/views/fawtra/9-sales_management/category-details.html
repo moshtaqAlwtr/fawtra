@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل التصنيف</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .top-button {
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .cancel-button, .save-button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .cancel-button {
+            background-color: #f44336;
+            color: #fff;
+        }
+
+        .save-button {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .attachment-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .attachment-button img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <button class="top-button">الذهاب للموقع</button>
+        <button class="top-button">مساعدة</button>
+    </div>
+
+    <div class="container">
+        <div class="buttons">
+            <button class="cancel-button">إلغاء</button>
+            <button class="save-button">حفظ</button>
+        </div>
+
+        <div class="form-group">
+            <label for="category-name">الاسم:</label>
+            <input type="text" id="category-name" placeholder="أدخل اسم التصنيف">
+        </div>
+
+        <div class="form-group attachment-button">
+            <label for="attachments">المرفقات:</label>
+            <span>📁 اختر من جهازك أو افتح الملف هنا</span>
+            <input type="file" id="attachments" style="display: none;">
+        </div>
+
+        <div class="form-group">
+            <label for="main-category-select">التصنيف الرئيسي:</label>
+            <input type="text" id="main-category-select" placeholder="ابحث عن التصنيف">
+        </div>
+
+        <div class="form-group">
+            <label for="description">الوصف:</label>
+            <textarea id="description" rows="4" placeholder="اكتب الوصف هنا"></textarea>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم</title>
+    <link rel="stylesheet" href="Design/css/bootstrap.rtl.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="mabiatstyle.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #007bff;
+            color:white;
+font-style: normal;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 24px;
+    color:white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Cairo', sans-serif;
+
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .btn-s2020 {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* تنسيق الأيقونة */
+.s2020-icon {
+    height: 34px;
+    width: 34px;
+    line-height: 34px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    margin-right: 10px;
+    color: #007bff;
+}
+
+/* تنسيق النص داخل الرابط */
+.btn-s2020 span {
+    color: #007bff;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* تأثيرات عند التمرير */
+.btn-s2020:hover {
+    background-color: #e9ecef;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: white;
+        }
+        .search-box i {
+            margin-left: 10px;
+        }
+        .search-box input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            padding: 5px;
+        }
+        .search-box button {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+        .action-box {
+            cursor: pointer;
+        }
+        .badge {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+        .action-box i {
+            color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>أهلاً محمد العتيبي، مرحباً بعودتك!</h1>
+    </div>
+    
+    <div class="col-flex-lg-4 text-right s2020">
+        <a href="/home" class="btn-s2020">
+            <i class="mdi mdi-storefront s2020-icon"></i>
+            <span>الذهاب إلى الموقع</span>
+        </a>
+    </div>
+    
+    
+                
+
+    <div class="container mt-4">
+        <div class="row mb-3">
+            <!-- البحث عن الفواتير -->
+            <div class="col-md-6">
+                <div class="card s2020 shadow widget-item">
+                    <div class="card-body">
+                        <form action="/owner/invoices/index" method="GET" id="InvoiceSearch">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" name="keywords" id="InvoiceQuery" placeholder="البحث عن الفواتير" />
+                                <button type="submit">بحث</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- البحث عن العملاء -->
+            <div class="col-md-6">
+                <div class="card s2020 shadow widget-item">
+                    <div class="card-body">
+                        <form action="/owner/clients/index" method="GET" id="ClientSearch">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" name="keywords" id="ClientQuery" placeholder="البحث عن العملاء" />
+                                <button type="submit">بحث</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الأزرار الرئيسية والجديدة -->
+        <section class="features" id="features">
+            <div class="features-section">
+                <div class="qualities">
+                    <div class="quality">
+                        <i class="fas fa-shopping-cart"></i> <!-- أيقونة تعبر عن البيع -->
+                        <h3>بدء البيع</h3>
+                    </div>
+                    <div class="quality">
+                        <i class="fas fa-file-invoice-dollar"></i> <!-- أيقونة الفاتورة -->
+                        <h3>إنشاء فاتورة</h3>
+                    </div>
+                    <div class="quality">
+                        <i class="fas fa-chair"></i> <!-- أيقونة تعبر عن الجلسات أو الاجتماعات -->
+                        <h3>الجلسات</h3>
+                    </div>
+                    <div class="quality">
+                        <i class="fas fa-receipt"></i> <!-- أيقونة تعبر عن الفواتير -->
+                        <h3>الفواتير</h3>
+                    </div>
+                    <div class="quality">
+                        <i class="fas fa-users"></i> <!-- أيقونة تعبر عن العملاء -->
+                        <h3>العملاء</h3>
+                    </div>
+                    <div class="quality">
+                        <i class="fas fa-user-plus"></i> <!-- أيقونة تعبر عن إضافة عميل جديد -->
+                        <h3>عميل جديد</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- الأقسام: الفواتير، الربح والخسارة، أحدث الفواتير، فواتير متأخرة عن الدفع -->
+        <div class="mb-6">
+            <a href="#" class="btn btn-light active">الفواتير</a>
+            <a href="#" class="btn btn-light">الربح والخسارة</a>
+            <a href="#" class="btn btn-light">أحدث الفواتير</a>
+            <a href="#" class="btn btn-light">فواتير متأخرة  </a>
+        </div>
+
+        <!-- الرسوم البيانية والإحصاءات -->
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>الفواتير من 05/09/2024 إلى 05/10/2024</h3>
+                <button class="btn btn-custom">التفاصيل</button>
+            </div>
+            <div class="card-body text-center">
+                <canvas id="myChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-4 mb-30">
+                <div class="card h-100">
+                    <div class="card-body">
+                        
+                        <div class="row mb-30">
+                            <div class="col-md-6">
+                                <div class="clearfix">
+                                 
+                                    <i class="mb-10 text-success float-right fa fa-arrow-up"> </i>
+                                </div>
+                                <div class="progress progress-small">
+                                    <div class="skill2-bar bg-success" role="progressbar" style="width: 70%"
+                                        aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <div class="clearfix">
+                                
+                                    <i class="mb-10 text-danger float-right fa fa-arrow-down"> </i>
+                                </div>
+                                <div class="progress progress-small">
+                                    <div class="skill2-bar bg-danger" role="progressbar" style="width: 30%"
+                                        aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="chart-wrapper" style="width: 100%; margin: 0 auto;">
+                            <div id="canvas-holder">
+                                <canvas id="canvas3" width="550"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 mb-30">
+                <div class="card card-statistics h-100">
+              
+                </div>
+            </div>
+        </div>
+
+        <!-- الأنشطة الحالية والمنتجات منخفضة المخزون -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>الأنشطة الحالية</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-item d-flex justify-content-between">
+                            <span>زيارة سلبية</span>
+                            <span class="btn btn-custom">نشط</span>
+                        </div>
+                        <div class="activity-item d-flex justify-content-between">
+                            <span>بيع 5 عطر</span>
+                            <span class="btn btn-custom">نشط</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>المنتجات منخفضة المخزون</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="product-item d-flex justify-content-between">
+                            <span>عطر 30 مللي</span>
+                            <span class="btn btn-danger">نفذ</span>
+                        </div>
+                        <div class="product-item d-flex justify-content-between">
+                            <span>هدية</span>
+                            <span class="btn btn-danger">نفذ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم المدفوعات -->
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3>المدفوعات من 05/09/2024 إلى 05/10/2024</h3>
+                <button class="btn btn-custom">التفاصيل</button>
+            </div>
+        </div>
+    </div>
+    <div class="card s2020 shadow mb-3" id="activities_widget">
+        <div class="px-4 py-2 py-xl-3 border-bottom border-secondary s2020 bg-light">
+            <div class="d-flex align-items-center justify-content-between">
+                <h3 class="text-dark-blue s2020 pb-0 fs-16 font-weight-bold">
+                    <span>الأنشطة الحالية</span>
+                </h3>
+                <a href="/owner/action_lines/index" class="text-primary-2 p-0 s2020 border-0">عرض الجميع</a>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <div class="widget-body-wrapper p-3" id="report_activities">
+                <div class="notifcation-loader" style="margin-top: 60px;"><div class="inner-loader"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart.js Script -->
+    <script>
+        // Data for the chart
+        const labels = ['05/09', '10/09', '15/09', '20/09', '25/09', '30/09', '05/10'];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'عدد الفواتير',
+                data: [5, 10, 8, 15, 7, 12, 9],
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        // Config for the chart
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // Render the chart
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+
+</body>
+</html>

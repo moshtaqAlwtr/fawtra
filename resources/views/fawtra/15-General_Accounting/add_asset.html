@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأصول - إضافة أصل</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f1f5f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .top-bar {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .form-control, .form-select {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+        .btn-primary, .btn-secondary {
+            font-size: 0.9rem;
+            padding: 8px 16px;
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+        .btn-secondary {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+        .btn-close-custom {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        .attachments-section {
+            text-align: center;
+            color: #007bff;
+            border: 1px dashed #ced4da;
+            border-radius: 5px;
+            padding: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .note {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        /* تخصيص أزرار التقويم */
+        .flatpickr-calendar .flatpickr-footer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+        }
+        .flatpickr-calendar .flatpickr-footer button {
+            border: none;
+            border-radius: 5px;
+            padding: 5px 15px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .flatpickr-calendar .flatpickr-footer .btn-today {
+            background-color: #007bff; /* أزرق لزر اليوم */
+        }
+        .flatpickr-calendar .flatpickr-footer .btn-clear {
+            background-color: #dc3545; /* أحمر لزر المسح */
+        }
+    </style>
+</head>
+<body dir="rtl">
+
+    <!-- شريط علوي -->
+    <div class="top-bar">
+        الأصول &raquo; إضافة
+    </div>
+
+    <div class="container">
+
+        <!-- أزرار الحفظ والإلغاء -->
+        <div class="d-flex justify-content-end mb-3">
+            <button type="button" class="btn btn-primary mx-2"><i class="fas fa-save"></i> حفظ</button>
+            <button type="button" class="btn btn-secondary mx-2"><i class="fas fa-times"></i> إلغاء</button>
+            <button type="button" class="btn btn-close-custom mx-2"><i class="fas fa-times-circle"></i></button>
+        </div>
+
+        <div class="row">
+            <!-- تفاصيل الأصل -->
+            <div class="col-md-6">
+                <div class="section-title">تفاصيل الأصل</div>
+                <form>
+                    <div class="mb-3">
+                        <label for="assetCode" class="form-label">الكود <span class="text-danger">*</span></label>
+                        <input type="text" id="assetCode" class="form-control" value="000001" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="assetName" class="form-label">الاسم <span class="text-danger">*</span></label>
+                        <input type="text" id="assetName" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="purchaseDate" class="form-label">تاريخ الشراء <span class="text-danger">*</span></label>
+                        <input type="text" id="purchaseDate" class="form-control" placeholder="اختر تاريخ الشراء" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="serviceStartDate" class="form-label">تاريخ بداية الخدمة</label>
+                        <input type="text" id="serviceStartDate" class="form-control" placeholder="اختر تاريخ بداية الخدمة">
+                    </div>
+                    <div class="mb-3">
+                        <label for="account" class="form-label">الحساب الرئيسي <span class="text-danger">*</span></label>
+                        <select id="account" class="form-select" required>
+                            <option value="">اختر الحساب</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">المكان</label>
+                        <select id="location" class="form-select">
+                            <option value="">اختر المكان</option>
+                            <option value="main_office">المكتب الرئيسي</option>
+                            <option value="branch1">فرع 1</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="usefulLife" class="form-label">العمر الإنتاجي</label>
+                        <input type="number" id="usefulLife" class="form-control" placeholder="بالسنوات">
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">الكمية</label>
+                        <input type="number" id="quantity" class="form-control" placeholder="عدد الوحدات">
+                    </div>
+                    <div class="mb-3">
+                        <label for="employee" class="form-label">موظف</label>
+                        <select id="employee" class="form-select">
+                            <option value="">اختر موظف</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">الوصف</label>
+                        <textarea id="description" class="form-control" rows="3" placeholder="أدخل وصفًا للأصل"></textarea>
+                    </div>
+
+                    <!-- المرفقات -->
+                    <div class="attachments-section">
+                        <i class="fas fa-cloud-upload-alt"></i> <br>
+                        اسحب الملف هنا أو انقر من جهازك
+                    </div>
+                    <div class="note text-center">تقبل الملفات بصيغة PDF أو صور فقط</div>
+                </form>
+            </div>
+
+            <!-- تفاصيل التسعير -->
+            <div class="col-md-6">
+                <div class="section-title">تفاصيل التسعير</div>
+                <form>
+                    <div class="mb-3">
+                        <label for="purchaseValue" class="form-label">قيمة الشراء <span class="text-danger">*</span></label>
+                        <input type="number" id="purchaseValue" class="form-control" placeholder="أدخل قيمة الشراء" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cashAccount" class="form-label">حساب النقدية <span class="text-danger">*</span></label>
+                        <select id="cashAccount" class="form-select" required>
+                            <option value="">اختر الحساب</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tax1" class="form-label">الضريبة 1</label>
+                        <select id="tax1" class="form-select">
+                            <option value="">اختر الضريبة</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tax2" class="form-label">الضريبة 2</label>
+                        <select id="tax2" class="form-select">
+                            <option value="">اختر الضريبة</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- إهلاك الأصل -->
+        <div class="mt-4">
+            <div class="section-title">إهلاك الأصل</div>
+            <form>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="scrapValue" class="form-label">قيمة الخردة</label>
+                        <input type="number" id="scrapValue" class="form-control" placeholder="أدخل قيمة الخردة">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="depreciationMethod" class="form-label">طريقة الإهلاك <span class="text-danger">*</span></label>
+                        <select id="depreciationMethod" class="form-select" required>
+                            <option value="">اختر طريقة الإهلاك</option>
+                            <option value="straight_line">الطريقة الثابتة</option>
+                            <option value="declining_balance">طريقة الرصيد المتناقص</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- المكتبات -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ar.js"></script>
+    <script>
+        // إعداد Flatpickr للتقويم مع أزرار اليوم والمسح
+        flatpickr("#purchaseDate", {
+            locale: "ar",
+            dateFormat: "Y-m-d",
+            altInput: true,
+            altFormat: "F j, Y",
+            monthSelectorType: "static",
+            onReady: function(selectedDates, dateStr, instance) {
+                const calendar = instance.calendarContainer;
+                const footer = document.createElement("div");
+                footer.classList.add("flatpickr-footer");
+
+                const todayBtn = document.createElement("button");
+                todayBtn.textContent = "اليوم";
+                todayBtn.classList.add("btn-today");
+                todayBtn.onclick = () => {
+                    instance.setDate(new Date());
+                    instance.close();
+                };
+
+                const clearBtn = document.createElement("button");
+                clearBtn.textContent = "مسح";
+                clearBtn.classList.add("btn-clear");
+                clearBtn.onclick = () => {
+                    instance.clear();
+                };
+
+                footer.appendChild(todayBtn);
+                footer.appendChild(clearBtn);
+                calendar.appendChild(footer);
+            }
+        });
+
+        flatpickr("#serviceStartDate", {
+            locale: "ar",
+            dateFormat: "Y-m-d",
+            altInput: true,
+            altFormat: "F j, Y",
+            monthSelectorType: "static",
+            onReady: function(selectedDates, dateStr, instance) {
+                const calendar = instance.calendarContainer;
+                const footer = document.createElement("div");
+                footer.classList.add("flatpickr-footer");
+
+                const todayBtn = document.createElement("button");
+                todayBtn.textContent = "اليوم";
+                todayBtn.classList.add("btn-today");
+                todayBtn.onclick = () => {
+                    instance.setDate(new Date());
+                    instance.close();
+                };
+
+                const clearBtn = document.createElement("button");
+                clearBtn.textContent = "مسح";
+                clearBtn.classList.add("btn-clear");
+                clearBtn.onclick = () => {
+                    instance.clear();
+                };
+
+                footer.appendChild(todayBtn);
+                footer.appendChild(clearBtn);
+                calendar.appendChild(footer);
+            }
+        });
+    </script>
+</body>
+</html>

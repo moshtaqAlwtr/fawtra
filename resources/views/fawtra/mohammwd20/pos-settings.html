@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات نقاط البيع</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            direction: rtl;
+            background-color: #f0f4f8;
+        }
+        .navbar {
+            background-color: #0078d7;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: white;
+            margin-left: 15px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .settings-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .settings-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .settings-box:hover {
+            transform: translateY(-5px);
+        }
+        .settings-box img {
+            width: 60px;
+            margin-bottom: 15px;
+        }
+        .settings-box h4 {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="navbar">
+        <div>محمد العنزي - Main Branch</div>
+        <div>
+            <a href="#">الذهاب إلى الموقع</a>
+            <a href="#">المساعدة</a>
+        </div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <h3>إعدادات نقاط البيع</h3>
+        <div class="settings-container">
+            <a href="pos-devices.html" class="settings-box">
+                <img src="https://img.icons8.com/ios-filled/100/000000/cash-register.png" alt="أجهزة نقاط البيع">
+                <h4>أجهزة نقاط البيع</h4>
+            </a>
+            <a href="pos-shifts.html" class="settings-box">
+                <img src="https://img.icons8.com/ios-filled/100/000000/clock.png" alt="ورديات نقاط البيع">
+                <h4>ورديات نقاط البيع</h4>
+            </a>
+            <a href="pos-general.html" class="settings-box">
+                <img src="https://img.icons8.com/ios-filled/100/000000/settings.png" alt="إعدادات عامة">
+                <h4>عام</h4>
+            </a>
+            <a href="pos-app-download.html" class="settings-box">
+                <img src="https://img.icons8.com/ios-filled/100/000000/download.png" alt="تطبيق سطح المكتب">
+                <h4>تطبيق سطح المكتب</h4>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

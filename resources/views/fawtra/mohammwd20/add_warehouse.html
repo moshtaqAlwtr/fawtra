@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة مستودع</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .header-bar {
+            background-color: #247dbd;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-blue {
+            background-color: #247dbd;
+            color: #fff;
+            border: none;
+        }
+
+        .panel {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .permission-div {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <div class="header-bar">
+        <div>
+            <button class="btn btn-blue">الذهاب إلى الموقع</button>
+            <button class="btn btn-blue">المساعدة</button>
+        </div>
+        <h4>إضافة مستودع</h4>
+    </div>
+
+    <!-- Form Section -->
+    <div class="container">
+        <div class="panel">
+            <form id="StoreOwnerAddForm" method="post">
+                <div class="form-group">
+                    <label for="StoreName">الاسم</label>
+                    <input name="data[Store][name]" type="text" class="form-control" id="StoreName" required maxlength="255">
+                </div>
+
+                <div class="form-group">
+                    <label for="StoreShippingAddress">عنوان الشحن</label>
+                    <textarea name="data[Store][shipping_address]" rows="4" class="form-control" id="StoreShippingAddress"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="StoreActive">الحالة</label>
+                    <select name="data[Store][active]" class="form-control" id="StoreActive">
+                        <option value="1" selected>نشط</option>
+                        <option value="0">غير نشط</option>
+                        <option value="2">موقوف</option>
+                    </select>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="StorePrimary" name="data[Store][primary]" value="1">
+                    <label class="form-check-label" for="StorePrimary">رئيسي</label>
+                </div>
+
+                <h5 class="mt-4">الصلاحيات</h5>
+                <div class="permission-div">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="ItemPermissionGroupType1">عرض</label>
+                            <select class="form-control" id="ItemPermissionGroupType1">
+                                <option value="-1">الكل</option>
+                                <option value="1">موظف محدد</option>
+                                <option value="2">دور وظيفي محدد</option>
+                                <option value="3">فرع محدد</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="ItemPermissionGroupId11">موظف</label>
+                            <select class="form-control" id="ItemPermissionGroupId11" multiple>
+                                <option>محمد العتيبي</option>
+                                <option>أحمد ابو حبيب</option>
+                                <option>رشيد الرياض</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="ItemPermissionGroupId12">الدور الوظيفي</label>
+                            <select class="form-control" id="ItemPermissionGroupId12" multiple>
+                                <option>Manager</option>
+                                <option>Staff</option>
+                                <option>الدمام</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <button type="button" class="btn btn-secondary">إلغاء</button>
+                    <button type="submit" class="btn btn-success">حفظ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

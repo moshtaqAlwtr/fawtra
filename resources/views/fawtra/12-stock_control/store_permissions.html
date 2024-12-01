@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأذونات المخزنية المنتجات</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            background-color: #f4f6f9;
+            direction: rtl;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .controls, .search-container, .table-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .controls .btn-group .btn-primary {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .controls .btn-group .btn-primary i {
+            margin-left: 5px;
+        }
+
+        .dropdown-toggle::after { display: none; }
+
+        .status-label {
+            border-radius: 12px;
+            padding: 3px 10px;
+            font-size: 0.9em;
+            color: white;
+        }
+
+        .status-out-of-stock { background-color: #f77b92; }
+        .status-in-stock { background-color: #28a745; }
+
+        .table-products tbody td { vertical-align: middle; }
+        
+        .advanced-search {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <div class="header">
+        <h1>الأذونات المخزنية</h1>
+    </div>
+
+    <!-- عناصر التحكم في الصفحة -->
+    <div class="container">
+        <div class="controls">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-plus-circle"></i> إضافة
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="add_manual.html">
+                        <i class="fas fa-plus-circle text-success"></i> إضافة يدوي
+                    </a>
+                    <a class="dropdown-item" href="manual_withdraw.html">
+                        <i class="fas fa-minus-circle text-info"></i> إضافة صرف يدوي
+                    </a>
+                    <a class="dropdown-item" href="manual_transfer.html">
+                        <i class="fas fa-exchange-alt text-warning"></i> إضافة تحويل يدوي
+                    </a>
+                </div>
+            </div>
+            <div class="btn-group ml-2">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    الإجراءات
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="delete.html">
+                        <i class="fas fa-trash-alt text-danger"></i> حذف
+                    </a>
+                    <a class="dropdown-item" href="create_purchase_invoice.html">
+                        <i class="fas fa-file-invoice-dollar text-primary"></i> إنشاء فاتورة شراء
+                    </a>
+                    <a class="dropdown-item" href="create_sales_invoice.html">
+                        <i class="fas fa-file-invoice text-success"></i> إنشاء فاتورة مبيعات
+                    </a>
+                    <a class="dropdown-item" href="print_pdf.html">
+                        <i class="fas fa-print text-dark"></i> طباعة PDF
+                    </a>
+                    <a class="dropdown-item" href="approve.html">
+                        <i class="fas fa-check-circle text-success"></i> أوافق
+                    </a>
+                    <a class="dropdown-item" href="reject.html">
+                        <i class="fas fa-times-circle text-warning"></i> رفض
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- كونتر البحث -->
+        <div class="search-container">
+            <h5>بحث</h5>
+            <div class="search-fields">
+                <div class="form-group">
+                    <label for="branch">فرع</label>
+                    <select id="branch" class="form-control">
+                        <option>الكل</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="permission_number">رقم الإذن المخزني</label>
+                    <input type="text" id="permission_number" class="form-control" placeholder="رقم الإذن المخزني">
+                </div>
+                <div class="form-group">
+                    <label for="source">مصدر الإذن</label>
+                    <select id="source" class="form-control">
+                        <option>الكل</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="warehouse">المستودع</label>
+                    <select id="warehouse" class="form-control">
+                        <option>الكل</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="identifier_number">الرقم المعرف</label>
+                    <input type="text" id="identifier_number" class="form-control" placeholder="الرقم المعرف">
+                </div>
+            </div>
+
+            <!-- زر لتفعيل البحث المتقدم -->
+            <div class="action-buttons">
+                <button class="btn btn-primary btn-search" onclick="search()">بحث</button>
+                <button class="btn btn-secondary btn-reset" onclick="resetFilters()">إلغاء الفلتر</button>
+                <button class="btn btn-warning btn-advanced" onclick="toggleAdvancedSearch()">بحث متقدم</button>
+            </div>
+
+            <!-- البحث المتقدم -->
+            <div class="advanced-search" id="advanced-search">
+                <h5>بحث متقدم</h5>
+                <div class="form-group">
+                    <label for="status">الحالة</label>
+                    <select id="status" class="form-control">
+                        <option>الكل</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="added_by">أضيفت بواسطة</label>
+                    <select id="added_by" class="form-control">
+                        <option>أي موظف</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="products">المنتجات</label>
+                    <select id="products" class="form-control">
+                        <option>من فضلك اختر</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">التاريخ</label>
+                    <div style="display: flex; gap: 5px;">
+                        <input type="date" class="form-control" placeholder="من">
+                        <input type="date" class="form-control" placeholder="إلى">
+                    </div>
+                </div>
+
+                <!-- أزرار البحث بعد البحث المتقدم -->
+                <div class="action-buttons">
+                    <button class="btn btn-primary btn-search" onclick="search()">بحث</button>
+                    <button class="btn btn-secondary btn-reset" onclick="resetFilters()">إلغاء الفلتر</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- جدول المنتجات -->
+        <div class="table-container">
+            <div class="table-responsive">
+                <table class="table table-hover table-products">
+                    <thead>
+                        <tr>
+                            <th>التحكم</th>
+                            <th>المنتج</th>
+                            <th>السعر</th>
+                            <th>الحالة</th>
+                            <th>المتاح</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#"><i class="fas fa-eye text-primary"></i> عرض</a>
+                                        <a class="dropdown-item" href="#"><i class="fas fa-edit text-warning"></i> تعديل</a>
+                                        <a class="dropdown-item" href="#"><i class="fas fa-trash-alt text-danger"></i> حذف</a>
+                                        <a class="dropdown-item" href="#"><i class="fas fa-copy text-info"></i> نسخ</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>هدية</td>
+                            <td>0.00 ر.س <br> 7.00 ر.س</td>
+                            <td><span class="status-label status-out-of-stock">مخزون نفذ</span></td>
+                            <td>0 متاح</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleAdvancedSearch() {
+            const advancedSearch = document.getElementById('advanced-search');
+            advancedSearch.classList.toggle('active');
+        }
+
+        function search() {
+            alert('تنفيذ عملية البحث...');
+        }
+
+        function resetFilters() {
+            alert('إعادة تعيين الفلاتر...');
+        }
+    </script>
+
+</body>
+</html>

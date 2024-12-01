@@ -1,0 +1,10 @@
+@media (max-width:1024px) {
+    #main-content {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+    .visible-sidbar .main-nav {
+        left: 0px;
+        right: 0px !important;
+    }
+}

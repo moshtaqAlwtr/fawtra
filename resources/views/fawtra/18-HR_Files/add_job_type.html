@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة نوع وظيفة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .top-bar {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        .main-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .page-content {
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-actions {
+            margin-top: 20px;
+        }
+        .save-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .cancel-button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <button class="main-button">الذهاب إلى الموقع</button>
+        <button class="main-button">المساعدة</button>
+    </div>
+
+    <div class="page-content">
+        <h1>إضافة نوع وظيفة</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">الاسم</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="status">الحالة</label>
+                <select id="status" name="status">
+                    <option value="نشط">نشط</option>
+                    <option value="غير نشط">غير نشط</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description">الوصف</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="save-button">حفظ</button>
+                <button type="button" class="cancel-button" onclick="window.location.href='job_types_settings.html'">إلغاء</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

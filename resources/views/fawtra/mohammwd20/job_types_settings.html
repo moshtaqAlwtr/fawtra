@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات أنواع الوظائف</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .top-bar {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        .main-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .page-content {
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .add-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .results-table th, .results-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .results-table th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <button class="main-button">الذهاب إلى الموقع</button>
+        <button class="main-button">المساعدة</button>
+    </div>
+
+    <div class="page-content">
+        <h1>أنواع الوظائف</h1>
+        <button class="add-button" onclick="window.location.href='add_job_type.html'">أضف نوع وظيفة</button>
+
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>الاسم</th>
+                    <th>الحالة</th>
+                    <th>الوصف</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4">لا يوجد أنواع الوظائف أضيفت حتى الآن</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات الضرائب</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .top-bar {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-bar button {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .top-bar button:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .add-btn {
+            display: flex;
+            justify-content: flex-end;
+            margin: 20px 0;
+        }
+
+        .add-btn button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-btn button:hover {
+            background-color: #218838;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        select, input[type="number"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <span>إعدادات الضرائب</span>
+        <button>حفظ</button>
+    </div>
+
+    <!-- الحاوية الرئيسية -->
+    <div class="container">
+        <div class="add-btn">
+            <button onclick="addRow()">إضافة</button>
+        </div>
+
+        <table id="taxTable">
+            <thead>
+                <tr>
+                    <th>الضريبة</th>
+                    <th>قيمة الضريبة</th>
+                    <th>متضمَّنة</th>
+                    <th>إزالة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <select>
+                            <option value="value-added">قيمة مضافة</option>
+                            <option value="zero-tax">صفرية</option>
+                            <option value="exempted">القيمة المضافة</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" value="0">
+                    </td>
+                    <td>
+                        <select>
+                            <option value="included">متضمنة</option>
+                            <option value="not-included">غير متضمنة</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="delete-btn" onclick="deleteRow(this)">حذف</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select>
+                            <option value="value-added">قيمة مضافة</option>
+                            <option value="zero-tax">صفرية</option>
+                            <option value="exempted">القيمة المضافة</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" value="5">
+                    </td>
+                    <td>
+                        <select>
+                            <option value="included">متضمنة</option>
+                            <option value="not-included">غير متضمنة</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="delete-btn" onclick="deleteRow(this)">حذف</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // دالة لإضافة سطر جديد
+        function addRow() {
+            const table = document.getElementById("taxTable").getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+            
+            const taxCell = newRow.insertCell(0);
+            const valueCell = newRow.insertCell(1);
+            const includedCell = newRow.insertCell(2);
+            const deleteCell = newRow.insertCell(3);
+
+            taxCell.innerHTML = `<select>
+                                    <option value="value-added">قيمة مضافة</option>
+                                    <option value="zero-tax">صفرية</option>
+                                    <option value="exempted">القيمة المضافة</option>
+                                 </select>`;
+
+            valueCell.innerHTML = `<input type="number" value="0">`;
+
+            includedCell.innerHTML = `<select>
+                                        <option value="included">متضمنة</option>
+                                        <option value="not-included">غير متضمنة</option>
+                                      </select>`;
+
+            deleteCell.innerHTML = `<button class="delete-btn" onclick="deleteRow(this)">حذف</button>`;
+        }
+
+        // دالة لحذف سطر
+        function deleteRow(button) {
+            const row = button.closest('tr');
+            row.remove();
+        }
+    </script>
+
+</body>
+</html>

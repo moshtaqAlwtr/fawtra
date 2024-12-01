@@ -1,0 +1,279 @@
+//@import "../../../node_modules/bootstrap-v4-rtl/scss/functions";
+//@import "../../../node_modules/bootstrap-v4-rtl/scss/variables";
+//@import "../../../node_modules/bootstrap-v4-rtl/scss/mixins";
+
+/****************************
+ ****      Colors
+****************************/
+
+$primary: #00b0ef;
+//$secondary: #E4EBF2;
+$secondary: darken(#f6f9fc, 7%);
+$success: #13b272;
+$success-2: #37A592;
+$info: #01bfa5;
+$warning: #ff9910;
+$danger: #fc5f7d;
+$pink-2: #E41970;
+$light: #f6f9fc;
+$dark: #485563;
+$inactive: #75799d;
+$input: #ced4da;
+$disabled: #e9ecef;
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+//$body-bg: #E4EBF2;
+$body-bg: #e4ebf2;
+//$content-bg: #E4EBF2;
+$main-bg: #4e5381;
+$side-menu-bg: #f6f9fc;
+//$text-main: #4e5381;
+$text-main: #3a3e63;
+$text-main-light: lighten($text-main, 40%);
+$text-muted: lighten($text-main, 20%);
+$light-sky: #bfd4ea;
+
+$theme-colors: (
+  "blue": #007bff,
+  "indigo": #6610f2,
+  "purple": #6f42c1,
+  "purple-2": #5968F6,
+  "purple-50": #B359AD,
+  "pink": #e83e8c,
+  "pink-2": #E41970,
+  "red": #fc5f7d,
+  "orange": #f47c0b,
+  "yellow": #ffc107,
+  "green": #28a745,
+  "teal": #20c997,
+  "olive": #9eb359,
+  "navy": #598CB3,
+  "cyan": #17a2b8,
+  "white": #fff,
+  "gray": #6c757d,
+  "gray-light": #9b9eb8,
+  "gray-dark": #485563,
+  "primary": #00b0ef,
+  "primary-2": #01B0EF,
+  "primary-3": #039DD4,
+  "primary-4": #0286B6,
+  "primary-5": #007199,
+  "primary-50": #00aeef,
+  "main": #3a3e63,
+  "main-light": lighten(#3a3e63, 40%),
+  "body": #e4ebf2,
+  "secondary": darken(#f6f9fc, 7%),
+  "success": #13b272,
+  "success-2": #37A592,
+  "success-50": #5AABB3,
+  "info": #01bfa5,
+  "warning": #ff9910,
+  "warning-50": #FDA636,
+  "danger": #fc5f7d,
+  "danger-50": #F0737B,
+  "light": #f6f9fc,
+  "dark": #485563,
+  "dark-blue": #4e5381,
+  "light-blue": #7a80b1,
+  "active": #80c342,
+  "inactive": #75799d,
+  "inactive-50": #B0B4D6,
+  "input": #ced4da,
+  "disabled": #e9ecef,
+  "gray-2": #f8f9fa,
+  "transparent": transparent,
+);
+
+
+/****************************
+ ****      Breakpoints
+****************************/
+
+$xs: 319px;
+$sm: 575px;
+$md: 767px;
+$lg: 991px;
+$xl: 1024px;
+$xxl: 1600px;
+$xxxl: 2100px;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1800px,
+  xxxl: 2200px,
+);
+
+/****************************
+ ****      Containers
+****************************/
+
+$container-max-widths: (
+  sm: 940px,
+  md: 950px,
+  lg: 960px,
+  xl: 1140px,
+);
+
+/****************************
+ ****      Icons
+****************************/
+
+$mdi-eye: "\F0208";
+$mdi-circle-edit-outline: "\F08D5";
+$mdi-trash-can-outline: "\F0A7A";
+$mdi-page-next-outline: "\F0BB1";
+$mdi-lock-reset: "\F0773";
+$mdi-account-remove: "\F0015";
+$mdi-close-circle-outline: "\F015A";
+$mdi-flash-red-eye: "\F067B";
+$mdi-package-down: "\F03D4";
+$mdi-bookmark-plus: "\F00C5";
+$mdi-information: "\F02FC";
+$mdi-chevron-right: "\F0142";
+$mdi-chevron-left: "\F0141";
+$fa-check: "\f00c";
+$fa-sort: "\F00DC";
+$fa-sort-up: "\F00DE";
+$fa-sort-down: "\F00DD";
+$fa-spinner-third: "\f3f4";
+$mdi-loading: "\F771";
+
+/****************************
+ ****      Font Sizes & Line Heights
+****************************/
+
+$font_sizes: (
+  26: 26px,
+);
+
+$line_height_sizes: (
+  1: 1,
+);
+
+/****************************
+ ****      Spacings
+****************************/
+
+$spacer: 5px;
+$spacers: ();
+$spacers: map-merge(
+  (
+    0: 0,
+    1: $spacer,
+    2: (
+      $spacer * 2,
+    ),
+    3: (
+      $spacer * 3,
+    ),
+    4: (
+      $spacer * 4,
+    ),
+    5: (
+      $spacer * 5,
+    ),
+    6: (
+      $spacer * 6,
+    ),
+    7: (
+      $spacer * 7,
+    ),
+    8: (
+      $spacer * 8,
+    ),
+    9: (
+      $spacer * 9,
+    ),
+    10: (
+      $spacer * 10,
+    ),
+    11: (
+      $spacer * 11,
+    ),
+    12: (
+      $spacer * 12,
+    ),
+    13: (
+      $spacer * 13,
+    ),
+    14: (
+      $spacer * 14,
+    ),
+    15: (
+      $spacer * 15,
+    ),
+  ),
+  $spacers
+);
+
+/****************************
+ ****      Sizes
+****************************/
+
+$sizes: ();
+$sizes: map-merge(
+  (
+    45px: 45px,
+  ),
+  $sizes
+);
+
+/****************************
+ ****      General
+****************************/
+
+$grid-gutter-width: 20px;
+$transition-base: all 0.2s ease-in-out;
+$border-color: $gray-300;
+$enable-rounded: false;
+$border-radius: 0;
+$enable-print-styles: true;
+$print-page-size: a4;
+$font-size-base: 0.875rem;
+
+/****************************
+ ****      Buttons
+****************************/
+
+$btn-padding-x: 0.875rem;
+$btn-padding-y: 0.375rem ;
+$btn-padding-x-lg: 1.2rem;
+$btn-padding-y-lg: 0.8rem;
+$btn-padding-x-sm: 0.5rem;
+$btn-padding-y-sm: 0.25rem;
+$btn-icon-padding-x: $btn-padding-x * 3.4;
+$btn-icon-padding-x-lg: $btn-padding-x-lg * 4;
+$btn-icon-padding-x-sm: $btn-padding-x-sm * 5;
+$btn-font-size: 0.875rem;
+$btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out , transform .15s ease-in-out !default;
+//btn-icon
+//$btn-icon-padding-x: $btn-padding-x * 4;
+
+/****************************
+ ****      Forms
+****************************/
+
+$form-grid-gutter-width: 15px;
+$input-font-size: 0.875rem;
+$input-placeholder-color: lighten($text-main, 30%);
+$custom-select-font-size: 0.875rem;
+//$input-height: calc(#{$input-line-height * 1em} + #{$input-padding-y * 2} + #{$input-height-border + 3});
+//$custom-select-height: calc(#{$input-line-height * 1em} + #{$input-padding-y * 2} + #{$input-height-border + 3});
+
+/****************************
+ ****      Tabs
+****************************/
+
+$nav-tabs-link-active-border-color: $gray-300 $gray-300 $white;

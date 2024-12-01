@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات النظام الخاصة بالعميل</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        .custom-card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            margin-bottom: 20px;
+        }
+        .custom-checkbox .form-check-label {
+            margin-left: 10px;
+        }
+        .card-header-custom {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .btn-custom {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: #218838;
+        }
+        .form-check {
+            display: flex;
+            align-items: center;
+        }
+        .form-check-input {
+            margin-right: -20px;
+            margin-left: 0;
+        }
+    </style>
+</head>
+<body style="background-color: #e9ecef;">
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- كونتينر إعدادات العميل (العمود الأيمن) -->
+        <div class="col-md-6">
+            <div class="card custom-card">
+                <div class="card-header card-header-custom">
+                    إعدادات العميل
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="clientType">نوع العميل</label>
+                        <select class="form-control" id="clientType">
+                            <option>تجاري فقط</option>
+                            <option>فردي فقط</option>
+                            <option>كلاهما</option>
+                        </select>
+                    </div>
+                    <div class="form-group text-right">
+                        <i class="bi bi-gear" style="font-size: 1.5em; cursor: pointer;" title="رقم العميل المتسلسل"></i>
+                        <span>رقم العميل المتسلسل</span>
+                    </div>
+                    <div class="form-check custom-checkbox">
+                        <input type="checkbox" class="form-check-input" id="sendDetails">
+                        <label class="form-check-label" for="sendDetails">إرسال تفاصيل العميل عبر وسائل التواصل الاجتماعي</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- كونتينر الحقول الإضافية للعميل (العمود الأيسر) -->
+        <div class="col-md-6">
+            <div class="card custom-card">
+                <div class="card-header card-header-custom">
+                    الحقول الإضافية للعميل
+                </div>
+                <div class="card-body">
+                    <!-- ترتيب الخيارات في عمود واحد -->
+                    <div class="form-check custom-checkbox mb-2">
+                        <input type="checkbox" class="form-check-input" id="clientTypeField">
+                        <label class="form-check-label" for="clientTypeField">صورة</label>
+                    </div>
+                    <div class="form-check custom-checkbox mb-2">
+                        <input type="checkbox" class="form-check-input" id="typeField">
+                        <label class="form-check-label" for="typeField">النوع</label>
+                    </div>
+                    <div class="form-check custom-checkbox mb-2">
+                        <input type="checkbox" class="form-check-input" id="birthDate">
+                        <label class="form-check-label" for="birthDate">تاريخ الميلاد</label>
+                    </div>
+                    <div class="form-check custom-checkbox mb-2">
+                        <input type="checkbox" class="form-check-input" id="mapLocation">
+                        <label class="form-check-label" for="mapLocation">الموقع على الخريطة</label>
+                    </div>
+                    <div class="form-check custom-checkbox mb-2">
+                        <input type="checkbox" class="form-check-input" id="openingBalance">
+                        <label class="form-check-label" for="openingBalance">الرصيد الافتتاحي</label>
+                    </div>
+                    <div class="form-check custom-checkbox mb-2">
+                        <input type="checkbox" class="form-check-input" id="creditLimit">
+                        <label class="form-check-label" for="creditLimit">الحد الائتماني</label>
+                    </div>
+                    <div class="form-check custom-checkbox mb-2">
+                        <input type="checkbox" class="form-check-input" id="creditDuration">
+                        <label class="form-check-label" for="creditDuration">المدة الائتمانية</label>
+                    </div>
+                    <div class="form-check custom-checkbox mb-2">
+                        <input type="checkbox" class="form-check-input" id="idNumber">
+                        <label class="form-check-label" for="idNumber">رقم الهوية الوطنية</label>
+                    </div>
+                    <div class="form-check custom-checkbox mb-2">
+                        <input type="checkbox" class="form-check-input" id="multipleAddresses">
+                        <label class="form-check-label" for="multipleAddresses">عناوين متعددة</label>
+                    </div>
+                    <div class="form-check custom-checkbox mb-2">
+                        <input type="checkbox" class="form-check-input" id="barcode">
+                        <label class="form-check-label" for="barcode">باركود</label>
+                    </div>
+                    <div class="form-check custom-checkbox mb-2">
+                        <input type="checkbox" class="form-check-input" id="link">
+                        <label class="form-check-label" for="link">الرابط</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- أزرار الحفظ والإلغاء -->
+    <div class="text-center mt-4">
+        <button class="btn btn-custom mx-2"><i class="bi bi-save"></i> حفظ</button>
+        <button class="btn btn-secondary mx-2">إلغاء</button>
+    </div>
+</div>
+
+<!-- تحميل Bootstrap JS وjQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

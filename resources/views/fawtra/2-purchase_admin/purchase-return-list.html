@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة مرتجعات المشتريات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            background-color: #f4f4f9;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn {
+            background-color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #e9ecef;
+        }
+        .green {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .green:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <button class="btn">الذهاب للموقع</button>
+        <button class="btn">المساعدة</button>
+    </div>
+    <div class="content">
+        <button class="btn green" onclick="location.href='new-purchase-return.htm'">أضف مرتجع مشتريات</button>
+    </div>
+</body>
+</html>

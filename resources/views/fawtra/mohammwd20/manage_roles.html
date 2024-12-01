@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة أدوار الموظفين</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+            background-color: #f4f4f9;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar .left-buttons a {
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .new-role-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        table th, table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .action-buttons button {
+            background-color: #ffc107;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <div class="left-buttons">
+            <a href="#">الذهاب إلى الموقع</a>
+            <a href="#">المساعدة</a>
+        </div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="container">
+        <button class="new-role-btn" onclick="window.location.href='add_new_role.html'">دور جديد</button>
+
+        <!-- جدول الأدوار -->
+        <table>
+            <thead>
+                <tr>
+                    <th>المعرف</th>
+                    <th>الدور الوظيفي</th>
+                    <th>النوع</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Manager</td>
+                    <td>مستخدم</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button>تعديل</button>
+                            <button>نسخ</button>
+                            <button class="delete-btn">حذف</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Staff</td>
+                    <td>مستخدم</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button>تعديل</button>
+                            <button>نسخ</button>
+                            <button class="delete-btn">حذف</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>الدعم</td>
+                    <td>مستخدم</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button>تعديل</button>
+                            <button>نسخ</button>
+                            <button class="delete-btn">حذف</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="delete-btn">حذف المحدد</button>
+    </div>
+
+</body>
+</html>

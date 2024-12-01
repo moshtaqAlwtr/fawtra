@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منشئ تصاميم الفواتير</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            direction: rtl;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+        .container-fluid {
+            padding: 0;
+        }
+        .sidebar {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+        }
+        .sidebar h5 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+        .menu-item {
+            display: block;
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .menu-item:hover {
+            background-color: #003d80;
+        }
+        .template-form, .preview-section {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+        .preview-box {
+            border: 1px solid #ccc;
+            padding: 15px;
+            background-color: white;
+            height: 400px;
+            overflow-y: auto;
+        }
+        .editor-area {
+            background-color: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-height: 80vh;
+            overflow-y: auto;
+        }
+        #logoPreview {
+            width: 150px;
+            height: 150px;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-bottom: 10px;
+        }
+        .left-section {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #e9ecef;
+            min-height: 100vh;
+        }
+        .rich-editor {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+        .placeholder-list {
+            border-top: 1px solid #ccc;
+            margin-top: 15px;
+            padding-top: 10px;
+        }
+        .placeholder-item {
+            margin-bottom: 5px;
+            cursor: pointer;
+            color: #007bff;
+        }
+        .placeholder-item:hover {
+            text-decoration: underline;
+        }
+        .dropdown-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .dropdown-btn:hover {
+            background-color: #0056b3;
+        }
+        .dropdown-content {
+            display: none;
+            position: relative;
+            background-color: #f1f1f1;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index: 1;
+        }
+        .dropdown-content div {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #ccc;
+        }
+        .dropdown-content div:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- القائمة الجانبية -->
+            <div class="col-md-2 sidebar">
+                <h5>مؤسسة أعمال خاصة للتجارة</h5>
+                <div class="menu-item" onclick="loadSection('templateData')">بيانات القالب</div>
+                <div class="menu-item" onclick="loadSection('title')">مسمى</div>
+                <div class="menu-item" onclick="loadSection('logo')">الشعار</div>
+                <div class="menu-item" onclick="loadSection('businessInfo')">بيانات العمل</div>
+                <div class="menu-item" onclick="loadSection('shippingInfo')">معلومات الشحن</div>
+                <div class="menu-item" onclick="loadSection('itemColumns')">أعمدة البنود</div>
+                <div class="menu-item" onclick="loadSection('additionalFields')">حقول إضافية</div>
+                <div class="menu-item" onclick="loadSection('categories')">المسميات</div>
+                <div class="menu-item" onclick="loadSection('introduction')">المقدمة</div>
+                <div class="menu-item" onclick="loadSection('footer')">التذييل</div>
+                <div class="menu-item" onclick="loadSection('styling')">التنسيق</div>
+                <div class="menu-item" onclick="loadSection('notes')">الملاحظات</div>
+            </div>
+
+            <!-- منطقة العمل في الوسط -->
+            <div class="col-md-6">
+                <div id="contentArea" class="template-form">
+                    <h5>تعديل القالب</h5>
+                    <p class="text-center">اختر قسمًا من القائمة الجانبية لعرض المحتوى هنا.</p>
+                </div>
+            </div>
+
+            <!-- الجزء الأيسر: محرر النصوص -->
+            <div class="col-md-4 left-section">
+                <h4 class="text-center">محرر الفاتورة</h4>
+                <div class="editor-area">
+                    <!-- محرر الفاتورة -->
+                    <div id="invoiceHeader" class="invoice-preview">
+                        <h5 contenteditable="true" id="invoiceTitle">فاتورة ضريبية</h5>
+                        <img id="invoiceLogo" src="logo.png" alt="شعار الفاتورة" class="img-fluid my-2" style="max-width: 100px;">
+                        <p contenteditable="true" id="clientInfo">معلومات العميل: [تفاصيل العميل هنا]</p>
+                    </div>
+                    <div id="invoiceItems" class="invoice-preview mt-3">
+                        <table class="table" id="itemsTable">
+                            <thead>
+                                <tr>
+                                    <th>الوصف</th>
+                                    <th>الكمية</th>
+                                    <th>السعر</th>
+                                    <th>الإجمالي</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr contenteditable="true">
+                                    <td>منتج تجريبي</td>
+                                    <td>1</td>
+                                    <td>200.00</td>
+                                    <td>200.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="invoiceFooter" class="invoice-preview mt-3">
+                        <p contenteditable="true">شكرًا لتعاملكم معنا!</p>
+                    </div>
+                    <button class="btn btn-primary mt-3 w-100" onclick="saveInvoice()">حفظ التعديلات</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // تحميل الأقسام المختلفة في الجزء الأوسط
+        function loadSection(section) {
+            if (section === 'logo') {
+                document.getElementById('contentArea').innerHTML = `
+                    <div class="logo-editor">
+                        <h5>تعديل شعار الفاتورة</h5>
+                        <div id="logoPreview">Your Logo</div>
+                        <input type="file" class="form-control mt-2" accept="image/*" onchange="previewLogo(event)">
+                        <p class="mt-2">الامتدادات المسموح بها (jpg, png, gif) - أقصى حجم: 1MB</p>
+                        <label class="mt-3">عرض الشعار</label>
+                        <input type="range" id="logoWidth" min="50" max="300" value="150" class="form-range" onchange="adjustLogoSize()">
+                        <label class="mt-3">طول الشعار</label>
+                        <input type="range" id="logoHeight" min="50" max="300" value="150" class="form-range" onchange="adjustLogoSize()">
+                        <button class="btn btn-primary mt-3 w-100" onclick="saveLogo()">حفظ التعديلات</button>
+                    </div>
+                `;
+            } else if (section === 'title') {
+                document.getElementById('contentArea').innerHTML = `
+                    <div class="template-form">
+                        <h5>تعديل عنوان الفاتورة</h5>
+                        <div class="mb-3">
+                            <label for="invoiceTitleInput" class="form-label">عنوان الفاتورة</label>
+                            <input type="text" class="form-control" id="invoiceTitleInput" value="فاتورة ضريبية">
+                        </div>
+                        <button class="btn btn-primary mt-3 w-100" onclick="saveTitles()">حفظ</button>
+                        <button class="btn btn-secondary mt-2 w-100" onclick="resetTitles()">رجوع</button>
+                    </div>
+                `;
+            } else if (section === 'businessInfo') {
+                document.getElementById('contentArea').innerHTML = `
+                    <div class="template-form">
+                        <h5>تعديل بيانات العمل</h5>
+                        <textarea id="businessInfoEditor" class="rich-editor" placeholder="أدخل بيانات العمل هنا...">{%sa_qr_code_image%}\n{%business_name%}\n{%address1%} {%city%}\n{%state%} {%postal_code%}\n{%phone1%}</textarea>
+                        <div class="placeholder-list">
+                            <h6>الكلمات المستبدلة</h6>
+                            <div class="placeholder-item" onclick="insertPlaceholder('{%business_name%}')">اسم الشركة الأول</div>
+                            <div class="placeholder-item" onclick="insertPlaceholder('{%address1%}')">عنوان الشركة 1</div>
+                            <div class="placeholder-item" onclick="insertPlaceholder('{%phone1%}')">هاتف الشركة</div>
+                        </div>
+                        <button class="btn btn-primary mt-3 w-100" onclick="saveBusinessInfo()">حفظ</button>
+                        <button class="btn btn-secondary mt-2 w-100" onclick="resetBusinessInfo()">رجوع</button>
+                    </div>
+                `;
+            } else if (section === 'additionalFields') {
+                document.getElementById('contentArea').innerHTML = `
+                    <div class="additional-fields-section">
+                        <h5>تعديل حقول إضافية</h5>
+                        <button class="dropdown-btn" onclick="toggleDropdown()">إضافة حقل أخرى <span>+</span></button>
+                        <div class="dropdown-content" id="dropdownContent">
+                            <div onclick="addField('حقل مخصص')">حقل مخصص</div>
+                            <div onclick="addField('أمر التوريد')">أمر التوريد</div>
+                            <div onclick="addField('Po No')">Po No</div>
+                            <div onclick="addField('الحالة')">الحالة</div>
+                            <div onclick="addField('الإجمالي')">الإجمالي</div>
+                            <div onclick="addField('مستحقة بعد')">مستحقة بعد</div>
+                            <div onclick="addField('تاريخ الاستحقاق')">تاريخ الاستحقاق</div>
+                            <div onclick="addField('مدفوع')">مدفوع</div>
+                            <div onclick="addField('الرصيد المستحق')">الرصيد المستحق</div>
+                            <div onclick="addField('الدفع التالي')">الدفع التالي</div>
+                            <div onclick="addField('خصم')">خصم</div>
+                            <div onclick="addField('مصدر الطلب')">مصدر الطلب</div>
+                        </div>
+                        <button class="btn btn-primary mt-3 w-100" onclick="saveAdditionalFields()">حفظ</button>
+                    </div>
+                `;
+            } 
+            // إضافة هذا الجزء إلى دالة loadSection ضمن القسم المناسب
+else if (section === 'itemColumns') {
+    document.getElementById('contentArea').innerHTML = `
+        <div class="template-form">
+            <h5>تعديل أعمدة البنود</h5>
+            <div class="row mb-2">
+                <div class="col-6">
+                    <label for="field1" class="form-label">العنوان</label>
+                    <input type="text" class="form-control" id="field1" placeholder="البند">
+                </div>
+                <div class="col-6">
+                    <label for="dropdown1" class="form-label">الحقل</label>
+                    <select class="form-select" id="dropdown1">
+                        <option>البند</option>
+                        <option>الوصف</option>
+                        <option>اختر الحقل</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-6">
+                    <input type="text" class="form-control" id="field2" placeholder="الوصف">
+                </div>
+                <div class="col-6">
+                    <select class="form-select" id="dropdown2">
+                        <option>الوصف</option>
+                        <option>اختر الحقل</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-6">
+                    <input type="text" class="form-control" id="field3" placeholder="اختر الحقل">
+                </div>
+                <div class="col-6">
+                    <select class="form-select" id="dropdown3">
+                        <option>اختر الحقل</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-success mt-3 w-100">حفظ</button>
+        </div>
+    `;
+}
+// إضافة هذا الجزء إلى دالة loadSection ضمن القسم المناسب
+else if (section === 'categories') {
+    document.getElementById('contentArea').innerHTML = `
+        <div class="template-form">
+            <h5>تعديل تغيير المسميات</h5>
+            <div class="mb-3">
+                <select class="form-select" id="generalSelect">
+                    <option>عام</option>
+                </select>
+            </div>
+            <div class="row mb-2">
+                <div class="col-12">
+                    <input type="text" class="form-control mb-2" placeholder="بند">
+                    <input type="text" class="form-control mb-2" placeholder="العدد">
+                    <input type="text" class="form-control mb-2" placeholder="الوصف">
+                    <input type="text" class="form-control mb-2" placeholder="سعر الوحدة">
+                    <input type="text" class="form-control mb-2" placeholder="سعر">
+                    <input type="text" class="form-control mb-2" placeholder="الكمية">
+                    <input type="text" class="form-control mb-2" placeholder="المجموع">
+                    <input type="text" class="form-control mb-2" placeholder="الإجمالي">
+                    <input type="text" class="form-control mb-2" placeholder="إجمالي">
+                    <input type="text" class="form-control mb-2" placeholder="مدفوعة">
+                    <input type="text" class="form-control mb-2" placeholder="مستحقة">
+                    <input type="text" class="form-control mb-2" placeholder="المبلغ المستحق">
+                    <input type="text" class="form-control mb-2" placeholder="الرصيد المستحق">
+                    <input type="text" class="form-control mb-2" placeholder="الإجمالي">
+                    <input type="text" class="form-control mb-2" placeholder="حالة الفاتورة">
+                    <input type="text" class="form-control mb-2" placeholder="مستحقة الدفع بعد">
+                    <input type="text" class="form-control mb-2" placeholder="مستحقة عند">
+                    <input type="text" class="form-control mb-2" placeholder="تاريخ الاستحقاق">
+                </div>
+            </div>
+            <button class="btn btn-success mt-3 w-100">حفظ</button>
+        </div>
+    `;
+}
+// إضافة هذا الجزء إلى دالة loadSection ضمن القسم المناسب
+else if (section === 'introduction') {
+    document.getElementById('contentArea').innerHTML = `
+        <div class="template-form">
+            <h5>تعديل المقدمة</h5>
+            <div class="mb-3">
+                <textarea class="form-control" rows="5" placeholder="أدخل النص هنا..." style="resize: none;"></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-secondary">B</button>
+                <button class="btn btn-secondary">I</button>
+                <button class="btn btn-secondary">U</button>
+                <!-- يمكنك إضافة أدوات تحرير أخرى حسب الحاجة -->
+            </div>
+            <div class="mb-3">
+                <label>الكلمات المستبدلة</label>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">اسم الشركة الأول</a>
+                    <a href="#" class="list-group-item list-group-item-action">اسم الشركة الأخير</a>
+                    <a href="#" class="list-group-item list-group-item-action">رقم الشركة</a>
+                    <a href="#" class="list-group-item list-group-item-action">عنوان الشركة 1</a>
+                    <a href="#" class="list-group-item list-group-item-action">عنوان الشركة 2</a>
+                    <a href="#" class="list-group-item list-group-item-action">مدينة الشركة</a>
+                    <!-- أضف باقي الكلمات المستبدلة حسب الحاجة -->
+                </div>
+            </div>
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="fullAddress">
+                <label class="form-check-label" for="fullAddress">شمل العنوان الكامل</label>
+            </div>
+            <button class="btn btn-success w-100">حفظ</button>
+            <button class="btn btn-secondary w-100 mt-2">رجوع</button>
+        </div>
+    `;
+}
+// إضافة هذا الجزء إلى دالة loadSection ضمن القسم المناسب
+else if (section === 'footer') {
+    document.getElementById('contentArea').innerHTML = `
+        <div class="template-form">
+            <h5>تعديل التذييل</h5>
+            <div class="mb-3">
+                <textarea class="form-control" rows="5" placeholder="أدخل النص هنا..." style="resize: none;"></textarea>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-secondary">B</button>
+                <button class="btn btn-secondary">I</button>
+                <button class="btn btn-secondary">U</button>
+                <!-- يمكنك إضافة أدوات تحرير أخرى حسب الحاجة -->
+            </div>
+            <div class="mb-3">
+                <label>الكلمات المستبدلة</label>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">اسم الشركة الأول</a>
+                    <a href="#" class="list-group-item list-group-item-action">اسم الشركة الأخير</a>
+                    <a href="#" class="list-group-item list-group-item-action">رقم الشركة</a>
+                    <a href="#" class="list-group-item list-group-item-action">عنوان الشركة 1</a>
+                    <a href="#" class="list-group-item list-group-item-action">عنوان الشركة 2</a>
+                    <a href="#" class="list-group-item list-group-item-action">مدينة الشركة</a>
+                    <!-- أضف باقي الكلمات المستبدلة حسب الحاجة -->
+                </div>
+            </div>
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="fullAddress">
+                <label class="form-check-label" for="fullAddress">شمل العنوان الكامل</label>
+            </div>
+            <button class="btn btn-success w-100">حفظ</button>
+            <button class="btn btn-secondary w-100 mt-2">رجوع</button>
+        </div>
+    `;
+}
+// إضافة هذا الجزء إلى دالة loadSection ضمن القسم المناسب
+else if (section === 'styling') {
+    document.getElementById('contentArea').innerHTML = `
+        <div class="template-form">
+            <h5>تعديل التنسيق</h5>
+            
+            <!-- الخط الافتراضي -->
+            <div class="mb-3">
+                <label for="fontSelect" class="form-label">الخط</label>
+                <select id="fontSelect" class="form-select">
+                    <option>System Fonts</option>
+                    <option>Arial</option>
+                    <option>Times New Roman</option>
+                    <!-- أضف المزيد من الخطوط حسب الحاجة -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="fontSize" class="form-label">الحجم</label>
+                <select id="fontSize" class="form-select">
+                    <option>9pt</option>
+                    <option>10pt</option>
+                    <option>12pt</option>
+                    <!-- أضف المزيد من الأحجام حسب الحاجة -->
+                </select>
+            </div>
+
+            <!-- تنسيق جدول البنود -->
+            <h6>تنسيق جدول البنود</h6>
+            <input type="text" class="form-control mb-2" placeholder="لون الحدود">
+            <input type="text" class="form-control mb-2" placeholder="لون خلفية العنوان">
+            <input type="text" class="form-control mb-2" placeholder="لون نص العنوان">
+            <input type="text" class="form-control mb-2" placeholder="لون الصف الأول">
+            <input type="text" class="form-control mb-2" placeholder="لون الصف الثاني">
+
+            <!-- كود التنسيق -->
+            <div class="mb-3">
+                <label for="customCSS" class="form-label">كود التنسيق</label>
+                <textarea id="customCSS" class="form-control" rows="3" placeholder="Add CSS code without style tag"></textarea>
+            </div>
+
+            <!-- حجم الورق -->
+            <h6>حجم الورق</h6>
+            <div class="row">
+                <div class="col-6">
+                    <label for="paperHeight" class="form-label">Height (cm)</label>
+                    <input type="number" class="form-control" id="paperHeight" value="0">
+                </div>
+                <div class="col-6">
+                    <label for="paperWidth" class="form-label">Width (cm)</label>
+                    <input type="number" class="form-control" id="paperWidth" value="8">
+                </div>
+            </div>
+
+            <!-- هامش الصفحة -->
+            <h6 class="mt-3">هامش الصفحة</h6>
+            <div class="row mb-2">
+                <div class="col-3">
+                    <input type="number" class="form-control" placeholder="يمين (cm)">
+                </div>
+                <div class="col-3">
+                    <input type="number" class="form-control" placeholder="يسار (cm)">
+                </div>
+                <div class="col-3">
+                    <input type="number" class="form-control" placeholder="أسفل (cm)">
+                </div>
+                <div class="col-3">
+                    <input type="number" class="form-control" placeholder="أعلى (cm)">
+                </div>
+            </div>
+
+            <!-- أزرار الحفظ والرجوع -->
+            <button class="btn btn-success w-100 mt-2">حفظ</button>
+            <button class="btn btn-secondary w-100 mt-2">رجوع</button>
+        </div>
+    `;
+}
+// إضافة هذا الجزء إلى دالة loadSection ضمن القسم المناسب
+else if (section === 'notes') {
+    document.getElementById('contentArea').innerHTML = `
+        <div class="template-form">
+            <h5>تعديل ملاحظة</h5>
+            
+            <!-- محرر النصوص -->
+            <div class="mb-3">
+                <textarea class="form-control" rows="5" placeholder="(%invoice_notes%)" style="resize: none;">(%invoice_notes%)</textarea>
+            </div>
+            
+            <!-- أدوات التحرير -->
+            <div class="mb-3">
+                <button class="btn btn-secondary">B</button>
+                <button class="btn btn-secondary">I</button>
+                <button class="btn btn-secondary">U</button>
+                <!-- أضف أدوات تحرير أخرى إذا لزم الأمر -->
+            </div>
+            
+            <!-- قائمة الكلمات المستبدلة -->
+            <div class="mb-3">
+                <label>الكلمات المستبدلة</label>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">اسم الشركة الأول</a>
+                    <a href="#" class="list-group-item list-group-item-action">اسم الشركة الأخير</a>
+                    <a href="#" class="list-group-item list-group-item-action">رقم الشركة</a>
+                    <a href="#" class="list-group-item list-group-item-action">عنوان الشركة 1</a>
+                    <a href="#" class="list-group-item list-group-item-action">عنوان الشركة 2</a>
+                    <a href="#" class="list-group-item list-group-item-action">مدينة الشركة</a>
+                    <!-- أضف باقي الكلمات المستبدلة حسب الحاجة -->
+                </div>
+            </div>
+
+            <!-- خيار شمل العنوان الكامل -->
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="fullAddress">
+                <label class="form-check-label" for="fullAddress">شمل العنوان الكامل</label>
+            </div>
+
+            <!-- أزرار الحفظ والرجوع -->
+            <button class="btn btn-success w-100">حفظ</button>
+            <button class="btn btn-secondary w-100 mt-2">رجوع</button>
+        </div>
+    `;
+}
+// إضافة هذا الجزء إلى دالة loadSection ضمن القسم المناسب
+else if (section === 'shippingInfo') {
+    document.getElementById('contentArea').innerHTML = `
+        <div class="template-form">
+            <h5>تعديل معلومات الشحن</h5>
+            
+            <!-- محرر النصوص -->
+            <div class="mb-3">
+                <textarea class="form-control" rows="5" style="resize: none;">
+(%client_secondary_name%)
+(%client_secondary_address%)
+(%client_secondary_city%)
+(%client_secondary_state%)
+(%client_secondary_postcode%)
+                </textarea>
+            </div>
+            
+            <!-- أدوات التحرير -->
+            <div class="mb-3">
+                <button class="btn btn-secondary">B</button>
+                <button class="btn btn-secondary">I</button>
+                <button class="btn btn-secondary">U</button>
+                <!-- أضف أدوات تحرير أخرى إذا لزم الأمر -->
+            </div>
+            
+            <!-- قائمة الكلمات المستبدلة -->
+            <div class="mb-3">
+                <label>الكلمات المستبدلة</label>
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">شركة العميل</a>
+                    <a href="#" class="list-group-item list-group-item-action">كود العميل</a>
+                    <a href="#" class="list-group-item list-group-item-action">اسم العميل الأول</a>
+                    <a href="#" class="list-group-item list-group-item-action">اسم العميل الأخير</a>
+                    <a href="#" class="list-group-item list-group-item-action">عنوان العميل</a>
+                    <a href="#" class="list-group-item list-group-item-action">هاتف العميل</a>
+                    <!-- أضف باقي الكلمات المستبدلة حسب الحاجة -->
+                </div>
+            </div>
+
+            <!-- أزرار الحفظ والرجوع -->
+            <button class="btn btn-success w-100">حفظ</button>
+            <button class="btn btn-secondary w-100 mt-2">رجوع</button>
+        </div>
+    `;
+}
+// إضافة هذا الجزء إلى دالة loadSection ضمن القسم المناسب
+else if (section === 'templateData') {
+    document.getElementById('contentArea').innerHTML = `
+        <div class="template-form">
+            <h5>عدل بيانات القالب</h5>
+
+            <!-- حقل القالب -->
+            <div class="mb-3">
+                <label for="templateTitle" class="form-label">القالب</label>
+                <input type="text" class="form-control" id="templateTitle" value="فاتورة ضريبية">
+            </div>
+
+            <!-- إعدادات باستخدام أزرار الفتح والغلق -->
+            <div class="form-check form-switch mb-2">
+                <label class="form-check-label" for="defaultDesign">اجعل هذا التصميم هو التصميم الافتراضي</label>
+                <input class="form-check-input" type="checkbox" id="defaultDesign" checked>
+            </div>
+
+            <div class="form-check form-switch mb-2">
+                <label class="form-check-label" for="printInvoice">اطبع هذا التصميم هو التصميم للطباعة</label>
+                <input class="form-check-input" type="checkbox" id="printInvoice">
+            </div>
+
+            <div class="form-check form-switch mb-2">
+                <label class="form-check-label" for="sendEmail">ارسل هذا التصميم هو التصميم للإرسال بالبريد الإلكتروني</label>
+                <input class="form-check-input" type="checkbox" id="sendEmail" checked>
+            </div>
+
+            <div class="form-check form-switch mb-2">
+                <label class="form-check-label" for="includeTaxes">احسب الضريبة بعد الخصم</label>
+                <input class="form-check-input" type="checkbox" id="includeTaxes">
+            </div>
+
+            <div class="form-check form-switch mb-2">
+                <label class="form-check-label" for="autoPayment">اجعل هذا التصميم هو التصميم للإيصالات</label>
+                <input class="form-check-input" type="checkbox" id="autoPayment" checked>
+            </div>
+
+            <div class="form-check form-switch mb-2">
+                <label class="form-check-label" for="includeLogo">لا تظهر علامة العلم في سعر الوحدة</label>
+                <input class="form-check-input" type="checkbox" id="includeLogo" checked>
+            </div>
+
+            <div class="form-check form-switch mb-2">
+                <label class="form-check-label" for="displayCurrency">أظهر العملة للعميل عند الطباعة والإرسال</label>
+                <input class="form-check-input" type="checkbox" id="displayCurrency" checked>
+            </div>
+
+            <div class="form-check form-switch mb-2">
+                <label class="form-check-label" for="showCustomText">أضف بيانات النص المخصص (عنوان ثانوي)</label>
+                <input class="form-check-input" type="checkbox" id="showCustomText">
+            </div>
+
+            <!-- خيارات الكمية وسعر الوحدة -->
+            <div class="mb-3">
+                <label for="unitPriceOptions" class="form-label">خيارات الكمية وسعر الوحدة</label>
+                <select id="unitPriceOptions" class="form-select">
+                    <option>أظهر الكمية وسعر الوحدة</option>
+                    <option>أظهر الكمية فقط</option>
+                    <option>أظهر سعر الوحدة فقط</option>
+                </select>
+            </div>
+
+            <!-- أزرار الحفظ والرجوع -->
+            <button class="btn btn-success w-100">حفظ</button>
+            <button class="btn btn-secondary w-100 mt-2">رجوع</button>
+        </div>
+    `;
+}
+
+
+
+            else {
+                document.getElementById('contentArea').innerHTML = '<p class="text-center">اختر قسمًا من القائمة الجانبية لعرض المحتوى هنا.</p>';
+            }
+        }
+
+        // إدخال الكلمات المستبدلة في محرر النصوص
+        function insertPlaceholder(placeholder) {
+            const editor = document.getElementById('businessInfoEditor');
+            editor.value += placeholder + '\n';
+        }
+
+        // حفظ بيانات العمل وتحديثها في محرر الفاتورة
+        function saveBusinessInfo() {
+            const businessInfo = document.getElementById('businessInfoEditor').value;
+            document.getElementById('clientInfo').textContent = businessInfo;
+            alert('تم حفظ بيانات العمل بنجاح!');
+        }
+
+        // عرض أو إخفاء القائمة المنسدلة
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownContent');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // إضافة حقل إضافي إلى الفاتورة
+        function addField(fieldName) {
+            const invoiceFooter = document.getElementById('invoiceFooter');
+            const newField = document.createElement('p');
+            newField.textContent = fieldName;
+            invoiceFooter.appendChild(newField);
+            alert(`تم إضافة الحقل: ${fieldName}`);
+        }
+
+        // حفظ الحقول الإضافية وتحديثها في محرر الفاتورة
+        function saveAdditionalFields() {
+            alert('تم حفظ الحقول الإضافية بنجاح!');
+        }
+
+        // عرض الشعار في المعاينة
+        function previewLogo(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const logoPreview = document.getElementById('logoPreview');
+                    logoPreview.style.backgroundImage = `url(${e.target.result})`;
+                    logoPreview.style.backgroundSize = 'contain';
+                    logoPreview.style.backgroundRepeat = 'no-repeat';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // ضبط حجم الشعار
+        function adjustLogoSize() {
+            const width = document.getElementById('logoWidth').value;
+            const height = document.getElementById('logoHeight').value;
+            const logoPreview = document.getElementById('logoPreview');
+            logoPreview.style.width = `${width}px`;
+            logoPreview.style.height = `${height}px`;
+        }
+
+        // حفظ الشعار وتحديثه في محرر الفاتورة
+        function saveLogo() {
+            const logoPreview = document.getElementById('logoPreview');
+            const invoiceLogo = document.getElementById('invoiceLogo');
+            const backgroundImage = logoPreview.style.backgroundImage;
+
+            if (backgroundImage) {
+                invoiceLogo.src = backgroundImage.slice(5, -2); // إزالة url() من النص
+            }
+
+            invoiceLogo.style.width = logoPreview.style.width;
+            invoiceLogo.style.height = logoPreview.style.height;
+            alert('تم حفظ الشعار بنجاح!');
+        }
+
+        // حفظ العناوين وتحديثها في محرر الفاتورة
+        function saveTitles() {
+            const invoiceTitle = document.getElementById('invoiceTitleInput').value;
+            const invoiceTitleElement = document.getElementById('invoiceTitle');
+            invoiceTitleElement.textContent = invoiceTitle;
+
+            alert('تم حفظ العناوين بنجاح!');
+        }
+
+        // إعادة تعيين العناوين الافتراضية
+        function resetTitles() {
+            loadSection('templateData');
+        }
+
+        // حفظ الفاتورة
+        function saveInvoice() {
+            alert('تم حفظ التعديلات!');
+        }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العقود</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-add-contract {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-add-contract:hover {
+            background-color: #218838;
+        }
+        .empty-record {
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+            margin-top: 50px;
+        }
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pagination button {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <span>العقود</span>
+        <button class="btn-add-contract" onclick="window.location.href='add_contract.html'">أضف عقد</button>
+    </div>
+
+    <div class="container">
+        <div class="empty-record">
+            <p>لم يتم إضافة أي سجلات بعد</p>
+            <img src="contract_icon.png" alt="icon" style="width: 50px;">
+            <p><a href="#">الانتقال إلى الصفحة السابقة</a> + <a href="#">أضف عقد</a></p>
+        </div>
+        
+        <div class="pagination">
+            <button>صفحة 1 من 1</button>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة فاتورة شراء</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+        }
+        .container {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+        }
+        .section {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+        .btn-blue {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        .btn-add-item {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <button>الذهاب للموقع</button>
+    <button>المساعدة</button>
+</div>
+
+<div class="container">
+    <!-- القسم الأيمن -->
+    <div class="section">
+        <h3>المورد</h3>
+        <input type="text" placeholder="بحث عن الموردين">
+        <button class="btn-blue">جديد</button>
+    </div>
+
+    <!-- القسم الأيسر -->
+    <div class="section">
+        <h3>تفاصيل الفاتورة</h3>
+        <label>رقم الفاتورة (تلقائي)</label>
+        <input type="text" value="0001" readonly><br>
+        <label>تاريخ الفاتورة</label>
+        <input type="date"><br>
+        <label>شروط الدفع</label>
+        <input type="text" placeholder="شروط الدفع">
+        <input type="number" placeholder="أيام">
+    </div>
+</div>
+
+<div class="container">
+    <!-- الجدول -->
+    <table>
+        <thead>
+            <tr>
+                <th>البند</th>
+                <th>الوصف</th>
+                <th>سعر الوحدة</th>
+                <th>الكمية</th>
+                <th>الخصم</th>
+                <th>الضريبة 1</th>
+                <th>الضريبة 2</th>
+                <th>المجموع</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" placeholder="البند"></td>
+                <td><input type="text" placeholder="الوصف"></td>
+                <td><input type="number" placeholder="سعر الوحدة"></td>
+                <td><input type="number" placeholder="الكمية"></td>
+                <td>
+                    <select>
+                        <option>خصم %</option>
+                        <option>خصم بالريال</option>
+                    </select>
+                    <input type="number" placeholder="الخصم">
+                </td>
+                <td><input type="number" placeholder="الضريبة 1"></td>
+                <td><input type="number" placeholder="الضريبة 2"></td>
+                <td><input type="number" placeholder="المجموع" readonly></td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn-add-item">أضف بند</button>
+</div>
+
+</body>
+</html>

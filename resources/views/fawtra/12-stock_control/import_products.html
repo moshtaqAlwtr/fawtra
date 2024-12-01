@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استيراد المنتجات</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Tahoma', sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .step {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ffc107;
+            color: #fff;
+            font-size: 24px;
+            line-height: 60px;
+            text-align: center;
+            margin: 0 10px;
+        }
+
+        .step.active {
+            background-color: #17a2b8;
+        }
+
+        .step-description {
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .import-box {
+            border: 1px solid #17a2b8;
+            background-color: #e9f7fc;
+            padding: 15px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .import-box h5 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .info-icon {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            color: #17a2b8;
+        }
+
+        .file-upload {
+            margin-top: 20px;
+        }
+
+        .file-upload input {
+            margin-top: 5px;
+        }
+
+        .btn-next {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">استيراد المنتجات</div>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Import Options Box -->
+        <div class="import-box">
+            <i class="fas fa-question-circle info-icon"></i>
+            <h5>خطوات استيراد من ملف CSV</h5>
+            <ul>
+                <li>فقط ملفات CSV المسموح بها (Comma Separated, Tab Delimited, Semi-Colon Separated).</li>
+                <li>إذا كان لديك ملفات من نوع آخر يمكنك فتحها ببرامج مثل Microsoft Excel وتحويلها إلى CSV ثم استيرادها للنظام.</li>
+                <li>يمكنك تحميل هذا الملف النموذجي مع البيانات الخاصة به واختباره ثم قم باستيراده من خلال هذه الصفحة.</li>
+            </ul>
+        </div>
+
+        <!-- Import Steps -->
+        <div class="d-flex align-items-center mb-4">
+            <div class="step active">1</div>
+            <span class="step-description">خيارات الاستيراد</span>
+            <div class="step ml-4">2</div>
+            <span class="step-description">تحديد الدخول</span>
+            <div class="step ml-4">3</div>
+            <span class="step-description">النتائج</span>
+        </div>
+
+        <!-- File Upload Section -->
+        <div class="file-upload">
+            <h5>الملف الذي سيتم استيراده</h5>
+            <input type="file" class="form-control-file">
+            <div class="alert alert-warning mt-2" role="alert">
+                الرجاء تحديد ملف.
+            </div>
+        </div>
+
+        <!-- Field Mapping -->
+        <div class="mt-3">
+            <label for="field-mapping">المحدد:</label>
+            <select id="field-mapping" class="form-control">
+                <option>اختر المحدد</option>
+                <option>فاصلة</option>
+                <option>نقطة فاصلة</option>
+                <option>علامة تبويب</option>
+            </select>
+        </div>
+
+        <!-- Checkbox for First Row Import -->
+        <div class="form-check mt-3">
+            <input type="checkbox" class="form-check-input" id="first-row-import">
+            <label class="form-check-label" for="first-row-import">قم باستيراد الصف الأول من الملف</label>
+        </div>
+
+        <!-- Next Step Button -->
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-success btn-next">الخطوة التالية <i class="fas fa-arrow-right"></i></button>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

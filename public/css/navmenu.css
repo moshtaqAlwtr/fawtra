@@ -1,0 +1,75 @@
+.xdebug-var-dump {
+    text-align: left;
+}
+
+.appoint-bg-panel,
+.master-widget .widget-head\,
+.paging ul li.current,
+.paging ul li a:hover,
+.header,
+.login-box-container h1,
+.footer,
+.action a.ui-menu-item:hover,
+.mob-nav-trigger,
+.mob-nav-trigger::cue,
+.mob-nav-trigger:focus,
+.head-bar,
+.primary-bg {
+    background: #fff;
+}
+
+.appoint-bg-panel .panel-heading,
+.expense-item p,
+.expense-item span,
+.table table-striped b-light td a:hover,
+.master-widget .widget-head h3,
+.paging ul li.current,
+.paging ul li a:hover,
+.login-box-container h1,
+.action a:hover,
+.mob-nav-trigger,
+.mob-nav-trigger:hover,
+.mob-nav-trigger:focus,
+.head-bar,
+.head-bar a,
+.navbar-nav>li>a>i,
+.navbar-nav>li>a,
+.current-date,
+#shrink-sidebar i,
+.header .breadcrumb a,
+.header .breadcrumb>.active,
+.header-breadcrumb .breadcrumb-item+.breadcrumb-item:before,
+.header .mdi-account-circle,
+.header .drop-cont,
+.navbar-nav>li>a p,
+.res-right .text-white {
+    color:black
+}
+
+.calendars-month {
+    width: 1em !important;
+}
+
+.calendars-month-header {
+    height: 2em !important;
+}
+
+.calendars-popup {
+    z-index: 10000;
+}
+
+.day-view-entry-label.day-view-entry-label {
+    position: relative;
+    border: none;
+    border-left: 3px solid #ddd;
+}
+
+.xdebug-var-dump {
+    direction: ltr !important;
+}
+
+.light .footer-logo {
+    background: url(https://moshtaqkaid6.daftra.com/css/images/en_daftra_small_logo.png) no-repeat !important;
+    width: 113px;
+    height: 39px;
+    background-size: cover;}

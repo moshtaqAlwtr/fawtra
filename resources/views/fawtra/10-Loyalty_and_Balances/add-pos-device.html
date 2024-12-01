@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة جهاز نقاط بيع جديد</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            direction: rtl;
+            background-color: #f0f4f8;
+        }
+        .navbar {
+            background-color: #0078d7;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: white;
+            margin-left: 15px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .btn-save {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-cancel {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="navbar">
+        <div>محمد العنزي - Main Branch</div>
+        <div>
+            <a href="#">الذهاب إلى الموقع</a>
+            <a href="#">المساعدة</a>
+        </div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <div class="form-header">
+            <h4>إضافة جهاز نقاط بيع جديد</h4>
+            <div>
+                <button class="btn btn-save">حفظ</button>
+                <button class="btn btn-cancel">إلغاء</button>
+            </div>
+        </div>
+
+        <!-- نموذج إضافة جهاز جديد -->
+        <form>
+            <div class="form-group">
+                <label for="deviceName">الاسم</label>
+                <input type="text" class="form-control" id="deviceName" placeholder="أدخل اسم الجهاز">
+            </div>
+            <div class="form-group">
+                <label for="deviceCategory">التصنيف الرئيسي</label>
+                <select class="form-control" id="deviceCategory">
+                    <option>اختر تصنيف</option>
+                    <option>تصنيف 1</option>
+                    <option>تصنيف 2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="deviceStatus">الحالة</label>
+                <select class="form-control" id="deviceStatus">
+                    <option>نشط</option>
+                    <option>غير نشط</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="deviceImage">الصورة</label>
+                <input type="file" class="form-control-file" id="deviceImage">
+            </div>
+            <div class="form-group">
+                <label for="deviceDescription">الوصف</label>
+                <textarea class="form-control" id="deviceDescription" rows="4" placeholder="أدخل وصف الجهاز"></textarea>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

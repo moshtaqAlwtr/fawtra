@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفواتير المرتجعة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            padding: 15px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .search-section {
+            padding: 20px;
+            display: flex;
+            gap: 10px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            justify-content: center;
+        }
+
+        .search-section input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 200px;
+            font-size: 14px;
+        }
+
+        .results {
+            padding: 20px;
+            background-color: #fff;
+            margin-top: 20px;
+        }
+
+        .results table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .results table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .results th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+        .results tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>الفواتير المرتجعة</h1>
+</div>
+
+<div class="search-section">
+    <input type="text" placeholder="بحث عن اسم العميل">
+    <input type="text" placeholder="بحث عن رقم الفاتورة">
+</div>
+
+<div class="results">
+    <table>
+        <thead>
+            <tr>
+                <th>اسم العميل</th>
+                <th>تاريخ الإنشاء</th>
+                <th>قيمة المرتجع</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>--</td>
+                <td>--</td>
+                <td>--</td>
+            </tr>
+            <!-- يمكن إضافة المزيد من الصفوف حسب الحاجة -->
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

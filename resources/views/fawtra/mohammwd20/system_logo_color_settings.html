@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات الشعار وألوان النظام</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        .color-picker {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .color-picker div {
+            text-align: center;
+        }
+
+        .color-input {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>إعدادات الشعار وألوان النظام</h3>
+
+        <div class="color-picker">
+            <div>
+                <label for="primaryColor">لون رئيسي</label><br>
+                <input type="color" id="primaryColor" class="color-input" value="#007bff">
+            </div>
+            <div>
+                <label for="secondaryColor">لون ثانوي</label><br>
+                <input type="color" id="secondaryColor" class="color-input" value="#6c757d">
+            </div>
+        </div>
+
+        <button onclick="saveChanges()">حفظ التغييرات</button>
+    </div>
+
+    <script>
+        // تحميل الألوان المحفوظة من localStorage عند فتح الصفحة
+        window.onload = function() {
+            if (localStorage.getItem('primaryColor')) {
+                document.getElementById('primaryColor').value = localStorage.getItem('primaryColor');
+                document.body.style.setProperty('--primary-color', localStorage.getItem('primaryColor'));
+            }
+            if (localStorage.getItem('secondaryColor')) {
+                document.getElementById('secondaryColor').value = localStorage.getItem('secondaryColor');
+                document.body.style.setProperty('--secondary-color', localStorage.getItem('secondaryColor'));
+            }
+        };
+
+        // حفظ التغييرات
+        function saveChanges() {
+            var primaryColor = document.getElementById('primaryColor').value;
+            var secondaryColor = document.getElementById('secondaryColor').value;
+
+            // تحديث الألوان في الوقت الفعلي
+            document.body.style.setProperty('--primary-color', primaryColor);
+            document.body.style.setProperty('--secondary-color', secondaryColor);
+
+            // تخزين الألوان في localStorage
+            localStorage.setItem('primaryColor', primaryColor);
+            localStorage.setItem('secondaryColor', secondaryColor);
+
+            alert('تم حفظ التغييرات بنجاح!');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات ورديات نقاط البيع</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            direction: rtl;
+            background-color: #f0f4f8;
+        }
+        .navbar {
+            background-color: #0078d7;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: white;
+            margin-left: 15px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .session-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .btn-new-shift {
+            background-color: #28a745;
+            color: white;
+        }
+        .results {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .results table {
+            width: 100%;
+            margin-top: 15px;
+        }
+        .results table th, .results table td {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .search-form {
+            margin-bottom: 20px;
+        }
+        .search-form .form-row {
+            margin-bottom: 15px;
+        }
+        .btn-search, .btn-clear {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="navbar">
+        <div>محمد العنزي - Main Branch</div>
+        <div>
+            <a href="#">الذهاب إلى الموقع</a>
+            <a href="#">المساعدة</a>
+        </div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <div class="session-header">
+            <h4>إعدادات ورديات نقاط البيع</h4>
+            <a href="add-pos-shift.html" class="btn btn-new-shift">وردية جديدة</a>
+        </div>
+
+        <!-- نموذج البحث -->
+        <form class="search-form">
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="shiftName">الاسم</label>
+                    <input type="text" class="form-control" id="shiftName" placeholder="أدخل اسم الوردية">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="shiftCategory">التصنيف الرئيسي</label>
+                    <select class="form-control" id="shiftCategory">
+                        <option>الكل</option>
+                        <option>تصنيف 1</option>
+                        <option>تصنيف 2</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="shiftStatus">الحالة</label>
+                    <select class="form-control" id="shiftStatus">
+                        <option>الكل</option>
+                        <option>نشط</option>
+                        <option>غير نشط</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-search">بحث</button>
+            <button type="reset" class="btn btn-secondary btn-clear">إلغاء الفلتر</button>
+        </form>
+
+        <!-- نتائج البحث -->
+        <div class="results">
+            <h5>نتائج البحث</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>الاسم</th>
+                        <th>التصنيف الرئيسي</th>
+                        <th>الحالة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Main POS Shift</td>
+                        <td>المستودع الرئيسي</td>
+                        <td><span class="badge badge-success">نشط</span></td>
+                    </tr>
+                    <!-- المزيد من النتائج هنا -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

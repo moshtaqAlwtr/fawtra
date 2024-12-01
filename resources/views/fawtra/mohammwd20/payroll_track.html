@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسير الرواتب</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f8f9fa;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar .btn {
+            background-color: white;
+            color: #007bff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .no-data {
+            color: #333;
+            margin-top: 50px;
+        }
+        .btn-green {
+            background-color: #28a745;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div>
+            <button class="btn btn-green" onclick="window.location.href='add_payroll_track.html'"><i class="fas fa-plus"></i> أضف مسير الراتب</button>
+        </div>
+        <div>
+            <i class="fas fa-user"></i> محمد الفنيبي 
+            <i class="fas fa-question-circle"></i>
+            <i class="fas fa-bell"></i>
+        </div>
+    </div>
+
+    <div class="content">
+        <p class="no-data">لا يوجد مسير الرواتب أضيفت حتى الآن</p>
+    </div>
+
+</body>
+</html>

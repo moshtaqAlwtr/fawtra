@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات قواعد ولاء العملاء</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f0f4f7;
+            direction: rtl;
+        }
+        .top-bar {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+        }
+        .btn-save, .btn-cancel {
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+        .btn-save {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .btn-cancel {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        .settings-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- الشريط العلوي -->
+        <div class="top-bar">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">إعدادات ولاء العملاء</h5>
+                <div>
+                    <button class="btn btn-save px-4 py-2"><i class="fas fa-save"></i> حفظ</button>
+                    <button class="btn btn-cancel px-4 py-2"><i class="fas fa-times"></i> إلغاء</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- إعدادات ولاء العملاء -->
+        <div class="settings-container mt-4">
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="minPoints">الحد الأدنى من نقاط الاسترداد <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="minPoints" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="rewardType">نوع رصيد ولاء العميل <span class="text-danger">*</span></label>
+                        <select class="form-control" id="rewardType" required>
+                            <option value="نقاط الولاء">نقاط الولاء</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h5 class="mt-4">معامل التحويل</h5>
+                <div class="form-row align-items-center">
+                    <div class="form-group col-md-3">
+                        <label for="points">1 نقطة =</label>
+                        <input type="number" class="form-control" id="points" value="1">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="currency">العملة</label>
+                        <input type="text" class="form-control" id="currency" value="SAR" readonly>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="basicMultiplier">
+                            <label class="form-check-label" for="basicMultiplier">أتاحة الأرقام العشرية</label>
+                        </div>
+                    </div>
+                     
+                    <div class="form-group col-md-3 text-right">
+                        <small class="form-text text-muted">1 نقطة الولاء = مضاعف العميل الأساسي؟</small>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

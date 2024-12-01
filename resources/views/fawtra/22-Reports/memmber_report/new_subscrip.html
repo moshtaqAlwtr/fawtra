@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة التقارير</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9ecef;
+            direction: rtl;
+            text-align: right;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .filter-card {
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+        .filter-card-header {
+            background: linear-gradient(45deg, #0066cc, #004b99);
+            color: #ffffff;
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+            padding: 15px;
+            font-size: 1.2rem;
+        }
+        .filter-card-body {
+            padding: 20px;
+        }
+        .btn-custom {
+            background: linear-gradient(45deg, #004b99, #0073e6);
+            color: white;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .btn-custom:hover {
+            background: #003366;
+        }
+        .btn-outline-secondary {
+            border-radius: 5px;
+            color: #666666;
+            border-color: #b3b3b3;
+        }
+        .btn-outline-secondary:hover {
+            background-color: #e9ecef;
+            border-color: #999999;
+        }
+        .no-data {
+            background-color: #ffe6e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+            color: #cc3300;
+            font-size: 1rem;
+        }
+        label.form-label {
+            font-weight: bold;
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card filter-card">
+            <div class="filter-card-header">التقارير</div>
+            <div class="card-body filter-card-body">
+                <form>
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <label for="client" class="form-label">العميل</label>
+                            <select id="client" class="form-select">
+                                <option>الكل</option>
+                                <option>عميل 1</option>
+                                <option>عميل 2</option>
+                            </select>
+                        </div>
+                    
+                        <div class="col-md-3">
+                            <label for="date-from" class="form-label">التاريخ من</label>
+                            <input type="date" id="date-from" class="form-control" value="2024-10-10">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="date-to" class="form-label">التاريخ إلى</label>
+                            <input type="date" id="date-to" class="form-control" value="2024-11-10">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="branch" class="form-label">فرع</label>
+                            <select id="branch" class="form-select">
+                                <option>الكل</option>
+                                <option>فرع 1</option>
+                                <option>فرع 2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-3">
+                            <label for="group-by" class="form-label">تجميع حسب</label>
+                            <select id="group-by" class="form-select">
+                                <option>شهري</option>
+                                <option>سنوي</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-start mt-4">
+                        <button type="submit" class="btn btn-custom me-3">عرض التقرير</button>
+                        <button type="reset" class="btn btn-outline-secondary">إلغاء الفلتر</button>
+                    </div>
+                </form>
+                <div class="no-data mt-4">لا توجد بيانات توافق معطيات البحث</div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

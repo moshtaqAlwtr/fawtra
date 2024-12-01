@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قواعد العمولة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .btn-add {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .btn-add i {
+            margin-left: 5px;
+        }
+
+        .btn-add:hover {
+            background-color: #218838;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f4f6f9;
+        }
+
+        .table td {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        قواعد العمولة
+    </div>
+
+    <div class="content">
+        <button class="btn-add" onclick="window.location.href='add-commission-rule.html';">
+            <i class="fas fa-plus"></i> أضف قواعد العمولة
+        </button>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>اسم قاعدة العمولة</th>
+                    <th>الفترة</th>
+                    <th>الهدف</th>
+                    <th>الحالة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>عمولة مبيعات</td>
+                    <td>شهري</td>
+                    <td>3000</td>
+                    <td><span style="color: green;">نشط</span></td>
+                </tr>
+                <!-- يمكن إضافة المزيد من القواعد -->
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

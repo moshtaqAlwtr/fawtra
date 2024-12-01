@@ -1,0 +1,4271 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js lt-ie10"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+
+
+
+<html lang="en" dir="rtl" class="no-js" data-site-data='{"dateFormat": "d/m/Y"}'>
+    <!--<![endif]-->
+    <head>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <title>لوحة التحكم - مؤسسة أعمال خاصة للتجارة </title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+        <link rel="shortcut icon" href="css/images/Daftra-favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="css/oifonts.css?v=10" />
+        <link rel="stylesheet" type="text/css" href="css/fonts/ff/flaticon-test.css?v=10"/>
+        <link rel="stylesheet" type="text/css" href="css/flaticon.css?v=10" />
+        <link rel="stylesheet" type="text/css" href="css/nav-ico/simple-line-icons.css?v=9" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.tooltip.css?v=130" />
+        <link rel="stylesheet" type="text/css" href="css/jqueryui.css?v=815" />
+        <link rel="stylesheet" type="text/css" href="css/app_rtl_v815.css" />
+        <link rel="stylesheet" type="text/css" href="css/common_v815.css" />
+        <link rel="stylesheet" type="text/css" href="css/fonts_v815.css" />
+        <link rel="stylesheet" type="text/css" href="css/dashboard.css?v=13" />
+        <link rel="stylesheet" type="text/css" href="css/pages.css?v=14" />
+        <link rel="stylesheet" type="text/css" href="css/listing.css?v=13" />
+        <link rel="stylesheet" type="text/css" href="css/payment.css?v=16" />
+        <link rel="stylesheet" type="text/css" href="css/import.css?v=13" />
+        <link rel="stylesheet" type="text/css" href="css/messages.css?v=14" />
+        <link rel="stylesheet" type="text/css" href="css/pos-app.css?v=1" />
+        <link rel="stylesheet" type="text/css" href="css/beta.css?v=2" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/4.8.95/css/materialdesignicons.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/buttons.css?v=13" />
+        <link rel="stylesheet" type="text/css" href="css/breadcrumb_new.css?v=1" />
+        <link rel="stylesheet" href="css/app-manager-dropdown.css" />
+        <link rel="stylesheet" type="text/css" href="css/cal-css/jquery.calendars.picker.css?v=1" />
+        <link rel="stylesheet" href="s2020/css/layout/app.min.css?v=815" />
+        <link rel="stylesheet" href="s2020/css/layout/dark.min.css?v=815" />
+                      <link rel="stylesheet" type="text/css" href="css/breadcrumb_new_ar_v1.css" />
+                 <link rel="stylesheet" type="text/css" href="css/delete_message_v1.css" />
+		<link href="https://fonts.googleapis.com/css?family=Amiri|Cairo:600|Roboto&amp;subset=arabic" rel="stylesheet">
+        <link id="help-css" rel="stylesheet" type="text/css" href="dist/app/js/pages/help/help.styles.css" media="all">
+        <script>
+            isLocalStorageSupported = function() {
+                var testKey = 'test', storage = window.sessionStorage;
+                try {
+                    storage.setItem(testKey, '1');
+                    storage.removeItem(testKey);
+                    return true;
+                } catch (error) {
+                    return false;
+                }
+            };
+
+            if(isLocalStorageSupported() && localStorage.getItem('dark')) {
+                document.documentElement.classList.add('dark-active');
+            } else {
+                document.documentElement.classList.remove('dark-active');
+            }
+
+            var IS_APP = false;
+            var IS_SAFARI = false;
+
+        </script>
+                					<link rel="stylesheet" type="text/css" href="css/rtl-fix.css" />
+                        <!-- <link rel="stylesheet" type="text/css" href="/css/rtl-breadcrumb.css" /> !-->
+
+		        <link rel="stylesheet" type="text/css" href="css/screen-sidenav_v815.css?v=27" />
+       <link rel="stylesheet" type="text/css" href="css/all-screen-responsive-ar.css?v=1" />       <script>
+		   var __jsDateFormat = 'dd/mm/yy';
+		   var __countryCode = 'SA';
+           var __currencyCode = 'SAR';
+       </script>
+
+
+        <style type="text/css" media="screen">
+            /* #main-content, .main-area{
+                margin-top: 5px !important;
+            }
+            .main-area {
+                padding-top: 0 !important;
+            }
+            #nav_control {
+                margin-bottom: 5px !important;
+            }        */
+            
+            
+            .xdebug-var-dump {
+                text-align: left;
+            }
+            .appoint-bg-panel,.master-widget .widget-head, .paging ul li.current, .paging ul li a:hover,.header, .login-box-container h1, .footer, .action a:hover, .mob-nav-trigger, .mob-nav-trigger:hover, .mob-nav-trigger:focus, .head-bar, .primary-bg {
+                background:#247dbd;
+            }
+           .appoint-bg-panel .panel-heading,.expense-item p,.expense-item span,.table table-striped b-light td a:hover, .master-widget .widget-head h3, .paging ul li.current, .paging ul li a:hover, .login-box-container h1, .action a:hover, .mob-nav-trigger, .mob-nav-trigger:hover, .mob-nav-trigger:focus, .head-bar, .head-bar a,.navbar-nav > li > a > i,.navbar-nav > li > a,.current-date,#shrink-sidebar i,.header .breadcrumb a,.header .breadcrumb > .active , .header-breadcrumb .breadcrumb-item + .breadcrumb-item:before ,.header .mdi-account-circle,.header .drop-cont,.navbar-nav > li > a p, .res-right .text-white  {
+                color: #ffffff!important            }
+            .calendars-month {
+                width: 25em !important;
+            }
+            .calendars-month-header {
+                height: 2.5em !important;
+            }
+            .calendars-popup{
+                z-index: 10000;
+            }
+            .day-view-entry-label.day-view-entry-label { position: relative; border: none;border-left: 3px solid #ddd;  }
+            .xdebug-var-dump{
+                direction: ltr !important;
+            }
+							.light .footer-logo{
+						background: url(https://jesst4you.daftra.com/css/images/en_daftra_small_logo.png) no-repeat !important;
+						width: 113px;
+						height: 39px;
+						background-size: cover;
+				}
+			        </style>
+        <script>
+            function getImageLightness(imageSrc,callback) {
+    var img = document.createElement("img");
+    img.src = imageSrc;
+    img.style.display = "none";
+    document.body.appendChild(img);
+
+    var colorSum = 0;
+
+    img.onload = function() {
+        // create canvas
+        var canvas = document.createElement("canvas");
+        canvas.width = this.width;
+        canvas.height = this.height;
+
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(this,0,0);
+
+        var imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+        var data = imageData.data;
+        var r,g,b,avg;
+
+        for(var x = 0, len = data.length; x < len; x+=4) {
+            r = data[x];
+            g = data[x+1];
+            b = data[x+2];
+
+            avg = Math.floor((r+g+b)/3);
+            colorSum += avg;
+        }
+
+        var brightness = Math.floor(colorSum / (this.width*this.height));
+        callback(brightness);
+    }
+}
+            </script>
+                <script>
+        var translate_languages = {"Quantity":"\u0627\u0644\u0643\u0645\u064a\u0629","Unit Price":"\u0633\u0639\u0631 \u0627\u0644\u0648\u062d\u062f\u0629","Today":"\u0627\u0644\u064a\u0648\u0645","Last 7 days":"\u0623\u062e\u0631 7 \u0623\u064a\u0627\u0645","Date Range":"\u0627\u0644\u0641\u062a\u0631\u0629 \u0645\u0646 \/ \u0625\u0644\u0649","Specific Date":"\u062a\u0627\u0631\u064a\u062e \u0645\u062d\u062f\u062f","All Dates Before":"\u0643\u0644 \u0627\u0644\u062a\u0648\u0627\u0631\u064a\u062e \u0642\u0628\u0644","All Dates After":"\u0643\u0644 \u0627\u0644\u062a\u0648\u0627\u0631\u064a\u062e \u0628\u0639\u062f","Start date":"Start date","End date":"End date","Next":"\u0627\u0644\u062a\u0627\u0644\u064a","Prev":"\u0627\u0644\u0633\u0627\u0628\u0642","Last week":"\u0627\u0644\u0623\u0633\u0628\u0648\u0639 \u0627\u0644\u0645\u0627\u0636\u064a","Last month":"\u0627\u0644\u0634\u0647\u0631 \u0627\u0644\u0623\u062e\u064a\u0631","Month to date":"\u0645\u0646 \u0623\u0648\u0644 \u0627\u0644\u0634\u0647\u0631 \u062d\u062a\u0649 \u0627\u0644\u064a\u0648\u0645","Last year":"\u0627\u0644\u0633\u0646\u0629 \u0627\u0644\u0645\u0627\u0636\u064a\u0629","Year to date":"\u0645\u0646 \u0623\u0648\u0644 \u0627\u0644\u0633\u0646\u0647 \u062d\u062a\u0649 \u0627\u0644\u064a\u0648\u0645","Reset":"\u0625\u0644\u063a\u0627\u0621 \u0627\u0644\u0641\u0644\u062a\u0631","Yes":"\u0646\u0639\u0645","No":"\u0644\u0627","Update":"\u062a\u062d\u062f\u064a\u062b","Close":"\u0625\u063a\u0644\u0627\u0642","Add":"\u0625\u0636\u0627\u0641\u0629","Edit":"\u062a\u0639\u062f\u064a\u0644","Remove":"\u0625\u0632\u0627\u0644\u0629","Issue days must be less than subscirption period":"\u0627\u0644\u0627\u064a\u0627\u0645 \u064a\u062c\u0628 \u0623\u0646 \u062a\u0643\u0648\u0646 \u0623\u0642\u0644 \u0645\u0646 \u0641\u062a\u0631\u0629 \u0627\u0644\u0627\u0634\u062a\u0631\u0627\u0643","Value must be between [0-100]":"Value must be between [0-100]","Only :value characters allowed":"Only :value characters allowed","Value must be less than or equal to :value":"Value must be less than or equal to :value","Value must be less than :value":"Value must be less than :value","Either label or value required":"\u0627\u0644\u0642\u064a\u0645\u0629 \u0645\u0637\u0644\u0648\u0628\u0629","Valid date required":"\u064a\u062c\u0628 \u0625\u062f\u062e\u0627\u0644 \u062a\u0627\u0631\u064a\u062e \u0635\u062d\u064a\u062d","Valid number required":"\u064a\u062c\u0628 \u0625\u062f\u062e\u0627\u0644 \u0631\u0642\u0645 \u0628\u0634\u0643\u0644 \u0635\u062d\u064a\u062d","Invalid number of days":"Invalid number of days","Are you sure you want to delete?":"\u0647\u0644 \u0623\u0646\u062a \u0645\u062a\u0623\u0643\u062f \u0623\u0646\u0643 \u062a\u0631\u064a\u062f \u062d\u0630\u0641\u061f","Really delete this entry?":"\u0647\u0644 \u0623\u0646\u062a \u0645\u062a\u0623\u0643\u062f \u0645\u0646 \u062d\u0630\u0641 \u0647\u0630\u0627 \u0627\u0644\u0639\u0646\u0635\u0631\u061f","Positive number required":"\u064a\u062c\u0628 \u0625\u062f\u062e\u0627\u0644  \u0631\u0642\u0645 \u0645\u0648\u062c\u0628","Characters left":"Characters left","Required":"\u0645\u0637\u0644\u0648\u0628","Please enter a valid email":"Please enter a valid email","Please enter a valid number":"Please enter a valid number","error":"error","type invoice no":"\u0627\u0643\u062a\u0628 \u0631\u0642\u0645 \u0627\u0644\u0641\u0627\u062a\u0648\u0631\u0629","type client name":"\u0627\u062f\u062e\u0644 \u0627\u0644\u0639\u0645\u064a\u0644","Please select the required terms":"\u0645\u0646 \u0641\u0636\u0644\u0643 \u0625\u062e\u062a\u0627\u0631 \u0627\u0644\u0634\u0631\u0648\u0637 \u0627\u0644\u0645\u0637\u0644\u0648\u0628\u0629","Please select project":"\u0623\u062e\u062a\u0631 \u0645\u0634\u0631\u0648\u0639","Please enter a positive time value":"\u0623\u062f\u062e\u0644 \u0642\u064a\u0645\u0629 \u0627\u0644\u0648\u0642\u062a","Valid email required":"\u0645\u0637\u0644\u0648\u0628 \u0628\u0631\u064a\u062f \u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a \u0635\u0627\u0644\u062d","Upload":"\u062a\u062d\u0645\u064a\u0644","Full Name \/ Business Name ":"\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u0643\u0627\u0645\u0644 \/ \u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u062a\u062c\u0627\u0631\u064a","Full Name":"\u0627\u0644\u0627\u0633\u0645 \u0628\u0627\u0644\u0643\u0627\u0645\u0644","Client Details":"\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0639\u0645\u064a\u0644","Business Name":"\u0627\u0644\u0627\u0633\u0645 \u0627\u0644\u062a\u062c\u0627\u0631\u064a","Active":"\u0646\u0634\u0637","Not Active":"\u063a\u064a\u0631 \u0645\u0641\u0639\u0644","All":"\u0627\u0644\u0643\u0644","This Field must be unique":"\u0647\u0630\u0627 \u0627\u0644\u062d\u0642\u0644 \u064a\u062c\u0628 \u0623\u0646 \u064a\u0643\u0648\u0646 \u0641\u0631\u064a\u062f\u0627","Apply":"\u062a\u0637\u0628\u064a\u0642","Ignore":"\u062a\u062c\u0627\u0647\u0644","Change it":"\u062a\u063a\u064a\u0631","Are you sure ?":"\u0647\u0644 \u0627\u0646\u062a \u0645\u062a\u0627\u0643\u062f \u061f","Copied":"\u062a\u0645 \u0627\u0644\u0646\u0633\u062e","Drop file here or":"\u0627\u0641\u0644\u062a \u0627\u0644\u0645\u0644\u0641 \u0647\u0646\u0627 \u0627\u0648","select from your computer":"\u0627\u062e\u062a\u0631 \u0645\u0646 \u062c\u0647\u0627\u0632\u0643","Choose file":"\u0627\u062e\u062a\u0631 \u0645\u0644\u0641","The Points Usage cannot exceed the total remaining amount from the  Client Loyalty balance":"\u0627\u0644\u0646\u0642\u0627\u0637 \u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645\u0629 \u0644\u0627 \u064a\u0645\u0643\u0646 \u0623\u0646 \u062a\u062a\u062e\u0637\u0649 \u0625\u062c\u0645\u0627\u0644\u064a \u0627\u0644\u0631\u0635\u064a\u062f \u0627\u0644\u0645\u062a\u0627\u062d \u0644\u0644\u0639\u0645\u064a\u0644","Electronic Signature":"\u0627\u0644\u062a\u0648\u0642\u064a\u0639 \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u0649","You should install signature Program before sending transactions to ETA <a href='\/v2\/owner\/eta\/download_file' target='_blank'><b>Daftra Digital Signature<\/b> <\/a>":"\u064a\u0646\u0628\u063a\u0649 \u062a\u062b\u0628\u064a\u062a \u0628\u0631\u0646\u0627\u0645\u062c \u0627\u0644\u062a\u0648\u0642\u064a\u0639 \u0642\u0628\u0644 \u0625\u0631\u0633\u0627\u0644 \u0627\u0644\u0645\u0639\u0627\u0645\u0644\u0627\u062a \u0625\u0644\u0649 \u0645\u0635\u0644\u062d\u0629 \u0627\u0644\u0636\u0631\u0627\u0626\u0628 <a href='\/v2\/owner\/eta\/download_file' target='_blank'><b>Daftra Digital Signature<\/b> <\/a>","Please connect the dongle to your computer":"\u0645\u0646 \u0641\u0636\u0644\u0643 \u0642\u0645 \u0628\u062a\u0648\u0635\u064a\u0644 \u0627\u0644\u062f\u0648\u0646\u062c\u0644 \u0627\u0644\u062e\u0627\u0635\u0643 \u0628\u0643 \u0641\u0649 \u0627\u0644\u062d\u0627\u0633\u0628","Please install tax authority certificate on your machine":"Please install tax authority certificate on your machine","You entered invalid pin ,please change pin code form <a href='\/v2\/owner\/electronic_invoice_settings' target='_blank'>Electronic Invoice Settings<\/a>":"\u0644\u0642\u062f \u0623\u062f\u062e\u0644\u062a \u0631\u0642\u0645 \u062a\u0639\u0631\u064a\u0641 \u062e\u0637\u0623, \u0645\u0646 \u0641\u0636\u0644\u0643 \u0642\u0645 \u0628\u062a\u063a\u064a\u0631 \u0627\u0644\u0643\u0648\u062f \u0627\u0644\u062e\u0627\u0635 \u0628\u0627\u0644\u062f\u0648\u0646\u062c\u0644 \u0645\u0646 <a href='\/v2\/owner\/electronic_invoice_settings'>\u0625\u0639\u062f\u0627\u062f\u0627\u062a \u0627\u0644\u0641\u0627\u062a\u0648\u0631\u0629 \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a\u0629<\/a>","Please, download the latest version of program from <a href='\/v2\/owner\/eta\/download_file' target='_blank'><b>Daftra Digital Signature<\/b><\/a>":"\u0645\u0646 \u0641\u0636\u0644\u0643 \u0642\u0645 \u0628\u062a\u062d\u0645\u064a\u0644 \u0627\u062e\u0631 \u0625\u0635\u062f\u0627\u0631 \u0645\u0646 \u0627\u0644\u0628\u0631\u0646\u0627\u0645\u062c \u0645\u0646<a href='\/v2\/owner\/eta\/download_file' target='_blank'><b>Daftra Digital Signature<\/b> <\/a>","Please select items first by clicking on the small left box":"\u0627\u0644\u0631\u062c\u0627\u0621 \u062a\u062d\u062f\u064a\u062f \u0627\u0644\u0639\u0646\u0627\u0635\u0631 \u0623\u0648\u0644\u0627\u064b \u0628\u0627\u0644\u0646\u0642\u0631 \u0641\u0648\u0642 \u0627\u0644\u0645\u0631\u0628\u0639 \u0627\u0644\u0627\u064a\u0645\u0646 \u0627\u0644\u0635\u063a\u064a\u0631","Non Created Item":"\u0628\u0646\u062f \u063a\u064a\u0631 \u0645\u0636\u0627\u0641","Add New Product":"\u0625\u0636\u0627\u0641\u0629 \u0645\u0646\u062a\u062c \u062c\u062f\u064a\u062f","Invalid Barcode":"\u0627\u0644\u0631\u0645\u0632 \u063a\u064a\u0631 \u0635\u062d\u064a\u062d","This is a required field and could not be empty":"\u0647\u0630\u0627 \u0627\u0644\u062d\u0642\u0644 \u0645\u0637\u0644\u0648\u0628 \u0648\u0644\u0627 \u064a\u0645\u0643\u0646 \u0627\u0646 \u064a\u0643\u0648\u0646 \u0641\u0627\u0631\u063a","Last 30 Days":"\u0622\u062e\u0631 30 \u064a\u0648\u0645","This Month":"\u0627\u0644\u0634\u0647\u0631 \u0627\u0644\u062d\u0627\u0644\u064a","Last Month":"\u0627\u0644\u0634\u0647\u0631 \u0627\u0644\u0645\u0627\u0636\u064a","Custom Range":"\u0641\u062a\u0631\u0629 \u0645\u062e\u0635\u0635\u0629"};
+        var SITE_ROOT = 'https://jesst4you.daftra.com/';
+    var ps = null;
+    var SITE_VERSION = '0.0.2.0';
+    var JS_VERSION = "1125";
+    var IS_PC = 1;
+    var IS_MOBILE = 0;
+    var SITE_LANG = 'ara';
+    var IS_RTL = 1;
+    var COUNTRY_CODE = 'SA';
+    var USER = {"staff_id":0,"branch_id":"1"};
+</script>        
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+	<script type="text/javascript" src="js/jqueryui.js"></script>
+	<script type="text/javascript" src="js/app.js?v=3"></script>
+	<script type="text/javascript" src="js/perfect-scrollbar.jquery.min.js"></script>
+	<script type="text/javascript" src="js/functions_v1125.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jqueryui.css" />               
+ <link rel="stylesheet" type="text/css" href="css/pc.css" />
+<link rel="stylesheet" type="text/css" href="css/rtl_v2.css" />        <!--
+
+[if lt IE 8]>
+             <script src="js/html5shiv.min.js"></script>
+             <script src="js/respond.min.js"></script>
+           <![endif]-->
+
+           <link rel="stylesheet" type="text/css" href="css/app_new_layout_v815.css" />
+                       <link rel="stylesheet" type="text/css" href="css/app_new_layout_ar_v815.css" />
+                        
+	<script type="text/javascript" src="js/cal-js/jquery.plugin.min.js"></script>
+	<script type="text/javascript" src="js/cal-js/jquery.calendars.js"></script>
+	<script type="text/javascript" src="js/cal-js/jquery.calendars.plus.js"></script>
+	<script type="text/javascript" src="js/cal-js/jquery.calendars.picker.js"></script>
+	<script type="text/javascript" src="js/cal-js/jquery.calendars.ummalqura.js"></script>
+
+	<script type="text/javascript" src="js/cal-js/jquery.calendars-ar-EG_v1125.js"></script>
+	<script type="text/javascript" src="js/cal-js/jquery.calendars.picker-ar-EG.js"></script>
+	<script type="text/javascript" src="js/cal-js/jquery.calendars.ummalqura-ar.js"></script>
+
+	<script type="text/javascript" src="js/moment.min.js"></script>
+	<script type="text/javascript" src="js/daterangepicker_v1125.js"></script>
+<link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
+            <link rel="stylesheet" type="text/css" href="css/new-style_v7.css" />
+            <link rel="stylesheet" type="text/css" href="css/new-style-ar_v1.css" />
+            <link rel="stylesheet" type="text/css" href="css/s2020_rtl_v815.css" />
+                    <!-- Global site tag (gtag.js) - Google Ads: 847451904 -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=AW-847451904"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag('js', new Date());
+                gtag('config', 'AW-847451904');
+            </script>
+        
+
+
+                <script src="s2020/js/layout/helpers.js?v=1125"></script>
+                <link rel="stylesheet" type="text/css" href="dist/daftra/daftra.compat.styles.css?v=815" />
+    </head>
+    <script>
+        var savedRecord = null;
+    </script>
+    <body class="fluid rtl light ">
+
+        
+                        						
+                    <div class="menu-overlay"></div>
+
+                        
+				                		        <div class="layout" id="main-content" >
+            <div class="layout-container">
+                                                				                    <div class="header clearfix">
+                        <div class="container-fluid no-padder">
+                            <div class="header-elements row">
+                                <div class="col-md-8 col-sm-8 col-xs-7 head-pos-fix">
+									<a href="#" id="shrink-sidebar">
+                                    <i class="mdi mdi-backburger"></i></a>
+                                    <ol class="breadcrumb up-bread header-breadcrumb" id="breadcrumb" style="display: none"></ol>
+
+                                </div>
+                                <!-- <div class="col-xs-5 col-sm-6 header-breadcrumbs-wrap visible-xs">
+                                  <div id="top-header-title"></div>
+                                </div> -->
+                                <div class="col-md-4 col-sm-4 col-xs-5">
+                                    <div class="user-log">
+                                        
+    <ul class="nav navbar-nav navbar-right user-nav">
+
+
+        <!-- <li class="dropdown res-right hidden-lg hidden-md menu-burger">
+             <a class="dropdown-toggle clearfix mob-nav-trigger" data-toggle="dropdown" href="#" aria-expanded="false">
+                 <p class="p-b-none"><i class="fa fa-bars ico-1x "></i></p>
+             </a>
+         </li>-->
+
+
+                    <li class="dropdown res-right">
+                <a class="px-0" href="/home">
+                <span class="px-3 d-inline-flex align-content-center text-white">
+                    <i class="fs-20 mdi mdi-storefront mr-lg-2"></i>
+                    <span class="visible-sm d-xl-inline-block text-nowrap">الذهاب إلى الموقع</span>
+                </span>
+                </a>
+            </li>
+                                <li class="dropdown res-right user-drop hidden-xs">
+            <a class="clearfix d-inline-flex align-items-center support-modal-btn support-btn">
+                <span class="mdi mdi-lifebuoy fs-28"></span>
+                <span class="ml-1">
+                    المساعده                </span>
+            </a>
+            <ul class="dropdown-menu w header-dropdowns">
+                <li>
+                    <div class="panel-heading b-light bg-light">
+                        <strong>المساعده</strong>
+                    </div>
+                </li>
+                <li>
+                    <a href="https://docs.daftra.com" target="_blank">
+                        دليل النظام                    </a>
+                    <a href="/owner/sites_enquiries/index" class="submit-feedback">
+                        أرسل لنا رأيك                    </a>
+                    <a href="https://www.daftra.com/about-daftra" target="_blank">
+                        عن Daftra                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="dropdown s2020 res-left" id="notifications-dropdown-wrapper">
+            <a class="dropdown-toggle ico-bell list_all_noti" data-toggle="dropdown" id="notifications-dropdown" href="#" aria-expanded="false">
+                <i class="mdi mdi-bell nav-item-icon"></i>
+                                    <span id="notification-count" class="badge badge-sm up bg-danger count_noti">18</span>
+                            </a>
+            <div id="loading-div" class="dropdown-menu notifications-dropdown-wrap " aria-labelledby="notifications-dropdown">
+                <h6 class="dropdown-header bg-light notifications-title border-bottom">الإشعارات</h6>
+                <div class="list-group notifications-wrap">
+                    <div id = "notification-container-id" class="notifcation-list" data-simplebar="true">
+                        <div id="group-back-btn" class="mb-3" hidden>
+                            <button class="btn btn-disabled btn-icon font-weight-medium text-muted responsive">
+                                <i class="mdi mdi-arrow-left"></i><span>العودة</span>
+                            </button>
+                        </div>
+                        <div id="notification-list" class="notifications-list">
+                            <!-- notification will be loaded here through ajax call in drop-down-notifications.php -->
+                        </div>
+                    </div>
+                    <div class="notifications-loader">
+                        <div class="justify-content-center loading-partial">
+                            <div class="d-flex h-full justify-content-center spinner-border" role="status">
+                                <div class="notification-loader" role="status">
+                                    <div class="inner-loader"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="notifications-bg"></div>
+                </div>
+                <a class="dropdown-item bg-light text-center notifications-btn border-top" href="/v2/owner/site/notifications">
+                    عرض الجميع<i class="mdi mdi-arrow-left"></i>                </a>
+                <a class="dropdown-item bg-light text-center notifications-btn border-top" href="/v2/owner/site/updates">
+                    تحديثات النظام<i class="mdi mdi-arrow-left"></i>                </a>
+                <div class="panel bg-white">
+                </div>
+
+            </div>
+            <!-- <li class="dropdown res-left"> <a title="Help" class="dropdown-toggle ico-help" data-toggle="dropdown" href="#" aria-expanded="false"><i class="fa fa-question-circle fa-3x"></i></a> -->
+            <!-- dropdown -->
+
+
+            <!-- / dropdown -->
+        </li>
+                    <ul class="dropdown-menu w header-dropdowns">
+                <li>
+                    <div class="panel-heading b-light bg-light"> <strong>المساعده</strong> </div>
+                </li>
+                <li><a href="https://www.daftra.com/system-manual" target="_blank">دليل النظام </a></li>
+                <li><a href="/owner/sites_enquiries/index" class="payment-options" onclick="$('.popup-chat').click();
+                                return false;" target="_blank">أرسل لنا رأيك</a></li>
+                <li><a href="https://www.daftra.com/about-daftra" target="_blank">عن Daftra </a></li>
+
+            </ul>
+
+                <li class="dropdown res-right user-drop">
+                                    <a class="dropdown-toggle clearfix" data-toggle="dropdown" href="/settings" aria-expanded="false">
+                                    <img class="user-avatar" src="https://jesst4you.daftra.com/webroot/avatar.php?q=bj0lRDklODUlRDglQUQlRDklODUlRDglQUYrJUQ4JUE3JUQ5JTg0JUQ4JUI5JUQ4JUFBJUQ5JThBJUQ4JUE4JUQ5JThBJmlkPTAmcz0zMA==" width="30" height="30" />
+                
+                <span class="drop-cont hidden-xs">
+                محمد العتيبي                <span class="caret"></span>
+                                            <p id="menu-subtitle">Main Branch</p>
+                        					</span>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu w header-dropdowns">
+                <li>
+                    <div class="panel-heading b-light bg-light">
+                        <strong class="hidden-xs">حسابي</strong>
+                        <span class="hidden visible-xs">محمد العتيبي</span>
+                        <small class=" hidden text-muted visible-xs">Main Branch</small>
+                    </div>
+                </li>
+                
+                    <li><a href="/owner/owners/change_email"> <i class="fa fa-envelope middle"></i>
+                            تغيير البريد الإلكتروني                        </a></li>
+                    <li><a href="/owner/owners/change_password"> <i class="fa fa-lock middle"></i>
+                            تغيير كلمة المرور                        </a></li>
+
+                                                                    <li><a href="/v2/owner/mobile-apps"><i class="fa fa-qrcode middle"></i>تطبيقات Daftra</a></li>
+                                            
+                                <li class="divider"></li>
+
+                
+                                                                    <li><a href="/renew" target="_blank"><i class="fa fa fa-retweet middle"></i>تجديد الاشتراك</a></li>
+                                                                                    <!--                            <li><a href="--><!--"><i class="fa fa-arrow-circle---><!-- middle"></i>--><!--</a></li>-->
+                                                <li class="divider"></li>
+                
+                <li class="visible-xs">
+                    <a href="https://docs.daftra.com" target="_blank">
+                        دليل النظام                    </a>
+                    <a href="/owner/sites_enquiries/index" class="submit-feedback">
+                        أرسل لنا رأيك                    </a>
+                </li>
+                
+                <li class="divider"></li>
+
+                                <li class=""> <a class="panel-heading b-light bg-light" href="/owner/owners/logout"><i class="fa fa-lock middle"></i>
+                        تسجيل الخروج                    </a> </li>
+            </ul>
+            <!-- / dropdown -->
+        </li>
+
+
+
+    </ul>
+    <div class="clear"></div>
+
+
+
+
+<div class="modal" id="Shownoti" tabindex="-1" role="dialog" aria-labelledby="ShownotiLabel">
+    <div class="modal-dialog modal-md"  role="document">
+        <div class="modal-content">
+            <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+            <div class="modal-header">
+                <h4 class="modal-title" id="ShowactionLabel">التفاصيل</h4>
+            </div>
+            <div id="Shownoti_row" class="modal-body"> تحميل ... </div>
+        </div>
+    </div>
+</div>
+
+<!-- Start - Notification div will be loaded inside notification drop down list -->
+<div id="notification-template" class="notification-item notification-item-hover border-0" hidden>
+    <div class="d-flex justify-content-between">
+        <div class="text">
+            <a class="view-url" href="#">
+                <p class="text-muted font-weight-medium message-content">
+                    <!-- message will be here -->
+                </p>
+            </a>
+        </div>
+    </div>
+    <div class="notification-meta d-flex justify-content-between">
+        <span class="text-muted opacity-50 font-weight-bold date notification-date"><!-- date will be here --></span>
+        <a href="#" class="text-success font-weight-bold link view-url">عرض</a>
+        <a href="#" data-dismiss-all="صرف النظر" class="text-danger font-weight-bold dismissed-url">
+            <i class="mdi mdi-minus-circle"></i>
+            <span class="mr-1">صرف النظر</span>
+        </a>
+    </div>
+</div>
+<!-- End - Notification div will be loaded inside notification drop down list -->
+<div id="no-notification-div" class="alert alert-warning text-center mb-0" hidden>
+    لا يوجد أي إشعارات نشطة لإظهارها</div>
+<link id="help-css" rel="stylesheet" type="text/css" href="dist/app/js/pages/help/help.styles.css" media="all">
+
+<script>
+    var notificationCountUrl = '/v2/api/owner/notifications/count';
+    var notificationUrl = "/v2/api/owner/notifications";
+    </script>
+
+<script src='/v2/js/notifications/drop-down-notification_v1125.js'></script>
+<script src='https://cdn.daftra.com/assets/js/layout/plugin_simplebar.js?v=1125'></script>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				                                                <div class="main-area clearfix ">
+                    <div class="container">
+                        <div class="flash-wrapper master-widget-container" style="padding-bottom: 0;padding-top: 0;">
+                                                    </div>
+                        <script>
+                            $(function() {
+                                if($('.side-nav').length){
+                                    $('.flash-wrapper').addClass('nav-wrapper');
+                                }
+                            });
+                        </script>
+                        <ol>
+                            <link rel="stylesheet" type="text/css" href="https://cdn.daftra.com/assets/s2020/css/index/index.min.css?v=815" />
+<style>
+    .shadow {
+        box-shadow: 0 3px 6px rgba(78,83,129,.1);
+    }
+    .ui-menu {
+        border: 1px solid #ddd;
+        box-shadow: 0 3px 6px rgba(78,83,129,.1);
+    }
+    .ui-menu .ui-menu-item {
+        padding: 10px !important;
+    }
+    .ui-menu .ui-menu-item:last-child {
+        border-bottom: 0 !important;
+    }
+    .ui-menu .ui-menu-item:hover,
+    .ui-menu .ui-menu-item.ui-state-focus {
+        background-color: #00b0ef;
+        color: #fff;
+        cursor: pointer;
+    }
+    .overflow_table_width {
+        overflow-x: auto !important;
+    }
+    .nav-tabs>li>a.btn {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    @media (min-width: 1200px) {
+        .col-flex-lg {
+            flex: 1 0 0%;
+        }
+    }
+</style>
+
+
+<div id="no-report" style="display:none;" >
+    <div   class="row">
+        <div style="height:260px;" class="no-data col-md-8 col-sm-12">
+            <div class="no-data" style="text-align:center;height:260px;background:#fff;"> 
+                <img  align="center" src="/css/images/no_data_wide.png" style="opacity: 0.3;filter: alpha(opacity=30);"/>
+                <button class="btn btn-link btn-lg">لاتوجد بيانات متاحة</button>
+            </div>
+
+        </div>
+        <div style="height:260px;" class="col-md-4 col-sm-12" > 
+            <div class="no-data" style="text-align:center;height:260px;background:#fff;">
+                <img align="center" src="/css/images/no_data_pie.png" style="max-height:100%; opacity: 0.3;filter: alpha(opacity=30);"/>
+                <button class="btn btn-link btn-lg">لاتوجد بيانات متاحة</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var report_urls =
+            {
+                invoices_url: "/owner/reports/revenue?report_type=period&date_from=2024-09-24&date_to=2024-10-24&period_type=daily&group_by=daily&quick=1&currency=-1",
+                payments_url: "/owner/reports/payments?group_by=daily&date_from=2024-09-24&date_to=2024-10-24&is_summary=1&report_type=payment&type=payment&staff_id=&currency=-1&payment_method=&client_id=&quick=1",
+                times_url: "/owner/time_tracking/report?group=daily&date_from=24/09/2024&date_to=24/10/2024&summary=yes&quick=1",
+                profit_url: "/owner/reports/profit?type=monthly&income_type=payment&date_from=2023-11-24&currency=-1&quick=1"  ,
+                cash_profit_url: "/owner/reports/profit?type=monthly&income_type=payment&date_from=2023-11-24&currency=-1&quick=1",
+                accural_profit_url: "/owner/reports/accounts_profit_accrual/3?type=monthly&date_from=2023-11-24&date_to=2024-10-24&quick=1",
+                activities_url: '/owner/action_lines/index?quick=1',
+                appointments_url: '/owner/appointments/index/0/1?compact=0'
+
+            }
+	
+</script>
+
+<div class="px-2">
+    <div class="form-row-flex align-items-center">
+        <div class="col-flex-lg-8 pb-2 pb-lg-0 pt-4 pt-md-0">
+            <br>
+            <p class="text-inactive fs-16 s2020 mb-0">24/10/2024</p>
+            <h1 class="font-weight-normal fs-24 s2020 mt-0 mb-2 text-dark-blue"><strong>أهلاً محمد العتيبي،</strong> مرحباً بعودتك!</h1>
+        </div> 
+        <div class="col-flex-lg-4 text-right s2020">
+                        <a href="/home" class="btn-s2020 btn-icon-s2020 btn-light-s2020 shadow-light">
+                <i class="mdi mdi-storefront fs-18 mr-xl-2 s2020 text-primary v-middle bg-light" style="height: 34px;"></i>
+                <span>الذهاب إلى الموقع</span>
+            </a>
+                                </div>
+    </div>
+    <div class="form-row-flex pt-2">
+        <div class="col-flex-lg-12">
+                                            </div>
+        <div class="col-flex-12 col-flex-xl">
+            <div class="card s2020 shadow mb-3 widget-item">
+    <div class="card-body">
+        <form action="/owner/invoices/index" method="GET" id="InvoiceSearch">
+            <div class="border border-input-s2020 input-group px-3 py-2 w-100">
+                <div class="input-group-addon border-0 bg-white s2020 text-inactive-50">
+                    <i class="s2020 far fa-search"></i>
+                </div>
+                <input type="text" name="keywords" id="InvoiceQuery" aria-describedby="oi-db-search" style="font-size: 16px" class="font-weight-regular form-control border-0 font-weight-normal px-3" placeholder="البحث عن الفواتير" />
+                <div class="input-group-btn text-center">
+                    <button type="submit" class="btn-s2020 text-uppercase text-dark-blue s2020 px-0 lh-1">بحث</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+        </div>
+                <div class="col-flex-12 col-flex-xl">
+            <div class="card s2020 shadow mb-3 widget-item">
+    <div class="card-body">
+        <form action="/owner/clients/index" method="GET" id="ClientSearch">
+            <div class="border border-input-s2020 input-group px-3 py-2 w-100">
+                <div class="input-group-addon border-0 bg-white s2020 text-inactive-50">
+                    <i class="s2020 far fa-search"></i>
+                </div>
+                <input type="text" name="keywords" id="ClientQuery" aria-describedby="oi-db-search" style="font-size: 16px" class="font-weight-regular form-control border-0 font-weight-normal px-3" placeholder="البحث عن العملاء" />
+                <div class="input-group-btn text-center">
+                    <button type="submit" class="btn-s2020 text-uppercase text-dark-blue s2020 px-0 lh-1">بحث</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+        </div>
+                <div class="col-flex-lg-12">
+            <div class="form-row-flex justify-content-lg-center">
+            <div class="col-flex-6 col-flex-md-4 col-flex-xl">
+            <a href="/owner/pos_shifts/open" class="mb-4 btn-block btn-lg-s2020 btn-light-s2020 shadow btn-s2020 fs-14 fs-16-lg py-4">
+                <i class="mdi mdi-desktop-classic d-block fs-36 mb-2 text-success-s2020"></i>
+                <span>بدأ البيع</span>
+                
+            </a>
+        </div>
+                <div class="col-flex-6 col-flex-md-4 col-flex-xl">
+            <a href="/owner/invoices/add" class="mb-4 btn-block btn-lg-s2020 btn-light-s2020 shadow btn-s2020 fs-14 fs-16-lg py-4">
+                <i class="mdi mdi-file-document-box-plus d-block fs-36 mb-2 text-blue-s2020"></i>
+                <span>إنشاء فاتورة</span>
+            </a>
+        </div>
+                <div class="col-flex-6 col-flex-md-4 col-flex-xl">
+            <a href="/owner/pos_shifts/index" class="mb-4 btn-block btn-lg-s2020 btn-light-s2020 shadow btn-s2020 fs-14 fs-16-lg py-4">
+                <i class="mdi mdi-point-of-sale d-block fs-36 mb-2 text-purple-s2020"></i>
+                <span>الجلسات</span>
+            </a>
+        </div>
+                <div class="col-flex-6 col-flex-md-4 col-flex-xl">
+            <a href="/owner/invoices/index" class="mb-4 btn-block btn-lg-s2020 btn-light-s2020 shadow btn-s2020 fs-14 fs-16-lg py-4">
+                <i class="mdi mdi-file-document-box d-block fs-36 mb-2 text-cyan-s2020"></i>
+                <span>الفواتير</span>
+            </a>
+        </div>
+                <div class="col-flex-6 col-flex-md-4 col-flex-xl">
+            <a href="/owner/clients/index" class="mb-4 btn-block btn-lg-s2020 btn-light-s2020 shadow btn-s2020 fs-14 fs-16-lg py-4">
+                <i class="mdi mdi-account-tie d-block fs-36 mb-2 text-success"></i>
+                <span>العملاء</span>
+            </a>
+        </div>
+                <div class="col-flex-6 col-flex-md-4 col-flex-xl">
+            <a href="/owner/clients/add" class="mb-4 btn-block btn-lg-s2020 btn-light-s2020 shadow btn-s2020 fs-14 fs-16-lg py-4">
+                <i class="mdi mdi-account-plus d-block fs-36 mb-2 text-navy-s2020"></i>
+                <span>عميل جديد</span>
+            </a>
+        </div>
+    </div>
+        </div>
+        <div class="col-flex-lg-12">
+            <style>
+    #invoices_widget .nav-tabs.s2020 > li a.btn:hover {
+        background-color: rgba(93, 120, 255, 0.1);
+        color: #5d78ff;
+    }
+    #invoices_widget #report_latest_invoices {
+        overflow: auto;
+        min-height: 365.71px;
+        max-height: 365.71px;
+    }
+    #invoices_widget #report_latest_invoices::-webkit-scrollbar {
+        background-color:#fff;
+        width:16px
+    }
+    #invoices_widget #report_latest_invoices::-webkit-scrollbar-track {
+        background-color:#fff
+    }
+    #invoices_widget #report_latest_invoices::-webkit-scrollbar-track:hover {
+        background-color:#f4f4f4
+    }
+    #invoices_widget #report_latest_invoices::-webkit-scrollbar-thumb {
+        background-color:#babac0;
+        border-radius:16px;
+        border:5px solid #fff
+    }
+    #invoices_widget #report_latest_invoices::-webkit-scrollbar-thumb:hover {
+        background-color:#a0a0a5;
+        border:4px solid #f4f4f4
+    }
+    #invoices_widget #report_latest_invoices::-webkit-scrollbar-button {
+        display:none
+    }
+    #invoices_widget .Notemessage {
+        margin: 10px;
+    }
+    #invoices_widget .nav-tabs.s2020 > li a.btn:hover {
+        background-color: rgba(93,120,255,0.1);
+        color: #5d78ff;
+    }
+    #invoices_widget .box,
+    #invoices_widget .box .chart-wrap {
+        margin-bottom: 0;
+    }
+    #invoices_widget h3 {
+        color: #3a3e63;
+        font-size: 16px;
+        padding: 0 5px;
+    }
+    #invoices_widget .toggle-message {
+        padding: 5px 10px;
+        background: #7d8fe9;
+        color: #fff;
+        border-radius: 2px;
+        margin: 0 15px;
+        transition: 0.2s ease-in-out;
+    }
+    @media (min-width: 768px) {
+        .ltr #invoices_widget .toggle-message i {
+            margin-right: 10px;
+        }
+        .rtl #invoices_widget .toggle-message i {
+            margin-left: 10px;
+        }
+    }
+    #invoices_widget .toggle-message:hover,
+    #invoices_widget .toggle-message:focus {
+        background: #5d78ff;
+        color: #fff;
+    }
+</style>
+
+<div class="card s2020 shadow mb-3" id="invoices_widget">
+    <div class="px-4 py-2 border-bottom border-secondary s2020 bg-light">
+        <div class="d-flex align-items-center justify-content-between">
+            <h3 class="text-dark-blue s2020 pb-0 fs-16 font-weight-bold mr-5">
+                <span>المبيعات</span>
+            </h3>
+            <ul class="bg-white border border-input-s2020 m-0 nav nav-tabs p-0 rounded-3px s2020" role="tablist">
+                <li role="presentation" class="active" role="group">
+                    <a class="btn" href="#Revenue" aria-controls="Revenue" role="tab" data-toggle="tab">
+                        <span class="d-inline-flex align-item">
+                            <i class="fa fa-bar-chart"></i> 
+                            <span>الفواتير</span>
+                        </span>
+                    </a>
+                </li>
+                                <li role="presentation" role="group">
+                    <a class="btn" href="#Profit" aria-controls="Profit" role="tab" data-toggle="tab">
+                        <span class="d-inline-flex align-item">
+                            <i class="fa fa-line-chart"></i> 
+                            <span>الربح والخسارة</span>
+                        </span>
+                    </a>
+                </li>
+                                <li role="presentation" role="group">
+                    <a class="btn" href="#actions-tab1" aria-controls="actions-tab1" role="tab" data-toggle="tab">
+                        <span class="d-inline-flex align-item">
+                            <i class="fa fa-file-text-o"></i> 
+                            <span>أحدث الفواتير</span>
+                        </span>
+                    </a>
+                </li>
+                <li role="presentation" role="group">
+                    <a class="btn m-0" href="#actions-tab2" aria-controls="actions-tab2" role="tab" data-toggle="tab">
+                        <span class="d-inline-flex align-item">
+                            <i class="fa fa-exclamation-triangle"></i> 
+                            <span>فواتير متأخرة عن الدفع</span>
+                        </span> <span style="top: 0" class="badge badge-danger bg-danger s2020 ml-1">899</span>                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="widget-body-wrapper" id="report_latest_invoices">
+            <div role="tabpanel" class="tabs-box box mb-0">
+                <div class="tab-content s2020 no-padding border-0">
+                    <div role="tabpanel" class="tab-pane active" id="Revenue">
+                        <div id="Revenue" style="padding: 15px 20px;">
+                                                            <div class="report-heading pt-1">
+                                    <h3 class="fs-18-md fs-16 pb-0 font-weight-extrabold mr-3 mt-0"> الفواتير من <abbr title='التقارير من' class='initialism'>24/09/2024</abbr > إلى <abbr  title='التقارير إلى' class='initialism'>24/10/2024</abbr ><a class="toggle-message btn btn-xs link" href="/owner/reports/revenue?report_type=period&date_from=2024-09-24&date_to=2024-10-24&period_type=daily&group_by=daily"> <i class="fa fa-gear"></i> التفاصيل</a></h3>
+                                </div>
+                                <br/>
+                                <div id="report_invoices" style="min-height:260px;">
+                                    <div class="notifcation-loader"><div class="inner-loader"></div></div>
+                                </div>
+                                <div class="clear"></div>
+                                                    </div>
+                    </div>
+                                                            <div role="tabpanel" class="tab-pane " id="Profit">
+                        <div style="padding: 15px 20px;">
+                            <div class="card-header pt-0 pb-3">
+                                <div class="d-flex align-items-center justify-content-between align-items-center">
+                                    <h3 class="fs-18-md fs-16 pb-0 font-weight-extrabold mr-3 mt-0">تقرير الربح والخسارة للسنة الماضية<a class="toggle-message btn btn-xs link" href="/owner/reports/profit?type=monthly&income_type=payment&date_from=2023-11-24&currency=-1&"> <i class="fa fa-gear"></i> التفاصيل</a></h3>
+                                    <div class="nav nav-tabs actions-bar left s2020 mr-2" role="tablist" id="report_controls">
+                                        <ul class="btn-group d-flex align-items-center list-unstyled list-inline">
+                                            <li role="presentation" role="group"><a  href="javascript:void(0)" title="مستحق" data-param1="report_type"  class="view_level btn    accural-profit"> مستحق</a></li>
+                                            <li role="presentation" role="group"><a  href="javascript:void(0)"   class=" btn  active  profits-link cash-profit  "> نقدي</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div id="report_profit" style="min-height:260px;">
+                                <div class="notifcation-loader"><div class="inner-loader"></div></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                                        <div role="tabpanel" class="tab-pane" id="actions-tab1">
+                                                
+	<link rel="stylesheet" type="text/css" href="css/time-tracker.css?v=5" />
+	<link rel="stylesheet" type="text/css" href="css/fontello.css" />
+<div class="index entry-content bordered overflow-autopc">
+        <ul class="day-view-entry-list"><li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10852', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10852"  > <span class="project">#08709</span> - <span class="expense-date"> 24/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10852"> <span
+                                            class="project">مؤسسة اغذية الشرق للتجارة الرمال</span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الرياض، الرمال <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>محمد المنصوب مدير</strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-2">مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10852" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10851', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10851"  > <span class="project">#08708</span> - <span class="expense-date"> 24/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10851"> <span
+                                            class="project">شركة امواج الخليج</span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            شارع مكه<br />
+الدمام، الصناعية الثانيه  <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>عدنان العولقي </strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-2">مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10851" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10850', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10850"  > <span class="project">#08707</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10850"> <span
+                                            class="project">تموينات  عارف  سعيد  المنهالي </span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الدمام ، حي  الضباب  <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>عدنان العولقي </strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10850" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10849', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10849"  > <span class="project">#08706</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10849"> <span
+                                            class="project">بقالة شاهر محمد علي ال قريع 2</span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الدمام، الجبيل <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>عدنان العولقي </strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10849" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10848', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10848"  > <span class="project">#08705</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10848"> <span
+                                            class="project">مؤسسة اسواق  الجبيل  للتجارة </span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الجبيل ، الواحه  <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>عدنان العولقي </strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+                    <div class="status">
+       
+                        <span style=" padding: 0px;" class="currency">المبلغ المستحق: <span class="inline p-0"> 100.00 ر.س</span></span>
+</div>
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-1">مدفوعة جزئياً</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10848" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10847', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10847"  > <span class="project">#08704</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10847"> <span
+                                            class="project">بقالة شارع الخزان التجارية</span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الدمام ، الجبيل <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>عدنان العولقي </strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    432.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10847" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10846', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10846"  > <span class="project">#08703</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10846"> <span
+                                            class="project">شركه سماء الجزيرة</span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الرياض، الريان <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>محمد المنصوب مدير</strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-2">مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10846" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10845', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10845"  > <span class="project">#08702</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10845"> <span
+                                            class="project">مؤسسة يوسف ابراهيم  البرجس </span>
+                                      <span
+                                            class="project sub_with_num"> حسين  <span
+                                                class="inline">  #   </span> </span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الرياض، السلام <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>محمد المنصوب مدير</strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10845" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10844', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10844"  > <span class="project">#08701</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10844"> <span
+                                            class="project">بقالة كمب العطيشان </span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الجبيل، ابو حدريه <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>عدنان العولقي </strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-2">مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10844" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10843', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10843"  > <span class="project">#08700</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10843"> <span
+                                            class="project">تموينات دعم الشرق للتجارة</span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الرياض ، الروضه <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>محمد المنصوب مدير</strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10843" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+</ul></div>        <script type="text/javascript">
+		$(function(){
+			$('td.clickable').hover(function(){ $(this).closest('li').addClass('hovered');},function(){ $(this).closest('li').removeClass('hovered');});
+		})
+        </script>                                            </div>
+                    <div role="tabpanel" class="tab-pane " id="actions-tab2">
+                                                
+	<link rel="stylesheet" type="text/css" href="css/time-tracker.css?v=5" />
+	<link rel="stylesheet" type="text/css" href="css/fontello.css" />
+<div class="index entry-content bordered overflow-autopc">
+        <ul class="day-view-entry-list"><li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10843', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10843"  > <span class="project">#08700</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10843"> <span
+                                            class="project">تموينات دعم الشرق للتجارة</span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الرياض ، الروضه <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>محمد المنصوب مدير</strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10843" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10845', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10845"  > <span class="project">#08702</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10845"> <span
+                                            class="project">مؤسسة يوسف ابراهيم  البرجس </span>
+                                      <span
+                                            class="project sub_with_num"> حسين  <span
+                                                class="inline">  #   </span> </span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الرياض، السلام <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>محمد المنصوب مدير</strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10845" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10847', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10847"  > <span class="project">#08704</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10847"> <span
+                                            class="project">بقالة شارع الخزان التجارية</span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الدمام ، الجبيل <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>عدنان العولقي </strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    432.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10847" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10848', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10848"  > <span class="project">#08705</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10848"> <span
+                                            class="project">مؤسسة اسواق  الجبيل  للتجارة </span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الجبيل ، الواحه  <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>عدنان العولقي </strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+                    <div class="status">
+       
+                        <span style=" padding: 0px;" class="currency">المبلغ المستحق: <span class="inline p-0"> 100.00 ر.س</span></span>
+</div>
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-1">مدفوعة جزئياً</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10848" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10849', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10849"  > <span class="project">#08706</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10849"> <span
+                                            class="project">بقالة شاهر محمد علي ال قريع 2</span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الدمام، الجبيل <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>عدنان العولقي </strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10849" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10850', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10850"  > <span class="project">#08707</span> - <span class="expense-date"> 23/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10850"> <span
+                                            class="project">تموينات  عارف  سعيد  المنهالي </span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الدمام ، حي  الضباب  <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>عدنان العولقي </strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10850" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10836', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10836"  > <span class="project">#08693</span> - <span class="expense-date"> 22/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10836"> <span
+                                            class="project">مركز  أرض  العرب  للتسويق 1 </span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الدمام ، النزهه <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>عدنان العولقي </strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10836" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10837', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10837"  > <span class="project">#08694</span> - <span class="expense-date"> 22/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10837"> <span
+                                            class="project">نجمه الماسه  لتجاره</span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الرياض، اشبيلية <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>محمد المنصوب مدير</strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10837" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10838', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10838"  > <span class="project">#08695</span> - <span class="expense-date"> 22/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10838"> <span
+                                            class="project">شركة خدمات الوقود</span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            طريق الأمير سلطان <br />
+الدمام، الضهران <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>عدنان العولقي </strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10838" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+<li class="day-view-entry day-view-entry-label " >
+        <table cellspacing="0" cellpadding="0" border="0" class="">
+        <tbody>
+            <tr>
+                <td width="50%" style="" class="clickable" onclick="window.open('/owner/invoices/view/10839', '_self')">
+                    <div  class="invoice-row entry-info">
+
+
+                        <div class="task-notes"><a href="/owner/invoices/view/10839"  > <span class="project">#08696</span> - <span class="expense-date"> 22/10/2024 </span></a>  </div>
+                                                    <div class="project-client"><a href="/owner/invoices/view/10839"> <span
+                                            class="project">تموينات اهلا المنازل </span>
+                                                                    </a></div>
+                        
+                        <div class="task-notes"> 
+                            الدمام، الثقبه العليا <br />
+                                                            Saudi Arabia<div class="clearfix"></div>
+                            
+                        </div>
+                        <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i> بواسطة: </span>
+                                                                                                                                               <span class="added-by-value"><strong>عدنان العولقي </strong></span>
+                            </div>
+                            </li> 
+                                                                                                                                                </ul>
+
+                    </div>
+									<div class="preventClick">
+						<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+									</div>
+				</td>
+                <td style="">
+                                            <strong style=" display: inline-block;"></strong>
+                    <div style="text-align:right">
+                        <ul class="meta-details tiny">
+                            <li>
+                                <div class="added-by d-flex align-items-center">
+                                                                    </div>
+                            </li>
+                            
+
+                        </ul>
+                    </div>
+                </td>
+
+                
+                <td class="entry-time" style="">
+                    216.00 ر.س                    
+                    
+                    
+
+
+       <div class="status">
+                <span class="status-symble status-0">غير مدفوعة</span>
+
+    </div>
+
+                    
+                </td>
+                                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle dropdown-parent" type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="/owner/invoices/view/10839" class="View" title="عرض الفاتورة">عرض</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+				               
+            </tr>
+        </tbody>
+    </table>
+</li>
+</ul></div>        <script type="text/javascript">
+		$(function(){
+			$('td.clickable').hover(function(){ $(this).closest('li').addClass('hovered');},function(){ $(this).closest('li').removeClass('hovered');});
+		})
+        </script>                                            </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<script>
+    var invoices_loaded = false;
+
+    $(document).ready(function() {
+        if(!invoices_loaded) {
+            if (typeof inViewport !== "undefined") {
+                inViewport(document.getElementById('invoices_widget'), function() {
+                    load_report('invoices');
+                });
+            } else {
+                load_report('invoices');
+            }
+            invoices_loaded=true;
+        }
+    });
+</script>        </div>
+        <div class="col-flex-lg-12">
+            <style>
+    #payments_widget .nav-tabs.s2020 > li a.btn:hover {
+        background-color: rgba(10, 187, 135, 0.1);
+        color: #0abb87;
+    }
+    #payments_widget #report_latest_payments {
+        overflow: auto;
+        min-height: 385.71px;
+        max-height: 385.71px;
+    }
+    #payments_widget #report_latest_payments::-webkit-scrollbar {
+        background-color:#fff;
+        width:16px
+    }
+    #payments_widget #report_latest_payments::-webkit-scrollbar-track {
+        background-color:#fff
+    }
+    #payments_widget #report_latest_payments::-webkit-scrollbar-track:hover {
+        background-color:#f4f4f4
+    }
+    #payments_widget #report_latest_payments::-webkit-scrollbar-thumb {
+        background-color:#babac0;
+        border-radius:16px;
+        border:5px solid #fff
+    }
+    #payments_widget #report_latest_payments::-webkit-scrollbar-thumb:hover {
+        background-color:#a0a0a5;
+        border:4px solid #f4f4f4
+    }
+    #payments_widget #report_latest_payments::-webkit-scrollbar-button {
+        display:none
+    }
+    #payments_widget .Notemessage {
+        margin: 10px;
+    }
+    #payments_widget .Notemessage {
+        margin: 10px;
+    }
+    #payments_widget .nav-tabs.s2020 > li a.btn:hover {
+        background-color: rgba(10, 187, 135, 0.1);
+        color: #0abb87;
+    }
+    #payments_widget .box,
+    #payments_widget .box .chart-wrap {
+        margin-bottom: 0;
+    }
+    #payments_widget h3 {
+        color: #3a3e63;
+        font-size: 16px;
+        padding: 0 5px;
+    }
+    #payments_widget .toggle-message {
+        padding: 5px 10px;
+        background: #6bc5ab;
+        color: #fff;
+        border-radius: 2px;
+        margin: 0 15px;
+        transition: 0.2s ease-in-out;
+    }
+    @media (min-width: 768px) {
+        .ltr #payments_widget .toggle-message i {
+            margin-right: 10px;
+        }
+        .rtl #payments_widget .toggle-message i {
+            margin-left: 10px;
+        }
+    }
+    #payments_widget .toggle-message:hover,
+    #payments_widget .toggle-message:focus {
+        background: #0abb87;
+        color: #fff;
+    }
+</style>
+
+<div class="card s2020 shadow mb-3" id="payments_widget">
+    <div class="px-4 py-2 border-bottom border-secondary s2020 bg-light">
+        <div class="d-flex align-items-center">
+            <h3 class="text-dark-blue s2020 pb-0 fs-16 font-weight-bold mr-5">
+                <span>المدفوعات</span>
+            </h3>
+            <ul class="ml-auto bg-white border border-input-s2020 m-0 nav nav-tabs nav-tabs-success p-0 rounded-3px s2020" role="tablist">
+                <li role="presentation" class="active" role="group">
+                    <a class="btn" href="#Payment" aria-controls="Payment" role="tab" data-toggle="tab">
+                        <span class="d-inline-flex align-item">
+                            <i class="fa fa-bar-chart"></i> 
+                            <span>إحصائيات</span>
+                        </span>
+                    </a>
+                </li>
+                <li role="presentation" role="group">
+                    <a class="btn" href="#payments-tab-2" aria-controls="payments-tab-2" role="tab" data-toggle="tab">
+                        <span class="d-inline-flex align-item">
+                            <i class="fa fa-credit-card"></i> 
+                            <span>أحدث المدفوعات</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            <a href="/owner/invoice_payments/index" class="d-none d-sm-inline-block ml-5 text-nowrap text-primary-2 p-0 s2020 border-0">عرض الجميع</a>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="widget-body-wrapper" id="report_latest_payments">
+            <div role="tabpanel" class="tabs-box box mb-0">
+                <div class="tab-content s2020 no-padding border-0">
+                    <div role="tabpanel" class="tab-pane active" id="Payment" style="padding: 15px 20px;">
+                                                    <div class="report-heading pt-1">
+                                <h3 class="fs-18-md fs-16 pb-0 font-weight-extrabold mr-3 mt-0">المدفوعات من  <abbr title='التقارير من' class='initialism'>24/09/2024</abbr > إلى <abbr title='التقارير إلى' class='initialism'>24/10/2024</abbr >  <a class="toggle-message btn btn-xs link" href="/owner/reports/payments?group_by=daily&date_from=2024-09-24&date_to=2024-10-24&is_summary=1&report_type=payment&type=payment&currency=-1"> <i class="fa fa-gear"> </i> التفاصيل</a></h3>
+                            </div>
+                            <br/>
+                            <div id="report_payments" style="min-height:260px;">
+                                <div class="notifcation-loader"><div class="inner-loader"></div></div>
+                            </div>
+                            <div class="clear"></div>
+                                                <div class="clear"></div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="payments-tab-2">
+                                                
+	<link rel="stylesheet" type="text/css" href="css/time-tracker.css?v=5" />
+	<link rel="stylesheet" type="text/css" href="css/fontello.css" />
+<div class="index entry-content bordered overflow-autopc">
+        <ul class="day-view-entry-list"><li class="day-view-entry">
+        <table data-table-id="21783" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                
+                <td class="invoice_view_clickable clickable"   onclick="document.location.href = '/owner/invoice_payments/view/21783' " >
+                    <div  class="invoice-row entry-info">
+                                                <div onclick="document.location.href = '/owner/invoice_payments/view/21783' "  class="project-client">  <span class="project">#020214</span> - تموينات  ربوع  الديرة للمواد  الغذائية   </div>
+                                                <div class="task-notes"> <span class="project"><a target="_blank" href="/owner/invoices/view/9544">فاتورة #07498</a></span> - <span class="expense-date"> 24/10/2024 </span>  </div>
+                        
+
+                            
+                                                <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i>  </span>
+                                                                        <span class="added-by-value">
+                                        عدنان العولقي                                     </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-credit-card"></i>  </span>
+									<span class="added-by-value">  <span class="tooltip" title="paid-by-client-credit"></span></span>
+								
+                                </div>
+                            </li>
+                        </ul>
+                    </div></td>
+                <td class="entry-time ">
+                                        50.00 ر.س                                        <br>
+                    <div class="status">
+
+                                 
+        <span class="status-symble rate-green">مكتمل</span>
+   
+                    </div>
+					                    <div class="status">
+
+                        <span class="status-symble rate-grey">آلي</span>
+                    </div>
+					                </td>
+
+
+
+                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul data-menu-id="21783"  class="dropdown-menu dropdown-menu-right payment_menu">
+                            <li><a href="/owner/invoice_payments/view/21783" class="View">عرض</a></li>
+
+
+
+                        </ul>
+                    </div>
+
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</li><li class="day-view-entry">
+        <table data-table-id="21782" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                
+                <td class="invoice_view_clickable clickable"   onclick="document.location.href = '/owner/invoice_payments/view/21782' " >
+                    <div  class="invoice-row entry-info">
+                                                <div onclick="document.location.href = '/owner/invoice_payments/view/21782' " class="project-client">  <span class="project">#020213</span> - تموينات  ربوع  الديرة للمواد  الغذائية   </div>
+                        <div onclick="document.location.href = '/owner/invoice_payments/view/21782' " class="task-notes"> <span class="project">دائن</span> - <span class="expense-date"> 24/10/2024 </span> </div>
+                        
+
+                            
+                                                <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i>  </span>
+                                                                        <span class="added-by-value">
+                                        عدنان العولقي                                     </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-credit-card"></i>  </span>
+									<span class="added-by-value">نقدي </span>
+								
+                                </div>
+                            </li>
+                        </ul>
+                    </div></td>
+                <td class="entry-time ">
+                                        50.00 ر.س                                        <br>
+                    <div class="status">
+
+                                 
+        <span class="status-symble rate-green">مكتمل</span>
+   
+                    </div>
+					                </td>
+
+
+
+                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul data-menu-id="21782"  class="dropdown-menu dropdown-menu-right payment_menu">
+                            <li><a href="/owner/invoice_payments/view/21782" class="View">عرض</a></li>
+
+
+
+                        </ul>
+                    </div>
+
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</li><li class="day-view-entry">
+        <table data-table-id="21781" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                
+                <td class="invoice_view_clickable clickable"   onclick="document.location.href = '/owner/invoice_payments/view/21781' " >
+                    <div  class="invoice-row entry-info">
+                                                <div onclick="document.location.href = '/owner/invoice_payments/view/21781' "  class="project-client">  <span class="project">#020212</span> - مؤسسة اغذية الشرق للتجارة الرمال  </div>
+                                                <div class="task-notes"> <span class="project"><a target="_blank" href="/owner/invoices/view/10852">فاتورة #08709</a></span> - <span class="expense-date"> 24/10/2024 </span>  </div>
+                        
+
+                            
+                                                <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i>  </span>
+                                                                        <span class="added-by-value">
+                                        محمد المنصوب مدير                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-credit-card"></i>  </span>
+									<span class="added-by-value">نقدي </span>
+								
+                                </div>
+                            </li>
+                        </ul>
+                    </div></td>
+                <td class="entry-time ">
+                                        216.00 ر.س                                        <br>
+                    <div class="status">
+
+                                 
+        <span class="status-symble rate-green">مكتمل</span>
+   
+                    </div>
+					                </td>
+
+
+
+                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul data-menu-id="21781"  class="dropdown-menu dropdown-menu-right payment_menu">
+                            <li><a href="/owner/invoice_payments/view/21781" class="View">عرض</a></li>
+
+
+
+                        </ul>
+                    </div>
+
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</li><li class="day-view-entry">
+        <table data-table-id="21780" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                
+                <td class="invoice_view_clickable clickable"   onclick="document.location.href = '/owner/invoice_payments/view/21780' " >
+                    <div  class="invoice-row entry-info">
+                                                <div onclick="document.location.href = '/owner/invoice_payments/view/21780' "  class="project-client">  <span class="project">#020211</span> - شركة امواج الخليج  </div>
+                                                <div class="task-notes"> <span class="project"><a target="_blank" href="/owner/invoices/view/10851">فاتورة #08708</a></span> - <span class="expense-date"> 24/10/2024 </span>  </div>
+                        
+
+                            
+                                                <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i>  </span>
+                                                                        <span class="added-by-value">
+                                        عدنان العولقي                                     </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-credit-card"></i>  </span>
+									<span class="added-by-value">نقدي </span>
+								
+                                </div>
+                            </li>
+                        </ul>
+                    </div></td>
+                <td class="entry-time ">
+                                        216.00 ر.س                                        <br>
+                    <div class="status">
+
+                                 
+        <span class="status-symble rate-green">مكتمل</span>
+   
+                    </div>
+					                </td>
+
+
+
+                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul data-menu-id="21780"  class="dropdown-menu dropdown-menu-right payment_menu">
+                            <li><a href="/owner/invoice_payments/view/21780" class="View">عرض</a></li>
+
+
+
+                        </ul>
+                    </div>
+
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</li><li class="day-view-entry">
+        <table data-table-id="21779" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                
+                <td class="invoice_view_clickable clickable"   onclick="document.location.href = '/owner/invoice_payments/view/21779' " >
+                    <div  class="invoice-row entry-info">
+                                                <div onclick="document.location.href = '/owner/invoice_payments/view/21779' "  class="project-client">  <span class="project">#020210</span> - تموينات المرشد  </div>
+                                                <div class="task-notes"> <span class="project"><a target="_blank" href="/owner/invoices/view/9764">فاتورة #07705</a></span> - <span class="expense-date"> 24/10/2024 </span>  </div>
+                        
+
+                            
+                                                <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i>  </span>
+                                                                        <span class="added-by-value">
+                                        محمد المنصوب مدير                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-credit-card"></i>  </span>
+									<span class="added-by-value">  <span class="tooltip" title="paid-by-client-credit"></span></span>
+								
+                                </div>
+                            </li>
+                        </ul>
+                    </div></td>
+                <td class="entry-time ">
+                                        50.00 ر.س                                        <br>
+                    <div class="status">
+
+                                 
+        <span class="status-symble rate-green">مكتمل</span>
+   
+                    </div>
+					                    <div class="status">
+
+                        <span class="status-symble rate-grey">آلي</span>
+                    </div>
+					                </td>
+
+
+
+                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul data-menu-id="21779"  class="dropdown-menu dropdown-menu-right payment_menu">
+                            <li><a href="/owner/invoice_payments/view/21779" class="View">عرض</a></li>
+
+
+
+                        </ul>
+                    </div>
+
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</li><li class="day-view-entry">
+        <table data-table-id="21778" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                
+                <td class="invoice_view_clickable clickable"   onclick="document.location.href = '/owner/invoice_payments/view/21778' " >
+                    <div  class="invoice-row entry-info">
+                                                <div onclick="document.location.href = '/owner/invoice_payments/view/21778' " class="project-client">  <span class="project">#020209</span> - تموينات المرشد  </div>
+                        <div onclick="document.location.href = '/owner/invoice_payments/view/21778' " class="task-notes"> <span class="project">دائن</span> - <span class="expense-date"> 24/10/2024 </span> </div>
+                        
+
+                            
+                                                <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i>  </span>
+                                                                        <span class="added-by-value">
+                                        محمد المنصوب مدير                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-credit-card"></i>  </span>
+									<span class="added-by-value">نقدي </span>
+								
+                                </div>
+                            </li>
+                        </ul>
+                    </div></td>
+                <td class="entry-time ">
+                                        50.00 ر.س                                        <br>
+                    <div class="status">
+
+                                 
+        <span class="status-symble rate-green">مكتمل</span>
+   
+                    </div>
+					                </td>
+
+
+
+                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul data-menu-id="21778"  class="dropdown-menu dropdown-menu-right payment_menu">
+                            <li><a href="/owner/invoice_payments/view/21778" class="View">عرض</a></li>
+
+
+
+                        </ul>
+                    </div>
+
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</li><li class="day-view-entry">
+        <table data-table-id="21777" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                
+                <td class="invoice_view_clickable clickable"   onclick="document.location.href = '/owner/invoice_payments/view/21777' " >
+                    <div  class="invoice-row entry-info">
+                                                <div onclick="document.location.href = '/owner/invoice_payments/view/21777' "  class="project-client">  <span class="project">#020208</span> - تموينات دانيات الخير    <span class="project sub_with_num"> اسامه  </span>  </div>
+                                                <div class="task-notes"> <span class="project"><a target="_blank" href="/owner/invoices/view/9917">فاتورة #07854</a></span> - <span class="expense-date"> 24/10/2024 </span>  </div>
+                        
+
+                            
+                                                <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i>  </span>
+                                                                        <span class="added-by-value">
+                                        محمد المنصوب مدير                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-credit-card"></i>  </span>
+									<span class="added-by-value">  <span class="tooltip" title="paid-by-client-credit"></span></span>
+								
+                                </div>
+                            </li>
+                        </ul>
+                    </div></td>
+                <td class="entry-time ">
+                                        50.00 ر.س                                        <br>
+                    <div class="status">
+
+                                 
+        <span class="status-symble rate-green">مكتمل</span>
+   
+                    </div>
+					                    <div class="status">
+
+                        <span class="status-symble rate-grey">آلي</span>
+                    </div>
+					                </td>
+
+
+
+                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul data-menu-id="21777"  class="dropdown-menu dropdown-menu-right payment_menu">
+                            <li><a href="/owner/invoice_payments/view/21777" class="View">عرض</a></li>
+
+
+
+                        </ul>
+                    </div>
+
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</li><li class="day-view-entry">
+        <table data-table-id="21776" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                
+                <td class="invoice_view_clickable clickable"   onclick="document.location.href = '/owner/invoice_payments/view/21776' " >
+                    <div  class="invoice-row entry-info">
+                                                <div onclick="document.location.href = '/owner/invoice_payments/view/21776' " class="project-client">  <span class="project">#020207</span> - تموينات دانيات الخير    <span class="project sub_with_num"> اسامه  </span>  </div>
+                        <div onclick="document.location.href = '/owner/invoice_payments/view/21776' " class="task-notes"> <span class="project">دائن</span> - <span class="expense-date"> 24/10/2024 </span> </div>
+                        
+
+                            
+                                                <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i>  </span>
+                                                                        <span class="added-by-value">
+                                        محمد المنصوب مدير                                    </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-credit-card"></i>  </span>
+									<span class="added-by-value">نقدي </span>
+								
+                                </div>
+                            </li>
+                        </ul>
+                    </div></td>
+                <td class="entry-time ">
+                                        50.00 ر.س                                        <br>
+                    <div class="status">
+
+                                 
+        <span class="status-symble rate-green">مكتمل</span>
+   
+                    </div>
+					                </td>
+
+
+
+                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul data-menu-id="21776"  class="dropdown-menu dropdown-menu-right payment_menu">
+                            <li><a href="/owner/invoice_payments/view/21776" class="View">عرض</a></li>
+
+
+
+                        </ul>
+                    </div>
+
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</li><li class="day-view-entry">
+        <table data-table-id="21775" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                
+                <td class="invoice_view_clickable clickable"   onclick="document.location.href = '/owner/invoice_payments/view/21775' " >
+                    <div  class="invoice-row entry-info">
+                                                <div onclick="document.location.href = '/owner/invoice_payments/view/21775' "  class="project-client">  <span class="project">#020206</span> - تموينات  عارف  سعيد  المنهالي   </div>
+                                                <div class="task-notes"> <span class="project"><a target="_blank" href="/owner/invoices/view/10699">فاتورة #08571</a></span> - <span class="expense-date"> 23/10/2024 </span>  </div>
+                        
+
+                            
+                                                <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i>  </span>
+                                                                        <span class="added-by-value">
+                                        عدنان العولقي                                     </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-credit-card"></i>  </span>
+									<span class="added-by-value">  <span class="tooltip" title="paid-by-client-credit"></span></span>
+								
+                                </div>
+                            </li>
+                        </ul>
+                    </div></td>
+                <td class="entry-time ">
+                                        216.00 ر.س                                        <br>
+                    <div class="status">
+
+                                 
+        <span class="status-symble rate-green">مكتمل</span>
+   
+                    </div>
+					                    <div class="status">
+
+                        <span class="status-symble rate-grey">آلي</span>
+                    </div>
+					                </td>
+
+
+
+                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul data-menu-id="21775"  class="dropdown-menu dropdown-menu-right payment_menu">
+                            <li><a href="/owner/invoice_payments/view/21775" class="View">عرض</a></li>
+
+
+
+                        </ul>
+                    </div>
+
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</li><li class="day-view-entry">
+        <table data-table-id="21774" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+            <tr>
+                
+                <td class="invoice_view_clickable clickable"   onclick="document.location.href = '/owner/invoice_payments/view/21774' " >
+                    <div  class="invoice-row entry-info">
+                                                <div onclick="document.location.href = '/owner/invoice_payments/view/21774' " class="project-client">  <span class="project">#020205</span> - تموينات  عارف  سعيد  المنهالي   </div>
+                        <div onclick="document.location.href = '/owner/invoice_payments/view/21774' " class="task-notes"> <span class="project">دائن</span> - <span class="expense-date"> 23/10/2024 </span> </div>
+                        
+
+                            
+                                                <ul class="meta-details">
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-user"></i>  </span>
+                                                                        <span class="added-by-value">
+                                        عدنان العولقي                                     </span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="added-by">
+                                    <span class="added-by-label"><i class="fa fa-credit-card"></i>  </span>
+									<span class="added-by-value">نقدي </span>
+								
+                                </div>
+                            </li>
+                        </ul>
+                    </div></td>
+                <td class="entry-time ">
+                                        216.00 ر.س                                        <br>
+                    <div class="status">
+
+                                 
+        <span class="status-symble rate-green">مكتمل</span>
+   
+                    </div>
+					                </td>
+
+
+
+                <td class="entry-button">
+                    <div class="dropdown mobile-options">
+                        <button class="btn btn-lg btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+                        <ul data-menu-id="21774"  class="dropdown-menu dropdown-menu-right payment_menu">
+                            <li><a href="/owner/invoice_payments/view/21774" class="View">عرض</a></li>
+
+
+
+                        </ul>
+                    </div>
+
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+</li></ul></div>        <script type="text/javascript">
+		$(function(){
+			$('td.clickable').hover(function(){ $(this).closest('li').addClass('hovered');},function(){ $(this).closest('li').removeClass('hovered');});
+		})
+        </script>                                                <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var payments_loaded = false;
+
+    $(document).ready(function() {
+        if(!payments_loaded) {
+            if (typeof inViewport !== "undefined") {
+                inViewport(document.getElementById('payments_widget'), function() {
+                    load_report('payments');
+                });
+            } else {
+                load_report('payments');
+            }
+            payments_loaded=true;
+        }
+    });
+</script>
+        </div>
+                    <div class="col-flex-12 col-flex-lg-6">
+                <style>
+    #report_low_stock_products {
+        min-height: 260px;
+        overflow: auto;
+        max-height: 300px;
+    }
+    #report_low_stock_products::-webkit-scrollbar {
+        background-color:#fff;
+        width:16px
+    }
+    #report_low_stock_products::-webkit-scrollbar-track {
+        background-color:#fff
+    }
+    #report_low_stock_products::-webkit-scrollbar-track:hover {
+        background-color:#f4f4f4
+    }
+    #report_low_stock_products::-webkit-scrollbar-thumb {
+        background-color:#babac0;
+        border-radius:16px;
+        border:5px solid #fff
+    }
+    #report_low_stock_products::-webkit-scrollbar-thumb:hover {
+        background-color:#a0a0a5;
+        border:4px solid #f4f4f4
+    }
+    #report_low_stock_products::-webkit-scrollbar-button {
+        display:none
+    }
+    #report_low_stock_products .day-view-entry .entry-time {
+        display: none;
+    }
+    #report_low_stock_products .day-view-entry td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+</style>
+
+<div class="card s2020 shadow mb-3" id="recent_activities_widget">
+    <div class="px-4 py-2 py-xl-3 border-bottom border-secondary s2020 bg-light">
+        <div class="d-flex align-items-center justify-content-between">
+            <h3 class="text-dark-blue s2020 pb-0 fs-16 font-weight-bold d-flex align-items-center">
+                <span>المنتجات منخفضة المخزون</span>
+                <span class="badge badge-danger bg-danger s2020 ml-2">2</span>
+            </h3>
+            <a href="/owner/products/index" class="text-primary-2 p-0 s2020 border-0">عرض الجميع</a>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="widget-body-wrapper" id="report_low_stock_products">
+            
+	<link rel="stylesheet" type="text/css" href="css/time-tracker.css?v=5" />
+	<link rel="stylesheet" type="text/css" href="css/fontello.css" />
+<div class="index entry-content bordered overflow-autopc">
+        <ul class="day-view-entry-list"><li class="day-view-entry">
+            <table cellspacing="0" cellpadding="0" border="0">
+              <tbody>
+                <tr>
+                  <td  width="50%"  class="clickable" data-url="/owner/products/view/50" >
+				  <div  class="invoice-row entry-info">
+                    					  <div class="ps">
+					  <div class="project-client">  <span class="project">هديه <span class="sub_with_num"> #3963</span></span>  </div>
+						<ul class="meta-details">
+						
+                      </ul>
+					  
+					  <div class="clear"></div>
+					
+                    </div>
+					  
+										  <div class="preventClick">
+						  												<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+					</div>
+					  										  </div>
+					  
+
+					</td>
+					<td>
+						<div class="status text-nowrap rate-red"> <span class="status-symble ">مخزون نفد</span> </div>
+												<ul class="meta-details">
+                      	<li>
+                            <div class="added-by">
+                              <span class="added-by-label"><i class="fa fa-cubes" aria-hidden="true"></i>  </span>
+                              <span class="added-by-value">0 متاح</span>
+                            </div>
+                        </li>
+                      </ul>
+											</td>
+					
+					<td class="entry-time">
+											   					   					   <small> <i class="fa fa-truck"></i> 7.00 ر.س</small>
+					    					  
+					</td>
+					  
+				  
+                  
+				                    <td class="entry-button">
+				   <div class="dropdown mobile-options">
+					  <button class="btn btn-lg btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+					  <ul class="dropdown-menu dropdown-menu-right">
+					  <li><a href="/owner/products/view/50" class="View" title="عرض">عرض</a></li>					  </ul>
+					</div>
+				  
+				  </td> 
+				                  </tr>
+              </tbody>
+            </table>
+          </li>
+
+<style>
+	@media (max-width: 768px) {
+		.attachment-file {
+			display: block;
+			float: none !important;
+			margin-bottom: 10px;
+			margin-right: 0;
+			margin-left: 0;
+		}
+	}
+</style>
+<li class="day-view-entry">
+            <table cellspacing="0" cellpadding="0" border="0">
+              <tbody>
+                <tr>
+                  <td  width="50%"  class="clickable" data-url="/owner/products/view/49" >
+				  <div  class="invoice-row entry-info">
+                    					  <div class="ps">
+					  <div class="project-client">  <span class="project">عطر ٣٠ ملي  <span class="sub_with_num"> #3962</span></span>  </div>
+						<ul class="meta-details">
+						
+                      </ul>
+					  
+					  <div class="clear"></div>
+					
+                    </div>
+					  
+										  <div class="preventClick">
+						  												<!--params
+tags as array
+tag_type int 
+item_id int when u need ajax
+model_name string when u need ajax
+get_ajax boolean
+-->
+<style>
+	.tags-elems {
+		float: left;
+		margin-top: 6px
+	}
+
+	.rtl .tags-elems {
+		float: right;
+	}
+
+</style>
+<div class="tags-elems">
+	<div class="preventClick">
+		<div class="clear"></div>
+			</div>
+</div>
+
+					</div>
+					  										  </div>
+					  
+
+					</td>
+					<td>
+						<div class="status text-nowrap rate-red"> <span class="status-symble ">مخزون نفد</span> </div>
+												<ul class="meta-details">
+                      	<li>
+                            <div class="added-by">
+                              <span class="added-by-label"><i class="fa fa-cubes" aria-hidden="true"></i>  </span>
+                              <span class="added-by-value">0 متاح</span>
+                            </div>
+                        </li>
+                      </ul>
+											</td>
+					
+					<td class="entry-time">
+						
+                            						<small> <i class="fa fa-shopping-cart "></i>  15.00 ر.س</small><br/>					   					   					   					  
+					</td>
+					  
+				  
+                  
+				                    <td class="entry-button">
+				   <div class="dropdown mobile-options">
+					  <button class="btn btn-lg btn-default dropdown-toggle " type="button" data-toggle="dropdown">
+
+                            <span class="fa fa-ellipsis-h"></span></button>
+					  <ul class="dropdown-menu dropdown-menu-right">
+					  <li><a href="/owner/products/view/49" class="View" title="عرض">عرض</a></li>					  </ul>
+					</div>
+				  
+				  </td> 
+				                  </tr>
+              </tbody>
+            </table>
+          </li>
+
+<style>
+	@media (max-width: 768px) {
+		.attachment-file {
+			display: block;
+			float: none !important;
+			margin-bottom: 10px;
+			margin-right: 0;
+			margin-left: 0;
+		}
+	}
+</style>
+</ul></div>        <script type="text/javascript">
+		$(function(){
+			$('td.clickable').hover(function(){ $(this).closest('li').addClass('hovered');},function(){ $(this).closest('li').removeClass('hovered');});
+		})
+        </script>        </div>
+    </div>
+</div>
+
+            </div>
+                        <div class="col-flex-12 col-flex-lg-6">
+            <style>
+    #report_latest_appointments {
+        margin: 0;
+        min-height: 260px;
+        overflow: auto;
+        max-height: 300px;
+    }
+    #report_latest_appointments::-webkit-scrollbar {
+        background-color:#fff;
+        width:16px
+    }
+    #report_latest_appointments::-webkit-scrollbar-track {
+        background-color:#fff
+    }
+    #report_latest_appointments::-webkit-scrollbar-track:hover {
+        background-color:#f4f4f4
+    }
+    #report_latest_appointments::-webkit-scrollbar-thumb {
+        background-color:#babac0;
+        border-radius:16px;
+        border:5px solid #fff
+    }
+    #report_latest_appointments::-webkit-scrollbar-thumb:hover {
+        background-color:#a0a0a5;
+        border:4px solid #f4f4f4
+    }
+    #report_latest_appointments::-webkit-scrollbar-button {
+        display:none
+    }
+    #report_latest_appointments #MultiSelectForm .day-view-entry:hover .clip-check,
+    #report_latest_appointments #MultiSelectForm .day-view-entry.highlighted .clip-check {
+        display: none;
+    }
+    #report_latest_appointments #MultiSelectForm .day-view-entry td {
+        padding: 15px;
+    }
+    #report_latest_appointments .hidden-xs {
+        display: none;
+    }
+    #report_latest_appointments .client-name {
+        margin-top: 5px;
+        font-size: 16px;
+    }
+    #report_latest_appointments .has-tip {
+        display: block;
+    }
+    #report_latest_appointments .day-view-entry-list .day-view-entry.missed,
+    #report_latest_appointments .day-view-entry-list .day-view-entry.missed.hovered,
+    #report_latest_appointments .day-view-entry-list .day-view-entry.ready,
+    #report_latest_appointments .day-view-entry-list .day-view-entry.ready.hovered {
+        background-color: #fff;
+        border-top-color: #dfe3e6 !important;
+        border-top-width: 1px !important;
+    }
+    .ltr #report_latest_appointments .day-view-entry-list .day-view-entry.missed,
+    .ltr #report_latest_appointments .day-view-entry-list .day-view-entry.missed.hovered {
+        border-left: 3px solid #d21c1c !important;
+    }
+    .ltr #report_latest_appointments .day-view-entry-list .day-view-entry.ready,
+    .ltr #report_latest_appointments .day-view-entry-list .day-view-entry.ready.hovered {
+        border-left: solid 3px #f69606 !important;
+    }
+    .rtl #report_latest_appointments .day-view-entry-list .day-view-entry.missed,
+    .rtl #report_latest_appointments .day-view-entry-list .day-view-entry.missed.hovered {
+        border-right: 3px solid #d21c1c !important;
+    }
+    .rtl #report_latest_appointments .day-view-entry-list .day-view-entry.ready,
+    .rtl #report_latest_appointments .day-view-entry-list .day-view-entry.ready.hovered {
+        border-right: solid 3px #f69606 !important;
+    }
+    @media (max-width: 768px) {
+        #report_latest_appointments .day-view-entry td {
+            padding: 12px !important;
+        }
+    }
+</style>
+
+<div class="card s2020 shadow mb-3" id="latest_appointments_widget">
+    <div class="px-4 py-2 py-xl-3 border-bottom border-secondary s2020 bg-light">
+        <div class="d-flex align-items-center justify-content-between">
+            <h3 class="text-dark-blue s2020 pb-0 fs-16 font-weight-bold">
+                <span>أحدث المواعيد</span>
+                <span class="badge badge-danger bg-danger s2020 ml-2">8570</span>            </h3>
+            <a href="/owner/appointments/index/0/1" class="text-primary-2 p-0 s2020 border-0">عرض الجميع</a>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="widget-body-wrapper" id="report_latest_appointments">
+            <div class="notifcation-loader" style="margin-top: 60px;"><div class="inner-loader"></div></div>
+        </div>
+    </div>
+</div>
+<script>
+    var appointments_loaded = false;
+    var appointments_url = '/owner/appointments/index/0/1?compact=0';
+
+    function loadAppointmentsWidget(url, elm) {
+        $.ajax({url: url})
+            .done(function(html) {
+                elm.html(html);
+            });
+    }
+
+    $(document).ready(function() {
+        if(!appointments_loaded) {
+            if (typeof inViewport !== "undefined") {
+                inViewport(document.getElementById('latest_appointments_widget'), function() {
+                    loadAppointmentsWidget(appointments_url, $('#report_latest_appointments'));
+                });
+            } else {
+                loadAppointmentsWidget(appointments_url, $('#report_latest_appointments'));
+            }
+            appointments_loaded=true;
+        }
+    });
+</script>
+        </div>
+                        <div class="col-flex-lg-12">
+            <link rel="stylesheet" type="text/css" href="/css/timeline_v815.css" /><style>
+    #report_activities {
+        margin: 0;
+        padding: 20px;
+        min-height: 260px;
+        overflow: auto;
+        max-height: 300px;
+    }
+
+    #report_activities::-webkit-scrollbar {
+        background-color:#fff;
+        width:16px
+    }
+    #report_activities::-webkit-scrollbar-track {
+        background-color:#fff
+    }
+    #report_activities::-webkit-scrollbar-track:hover {
+        background-color:#f4f4f4
+    }
+    #report_activities::-webkit-scrollbar-thumb {
+        background-color:#babac0;
+        border-radius:16px;
+        border:5px solid #fff
+    }
+    #report_activities::-webkit-scrollbar-thumb:hover {
+        background-color:#a0a0a5;
+        border:4px solid #f4f4f4
+    }
+    #report_activities::-webkit-scrollbar-button {
+        display:none
+    }
+
+    #report_activities .timeline-item a,
+    #report_activities .timeline-item p {
+        color: #3a3e63;
+    }
+    #report_activities .date-label p {
+        color: #636f88;
+        background: #f0f0f0;
+        border-radius: 50px;
+        box-shadow: 0 0 1px 1px rgba(0,0,0,.1) inset;
+    }
+    #report_activities .timeline-item {
+        background-color: #e4ebf2;
+    }
+
+    .ltr #report_activities .item-wrapper .timeline-item:after {
+        border-right-color: #e4ebf2;
+    }
+    .rtl #report_activities .item-wrapper .timeline-item:after {
+        border-left-color: #e4ebf2 !important;
+    }
+    .rtl #report_activities .extended .timeline-item {
+        margin-left: 0;
+    }
+</style>
+
+<div class="card s2020 shadow mb-3" id="activities_widget">
+    <div class="px-4 py-2 py-xl-3 border-bottom border-secondary s2020 bg-light">
+        <div class="d-flex align-items-center justify-content-between">
+            <h3 class="text-dark-blue s2020 pb-0 fs-16 font-weight-bold">
+                <span>الأنشطة الحالية</span>
+            </h3>
+            <a href="/owner/action_lines/index" class="text-primary-2 p-0 s2020 border-0">عرض الجميع</a>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="widget-body-wrapper p-3" id="report_activities">
+            <div class="notifcation-loader" style="margin-top: 60px;"><div class="inner-loader"></div></div>
+        </div>
+    </div>
+</div>
+<script>
+    var activities_loaded = false;
+    var activities_url = '/owner/action_lines/index?quick=1';
+
+    function loadActivitiesWidget(url, elm) {
+        $.ajax({url: url})
+            .done(function(html) {
+                elm.html(html);
+            });
+    }
+
+    $(document).ready(function() {
+        if(!activities_loaded) {
+            if (typeof inViewport !== "undefined") {
+                inViewport(document.getElementById('activities_widget'), function() {
+                    loadActivitiesWidget(activities_url, $('#report_activities'));
+                });
+            } else {
+                loadActivitiesWidget(activities_url, $('#report_activities'));
+            }
+            activities_loaded=true;
+        }
+    });
+</script>
+        </div>
+            </div>
+</div>
+
+
+	<script type="text/javascript" src="/js/jqueryui.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="/js/google-drawchart_v1125.js"></script>
+	<script type="text/javascript" src="/js/dashboard/in_viewport.js"></script>
+	<script type="text/javascript" src="/js/dashboard/widgets.js"></script>
+	<script type="text/javascript" src="/js/dashboard/owner.js?v=2"></script>
+	<script type="text/javascript" src="/js/loadingoverlay.min.js"></script>
+<!-- Modal -->
+<div id="LoaderModal" class="modal fade" role="dialog">
+    <!-- <div class="modal-dialog"> -->
+        <!-- Modal content-->
+        <!-- <div class="modal-content" style="opacity: 1.0;"> -->
+            <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                <i class="fa fa-circle-o-notch fa-spin" style="color: #fff;font-size:50px;"></i>
+            </div>
+        <!-- </div> -->
+
+    <!-- </div> -->
+</div>
+
+
+	<script type="text/javascript" src="/js/jquery.scannerdetection.js"></script>
+<script>
+
+    $( document ).ready( function() {
+            // var anything_is_focused = (
+            //     document.hasFocus() &&
+            //         document.activeElement !== null &&
+            //         document.activeElement !== document.body &&
+            //         document.activeElement !== document.documentElement
+            //     );
+            //
+            // $( document).keydown(function(){
+            //     anything_is_focused = (
+            //         document.hasFocus() &&
+            //             document.activeElement !== null &&
+            //             document.activeElement !== document.body &&
+            //             document.activeElement !== document.documentElement
+            //         );
+            // });
+
+
+            $( document ).scannerDetection({
+                timeBeforeScanTest: 200, // wait for the next character for upto 200ms
+                avgTimeByChar: 100, // it's not a barcode if a character takes longer than 100ms
+                onComplete: function(barcode, qty){
+                    $('#LoaderModal').modal('show');
+                    $.get('/owner/oibarcodes/redirect_using_barcode/'+ barcode)
+                        .done(function(data){
+                            if(data == "fail")
+                            {
+                                $('#LoaderModal').modal('hide');
+                                return false;
+                            }
+                            window.location = data;
+                        }).fail(function(data){
+                            $('#LoaderModal').modal('hide');
+                            initToast(__('Invalid Barcode', true), 'danger');
+                        });
+                        
+
+                }
+            });
+
+        }
+    );
+</script>
+
+	<script type="text/javascript" src="/js/tags-view.js"></script>
+<script>
+    $(document).on('show.bs.dropdown', 'table .mobile-options', function() {
+        var wrapper = $(this).closest('.widget-body-wrapper');
+        if (!(wrapper[0].scrollHeight > wrapper[0].clientHeight)) {
+            wrapper.css('overflow', 'visible');
+        }
+    });
+    $(document).on('hide.bs.dropdown', 'table .mobile-options', function() {
+        var wrapper = $(this).closest('.widget-body-wrapper');
+        if (!(wrapper[0].scrollHeight > wrapper[0].clientHeight)) {
+            wrapper.removeAttr('style');
+        }
+    });
+</script>
+<script>
+	</script>
+                        </ol>
+                    </div>
+
+                    
+                </div>
+                
+                
+                <!-- / main-area -->
+                <div class="clear"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var prefix = '';
+	                        prefix = 'owner';
+	                </script>
+                <script src="s2020/js/layout/libs.js?v=1125"></script>
+        <script src="s2020/js/layout/helpers.js?v=1125"></script>
+        <script src="s2020/js/layout/app.js?v=1125"></script>
+        
+	<script type="text/javascript" src="js/jquery.lightbox_me.js"></script>
+	<script type="text/javascript" src="js/jquery.tooltip.js"></script>
+	<script type="text/javascript" src="js/layout.js?v=1125"></script>
+        
+                    <button type="button" class="popup-chat hidden-xs support-btn">
+                <span>لديك سؤال</span> <img src="css/img/q.png" alt="">
+            </button>
+
+        <!-- Modal -->
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-md"  role="document">
+                <div class="modal-content">
+                    <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                    <div class="modal-header">
+                   
+                        <h4 class="modal-title" id="myModalLabel">أسأل سؤال أو أرسل رأيك </h4>
+                    </div>
+                    <div class="modal-body">
+  
+                        <iframe id="contact_iframe" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+
+
+
+
+
+        <div class="modal fade" id="myModalGeneral" tabindex="-1" role="dialog" aria-labelledby="myModalGeneralLabel">
+            <div id="myModalGeneralSize" class="modal-dialog modal-lg"  role="document">
+                <div class="modal-content">
+                    <button type="button" class="close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                    <div id="myModalGeneralheader" class="modal-header">
+
+                        <h4 class="modal-title" id="myModalGeneralLabel">الضرائب</h4>
+                    </div>
+                    <div class="modal-body">
+                        <iframe id="myModalGeneral_iframe" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            setTimeout(function() {
+                if ($('.isDatePicker').length) {
+                    $('.isDatePicker').attr('autocomplete', 'off');
+                }
+            }, 500);
+        </script>
+
+
+<div class="modal fade" id="promptModalDelete-global" tabindex="-1" role="dialog" aria-labelledby="promptModalLabel-global"
+        style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-transparent border-0 position-absolute w-100" style="z-index: 9;">
+                <h5 class="modal-title d-none" id="promptModalLabel-global"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body px-4 text-center">
+                <i class="mdi mdi-trash-can-outline fs-36 text-danger d-block py-2"></i>
+                <div id="prompt-body-global"></div>
+            </div>
+            <form method="post" id="row-action-form-global" name="row-action-form-delete" action="">
+                <input type="hidden" name="_token" id="prompt-token-global" value=""/>
+                <input type="hidden" name="_method" id="prompt-method-global" value=""/>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">نعم</button>
+                    <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">لا</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="help-container">
+<div class="modal-bg-container">
+        <div class="modal-bg"></div>
+    </div>
+    <div id="modal-container" >
+    </div>
+</div>
+
+        
+	<script type="text/javascript" src="/js/submit_handler_v1125.js"></script>
+        
+	<script type="text/javascript" src="/js/jquery.scannerdetection.js"></script>
+        <link rel="stylesheet" media="print" type="text/css" href="/css/print_v815.css?v=5"  />
+        <script src="/dist/daftra/daftra.compat.js?v=1125"></script>
+        <script type="text/javascript" src="/js/reports.js?v=10"></script>
+        <script type="text/javascript" src="/js/beta.js?v=1"></script>
+        <script type="text/javascript" src="/js/modals.js"></script>
+        <script type="text/javascript">
+               $(document).on('click','.support-btn, .support-modal-btn', function() {
+                IzamModal.closeModals();
+                    IzamModal.addUrlModal('/v2/owner/support-channels/index', '', '', false, false)
+                })
+        </script>     
+                <script type="text/javascript" src="/js/navigation-shortcuts.js"></script>
+        <script type="text/javascript" src="/js/navigation-listener.js"></script>  
+
+        
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9R42S45PXK"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-9R42S45PXK');
+        </script>
+            </body>
+</html>
+
+
+<script type="text/javascript">
+    window.onerror = function (msg, url, lineNo, columnNo, error) {
+  /*   
+ $.post("https://jesst4you.daftra.com/report_js.php", {msg:msg,error:error,lineNo:lineNo,url: url,real_url:window.location.href}, function(result){
+});
+
+  */
+
+  return false;
+}
+</script>
+
+	<script type="text/javascript" src="/js/iframe-resizer.js"></script>
+
+<script>
+    var izamNavigation = {"first_page_url":null,"last_page_url":null,"next_page_url":null,"prev_page_url":null,"add_page_url":null}</script>
+

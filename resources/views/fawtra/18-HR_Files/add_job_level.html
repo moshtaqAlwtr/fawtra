@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة مستوى وظيفي</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .content {
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            cursor: pointer;
+        }
+        button[type="button"] {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="btn" onclick="location.href='main.html'">الذهاب إلى الموقع</button>
+        <button class="btn" onclick="location.href='help.html'">المساعدة</button>
+    </div>
+    
+    <div class="content">
+        <h1>إضافة مستوى وظيفي</h1>
+        <form>
+            <label for="name">اسم المستوى الوظيفي:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="status">الحالة:</label>
+            <select id="status" name="status">
+                <option value="active">نشط</option>
+                <option value="inactive">غير نشط</option>
+            </select>
+
+            <label for="description">الوصف:</label>
+            <textarea id="description" name="description"></textarea>
+
+            <button type="submit">حفظ</button>
+            <button type="button" onclick="location.href='job_levels.html'">إلغاء</button>
+        </form>
+    </div>
+</body>
+</html>

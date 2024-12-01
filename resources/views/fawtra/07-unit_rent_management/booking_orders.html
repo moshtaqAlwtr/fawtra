@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أوامر الحجز</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+        }
+        .btn-custom {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: #fff;
+            border: none;
+        }
+        .btn-custom:hover {
+            background: linear-gradient(to right, #2a5298, #1e3c72);
+            color: #fff;
+        }
+        .card-body {
+            background: linear-gradient(to right, #dceffe, #f0f7ff);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <div class="container">
+        <!-- الشريط العلوي -->
+        <div class="gradient-bg text-white p-3 mb-3 d-flex justify-content-between align-items-center">
+            <h3 class="m-0 text-center w-100">أوامر الحجز</h3>
+        </div>
+
+        <!-- أزرار الفلترة وإضافة أمر حجز -->
+        <div class="d-flex mb-4">
+            <div class="ml-auto">
+                <button class="btn btn-secondary">الكل</button>
+                <button class="btn btn-light">مفتوح</button>
+                <button class="btn btn-light">مغلق</button>
+                <div class="btn-group">
+                    <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        + أضف أمر حجز
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#"><i class="fas fa-plus text-primary"></i> أضف أمر حجز يدوي</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-plus text-success"></i> أضف أمر حجز تلقائي</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- رسالة عدم وجود سجلات -->
+        <div class="card">
+            <div class="card-body text-center">
+                <img src="https://via.placeholder.com/100" alt="No Records" class="mb-3">
+                <p class="mb-1">لم يتم إضافة أي سجلات بعد</p>
+                <a href="#" class="btn btn-link">الانتقال إلى الصفحة السابقة</a> | 
+                <a href="#" class="btn btn-link text-success">أضف أمر حجز يدوي</a> أو 
+                <a href="#" class="btn btn-link text-success">أضف أمر حجز تلقائي</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة علاقات العملاء</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .btn-add {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .btn-add i {
+            margin-left: 5px;
+        }
+
+        .btn-add:hover {
+            background-color: #218838;
+        }
+
+        .dashboard-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-item {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 24%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-item p {
+            font-size: 16px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f4f6f9;
+        }
+
+        .table td {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        إدارة علاقات العملاء
+    </div>
+
+    <div class="content">
+        <!-- لوحة التحكم الرئيسية -->
+        <div class="dashboard-container">
+            <div class="dashboard-item">
+                <h3>عدد العملاء</h3>
+                <p>250</p>
+            </div>
+            <div class="dashboard-item">
+                <h3>العملاء المحتملين</h3>
+                <p>50</p>
+            </div>
+            <div class="dashboard-item">
+                <h3>طلبات العملاء النشطة</h3>
+                <p>10</p>
+            </div>
+            <div class="dashboard-item">
+                <h3>معدل رضا العملاء</h3>
+                <p>90%</p>
+            </div>
+        </div>
+
+        <!-- قائمة العملاء -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>اسم العميل</th>
+                    <th>رقم الهاتف</th>
+                    <th>البريد الإلكتروني</th>
+                    <th>الحالة</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>شركة التجارة العالمية</td>
+                    <td>0123456789</td>
+                    <td>email@example.com</td>
+                    <td>نشط</td>
+                    <td><button>عرض التفاصيل</button></td>
+                </tr>
+                <!-- المزيد من السجلات -->
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

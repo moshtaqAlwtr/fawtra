@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Tracking</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f0f4f7;
+            direction: rtl;
+        }
+        .top-bar {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .btn-add {
+            background-color: #28a745;
+            color: #fff;
+            margin-right: 10px;
+        }
+        .btn-import {
+            background-color: #6c757d;
+            color: #fff;
+            margin-right: 10px;
+        }
+        .table-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .empty-message {
+            font-size: 1.3rem;
+            color: #6c757d;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <!-- الشريط العلوي -->
+        <div class="top-bar">
+            <h4 class="mb-0">Time Tracking</h4>
+        </div>
+
+        <!-- الأزرار العلوية -->
+        <div class="d-flex justify-content-start mb-3">
+            <button class="btn btn-add"><i class="fas fa-plus"></i> إضافة جديدة</button>
+            <button class="btn btn-import"><i class="fas fa-download"></i> استيراد</button>
+            <button class="btn btn-light" data-toggle="modal" data-target="#settingsModal">
+                <i class="fas fa-cog"></i> إعدادات
+            </button>
+        </div>
+
+        <!-- تقويم الأيام وسجل الوقت -->
+        <div class="table-container">
+            <div class="calendar-nav">
+                <button class="btn btn-light" onclick="changeWeek(-1)"><i class="fas fa-chevron-right"></i> الأسبوع السابق</button>
+                <button class="btn btn-light" onclick="changeWeek(1)">الأسبوع القادم <i class="fas fa-chevron-left"></i></button>
+            </div>
+
+            <!-- جدول سجلات الوقت -->
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr id="days-header">
+                        <!-- سيتم تحديث التواريخ هنا بواسطة JavaScript -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="total-time">00:00</td>
+                        <td colspan="6" class="text-center">لا يوجد سجلات لهذا اليوم، اضغط زر إدخال جديد لإضافة سجل جديد</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>إجمالي اليوم:</td>
+                        <td colspan="6" class="text-center">00:00</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <!-- النافذة المنبثقة لإعدادات متابعة الوقت -->
+    <div class="modal fade" id="settingsModal" tabindex="-1" role="dialog" aria-labelledby="settingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="settingsModalLabel">إعدادات متابعة الوقت</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="إغلاق">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="trackExpenses">
+                            <label class="form-check-label" for="trackExpenses">حساب تتبع الوقت في تقرير المصروفات، وتقارير الربح والخسارة وتقارير مالية أخرى</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstDayOfWeek">أول يوم في الأسبوع:</label>
+                            <select class="form-control" id="firstDayOfWeek">
+                                <option value="الأحد" selected>الأحد</option>
+                                <option value="الاثنين">الاثنين</option>
+                                <option value="الثلاثاء">الثلاثاء</option>
+                                <option value="الأربعاء">الأربعاء</option>
+                                <option value="الخميس">الخميس</option>
+                                <option value="الجمعة">الجمعة</option>
+                                <option value="السبت">السبت</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="hourlyRate">معدل ساعة الأجر (محاس الفنيين)</label>
+                            <input type="number" class="form-control" id="hourlyRate" placeholder="أدخل معدل الأجر بالساعة">
+                        </div>
+                        <button type="button" class="btn btn-success w-100 mt-3" data-dismiss="modal"><i class="fas fa-save"></i> حفظ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // إعداد التواريخ الحالية
+        let currentDate = new Date();
+        let currentWeek = getWeekDates(currentDate);
+
+        // تحميل التواريخ عند تحميل الصفحة
+        document.addEventListener("DOMContentLoaded", function() {
+            updateWeekDates(currentWeek);
+        });
+
+        // تحديث التواريخ في الجدول
+        function updateWeekDates(weekDates) {
+            const daysHeader = document.getElementById("days-header");
+            daysHeader.innerHTML = '<th>الإجمالي:</th>';
+            weekDates.forEach(date => {
+                daysHeader.innerHTML += `<th>${date}</th>`;
+            });
+        }
+
+        // تغيير الأسبوع عند الضغط على الأسهم
+        function changeWeek(direction) {
+            currentDate.setDate(currentDate.getDate() + direction * 7);
+            currentWeek = getWeekDates(currentDate);
+            updateWeekDates(currentWeek);
+        }
+
+        // الحصول على تواريخ الأسبوع
+        function getWeekDates(startDate) {
+            let weekDates = [];
+            let startDay = new Date(startDate);
+            startDay.setDate(startDay.getDate() - startDay.getDay()); // تعيين بداية الأسبوع
+            for (let i = 0; i < 7; i++) {
+                let date = new Date(startDay);
+                date.setDate(startDay.getDate() + i);
+                weekDates.push(formatDate(date));
+            }
+            return weekDates;
+        }
+
+        // تنسيق التاريخ كـ "يوم، شهر"
+        function formatDate(date) {
+            const days = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+            const months = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+            return `${days[date.getDay()]} ${date.getDate()} ${months[date.getMonth()]}`;
+        }
+    </script>
+</body>
+</html>

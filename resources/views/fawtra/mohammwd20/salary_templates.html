@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قوالب الرواتب</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 0;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            text-align: left;
+        }
+        .top-bar button {
+            background-color: white;
+            color: #007bff;
+            border: none;
+            padding: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        .add-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        p {
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <button onclick="goToSite()">الذهاب إلى الموقع</button>
+        <button onclick="help()">المساعدة</button>
+    </div>
+    <div class="container">
+        <h1>قوالب الرواتب</h1>
+        <button class="add-btn" onclick="window.location.href='add_salary_template.html'">أضف قالب الراتب +</button>
+        <table>
+            <tr>
+                <th>الاسم</th>
+                <th>الحالة</th>
+                <th>دورة القبض</th>
+                <th>خيارات</th>
+            </tr>
+            <tr>
+                <td>قالب 1</td>
+                <td>نشط</td>
+                <td>شهري</td>
+                <td><button>...</button></td>
+            </tr>
+        </table>
+        <p>لا يوجد قوالب الرواتب أضيفت حتى الآن</p>
+    </div>
+
+    <script>
+        function goToSite() {
+            // وظيفة الذهاب إلى الموقع
+        }
+        function help() {
+            // وظيفة المساعدة
+        }
+    </script>
+</body>
+</html>

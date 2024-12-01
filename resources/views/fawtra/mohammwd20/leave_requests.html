@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلبات الإجازة</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            background-color: #f2f2f2;
+        }
+        .navbar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .add-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .balance-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        .filter-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .filter-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        .active {
+            background-color: #007bff;
+            color: white;
+        }
+        .empty-record {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <span>طلبات الإجازة</span>
+        <div>
+            <button onclick="window.location.href='#'">الذهاب إلى الموقع</button>
+            <button onclick="window.location.href='#'">المساعدة</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="btn-container">
+            <button class="btn add-btn" onclick="window.location.href='add_leave_permission.html'">أضف طلب إجازة</button>
+            <button class="btn balance-btn" onclick="window.location.href='leave_balance.html'">رصيد الإجازات</button>
+        </div>
+
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterRequests('all')">الكل</button>
+            <button class="filter-btn" onclick="filterRequests('review')">تحت المراجعة</button>
+            <button class="filter-btn" onclick="filterRequests('approved')">موافق عليها</button>
+            <button class="filter-btn" onclick="filterRequests('rejected')">مرفوض</button>
+        </div>
+
+        <div class="empty-record">
+            <p>لم يتم إضافة أي سجلات بعد</p>
+            <p><a href="#">الانتقال إلى الصفحة السابقة</a> + <a href="#">أضف طلبات الإجازة</a></p>
+            <img src="leave_icon.png" alt="أيقونة" style="width: 50px; margin-top: 10px;">
+        </div>
+    </div>
+
+    <script>
+        function filterRequests(status) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            switch(status) {
+                case 'review':
+                    alert('عرض طلبات تحت المراجعة');
+                    document.querySelectorAll('.filter-btn')[1].classList.add('active');
+                    break;
+                case 'approved':
+                    alert('عرض طلبات الموافق عليها');
+                    document.querySelectorAll('.filter-btn')[2].classList.add('active');
+                    break;
+                case 'rejected':
+                    alert('عرض طلبات المرفوضة');
+                    document.querySelectorAll('.filter-btn')[3].classList.add('active');
+                    break;
+                default:
+                    alert('عرض جميع الطلبات');
+                    document.querySelectorAll('.filter-btn')[0].classList.add('active');
+                    break;
+            }
+        }
+    </script>
+
+</body>
+</html>

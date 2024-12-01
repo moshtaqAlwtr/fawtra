@@ -1,0 +1,185 @@
+@import "../variables";
+@import "../mixins";
+
+.pages-head-s2020 {
+  padding: 12px 0;
+  background-color: white;
+  position: fixed;
+  top: 45px;
+  z-index: 98;
+  min-height: 60px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+  @include ltr() {
+    right: 0px;
+    left: 210px;
+  }
+  @include rtl() {
+    left: 0px;
+    right: 210px;
+  }
+  @include ltr(".shrinked-sidebar") {
+    left: 60px;
+  }
+  @include rtl(".shrinked-sidebar") {
+    right: 60px;
+    left: 0;
+  }
+  @include media-max($xl) {
+    left: 0px !important;
+    right: 0 !important;
+    width: 100%;
+  }
+  @include body(".modal-open") {
+    z-index: 999;
+  }
+  #pagination-jump {
+    width: 120px;
+    text-align: center;
+    outline: none;
+    box-shadow: none;
+    &::placeholder {
+      text-align: center;
+    }
+  }
+  #select-trigger-mob {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  &.fixed {
+    padding: 8px 0;
+    .pagination-num {
+      height: 31px;
+      line-height: 31px;
+    }
+  }
+  .pages-head-title {
+    h2 {
+      font-size: 18px;
+      margin: 0;
+      .status {
+        position: relative;
+        right: -5px;
+        display: inline-flex;
+        padding: 0 5px;
+        vertical-align: middle;
+      }
+    }
+  }
+  .pages-head-btns {
+    & > a {
+      font-weight: 500;
+      @include rtl() {
+        margin-left: 20px;
+      }
+      @include ltr() {
+        margin-left: 0;
+        margin-right: 20px;
+      }
+      &:first-child {
+        @include media-max($md) {
+          margin-left: 0;
+        }
+      }
+      @include ltr() {
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      @include rtl() {
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+      @include media-max($md) {
+        @include ltr() {
+          margin-left: 10px;
+        }
+        @include rtl() {
+          margin-left: 0;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.action-buttons {
+  @include ltr() {
+    text-align: right;
+  }
+  @include rtl() {
+    text-align: left;
+  }
+  .btn {
+    font-weight: 500;
+  }
+}
+.select-items {
+  cursor: pointer;
+  .custom-control-label::before {
+    @include ltr() {
+      left: -20px;
+    }
+    @include rtl() {
+      right: -20px;
+      left: auto;
+    }
+  }
+  .custom-control-label::after {
+    @include ltr() {
+      left: -20px;
+    }
+    @include rtl() {
+      right: -20px;
+      left: auto;
+    }
+  }
+}
+.pagination-num {
+  height: 38px;
+  display: inline-block;
+  line-height: 38px;
+  padding: 0 10px;
+  @include ltr() {
+    margin-left: 10px;
+    border-left: 1px solid $secondary;
+  }
+  @include rtl() {
+    margin-right: 10px;
+    margin-left: auto;
+    border-right: 1px solid #e4ebf2;
+    border-left: none;
+  }
+  &.no-border {
+    border: none;
+    margin-left: 0;
+    margin-right: 0;
+    @include ltr() {
+      padding-left: 0;
+      padding-right: 15px;
+    }
+    @include rtl() {
+      padding-right: 0;
+      padding-left: 15px;
+    }
+  }
+}
+
+// for modals that contains ajax of another page
+
+.modal-body .pages-head-s2020 {
+  display: block;
+  top: inherit;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  position: absolute;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.modal-body .pages-head-s2020 .container {
+  width: 100%;
+}

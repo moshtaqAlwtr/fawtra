@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أنواع دورة العمل</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .top-bar {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .btn-add {
+            background-color: #28a745;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .empty-message {
+            font-size: 1.2rem;
+            color: #6c757d;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <div class="container mt-5">
+        <!-- الشريط العلوي -->
+        <div class="row top-bar p-3">
+            <div class="col">
+                <h3 class="text-white text-center">أنواع دورة العمل</h3>
+            </div>
+        </div>
+
+        <!-- زر إضافة نوع دورة العمل -->
+        <div class="row mt-4">
+            <div class="col text-center">
+                <button class="btn btn-add px-4 py-2">أضف نوع دورة العمل <i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+        <!-- رسالة لا يوجد أنواع دورة العمل -->
+        <div class="row mt-5">
+            <div class="col">
+                <p class="empty-message">لا يوجد أنواع دورة العمل أضفت حتى الان</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

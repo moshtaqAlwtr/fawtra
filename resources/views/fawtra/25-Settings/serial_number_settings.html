@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات الترقيم التسلسلي</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #f0f4f8, #e1f5fe);
+            font-family: 'Tajawal', sans-serif;
+        }
+        .top-bar {
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .btn-save {
+            background: linear-gradient(45deg, #28a745, #81c784);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+        }
+        .btn-save:hover {
+            background: linear-gradient(45deg, #218838, #66bb6a);
+        }
+        .sidebar {
+            background: linear-gradient(135deg, #ffffff, #e3f2fd);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: calc(100vh - 80px);
+            position: fixed;
+            top: 80px;
+            overflow-y: auto;
+            width: 260px;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 15px;
+            display: block;
+            padding: 8px 15px;
+            background-color: #f1f8e9;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .sidebar ul li a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        .content {
+            background: linear-gradient(135deg, #ffffff, #f9fbe7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-left: 280px;
+            min-height: 80vh;
+        }
+        .content h3 {
+            color: #007bff;
+            font-weight: bold;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #333;
+        }
+        .form-check-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #4e54c8, #8f94fb);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(to right, #3e4db3, #6e72c9);
+        }
+    </style>
+    <script>
+        function updateContent(section) {
+            const contentTitle = {
+                "invoice": "فاتورة",
+                "customer": "العميل",
+                "quotation": "عروض الأسعار",
+                "return-invoice": "فاتورة مرتجعة",
+                "credit-note": "إشعار دائن",
+                "reservation": "حجز",
+                "purchase-invoice": "فاتورة شراء",
+                "purchase-return": "مرتجع مشتريات",
+                "supply-order": "أمر التوريد",
+                "supplier": "المورد",
+                "entry": "قيد",
+                "expense": "مصروف",
+                "receipt-voucher": "سندات القبض",
+                "warehouse-add": "إذن إضافة مخزون",
+                "warehouse-dispose": "إذن صرف مخزون",
+                "transfer-request": "طلب تحويل",
+                "branch": "الفروع",
+                "inventory-report": "ورقة الجرد",
+                "products": "المنتجات",
+                "contracts": "العقود",
+                "quotation-request": "طلب عرض أسعار",
+                "purchase-quotation": "عرض سعر مشتريات",
+                "purchase-order": "أمر شراء",
+                "origin": "أصل",
+                "invoice-payment": "مدفوعات الفواتير",
+                "payment-return": "دفع مبلغ مرتجع",
+                "purchase-refund": "دفع فاتورة شراء",
+                "sales-debit": "إشعار مدين مبيعات",
+                "products-custom": "المنتجات المخصصة"
+            };
+            const title = contentTitle[section] || "تعديل تسلسل الترقيم";
+            document.getElementById("content-title").innerText = title;
+            document.getElementById("current-number").value = "08584";
+            document.getElementById("number-of-digits").value = 5;
+        }
+    </script>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <span class="fw-bold fs-4">إعدادات الترقيم التسلسلي</span>
+        <button class="btn btn-save">حفظ</button>
+    </div>
+
+    <!-- الحاوية الرئيسية -->
+    <div class="container-fluid my-4">
+        <div class="row">
+            <!-- الشريط الجانبي -->
+            <div class="col-md-3">
+                <div class="sidebar">
+                    <ul class="list-unstyled">
+                        <li><a href="#" onclick="updateContent('invoice')">فاتورة</a></li>
+                        <li><a href="#" onclick="updateContent('customer')">العميل</a></li>
+                        <li><a href="#" onclick="updateContent('quotation')">عروض الأسعار</a></li>
+                        <li><a href="#" onclick="updateContent('return-invoice')">فاتورة مرتجعة</a></li>
+                        <li><a href="#" onclick="updateContent('credit-note')">إشعار دائن</a></li>
+                        <li><a href="#" onclick="updateContent('reservation')">حجز</a></li>
+                        <li><a href="#" onclick="updateContent('purchase-invoice')">فاتورة شراء</a></li>
+                        <li><a href="#" onclick="updateContent('purchase-return')">مرتجع مشتريات</a></li>
+                        <li><a href="#" onclick="updateContent('supply-order')">أمر التوريد</a></li>
+                        <li><a href="#" onclick="updateContent('supplier')">المورد</a></li>
+                        <li><a href="#" onclick="updateContent('entry')">قيد</a></li>
+                        <li><a href="#" onclick="updateContent('expense')">مصروف</a></li>
+                        <li><a href="#" onclick="updateContent('receipt-voucher')">سندات القبض</a></li>
+                        <li><a href="#" onclick="updateContent('warehouse-add')">إذن إضافة مخزون</a></li>
+                        <li><a href="#" onclick="updateContent('warehouse-dispose')">إذن صرف مخزون</a></li>
+                        <li><a href="#" onclick="updateContent('transfer-request')">طلب تحويل</a></li>
+                        <li><a href="#" onclick="updateContent('branch')">الفروع</a></li>
+                        <li><a href="#" onclick="updateContent('inventory-report')">ورقة الجرد</a></li>
+                        <li><a href="#" onclick="updateContent('products')">المنتجات</a></li>
+                        <li><a href="#" onclick="updateContent('contracts')">العقود</a></li>
+                        <li><a href="#" onclick="updateContent('quotation-request')">طلب عرض أسعار</a></li>
+                        <li><a href="#" onclick="updateContent('purchase-quotation')">عرض سعر مشتريات</a></li>
+                        <li><a href="#" onclick="updateContent('purchase-order')">أمر شراء</a></li>
+                        <li><a href="#" onclick="updateContent('origin')">أصل</a></li>
+                        <li><a href="#" onclick="updateContent('invoice-payment')">مدفوعات الفواتير</a></li>
+                        <li><a href="#" onclick="updateContent('payment-return')">دفع مبلغ مرتجع</a></li>
+                        <li><a href="#" onclick="updateContent('purchase-refund')">دفع فاتورة شراء</a></li>
+                        <li><a href="#" onclick="updateContent('sales-debit')">إشعار مدين مبيعات</a></li>
+                        <li><a href="#" onclick="updateContent('products-custom')">المنتجات المخصصة</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- المحتوى الرئيسي -->
+            <div class="col-md-9">
+                <div class="content">
+                    <h3 id="content-title" class="mb-4">تعديل تسلسل الترقيم</h3>
+
+                    <div class="form-group mb-3">
+                        <label for="current-number">الرقم الحالي</label>
+                        <input type="text" class="form-control" id="current-number" value="08584">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="number-of-digits">عدد الأرقام</label>
+                        <input type="number" class="form-control" id="number-of-digits" value="5">
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="add-prefix">
+                        <label class="form-check-label" for="add-prefix">إضافة بادئة</label>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" id="unique-value">
+                        <label class="form-check-label" for="unique-value">قيمة فريدة للتكرار</label>
+                    </div>
+
+                    <button class="btn btn-primary mt-3 w-100">حفظ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- إضافة Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

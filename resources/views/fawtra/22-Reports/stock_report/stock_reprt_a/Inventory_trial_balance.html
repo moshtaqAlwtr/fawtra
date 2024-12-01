@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ميزان مراجعة المنتجات</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #f0f4f8, #d8e3e8);
+            font-family: 'Tajawal', sans-serif;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 30px;
+        }
+        .btn-primary, .btn-secondary {
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background-color: #0d47a1;
+            border: none;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #0b3a89;
+        }
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e88e5;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .report-section {
+            display: none;
+            margin-top: 20px;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Export and Print Buttons -->
+    <div class="d-flex justify-content-between mb-3">
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                تصدير
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">تصدير إلى CSV</a>
+                <a class="dropdown-item" href="#">تصدير إلى Excel</a>
+                <a class="dropdown-item" href="#">تصدير إلى PDF</a>
+            </div>
+        </div>
+        <button class="btn btn-secondary" onclick="window.print();">طباعة</button>
+    </div>
+
+    <!-- Filter Form -->
+    <form onsubmit="event.preventDefault(); showReport();">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="dateFrom">التاريخ من</label>
+                <input type="date" class="form-control" id="dateFrom">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="dateTo">التاريخ إلى</label>
+                <input type="date" class="form-control" id="dateTo">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="product">المنتجات</label>
+                <select id="product" class="form-control">
+                    <option>الكل</option>
+                    <option>منتج 1</option>
+                    <option>منتج 2</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="store">المستودع</label>
+                <select id="store" class="form-control">
+                    <option>الكل</option>
+                    <option>المستودع الرئيسي</option>
+                    <option>مستودع فرعي</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="category">التصنيف</label>
+                <select id="category" class="form-control">
+                    <option>الكل</option>
+                    <option>تصنيف 1</option>
+                    <option>تصنيف 2</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">عرض التقرير</button>
+        <button type="button" class="btn btn-link">إلغاء الفلتر</button>
+    </form>
+
+    <!-- Report Section -->
+    <div class="report-section" id="reportSection">
+        <h4 class="title">ميزان مراجعة منتجات</h4>
+        <p class="text-center">الوقت: 01:03 10/11/2024 | التاريخ: من 10/10/2024 إلى 10/11/2024 | الحالة: الكل</p>
+        <h5 class="text-center">مؤسسة أعمال خاصة للتجارة</h5>
+        <p class="text-center">الرياض، الرياض</p>
+        
+        <table class="table table-bordered mt-3">
+            <thead class="thead-light">
+                <tr>
+                    <th>الكود</th>
+                    <th>باركود</th>
+                    <th>الاسم</th>
+                    <th>قبل</th>
+                    <th>الوارد</th>
+                    <th>المنصرف</th>
+                    <th>الصافي</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0056</td>
+                    <td>118</td>
+                    <td>كرتون عطر 50 ملي</td>
+                    <td>20</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>0023</td>
+                    <td>115</td>
+                    <td>عطر عود اجمل</td>
+                    <td>13</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>260</td>
+                </tr>
+                <tr>
+                    <td>0033</td>
+                    <td>104</td>
+                    <td>عطر خلاب</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>55.32</td>
+                </tr>
+                <tr>
+                    <td>0099</td>
+                    <td>107</td>
+                    <td>عطر مضاي</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>9.26</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function showReport() {
+        document.getElementById('reportSection').style.display = 'block';
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

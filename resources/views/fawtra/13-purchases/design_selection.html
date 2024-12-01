@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختيار قالب التصميم</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+        .top-bar {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .content {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .template {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            width: 150px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .template:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div>
+            <button>الذهاب للموقع</button>
+            <button>المساعدة</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="template" onclick="alert('تم اختيار القالب 1')">
+            <img src="template1.png" alt="قالب 1" width="100%">
+            <p>قالب 1</p>
+        </div>
+        <div class="template" onclick="alert('تم اختيار القالب 2')">
+            <img src="template2.png" alt="قالب 2" width="100%">
+            <p>قالب 2</p>
+        </div>
+        <div class="template" onclick="alert('تم اختيار القالب 3')">
+            <img src="template3.png" alt="قالب 3" width="100%">
+            <p>قالب 3</p>
+        </div>
+        <div class="template" onclick="alert('تم اختيار القالب 4')">
+            <img src="template4.png" alt="قالب 4" width="100%">
+            <p>قالب 4</p>
+        </div>
+        <div class="template" onclick="alert('تم اختيار القالب 5')">
+            <img src="template5.png" alt="قالب 5" width="100%">
+            <p>قالب 5</p>
+        </div>
+        <div class="template" onclick="alert('تم اختيار القالب 6')">
+            <img src="template6.png" alt="قالب 6" width="100%">
+            <p>قالب 6</p>
+        </div>
+    </div>
+
+</body>
+</html>

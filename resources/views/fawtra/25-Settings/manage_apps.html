@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة التطبيقات</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9ecef;
+        }
+        .navbar {
+            background-color: #007bff;
+            color: white;
+        }
+        .navbar .navbar-brand {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 auto;
+        }
+        .card {
+            height: 100%;
+        }
+        .card-header {
+            font-weight: bold;
+            font-size: 1.1em;
+            text-align: center;
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+        }
+        .section-title {
+            color: #d63384;
+        }
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .toggle-container span {
+            font-size: 1em;
+            margin-right: 10px;
+        }
+        .custom-switch {
+            display: inline-flex;
+            align-items: center;
+        }
+        .custom-switch input {
+            display: none;
+        }
+        .custom-switch label {
+            position: relative;
+            width: 40px;
+            height: 20px;
+            background: #ccc;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .custom-switch label::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: #fff;
+            border-radius: 50%;
+            top: 1px;
+            left: 1px;
+            transition: transform 0.3s;
+        }
+        .custom-switch input:checked + label {
+            background: #28a745;
+        }
+        .custom-switch input:checked + label::after {
+            transform: translateX(20px);
+        }
+        .status-text {
+            margin-right: 10px;
+            color: #000;
+            font-size: 0.9em;
+        }
+        .status-text.enabled {
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط أزرق في الأعلى -->
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand mx-auto" href="#">إدارة التطبيقات</a>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <!-- إدارة المخزون والمشتريات -->
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-header section-title">إدارة المخزون والمشتريات</div>
+                    <div class="card-body">
+                        <div class="toggle-container">
+                            <span>إدارة المخزون</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch1" checked>
+                                <label for="switch1"></label>
+                                <span class="status-text enabled" id="status1">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>دورة المشتريات</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch2">
+                                <label for="switch2"></label>
+                                <span class="status-text" id="status2">تم التعطيل</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- إدارة المبيعات -->
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-header section-title">إدارة المبيعات</div>
+                    <div class="card-body">
+                        <div class="toggle-container">
+                            <span>المبيعات</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch3" checked>
+                                <label for="switch3"></label>
+                                <span class="status-text enabled" id="status3">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>نقاط البيع</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch4" checked>
+                                <label for="switch4"></label>
+                                <span class="status-text enabled" id="status4">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>المبيعات المستهدفة والعمولات</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch5" checked>
+                                <label for="switch5"></label>
+                                <span class="status-text enabled" id="status5">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>إدارة الأقساط</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch6" checked>
+                                <label for="switch6"></label>
+                                <span class="status-text enabled" id="status6">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>العروض</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch7" checked>
+                                <label for="switch7"></label>
+                                <span class="status-text enabled" id="status7">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>الطلبات</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch8" checked>
+                                <label for="switch8"></label>
+                                <span class="status-text enabled" id="status8">تم التفعيل</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- إدارة العمليات -->
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-header section-title">إدارة العمليات</div>
+                    <div class="card-body">
+                        <div class="toggle-container">
+                            <span>أوامر التوريد</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch9" checked>
+                                <label for="switch9"></label>
+                                <span class="status-text enabled" id="status9">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>إدارة البيانات والوحدات</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch10" checked>
+                                <label for="switch10"></label>
+                                <span class="status-text enabled" id="status10">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>إدارة العمولات</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch11" checked>
+                                <label for="switch11"></label>
+                                <span class="status-text enabled" id="status11">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>تتبع الوقت</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch12" checked>
+                                <label for="switch12"></label>
+                                <span class="status-text enabled" id="status12">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>دورة العمل</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch13" checked>
+                                <label for="switch13"></label>
+                                <span class="status-text enabled" id="status13">تم التفعيل</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- إدارة الحسابات -->
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-header section-title">إدارة الحسابات</div>
+                    <div class="card-body">
+                        <div class="toggle-container">
+                            <span>الخزينة</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch14" checked>
+                                <label for="switch14"></label>
+                                <span class="status-text enabled" id="status14">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>الحسابات البنكية والتوريد اليومية</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch15" checked>
+                                <label for="switch15"></label>
+                                <span class="status-text enabled" id="status15">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>دورة الشيكات</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch16">
+                                <label for="switch16"></label>
+                                <span class="status-text" id="status16">تم التعطيل</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- إدارة الموارد البشرية -->
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-header section-title" style="color: #ff8000;">إدارة الموارد البشرية</div>
+                    <div class="card-body">
+                        <div class="toggle-container">
+                            <span>الموظفين</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch17" checked>
+                                <label for="switch17"></label>
+                                <span class="status-text enabled" id="status17">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>الهيكل التنظيمي</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch18" checked>
+                                <label for="switch18"></label>
+                                <span class="status-text enabled" id="status18">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>حضور الموظفين</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch19" checked>
+                                <label for="switch19"></label>
+                                <span class="status-text enabled" id="status19">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>المرتبات</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch20" checked>
+                                <label for="switch20"></label>
+                                <span class="status-text enabled" id="status20">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>الطلبات</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch21" checked>
+                                <label for="switch21"></label>
+                                <span class="status-text enabled" id="status21">تم التفعيل</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- إدارة علاقات العملاء -->
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-header section-title">إدارة علاقات العملاء</div>
+                    <div class="card-body">
+                        <div class="toggle-container">
+                            <span>العملاء</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch22" checked>
+                                <label for="switch22"></label>
+                                <span class="status-text enabled" id="status22">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>المخزون والمرتجعات</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch23" checked>
+                                <label for="switch23"></label>
+                                <span class="status-text enabled" id="status23">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>العضوية</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch24" checked>
+                                <label for="switch24"></label>
+                                <span class="status-text enabled" id="status24">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>حضور العملاء</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch25" checked>
+                                <label for="switch25"></label>
+                                <span class="status-text enabled" id="status25">تم التفعيل</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- العامة -->
+            <div class="col-lg-6 col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-header section-title">العامة</div>
+                    <div class="card-body">
+                        <div class="toggle-container">
+                            <span>SMS</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch26" checked>
+                                <label for="switch26"></label>
+                                <span class="status-text enabled" id="status26">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>المتجر الإلكتروني</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch27" checked>
+                                <label for="switch27"></label>
+                                <span class="status-text enabled" id="status27">تم التفعيل</span>
+                            </div>
+                        </div>
+                        <div class="toggle-container">
+                            <span>الفروع</span>
+                            <div class="custom-switch">
+                                <input type="checkbox" id="switch28" checked>
+                                <label for="switch28"></label>
+                                <span class="status-text enabled" id="status28">تم التفعيل</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // الحصول على جميع أزرار التبديل
+            const switches = document.querySelectorAll('.custom-switch input[type="checkbox"]');
+
+            switches.forEach(function(switchElement) {
+                // تحديث النص عند تحميل الصفحة بناءً على الحالة الحالية
+                updateStatusText(switchElement);
+
+                // إضافة مستمع لتغيير حالة التبديل
+                switchElement.addEventListener('change', function() {
+                    updateStatusText(switchElement);
+                });
+            });
+
+            // تحديث نص الحالة بناءً على حالة التبديل
+            function updateStatusText(switchElement) {
+                const statusText = switchElement.parentElement.nextElementSibling;
+                if (switchElement.checked) {
+                    statusText.textContent = 'تم التفعيل';
+                    statusText.classList.add('enabled');
+                } else {
+                    statusText.textContent = 'تم التعطيل';
+                    statusText.classList.remove('enabled');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

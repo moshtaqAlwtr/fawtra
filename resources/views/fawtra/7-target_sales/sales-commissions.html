@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عمولات المبيعات</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="../Design/css/data.css">
+
+    <style>
+        body {
+            background-color: #f0f4f8;
+            color: #333;
+            font-family: Arial, sans-serif;
+            text-align: right;
+        }
+
+        /* تنسيق الشريط العلوي */
+        .navbar {
+            background-color: #4b6cb7;
+            background-image: linear-gradient(315deg, #4b6cb7 0%, #182848 74%);
+        }
+
+        .navbar .navbar-brand {
+            color: #fff !important;
+            font-weight: bold;
+        }
+
+        /* شكل الخلفية الرئيسية */
+        .container-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin-top: 20px;
+        }
+
+        /* تنسيق الحقول */
+        .form-control, .form-select {
+            border-radius: 6px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* تخصيص الأزرار */
+        .btn-primary {
+            background-color: #1d8cf8;
+            border-color: #1d8cf8;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* شريط الأدوات */
+        .toolbar {
+            background-color: #f9f9f9;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .pagination-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .page-info {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* تخصيص حقل إدخال التاريخ */
+        .date-picker {
+            background-color: #f0f9ff;
+            color: #2980b9;
+            font-weight: bold;
+            border: 1px solid #2980b9;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .date-picker:focus {
+            background-color: #d9efff;
+            outline: none;
+        }
+
+        /* تنسيق الجدول */
+        .table-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .table thead th {
+            background-color: #182848;
+            color: white;
+            font-weight: bold;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f9ff;
+        }
+
+        /* تخصيص أيقونات الخيارات */
+        .dropdown-menu-custom {
+            min-width: 150px;
+        }
+
+        .three-dots {
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .employee-icon {
+            font-size: 20px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- الشريط العلوي -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand mx-auto" href="#">عمولات المبيعات</a>
+        </div>
+    </nav>
+
+    <!-- شريط الأدوات أسفل الشريط العلوي -->
+    <div class="container mt-4">
+        <div class="toolbar">
+            <!-- زر الإجراءات -->
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="actionsMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                    الإجراءات
+                </button>
+                <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="actionsMenu">
+                    <li><a class="dropdown-item" href="#" onclick="downloadCSV()"><i class="bi bi-file-earmark-arrow-down"></i> تصدير</a></li>
+                </ul>
+            </div>
+            
+        
+
+            <!-- ترقيم الصفحات -->
+            <div class="pagination-toolbar">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination mb-0">
+                        <li class="page-item"><a class="page-link" href="#">«</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">»</a></li>
+                    </ul>
+                </nav>
+                <span class="page-info">صفحة 1 من 146</span>
+            </div>
+        </div>
+
+        <!-- الحاوية الرئيسية -->
+        <div class="container-section">
+            <!-- عناصر البحث والتصفية -->
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="commissionType" class="form-label">نوع العملية</label>
+                    <select id="commissionType" class="form-select">
+                        <option>الكل</option>
+                        <option>نوع 1</option>
+                        <option>نوع 2</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="commissionRules" class="form-label">قواعد العمولة</label>
+                    <select id="commissionRules" class="form-select">
+                        <option>قواعد العمولة</option>
+                        <option>قاعدة 1</option>
+                        <option>قاعدة 2</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="employeeSearch" class="form-label">موظف</label>
+                    <input type="text" id="employeeSearch" class="form-control" placeholder="بحث بواسطة موظف">
+                </div>
+                <div class="col-md-3">
+                    <label for="dateFrom" class="form-label">تاريخ العملية التجارية من</label>
+                    <input type="text" id="deliveryStartDate" class="form-control" placeholder="" style="width: 100%;">
+
+                </div>
+                
+                <div class="col-md-3 mt-3">
+                    <label for="dateTo" class="form-label">تاريخ العملية التجارية إلى</label>
+                    <input type="text" id="deliveryStartDate" class="form-control" placeholder="" style="width: 100%;">
+
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-primary">بحث</button>
+                <button class="btn btn-outline-secondary">إلغاء الفلاتر</button>
+            </div>
+
+            <!-- الجدول -->
+            <div class="table-container mt-4">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>المعرف</th>
+                            <th>موظف</th>
+                            <th>العملية</th>
+                            <th>مبلغ المبيعات</th>
+                            <th>كمية المبيعات</th>
+                            <th>عمولة</th>
+                            <th>
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        ترتيب بواسطة
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-custom" aria-labelledby="sortDropdown">
+                                        <li><a class="dropdown-item" href="#"> Employee Name (Alphabetically)</a></li>
+                                        <li><a class="dropdown-item" href="#">تاريخ الإنشاء</a></li>
+                                    </ul>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" id="row2956" name="selectedRows">
+                                <label for="row2956" class="ms-2">2956</label>
+                            </td>
+                            <td><i class="bi bi-person-circle employee-icon"></i> محمد الادريسي</td>
+                            <td>فاتورة #08497 <br> 24/09/2024</td>
+                            <td>432.00 ر.س</td>
+                            <td>24 عناصر</td>
+                            <td>12.96 ر.س</td>
+                            <td class="checkbox-cell">
+                                <div class="dropdown">
+                                    <span class="three-dots" data-bs-toggle="dropdown">⋮</span>
+                                    <div class="dropdown-menu dropdown-menu-custom">
+                                        <a class="dropdown-item" href="#"><i class="bi bi-eye"></i> عرض</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" class="form-check-input" id="row2956" name="selectedRows">
+                                <label for="row2956" class="ms-2">2956</label>
+                            </td>
+                            <td><i class="bi bi-person-circle employee-icon"></i> محمد الادريسي</td>
+                            <td>فاتورة #07634 <br> 11/06/2024</td>
+                            <td>270.00 ر.س</td>
+                            <td>15 عناصر</td>
+                            <td>8.10 ر.س</td>
+                            <td class="checkbox-cell">
+                                <div class="dropdown">
+                                    <span class="three-dots" data-bs-toggle="dropdown">⋮</span>
+                                    <div class="dropdown-menu dropdown-menu-custom">
+                                        <a class="dropdown-item" href="#"><i class="bi bi-eye"></i> عرض</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- مكتبات JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    
+    <script src="../js/date.js"></script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            flatpickr(".date-picker", {
+                dateFormat: "Y-m-d",
+                locale: "ar",
+                allowInput: true
+            });
+        });
+    </script>
+        <script>
+            function downloadCSV() {
+                // البيانات التي تريد وضعها في الملف CSV
+                const data = [
+                    ["Header1", "Header2", "Header3"],
+                    ["Value1", "Value2", "Value3"],
+                    ["Value4", "Value5", "Value6"]
+                ];
+                
+                // تحويل البيانات إلى صيغة CSV
+                let csvContent = "data:text/csv;charset=utf-8," 
+                    + data.map(row => row.join(",")).join("\n");
+        
+                // إنشاء رابط مؤقت لتحميل الملف
+                const encodedUri = encodeURI(csvContent);
+                const a = document.createElement("a");
+                a.href = encodedUri;
+                a.download = "data.csv"; // اسم الملف الذي سيتم تحميله
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            }
+        </script>
+        
+</body>
+</html>

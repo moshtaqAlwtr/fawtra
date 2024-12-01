@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أضف مستندًا</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
+        .top-bar {
+            background-color: #007bff;
+            padding: 10px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+        }
+        .container {
+            padding: 20px;
+            margin: auto;
+            max-width: 1200px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .upload-box {
+            padding: 20px;
+            border: 2px dashed #ccc;
+            background-color: #f9f9f9;
+            text-align: center;
+            color: #777;
+        }
+        .button-group {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .button-group button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .save-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .cancel-btn {
+            background-color: #dc3545;
+            color: white;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <button>الذهاب إلى الموقع</button>
+        <button>المساعدة</button>
+    </div>
+
+    <div class="container">
+        <h2>أضف مستندًا</h2>
+
+        <div class="form-group">
+            <label for="document-name">مسمى المستند</label>
+            <input type="text" id="document-name" placeholder="أدخل اسم المستند" />
+        </div>
+
+        <div class="form-group">
+            <label for="document-upload">المرفقات</label>
+            <div class="upload-box">
+                اسحب الملف هنا أو اختر من جهازك
+                <input type="file" id="document-upload" />
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="save-btn">حفظ</button>
+            <button class="cancel-btn" onclick="window.location.href='documents.html'">إلغاء</button>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,856 @@
+
+$violet_1: #7a80b1;
+$violet_2: #75799d;
+$violet_3: #8186b5;
+$violet_4: #3a3e63;
+$violet_5: #4e5381;
+$light_sky_1: #dbe7f3;
+$light_sky_2: #bfd4ea;
+$gray_1: #495057;
+$gray_2: #ced4da;
+$gray_3: #f6f9fc;
+$gray_4: #e9ecef;
+$gray_5: #f8f9fa;
+$sky_1: #00b0ef;
+$sky_2: #008abc;
+$blue_1: #007bff;
+$white: #fff;
+$yellow_1: #fff9db;
+$red_1: #fc5f7d;
+$yellow_2: #fff5c5;
+
+@mixin media-min($media) {
+    @media only screen and (min-width: $media) { @content; }
+}
+
+@mixin media-max($media) {
+    @media only screen and (max-width: $media) { @content; }
+}
+
+@mixin rtl($bodyClassOrId: '') {
+    .rtl#{$bodyClassOrId} &{
+        @content;
+    }
+}
+
+@mixin ltr($bodyClassOrId: '') {
+    .ltr#{$bodyClassOrId} & {
+        @content;
+    }
+}
+
+/**
+ * Card Heading
+ */
+
+body .head-bar {
+    color: $violet_1 !important;
+    background: $gray_3;
+    border: none;
+    border-bottom: 1px solid rgba($gray_2, 0.45);
+}
+
+body .edit_custom_details {
+    color: $violet_5 !important;
+    margin-right: 0;
+    margin-left: 0;
+    &:hover {
+        color: $violet_3 !important;
+        text-decoration: underline;
+    }
+}
+
+/**
+ * Labels
+ */
+
+body label {
+    color: $violet_2;
+    font-weight: 700 !important;
+    font-size: 14px;
+}
+
+/**
+ * Inputs
+ */
+
+body .form-control,
+body select {
+    color: $gray_1;
+    background-color: $white;
+    border: 1px solid $gray_2;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 14px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    &::placeholder {
+        color: $violet_3;
+    }
+    &:focus,
+    &:active,
+    &.ms-ctn-focus {
+        border-color: #80bdff;
+        box-shadow: rgba(0, 123, 255, 0.25) 0px 0px 0px 3.2px;
+    }
+}
+
+body .select2-container .select2-selection--single {
+    height: 34px;
+}
+
+body .ms-ctn .ms-sel-item {
+    color: #485563;
+    border: 1px solid #aac6e3;
+    border-radius: 4px;
+    background: #dbe7f3;
+}
+
+body.ltr .ms-ctn .ms-sel-item {
+    padding-right: 0;
+}
+
+body .ms-sel-ctn .ms-sel-item .ms-close-btn {
+    color: $violet_2;
+    background: none;
+    line-height: 0.4;
+    font-size: 12px;
+    width: unset;
+    height: unset;
+    margin-top: 2px;
+    margin-left: 4px;
+    margin-right: 4px;
+    &::before {
+        content: '×';
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+    }
+    &:hover {
+        &::before {
+            background: $violet_3;
+            color: $white;
+        }
+    }
+}
+
+body .ms-ctn .ms-trigger {
+    width: 30px;
+    &:hover {
+        width: 30px;
+        border-radius: 0;
+        background-color: $light_sky_1;
+    }
+}
+
+body.ltr .ms-ctn .ms-trigger {
+    &:hover {
+        right: 0;
+    }
+    .ms-trigger-ico {
+        margin-left: 10px;
+    }
+}
+
+body.rtl .ms-ctn .ms-trigger {
+    &:hover {
+        left: 0;
+    }
+    .ms-trigger-ico {
+        margin-right: 10px;
+    }
+}
+
+.multiselect.dropdown-toggle.btn.btn-default {
+    color: $gray_1;
+    background-color: $white;
+    border: 1px solid $gray_2;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 14px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    &:focus {
+        border-color: #80bdff;
+        box-shadow: rgba(0, 123, 255, 0.25) 0px 0px 0px 3.2px;
+    }
+    .caret {
+        @include ltr() {
+            margin-left: 5px;
+        }
+        @include rtl() {
+            margin-right: 5px;
+        }
+    }
+}
+.dropdown-menu.multiselect-container {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    .multiselect-item.filter {
+        .input-group {
+            border: 1px solid $gray_2;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            // &:hover,
+            // &:focus {
+            //     border-color: #80bdff;
+            //     box-shadow: rgba(0, 123, 255, 0.25) 0px 0px 0px 3.2px;
+            // }
+            .input-group-addon {
+                border: 0;
+                background: transparent;
+            }
+            .multiselect-search {
+                border: 0;
+                &:focus,
+                &:active {
+                    box-shadow: none;
+                    border: 0;
+                }
+            }
+            .multiselect-clear-filter.btn.btn-default {
+                background: transparent;
+                border: 0;
+                &:hover {
+                    color: $red_1 !important;
+                }
+            }
+        }
+    }
+    // li {
+    //     a {
+    //         &:hover {
+    //             background-color: $sky_1;
+    //             color: $white;
+    //         }
+    //     }
+    // }
+    // li.active {
+    //     a {
+    //         background-color: $sky_1;
+    //         color: $white !important;
+    //     }
+    // }
+}
+
+.note-editor.note-frame {
+    border-color: $gray_2;
+    .note-statusbar,
+    .panel-heading {
+        background: $gray_5;
+    }
+    .btn-default {
+        background-color: #ffffff;
+        border-color: #cccccc;
+    }
+}
+body .invoice-doc-uploader {
+    border-color: rgba($gray_2, 0.75);
+}
+body .ajax-upload-dragdrop {
+    font-weight: 500;
+    border-color: transparent;
+    color: rgba($gray_1, 0.45);
+    b {
+        font-weight: 500;
+    }
+    .ajax-file-upload {
+        background-color: $sky_1;
+        &:hover,
+        &:focus {
+            background-color: $sky_2;
+        }
+    }
+}
+
+/**
+ * Tabs
+ */
+
+.nav:not(.user-nav) > li > a,
+.nav:not(.user-nav) .open > a {
+    color: $violet_1;
+}
+.nav:not(.user-nav) > li > a:focus,
+.nav:not(.user-nav) > li > a:hover,
+.nav:not(.user-nav) .open > a,
+.nav:not(.user-nav) .open > a:focus,
+.nav:not(.user-nav) .open > a:hover {
+    color: $violet_5;
+    background: $white;
+    border-bottom-color: $white;
+}
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    color: $violet_5;
+}
+
+
+/**
+ * Side tabs
+ */
+.side-nav {
+    background: $gray_3;
+    .nav-pills {
+        > li {
+            &.active {
+                > a {
+                    &:before,
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Tables
+ */
+
+.table {
+    border: 1px solid $gray_4;
+    border-collapse: collapse;
+    border-spacing: 0;
+    height: 1px;
+    >thead>tr,
+    .table-header {
+        border-bottom: 1px solid $gray_4;
+    }
+    >tfoot>tr,
+    .table-footer {
+        border-top: 1px solid $gray_4;
+    }
+    >tfoot>tr>td,
+    >tfoot>tr>th,
+    >thead>tr>td,
+    >thead>tr>th,
+    >tbody>tr>th {
+        padding: 8px 12px;
+        line-height: 1;
+        border: 0;
+    }
+    >tbody>tr.active>td,
+    >tbody>tr.active>th,
+    >tbody>tr>td.active,
+    >tbody>tr>th.active,
+    >tfoot>tr.active>td,
+    >tfoot>tr.active>th,
+    >tfoot>tr>td.active,
+    >tfoot>tr>th.active,
+    >thead>tr.active>td,
+    >thead>tr.active>th,
+    >thead>tr>td.active,
+    >thead>tr>th.active {
+        background-color: $gray_3;
+        color: $violet_2;
+    }
+    >tbody>tr {
+        border-bottom: 1px solid $gray_4;
+        >td {
+            border: 0;
+            border-right: 1px solid $gray_4;
+        }
+        >td:not(.td_editable) {
+            padding: 10px;
+        }
+        >td.td_editable {
+            padding: 0;
+            background-color: $yellow_1;
+            height: 100%;
+            &:hover {
+                background-color: $yellow_2;
+            }
+            > select,
+            > input[type='text'],
+            > input[type='number'],
+            > textarea:not(.resizable),
+            > div > span > select,
+            > div > span > input[type='text'],
+            > div > span > input[type='number'],
+            > div > span > textarea:not(.resizable),
+            > div > span > textarea.editable-area:not(.resizable) {
+                height: 100% !important;
+            }
+            > select,
+            > input[type='text'],
+            > input[type='number'],
+            > textarea,
+            > div > span > select,
+            > div > span > input[type='text'],
+            > div > span > input[type='number'],
+            > div > span > textarea,
+            > div > span > textarea.editable-area {
+                min-height: 100%;
+                margin: 0 !important;
+                display: block;
+                // width: 100%;
+                background-color: transparent;
+                border: 0;
+                padding: 6px 12px;
+                min-width: 55px;
+                &::placeholder {
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 40px;
+                }
+                &:hover,
+                &:focus,
+                &:active {
+                    box-shadow: 0 0 0 1px $sky_1 inset;
+                    outline: 0;
+                }
+                &:focus,
+                &:active {
+                    &::placeholder {
+                        font-size: 0;
+                    }
+                }
+                &[readonly="readonly"] {
+                    margin: 0 !important;
+                    height: 100% !important;
+                    border-radius: 0 !important;
+                    background-color: $gray_3;
+                }
+            }
+            > div > span > select {
+                &.item-discount-type,
+                &.unit-factor-id {
+                  min-width: 40px;
+                  width: 40px;
+                  padding: 0;
+                  text-align: center;
+                }
+            }
+            > textarea {
+                &.item-description {
+                    min-width: 100px;
+                }
+            }
+            > select {
+                &.item-store {
+                    min-width: 100px;
+                }
+            }
+            > div > span {
+                padding-right: 0;
+                padding-left: 0;
+                border-color: $gray_4 !important;
+                border-width: 1px !important;
+            }
+            .item-name,
+            .item-wrap,
+            .col-input-m-0,
+            .form-group,
+            .input-group-flex {
+                height: 100%;
+                position: relative;
+                select,
+                input[type='text'],
+                input[type='number'],
+                textarea,
+                textarea.editable-area {
+                    height: 100%;
+                    margin: 0;
+                    display: block;
+                    width: 100%;
+                    background-color: transparent;
+                    border: 0;
+                    padding: 6px 12px;
+                    &::placeholder {
+                        font-size: 14px;
+                        font-weight: 500;
+                        line-height: 40px;
+                    }
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        box-shadow: 0 0 0 1px $sky_1;
+                        outline: 0;
+                    }
+                    &:focus,
+                    &:active {
+                        &::placeholder {
+                            font-size: 0;
+                        }
+                    }
+                    &[readonly="readonly"] {
+                        margin: 0 !important;
+                        height: 100% !important;
+                        border-radius: 0 !important;
+                        background-color: $gray_3 !important;
+                    }
+                }
+                .bootstrap-select {
+                    height: 100%;
+                    margin: 0;
+                    display: block;
+                    width: 100%;
+                    background-color: transparent;
+                    border: 0;
+                    padding: 0;
+                    .btn.dropdown-toggle.selectpicker {
+                        height: 100%;
+                        margin: 0;
+                        display: block;
+                        width: 100%;
+                        background-color: transparent;
+                        border: 0;
+                        padding: 6px 12px;
+                        &:hover,
+                        &:focus,
+                        &:active {
+                            box-shadow: 0 0 0 1px $sky_1;
+                            outline: 0;
+                        }
+                    }
+                }
+            }
+            &.select-item {
+                .item-name {
+                    .item-wrap {
+                        min-height: 52px;
+                        height: auto;
+                        textarea {
+                            border: 1px solid $gray_2;
+                            background: $yellow_2;
+                            // height: 100% !important;
+                            min-height: 52px;
+                        }
+                        a.select-arrow-bg {
+                            height: 100% !important;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            line-height: 1 !important;
+                            background-color: $yellow_2;
+                            color: $violet_3;
+                            border: 1px solid $gray_2;
+                            &:hover,
+                            &:focus {
+                                box-shadow: 0 0 0 1px $sky_1;
+                                outline: 0;
+                            }
+                            @include ltr() {
+                                right: 0;
+                            }
+                            @include rtl() {
+                                left: 0;
+                            }
+                        }
+                    }
+                    .trackingInput {
+                        > select,
+                        > input,
+                        .form-control.ms-ctn {
+                            margin: 0 !important;
+                            background: $white;
+                            border: 1px solid #afafaf;
+                            min-height: 36px;
+                            &:hover,
+                            &:focus {
+                                border-color: $sky_1;
+                                box-shadow: none !important;
+                            }
+                        }
+                        .form-control.ms-ctn {
+                            .ms-helper {
+                                color: #fc5f7d;
+                                font-size: 9px;
+                                font-weight: 500;
+                            }
+                            input[type='text'] {
+                                padding: 0;
+                                min-height: 22px;
+                                &:hover,
+                                &:focus {
+                                    box-shadow: none;
+                                }
+                            }
+                            &.ms-ctn-focus {
+                                border-color: $sky_1;
+                                box-shadow: none !important;
+                            }
+                        }
+                        > select {
+                            font-size: 12px;
+                            min-width: 240px;
+                        }
+                    }
+                }
+            }
+        }
+        >td.move-table {
+            padding-top: 3px;
+            padding-bottom: 3px;
+            background-color: $gray_5 !important;
+        }
+        >td.delete-product-cell {
+            background-color: $gray_5;
+            width: 45px;
+            min-height: 52px;
+            padding: 0;
+            .btn-s2020 {
+                width: 45px;
+                min-height: 52px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &.text-danger-s2020 {
+                    &:hover {
+                        border-color: $red_1;
+                    }
+                }
+                &.text-dark-s2020 {
+                    &:hover {
+                        border-color: $gray_1;
+                    }
+                }
+            }
+        }
+        >td.item-total,
+        >td.item-subtotal {
+            background-color: $gray_5 !important;
+            span {
+                padding-right: 0;
+                padding-left: 0;
+            }
+        }
+        >td:not(.td_editable) {
+            background-color: $gray_5 !important;
+            span {
+                padding-right: 0;
+                padding-left: 0;
+            }
+        }
+    }
+    &.table-totals-s2020 {
+        background: transparent;
+        border: 0;
+        tr {
+            &.notEditable {
+                background: transparent !important;
+                border: 0;
+            }
+            td {
+                &:not(.td_editable) {
+                    background: $gray_5;
+                }
+                &.new-row-cell {
+                    padding: 0;
+                    border: 0;
+                    background: transparent !important;
+                }
+                strong {
+                    color: $violet_2;
+                }
+            }
+        }
+    }
+    .table-tr-totals-s2020 {
+        &.notEditable {
+            background: transparent !important;
+            border: 0 !important;
+        }
+        td {
+            &.bg-transparent {
+                background: transparent !important;
+            }
+            &:not(.bg-transparent) {
+                background: $gray_5 !important;
+            }
+            &.new-row-cell {
+                padding: 0 !important;
+                border: 0 !important;
+                background: transparent !important;
+            }
+            strong {
+                color: $violet_2 !important;
+            }
+        }
+    }
+    &.bg-transparent {
+        background: transparent !important;
+    }
+}
+
+
+/**
+ * List
+ */
+
+.products-list {
+    border: 0;
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.1);
+    .products-list-ul {
+        overflow: auto;
+        max-height: 200px;
+        li {
+            padding: 0 10px;
+            color: $violet_4;
+            &:hover,
+            &.active {
+                background-color: $sky_1;
+                * {
+                    color: $white;
+                }
+            }
+            a {
+                padding: 5px 10px 15px 10px !important;
+                position: relative;
+                top: 5px;
+                .view-click {
+                    &:hover {
+                        color: $violet_4;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Checkbox
+ */
+
+.checkbox-container-s2020 {
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $gray_1;
+    white-space: nowrap;
+    background-color: $gray_4;
+    border: 1px solid $gray_2;
+    .clip-check {
+        margin: 0;
+        width: 100%;
+        label {
+            display: block;
+            margin: 0;
+        }
+        input[type=checkbox]:checked + label {
+            &::before {
+                border: 0;
+                background-color: $blue_1;
+            }
+        }
+    }
+}
+
+/**
+ * Dropdown
+ */
+
+.dropdown-menu:not(.multiselect-container) {
+    min-width: 160px;
+    padding: 0 0;
+    margin: 0 0;
+    font-size: 13px;
+    background-color: $white;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.1);
+    > li > a,
+    .ms-res-item {
+        border: 0;
+        border-bottom: 1px solid rgba(0,0,0,.04);
+        color: $violet_4;
+        padding: 3px 12px;
+        transition: all .2s ease-in-out;
+        min-height: 40px;
+        line-height: 40px;
+        font-weight: 400;
+        &:hover,
+        &:focus {
+            background: $gray_2;
+        }
+    }
+    &>.active>a,
+    &>.active>a:focus,
+    &>.active>a:hover {
+        background: $sky_1;
+        color: $white;
+    }
+}
+
+
+/**
+ * Snippets
+ */
+
+ .page-snippets {
+    .snippet-content {
+        border: 2px solid $light_sky_2;
+        box-shadow: 0 0 3px 0 $light_sky_2;
+        padding: 20px;
+        border-radius: 3px;
+        background: $gray_3;
+        position: relative;
+        overflow: hidden;
+        font-size: 13px;
+        line-height: 21px;
+        &::before {
+            // content: '\f128';
+            // font-family: 'Font Awesome 5 Pro';
+            // font-weight: 600;
+            // position: absolute;
+            // bottom: -1px;
+            // font-size: 111px;
+            // color: lighten($light_sky_1, 3);
+            // line-height: 0.7;
+            // transform: rotate(14deg);
+            // pointer-events: none;
+            // @include ltr() {
+            //     right: -7px;
+            // }
+            // @include rtl() {
+            //     left: -7px;
+            //     transform: rotate(-14deg) scaleX(-1);
+            // }
+            content: '';
+            display: none;
+        }
+        p {
+            color: $violet_4;
+            padding-bottom: 0;
+            position: relative;
+            &:not(:last-child) {
+                padding-bottom: 10px;
+            }
+        }
+        a.close {
+            background: transparent;
+            box-shadow: 0 0 1px 1px transparent;
+            font-size: 10px;
+            font-weight: 800;
+            text-shadow: none;
+            height: 20px;
+            line-height: 22px;
+            top: 3px;
+            width: 20px;
+            color: $violet_2;
+            border-radius: 50px;
+            transition: all .2s ease-in-out;
+            @include ltr() {
+                right: 3px;
+            }
+            @include rtl() {
+                left: 3px;
+            }
+            &:hover,
+            &:focus {
+                background: $light_sky_1;
+                box-shadow: 0 0 1px 1px $light_sky_2;
+            }
+        }
+    }
+}

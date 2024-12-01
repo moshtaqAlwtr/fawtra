@@ -1,0 +1,53 @@
+@import "../variables";
+@import "../mixins";
+
+.fixed-toast{
+  position: fixed;
+  z-index: 9999999999;
+  bottom: 0;
+  transition: 0.3s all;
+  color: $white;
+//   background: $inactive;
+  border-radius: $border-radius;
+  padding: 10px 15px;
+  min-width: 300px;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include ltr(){
+    right: 25px;
+  }
+  @include rtl(){
+    left: 25px;
+  }
+  &.active{
+    bottom: 25px;
+  }
+  @include media-max(md) {
+    left: 0 !important;
+    bottom: -500px;
+    border-radius: 0 !important;
+    max-width: 100%;
+    min-width: 100%;
+    &.active{
+      bottom: 0;
+    }
+  }
+  p{
+    margin-bottom: 0;
+    padding-bottom: 0;
+    color: $white;
+    &::first-letter{
+      text-transform: capitalize;
+    }
+  }
+  .pointer{
+    cursor: pointer;
+    &:hover{
+      .text-dark-lt{
+        color: $gray-900 !important;
+      }
+    }
+  }
+}

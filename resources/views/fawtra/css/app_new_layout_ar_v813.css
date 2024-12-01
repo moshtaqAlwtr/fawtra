@@ -1,0 +1,248 @@
+.MoreActionsContainer .submenu-more-actions {
+    left: 0;
+}
+
+.main-nav>ul>li a .mdi-chevron-down {
+    right: auto;
+    left: 15px;
+}
+
+.super-menu.mn_organizational .menu-item,
+.super-menu.mn_installment_agreement .menu-item {
+    padding: 1px 0;
+}
+
+.super-menu.mn_organizational .menu-item span,
+.super-menu.mn_installment_agreement .menu-item span {
+    padding-left: 0;
+}
+
+.sorting-by {
+    border-top: 0px;
+    border-left: 0px;
+}
+
+.sorting-by.btn>i.pull-left,
+.sorting-by.btn>i.pull-right {
+    line-height: 32px;
+}
+
+.status-list {
+    float: left;
+}
+
+.requit-list .req-view {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+.main-nav {
+    border-left: 1px thick #d6d6d6;
+    border-right: none;
+    background-attachment: fixed;
+}
+
+.status-list {
+    float: right;
+}
+
+.filter-results .filter-tags-new {
+    left: 22px;
+    right: auto;
+}
+
+.mb-opt-btn {
+    float: right;
+    margin-left: 7px;
+    margin-right: 0;
+}
+
+.mb-opt-btn .dropdown-menu li a {
+    text-align: right;
+}
+
+.filter-results .filter-tags-new a {
+    padding-right: 5px;
+    padding-left: 0px;
+}
+
+.filter-results .filter-tags-new i {
+    margin-left: auto !important;
+    margin-right: 5px !important;
+}
+
+.shrinked-sidebar .main-nav>ul>li a .list-icon {
+    margin-right: 18px;
+}
+
+.pad-r-16 {
+    padding-right: 16px !important;
+}
+
+.drop-down-btn .pad-r-16 {
+    padding-right: auto !important;
+}
+
+.filter-actions button {
+    margin-left: auto !important;
+    margin-right: 8px;
+}
+
+.action-global-btn {
+    margin-left: 7px !important;
+}
+
+.action-global-btn i {
+    margin: -10px -10px -7px 10px;
+    float: right;
+}
+
+.btn-action-blue,
+.btn-action-blue:hover,
+.btn-action-blue:active {
+    background-color: #36a8e0;
+    color: #fff !important;
+}
+
+.only-mob {
+    display: none;
+}
+
+.new-global-btn {
+    float: left;
+    padding-right: 0px;
+    margin-right: 7px;
+    margin-left: 0px;
+    line-height: 30px;
+}
+
+.new-global-btn i {
+    margin: auto;
+    margin-left: 16px;
+}
+
+#FilterDiv .fa-sort {
+    margin-right: 5px !important;
+    margin-left: -10px;
+    background-color: #f6f9fc;
+}
+
+.shrinked-sidebar .header {
+    right: 0px;
+}
+
+.header {
+    left: 0px;
+    right: 210px;
+}
+
+@media screen and (max-width:1024px) {
+    .side-nav {
+        right: 0px;
+        left: auto;
+    }
+    .header {
+        right: 0px;
+        left: 0px;
+    }
+}
+
+@media screen and (width: 768px) {
+    .nav-wrapper {
+        margin-right: 0px;
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .nav-wrapper {
+        margin-right: 140px;
+    }
+}
+
+@media screen and (max-device-width: 1024px) and (min-device-width: 768px) {
+    #FilterDiv .fa-sort {
+        margin-right: 5px !important;
+        margin-left: auto;
+    }
+    .search-btns-bar-footer .btn-md {
+        padding-right: 0px;
+    }
+    .search-btns-bar-footer .btn-md.btn-addon i {
+        float: right;
+        margin-right: 0px;
+        margin-left: 7px;
+    }
+    .pages-head {
+        position: fixed;
+        width: 100%;
+        right: 0px !important;
+        left: auto;
+    }
+}
+
+.status-list .dropdown-menu {
+    left: auto;
+    right: 0px;
+}
+
+@media screen and (max-width:767px) {
+    .payment-gateways .accordion-switch {
+        line-height: 78px;
+    }
+    .gateway-row {
+        padding-right: 50px;
+        padding-left: 0px;
+    }
+    .gateway-row h3 {
+        padding-right: 0px;
+    }
+    .form-end .btn-addon.btn-lg i {
+        margin: -10px -11px -12px 11px;
+    }
+    .header .mdi-account-circle {
+        font-size: 34px;
+        display: inline-block;
+        /*transform: translateY(6px) translateX(-4px);*/
+    }
+    #FilterDiv .fa-sort {
+        width: 33px !important;
+    }
+    .search-btns-bar-footer .btn-md .hidden-xs {
+        margin-right: 10px;
+    }
+    .top-actions {
+        padding-top: 0 !important;
+        float: left !important;
+    }
+    .none-view {
+        display: none !important;
+    }
+    .only-mob {
+        display: inline;
+    }
+    .page-head-btn {
+        margin-right: -3px;
+        float: right !important;
+    }
+    #pagin-desc {
+        display: none;
+    }
+    .header-elements .header-breadcrumbs-wrap {
+        display: table !important;
+    }
+    #top-bar-nav-section .select-item-gro .m-t-sm .Dj {
+        display: none;
+    }
+}
+
+#top-header-title {
+    display: table-cell;
+    vertical-align: middle;
+    color: white;
+    font-size: 15px;
+}
+
+.header-elements .header-breadcrumbs-wrap {
+    display: none;
+    height: 49px;
+}

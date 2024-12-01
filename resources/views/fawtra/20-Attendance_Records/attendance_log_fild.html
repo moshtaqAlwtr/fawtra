@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خيارات الاستيراد</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #f2f6fc;
+            font-family: 'Tajawal', sans-serif;
+            color: #333;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin-top: 30px;
+        }
+        .step-header {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #4a90e2;
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .step-progress {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+        .step {
+            flex: 1;
+            text-align: center;
+            color: #4a90e2;
+            font-weight: bold;
+            position: relative;
+        }
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: calc(100% - 40px);
+            height: 2px;
+            background-color: #d0d8e5;
+            z-index: -1;
+            transform: translateY(-50%);
+        }
+        .step-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background-color: #e6f0fb;
+            color: #4a90e2;
+            border-radius: 50%;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .step.active .step-circle {
+            background-color: #4a90e2;
+            color: #fff;
+        }
+        .content-area {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: right;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #4a90e2;
+        }
+        .form-control {
+            border-radius: 5px;
+            padding: 10px;
+            border: 1px solid #cbd2da;
+        }
+        .form-control:focus {
+            border-color: #4a90e2;
+            box-shadow: none;
+        }
+        .form-check-label {
+            color: #333;
+            font-weight: bold;
+        }
+        .btn-primary, .btn-secondary {
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background-color: #38a169;
+            border: none;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background-color: #2f855a;
+        }
+        .btn-back {
+            background-color: #4a90e2;
+            color: #fff;
+            border: none;
+        }
+        .btn-back:hover {
+            background-color: #3a7ab7;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header and Step Progress -->
+    <div class="step-header">خيارات الاستيراد</div>
+    <div class="step-progress">
+        <div class="step active">
+            <span class="step-circle">1</span>
+            <div>خيارات الاستيراد</div>
+        </div>
+        <div class="step">
+            <span class="step-circle">2</span>
+            <div>تحديد الحقول</div>
+        </div>
+        <div class="step">
+            <span class="step-circle">3</span>
+            <div>النتائج</div>
+        </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-area">
+        <!-- Form Elements -->
+        <form>
+            <div class="tab-pane fade show active" id="new-document" role="tabpanel" aria-labelledby="new-document-tab">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <div class="upload-area p-4 border border-dashed text-center">
+                            <i class="fas fa-cloud-upload-alt fa-2x text-primary mb-2"></i>
+                            <p>أسقط الملف هنا أو اختر من جهازك</p>
+                            <input type="file" class="form-control-file" style="display: none;" id="fileUploadInput">
+                            <button class="btn btn-primary" onclick="document.getElementById('fileUploadInput').click();">اختر ملف</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="quantity">المحدد <span class="text-danger">*</span></label>
+                <select class="form-control" id="quantity">
+                    <option>اختر المحدد</option>
+                    <option>الفاصلة (,)</option>
+                    <option>النقطة (.)</option>
+                    <option>فاصلة منقوطة (;)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="importHeader">
+                    <label class="form-check-label" for="importHeader" style="margin-right: 20px;">قم باستيراد الصف الأول من الملف</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="machine">ماكينة</label>
+                <select class="form-control" id="machine">
+                    <option>اختر ماكينة</option>
+                    <option>ماكينة 1</option>
+                    <option>ماكينة 2</option>
+                </select>
+            </div>
+            <!-- Next and Back Buttons -->
+            <div class="d-flex justify-content-between mt-4">
+                <button type="button" class="btn btn-back"><i class="fas fa-arrow-right"></i> الخطوة السابقة</button>
+                <button type="submit" class="btn btn-primary">الخطوة التالية <i class="fas fa-arrow-left"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

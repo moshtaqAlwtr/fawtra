@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+    <title>تقرير مشتريات المنتجات حسب المورد</title>
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            direction: rtl;
+            background: linear-gradient(135deg, #e9edf5, #cfd9df);
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .filter-bar {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .alert-warning {
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- الشريط العلوي -->
+    <header>تقرير مشتريات المنتجات حسب المنتج</header>
+
+    <!-- شريط الفلترة -->
+    <div class="container">
+        <div class="filter-bar">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="from-date" class="form-label">التاريخ من</label>
+                    <input type="text" class="form-control" id="from-date" placeholder="التاريخ من">
+                </div>
+                <div class="col-md-4">
+                    <label for="to-date" class="form-label">التاريخ إلى</label>
+                    <input type="text" class="form-control" id="to-date" placeholder="التاريخ إلى">
+                </div>
+                <div class="col-md-4">
+                    <label for="supplier" class="form-label">المورد</label>
+                    <select class="form-select" id="supplier">
+                        <option selected>الكل</option>
+                        <option value="1">مورد 1</option>
+                        <option value="2">مورد 2</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="employee" class="form-label">موظف</label>
+                    <select class="form-select" id="employee">
+                        <option selected>الكل</option>
+                        <option value="1">موظف 1</option>
+                        <option value="2">موظف 2</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="product" class="form-label">المنتج</label>
+                    <select class="form-select" id="product">
+                        <option selected>الكل</option>
+                        <option value="1">منتج 1</option>
+                        <option value="2">منتج 2</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="group-by" class="form-label">تجميع حسب</label>
+                    <select class="form-select" id="group-by">
+                        <option selected>المنتجات</option>
+                        <option value="1">الموردين</option>
+                        <option value="2">الموظفين</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="sort-by" class="form-label">ترتيب حسب</label>
+                    <select class="form-select" id="sort-by">
+                        <option selected>الكل</option>
+                        <option value="1">المنتجات</option>
+                        <option value="2">الموردين</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="btn btn-primary">عرض التقرير</button>
+                    <button class="btn btn-secondary">إلغاء الفلتر</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- رسالة عدم وجود بيانات -->
+        <div class="alert alert-warning" role="alert">
+            لا توجد بيانات توافق معطيات البحث.
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ar.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            flatpickr('#from-date', {
+                dateFormat: 'Y-m-d',
+                locale: 'ar',
+                allowInput: true,
+                defaultDate: 'today'
+            });
+            flatpickr('#to-date', {
+                dateFormat: 'Y-m-d',
+                locale: 'ar',
+                allowInput: true,
+                defaultDate: 'today'
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة عرض</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            direction: rtl;
+            text-align: right;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #007bff;
+            color: white;
+        }
+        .navbar a {
+            color: white;
+        }
+        .card {
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .form-control-sm {
+            height: 40px;
+        }
+        .btn-save {
+            margin-top: 20px;
+            width: 150px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .btn-save:hover {
+            background-color: #218838;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">إضافة عرض</a>
+            <div class="navbar-nav ml-auto">
+                <a class="nav-item nav-link" href="#">الذهاب إلى الموقع</a>
+                <a class="nav-item nav-link" href="#">المساعدة</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Offer Details Section -->
+        <div class="card">
+            <div class="card-header">
+                <h4><i class="fas fa-tags"></i> تفاصيل العرض</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-row">
+                    <!-- Offer Name -->
+                    <div class="form-group col-md-6">
+                        <label class="form-label" for="offerName">اسم العرض</label>
+                        <input type="text" class="form-control form-control-sm" id="offerName" placeholder="أدخل اسم العرض">
+                    </div>
+                    
+                    <!-- Valid From -->
+                    <div class="form-group col-md-3">
+                        <label class="form-label" for="validFrom">صالح من</label>
+                        <input type="date" class="form-control form-control-sm" id="validFrom">
+                    </div>
+
+                    <!-- Valid Until -->
+                    <div class="form-group col-md-3">
+                        <label class="form-label" for="validUntil">صالح حتى</label>
+                        <input type="date" class="form-control form-control-sm" id="validUntil">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Quantity Required -->
+                    <div class="form-group col-md-6">
+                        <label class="form-label" for="requiredQuantity">الكمية المطلوبة لتطبيق العرض</label>
+                        <input type="number" class="form-control form-control-sm" id="requiredQuantity" placeholder="أدخل الكمية المطلوبة">
+                    </div>
+
+                    <!-- Discount on Item -->
+                    <div class="form-group col-md-6">
+                        <label class="form-label" for="discountType">نوع </label>
+                        <select class="form-control form-control-sm" id="discountType">
+                            <option>خصم على البند</option>
+                            <option>اشتري كمية واحصل على خصم على اقل البند</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Discount Type -->
+                    <div class="form-group col-md-6">
+                        <label class="form-label" for="discountType">نوع الخصم</label>
+                        <select class="form-control form-control-sm" id="discountType">
+                            <option>خصم حقيقي</option>
+                            <option>خصم نسبي</option>
+                        </select>
+                    </div>
+                    <!-- Customer Classification -->
+                    <div class="form-group col-md-6">
+                        <label class="form-label" for="offerName">قيمة الخصم</label>
+                        <input type="text" class="form-control form-control-sm" id="offerName" placeholder="أدخل قيمة الخصم ">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="form-label" for="customerClassification">تصنيفات العملاء</label>
+                        <select class="form-control form-control-sm" id="customerClassification">
+                            <option>الكل</option>
+                            <option>تصنيف 1</option>
+                            <option>تصنيف 2</option>
+                        </select>
+                    </div>
+                    <!-- Customers -->
+                    <div class="form-group col-md-6">
+                        <label class="form-label" for="customers">العملاء</label>
+                        <select class="form-control form-control-sm" id="customers">
+                            <option>اختر</option>
+                            <option>عميل 1</option>
+                            <option>عميل 2</option>
+                        </select>
+                    </div>
+
+                    <!-- Active Checkbox -->
+                    <div class="form-group col-md-6 d-flex align-items-center">
+                        <input type="checkbox" id="isActive" class="ml-2">
+                        <label class="form-label mr-2" for="isActive">نشط</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Offer Units Details Section -->
+        <div class="card mt-3">
+            <div class="card-header">
+                <h4><i class="fas fa-box-open"></i> تفاصيل وحدات العرض</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-row">
+                    <!-- Unit Type -->
+                    <div class="form-group col-md-6">
+                        <label class="form-label" for="unitType">نوع الوحدة</label>
+                        <select class="form-control form-control-sm" id="unitType">
+                            <option>الكل</option>
+                            <option>وحدة 1</option>
+                            <option>وحدة 2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <div class="text-center mt-4">
+            <button class="btn btn-save text-white">حفظ</button>
+        </div>
+        
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

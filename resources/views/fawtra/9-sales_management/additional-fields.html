@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حقول إضافية</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            direction: rtl;
+            background-color: #e9eef3;
+        }
+        .navbar {
+            background-color: #0078d7;
+            padding: 10px;
+            color: white;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+        .navbar .btn {
+            margin-left: 10px;
+        }
+        .sidebar {
+            background-color: #0066a7;
+            width: 250px;
+            min-height: 100vh;
+            padding: 20px;
+            color: white;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #008cba;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar ul li i {
+            margin-left: 10px;
+        }
+        .content {
+            margin-right: 250px;
+            padding: 20px;
+        }
+        .form-section {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-section h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .form-section button {
+            margin: 20px 0;
+            background-color: #28a745;
+            color: white;
+        }
+        .form-section .btn-setting {
+            background-color: #17a2b8;
+            margin-right: 5px;
+            color: white;
+        }
+        .form-section .btn-remove {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="navbar d-flex justify-content-between">
+        <div>
+            <button class="btn btn-outline-light">الذهاب إلى الموقع</button>
+            <button class="btn btn-outline-light">المساعدة</button>
+        </div>
+        <div>محمد العنزي - Main Branch</div>
+    </div>
+
+    <!-- القائمة الجانبية -->
+    <div class="d-flex">
+        <div class="sidebar">
+            <ul>
+                <li><i class="fas fa-font"></i> سطر واحد</li>
+                <li><i class="fas fa-align-justify"></i> سطور متعددة</li>
+                <li><i class="fas fa-hashtag"></i> رقم</li>
+                <li><i class="fas fa-percentage"></i> رقم عشري</li>
+                <li><i class="fas fa-envelope"></i> البريد الإلكتروني</li>
+                <li><i class="fas fa-calendar"></i> التاريخ</li>
+                <li><i class="fas fa-clock"></i> الوقت</li>
+                <li><i class="fas fa-calendar-alt"></i> تاريخ ووقت</li>
+                <li><i class="fas fa-list"></i> القائمة المنسدلة</li>
+                <li><i class="fas fa-check-square"></i> القائمة متعددة الخيارات</li>
+                <li><i class="fas fa-dot-circle"></i> خيار وحيد</li>
+                <li><i class="fas fa-check"></i> مربع الإختيار</li>
+                <li><i class="fas fa-globe"></i> الموقع</li>
+                <li><i class="fas fa-dollar-sign"></i> العملة</li>
+            </ul>
+        </div>
+
+        <!-- منطقة المحتوى الرئيسية -->
+        <div class="content">
+            <div class="form-section">
+                <h1>هدايا مجانا <i class="fa fa-edit"></i></h1>
+                <div class="d-flex justify-content-start">
+                    <button class="btn btn-setting"><i class="fas fa-cog"></i></button>
+                    <button class="btn btn-remove"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="form-group">
+                    <label for="dropdown">منديب المبيعات</label>
+                    <select id="dropdown" class="form-control">
+                        <option value="">اختر مندوب المبيعات</option>
+                    </select>
+                </div>
+                <button class="btn">حفظ</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

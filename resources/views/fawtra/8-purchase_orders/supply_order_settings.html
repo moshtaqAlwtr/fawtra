@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body { background-color: #f1f5f9; direction: rtl; }
+        .icon-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            background-color: #fff;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+        .icon-card:hover {
+            transform: translateY(-5px);
+        }
+        .icon-card i {
+            font-size: 50px;
+            color: #6c757d;
+        }
+        .icon-card h6 {
+            font-weight: bold;
+            margin-top: 15px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container my-5">
+    <div class="row g-4 justify-content-center">
+        <!-- بطاقة الإجراءات -->
+        <div class="col-md-4 col-lg-2">
+            <div class="icon-card" onclick="location.href='supply_procedures.html'">
+                <i class="bi bi-clipboard-check"></i>
+                <h6>الإجراءات</h6>
+            </div>
+        </div>
+        <!-- بطاقة الحالات -->
+        <div class="col-md-4 col-lg-2">
+            <div class="icon-card" onclick="location.href='supply_statuses.html'">
+                <i class="bi bi-flag"></i>
+                <h6>الحالات</h6>
+            </div>
+        </div>
+        <!-- بطاقة عام -->
+        <div class="col-md-4 col-lg-2">
+            <div class="icon-card" onclick="location.href='general_settings.html'">
+                <i class="bi bi-gear"></i>
+                <h6>عام</h6>
+            </div>
+        </div>
+        <!-- بطاقة حقول إضافية -->
+        <div class="col-md-4 col-lg-2">
+            <div class="icon-card" onclick=" location.href='additional_fields.html'">
+                <i class="bi bi-credit-card-2-back"></i>
+                <h6>حقول إضافية</h6>
+            </div>
+        </div>
+        <!-- بطاقة القوالب -->
+        <div class="col-md-4 col-lg-2">
+            <div class="icon-card" onclick="location.href='supply_templates.html'">
+                <i class="bi bi-file-earmark-text"></i>
+                <h6>القوالب</h6>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

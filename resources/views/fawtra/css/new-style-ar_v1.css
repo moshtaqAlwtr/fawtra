@@ -1,0 +1,26 @@
+/* Arabic Fixes */
+
+.checkbox-inline input[type=checkbox],
+.radio-inline input[type=radio] {
+    position: absolute;
+    margin-left: -20px;
+    width: auto;
+}
+
+.range input {
+    width: 33%;
+}
+
+.tabs-content {
+    background: #fff;
+}
+
+.panel-body:last-child button {
+    float: left;
+}
+
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 768px) {}
+
+@media screen and (max-width: 480px) {}

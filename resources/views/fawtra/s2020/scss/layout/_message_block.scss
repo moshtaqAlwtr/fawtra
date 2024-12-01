@@ -1,0 +1,83 @@
+@import "../variables";
+@import "../mixins";
+
+.message-block {
+    position: relative;
+    background: #fff;
+    box-shadow: 0 3px 6px rgba(78,83,129,.1);
+    border-radius: 8px;
+    padding: 40px 30px;
+    margin: 0 0 20px;
+    border: 1px solid #f6f9fc;
+    color: #3a3e63;
+    h2 {
+        font-size: 32px;
+        font-weight: 800;
+    }
+    a {
+        color: #00B0EF;
+    }
+    .message-container{
+      font-weight: 500;
+      a:not(.exclude) {
+        background-color: #00B0EF;
+        color: #fff !important;
+        padding: 4px 10px;
+        border-radius: 50px;
+        display: inline-block;
+        line-height: 1 !important;
+        text-decoration: none !important;
+        margin-bottom: 1px;
+        font-size: 13px;
+        position: relative;
+        top: -1px;
+        transition: 0.2s all;
+        * {
+          text-decoration: none !important;
+        }
+        &:hover {
+          background-color: #0085b6;
+        }
+      }
+      a.normalize {
+        color: $text-main;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .message-actions {
+      position: absolute;
+      bottom: 0;
+      padding: 10px 5px;
+      font-size: 12px;
+      visibility: hidden;
+      transition: 0.1s all ease-in;
+      transform: translateY(10px);
+      opacity: 0;
+      @include ltr() {
+        right: 0;
+      }
+      @include rtl() {
+        left: 0;
+      }
+      a {
+        padding: 5px 8px;
+        border-radius: 4px;
+        margin: 0 5px;
+        background: rgba(126, 158, 190, .72);
+        color: #fff;
+        &:hover {
+          background: rgba(126, 158, 190, 1);
+        }
+      }
+    }
+    &:hover {
+      .message-actions {
+        transform: translateY(0px);
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  

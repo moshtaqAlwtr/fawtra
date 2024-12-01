@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعدادات واجهة التسوق</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- استدعاء مكتبة Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            direction: rtl;
+            background-color: #f0f4f8;
+        }
+        .navbar {
+            background-color: #0078d7;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: white;
+            margin-left: 15px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .square-box {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 40px;
+            margin: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .square-box:hover {
+            background-color: #f0f4f8;
+        }
+        .square-box i {
+            font-size: 40px;
+            color: #0078d7;
+            margin-bottom: 15px;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="navbar">
+        <div>محمد العنزي - Main Branch</div>
+        <div>
+            <a href="#">الذهاب إلى الموقع</a>
+            <a href="#">المساعدة</a>
+        </div>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content">
+        <h4>إعدادات واجهة التسوق</h4>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="square-box" onclick="window.location.href='menu-items.html'">
+                    
+                    <!-- أيقونة القائمة -->
+                    <i class="fas fa-list"></i>
+                    <p>إدارة عناصر القائمة</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="square-box" onclick="window.location.href='content-pages.html'">
+                    <!-- أيقونة صفحات المحتوى -->
+                    <i class="fas fa-file-alt"></i>
+                    <p>إدارة صفحات المحتوي</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="square-box" onclick="window.location.href='gallery-management.html'">
+                    <!-- أيقونة معرض الصور -->
+                    <i class="fas fa-images"></i>
+                    <p>إدارة معرض الصور</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
