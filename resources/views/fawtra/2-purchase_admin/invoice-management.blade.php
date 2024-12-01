@@ -1,9 +1,20 @@
-<!-- عرض الرسائل (success أو error) -->
 
+<!-- عرض الرسائل -->
 @if(session('error'))
-    <div class="alert alert-danger">
-        <!-- عرض الرسالة مع الروابط -->
-        {!! session('error') !!}
+    <div class="notification-popup error" id="errorAlert" dir="rtl">
+        <div class="notification-content">
+            <div class="icon-box">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="notification-text">
+                <h3>تنبيه!</h3>
+                <p>{{ __('purchase_admin.'.session('error')) }}</p>
+            </div>
+        </div>
+        <button class="close-notification" onclick="this.parentElement.remove()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="notification-progress"></div>
     </div>
 @endif
 
@@ -248,10 +259,18 @@
                                     <i class="fas fa-print"></i>
                                     <span class="tooltip">{{ trans('purchase_admin.print') }}</span>
                                 </button>
-                                <button class="action-btn edit-btn">
+                                <a href="{{ route('invoice_edit', $invoice->invoice_id) }}" class="action-btn edit-btn">
                                     <i class="fas fa-edit"></i>
                                     <span class="tooltip">{{ trans('purchase_admin.edit') }}</span>
-                                </button>
+                                </a>
+                                <form action="{{ route('invoice_delete', $invoice->invoice_id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="action-btn delete-btn">
+                                        <i class="fas fa-trash-alt"></i>
+                                        <span class="tooltip">{{ trans('purchase_admin.delete') }}</span>
+                                    </button>
+                                </form>
                             </div>
                             <div class="employee-info">
                                 <div class="employee-badge">
@@ -279,15 +298,14 @@
         </nav>
 </div>
 
-
+@section('scripts')
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-    var dropdownElement = document.querySelector('.dropdown-toggle');
-    if (dropdownElement) {
-        dropdownElement.addEventListener('click', function () {
-            console.log('Dropdown clicked!');
-        });
-    } else {
-        console.log('Dropdown element not found!');
+    function showUnauthorizedMessage(action) {
+        const messages = {
+            'edit': '{{ trans('purchase_admin.unauthorized_edit') }}',
+            'delete': '{{ trans('purchase_admin.unauthorized_delete') }}'
+        };
+        alert(messages[action]);
     }
-});
+</script>
+@endsection

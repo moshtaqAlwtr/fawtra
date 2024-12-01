@@ -126,6 +126,8 @@ Route::group([
     // مسارات الفواتير
     Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
     Route::post('/sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
+    Route::get('/invoice/{id}/edit', [InvoiceController::class, 'edit'])->name('invoice_edit');
+    Route::delete('/invoice/{id}', [InvoiceController::class, 'destroy'])->name('invoice_delete');
     Route::post('/invoice-items/store', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
     Route::get('/invoice-items/create', [InvoiceItemController::class, 'create'])->name('invoice-items.create');
 

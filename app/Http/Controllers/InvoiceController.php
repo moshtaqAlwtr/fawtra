@@ -17,19 +17,27 @@ class InvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        $invoices = Invoice::with(['client', 'employee'])->get();
-        
-        // Debug information
-        if ($invoices->isEmpty()) {
-            \Log::info('No invoices found in the database');
-        } else {
-            \Log::info('Found ' . $invoices->count() . ' invoices');
+        $page = $request->query('page');
+
+        if ($page == 'create') {
+            // قم بتمرير البيانات المطلوبة إلى View
+            $clients = Client::all();  // جلب جميع العملاء
+            $employees = Employee::all();  // جلب جميع الموظفين
+
+            return view('layouts.nav-slider-route', [
+                'page'=>'sales_invoice',
+                'clients' => $clients,
+                'employees' => $employees
+            ]);
+        } elseif ($page == 'manage') {
+            $invoices = Invoice::with(['client', 'employee'])->get();
+            return view('layouts.nav-slider-route', [
+                'page'=>'invoice-management',
+                'invoices' => $invoices
+            ]);
         }
-        
-        return view('layouts.nav-slider-route', [
-            'page' => 'invoice-management',
-            'invoices' => $invoices
-        ]);
+
+        return redirect()->route('invoice-management');
     }
 
 
@@ -121,10 +129,8 @@ class InvoiceController extends Controller
      */
     public function edit($id)
     {
-        $invoice = Invoice::with('invoice_items')->findOrFail($id);
-        $clients = Client::all();
-        $employees = Employee::all(); // Fetch all employees for the edit form
-        return view('invoices.edit', compact('invoice', 'clients', 'employees'));
+        return redirect()->back()
+            ->with('error', __('purchase_admin.unauthorized_edit'));
     }
 
     /**
@@ -175,15 +181,8 @@ class InvoiceController extends Controller
      */
     public function destroy($id)
     {
-        $invoice = Invoice::findOrFail($id);
-        $invoice->invoice_items()->delete();  // حذف العناصر المرتبطة بالفاتورة
-        $invoice->delete();  // حذف الفاتورة نفسها
-
-        // إعادة التوجيه مع رسالة نجاح
-        return view('layouts.nav-slider-route', [
-            'page' => 'invoice-management',
-            'invoice' => $invoice  // تمرير الفاتورة هنا
-        ]);
+        return redirect()->back()
+            ->with('error', __('purchase_admin.unauthorized_delete'));
     }
 
     /**
