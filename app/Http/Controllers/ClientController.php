@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use Illuminate\Support\Facades\Storage;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\ClientsImport;
-use App\Exports\ClientsExport;
 
 class ClientController extends Controller
 {
@@ -16,10 +13,13 @@ class ClientController extends Controller
      */
     public function index()
     {
+        // جلب جميع العملاء
         $clients = Client::all();
+
+        // تمرير المتغير إلى العرض
         return view('layouts.nav-slider-route', [
             'page' => 'customer-management',
-            'clients' => $clients
+            'clients' => $clients, // تأكد من تمرير المتغير هنا
         ]);
     }
     /**
@@ -27,9 +27,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('layouts.nav-slider-route', [
-            'page' => 'add_customer'
-        ]);
+        return view('clients.create');
     }
 
     /**
@@ -47,6 +45,7 @@ class ClientController extends Controller
             'email' => 'nullable|email|max:255',
             'street_address_1' => 'nullable|string|max:255',
             'city' => 'nullable|string|max:255',
+
             'country' => 'nullable|string|max:255',
             'credit_limit' => 'nullable|numeric',
             'credit_period' => 'nullable|integer',
@@ -61,8 +60,15 @@ class ClientController extends Controller
             $client->update(['attachments' => $path]);
         }
 
-        return redirect()->route('customer-management')
-                        ->with('success', 'تم إضافة العميل بنجاح.');
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'تم إضافة العميل بنجاح.',
+                'client' => $client
+            ]);
+        }
+
+        return redirect()->route('clients.index')->with('success', 'تم إضافة العميل بنجاح.');
     }
 
     /**
@@ -118,7 +124,7 @@ class ClientController extends Controller
             $client->update(['attachments' => $path]);
         }
 
-        return redirect()->route('customer-management')->with('success', 'تم تحديث بيانات العميل بنجاح.');
+        return redirect()->route('clients.index')->with('success', 'تم تحديث بيانات العميل بنجاح.');
     }
 
     /**

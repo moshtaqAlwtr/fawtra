@@ -1,7 +1,4 @@
-<<<<<<< Updated upstream
-=======
 <?php
-
 namespace App\Http\Controllers\Finance;
 
 use App\Http\Controllers\Controller;
@@ -11,7 +8,6 @@ use App\Models\ChartOfAccount;
 use App\Models\Tax;
 use App\Models\Treasury;
 use Carbon\Carbon;
-
 class PaymentVoucherController extends Controller
 {
     /**
@@ -288,4 +284,4 @@ class PaymentVoucherController extends Controller
     }
 
 }
->>>>>>> Stashed changes
+

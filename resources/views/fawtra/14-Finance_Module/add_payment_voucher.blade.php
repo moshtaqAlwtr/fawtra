@@ -1,8 +1,4 @@
-@extends('layouts.nav-slider-route')
 
-@section('title', 'إضافة سند صرف')
-
-@section('content')
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -19,7 +15,7 @@
     </div>
 
     <!-- النموذج -->
-    <div class="card shadow-sm">
+
         <div class="card-body">
             <form method="POST" action="{{ route('payment_vouchers.store') }}" enctype="multipart/form-data">
                 @csrf
@@ -120,7 +116,7 @@
             </form>
         </div>
     </div>
-@endsection
+
 
 @push('scripts')
 <script>

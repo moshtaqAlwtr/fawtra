@@ -40,7 +40,7 @@
                             <option value="">اختر الفاتورة</option>
                             @if(!empty($invoices))
                                 @foreach($invoices as $invoice)
-                                    <option value="{{ $invoice->id }}">فاتورة #{{ $invoice->invoice_id }}</option>
+                                    <option value="{{ $invoice->invoice_id }}">فاتورة #{{ $invoice->invoice_id }}</option>
                                 @endforeach
                             @endif
                         </select>

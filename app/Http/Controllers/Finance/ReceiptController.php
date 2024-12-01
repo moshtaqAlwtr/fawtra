@@ -9,11 +9,11 @@ use App\Models\Transaction;
 use App\Models\ChartOfAccount;
 use App\Models\Treasury;
 use App\Models\JournalEntry;
-
+use Carbon\Carbon;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Carbon;
+
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 
@@ -73,7 +73,7 @@ class ReceiptController extends Controller
         // إرجاع العرض مع البيانات
         return view('layouts.nav-slider-route', [
             'page' => 'actions_page',
-            'content' => $content
+
         ]);
     }
 

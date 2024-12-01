@@ -447,6 +447,12 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-dark .theme-toggle:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
+.navbar-nav .nav-link:hover i {
+    background: linear-gradient(45deg, #00d4ff, #007bff); /* تدرج لوني بين الأزرق الفاتح والداكن */
+    -webkit-background-clip: text; /* تحديد التدرج للنص */
+    -webkit-text-fill-color: transparent; /* جعل النص شفافًا لإظهار التدرج */
+}
+
 
 /* User Dropdown */
 .user-dropdown img {
@@ -574,15 +580,15 @@ h1, h2, h3, h4, h5, h6 {
         padding-right: 1rem;
         padding-left: 1rem;
     }
-    
+
     .btn {
         padding: 0.375rem 1rem;
     }
-    
+
     h1 {
         font-size: 1.75rem;
     }
-    
+
     h2 {
         font-size: 1.5rem;
     }
