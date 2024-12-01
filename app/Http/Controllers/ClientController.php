@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ClientsImport;
+use App\Exports\ClientsExport;
 
 class ClientController extends Controller
 {
@@ -13,13 +16,10 @@ class ClientController extends Controller
      */
     public function index()
     {
-        // جلب جميع العملاء
         $clients = Client::all();
-
-        // تمرير المتغير إلى العرض
         return view('layouts.nav-slider-route', [
             'page' => 'customer-management',
-            'clients' => $clients, // تأكد من تمرير المتغير هنا
+            'clients' => $clients
         ]);
     }
     /**
@@ -27,7 +27,9 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('clients.create');
+        return view('layouts.nav-slider-route', [
+            'page' => 'add_customer'
+        ]);
     }
 
     /**
@@ -59,7 +61,8 @@ class ClientController extends Controller
             $client->update(['attachments' => $path]);
         }
 
-        return redirect()->route('actions_page')->with('success', 'تم إضافة العميل بنجاح.');
+        return redirect()->route('customer-management')
+                        ->with('success', 'تم إضافة العميل بنجاح.');
     }
 
     /**

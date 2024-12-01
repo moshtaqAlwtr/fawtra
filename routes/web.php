@@ -73,9 +73,19 @@ Route::group([
 
     // Resource Routes
     Route::resource('products', ProductController::class);
-    Route::resource('clients', ClientController::class)->names(['index' => 'clients.index']);
     Route::resource('invoices', InvoiceController::class);
     Route::resource('receipts', Finance\ReceiptController::class);
+
+    // Client Routes
+    Route::get('/customer-management', [ClientController::class, 'index'])->name('customer-management.index');
+    Route::prefix('clients')->group(function () {
+
+        Route::get('/create', [ClientController::class, 'create'])->name('add_customer');
+        Route::post('/', [ClientController::class, 'store'])->name('clients.store');
+        Route::get('/{client}/edit', [ClientController::class, 'edit'])->name('clients.edit');
+        Route::put('/{client}', [ClientController::class, 'update'])->name('clients.update');
+        Route::delete('/{client}', [ClientController::class, 'destroy'])->name('clients.destroy');
+    });
 
     // Receipt Routes
     Route::prefix('receipts')->group(function () {
