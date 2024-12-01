@@ -73,6 +73,7 @@ Route::group([
         'employee_management' => 'employee_management',
         'add_employee' => 'add_employee',
         'schedule_appointment' => 'schedule_appointment',
+        'recurring-invoices' => 'recurring-invoices',
     ];
     foreach ($navSliderRoutes as $route => $page) {
         Route::get("/$route", fn() => view('layouts.nav-slider-route', ['page' => $page]))->name($route);
