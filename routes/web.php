@@ -51,7 +51,6 @@ Route::group([
     // صفحات ثابتة مع محتوى ديناميكي
     $navSliderRoutes = [
         'human_resources' => 'human_resources',
-        'invoice-management' => 'invoice-management',
         'add_customer' => 'add_customer',
         'customer-management' => 'customer-management',
         'salas_invoice' => 'salas_invoice',
@@ -59,8 +58,8 @@ Route::group([
         'customer_payments' => 'customer_payments',
         'invoice_preview' => 'invoice_preview',
         'add_payment_process' => 'add_payment_process',
-'returned_invoices'=>'returned_invoices',
-'actions_page'=>'actions_page',
+        'returned_invoices'=>'returned_invoices',
+        'actions_page'=>'actions_page',
         'mang_products' => 'mang_products',
         'quotation-management' => 'quotation-management',
         'debit-notices' => 'debit-notices',
@@ -68,7 +67,6 @@ Route::group([
         'client-view' => 'client-view',
         'credit-note' => 'credit-note',
         'appointments' => 'appointments',
-        // 'chart_of_accounts' => 'chart_of_accounts',
         'journal_entries_day' => 'journal_entries_day',
         'import_expense_receipts' => 'import_expense_receipts',
         'expense_voucher' => 'expense_voucher',
@@ -79,6 +77,10 @@ Route::group([
     foreach ($navSliderRoutes as $route => $page) {
         Route::get("/$route", fn() => view('layouts.nav-slider-route', ['page' => $page]))->name($route);
     }
+
+    // Invoice Management Route
+    Route::get('/invoice-management', [InvoiceController::class, 'index'])->name('invoice-management');
+
     Route::get('/chart_of_accounts', ChartOfAccountController::class.'@index')->name('chart_of_accounts');
     Route::prefix('accounts')->group(function () {
 

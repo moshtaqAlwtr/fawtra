@@ -1,11 +1,4 @@
-
 <!-- عرض الرسائل (success أو error) -->
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-
 
 @if(session('error'))
     <div class="alert alert-danger">
@@ -181,60 +174,95 @@
         <div class="row">
             @foreach($invoices as $invoice)
                 <div class="col-md-4 mb-4">
-                    <div class="invoice-card mb-3" style="direction: rtl;">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div>
-                                <!-- المبلغ الإجمالي -->
-                                <h5 class="mb-1">{{ number_format($invoice->grand_total, 2) }} ر.س</h5>
-
-                                <!-- حالة الفاتورة -->
-                                <span class="badge badge-status {{ $invoice->status == 'unpaid' ? 'unpaid' : 'paid' }}">
-                                    {{ $invoice->status == 'unpaid' ? trans('purchase_admin.unpaid') : trans('purchase_admin.paid') }}
-                                </span>
-                                <span class="badge badge-status {{ $invoice->due_date < now() ? 'pending' : 'due' }}">
-                                    {{ $invoice->due_date < now() ? trans('purchase_admin.due') : trans('purchase_admin.pending') }}
-                                </span>
+                    <div class="invoice-card">
+                        <div class="invoice-card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="invoice-number">
+                                    <div class="number-badge">
+                                        <span class="number">#{{ $invoice->invoice_number }}</span>
+                                    </div>
+                                </div>
+                                <div class="invoice-date">
+                                    <span class="date-badge">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        {{ \Carbon\Carbon::parse($invoice->invoice_date)->format('Y/m/d') }}
+                                    </span>
+                                </div>
                             </div>
-                            <div class="text-right">
-                                <!-- تاريخ الفاتورة ورقم الفاتورة -->
-                                <p class="mb-1">{{ $invoice->invoice_date }} - #{{ $invoice->invoice_id }}</p>
+                        </div>
 
-                                <!-- اسم العميل -->
-                                <p class="mb-0">{{ $invoice->client->trade_name }}</p>
-
-                                <!-- اسم الموظف -->
-                                <small class="text-muted"> {{ $invoice->employee->first_name }}</small>
+                        <div class="invoice-card-body">
+                            <div class="client-info">
+                                <div class="client-header">
+                                    <div class="client-avatar">
+                                        <div class="avatar-circle">
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                    </div>
+                                    <div class="client-details">
+                                        <h6 class="client-name">{{ optional($invoice->client)->trade_name }}</h6>
+                                        <span class="client-email">
+                                            <i class="fas fa-envelope"></i>
+                                            {{ optional($invoice->client)->email }}
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
 
-                            <!-- زر القائمة المنسدلة -->
-                            {{-- <div class="dropdown">
-                                <button class="btn btn-secondary fas" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
+                            <div class="invoice-amount">
+                                <div class="amount-circle">
+                                    <div class="amount-value">
+                                        <span class="currency">ر.س</span>
+                                        <span class="value">{{ number_format($invoice->grand_total, 2) }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="status-section">
+                                @if($invoice->payment_status == 'paid')
+                                    <div class="status-indicator paid">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>{{ trans('purchase_admin.paid') }}</span>
+                                    </div>
+                                @elseif($invoice->payment_status == 'unpaid')
+                                    <div class="status-indicator unpaid">
+                                        <i class="fas fa-times-circle"></i>
+                                        <span>{{ trans('purchase_admin.unpaid') }}</span>
+                                    </div>
+                                @else
+                                    <div class="status-indicator partial">
+                                        <i class="fas fa-clock"></i>
+                                        <span>{{ trans('purchase_admin.partial') }}</span>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="invoice-card-footer">
+                            <div class="action-buttons">
+                                <button class="action-btn view-btn" onclick="window.location.href='{{ route('invoice_preview', ['id' => $invoice->invoice_id]) }}'">
+                                    <i class="fas fa-eye"></i>
+                                    <span class="tooltip">{{ trans('purchase_admin.view') }}</span>
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="{{ route('invoice_preview', ['id' => $invoice->id]) }}">
-                                    </li>
-
-                                    <li><a class="dropdown-item" href="{{ route('invoice_edit', $invoice->id) }}"><i class="fas fa-edit text-primary"></i> {{ trans('purchase_admin.edit') }}</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('invoice_print', $invoice->id) }}"><i class="fas fa-file-pdf text-danger"></i> PDF</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('invoice_print', $invoice->id) }}"><i class="fas fa-print text-secondary"></i> {{ trans('purchase_admin.print_pdf') }}</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('invoice_send', $invoice->id) }}"><i class="fas fa-envelope text-info"></i> {{ trans('purchase_admin.send_to_client') }}</a></li>
-                                    <li><a class="dropdown-item" href=""><i class="fas fa-credit-card text-warning"></i> {{ trans('purchase_admin.add_payment') }}</a></li>
-                                    <li><form action="{{ route('invoice_delete', $invoice->id) }}" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="dropdown-item"><i class="fas fa-trash-alt text-danger"></i> {{ trans('purchase_admin.delete') }}</button>
-                                    </form></li>
-                                    <li><a class="dropdown-item" href="{{ route('invoice_copy', $invoice->id) }}"><i class="fas fa-copy text-secondary"></i> {{ trans('purchase_admin.copy') }}</a></li>
-                                </ul>
-                            </div> --}}
+                                <button class="action-btn print-btn">
+                                    <i class="fas fa-print"></i>
+                                    <span class="tooltip">{{ trans('purchase_admin.print') }}</span>
+                                </button>
+                                <button class="action-btn edit-btn">
+                                    <i class="fas fa-edit"></i>
+                                    <span class="tooltip">{{ trans('purchase_admin.edit') }}</span>
+                                </button>
+                            </div>
+                            <div class="employee-info">
+                                <div class="employee-badge">
+                                    <i class="fas fa-user-tie"></i>
+                                    <span>{{ optional($invoice->employee)->name }}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             @endforeach
-        </div>
-                </div>
-            </div>
         </div>
 
         <!-- Pagination -->
@@ -250,6 +278,8 @@
             </ul>
         </nav>
 </div>
+
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
     var dropdownElement = document.querySelector('.dropdown-toggle');
@@ -261,6 +291,3 @@
         console.log('Dropdown element not found!');
     }
 });
-
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

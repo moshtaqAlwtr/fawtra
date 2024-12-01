@@ -1,0 +1,256 @@
+.invoice-card {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.invoice-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.invoice-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+    border-radius: 20px;
+}
+
+.invoice-card:hover::before {
+    opacity: 0.02;
+}
+
+.invoice-card-header {
+    padding: 1.5rem;
+    background: linear-gradient(45deg, #f6f9fc, #ffffff);
+    border-bottom: 2px solid #f0f4f8;
+    position: relative;
+}
+
+.number-badge {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
+}
+
+.date-badge {
+    background: #f8f9fa;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.invoice-card-body {
+    padding: 1.5rem;
+    position: relative;
+}
+
+.client-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.avatar-circle {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.2);
+}
+
+.client-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.3rem;
+}
+
+.client-email {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.amount-circle {
+    background: linear-gradient(45deg, #11998e, #38ef7d);
+    border-radius: 15px;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 15px rgba(17, 153, 142, 0.2);
+}
+
+.amount-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.currency {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-right: 0.5rem;
+}
+
+.status-section {
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.status-indicator.paid {
+    background: linear-gradient(45deg, #11998e, #38ef7d);
+    color: white;
+}
+
+.status-indicator.unpaid {
+    background: linear-gradient(45deg, #cb2d3e, #ef473a);
+    color: white;
+}
+
+.status-indicator.partial {
+    background: linear-gradient(45deg, #f7b733, #fc4a1a);
+    color: white;
+}
+
+.status-indicator i {
+    margin-right: 0.5rem;
+}
+
+.invoice-card-footer {
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-top: 2px solid #f0f4f8;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.action-btn {
+    background: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+}
+
+.view-btn {
+    color: #6a11cb;
+    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.1);
+}
+
+.print-btn {
+    color: #11998e;
+    box-shadow: 0 4px 15px rgba(17, 153, 142, 0.1);
+}
+
+.edit-btn {
+    color: #f7b733;
+    box-shadow: 0 4px 15px rgba(247, 183, 51, 0.1);
+}
+
+.action-btn .tooltip {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    bottom: -40px;
+}
+
+.employee-badge {
+    display: inline-flex;
+    align-items: center;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    color: #6c757d;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.employee-badge i {
+    margin-right: 0.5rem;
+    color: #6a11cb;
+}
+
+/* RTL Specific Styles */
+[dir="rtl"] .avatar-circle {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+[dir="rtl"] .status-indicator i {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+[dir="rtl"] .employee-badge i {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .invoice-card {
+        margin: 0.5rem;
+    }
+
+    .action-buttons {
+        flex-wrap: wrap;
+    }
+}

@@ -17,27 +17,19 @@ class InvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        $page = $request->query('page');
-
-        if ($page == 'create') {
-            // قم بتمرير البيانات المطلوبة إلى View
-            $clients = Client::all();  // جلب جميع العملاء
-            $employees = Employee::all();  // جلب جميع الموظفين
-
-            return view('layouts.nav-slider-route', [
-                'page'=>'sales_invoice',
-                'clients' => $clients,
-                'employees' => $employees
-            ]);
-        } elseif ($page == 'manage') {
-            $invoices = Invoice::with(['client', 'employee'])->get();
-            return view('layouts.nav-slider-route', [
-                'page'=>'invoice-management',
-                'invoices' => $invoices
-            ]);
+        $invoices = Invoice::with(['client', 'employee'])->get();
+        
+        // Debug information
+        if ($invoices->isEmpty()) {
+            \Log::info('No invoices found in the database');
+        } else {
+            \Log::info('Found ' . $invoices->count() . ' invoices');
         }
-
-        return redirect()->route('invoice-management');
+        
+        return view('layouts.nav-slider-route', [
+            'page' => 'invoice-management',
+            'invoices' => $invoices
+        ]);
     }
 
 
