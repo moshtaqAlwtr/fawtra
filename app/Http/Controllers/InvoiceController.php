@@ -100,24 +100,10 @@ class InvoiceController extends Controller
         $invoiceItem->save();
     }
 
-    // العودة إلى صفحة عرض الفاتورة
-   // العودة إلى صفحة عرض الفاتورة
-// العودة إلى صفحة عرض الفاتورة باستخدام المعرف
-$invoices = Invoice::all(); // جلب جميع السجلات
-if ($invoices->show()) {
+    // إعادة التوجيه إلى صفحة عرض الفاتورة بعد الحفظ
     return redirect()->route('invoice-management')
-                     ->with(['error' => __('sales_invoice.no_invoice_found')]);
+                 ->with('success', __('sales_invoice.invoice_saved'));
 }
-
-
-
-// إعادة التوجيه إلى صفحة عرض الفاتورة بعد الحفظ
-return redirect()->route('invoice-management.show', ['invoice' => $invoice->invoice_id])
-                 ->with('success', __('sales_invoice.invoice_saved'))
-                 ->with('invoices', $invoices);  // هنا
-}
-
-
 
 
     /**
