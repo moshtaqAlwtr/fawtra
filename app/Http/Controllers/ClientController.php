@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Employee;
 use Illuminate\Support\Facades\Storage;
 
 class ClientController extends Controller
@@ -15,11 +16,13 @@ class ClientController extends Controller
     {
         // جلب جميع العملاء
         $clients = Client::all();
+        $employees = Employee::all();
 
         // تمرير المتغير إلى العرض
         return view('layouts.nav-slider-route', [
             'page' => 'customer-management',
-            'clients' => $clients, // تأكد من تمرير المتغير هنا
+            'clients' => $clients,
+            'employees' => $employees // تأكد من تمرير المتغير هنا
         ]);
     }
     /**
@@ -77,7 +80,8 @@ class ClientController extends Controller
     public function show($id)
     {
         $client = Client::findOrFail($id);
-        return view('clients.show', compact('client'));
+        $employees = Employee::all();
+        return view('clients.show', compact('client', 'employees'));
     }
 
     /**
