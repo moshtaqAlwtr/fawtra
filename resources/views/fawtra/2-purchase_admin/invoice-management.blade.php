@@ -84,151 +84,66 @@
             <h5 class="advanced-search-title">{{ trans('purchase_admin.advanced_search') }}</h5>
             <form id="advancedSearchFormElement" class="advanced-search-form">
                 <div class="search-row">
-                    <!-- صف البحث الأول -->
                     <div class="search-col">
                         <div class="form-group">
-                            <label>تحتوي على البند</label>
-                            <input type="text" class="form-control" placeholder="ابحث عن البند...">
+                            <label>رقم الفاتورة</label>
+                            <input type="text" class="form-control" name="invoice_number" id="invoice_number">
                         </div>
                     </div>
                     <div class="search-col">
                         <div class="form-group">
-                            <label>العملة</label>
-                            <select class="form-control">
-                                <option value="">اي</option>
-                                <option value="SAR">ريال سعودي</option>
-                                <option value="USD">دولار أمريكي</option>
-                                <option value="EUR">يورو</option>
-                                <option value="AED">درهم إماراتي</option>
-                            </select>
+                            <label>العميل</label>
+                            <input type="text" class="form-control" name="client_name" id="client_name">
                         </div>
                     </div>
                 </div>
 
                 <div class="search-row">
-                    <!-- صف المبالغ -->
                     <div class="search-col">
-                        <div class="total-amount-group">
-                            <div class="form-group">
-                                <label>الإجمالي أقل من</label>
-                                <input type="number" class="form-control" step="0.01" value="0.00">
-                            </div>
-                            <div class="form-group">
-                                <label>الإجمالي أكبر من</label>
-                                <input type="number" class="form-control" step="0.01" value="0.00">
-                            </div>
+                        <div class="form-group">
+                            <label>تاريخ الفاتورة من</label>
+                            <input type="date" class="form-control" name="date_from" id="date_from">
+                        </div>
+                    </div>
+                    <div class="search-col">
+                        <div class="form-group">
+                            <label>تاريخ الفاتورة إلى</label>
+                            <input type="date" class="form-control" name="date_to" id="date_to">
                         </div>
                     </div>
                 </div>
 
                 <div class="search-row">
-                    <!-- صف التواريخ -->
                     <div class="search-col">
                         <div class="form-group">
                             <label>حالة الدفع</label>
-                            <select class="form-control">
-                                <option value="">اي</option>
-                                <option value="paid">مدفوع</option>
-                                <option value="partial">مدفوع جزئياً</option>
-                                <option value="unpaid">غير مدفوع</option>
-                                <option value="overdue">متأخر</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="search-col">
-                        <div class="form-group">
-                            <label>التاريخ</label>
-                            <div class="date-range-group">
-                                <input type="date" class="form-control">
-                                <input type="date" class="form-control">
-                                <select class="form-control">
-                                    <option>تخصيص</option>
-                                    <option value="today">اليوم</option>
-                                    <option value="yesterday">أمس</option>
-                                    <option value="last7days">آخر 7 أيام</option>
-                                    <option value="last30days">آخر 30 يوم</option>
-                                    <option value="thisMonth">هذا الشهر</option>
-                                    <option value="lastMonth">الشهر الماضي</option>
-                                    <option value="custom">مخصص</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="search-row">
-                    <!-- صف تاريخ الاستحقاق -->
-                    <div class="search-col">
-                        <div class="form-group">
-                            <label>تاريخ الاستحقاق</label>
-                            <div class="date-range-group">
-                                <input type="date" class="form-control">
-                                <input type="date" class="form-control">
-                                <select class="form-control">
-                                    <option>تخصيص</option>
-                                    <option value="today">اليوم</option>
-                                    <option value="yesterday">أمس</option>
-                                    <option value="last7days">آخر 7 أيام</option>
-                                    <option value="last30days">آخر 30 يوم</option>
-                                    <option value="thisMonth">هذا الشهر</option>
-                                    <option value="lastMonth">الشهر الماضي</option>
-                                    <option value="custom">مخصص</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="search-row">
-                    <!-- صف المصدر -->
-                    <div class="search-col">
-                        <div class="form-group">
-                            <label>المصدر</label>
-                            <select class="form-control">
+                            <select class="form-control" name="payment_status" id="payment_status">
                                 <option value="">الكل</option>
-                                <option value="website">موقع الويب</option>
-                                <option value="pos">نقطة البيع</option>
-                                <option value="mobile">تطبيق الجوال</option>
-                                <option value="manual">إدخال يدوي</option>
+                                <option value="paid">مدفوع</option>
+                                <option value="unpaid">غير مدفوع</option>
+                                <option value="partial">مدفوع جزئياً</option>
                             </select>
                         </div>
                     </div>
                     <div class="search-col">
                         <div class="form-group">
-                            <label>تاريخ الإنشاء</label>
-                            <div class="date-range-group">
-                                <input type="date" class="form-control">
-                                <input type="date" class="form-control">
-                                <select class="form-control">
-                                    <option>تخصيص</option>
-                                    <option value="today">اليوم</option>
-                                    <option value="yesterday">أمس</option>
-                                    <option value="last7days">آخر 7 أيام</option>
-                                    <option value="last30days">آخر 30 يوم</option>
-                                    <option value="thisMonth">هذا الشهر</option>
-                                    <option value="lastMonth">الشهر الماضي</option>
-                                    <option value="custom">مخصص</option>
-                                </select>
-                            </div>
+                            <label>المبلغ الإجمالي</label>
+                            <input type="number" class="form-control" name="grand_total" id="grand_total" step="0.01">
                         </div>
                     </div>
                 </div>
 
-                <div class="search-row">
-                    <!-- صف حقل مخصص -->
-                    <div class="search-col">
-                        <div class="form-group">
-                            <label>حقل مخصص</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
+                <div class="search-buttons-container">
+                    <button type="submit" class="search-btn primary">
+                        <i class="fas fa-search"></i>
+                        بحث
+                    </button>
+                    <button type="reset" class="search-btn outline">
+                        <i class="fas fa-redo"></i>
+                        إعادة تعيين
+                    </button>
                 </div>
-
-                <!-- أزرار البحث -->
-
             </form>
-
-
         </div>
         <div class="search-buttons-container">
             <button type="button" class="search-btn primary" id="basicSearchBtn">
