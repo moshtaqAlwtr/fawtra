@@ -1,4 +1,3 @@
-
 <!-- عرض الرسائل -->
 @if(session('error'))
     <div class="notification-popup error" id="errorAlert" dir="rtl">
@@ -75,85 +74,36 @@
         </div>
 
         <!-- Advanced Search Form Section -->
-        <div class="collapse" id="advancedSearchForm">
-            <form>
-                <div class="filter-section mt-3">
-                    <div class="form-row">
-                        <div class="form-group col-md-3">
+        <div id="advancedSearchForm" style="display: none;">
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ trans('purchase_admin.advanced_search') }}</h5>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
                             <label>{{ trans('purchase_admin.item') }}</label>
                             <input type="text" class="form-control">
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="col-md-4 mb-3">
                             <label>{{ trans('purchase_admin.currency') }}</label>
                             <select class="form-control">
                                 <option>{{ trans('purchase_admin.all') }}</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-3">
-                            <label>{{ trans('purchase_admin.greater_than_total') }}</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label>{{ trans('purchase_admin.less_than_total') }}</label>
-                            <input type="text" class="form-control">
+                        <div class="col-md-4 mb-3">
+                            <label>{{ trans('purchase_admin.total_amount') }}</label>
+                            <input type="number" class="form-control">
                         </div>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-2">
-                            <label>{{ trans('purchase_admin.payment_status') }}</label>
-                            <select class="form-control">
-                                <option>{{ trans('purchase_admin.all') }}</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label class="form-label">{{ trans('purchase_admin.custom_date') }}</label>
-                            <div class="input-group">
-                                <select class="form-control" onchange="toggleCustomDate(this)">
-                                    <option value="custom">{{ trans('purchase_admin.custom_date') }}</option>
-                                    <option value="last_month">{{ trans('purchase_admin.last_month') }}</option>
-                                    <option value="last_year">{{ trans('purchase_admin.last_year') }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="form-label">{{ trans('purchase_admin.delivery_from_to') }}</label>
-                            <div class="input-group">
-                                <input type="text" id="deliveryStartDate" class="form-control" placeholder="{{ trans('purchase_admin.delivery_from_to') }}">
-                                <input type="text" id="deliveryEndDate" class="form-control" placeholder="{{ trans('purchase_admin.delivery_from_to') }}">
-                            </div>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label class="form-label">{{ trans('purchase_admin.due_date') }}</label>
-                            <div class="input-group">
-                                <select class="form-control" onchange="toggleCustomDate(this)">
-                                    <option value="custom">{{ trans('purchase_admin.custom_date') }}</option>
-                                    <option value="last_month">{{ trans('purchase_admin.last_month') }}</option>
-                                    <option value="last_year">{{ trans('purchase_admin.last_year') }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="form-label">{{ trans('purchase_admin.delivery_from_to') }}</label>
-                            <div class="input-group">
-                                <input type="text" id="deliveryStartDate" class="form-control" placeholder="{{ trans('purchase_admin.delivery_from_to') }}">
-                                <input type="text" id="deliveryEndDate" class="form-control" placeholder="{{ trans('purchase_admin.delivery_from_to') }}">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- More form fields as per original code structure -->
-
                 </div>
-            </form>
+            </div>
         </div>
 
         <!-- Action Buttons Always Visible -->
         <div class="d-flex mb-3 mt-3">
-            <button class="btn btn-primary ml-2 mr-2">{{ trans('purchase_admin.search') }}</button>
-            <button class="btn btn-secondary ml-2 mr-2" id="resetFiltersBtn">{{ trans('purchase_admin.reset_filters') }}</button>
-            <button class="btn btn-outline-secondary ml-2 mr-2" id="advancedSearchBtn" data-toggle="collapse" data-target="#advancedSearchForm" aria-expanded="false" aria-controls="advancedSearchForm">
-                <i class="bi bi-sliders"></i> {{ trans('purchase_admin.advanced_search') }}
+            <button class="btn btn-primary ml-2">{{ trans('purchase_admin.search') }}</button>
+            <button class="btn btn-secondary ml-2" id="resetFiltersBtn">{{ trans('purchase_admin.reset_filters') }}</button>
+            <button class="btn btn-outline-secondary ml-2" id="toggleAdvancedSearch">
+                <i class="fas fa-search-plus"></i> {{ trans('purchase_admin.advanced_search') }}
             </button>
         </div>
 
@@ -299,30 +249,30 @@
 </div>
 
 @section('scripts')
-<script>
-    $(document).ready(function() {
-        // تفعيل البحث المتقدم
-        $('#advancedSearchBtn').click(function(e) {
-            e.preventDefault();
-            $('#advancedSearchForm').collapse('toggle');
-        });
-
-        // تفعيل tooltips
-        $('[data-toggle="tooltip"]').tooltip();
-
-        // إعادة تعيين نموذج البحث
-        $('#resetFiltersBtn').click(function(e) {
-            e.preventDefault();
-            $('form')[0].reset();
-        });
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    // تفعيل البحث المتقدم
+    document.getElementById('toggleAdvancedSearch').addEventListener('click', function() {
+        var advancedForm = document.getElementById('advancedSearchForm');
+        if (advancedForm.style.display === 'none' || advancedForm.style.display === '') {
+            advancedForm.style.display = 'block';
+        } else {
+            advancedForm.style.display = 'none';
+        }
     });
 
-    function showUnauthorizedMessage(action) {
-        const messages = {
-            'edit': '{{ trans('purchase_admin.unauthorized_edit') }}',
-            'delete': '{{ trans('purchase_admin.unauthorized_delete') }}'
-        };
-        alert(messages[action]);
-    }
-</script>
+    // إعادة تعيين النموذج
+    document.getElementById('resetFiltersBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('form').forEach(form => form.reset());
+    });
+});
 
+function showUnauthorizedMessage(action) {
+    const messages = {
+        'edit': '{{ trans('purchase_admin.unauthorized_edit') }}',
+        'delete': '{{ trans('purchase_admin.unauthorized_delete') }}'
+    };
+    alert(messages[action]);
+}
+</script>
