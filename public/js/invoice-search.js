@@ -1,4 +1,10 @@
 $(document).ready(function() {
+    // تهيئة القوائم المنسدلة
+    $('#client_id, #employee_id').select2({
+        placeholder: "اختر...",
+        allowClear: true
+    });
+
     // Toggle advanced search form
     $('#toggleAdvancedSearch').click(function() {
         $('#advancedSearchForm').slideToggle();
@@ -17,6 +23,7 @@ $(document).ready(function() {
 
     // Handle search form reset
     $('#advancedSearchFormElement button[type="reset"]').click(function() {
+        $('#client_id, #employee_id').val('').trigger('change');
         setTimeout(function() {
             performSearch(true);
         }, 100);
@@ -29,7 +36,8 @@ $(document).ready(function() {
             // Get advanced search form data
             searchData = {
                 invoice_number: $('#invoice_number').val(),
-                client_name: $('#client_name').val(),
+                client_id: $('#client_id').val(),
+                employee_id: $('#employee_id').val(),
                 date_from: $('#date_from').val(),
                 date_to: $('#date_to').val(),
                 payment_status: $('#payment_status').val(),
@@ -47,39 +55,61 @@ $(document).ready(function() {
 
         // Make AJAX request to search endpoint
         $.ajax({
-            url: '/api/invoices/search',
+            url: '/invoices/filter',
             method: 'POST',
             data: searchData,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(response) {
-                // Update the invoice cards with search results
-                updateInvoiceCards(response.invoices);
+                if (response.success) {
+                    // تحديث عرض الفواتير
+                    updateInvoiceCards(response.invoices);
+                    
+                    // إظهار رسالة إذا لم يتم العثور على نتائج
+                    if (response.invoices.length === 0) {
+                        showNotification('info', 'لم يتم العثور على نتائج للبحث');
+                    }
+                } else {
+                    showNotification('error', 'حدث خطأ أثناء البحث');
+                }
             },
             error: function(xhr, status, error) {
-                // Show error message
                 showNotification('error', 'حدث خطأ أثناء البحث. يرجى المحاولة مرة أخرى.');
             },
             complete: function() {
-                // Hide loading spinner
                 $('#searchSpinner').hide();
             }
         });
     }
 
     function updateInvoiceCards(invoices) {
-        const container = $('.row'); // Container for invoice cards
+        const container = $('.row');
         container.empty();
 
         if (invoices.length === 0) {
-            container.append('<div class="col-12 text-center"><p>لا توجد نتائج</p></div>');
+            container.append(`
+                <div class="col-12 text-center mt-4">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        لم يتم العثور على فواتير مطابقة لمعايير البحث
+                    </div>
+                </div>
+            `);
             return;
         }
 
+        // تصفية وعرض الفواتير
         invoices.forEach(function(invoice) {
             const card = createInvoiceCard(invoice);
             container.append(card);
+        });
+
+        // تحريك الفواتير المطابقة إلى الأعلى بتأثير متحرك
+        $('.invoice-card').each(function(index) {
+            $(this).css('opacity', 0).delay(index * 100).animate({
+                opacity: 1
+            }, 500);
         });
     }
 
@@ -103,7 +133,11 @@ $(document).ready(function() {
                         <div class="invoice-info">
                             <div class="info-row">
                                 <span class="label">العميل:</span>
-                                <span class="value">${invoice.client_name}</span>
+                                <span class="value">${invoice.client ? invoice.client.name : 'غير محدد'}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="label">الموظف:</span>
+                                <span class="value">${invoice.employee ? invoice.employee.name : 'غير محدد'}</span>
                             </div>
                             <div class="info-row">
                                 <span class="label">التاريخ:</span>
@@ -146,11 +180,17 @@ $(document).ready(function() {
     }
 
     function formatDate(dateString) {
+        if (!dateString) return 'غير محدد';
         const date = new Date(dateString);
-        return date.toLocaleDateString('ar-SA');
+        return new Intl.DateTimeFormat('ar-SA', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        }).format(date);
     }
 
     function formatCurrency(amount) {
+        if (!amount) return '0 ريال';
         return new Intl.NumberFormat('ar-SA', {
             style: 'currency',
             currency: 'SAR'

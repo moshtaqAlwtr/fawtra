@@ -55,28 +55,156 @@
 
         <!-- Filter Section -->
         <div class="filter-section">
-            <div class="form-row">
-                <div class="form-group col-md-3">
-                    <label for="client">{{ trans('purchase_admin.client') }}</label>
-                    <select id="client" class="form-control">
-                        <option>{{ trans('purchase_admin.any_client') }}</option>
-                    </select>
+            <form action="{{ route('invoices.filter') }}" method="POST">
+                @csrf
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label>Invoice Number</label>
+                        <input type="text" class="form-control" name="invoice_number" id="invoice_number">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Client</label>
+                        <select class="form-control" name="client" id="client">
+                            <option value="">Any Client</option>
+                            @if(isset($clients) && $clients->count() > 0)
+                                @foreach($clients as $client)
+                                    <option value="{{ $client->id }}">{{ $client->trade_name }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Status</label>
+                        <select class="form-control" name="status" id="status">
+                            <option value="">Any Status</option>
+                            <option value="paid">Paid</option>
+                            <option value="unpaid">Unpaid</option>
+                            <option value="partial">Partial</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Currency</label>
+                        <select class="form-control" name="currency" id="currency">
+                            <option value="">Any</option>
+                            <option value="SAR">SAR</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Date</label>
+                        <div class="input-group">
+                            <input type="date" class="form-control" name="date_from" id="date_from" placeholder="From">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">-</span>
+                            </div>
+                            <input type="date" class="form-control" name="date_to" id="date_to" placeholder="To">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Due Date</label>
+                        <div class="input-group">
+                            <input type="date" class="form-control" name="due_date_from" id="due_date_from" placeholder="From">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">-</span>
+                            </div>
+                            <input type="date" class="form-control" name="due_date_to" id="due_date_to" placeholder="To">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Creation Date</label>
+                        <div class="input-group">
+                            <input type="date" class="form-control" name="creation_date_from" id="creation_date_from" placeholder="From">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">-</span>
+                            </div>
+                            <input type="date" class="form-control" name="creation_date_to" id="creation_date_to" placeholder="To">
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Sales Manager</label>
+                        <select class="form-control" name="sales_manager" id="sales_manager">
+                            <option value="">Any Sales Manager</option>
+                            @if(isset($employees) && $employees->count() > 0)
+                                @foreach($employees as $employee)
+                                    <option value="{{ $employee->employee_id }}">{{ $employee->first_name }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Created By</label>
+                        <select class="form-control" name="created_by" id="created_by">
+                            <option value="">Any Employee</option>
+                            @if(isset($employees) && $employees->count() > 0)
+                                @foreach($employees as $employee)
+                                    <option value="{{ $employee->employee_id }}">{{ $employee->first_name }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Delivery Status</label>
+                        <select class="form-control" name="delivery_status" id="delivery_status">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Source</label>
+                        <select class="form-control" name="source" id="source">
+                            <option value="">Please Select</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Shipping Options</label>
+                        <select class="form-control" name="shipping_options" id="shipping_options">
+                            <option value="">All</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Pos Shift</label>
+                        <input type="text" class="form-control" name="pos_shift" id="pos_shift">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Contains Item</label>
+                        <input type="text" class="form-control" name="contains_item" id="contains_item">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Total Amount From</label>
+                        <input type="number" step="0.01" class="form-control" name="total_amount_from" id="total_amount_from">
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Total Amount To</label>
+                        <input type="number" step="0.01" class="form-control" name="total_amount_to" id="total_amount_to">
+                    </div>
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="invoiceNumber">{{ trans('purchase_admin.invoice_number') }}</label>
-                    <input type="text" id="invoiceNumber" class="form-control">
+
+                <div class="form-row mt-3">
+                    <div class="form-group col-12">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="clearForm()">
+                            <i class="fas fa-undo"></i> Clear
+                        </button>
+                    </div>
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="status12">الحالة </label>
-                    <select id="status12" class="form-control">
-                        <option value="">اي حالة</option>
-                        <option value="pending">قيد الانتظار</option>
-                        <option value="processing">قيد المعالجة</option>
-                        <option value="completed">مكتمل</option>
-                        <option value="cancelled">ملغي</option>
-                    </select>
-                </div>
-            </div>
+            </form>
         </div>
 
         <!-- Advanced Search Form Section -->
@@ -86,49 +214,67 @@
                 <div class="search-row">
                     <div class="search-col">
                         <div class="form-group">
-                            <label>رقم الفاتورة</label>
+                            <label>Invoice Number</label>
                             <input type="text" class="form-control" name="invoice_number" id="invoice_number">
                         </div>
                     </div>
                     <div class="search-col">
                         <div class="form-group">
-                            <label>العميل</label>
-                            <input type="text" class="form-control" name="client_name" id="client_name">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="search-row">
-                    <div class="search-col">
-                        <div class="form-group">
-                            <label>تاريخ الفاتورة من</label>
-                            <input type="date" class="form-control" name="date_from" id="date_from">
-                        </div>
-                    </div>
-                    <div class="search-col">
-                        <div class="form-group">
-                            <label>تاريخ الفاتورة إلى</label>
-                            <input type="date" class="form-control" name="date_to" id="date_to">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="search-row">
-                    <div class="search-col">
-                        <div class="form-group">
-                            <label>حالة الدفع</label>
-                            <select class="form-control" name="payment_status" id="payment_status">
-                                <option value="">الكل</option>
-                                <option value="paid">مدفوع</option>
-                                <option value="unpaid">غير مدفوع</option>
-                                <option value="partial">مدفوع جزئياً</option>
+                            <label>Client</label>
+                            <select class="form-control" name="client" id="client">
+                                <option value="">Any Client</option>
+                                @if(isset($clients) && $clients->count() > 0)
+                                    @foreach($clients as $client)
+                                        <option value="{{ $client->id }}">{{ $client->trade_name }}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                     </div>
+                </div>
+
+                <div class="search-row">
                     <div class="search-col">
                         <div class="form-group">
-                            <label>المبلغ الإجمالي</label>
-                            <input type="number" class="form-control" name="grand_total" id="grand_total" step="0.01">
+                            <label>Date</label>
+                            <input type="date" class="form-control" name="date_from" id="date_from" placeholder="From">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">-</span>
+                            </div>
+                            <input type="date" class="form-control" name="date_to" id="date_to" placeholder="To">
+                        </div>
+                    </div>
+                    <div class="search-col">
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select class="form-control" name="status" id="status">
+                                <option value="">Any Status</option>
+                                <option value="paid">Paid</option>
+                                <option value="unpaid">Unpaid</option>
+                                <option value="partial">Partial</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-row">
+                    <div class="search-col">
+                        <div class="form-group">
+                            <label>Total Amount</label>
+                            <input type="number" step="0.01" class="form-control" name="total_amount" id="total_amount">
+                        </div>
+                    </div>
+                    <div class="search-col">
+                        <div class="form-group">
+                            <label>Sales Manager</label>
+                            <select class="form-control" name="sales_manager" id="sales_manager">
+                                <option value="">Any Sales Manager</option>
+                                @if(isset($employees) && $employees->count() > 0)
+                                    @foreach($employees as $employee)
+                                        <option value="{{ $employee->employee_id }}">{{ $employee->first_name }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -136,11 +282,11 @@
                 <div class="search-buttons-container">
                     <button type="submit" class="search-btn primary">
                         <i class="fas fa-search"></i>
-                        بحث
+                        Search
                     </button>
                     <button type="reset" class="search-btn outline">
                         <i class="fas fa-redo"></i>
-                        إعادة تعيين
+                        Reset
                     </button>
                 </div>
             </form>
@@ -148,15 +294,15 @@
         <div class="search-buttons-container">
             <button type="button" class="search-btn primary" id="basicSearchBtn">
                 <i class="fas fa-search"></i>
-                بحث
+                Search
             </button>
             <button type="button" class="search-btn outline" id="toggleAdvancedSearch">
                 <i class="fas fa-search-plus"></i>
-                بحث متقدم
+                Advanced Search
             </button>
             <button type="button" class="search-btn secondary" id="cancelSearchBtn">
                 <i class="fas fa-times"></i>
-                إلغاء
+                Cancel
             </button>
         </div>
 

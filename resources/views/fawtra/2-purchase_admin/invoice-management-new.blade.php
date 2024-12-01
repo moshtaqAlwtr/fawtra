@@ -1,12 +1,3 @@
-@extends('layouts.master')
-@section('css')
-@endsection
-@section('title')
-    {{ trans('purchase_admin.invoice_management') }}
-@endsection
-@section('page-header')
-@endsection
-@section('content')
 
 <!-- عرض الرسائل -->
 @if(session('error'))
@@ -32,7 +23,7 @@
         <div class="top-bar">
             <h5 class="mb-0">{{ trans('purchase_admin.invoice_management') }}</h5>
         </div>
-        
+
         <div class="container my-4">
             <!-- Header Buttons -->
             <div class="d-flex justify-content-between align-items-center mb-3">

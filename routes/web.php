@@ -130,7 +130,12 @@ Route::group([
     Route::get('/invoice/{id}/edit', [InvoiceController::class, 'edit'])->name('invoice_edit');
     Route::delete('/invoice/{id}', [InvoiceController::class, 'destroy'])->name('invoice_delete');
     Route::post('/invoice-items/store', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
-    Route::get('/invoice-items/create', [InvoiceItemController::class, 'create'])->name('invoice-items.create');
+    Route::post('/invoices/filter', [InvoiceController::class, 'filter'])->name('invoices.filter');
+    Route::post('/invoices/search', [InvoiceController::class, 'search'])->name('invoices.search');
+
+    // Invoice Custom Fields Configuration Routes
+    Route::post('/invoices/custom-fields/save', [InvoiceController::class, 'saveCustomFieldsConfig'])->name('invoices.custom-fields.save');
+    Route::get('/invoices/custom-fields/config', [InvoiceController::class, 'getCustomFieldsConfig'])->name('invoices.custom-fields.config');
 
     // مسارات الملف الشخصي
     Route::middleware(['auth'])->group(function () {

@@ -84,4 +84,9 @@ class Invoice extends Model
         return $this->belongsTo(Employee::class, 'employee_id');
     }
 
+    public function customFields()
+    {
+        return $this->hasMany(InvoiceCustomField::class);
+    }
+
 }

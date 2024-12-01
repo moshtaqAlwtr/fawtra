@@ -81,12 +81,16 @@
                                 @include('fawtra.2-purchase_admin.quotation')
                             @break
 
-                            @case('human_resources')
-                                @include('fawtra.1-control_panel.hr-dashboard')
+                            @case('invoice-management')
+                                @include('fawtra.2-purchase_admin.invoice-management', [
+                                    'clients' => $clients ?? collect(),
+                                    'employees' => $employees ?? collect(),
+                                    'invoices' => $invoices ?? collect()
+                                ])
                             @break
 
-                            @case('invoice-management')
-                                @include('fawtra.2-purchase_admin.invoice-management', ['invoices' => $invoices ?? []])
+                            @case('human_resources')
+                                @include('fawtra.1-control_panel.hr-dashboard')
                             @break
 
                             @case('add_customer')
