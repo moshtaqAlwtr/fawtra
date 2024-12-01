@@ -115,7 +115,7 @@ class ClientController extends Controller
             $client->update(['attachments' => $path]);
         }
 
-        return redirect()->route('clients.index')->with('success', 'تم تحديث بيانات العميل بنجاح.');
+        return redirect()->route('customer-management')->with('success', 'تم تحديث بيانات العميل بنجاح.');
     }
 
     /**
