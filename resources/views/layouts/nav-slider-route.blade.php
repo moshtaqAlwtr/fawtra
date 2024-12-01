@@ -196,6 +196,9 @@
                             @case('quotation-preview')
                                 @include('fawtra.2-purchase_admin.quotation-preview')
                             @break
+                            @case('recurring-invoices')
+                                @include('fawtra.2-purchase_admin.recurring-invoices')
+                            @break
 
                             @default
                                 <div class="alert alert-warning">

@@ -1,6 +1,6 @@
 <?php
 return [
-    'credit_note_management' => 'إدارة الإشعارات الدائنة',
+    'credit_note_management' => 'إدارة الإشعارات المدينة',
     'create_credit_note' => 'إنشاء إشعار دائنة',
     'actions' => 'الإجراءات',
     'delete' => 'حذف',
@@ -63,5 +63,7 @@ return [
     'any_sales_rep' => 'اي ممثل مبيعات',
     'pos shift' => 'Pos Shift',
     'select_client' => 'اختر العميل',
-
+    'send_invoices' => 'إرسال الفواتير',
+    'total_less_than' => 'الإجمالي أقل من',
+    'total_greater_than' => 'الإجمالي أكبر من',
 ];

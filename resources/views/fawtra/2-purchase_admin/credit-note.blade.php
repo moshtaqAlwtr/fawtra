@@ -1,4 +1,3 @@
-
   <!-- عرض رسالة الأخطاء إن وجدت -->
   @if ($errors->any())
         <div class="alert alert-danger">
@@ -196,19 +195,58 @@
 
     <!-- تبويب الخصم والتسوية -->
     <div class="tab-pane fade show active" id="discount" role="tabpanel" aria-labelledby="discount-tab">
-        <div class="form-group row mt-3">
-            <label class="col-sm-2 col-form-label">الخصم</label>
-            <div class="col-sm-3">
-                <input type="text" class="form-control" placeholder="0.00">
-            </div>
-            <label class="col-sm-2 col-form-label">التسوية</label>
-            <div class="col-sm-3">
-                <select class="form-control">
-                    <option>نسبة مئوية (%)</option>
-                    <option>قيمة ثابتة</option>
-                </select>
-            </div>
-        </div>
+        <div class="section-card mb-4">
+                    <ul class="nav nav-tabs custom-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="discount-tab" data-bs-toggle="tab" data-bs-target="#discount" type="button" role="tab">
+                                <i class="fas fa-percentage"></i> الخصم والتسوية
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab">
+                                <i class="fas fa-cog"></i> الإعدادات
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content p-3" id="myTabContent">
+                        <!-- تبويب الخصم والتسوية -->
+                        <div class="tab-pane fade show active" id="discount" role="tabpanel">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">نوع الخصم</label>
+                                        <select class="form-select" name="discount_type">
+                                            <option value="percentage">نسبة مئوية (%)</option>
+                                            <option value="fixed">مبلغ ثابت</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">قيمة الخصم</label>
+                                        <input type="number" class="form-control" name="discount_value">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- تبويب الإعدادات -->
+                        <div class="tab-pane fade" id="settings" role="tabpanel">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">المستند</label>
+                                        <select class="form-select" name="document_type">
+                                            <option value="1">مستند 1</option>
+                                            <option value="2">مستند 2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     </div>
 
     <!-- تبويب الإيداع -->
@@ -394,8 +432,10 @@
 
     <div class="footer">
         <p>شكراً لتعاملكم معنا!</p>
-        <p>شركتنا - جميع الحقوق محفوظة © 2024</p>
+        <p>شركتنا - جميع الحقوق محفوظة 2024</p>
     </div>
 </div>
 </div>
 
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
