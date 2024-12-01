@@ -59,7 +59,7 @@
 
                     </li>
                     <li>
-                        <a href="">{{ trans('main_trans.Periodic_invoices') }}</a>
+                        <a href="{{route('recurring-invoices')}}">{{ trans('main_trans.Periodic_invoices') }}</a>
                     </li>
                     <li>
                         <a href="">{{ trans('main_trans.Returned_invoices') }}</a>

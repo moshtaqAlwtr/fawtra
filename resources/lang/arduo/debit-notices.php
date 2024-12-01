@@ -51,4 +51,8 @@ return [
     'delete' => 'حذف کریں',
     'created_by' => 'تخلیق کردہ',
     'created_at' => 'تخلیق کی تاریخ',
+    'select_client' => 'کلائنٹ منتخب کریں',
+    'send_invoices' => 'انوائسز بھیجیں',
+    'total_less_than' => 'کل رقم اس سے کم',
+    'total_greater_than' => 'کل رقم اس سے زیادہ',
 ];
