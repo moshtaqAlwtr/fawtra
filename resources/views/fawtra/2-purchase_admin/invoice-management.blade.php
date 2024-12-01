@@ -151,8 +151,8 @@
         <!-- Action Buttons Always Visible -->
         <div class="d-flex mb-3 mt-3">
             <button class="btn btn-primary ml-2 mr-2">{{ trans('purchase_admin.search') }}</button>
-            <button class="btn btn-secondary ml-2 mr-2">{{ trans('purchase_admin.reset_filters') }}</button>
-            <button class="btn btn-outline-secondary ml-2 mr-2" data-toggle="collapse" data-target="#advancedSearchForm" aria-expanded="false" aria-controls="advancedSearchForm">
+            <button class="btn btn-secondary ml-2 mr-2" id="resetFiltersBtn">{{ trans('purchase_admin.reset_filters') }}</button>
+            <button class="btn btn-outline-secondary ml-2 mr-2" id="advancedSearchBtn" data-toggle="collapse" data-target="#advancedSearchForm" aria-expanded="false" aria-controls="advancedSearchForm">
                 <i class="bi bi-sliders"></i> {{ trans('purchase_admin.advanced_search') }}
             </button>
         </div>
@@ -300,6 +300,23 @@
 
 @section('scripts')
 <script>
+    $(document).ready(function() {
+        // تفعيل البحث المتقدم
+        $('#advancedSearchBtn').click(function(e) {
+            e.preventDefault();
+            $('#advancedSearchForm').collapse('toggle');
+        });
+
+        // تفعيل tooltips
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // إعادة تعيين نموذج البحث
+        $('#resetFiltersBtn').click(function(e) {
+            e.preventDefault();
+            $('form')[0].reset();
+        });
+    });
+
     function showUnauthorizedMessage(action) {
         const messages = {
             'edit': '{{ trans('purchase_admin.unauthorized_edit') }}',
@@ -308,4 +325,4 @@
         alert(messages[action]);
     }
 </script>
-@endsection
+
