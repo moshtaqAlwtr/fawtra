@@ -142,242 +142,251 @@
 
         </div>
 
-        <!-- Advanced Search Form Section -->
-        <div id="advancedSearchForm" class="filter-section mb-4">
-            <div class="row">
-                <!-- يحتوي على البند -->
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>{{ trans('purchase_admin.contains_item') }}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-box"></i></span>
+        <div id="advanced-search" style="display: none;">
+            <div class="advanced-search-container">
+                <form id="searchForm">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="d-block">بحث عن عنصر</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="item_search" placeholder="ادخل اسم العنصر">
+                                </div>
                             </div>
-                            <input type="text" class="form-control" name="items" value="{{ request('items') }}">
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="d-block">العملة</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-money-bill-wave"></i></span>
+                                    </div>
+                                    <select class="form-control" name="currency">
+                                        <option value="">اختر العملة</option>
+                                        <option value="SAR">ريال سعودي</option>
+                                        <option value="USD">دولار أمريكي</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="d-block">المبلغ الإجمالي</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                                    </div>
+                                    <input type="number" class="form-control" name="total_amount" placeholder="أدخل المبلغ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="d-block">حقل مخصص</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-edit"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="custom_field" placeholder="أدخل قيمة">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- العملة -->
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>{{ trans('purchase_admin.currency') }}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-money-bill"></i></span>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group date-range-container">
+                                <label class="d-block">تاريخ الاستحقاق</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                    </div>
+                                    <input type="date" class="form-control" name="due_date_start" placeholder="من">
+                                    <input type="date" class="form-control" name="due_date_end" placeholder="إلى">
+                                </div>
                             </div>
-                            <select class="form-control" name="currency">
-                                <option value="">{{ trans('purchase_admin.all_currencies') }}</option>
-                                <option value="أي" {{ request('currency') == 'أي' ? 'selected' : '' }}>أي</option>
-                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="d-block">تخصيص التاريخ</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                                    </div>
+                                    <select class="form-control" name="date_customization">
+                                        <option value="">اختر الفترة</option>
+                                        <option value="today">اليوم</option>
+                                        <option value="yesterday">أمس</option>
+                                        <option value="last_week">الأسبوع الماضي</option>
+                                        <option value="last_month">الشهر الماضي</option>
+                                        <option value="last_3months">آخر 3 أشهر</option>
+                                        <option value="last_6months">آخر 6 أشهر</option>
+                                        <option value="last_year">السنة الماضية</option>
+                                        <option value="custom">تخصيص</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group date-range-container">
+                                <label class="d-block">تاريخ الإنشاء</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-calendar-plus"></i></span>
+                                    </div>
+                                    <input type="date" class="form-control" name="created_date_start" placeholder="من">
+                                    <input type="date" class="form-control" name="created_date_end" placeholder="إلى">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- الإجمالي أقل من -->
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>{{ trans('purchase_admin.total_less_than') }}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="d-block">المصدر</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-store"></i></span>
+                                    </div>
+                                    <select class="form-control" name="source">
+                                        <option value="">اختر المصدر</option>
+                                        <option value="store">متجر</option>
+                                        <option value="online">أونلاين</option>
+                                    </select>
+                                </div>
                             </div>
-                            <input type="number" class="form-control" name="total_less" value="{{ request('total_less') }}">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="d-block">حالة التوصيل</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-truck"></i></span>
+                                    </div>
+                                    <select class="form-control" name="delivery_status">
+                                        <option value="">اختر الحالة</option>
+                                        <option value="delivered">تم التوصيل</option>
+                                        <option value="pending">قيد الانتظار</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="d-block">مدير المبيعات</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                                    </div>
+                                    <select class="form-control" name="sales_manager">
+                                        <option value="">اختر المدير</option>
+                                        <option value="1">أحمد</option>
+                                        <option value="2">محمد</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- الإجمالي أكبر من -->
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>{{ trans('purchase_admin.total_more_than') }}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group date-range-container">
+                                <label class="d-block">تاريخ الاستحقاق</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                    </div>
+                                    <input type="date" class="form-control" name="due_date_start" placeholder="من">
+                                    <input type="date" class="form-control" name="due_date_end" placeholder="إلى">
+                                </div>
                             </div>
-                            <input type="number" class="form-control" name="total_more" value="{{ request('total_more') }}">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group date-range-container">
+                                <label class="d-block">تاريخ الإنشاء</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-calendar-plus"></i></span>
+                                    </div>
+                                    <input type="date" class="form-control" name="created_date_start" placeholder="من">
+                                    <input type="date" class="form-control" name="created_date_end" placeholder="إلى">
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                    <div class="search-buttons-container">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i> بحث
+                        </button>
+                        <button type="reset" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i> إعادة تعيين
+                        </button>
+                    </div>
+                </form>
             </div>
-
-            <div class="row">
-                <!-- تاريخ الاستحقاق -->
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>{{ trans('purchase_admin.due_date') }}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
-                            </div>
-                            <select class="form-control" name="due_date_type">
-                                <option value="">{{ trans('purchase_admin.select_period') }}</option>
-                                <option value="last_month" {{ request('due_date_type') == 'last_month' ? 'selected' : '' }}>الشهر الأخير</option>
-                                <option value="last_year" {{ request('due_date_type') == 'last_year' ? 'selected' : '' }}>السنة الماضية</option>
-                            </select>
-                            <input type="date" class="form-control" name="due_date_from" value="{{ request('due_date_from') }}">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">-</span>
-                            </div>
-                            <input type="date" class="form-control" name="due_date_to" value="{{ request('due_date_to') }}">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- تاريخ الإنشاء -->
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>{{ trans('purchase_admin.creation_date') }}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
-                            </div>
-                            <select class="form-control" name="creation_date_type">
-                                <option value="">{{ trans('purchase_admin.select_period') }}</option>
-                                <option value="last_month" {{ request('creation_date_type') == 'last_month' ? 'selected' : '' }}>الشهر الأخير</option>
-                                <option value="last_year" {{ request('creation_date_type') == 'last_year' ? 'selected' : '' }}>السنة الماضية</option>
-                            </select>
-                            <input type="date" class="form-control" name="creation_date_from" value="{{ request('creation_date_from') }}">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">-</span>
-                            </div>
-                            <input type="date" class="form-control" name="creation_date_to" value="{{ request('creation_date_to') }}">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <!-- حقل مخصص -->
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>{{ trans('purchase_admin.custom_field') }}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-tag"></i></span>
-                            </div>
-                            <input type="text" class="form-control" name="custom_field" value="{{ request('custom_field') }}">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- المصدر -->
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>{{ trans('purchase_admin.source') }}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-database"></i></span>
-                            </div>
-                            <select class="form-control" name="source">
-                                <option value="">{{ trans('purchase_admin.all') }}</option>
-                                <option value="الكل" {{ request('source') == 'الكل' ? 'selected' : '' }}>الكل</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- حالة التسليم -->
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>{{ trans('purchase_admin.delivery_status') }}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-truck"></i></span>
-                            </div>
-                            <select class="form-control" name="delivery_status">
-                                <option value="">{{ trans('purchase_admin.all') }}</option>
-                                <option value="الكل" {{ request('delivery_status') == 'الكل' ? 'selected' : '' }}>الكل</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- مسؤول مبيعات -->
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label>{{ trans('purchase_admin.sales_manager') }}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            </div>
-                            <select class="form-control" name="sales_manager">
-                                <option value="">{{ trans('purchase_admin.all') }}</option>
-                                <option value="أي مسؤول مبيعات" {{ request('sales_manager') == 'أي مسؤول مبيعات' ? 'selected' : '' }}>أي مسؤول مبيعات</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <!-- مصدر الطلب -->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>{{ trans('purchase_admin.order_source') }}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-shopping-cart"></i></span>
-                            </div>
-                            <select class="form-control" name="order_source">
-                                <option value="">{{ trans('purchase_admin.select_source') }}</option>
-                                <option value="من فضلك اختر" {{ request('order_source') == 'من فضلك اختر' ? 'selected' : '' }}>من فضلك اختر</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- خيارات الشحن -->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>{{ trans('purchase_admin.shipping_options') }}</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-shipping-fast"></i></span>
-                            </div>
-                            <select class="form-control" name="shipping_options">
-                                <option value="">{{ trans('purchase_admin.all') }}</option>
-                                <option value="الكل" {{ request('shipping_options') == 'الكل' ? 'selected' : '' }}>الكل</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pos Shift -->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Pos Shift</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-cash-register"></i></span>
-                            </div>
-                            <input type="text" class="form-control" name="pos_shift" value="{{ request('pos_shift') }}">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
         </div>
+
         <div class="search-buttons-container">
-
-                <button type="submit" class="btn btn-primary mr-2">
-                    <i class="fas fa-search"></i> {{ trans('purchase_admin.search') }}
-                </button>
-                <button type="reset" class="btn btn-secondary" onclick="window.location='{{ route('sales_invoice') }}'">
-                    <i class="fas fa-redo"></i> {{ trans('purchase_admin.reset') }}
-                </button>
-
-            <button type="button" class="search-btn outline" id="toggleAdvancedSearch">
-                <i class="fas fa-search-plus"></i>
-                Advanced Search
+            <button type="submit" class="btn btn-primary mr-2">
+                <i class="fas fa-search"></i> {{ trans('purchase_admin.search') }}
             </button>
-            <button type="button" class="search-btn secondary" id="cancelSearchBtn">
-                <i class="fas fa-times"></i>
-                Cancel
+            <button type="reset" class="btn btn-secondary" onclick="window.location='{{ route('sales_invoice') }}'">
+                <i class="fas fa-redo"></i> {{ trans('purchase_admin.reset') }}
+            </button>
+
+            <button type="button" class="btn btn-primary mb-3" onclick="showAdvanced()">
+                <i class="fas fa-filter"></i> بحث متقدم
             </button>
         </div>
+
     </form>
+
+        <script>
+        function showAdvanced() {
+            var x = document.getElementById("advanced-search");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        </script>
+
+        @push('scripts')
+        <script>
+        function toggleSearch() {
+            var form = document.getElementById('advancedSearchForm');
+            var btn = document.getElementById('toggleAdvancedSearch');
+
+            if (!form || !btn) {
+                console.error('عناصر البحث غير موجودة');
+                return;
+            }
+
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'block';
+                btn.innerHTML = '<i class="fas fa-times"></i> إخفاء البحث المتقدم';
+            } else {
+                form.style.display = 'none';
+                btn.innerHTML = '<i class="fas fa-filter"></i> بحث متقدم';
+            }
+        }
+
+        // تأكد من أن النموذج مخفي عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.getElementById('advancedSearchForm');
+            if (form) {
+                form.style.display = 'none';
+            }
+        });
+        </script>
+        @endpush
+
         <!-- Tab Section -->
         <div class="tab-section d-flex justify-content-between align-items-center">
             <div>
@@ -404,105 +413,114 @@
 
         <!-- Invoice Cards -->
         <div class="row">
-            @foreach($invoices as $invoice)
-                <div class="col-md-4 mb-4">
-                    <div class="invoice-card">
-                        <div class="invoice-card-header">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="invoice-number">
-                                    <div class="number-badge">
-                                        <span class="number">#{{ $invoice->invoice_number }}</span>
-                                    </div>
-                                </div>
-                                <div class="invoice-date">
-                                    <span class="date-badge">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        {{ \Carbon\Carbon::parse($invoice->invoice_date)->format('Y/m/d') }}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="invoice-card-body">
-                            <div class="client-info">
-                                <div class="client-header">
-                                    <div class="client-avatar">
-                                        <div class="avatar-circle">
-                                            <i class="fas fa-user-circle"></i>
+            @if($invoices->isEmpty())
+                <div class="col-12 text-center mt-4">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        {{ trans('purchase_admin.no_invoices_found') }}
+                    </div>
+                </div>
+            @else
+                @foreach($invoices as $invoice)
+                    <div class="col-md-4 mb-4">
+                        <div class="invoice-card">
+                            <div class="invoice-card-header">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="invoice-number">
+                                        <div class="number-badge">
+                                            <span class="number">#{{ $invoice->invoice_number }}</span>
                                         </div>
                                     </div>
-                                    <div class="client-details">
-                                        <h6 class="client-name">{{ optional($invoice->client)->trade_name }}</h6>
-                                        <span class="client-email">
-                                            <i class="fas fa-envelope"></i>
-                                            {{ optional($invoice->client)->email }}
+                                    <div class="invoice-date">
+                                        <span class="date-badge">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            {{ \Carbon\Carbon::parse($invoice->invoice_date)->format('Y/m/d') }}
                                         </span>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="invoice-amount">
-                                <div class="amount-circle">
-                                    <div class="amount-value">
-                                        <span class="currency">ر.س</span>
-                                        <span class="value">{{ number_format($invoice->grand_total, 2) }}</span>
+                            <div class="invoice-card-body">
+                                <div class="client-info">
+                                    <div class="client-header">
+                                        <div class="client-avatar">
+                                            <div class="avatar-circle">
+                                                <i class="fas fa-user-circle"></i>
+                                            </div>
+                                        </div>
+                                        <div class="client-details">
+                                            <h6 class="client-name">{{ optional($invoice->client)->trade_name }}</h6>
+                                            <span class="client-email">
+                                                <i class="fas fa-envelope"></i>
+                                                {{ optional($invoice->client)->email }}
+                                            </span>
+                                        </div>
                                     </div>
+                                </div>
+
+                                <div class="invoice-amount">
+                                    <div class="amount-circle">
+                                        <div class="amount-value">
+                                            <span class="currency">ر.س</span>
+                                            <span class="value">{{ number_format($invoice->grand_total, 2) }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="status-section">
+                                    @if($invoice->payment_status == 'paid')
+                                        <div class="status-indicator paid">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>{{ trans('purchase_admin.paid') }}</span>
+                                        </div>
+                                    @elseif($invoice->payment_status == 'unpaid')
+                                        <div class="status-indicator unpaid">
+                                            <i class="fas fa-times-circle"></i>
+                                            <span>{{ trans('purchase_admin.unpaid') }}</span>
+                                        </div>
+                                    @else
+                                        <div class="status-indicator partial">
+                                            <i class="fas fa-clock"></i>
+                                            <span>{{ trans('purchase_admin.partial') }}</span>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
 
-                            <div class="status-section">
-                                @if($invoice->payment_status == 'paid')
-                                    <div class="status-indicator paid">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>{{ trans('purchase_admin.paid') }}</span>
-                                    </div>
-                                @elseif($invoice->payment_status == 'unpaid')
-                                    <div class="status-indicator unpaid">
-                                        <i class="fas fa-times-circle"></i>
-                                        <span>{{ trans('purchase_admin.unpaid') }}</span>
-                                    </div>
-                                @else
-                                    <div class="status-indicator partial">
-                                        <i class="fas fa-clock"></i>
-                                        <span>{{ trans('purchase_admin.partial') }}</span>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="invoice-card-footer">
-                            <div class="action-buttons">
-                                <button class="action-btn view-btn" onclick="window.location.href='{{ route('invoice.preview', ['id' => $invoice->invoice_id]) }}'">
-                                    <i class="fas fa-eye"></i>
-                                    <span class="tooltip">{{ trans('purchase_admin.view') }}</span>
-                                </button>
-                                <button class="action-btn print-btn">
-                                    <i class="fas fa-print"></i>
-                                    <span class="tooltip">{{ trans('purchase_admin.print') }}</span>
-                                </button>
-                                <a href="{{ route('invoice_edit', $invoice->invoice_id) }}" class="action-btn edit-btn">
-                                    <i class="fas fa-edit"></i>
-                                    <span class="tooltip">{{ trans('purchase_admin.edit') }}</span>
-                                </a>
-                                <form action="{{ route('invoice_delete', $invoice->invoice_id) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="action-btn delete-btn">
-                                        <i class="fas fa-trash-alt"></i>
-                                        <span class="tooltip">{{ trans('purchase_admin.delete') }}</span>
+                            <div class="invoice-card-footer">
+                                <div class="action-buttons">
+                                    <button class="action-btn view-btn" onclick="window.location.href='{{ route('invoice.preview', ['id' => $invoice->invoice_id]) }}'">
+                                        <i class="fas fa-eye"></i>
+                                        <span class="tooltip">{{ trans('purchase_admin.view') }}</span>
                                     </button>
-                                </form>
-                            </div>
-                            <div class="employee-info">
-                                <div class="employee-badge">
-                                    <i class="fas fa-user-tie"></i>
-                                    <span>{{ optional($invoice->employee)->name }}</span>
+                                    <button class="action-btn print-btn">
+                                        <i class="fas fa-print"></i>
+                                        <span class="tooltip">{{ trans('purchase_admin.print') }}</span>
+                                    </button>
+                                    <a href="{{ route('invoice_edit', $invoice->invoice_id) }}" class="action-btn edit-btn">
+                                        <i class="fas fa-edit"></i>
+                                        <span class="tooltip">{{ trans('purchase_admin.edit') }}</span>
+                                    </a>
+                                    <form action="{{ route('invoice_delete', $invoice->invoice_id) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="action-btn delete-btn">
+                                            <i class="fas fa-trash-alt"></i>
+                                            <span class="tooltip">{{ trans('purchase_admin.delete') }}</span>
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="employee-info">
+                                    <div class="employee-badge">
+                                        <i class="fas fa-user-tie"></i>
+                                        <span>{{ optional($invoice->employee)->name }}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @endif
         </div>
 
         <!-- Loading Spinner -->
@@ -523,68 +541,3 @@
             </ul>
         </nav>
 </div>
-
-@push('scripts')
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const advancedSearchForm = document.getElementById('advancedSearchForm');
-        const toggleButton = document.getElementById('toggleAdvancedSearch');
-
-        // تخزين حالة البحث المتقدم في localStorage
-        const isAdvancedSearchVisible = localStorage.getItem('advancedSearchVisible') === 'true';
-
-        // تطبيق الحالة المحفوظة عند تحميل الصفحة
-        if (isAdvancedSearchVisible) {
-            advancedSearchForm.style.display = 'block';
-            toggleButton.innerHTML = '<i class="fas fa-times"></i> {{ trans("purchase_admin.hide_advanced") }}';
-            toggleButton.classList.remove('btn-info');
-            toggleButton.classList.add('btn-danger');
-        }
-
-        toggleButton.addEventListener('click', function() {
-            const isVisible = advancedSearchForm.style.display !== 'none';
-
-            // تحريك سلس للنموذج
-            advancedSearchForm.style.transition = 'all 0.3s ease-in-out';
-
-            if (!isVisible) {
-                advancedSearchForm.style.display = 'block';
-                // إضافة تأخير صغير للسماح بالتحريك
-                setTimeout(() => {
-                    advancedSearchForm.style.maxHeight = '2000px';
-                    advancedSearchForm.style.opacity = '1';
-                }, 10);
-
-                toggleButton.innerHTML = '<i class="fas fa-times"></i> {{ trans("purchase_admin.hide_advanced") }}';
-                toggleButton.classList.remove('btn-info');
-                toggleButton.classList.add('btn-danger');
-
-                localStorage.setItem('advancedSearchVisible', 'true');
-            } else {
-                advancedSearchForm.style.maxHeight = '0';
-                advancedSearchForm.style.opacity = '0';
-
-                // إخفاء النموذج بعد انتهاء التحريك
-                setTimeout(() => {
-                    advancedSearchForm.style.display = 'none';
-                }, 300);
-
-                toggleButton.innerHTML = '<i class="fas fa-filter"></i> {{ trans("purchase_admin.advanced_search") }}';
-                toggleButton.classList.remove('btn-danger');
-                toggleButton.classList.add('btn-info');
-
-                localStorage.setItem('advancedSearchVisible', 'false');
-            }
-        });
-
-        // إضافة تأثير عند تمرير الماوس فوق الزر
-        toggleButton.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px)';
-        });
-
-        toggleButton.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
-</script>
-@endpush

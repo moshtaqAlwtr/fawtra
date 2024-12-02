@@ -248,10 +248,7 @@ class InvoiceController extends Controller
             \Log::info('Attempting to preview invoice with ID: ' . $id);
 
             // التحقق من صحة المعرف
-            if (!is_numeric($id)) {
-                \Log::error('Invalid invoice ID format: ' . $id);
-                throw new \InvalidArgumentException('معرف الفاتورة غير صالح');
-            }
+
 
             // التحقق من وجود الفاتورة وجلب جميع العلاقات المطلوبة
             $invoice = Invoice::with([
@@ -262,22 +259,16 @@ class InvoiceController extends Controller
                 'customFields'
             ])->find($id);
 
-            if (!$invoice) {
-                \Log::error('Invoice not found with ID: ' . $id);
-                throw new \Illuminate\Database\Eloquent\ModelNotFoundException();
-            }
-
-            \Log::info('Found invoice: ', ['id' => $invoice->invoice_id, 'number' => $invoice->invoice_number]);
 
             // جلب جميع الفواتير للقائمة الجانبية
             $invoices = Invoice::select(['invoice_id', 'invoice_number', 'total', 'payment_status'])
                             ->latest()
                             ->get();
 
-            \Log::info('Rendering invoice preview view');
 
             // عرض صفحة معاينة الفاتورة
-            return view('fawtra.2-purchase_admin.invoice_preview', [
+            return view('layouts.nav-slider-route', [
+                'page' => 'invoice_preview',
                 'invoice' => $invoice,
                 'invoices' => $invoices
             ]);

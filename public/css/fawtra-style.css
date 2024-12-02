@@ -1554,7 +1554,7 @@ select.search-form-control {
 
 .search-buttons {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     justify-content: flex-start;
     margin-top: 20px;
     padding: 15px 0;
@@ -2391,4 +2391,264 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #1e40af;
+}
+
+/* Search Form Styling */
+.filter-section {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.filter-section:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section .form-group {
+    margin-bottom: 20px;
+}
+
+.filter-section label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.filter-section .input-group {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.filter-section .input-group:focus-within {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.filter-section .input-group-prepend .input-group-text {
+    background-color: #f8f9fa;
+    border: none;
+    color: #6c757d;
+    padding: 12px 15px;
+}
+
+.filter-section .form-control {
+    border: none;
+    padding: 12px 15px;
+    height: auto;
+    font-size: 14px;
+}
+
+.filter-section .form-control:focus {
+    box-shadow: none;
+}
+
+/* Advanced Search Toggle Button */
+#toggleAdvancedSearch {
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    color: #495057;
+}
+
+#toggleAdvancedSearch:hover {
+    background: #e9ecef;
+    transform: translateY(-1px);
+}
+
+#toggleAdvancedSearch i {
+    margin-right: 8px;
+}
+
+/* Search Buttons Container */
+.search-buttons-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.search-buttons-container button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.search-buttons-container .btn-primary {
+    background: #3498db;
+    border: none;
+    color: white;
+}
+
+.search-buttons-container .btn-primary:hover {
+    background: #2980b9;
+    transform: translateY(-1px);
+}
+
+/* Advanced Search Form Animation */
+#advancedSearchForm {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+#advancedSearchForm.show {
+    opacity: 1;
+    max-height: 2000px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filter-section {
+        padding: 15px;
+    }
+    
+    .search-buttons-container {
+        flex-direction: column;
+    }
+    
+    .search-buttons-container button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* تنسيق قسم البحث المتقدم */
+#advancedSearchForm {
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    opacity: 1;
+    position: relative;
+    z-index: 100;
+}
+
+#advancedSearchForm.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.filter-section {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* تنسيقات البحث المتقدم */
+.advanced-search-container {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.advanced-search-container .form-group {
+    margin-bottom: 20px;
+}
+
+.advanced-search-container label {
+    color: #495057;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.advanced-search-container .input-group {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.advanced-search-container .input-group-text {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    color: #6c757d;
+    padding: 12px;
+}
+
+.advanced-search-container .form-control {
+    border: 1px solid #e9ecef;
+    padding: 10px 15px;
+    height: auto;
+    transition: all 0.2s ease;
+}
+
+.advanced-search-container .form-control:focus {
+    box-shadow: none;
+    border-color: #80bdff;
+}
+
+.advanced-search-container select.form-control {
+    padding-right: 30px;
+}
+
+.advanced-search-container .row {
+    margin-bottom: 15px;
+}
+
+.advanced-search-container .fas {
+    font-size: 1rem;
+}
+
+/* تحسين شكل الأزرار */
+.search-buttons-container {
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-buttons-container .btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.search-buttons-container .btn-primary {
+    background-color: #007bff;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+}
+
+.search-buttons-container .btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.search-buttons-container .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    box-shadow: 0 2px 4px rgba(108, 117, 125, 0.2);
+}
+
+.search-buttons-container .btn-secondary:hover {
+    background-color: #545b62;
+    transform: translateY(-1px);
+}
+
+/* تحسين شكل التواريخ */
+.date-range-container .input-group {
+    flex-wrap: nowrap;
+}
+
+.date-range-container .form-control {
+    min-width: 120px;
 }
