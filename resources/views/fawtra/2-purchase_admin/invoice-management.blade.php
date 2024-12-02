@@ -153,7 +153,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-box"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="contains_item" value="{{ request('contains_item') }}">
+                            <input type="text" class="form-control" name="items" value="{{ request('items') }}">
                         </div>
                     </div>
                 </div>

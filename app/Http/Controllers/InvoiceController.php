@@ -41,9 +41,9 @@ class InvoiceController extends Controller
         }
 
         // البحث حسب محتوى البند
-        if ($request->filled('contains_item')) {
+        if ($request->filled('items')) {
             $query->whereHas('items', function($q) use ($request) {
-                $q->where('item_name', 'like', '%' . $request->contains_item . '%');
+                $q->where('item', 'like', '%' . $request->items . '%');
             });
         }
 
@@ -501,9 +501,9 @@ class InvoiceController extends Controller
         }
 
         // تصفية حسب محتوى البند
-        if ($request->filled('item_content')) {
-            $query->whereHas('items', function ($q) use ($request) {
-                $q->where('description', 'like', '%' . $request->item_content . '%');
+        if ($request->filled('items')) {
+            $query->whereHas('items', function($q) use ($request) {
+                $q->where('item', 'like', '%' . $request->items . '%');
             });
         }
 
