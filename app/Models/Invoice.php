@@ -46,7 +46,6 @@ class Invoice extends Model
 
     protected $fillable = [
         'client_id',
-        'invoice_number',  // إضافة رقم الفاتورة
         'invoice_date',
         'sales_manager',
         'issue_date',
@@ -82,6 +81,14 @@ class Invoice extends Model
     public function employee()
     {
         return $this->belongsTo(Employee::class, 'employee_id');
+    }
+
+    /**
+     * العلاقة مع عناصر الفاتورة
+     */
+    public function items()
+    {
+        return $this->hasMany(InvoiceItem::class, 'invoice_id');
     }
 
     public function customFields()

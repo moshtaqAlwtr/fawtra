@@ -17,22 +17,137 @@ class InvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        $page = $request->query('page');
+        $query = Invoice::with(['client', 'employee']);
+
+        // البحث حسب رقم الفاتورة
+        if ($request->filled('invoice_id')) {
+            $query->where('invoice_id', $request->invoice_id);
+        }
+
+        // البحث حسب العميل
+        if ($request->filled('client')) {
+            $query->where('client_id', $request->client);
+        }
+
+        // البحث حسب حالة الدفع
+        if ($request->filled('status')) {
+            $query->where('payment_status', $request->status);
+        }
+
+        // البحث حسب الموظف
+        if ($request->filled('created_by')) {
+            $query->where('employee_id', $request->created_by);
+        }
+
+        // البحث حسب محتوى البند
+        if ($request->filled('contains_item')) {
+            $query->whereHas('items', function($q) use ($request) {
+                $q->where('item_name', 'like', '%' . $request->contains_item . '%');
+            });
+        }
+
+        // البحث حسب العملة
+        if ($request->filled('currency')) {
+            $query->where('currency', $request->currency);
+        }
+
+        // البحث حسب المبلغ الإجمالي
+        if ($request->filled('total_less')) {
+            $query->where('total_amount', '<=', $request->total_less);
+        }
+        if ($request->filled('total_more')) {
+            $query->where('total_amount', '>=', $request->total_more);
+        }
+
+        // البحث حسب تاريخ الاستحقاق
+        if ($request->filled('due_date_type')) {
+            if ($request->due_date_type === 'last_month') {
+                $query->whereMonth('due_date', '=', now()->subMonth()->month);
+            } elseif ($request->due_date_type === 'last_year') {
+                $query->whereYear('due_date', '=', now()->subYear()->year);
+            }
+        } else {
+            if ($request->filled('due_date_from')) {
+                $query->where('due_date', '>=', $request->due_date_from);
+            }
+            if ($request->filled('due_date_to')) {
+                $query->where('due_date', '<=', $request->due_date_to);
+            }
+        }
+
+        // البحث حسب تاريخ الإنشاء
+        if ($request->filled('creation_date_type')) {
+            if ($request->creation_date_type === 'last_month') {
+                $query->whereMonth('created_at', '=', now()->subMonth()->month);
+            } elseif ($request->creation_date_type === 'last_year') {
+                $query->whereYear('created_at', '=', now()->subYear()->year);
+            }
+        } else {
+            if ($request->filled('creation_date_from')) {
+                $query->whereDate('created_at', '>=', $request->creation_date_from);
+            }
+            if ($request->filled('creation_date_to')) {
+                $query->whereDate('created_at', '<=', $request->creation_date_to);
+            }
+        }
+
+        // البحث حسب الحقل المخصص
+        if ($request->filled('custom_field')) {
+            $query->whereHas('customFields', function($q) use ($request) {
+                $q->where('field_value', 'like', '%' . $request->custom_field . '%');
+            });
+        }
+
+        // البحث حسب المصدر
+        if ($request->filled('source') && $request->source !== 'الكل') {
+            $query->where('source', $request->source);
+        }
+
+        // البحث حسب حالة التسليم
+        if ($request->filled('delivery_status') && $request->delivery_status !== 'الكل') {
+            $query->where('delivery_status', $request->delivery_status);
+        }
+
+        // البحث حسب مسؤول المبيعات
+        if ($request->filled('sales_manager') && $request->sales_manager !== 'أي مسؤول مبيعات') {
+            $query->where('sales_manager_id', $request->sales_manager);
+        }
+
+        // البحث حسب مصدر الطلب
+        if ($request->filled('order_source') && $request->order_source !== 'من فضلك اختر') {
+            $query->where('order_source', $request->order_source);
+        }
+
+        // البحث حسب خيارات الشحن
+        if ($request->filled('shipping_options') && $request->shipping_options !== 'الكل') {
+            $query->where('shipping_option', $request->shipping_options);
+        }
+
+        // البحث حسب Pos Shift
+        if ($request->filled('pos_shift')) {
+            $query->where('pos_shift', $request->pos_shift);
+        }
+
+        // ترتيب النتائج
+        $query->orderBy('created_at', 'desc');
+
+        // تنفيذ الاستعلام
+        $invoices = $query->get();
         
-        // جلب العملاء والموظفين
+        // جلب العملاء والموظفين للفلاتر
         $clients = Client::all();
         $employees = Employee::all();
-    
-        if ($page == 'create') {
+
+        $page = $request->query('page', 'manage'); // Default to 'manage' if no page parameter
+
+        if($page == 'create') {
             return view('layouts.nav-slider-route', [
                 'page' => 'sales_invoice',
+                'invoices' => $invoices,
                 'clients' => $clients,
                 'employees' => $employees
             ]);
-        } elseif ($page == 'manage') {
-            // جلب الفواتير لعرضها
-            $invoices = Invoice::with(['client', 'employee'])->get();
-    
+        } else {
             return view('layouts.nav-slider-route', [
                 'page' => 'invoice-management',
                 'invoices' => $invoices,
@@ -40,18 +155,7 @@ class InvoiceController extends Controller
                 'employees' => $employees
             ]);
         }
-    
-        // عرض صفحة إدارة الفواتير كحالة افتراضية
-        $invoices = Invoice::with(['client', 'employee'])->get();
-        return view('layouts.nav-slider-route', [
-            'page' => 'invoice-management',
-            'invoices' => $invoices,
-            'clients' => $clients,
-            'employees' => $employees
-        ]);
     }
-    
-
 
     /**
      * Display the form to create a new invoice.
@@ -286,25 +390,26 @@ class InvoiceController extends Controller
         $query = Invoice::query();
 
         // Basic filters
-        if ($request->filled('invoice_number')) {
-            $query->where('invoice_number', 'like', '%' . $request->invoice_number . '%');
+        if ($request->filled('invoice_id')) {
+            $query->where('invoice_id', '=', $request->invoice_id);
         }
 
         if ($request->filled('client')) {
-            $query->where('client_id', $request->client);
+            $query->whereHas('client', function ($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->client . '%');
+            });
         }
 
         // تصفية حسب الموظف
         if ($request->filled('employee')) {
-            $query->where('employee_id', $request->employee);
+            $query->whereHas('employee', function ($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->employee . '%');
+            });
         }
 
         // تصفية حسب مدير المبيعات
         if ($request->filled('sales_manager')) {
-            $query->whereHas('employee', function($q) use ($request) {
-                $q->where('role', 'sales_manager')
-                  ->where('id', $request->sales_manager);
-            });
+            $query->where('sales_manager', 'like', '%' . $request->sales_manager . '%');
         }
 
         // تصفية حسب حالة الدفع
@@ -322,147 +427,32 @@ class InvoiceController extends Controller
             $query->where('currency', $request->currency);
         }
 
-        // تصفية حسب حقل مخصص
-        if ($request->filled('custom_field')) {
-            $query->whereHas('customFields', function($q) use ($request) {
-                $q->where('field_value', 'like', '%' . $request->custom_field . '%');
-            });
+        // تصفية حسب المبلغ
+        if ($request->filled('amount_from')) {
+            $query->where('total', '>=', $request->amount_from);
+        }
+        if ($request->filled('amount_to')) {
+            $query->where('total', '<=', $request->amount_to);
         }
 
-        // تصفية حسب نطاق التاريخ
+        // تصفية حسب التاريخ
         if ($request->filled('date_from')) {
-            $query->whereDate('invoice_date', '>=', $request->date_from);
+            $query->where('invoice_date', '>=', $request->date_from);
         }
         if ($request->filled('date_to')) {
-            $query->whereDate('invoice_date', '<=', $request->date_to);
-        }
-
-        // تصفية حسب تاريخ الاستحقاق
-        if ($request->filled('due_date_from')) {
-            $query->whereDate('due_date', '>=', $request->due_date_from);
-        }
-        if ($request->filled('due_date_to')) {
-            $query->whereDate('due_date', '<=', $request->due_date_to);
-        }
-
-        // تصفية حسب تاريخ الإنشاء
-        if ($request->filled('created_at_from')) {
-            $query->whereDate('created_at', '>=', $request->created_at_from);
-        }
-        if ($request->filled('created_at_to')) {
-            $query->whereDate('created_at', '<=', $request->created_at_to);
-        }
-
-        // تصفية حسب المبلغ الإجمالي
-        if ($request->filled('total_amount_from')) {
-            $query->where('total_amount', '>=', $request->total_amount_from);
-        }
-        if ($request->filled('total_amount_to')) {
-            $query->where('total_amount', '<=', $request->total_amount_to);
-        }
-
-        // تصفية حسب المبلغ المدفوع
-        if ($request->filled('paid_amount_from')) {
-            $query->where('paid_amount', '>=', $request->paid_amount_from);
-        }
-        if ($request->filled('paid_amount_to')) {
-            $query->where('paid_amount', '<=', $request->paid_amount_to);
-        }
-
-        // تصفية حسب المبلغ المتبقي
-        if ($request->filled('remaining_amount_from')) {
-            $query->where('remaining_amount', '>=', $request->remaining_amount_from);
-        }
-        if ($request->filled('remaining_amount_to')) {
-            $query->where('remaining_amount', '<=', $request->remaining_amount_to);
-        }
-
-        // تصفية حسب حالة التسليم
-        if ($request->filled('delivery_status')) {
-            $query->where('delivery_status', $request->delivery_status);
-        }
-
-        // تصفية حسب مصدر الطلب
-        if ($request->filled('source')) {
-            $query->where('source', $request->source);
-        }
-
-        // تصفية حسب خيارات الشحن
-        if ($request->filled('shipping_options')) {
-            $query->where('shipping_options', $request->shipping_options);
-        }
-
-        // تصفية حسب Pos Shift
-        if ($request->filled('pos_shift')) {
-            $query->where('pos_shift', $request->pos_shift);
+            $query->where('invoice_date', '<=', $request->date_to);
         }
 
         // تصفية حسب محتوى البند
-        if ($request->filled('contains_item')) {
-            $query->whereHas('items', function($q) use ($request) {
-                $q->where('item_name', 'like', '%' . $request->contains_item . '%')
-                  ->orWhere('item_description', 'like', '%' . $request->contains_item . '%')
-                  ->orWhere('item_code', 'like', '%' . $request->contains_item . '%');
+        if ($request->filled('item_content')) {
+            $query->whereHas('items', function ($q) use ($request) {
+                $q->where('description', 'like', '%' . $request->item_content . '%');
             });
         }
 
-        // Handle custom fields (25 fields)
-        for ($i = 1; $i <= 25; $i++) {
-            $fieldName = "custom_field_{$i}";
-            $fieldType = $request->input("custom_field_type_{$i}");
-            $fieldValue = $request->input($fieldName);
-
-            if ($request->filled($fieldName)) {
-                switch ($fieldType) {
-                    case 'text':
-                        $query->whereHas('customFields', function($q) use ($fieldName, $fieldValue) {
-                            $q->where('field_name', $fieldName)
-                              ->where('field_value', 'like', "%{$fieldValue}%");
-                        });
-                        break;
-
-                    case 'number':
-                        $query->whereHas('customFields', function($q) use ($fieldName, $fieldValue) {
-                            $q->where('field_name', $fieldName)
-                              ->where('field_value', $fieldValue);
-                        });
-                        break;
-
-                    case 'date':
-                        $query->whereHas('customFields', function($q) use ($fieldName, $fieldValue) {
-                            $q->where('field_name', $fieldName)
-                              ->whereDate('field_value', $fieldValue);
-                        });
-                        break;
-
-                    case 'select':
-                        $query->whereHas('customFields', function($q) use ($fieldName, $fieldValue) {
-                            $q->where('field_name', $fieldName)
-                              ->where('field_value', $fieldValue);
-                        });
-                        break;
-
-                    case 'checkbox':
-                        if ($fieldValue === 'on' || $fieldValue === '1') {
-                            $query->whereHas('customFields', function($q) use ($fieldName) {
-                                $q->where('field_name', $fieldName)
-                                  ->where('field_value', true);
-                            });
-                        }
-                        break;
-                }
-            }
-        }
-
-        // الترتيب
-        $sortField = $request->input('sort_field', 'created_at');
-        $sortDirection = $request->input('sort_direction', 'desc');
-        $query->orderBy($sortField, $sortDirection);
-
         // التصفح
         $perPage = $request->input('per_page', 10);
-        $invoices = $query->with(['client', 'employee', 'items', 'customFields'])
-                         ->paginate($perPage);
+        $invoices = $query->with(['client', 'employee', 'items'])->paginate($perPage);
 
         if ($request->ajax()) {
             return response()->json([
@@ -479,13 +469,7 @@ class InvoiceController extends Controller
             ]);
         }
 
-        return view('layouts.nav-slider-route', [
-            'page' => 'invoice-management',
-            'invoices' => $invoices,
-            'clients' => Client::all(),
-            'employees' => Employee::all(),
-            'search_params' => $request->all()
-        ]);
+        return view('invoice-management', compact('invoices'));
     }
 
     /**
@@ -495,7 +479,7 @@ class InvoiceController extends Controller
     {
         try {
             $config = $request->input('config');
-            
+
             // حفظ التكوين في قاعدة البيانات
             foreach ($config as $fieldId => $fieldConfig) {
                 InvoiceCustomField::updateOrCreate(
@@ -506,7 +490,7 @@ class InvoiceController extends Controller
                     ]
                 );
             }
-            
+
             return response()->json([
                 'success' => true,
                 'message' => 'تم حفظ التكوين بنجاح'
@@ -529,7 +513,7 @@ class InvoiceController extends Controller
                                       ->get()
                                       ->keyBy('field_name')
                                       ->toArray();
-            
+
             return response()->json([
                 'success' => true,
                 'data' => $config

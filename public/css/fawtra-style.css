@@ -1314,8 +1314,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .search-btn.outline {
     background: transparent;
-    color: #2196F3;
     border: 2px solid #2196F3;
+    color: #2196F3;
 }
 
 .search-btn.outline:hover {
@@ -1835,4 +1835,341 @@ select.search-form-control {
     margin-top: 20px;
     padding: 15px 0;
     border-top: 1px solid #eee;
+}
+
+/* Attractive Alert Styles */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 350px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1050;
+    direction: rtl;
+    animation: slideIn 0.5s ease-out;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    overflow: hidden;
+    font-family: 'Cairo', sans-serif;
+}
+
+.alert.error {
+    background: linear-gradient(145deg, #2d3436, #636e72);
+    border-right: 4px solid #e74c3c;
+}
+
+.alert.success {
+    background: linear-gradient(145deg, #2d3436, #636e72);
+    border-right: 4px solid #27ae60;
+}
+
+.alert-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    flex: 1;
+}
+
+.alert-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.alert-icon i {
+    color: inherit;
+}
+
+.alert.error .alert-icon {
+    color: #e74c3c;
+}
+
+.alert.success .alert-icon {
+    color: #27ae60;
+}
+
+.alert-text {
+    flex: 1;
+}
+
+.alert p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.alert h3 {
+    margin: 0 0 8px 0;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.alert .close-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.alert .close-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: rotate(90deg);
+}
+
+.alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    pointer-events: none;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    animation: progress 5s linear;
+    width: 100%;
+}
+
+.alert.error .progress-bar {
+    background: rgba(231, 76, 60, 0.5);
+}
+
+.alert.success .progress-bar {
+    background: rgba(39, 174, 96, 0.5);
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%) translateY(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Auto-hide alert after animation */
+.alert {
+    animation: slideIn 0.5s ease-out, fadeOut 0.5s ease-out 4.5s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+/* Enhanced Alert Styles */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 350px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    z-index: 1050;
+    direction: rtl;
+    animation: slideIn 0.5s ease-out;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    overflow: hidden;
+    font-family: 'Cairo', sans-serif;
+}
+
+.alert.error {
+    background: linear-gradient(145deg, #2d3436, #636e72);
+}
+
+.alert.success {
+    background: linear-gradient(145deg, #2d3436, #636e72);
+}
+
+.alert-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    flex: 1;
+    position: relative;
+    z-index: 2;
+}
+
+.alert-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.alert-icon i {
+    color: inherit;
+}
+
+.alert.error .alert-icon {
+    color: #e74c3c;
+}
+
+.alert.success .alert-icon {
+    color: #27ae60;
+}
+
+.alert-text {
+    flex: 1;
+}
+
+.alert p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.alert h3 {
+    margin: 0 0 8px 0;
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.alert .close-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.alert .close-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: rotate(90deg);
+}
+
+.alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    pointer-events: none;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.5);
+    animation: progress 5s linear;
+    width: 100%;
+}
+
+.alert.error .progress-bar {
+    background: rgba(231, 76, 60, 0.5);
+}
+
+.alert.success .progress-bar {
+    background: rgba(39, 174, 96, 0.5);
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%) translateY(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Auto-hide alert after animation */
+.alert {
+    animation: slideIn 0.5s ease-out, fadeOut 0.5s ease-out 4.5s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
 }

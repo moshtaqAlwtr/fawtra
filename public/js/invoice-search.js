@@ -35,7 +35,7 @@ $(document).ready(function() {
         if (isAdvanced) {
             // Get advanced search form data
             searchData = {
-                invoice_number: $('#invoice_number').val(),
+                invoice_id: $('#invoice_id').val(),
                 client_id: $('#client_id').val(),
                 employee_id: $('#employee_id').val(),
                 date_from: $('#date_from').val(),
@@ -65,6 +65,8 @@ $(document).ready(function() {
                 if (response.success) {
                     // تحديث عرض الفواتير
                     updateInvoiceCards(response.invoices);
+                    updateResultsTable(response.invoices);
+                    updatePagination(response.pagination);
                     
                     // إظهار رسالة إذا لم يتم العثور على نتائج
                     if (response.invoices.length === 0) {
@@ -104,13 +106,36 @@ $(document).ready(function() {
             const card = createInvoiceCard(invoice);
             container.append(card);
         });
+    }
 
-        // تحريك الفواتير المطابقة إلى الأعلى بتأثير متحرك
-        $('.invoice-card').each(function(index) {
-            $(this).css('opacity', 0).delay(index * 100).animate({
-                opacity: 1
-            }, 500);
+    function updateResultsTable(data) {
+        let tbody = $('#invoices-table tbody');
+        tbody.empty();
+
+        data.forEach(function(invoice) {
+            let row = `
+                <tr>
+                    <td>${invoice.invoice_id}</td>
+                    <td>${invoice.client ? invoice.client.name : ''}</td>
+                    <td>${invoice.employee ? invoice.employee.name : ''}</td>
+                    <td>${invoice.invoice_date}</td>
+                    <td>${invoice.total}</td>
+                    <td>${invoice.payment_status}</td>
+                    <td>
+                        <a href="/invoices/${invoice.invoice_id}/edit" class="btn btn-sm btn-primary">تعديل</a>
+                        <a href="/invoices/${invoice.invoice_id}/print" class="btn btn-sm btn-info">طباعة</a>
+                    </td>
+                </tr>
+            `;
+            tbody.append(row);
         });
+    }
+
+    function updatePagination(pagination) {
+        // تحديث معلومات الترقيم
+        $('#pagination-info').text(
+            `عرض ${pagination.from} إلى ${pagination.to} من ${pagination.total} فاتورة`
+        );
     }
 
     function createInvoiceCard(invoice) {

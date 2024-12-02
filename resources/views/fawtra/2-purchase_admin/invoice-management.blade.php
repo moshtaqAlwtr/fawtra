@@ -1,19 +1,39 @@
 <!-- عرض الرسائل -->
+
+
 @if(session('error'))
-    <div class="notification-popup error" id="errorAlert" dir="rtl">
-        <div class="notification-content">
-            <div class="icon-box">
-                <i class="fas fa-exclamation-triangle"></i>
+    <div class="alert error" id="errorAlert">
+        <div class="alert-content">
+            <div class="alert-icon">
+                <i class="fas fa-exclamation-circle"></i>
             </div>
-            <div class="notification-text">
+            <div class="alert-text">
                 <h3>تنبيه!</h3>
                 <p>{{ __('purchase_admin.'.session('error')) }}</p>
             </div>
         </div>
-        <button class="close-notification" onclick="this.parentElement.remove()">
+        <button class="close-btn" onclick="this.closest('.alert').remove();">
             <i class="fas fa-times"></i>
         </button>
-        <div class="notification-progress"></div>
+        <div class="progress-bar"></div>
+    </div>
+@endif
+
+@if(session('success'))
+    <div class="alert success" id="successAlert">
+        <div class="alert-content">
+            <div class="alert-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="alert-text">
+                <h3>تم بنجاح!</h3>
+                <p>{{ __('purchase_admin.'.session('success')) }}</p>
+            </div>
+        </div>
+        <button class="close-btn" onclick="this.closest('.alert').remove();">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="progress-bar"></div>
     </div>
 @endif
 
@@ -54,248 +74,300 @@
         </div>
 
         <!-- Filter Section -->
-        <div class="filter-section">
-            <form action="{{ route('invoices.filter') }}" method="POST">
-                @csrf
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label>Invoice Number</label>
-                        <input type="text" class="form-control" name="invoice_number" id="invoice_number">
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label>Client</label>
-                        <select class="form-control" name="client" id="client">
-                            <option value="">Any Client</option>
-                            @if(isset($clients) && $clients->count() > 0)
-                                @foreach($clients as $client)
-                                    <option value="{{ $client->id }}">{{ $client->trade_name }}</option>
-                                @endforeach
-                            @endif
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label>Status</label>
-                        <select class="form-control" name="status" id="status">
-                            <option value="">Any Status</option>
-                            <option value="paid">Paid</option>
-                            <option value="unpaid">Unpaid</option>
-                            <option value="partial">Partial</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label>Currency</label>
-                        <select class="form-control" name="currency" id="currency">
-                            <option value="">Any</option>
-                            <option value="SAR">SAR</option>
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label>Date</label>
-                        <div class="input-group">
-                            <input type="date" class="form-control" name="date_from" id="date_from" placeholder="From">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">-</span>
+        <div class="filter-section mb-4">
+            <form action="{{ route('sales_invoice') }}" method="GET" id="searchForm">
+                <div class="row">
+                    <!-- رقم الفاتورة -->
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="invoice_id">{{ trans('purchase_admin.invoice_number') }}</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-hashtag"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="invoice_id" name="invoice_id"
+                                       value="{{ request('invoice_id') }}" placeholder="{{ trans('purchase_admin.enter_invoice_number') }}">
                             </div>
-                            <input type="date" class="form-control" name="date_to" id="date_to" placeholder="To">
                         </div>
                     </div>
 
-                    <div class="form-group col-md-3">
-                        <label>Due Date</label>
-                        <div class="input-group">
-                            <input type="date" class="form-control" name="due_date_from" id="due_date_from" placeholder="From">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">-</span>
+                    <!-- العميل -->
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="client">{{ trans('purchase_admin.client') }}</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <select class="form-control" name="client" id="client">
+                                    <option value="">{{ trans('purchase_admin.all_clients') }}</option>
+                                    @foreach($clients as $client)
+                                        <option value="{{ $client->id }}" {{ request('client') == $client->id ? 'selected' : '' }}>
+                                            {{ $client->trade_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <input type="date" class="form-control" name="due_date_to" id="due_date_to" placeholder="To">
                         </div>
                     </div>
 
-                    <div class="form-group col-md-3">
-                        <label>Creation Date</label>
-                        <div class="input-group">
-                            <input type="date" class="form-control" name="creation_date_from" id="creation_date_from" placeholder="From">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">-</span>
+                    <!-- حالة الدفع -->
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="status">{{ trans('purchase_admin.payment_status') }}</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-money-check-alt"></i></span>
+                                </div>
+                                <select class="form-control" name="status" id="status">
+                                    <option value="">{{ trans('purchase_admin.all_statuses') }}</option>
+                                    <option value="paid" {{ request('status') == 'paid' ? 'selected' : '' }}>{{ trans('purchase_admin.paid') }}</option>
+                                    <option value="unpaid" {{ request('status') == 'unpaid' ? 'selected' : '' }}>{{ trans('purchase_admin.unpaid') }}</option>
+                                    <option value="partial" {{ request('status') == 'partial' ? 'selected' : '' }}>{{ trans('purchase_admin.partial') }}</option>
+                                </select>
                             </div>
-                            <input type="date" class="form-control" name="creation_date_to" id="creation_date_to" placeholder="To">
                         </div>
                     </div>
 
-                    <div class="form-group col-md-3">
-                        <label>Sales Manager</label>
-                        <select class="form-control" name="sales_manager" id="sales_manager">
-                            <option value="">Any Sales Manager</option>
-                            @if(isset($employees) && $employees->count() > 0)
-                                @foreach($employees as $employee)
-                                    <option value="{{ $employee->employee_id }}">{{ $employee->first_name }}</option>
-                                @endforeach
-                            @endif
-                        </select>
-                    </div>
+                    <!-- الموظف -->
 
-                    <div class="form-group col-md-3">
-                        <label>Created By</label>
-                        <select class="form-control" name="created_by" id="created_by">
-                            <option value="">Any Employee</option>
-                            @if(isset($employees) && $employees->count() > 0)
-                                @foreach($employees as $employee)
-                                    <option value="{{ $employee->employee_id }}">{{ $employee->first_name }}</option>
-                                @endforeach
-                            @endif
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label>Delivery Status</label>
-                        <select class="form-control" name="delivery_status" id="delivery_status">
-                            <option value="">All</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label>Source</label>
-                        <select class="form-control" name="source" id="source">
-                            <option value="">Please Select</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label>Shipping Options</label>
-                        <select class="form-control" name="shipping_options" id="shipping_options">
-                            <option value="">All</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label>Pos Shift</label>
-                        <input type="text" class="form-control" name="pos_shift" id="pos_shift">
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label>Contains Item</label>
-                        <input type="text" class="form-control" name="contains_item" id="contains_item">
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label>Total Amount From</label>
-                        <input type="number" step="0.01" class="form-control" name="total_amount_from" id="total_amount_from">
-                    </div>
-
-                    <div class="form-group col-md-3">
-                        <label>Total Amount To</label>
-                        <input type="number" step="0.01" class="form-control" name="total_amount_to" id="total_amount_to">
-                    </div>
                 </div>
 
-                <div class="form-row mt-3">
-                    <div class="form-group col-12">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-search"></i> Search
-                        </button>
-                        <button type="button" class="btn btn-secondary" onclick="clearForm()">
-                            <i class="fas fa-undo"></i> Clear
-                        </button>
-                    </div>
+                <div class="row mt-3">
+                    <!-- التاريخ من -->
+
+                    <!-- أزرار البحث -->
+
                 </div>
-            </form>
+
         </div>
 
         <!-- Advanced Search Form Section -->
-        <div id="advancedSearchForm" style="display: none;" class="advanced-search-section">
-            <h5 class="advanced-search-title">{{ trans('purchase_admin.advanced_search') }}</h5>
-            <form id="advancedSearchFormElement" class="advanced-search-form">
-                <div class="search-row">
-                    <div class="search-col">
-                        <div class="form-group">
-                            <label>Invoice Number</label>
-                            <input type="text" class="form-control" name="invoice_number" id="invoice_number">
+        <div id="advancedSearchForm" class="filter-section mb-4">
+            <div class="row">
+                <!-- يحتوي على البند -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>{{ trans('purchase_admin.contains_item') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-box"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="contains_item" value="{{ request('contains_item') }}">
                         </div>
                     </div>
-                    <div class="search-col">
-                        <div class="form-group">
-                            <label>Client</label>
-                            <select class="form-control" name="client" id="client">
-                                <option value="">Any Client</option>
-                                @if(isset($clients) && $clients->count() > 0)
-                                    @foreach($clients as $client)
-                                        <option value="{{ $client->id }}">{{ $client->trade_name }}</option>
-                                    @endforeach
-                                @endif
+                </div>
+
+                <!-- العملة -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>{{ trans('purchase_admin.currency') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-money-bill"></i></span>
+                            </div>
+                            <select class="form-control" name="currency">
+                                <option value="">{{ trans('purchase_admin.all_currencies') }}</option>
+                                <option value="أي" {{ request('currency') == 'أي' ? 'selected' : '' }}>أي</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="search-row">
-                    <div class="search-col">
-                        <div class="form-group">
-                            <label>Date</label>
-                            <input type="date" class="form-control" name="date_from" id="date_from" placeholder="From">
+                <!-- الإجمالي أقل من -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>{{ trans('purchase_admin.total_less_than') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                            </div>
+                            <input type="number" class="form-control" name="total_less" value="{{ request('total_less') }}">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الإجمالي أكبر من -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>{{ trans('purchase_admin.total_more_than') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                            </div>
+                            <input type="number" class="form-control" name="total_more" value="{{ request('total_more') }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- تاريخ الاستحقاق -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>{{ trans('purchase_admin.due_date') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                            </div>
+                            <select class="form-control" name="due_date_type">
+                                <option value="">{{ trans('purchase_admin.select_period') }}</option>
+                                <option value="last_month" {{ request('due_date_type') == 'last_month' ? 'selected' : '' }}>الشهر الأخير</option>
+                                <option value="last_year" {{ request('due_date_type') == 'last_year' ? 'selected' : '' }}>السنة الماضية</option>
+                            </select>
+                            <input type="date" class="form-control" name="due_date_from" value="{{ request('due_date_from') }}">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">-</span>
                             </div>
-                            <input type="date" class="form-control" name="date_to" id="date_to" placeholder="To">
+                            <input type="date" class="form-control" name="due_date_to" value="{{ request('due_date_to') }}">
                         </div>
                     </div>
-                    <div class="search-col">
-                        <div class="form-group">
-                            <label>Status</label>
-                            <select class="form-control" name="status" id="status">
-                                <option value="">Any Status</option>
-                                <option value="paid">Paid</option>
-                                <option value="unpaid">Unpaid</option>
-                                <option value="partial">Partial</option>
+                </div>
+
+                <!-- تاريخ الإنشاء -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>{{ trans('purchase_admin.creation_date') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                            </div>
+                            <select class="form-control" name="creation_date_type">
+                                <option value="">{{ trans('purchase_admin.select_period') }}</option>
+                                <option value="last_month" {{ request('creation_date_type') == 'last_month' ? 'selected' : '' }}>الشهر الأخير</option>
+                                <option value="last_year" {{ request('creation_date_type') == 'last_year' ? 'selected' : '' }}>السنة الماضية</option>
+                            </select>
+                            <input type="date" class="form-control" name="creation_date_from" value="{{ request('creation_date_from') }}">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">-</span>
+                            </div>
+                            <input type="date" class="form-control" name="creation_date_to" value="{{ request('creation_date_to') }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- حقل مخصص -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>{{ trans('purchase_admin.custom_field') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="custom_field" value="{{ request('custom_field') }}">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المصدر -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>{{ trans('purchase_admin.source') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-database"></i></span>
+                            </div>
+                            <select class="form-control" name="source">
+                                <option value="">{{ trans('purchase_admin.all') }}</option>
+                                <option value="الكل" {{ request('source') == 'الكل' ? 'selected' : '' }}>الكل</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="search-row">
-                    <div class="search-col">
-                        <div class="form-group">
-                            <label>Total Amount</label>
-                            <input type="number" step="0.01" class="form-control" name="total_amount" id="total_amount">
-                        </div>
-                    </div>
-                    <div class="search-col">
-                        <div class="form-group">
-                            <label>Sales Manager</label>
-                            <select class="form-control" name="sales_manager" id="sales_manager">
-                                <option value="">Any Sales Manager</option>
-                                @if(isset($employees) && $employees->count() > 0)
-                                    @foreach($employees as $employee)
-                                        <option value="{{ $employee->employee_id }}">{{ $employee->first_name }}</option>
-                                    @endforeach
-                                @endif
+                <!-- حالة التسليم -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>{{ trans('purchase_admin.delivery_status') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-truck"></i></span>
+                            </div>
+                            <select class="form-control" name="delivery_status">
+                                <option value="">{{ trans('purchase_admin.all') }}</option>
+                                <option value="الكل" {{ request('delivery_status') == 'الكل' ? 'selected' : '' }}>الكل</option>
                             </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="search-buttons-container">
-                    <button type="submit" class="search-btn primary">
-                        <i class="fas fa-search"></i>
-                        Search
-                    </button>
-                    <button type="reset" class="search-btn outline">
-                        <i class="fas fa-redo"></i>
-                        Reset
-                    </button>
+                <!-- مسؤول مبيعات -->
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>{{ trans('purchase_admin.sales_manager') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <select class="form-control" name="sales_manager">
+                                <option value="">{{ trans('purchase_admin.all') }}</option>
+                                <option value="أي مسؤول مبيعات" {{ request('sales_manager') == 'أي مسؤول مبيعات' ? 'selected' : '' }}>أي مسؤول مبيعات</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-            </form>
+            </div>
+
+            <div class="row">
+                <!-- مصدر الطلب -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>{{ trans('purchase_admin.order_source') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-shopping-cart"></i></span>
+                            </div>
+                            <select class="form-control" name="order_source">
+                                <option value="">{{ trans('purchase_admin.select_source') }}</option>
+                                <option value="من فضلك اختر" {{ request('order_source') == 'من فضلك اختر' ? 'selected' : '' }}>من فضلك اختر</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- خيارات الشحن -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>{{ trans('purchase_admin.shipping_options') }}</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-shipping-fast"></i></span>
+                            </div>
+                            <select class="form-control" name="shipping_options">
+                                <option value="">{{ trans('purchase_admin.all') }}</option>
+                                <option value="الكل" {{ request('shipping_options') == 'الكل' ? 'selected' : '' }}>الكل</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pos Shift -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Pos Shift</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-cash-register"></i></span>
+                            </div>
+                            <input type="text" class="form-control" name="pos_shift" value="{{ request('pos_shift') }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
         <div class="search-buttons-container">
-            <button type="button" class="search-btn primary" id="basicSearchBtn">
-                <i class="fas fa-search"></i>
-                Search
-            </button>
+
+                <button type="submit" class="btn btn-primary mr-2">
+                    <i class="fas fa-search"></i> {{ trans('purchase_admin.search') }}
+                </button>
+                <button type="reset" class="btn btn-secondary" onclick="window.location='{{ route('sales_invoice') }}'">
+                    <i class="fas fa-redo"></i> {{ trans('purchase_admin.reset') }}
+                </button>
+
             <button type="button" class="search-btn outline" id="toggleAdvancedSearch">
                 <i class="fas fa-search-plus"></i>
                 Advanced Search
@@ -305,7 +377,7 @@
                 Cancel
             </button>
         </div>
-
+    </form>
         <!-- Tab Section -->
         <div class="tab-section d-flex justify-content-between align-items-center">
             <div>
@@ -433,6 +505,11 @@
             @endforeach
         </div>
 
+        <!-- Loading Spinner -->
+        <div class="spinner-overlay" id="searchSpinner">
+            <div class="spinner"></div>
+        </div>
+
         <!-- Pagination -->
 
     </div>
@@ -446,3 +523,68 @@
             </ul>
         </nav>
 </div>
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const advancedSearchForm = document.getElementById('advancedSearchForm');
+        const toggleButton = document.getElementById('toggleAdvancedSearch');
+
+        // تخزين حالة البحث المتقدم في localStorage
+        const isAdvancedSearchVisible = localStorage.getItem('advancedSearchVisible') === 'true';
+
+        // تطبيق الحالة المحفوظة عند تحميل الصفحة
+        if (isAdvancedSearchVisible) {
+            advancedSearchForm.style.display = 'block';
+            toggleButton.innerHTML = '<i class="fas fa-times"></i> {{ trans("purchase_admin.hide_advanced") }}';
+            toggleButton.classList.remove('btn-info');
+            toggleButton.classList.add('btn-danger');
+        }
+
+        toggleButton.addEventListener('click', function() {
+            const isVisible = advancedSearchForm.style.display !== 'none';
+
+            // تحريك سلس للنموذج
+            advancedSearchForm.style.transition = 'all 0.3s ease-in-out';
+
+            if (!isVisible) {
+                advancedSearchForm.style.display = 'block';
+                // إضافة تأخير صغير للسماح بالتحريك
+                setTimeout(() => {
+                    advancedSearchForm.style.maxHeight = '2000px';
+                    advancedSearchForm.style.opacity = '1';
+                }, 10);
+
+                toggleButton.innerHTML = '<i class="fas fa-times"></i> {{ trans("purchase_admin.hide_advanced") }}';
+                toggleButton.classList.remove('btn-info');
+                toggleButton.classList.add('btn-danger');
+
+                localStorage.setItem('advancedSearchVisible', 'true');
+            } else {
+                advancedSearchForm.style.maxHeight = '0';
+                advancedSearchForm.style.opacity = '0';
+
+                // إخفاء النموذج بعد انتهاء التحريك
+                setTimeout(() => {
+                    advancedSearchForm.style.display = 'none';
+                }, 300);
+
+                toggleButton.innerHTML = '<i class="fas fa-filter"></i> {{ trans("purchase_admin.advanced_search") }}';
+                toggleButton.classList.remove('btn-danger');
+                toggleButton.classList.add('btn-info');
+
+                localStorage.setItem('advancedSearchVisible', 'false');
+            }
+        });
+
+        // إضافة تأثير عند تمرير الماوس فوق الزر
+        toggleButton.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+        });
+
+        toggleButton.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+</script>
+@endpush

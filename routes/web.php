@@ -126,12 +126,14 @@ Route::group([
 
     // مسارات الفواتير
     Route::get('/sales-invoice', [InvoiceController::class, 'index'])->name('sales_invoice');
+    Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
     Route::post('/sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
     Route::get('/invoice/{id}/edit', [InvoiceController::class, 'edit'])->name('invoice_edit');
     Route::delete('/invoice/{id}', [InvoiceController::class, 'destroy'])->name('invoice_delete');
     Route::post('/invoice-items/store', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
     Route::post('/invoices/filter', [InvoiceController::class, 'filter'])->name('invoices.filter');
     Route::post('/invoices/search', [InvoiceController::class, 'search'])->name('invoices.search');
+    Route::get('/invoices/search', [InvoiceController::class, 'search'])->name('invoices.search');
 
     // Invoice Custom Fields Configuration Routes
     Route::post('/invoices/custom-fields/save', [InvoiceController::class, 'saveCustomFieldsConfig'])->name('invoices.custom-fields.save');
