@@ -154,19 +154,54 @@ class ClientController extends Controller
     {
         $query = Client::query();
 
+        // البحث في الاسم التجاري
         if ($request->filled('trade_name')) {
             $query->where('trade_name', 'LIKE', '%' . $request->trade_name . '%');
         }
 
+        // البحث في البريد الإلكتروني
         if ($request->filled('email')) {
             $query->where('email', 'LIKE', '%' . $request->email . '%');
         }
 
+        // البحث في المدينة
         if ($request->filled('city')) {
             $query->where('city', 'LIKE', '%' . $request->city . '%');
         }
 
+        // البحث في رقم الهاتف
+        if ($request->filled('phone')) {
+            $query->where('phone', 'LIKE', '%' . $request->phone . '%');
+        }
+
+        // البحث في رقم الجوال
+        if ($request->filled('mobile')) {
+            $query->where('mobile', 'LIKE', '%' . $request->mobile . '%');
+        }
+
+        // البحث في العنوان
+        if ($request->filled('street_address_1')) {
+            $query->where('street_address_1', 'LIKE', '%' . $request->street_address_1 . '%');
+        }
+
+        // البحث في الدولة
+        if ($request->filled('country')) {
+            $query->where('country', 'LIKE', '%' . $request->country . '%');
+        }
+
+        // البحث في الكود
+        if ($request->filled('account_code')) {
+            $query->where('account_code', 'LIKE', '%' . $request->account_code . '%');
+        }
+
         $clients = $query->get();
+
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'clients' => $clients
+            ]);
+        }
 
         return view('clients.search-results', compact('clients'));
     }

@@ -18,7 +18,8 @@ use App\Http\Controllers\{
     AppointmentController,
     InvoicePreviewController,
     Finance\PaymentVoucherController,
-    Finance\ReceiptController
+    Finance\ReceiptController,
+    SearchController
 };
 use App\Models\Client;
 
