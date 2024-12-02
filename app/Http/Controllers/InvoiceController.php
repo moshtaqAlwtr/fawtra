@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Invoice;
 use App\Models\Client;
 use App\Models\InvoiceItem;
-use App\Models\Employee;  // Make sure to include the Employee model
+use App\Models\Employee;
 use PDF;
 use Mail;
+use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {
@@ -133,7 +134,7 @@ class InvoiceController extends Controller
 
         // تنفيذ الاستعلام
         $invoices = $query->get();
-        
+
         // جلب العملاء والموظفين للفلاتر
         $clients = Client::all();
         $employees = Employee::all();
@@ -227,18 +228,74 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
-        // جلب جميع الفواتير
-        $invoices = Invoice::all(); // جلب جميع الفواتير
+                // جلب جميع الفواتير
+                $invoices = Invoice::all(); // جلب جميع الفواتير
 
-        return view('layouts.nav-slider-route', [
-            'page' => 'invoice-management',
-            'invoice' => $invoice,
-            'invoices' => $invoices // تأكد من تمرير $invoices هنا
-        ]);
+                return view('layouts.nav-slider-route', [
+                    'page' => 'invoice-management',
+                    'invoice' => $invoice,
+                    'invoices' => $invoices // تأكد من تمرير $invoices هنا
+                ]);
+
     }
 
+    /**
+     * عرض معاينة الفاتورة
+     */
+    public function preview($id)
+    {
+        try {
+            \Log::info('Attempting to preview invoice with ID: ' . $id);
 
+            // التحقق من صحة المعرف
+            if (!is_numeric($id)) {
+                \Log::error('Invalid invoice ID format: ' . $id);
+                throw new \InvalidArgumentException('معرف الفاتورة غير صالح');
+            }
 
+            // التحقق من وجود الفاتورة وجلب جميع العلاقات المطلوبة
+            $invoice = Invoice::with([
+                'client',
+                'items',
+                'payments',
+                'employee',
+                'customFields'
+            ])->find($id);
+
+            if (!$invoice) {
+                \Log::error('Invoice not found with ID: ' . $id);
+                throw new \Illuminate\Database\Eloquent\ModelNotFoundException();
+            }
+
+            \Log::info('Found invoice: ', ['id' => $invoice->invoice_id, 'number' => $invoice->invoice_number]);
+
+            // جلب جميع الفواتير للقائمة الجانبية
+            $invoices = Invoice::select(['invoice_id', 'invoice_number', 'total', 'payment_status'])
+                            ->latest()
+                            ->get();
+
+            \Log::info('Rendering invoice preview view');
+
+            // عرض صفحة معاينة الفاتورة
+            return view('fawtra.2-purchase_admin.invoice_preview', [
+                'invoice' => $invoice,
+                'invoices' => $invoices
+            ]);
+
+        } catch (\InvalidArgumentException $e) {
+            \Log::error('معرف فاتورة غير صالح: ' . $e->getMessage());
+            return redirect()->back()
+                    ->with('error', 'معرف الفاتورة غير صالح');
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            \Log::error('الفاتورة غير موجودة: ' . $e->getMessage());
+            return redirect()->back()
+                    ->with('error', 'لم يتم العثور على الفاتورة المطلوبة');
+        } catch (\Exception $e) {
+            \Log::error('خطأ في عرض الفاتورة: ' . $e->getMessage());
+            return redirect()->back()
+                    ->with('error', 'حدث خطأ أثناء عرض الفاتورة');
+        }
+    }
 
     /**
      * تعديل الفاتورة

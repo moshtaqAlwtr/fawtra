@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Fawtra')</title>
 
     <!-- CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/fawtra-style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
 
     <!-- Google Fonts -->
@@ -20,7 +22,6 @@
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('Design/css/data.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/fawtra-style.css') }}" rel="stylesheet">
 
     <!-- RTL/LTR CSS -->
     @if (App::getLocale() == 'ar')
@@ -78,13 +79,20 @@
                     @else
                         @switch($page)
                             @case('quotation')
-                                @include('fawtra.2-purchase_admin.quotation')
+                                @include('fawtra.2-purchase_admin.quotation', ['invoice' => $invoice ?? null, 'invoices' => $invoices ?? []])
                             @break
 
                             @case('invoice-management')
                                 @include('fawtra.2-purchase_admin.invoice-management', [
                                     'clients' => $clients ?? collect(),
                                     'employees' => $employees ?? collect(),
+                                    'invoices' => $invoices ?? collect()
+                                ])
+                            @break
+
+                            @case('invoice_preview')
+                                @include('fawtra.2-purchase_admin.invoice_preview', [
+                                    'invoice' => $invoice ?? null,
                                     'invoices' => $invoices ?? collect()
                                 ])
                             @break
@@ -169,10 +177,6 @@
                                 @include('fawtra.2-purchase_admin.customer_payments')
                             @break
 
-                            @case('invoice_preview')
-                                @include('fawtra.2-purchase_admin.invoice_preview')
-                            @break
-
                             @case('add_payment_process')
                                 @include('fawtra.2-purchase_admin.add_payment_process')
                             @break
@@ -218,15 +222,10 @@
     <!-- Core Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
     <script src="{{ asset('assets/js/app.min.js') }}"></script>
-    <script src="{{ asset('assets/js/scriptt.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/chart.min.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/demo.dashboard-projects.js') }}"></script>
-    <script src="{{ asset('assets/js/date.js') }}"></script>
-
-    @yield('scripts')
-    <script src="{{ asset('js/invoice-management.js') }}"></script>
+    <script src="{{ asset('Design/js/data.js') }}"></script>
+    @stack('scripts')
 </body>
 </html>

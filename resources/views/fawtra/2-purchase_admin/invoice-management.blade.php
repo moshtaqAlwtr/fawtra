@@ -472,7 +472,7 @@
 
                         <div class="invoice-card-footer">
                             <div class="action-buttons">
-                                <button class="action-btn view-btn" onclick="window.location.href='{{ route('invoice_preview', ['id' => $invoice->invoice_id]) }}'">
+                                <button class="action-btn view-btn" onclick="window.location.href='{{ route('invoice.preview', ['id' => $invoice->invoice_id]) }}'">
                                     <i class="fas fa-eye"></i>
                                     <span class="tooltip">{{ trans('purchase_admin.view') }}</span>
                                 </button>

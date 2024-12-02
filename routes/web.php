@@ -16,7 +16,7 @@ use App\Http\Controllers\{
     Accounts\AccountsClientPaymentController,
     JournalEntryController,
     AppointmentController,
-
+    InvoicePreviewController,
     Finance\PaymentVoucherController,
     Finance\ReceiptController
 };
@@ -129,6 +129,8 @@ Route::group([
     Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
     Route::post('/sales_invoice/store', [InvoiceController::class, 'store'])->name('invoices.store');
     Route::get('/invoice/{id}/edit', [InvoiceController::class, 'edit'])->name('invoice_edit');
+    Route::get('/invoice/{invoice}', [InvoiceController::class, 'show'])->name('invoice.show');
+    Route::get('/invoice/{id}/preview', [InvoiceController::class, 'preview'])->name('invoice.preview')->middleware('auth');
     Route::delete('/invoice/{id}', [InvoiceController::class, 'destroy'])->name('invoice_delete');
     Route::post('/invoice-items/store', [InvoiceItemController::class, 'store'])->name('invoice-items.store');
     Route::post('/invoices/filter', [InvoiceController::class, 'filter'])->name('invoices.filter');

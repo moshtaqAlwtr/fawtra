@@ -1,154 +1,81 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عرض الفاتورة</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <style>
-        /* شريط علوي */
-        .top-bar {
-            background: linear-gradient(90deg, #0048BA, #0073E6);
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        /* تبويبات علوية */
-        .top-tabs .btn {
-            background-color: transparent;
-            border: none;
-            color: black;
-            margin-right: 20px;
-            font-size: 14px;
-        }
-
-        .top-tabs .btn:hover {
-            background-color: #dcdcdc;
-            color: black;
-        }
-
-        .nav-tabs .nav-link {
-            color: black;
-        }
-
-        .nav-tabs .nav-link:hover {
-            color: black;
-            background-color: #f1f1f1;
-        }
-
-        .nav-tabs .nav-link.active {
-            background-color: #007bff;
-            color: white;
-        }
-    </style>
-</head>
-
-<body>
-    <!-- الشريط العلوي -->
-    <div class="top-bar">عرض الفاتورة</div>
-    <div class="container mt-3">
-    <div class="row bg-light py-2 px-3 rounded shadow-sm">
-        <div class="col-md-6">
-            <div class="d-flex align-items-center">
-                <h5 class="mb-0 me-2">الفاتورة #08938</h5>
-                <span class="badge bg-danger">غير مدفوعة</span>
-                <span class="badge bg-warning ms-2 text-dark">تحت المراجعة</span>
+@section('content')
+@if(isset($invoice) && $invoice)
+<!-- Top Bar -->
+<div class="top-bar no-print">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h4 class="mb-0">
+                    <i class="fas fa-file-invoice me-2"></i>
+                    الفاتورة #{{ $invoice->invoice_id }}
+                    <span class="status-badge {{ $invoice->payment_status === 'paid' ? 'paid' : ($invoice->payment_status === 'pending' ? 'pending' : 'unpaid') }}">
+                        {{ $invoice->payment_status === 'paid' ? 'مدفوعة' : ($invoice->payment_status === 'pending' ? 'معلقة' : 'غير مدفوعة') }}
+                    </span>
+                </h4>
             </div>
-            <p class="text-muted mb-0 mt-1">المستلم: شركة ناشي التجارية</p>
-        </div>
-        <div class="col-md-6 d-flex justify-content-end align-items-center">
-            <p class="text-muted mb-0 me-auto">48209# عدد: غير</p>
-            <!-- إضافة الزرين -->
-            <div class="mt-2 d-flex justify-content-end">
-    <button class="btn btn-success me-2" onclick="window.location.href='{{route('add_payment_process')}}'"><i class="fas fa-plus"  ></i> أضف عملية دفع</button>
-    <button class="btn btn-primary" ><i class="fas fa-print"></i> طباعة الفاتورة</button>
-</div>
-
+            <div class="col-md-6 text-md-end">
+                <div class="action-buttons">
+                    <button class="btn btn-light" onclick="printInvoice()">
+                        <i class="fas fa-print"></i> طباعة
+                    </button>
+                    <button class="btn btn-success" onclick="addPayment()">
+                        <i class="fas fa-plus"></i> إضافة دفع
+                    </button>
+                    <button class="btn btn-info text-white" onclick="exportPDF()">
+                        <i class="fas fa-file-pdf"></i> PDF
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-    
-        
-    </div>
-    
-    
-
-    <!-- محتوى الصفحة داخل كونتينر -->
-   
-        <!-- Top Tabs -->
-        <div class="top-tabs d-flex justify-content-between align-items-center mb-3">
-            <!-- القوائم المنسدلة -->
-            <div class="d-flex align-items-center gap-2">
-                <button class="btn"><i class="fas fa-edit"></i> تعديل</button>
-                <button class="btn"><i class="fas fa-print"></i> طباعة</button>
-                <button class="btn"><i class="fas fa-file-pdf"></i> PDF</button>
-                <button class="btn"><i class="fas fa-plus"></i> إضافة عملية دفع</button>
-
-                <!-- قسائم -->
-                <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" id="vouchersDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        قسائم
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="vouchersDropdown">
-                        <li><a class="dropdown-item" href="#">ملصق الطرد</a></li>
-                        <li><a class="dropdown-item" href="#">قائمة الاستلام</a></li>
-                        <li><a class="dropdown-item" href="#">ملصق الشحن</a></li>
-                        <li><a class="dropdown-item" href="#">فاتورة حرارية</a></li>
-                    </ul>
+<div class="container">
+    <!-- Invoice Details -->
+    <div class="invoice-card">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="invoice-details">
+                    <h5 class="text-primary mb-3">معلومات الشركة</h5>
+                    <h6>{{ $invoice->client->company_name ?? 'مؤسسة أعمال خاصة للتجارة' }}</h6>
+                    <p class="text-muted mb-1">{{ $invoice->client->address ?? 'الرياض، المملكة العربية السعودية' }}</p>
+                    <p class="text-muted mb-1">الرقم الضريبي: {{ $invoice->client->tax_number ?? '300051635200005' }}</p>
+                    <p class="text-muted">تاريخ الفاتورة: {{ $invoice->invoice_date->format('Y/m/d') }}</p>
                 </div>
-
-                <!-- مرتجع -->
-                <div class="dropdown">
-                    <button class="btn btn-light dropdown-toggle" type="button" id="returnsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        مرتجع
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="returnsDropdown">
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-file-invoice"></i> إنشاء فاتورة مرتجعة</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="fa-solid fa-receipt"></i> إنشاء إشعار دائن</a></li>
-                    </ul>
-                </div>
-
-                <button class="btn"><i class="fa-solid fa-sms"></i> أرسل SMS</button>
-                <button class="btn"><i class="fab fa-whatsapp"></i> أرسل عن طريق WhatsApp</button>
             </div>
+            <div class="col-md-6 text-md-end">
+                <div class="qr-code" id="qrcode"></div>
+            </div>
+        </div>
 
-            <!-- خيارات أخرى -->
-            <div class="dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" id="otherOptionsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    خيارات أخرى
+        <!-- Tabs Navigation -->
+        <ul class="nav nav-tabs mb-4" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#invoice">
+                    <i class="fas fa-file-invoice me-2"></i>فاتورة
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="otherOptionsDropdown">
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-book"></i> Assign Work Order</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-paperclip"></i> إضافة ملاحظة/مرفق</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-calendar"></i> ترتيب موعد</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-copy"></i> نسخ</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> حذف</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Tabs -->
-        <ul class="nav nav-tabs mb-3">
-            <li class="nav-item">
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#invoice">فاتورة</button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#details">التفاصيل</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#details">
+                    <i class="fas fa-info-circle me-2"></i>التفاصيل
+                </button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#warehouse">الأذون المخزنية</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#warehouse">
+                    <i class="fas fa-warehouse me-2"></i>الأذون المخزنية
+                </button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#activities">سجل النشاطات</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#activities">
+                    <i class="fas fa-history me-2"></i>سجل النشاطات
+                </button>
             </li>
             <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profits">ربح الفاتورة</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profits">
+                    <i class="fas fa-chart-line me-2"></i>ربح الفاتورة
+                </button>
             </li>
         </ul>
 
@@ -156,19 +83,8 @@
         <div class="tab-content">
             <!-- Invoice Tab -->
             <div class="tab-pane fade show active" id="invoice">
-                <div class="card p-4">
-                    <h5 class="text-center">فاتورة ضريبية مسجلة</h5>
-                    <div class="row mb-3">
-                        <div class="col-6">
-                            <p><strong>رقم الفاتورة:</strong> 08938</p>
-                            <p><strong>تاريخ الفاتورة:</strong> 21/11/2024</p>
-                        </div>
-                        <div class="col-6 text-end">
-                            <p><strong>اسم العميل:</strong> مؤسسة أعمال خاصة للتجارة</p>
-                            <p><strong>رقم السجل التجاري:</strong> 312135536000003</p>
-                        </div>
-                    </div>
-                    <table class="table table-bordered text-center">
+                <div class="table-responsive">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>البند</th>
@@ -178,47 +94,129 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($invoice->items as $item)
                             <tr>
-                                <td>عطر 50 ملي</td>
-                                <td>18.00</td>
-                                <td>15</td>
-                                <td>270.00</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ number_format($item->unit_price, 2) }}</td>
+                                <td>{{ $item->quantity }}</td>
+                                <td>{{ number_format($item->unit_price * $item->quantity, 2) }}</td>
                             </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot class="table-light">
                             <tr>
                                 <td colspan="3" class="text-end">الإجمالي:</td>
-                                <td>270.00</td>
+                                <td>{{ number_format($invoice->total, 2) }} ر.س</td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="text-end">الضريبة:</td>
-                                <td>0.00</td>
+                                <td colspan="3" class="text-end">المدفوع:</td>
+                                <td>{{ number_format($invoice->payments->sum('amount'), 2) }} ر.س</td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="text-end">المجموع المستحق:</td>
-                                <td>270.00</td>
+                                <td colspan="3" class="text-end fw-bold">المبلغ المستحق:</td>
+                                <td class="fw-bold">{{ number_format($invoice->total - $invoice->payments->sum('amount'), 2) }} ر.س</td>
                             </tr>
-                        </tbody>
+                        </tfoot>
                     </table>
                 </div>
             </div>
 
-            <!-- Other Tabs -->
+            <!-- Details Tab -->
             <div class="tab-pane fade" id="details">
-                <div class="card p-4">التفاصيل هنا.</div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="invoice-details">
+                            <h6>معلومات العميل</h6>
+                            <p>الاسم: {{ $invoice->client->name }}</p>
+                            <p>الهاتف: {{ $invoice->client->phone }}</p>
+                            <p>البريد: {{ $invoice->client->email }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="invoice-details">
+                            <h6>معلومات إضافية</h6>
+                            @foreach($invoice->customFields as $field)
+                            <p>{{ $field->field_name }}: {{ $field->field_value }}</p>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- Warehouse Tab -->
             <div class="tab-pane fade" id="warehouse">
-                <div class="card p-4">الأذون المخزنية هنا.</div>
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    قريباً - سيتم إضافة معلومات الأذون المخزنية
+                </div>
             </div>
+
+            <!-- Activities Tab -->
             <div class="tab-pane fade" id="activities">
-                <div class="card p-4">سجل النشاطات هنا.</div>
+                <div class="timeline">
+                    @foreach($invoice->payments as $payment)
+                    <div class="timeline-item">
+                        <div class="timeline-marker bg-success">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h6 class="mb-0">دفعة جديدة</h6>
+                            <p class="text-muted mb-0">
+                                تم استلام مبلغ {{ number_format($payment->amount, 2) }} ر.س
+                                <small class="text-muted">{{ $payment->created_at->format('Y/m/d H:i') }}</small>
+                            </p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
             </div>
+
+            <!-- Profits Tab -->
             <div class="tab-pane fade" id="profits">
-                <div class="card p-4">ربح الفاتورة هنا.</div>
+                <div class="alert alert-warning">
+                    <i class="fas fa-lock me-2"></i>
+                    هذا القسم متاح فقط للمدراء
+                </div>
             </div>
         </div>
     </div>
+</div>
+@else
+<div class="alert alert-warning">
+    <i class="fas fa-exclamation-triangle me-2"></i>
+    عذراً، لم يتم العثور على الفاتورة المطلوبة
+</div>
+@endif
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+@if(isset($invoice) && $invoice)
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Generate QR Code
+        new QRCode(document.getElementById("qrcode"), {
+            text: JSON.stringify({
+                company: '{{ $invoice->client->company_name }}',
+                vat: '{{ $invoice->client->tax_number }}',
+                invoice: '{{ $invoice->invoice_id }}',
+                date: '{{ $invoice->invoice_date->format("Y-m-d") }}',
+                total: '{{ $invoice->total }}'
+            }),
+            width: 128,
+            height: 128
+        });
+    });
 
-</html>
+    function printInvoice() {
+        window.print();
+    }
+
+    function addPayment() {
+        window.location.href = '{{ route("add_payment_process", ["invoice_id" => $invoice->id]) }}';
+    }
+
+    function exportPDF() {
+        window.location.href = '{{ route("export_invoice_pdf", ["id" => $invoice->id]) }}';
+    }
+</script>
+@endif
+@endsection
